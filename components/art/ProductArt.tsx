@@ -295,6 +295,41 @@ export function ArtAtelier({ className }: ArtProps) {
   );
 }
 
+/* ---------------- VISSERIE (vis autoforante) ---------------- */
+export function ArtVisserie({ className }: ArtProps) {
+  const id = "vis";
+  return (
+    <svg viewBox="0 0 400 300" className={className} aria-hidden>
+      <MetalDefs id={id} />
+      <g transform="translate(0,10)">
+        {/* tête hexagonale */}
+        <polygon points="72,104 96,88 134,88 158,104 134,120 96,120" fill={`url(#${id}-face)`} stroke="#333642" strokeWidth="2.5" strokeLinejoin="round" />
+        <polygon points="72,104 96,120 96,146 72,130" fill={`url(#${id}-side)`} stroke="#333642" strokeWidth="2.5" strokeLinejoin="round" />
+        <polygon points="158,104 134,120 134,146 158,130" fill={`url(#${id}-side)`} stroke="#333642" strokeWidth="2.5" strokeLinejoin="round" />
+        <polygon points="96,120 134,120 134,146 96,146" fill={`url(#${id}-face)`} stroke="#333642" strokeWidth="2.5" strokeLinejoin="round" />
+        {/* rondelle */}
+        <ellipse cx="115" cy="150" rx="34" ry="9" fill="#AAB0B3" stroke="#333642" strokeWidth="2.2" />
+        {/* tige filetée */}
+        <rect x="101" y="150" width="28" height="96" fill={`url(#${id}-face)`} stroke="#333642" strokeWidth="2.4" />
+        {Array.from({ length: 8 }).map((_, i) => (
+          <line key={i} x1="101" y1={162 + i * 11} x2="129" y2={156 + i * 11} stroke="#333642" strokeWidth="2" opacity="0.75" />
+        ))}
+        {/* pointe autoforante */}
+        <polygon points="101,246 129,246 118,274 112,274" fill={`url(#${id}-side)`} stroke="#333642" strokeWidth="2.4" strokeLinejoin="round" />
+        <rect x="106" y="112" width="7" height="26" rx="3" fill={`url(#${id}-shine)`} opacity="0.7" />
+      </g>
+      {/* cote jaune */}
+      <g stroke="#FFD500" strokeWidth="3.5" strokeLinecap="round">
+        <line x1="215" y1="100" x2="215" y2="284" />
+        <line x1="207" y1="100" x2="223" y2="100" />
+        <line x1="207" y1="284" x2="223" y2="284" />
+      </g>
+      <text x="236" y="198" fontSize="19" fontWeight="700" fill="#333642" fontFamily="sans-serif">100</text>
+      <text x="284" y="198" fontSize="13" fill="#333642" opacity="0.6" fontFamily="sans-serif">mm</text>
+    </svg>
+  );
+}
+
 /* Table d'accès par clé produit */
 export const productArt: Record<string, (p: ArtProps) => JSX.Element> = {
   poutrelles: ArtPoutrelle,
@@ -304,4 +339,6 @@ export const productArt: Record<string, (p: ArtProps) => JSX.Element> = {
   corten: ArtCorten,
   treillis: ArtTreillis,
   plats: ArtPlat,
+  visserie: ArtVisserie,
+  "poteaux-cloture": ArtTube,
 };

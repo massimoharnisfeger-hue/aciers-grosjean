@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins, Comfortaa, Questrial } from "next/font/google";
+import { Poppins, Comfortaa, Questrial, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/fx/SmoothScroll";
 import Nav from "@/components/ui/Nav";
@@ -22,6 +22,13 @@ const questrial = Questrial({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-questrial",
+  display: "swap",
+});
+// Police technique : cotes, références, caractéristiques.
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -64,7 +71,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${poppins.variable} ${comfortaa.variable} ${questrial.variable}`}
+      className={`${poppins.variable} ${comfortaa.variable} ${questrial.variable} ${plexMono.variable}`}
     >
       <body className="grain">
         <ScrollProgress />

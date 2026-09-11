@@ -3,18 +3,8 @@
 import Link from "next/link";
 import Reveal from "@/components/fx/Reveal";
 import Tilt from "@/components/fx/Tilt";
-import { produits } from "@/lib/content";
-import {
-  ArtPoutrelle,
-  ArtTole,
-  ArtTube,
-  ArtCorniere,
-  ArtCorten,
-  ArtTreillis,
-} from "@/components/art/ProductArt";
-
-// Une illustration par famille, dans l'ordre du catalogue.
-const arts = [ArtPoutrelle, ArtTole, ArtTube, ArtCorniere, ArtCorten, ArtTreillis];
+import { familles } from "@/lib/catalogue";
+import { productArt, ArtPoutrelle } from "@/components/art/ProductArt";
 
 export default function Produits() {
   return (
@@ -26,33 +16,34 @@ export default function Produits() {
             Des produits <span className="mark-jaune">en stock</span>, prêts à partir
           </h2>
           <p className="mt-4 font-body text-lg text-soft">
-            Plus de 500 références disponibles dans nos dépôts. Découpe sur mesure possible sur
-            l'ensemble de la gamme.
+            Sept familles, plus de 500 références. Toutes disponibles à la découpe aux cotes
+            exactes, avec retrait le jour même.
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {produits.map((p, i) => {
-            const Art = arts[i % arts.length];
+          {familles.slice(0, 6).map((f, i) => {
+            const Art = productArt[f.art] ?? ArtPoutrelle;
             return (
-              <Reveal key={p.nom} delay={(i % 3) * 0.08}>
+              <Reveal key={f.slug} delay={(i % 3) * 0.08}>
                 <Tilt className="group h-full" intensity={7}>
-                  <article className="lift flex h-full flex-col overflow-hidden rounded-2xl border border-brume bg-white">
-                    {/* Illustration produit */}
+                  <Link
+                    href={`/produits/${f.slug}`}
+                    className="lift flex h-full flex-col overflow-hidden rounded-2xl border border-brume bg-white"
+                  >
                     <div className="shine relative aspect-[4/3] overflow-hidden bg-nuage">
                       <div className="absolute inset-0 grid-industrie opacity-70" />
                       <Art className="absolute inset-0 h-full w-full transition-transform duration-700 group-hover:scale-[1.07]" />
-                      {p.stock && <span className="tag-stock absolute left-4 top-4 z-10">En stock</span>}
+                      <span className="tag-stock absolute left-4 top-4 z-10">En stock</span>
                     </div>
 
                     <div className="flex flex-1 flex-col p-6" style={{ transform: "translateZ(40px)" }}>
-                      <h3 className="h-title text-xl font-semibold text-encre">{p.nom}</h3>
-                      <p className="mt-2 flex-1 font-body text-sm text-soft">{p.desc}</p>
-                      <div className="mt-5 flex items-end justify-between border-t border-brume pt-4">
-                        <div>
-                          <p className="font-body text-xs text-soft">{p.usages}</p>
-                          <p className="h-title mt-1 text-lg font-bold text-encre">{p.prix}</p>
-                        </div>
+                      <h3 className="h-title text-xl font-semibold text-encre">{f.nom}</h3>
+                      <p className="mt-2 flex-1 font-body text-sm text-soft">{f.accroche}</p>
+                      <div className="mt-5 flex items-center justify-between border-t border-brume pt-4">
+                        <span className="font-mono text-xs text-soft">
+                          {f.refs.length} référence{f.refs.length > 1 ? "s" : ""}
+                        </span>
                         <span className="glow-jaune flex h-10 w-10 items-center justify-center rounded-full bg-jaune text-encre transition-transform duration-300 group-hover:rotate-45">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                             <path d="M7 17L17 7M9 7h8v8" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -60,7 +51,7 @@ export default function Produits() {
                         </span>
                       </div>
                     </div>
-                  </article>
+                  </Link>
                 </Tilt>
               </Reveal>
             );

@@ -22,6 +22,7 @@ const config: Config = {
         title: ["var(--font-poppins)", "Poppins", "sans-serif"],
         sub: ["var(--font-comfortaa)", "Comfortaa", "sans-serif"],
         body: ["var(--font-questrial)", "Questrial", "sans-serif"],
+        mono: ["var(--font-mono)", "IBM Plex Mono", "ui-monospace", "monospace"],
       },
       keyframes: {
         "beam-pan": {

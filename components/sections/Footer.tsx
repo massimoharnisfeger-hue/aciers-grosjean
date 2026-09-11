@@ -24,10 +24,12 @@ export default function Footer() {
               Produits
             </h4>
             <ul className="space-y-2 font-body text-sm text-soft-light">
-              <li><a href="#produits" className="hover:text-jaune">Poutrelles</a></li>
-              <li><a href="#produits" className="hover:text-jaune">Tôles & tubes</a></li>
-              <li><a href="#produits" className="hover:text-jaune">Cornières</a></li>
-              <li><a href="#produits" className="hover:text-jaune">Acier corten</a></li>
+              <li><a href="/produits/poutrelles" className="hover:text-jaune">Poutrelles</a></li>
+              <li><a href="/produits/cornieres" className="hover:text-jaune">Cornières &amp; plats</a></li>
+              <li><a href="/produits/tubes" className="hover:text-jaune">Tubes</a></li>
+              <li><a href="/produits/toles" className="hover:text-jaune">Tôles</a></li>
+              <li><a href="/materiaux/inox" className="hover:text-jaune">Inox</a></li>
+              <li><a href="/materiaux/aluminium" className="hover:text-jaune">Aluminium</a></li>
             </ul>
           </div>
 

@@ -56,7 +56,8 @@ html.lenis,html.lenis body{height:auto}
 }
 
 /* Titres charte */
-.h-display{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.02em;color:#333642}
+.h-display{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;line-height:1.04;letter-spacing:-0.02em;color:#333642;text-wrap:balance}
+.h-title{text-wrap:balance}
 .h-sub{font-family:var(--font-comfortaa),"Comfortaa",sans-serif;font-weight:500}
 
 /* Motif industriel : grille fine (blueprint) */
