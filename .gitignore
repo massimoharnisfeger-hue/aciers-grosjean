@@ -7,10 +7,3 @@ next-env.d.ts
 .env*.local
 .DS_Store
 install.log
-
-# fichiers de travail locaux
-dev.log
-srv.log
-shoot*.js
-capture.js
-shots/

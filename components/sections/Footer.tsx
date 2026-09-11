@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Logo from "@/components/ui/Logo";
 import { site } from "@/lib/content";
 import { familles, matieres, totalRefs } from "@/lib/catalogue";
 import { servicesDetail, depotsDetail, guides } from "@/lib/edito";
@@ -39,10 +40,7 @@ export default function Footer() {
         {/* marque + contact */}
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <div className="flex items-baseline gap-1.5">
-              <span className="h-title text-2xl font-bold text-white">GROSJEAN</span>
-              <span className="h-sub text-xs text-soft-light">aciers</span>
-            </div>
+            <Logo variante="blanc" className="text-2xl" />
             <p className="mt-4 max-w-md font-body text-soft-light">
               Négoce et transformation d'acier depuis 40 ans. {totalRefs} références en stock,
               coupées aux cotes exactes, retirables le jour même dans quatre dépôts.

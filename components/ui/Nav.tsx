@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "@/components/ui/Logo";
 
 const links = [
   { label: "Catalogue", href: "/produits" },
@@ -12,15 +13,6 @@ const links = [
   { label: "Dépôts", href: "/depots" },
   { label: "À propos", href: "/a-propos" },
 ];
-
-function Wordmark() {
-  return (
-    <span className="flex items-baseline gap-1.5 leading-none">
-      <span className="h-title text-xl font-bold tracking-tight text-encre">GROSJEAN</span>
-      <span className="h-sub text-xs text-soft">aciers</span>
-    </span>
-  );
-}
 
 export default function Nav() {
   const pathname = usePathname();
@@ -43,7 +35,7 @@ export default function Nav() {
       }`}
     >
       <div className="container-g flex items-center justify-between">
-        <Link href="/" aria-label="Accueil"><Wordmark /></Link>
+        <Link href="/" aria-label="Accueil"><Logo /></Link>
 
         <nav className="hidden items-center gap-1 md:flex">
           {links.map((l) => {

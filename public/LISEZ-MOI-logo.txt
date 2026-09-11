@@ -1,0 +1,32 @@
+METTRE LE VRAI LOGO GROSJEAN
+============================
+
+Le site tourne actuellement avec un marqueur de place (le mot GROSJEAN composé
+dans la police Poppins). Ce n'est PAS le logo officiel : la charte graphique
+interdit de recomposer le lettrage avec une police (§4).
+
+Pour installer le vrai logo, 3 étapes :
+
+  1. Déposer le fichier officiel ici, nommé exactement :
+
+         public/logo.svg          (version foncée — s'affiche sur fond blanc)
+         public/logo-blanc.svg    (version blanche — s'affiche dans le pied de page)
+
+     Un .png fonctionne aussi, mais le .svg reste net à toutes les tailles.
+     Si vous n'avez qu'une seule version, dupliquez le fichier sous les deux noms :
+     ce sera imparfait dans le pied de page, mais ça marchera.
+
+  2. Ouvrir  components/ui/Logo.tsx  et remplacer, tout en haut :
+
+         const AVEC_FICHIER_OFFICIEL = false;
+     par
+         const AVEC_FICHIER_OFFICIEL = true;
+
+  3. Enregistrer. C'est fini.
+
+Le logo apparaît alors automatiquement dans la barre de navigation et dans le
+pied de page, sur toutes les 386 pages. Rien d'autre à modifier.
+
+Bonus : pour changer aussi l'icône de l'onglet du navigateur, remplacer le
+fichier  app/icon.svg  par le monogramme officiel (le "GA" ou le "A" prévu par
+la charte).
