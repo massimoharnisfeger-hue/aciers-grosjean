@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Reveal from "@/components/fx/Reveal";
 import Tilt from "@/components/fx/Tilt";
-import { familles } from "@/lib/catalogue";
+import { familles, totalRefs } from "@/lib/catalogue";
 import { productArt, ArtPoutrelle } from "@/components/art/ProductArt";
 
 export default function Produits() {
@@ -16,8 +16,8 @@ export default function Produits() {
             Des produits <span className="mark-jaune">en stock</span>, prêts à partir
           </h2>
           <p className="mt-4 font-body text-lg text-soft">
-            Sept familles, plus de 500 références. Toutes disponibles à la découpe aux cotes
-            exactes, avec retrait le jour même.
+            {familles.length} familles, {totalRefs} références, un prix au mètre affiché sur
+            chaque fiche. Tout se coupe aux cotes exactes, avec retrait le jour même.
           </p>
         </Reveal>
 

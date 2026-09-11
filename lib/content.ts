@@ -109,7 +109,7 @@ export const categories: Categorie[] = [
   {
     slug: "corten",
     titre: "Acier corten",
-    intro: "La patine rouille pour l'aménagement extérieur : terrasses, déco, bardage.",
+    intro: "La patine rouille pour l'aménagement extérieur : terrasses, déco, bardage.",
     refs: [
       { nom: "Tôle corten 2 mm", dim: "au m²", prix: "Sur devis" },
       { nom: "Bac corten déco", dim: "sur mesure", prix: "Sur devis" },
@@ -135,7 +135,7 @@ export type Service = { nom: string; desc: string; detail?: string };
 export const services: Service[] = [
   { nom: "Découpe sur mesure", desc: "Vos pièces coupées aux bonnes dimensions, prêtes à l'emploi.", detail: "Sciage et cisaillage aux cotes exactes. Vous ne payez que ce dont vous avez besoin, et vous gagnez du temps sur le chantier." },
   { nom: "Transformation & façonnage", desc: "Pliage, perçage, mise en forme selon votre plan.", detail: "Pliage, perçage, poinçonnage : on prépare la matière selon votre plan pour qu'elle arrive prête à assembler." },
-  { nom: "Conseil technique", desc: "Un doute sur la nuance ou l'épaisseur ? On vous oriente.", detail: "40 ans d'expérience à votre service : nuance, épaisseur, protection anticorrosion — on vous guide vers le bon produit." },
+  { nom: "Conseil technique", desc: "Un doute sur la nuance ou l'épaisseur ? On vous oriente.", detail: "40 ans d'expérience à votre service : nuance, épaisseur, protection anticorrosion — on vous guide vers le bon produit." },
   { nom: "Click & collect", desc: "Vous commandez, vous retirez en dépôt — souvent le jour même.", detail: "Commande simple, retrait rapide dans le dépôt de votre choix. Souvent disponible le jour même." },
 ];
 
@@ -190,15 +190,15 @@ export const histoire = {
     { titre: "Expertise", texte: "Quatre décennies à connaître la matière, les nuances et les usages." },
     { titre: "Proximité", texte: "Une entreprise familiale, quatre dépôts, un accueil sans intimidation." },
     { titre: "Efficacité", texte: "Devis en 24h, découpe sur mesure, retrait rapide. On ne vous fait pas attendre." },
-    { titre: "Exigence", texte: "Certification EN1090-Exc2 : la rigueur du pro sur chaque commande." },
+    { titre: "Exigence", texte: "Certification EN1090-Exc2 : la rigueur du pro sur chaque commande." },
   ],
 };
 
 export const faq = [
-  { q: "Faut-il être un professionnel pour commander ?", r: "Non. Les particuliers sont les bienvenus, même pour de petites quantités. Vous bénéficiez des mêmes prix pro accessibles." },
-  { q: "Galvanisé, inox ou acier brut : comment choisir ?", r: "Pour l'extérieur exposé, préférez le galvanisé (protégé contre la rouille) ou l'inox. L'acier brut convient en intérieur ou s'il est peint. En cas de doute, notre équipe vous conseille." },
-  { q: "Proposez-vous la livraison à domicile ?", r: "Le modèle est le retrait en dépôt (click & collect), souvent disponible le jour même. Cela garde des prix serrés et un retrait rapide." },
-  { q: "En combien de temps ai-je un devis ?", r: "Sous 24h, sans engagement. Décrivez votre besoin (dimensions, quantités, usage) et nous revenons vers vous rapidement." },
-  { q: "Découpez-vous aux dimensions demandées ?", r: "Oui, la découpe sur mesure fait partie de nos services, tout comme le pliage, le perçage et le façonnage selon votre plan." },
+  { q: "Faut-il être un professionnel pour commander ?", r: "Non. Les particuliers sont les bienvenus, même pour de petites quantités. Vous bénéficiez des mêmes prix pro accessibles." },
+  { q: "Galvanisé, inox ou acier brut : comment choisir ?", r: "Pour l'extérieur exposé, préférez le galvanisé (protégé contre la rouille) ou l'inox. L'acier brut convient en intérieur ou s'il est peint. En cas de doute, notre équipe vous conseille." },
+  { q: "Proposez-vous la livraison à domicile ?", r: "Le modèle est le retrait en dépôt (click & collect), souvent disponible le jour même. Cela garde des prix serrés et un retrait rapide." },
+  { q: "En combien de temps ai-je un devis ?", r: "Sous 24h, sans engagement. Décrivez votre besoin (dimensions, quantités, usage) et nous revenons vers vous rapidement." },
+  { q: "Découpez-vous aux dimensions demandées ?", r: "Oui, la découpe sur mesure fait partie de nos services, tout comme le pliage, le perçage et le façonnage selon votre plan." },
   { q: "Qu'est-ce que la certification EN1090-Exc2 ?", r: "C'est une norme européenne qui encadre la fabrication des structures en acier. L'obtenir atteste d'un niveau d'exigence que peu d'acteurs de notre secteur affichent." },
 ];

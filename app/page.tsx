@@ -7,6 +7,7 @@ import Publics from "@/components/sections/Publics";
 import Services from "@/components/sections/Services";
 import Etapes from "@/components/sections/Etapes";
 import Realisations from "@/components/sections/Realisations";
+import Guides from "@/components/sections/Guides";
 import Depots from "@/components/sections/Depots";
 import CtaBand from "@/components/sections/CtaBand";
 import Faq from "@/components/sections/Faq";
@@ -23,6 +24,7 @@ export default function Home() {
       <Services />
       <Etapes />
       <Realisations />
+      <Guides />
       <Depots />
       <CtaBand />
       <Faq />
