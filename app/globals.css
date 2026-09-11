@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts loaded via next/font (Poppins, Comfortaa, Questrial) → CSS vars in layout. */
+
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{
+  background:#ffffff;
+  color:#333642;               /* encre — combo par défaut 12:1 sur blanc */
+  font-family:var(--font-questrial),"Questrial",sans-serif;
+  overflow-x:hidden;
+}
+
+/* Lenis */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+::selection{background:#FFD500;color:#333642}
+::-webkit-scrollbar{width:0}
+
+/* ---- Charte : règles de couleur encapsulées en utilitaires ---- */
+
+/* Texte secondaire = encre à 72 % (≈5:1 AA sur blanc) */
+.text-soft{color:rgba(51,54,66,0.72)}
+.text-soft-light{color:rgba(255,255,255,0.75)}
+
+/* CTA officiel : fond jaune, texte encre. JAMAIS de texte blanc sur jaune. */
+.btn-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#FFD500;color:#333642;
+  font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;
+  padding:.9rem 1.6rem;border-radius:.5rem;
+  transition:transform .2s ease,box-shadow .2s ease;
+  box-shadow:0 8px 24px -10px rgba(255,213,0,.7);
+}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px -10px rgba(255,213,0,.9)}
+
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1.5px solid #333642;color:#333642;background:transparent;
+  font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;
+  padding:.85rem 1.55rem;border-radius:.5rem;
+  transition:background .2s ease,color .2s ease;
+}
+.btn-ghost:hover{background:#333642;color:#fff}
+
+/* Le jaune écrit uniquement sur l'encre */
+.on-encre-jaune{color:#FFD500}
+
+/* Barre / soulignement jaune : signal de lecture */
+.mark-jaune{
+  background:linear-gradient(transparent 62%, #FFD500 62%);
+  padding:0 .1em;
+}
+
+/* Titres charte */
+.h-display{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;line-height:1.02;letter-spacing:-0.02em;color:#333642}
+.h-sub{font-family:var(--font-comfortaa),"Comfortaa",sans-serif;font-weight:500}
+
+/* Motif industriel : grille fine (blueprint) */
+.grid-industrie{
+  background-image:
+    linear-gradient(rgba(51,54,66,0.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(51,54,66,0.05) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+/* Sur fond encre */
+.grid-industrie-dark{
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+
+/* Pastille "en stock" charte : jaune + texte encre */
+.tag-stock{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:#FFD500;color:#333642;
+  font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;
+  font-size:.7rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:.25rem .6rem;border-radius:999px;
+}
+
+.container-g{max-width:80rem;margin-inline:auto;padding-inline:1.25rem}
+@media(min-width:768px){.container-g{padding-inline:2rem}}
+
+/* ---------- EFFETS ---------- */
+
+/* Balayage de reflet sur le métal (au survol de .group) */
+.shine{position:relative;overflow:hidden}
+.shine::after{
+  content:"";position:absolute;top:-60%;left:-120%;
+  width:60%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.75),transparent);
+  transform:rotate(18deg);
+  transition:left .75s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;
+}
+.group:hover .shine::after{left:130%}
+
+/* Élévation au survol */
+.lift{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s ease}
+.group:hover .lift,.lift:hover{transform:translateY(-6px);box-shadow:0 30px 70px -32px rgba(51,54,66,.55)}
+
+/* Halo jaune discret */
+.glow-jaune{box-shadow:0 0 0 0 rgba(255,213,0,0);transition:box-shadow .4s ease}
+.group:hover .glow-jaune{box-shadow:0 0 0 4px rgba(255,213,0,.22)}
+
+/* Grain cinématographique très léger */
+.grain::before{
+  content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.028;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Barre de progression de lecture */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:#FFD500;z-index:9500;transform-origin:0 50%}
+
+@media (prefers-reduced-motion: reduce){
+  .shine::after{display:none}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
