@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="container-g relative py-16 md:py-20">
         <div className="grid gap-10 border-b border-white/10 pb-12 md:grid-cols-[1.2fr_1fr]">
           <div>
-            <Logo variante="blanc" className="text-2xl" />
+            <Logo variante="blanc" hauteur={44} />
             <p className="mt-4 max-w-md font-body text-soft-light">
               Négoce et transformation d&apos;acier depuis 40 ans. {totalProduits} produits en stock,
               coupés aux cotes exactes, retirables le jour même dans quatre dépôts.

@@ -46,7 +46,7 @@ export default function Nav() {
       onMouseLeave={() => setMega(false)}
     >
       <div className="container-g flex items-center justify-between">
-        <Link href="/" aria-label="Accueil"><Logo /></Link>
+        <Link href="/" aria-label="Accueil"><Logo hauteur={40} /></Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
           {/* catalogue : méga-menu */}

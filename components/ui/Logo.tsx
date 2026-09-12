@@ -1,54 +1,41 @@
 /**
- * Logo Aciers Grosjean.
+ * Logo officiel Aciers Grosjean.
  *
- * ⚠️ PROVISOIRE — le lettrage officiel est propriétaire et la charte interdit
- * formellement de le recomposer avec une police (§4 : « ne jamais le recomposer
- * avec une police. Utiliser le fichier logo fourni »).
+ * Extrait en vectoriel de la charte graphique (e-identite, avril 2024, page 2,
+ * déclinaison à plat) par scripts/extraire-logo.py — 23 tracés, pas une
+ * recomposition typographique. La charte l'interdit formellement (§4) et c'est
+ * bien le fichier d'origine qui est servi ici.
  *
- * Ce qui s'affiche ici est donc un MARQUEUR DE PLACE, pas le logo de la marque.
+ *   public/logo.svg        encre #333642, pour fond blanc
+ *   public/logo-blanc.svg  blanc, pour le pied de page sombre
+ *   app/icon.svg           monogramme, pour l'onglet du navigateur
  *
- * POUR METTRE LE VRAI LOGO — une seule manipulation, rien d'autre à toucher :
- *   1. déposer le fichier officiel dans  public/logo.svg        (version sombre, pour fond blanc)
- *   2. déposer la version blanche dans   public/logo-blanc.svg  (pour le pied de page sombre)
- *   3. c'est tout : la barre de navigation, le pied de page et tous les gabarits
- *      basculent automatiquement sur ces fichiers.
- *
- * La zone d'exclusion de la charte (un espace au moins égal à la hauteur du « G »)
- * est réservée ci-dessous par le padding du conteneur.
+ * Proportions natives : 214 × 77,7 pt, soit un rapport de 2,754.
+ * La hauteur pilote l'affichage ; la largeur en découle, et les attributs
+ * width/height évitent tout saut de mise en page au chargement.
  */
 
-const AVEC_FICHIER_OFFICIEL = false; // ← passer à true une fois les fichiers déposés
+const RATIO = 214 / 77.7;
 
 export default function Logo({
   variante = "encre",
+  hauteur = 34,
   className = "",
 }: {
   variante?: "encre" | "blanc";
+  /** Hauteur d'affichage en pixels. */
+  hauteur?: number;
   className?: string;
 }) {
-  const blanc = variante === "blanc";
-
-  if (AVEC_FICHIER_OFFICIEL) {
-    return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={blanc ? "/logo-blanc.svg" : "/logo.svg"}
-        alt="Aciers Grosjean"
-        className={`h-7 w-auto ${className}`}
-      />
-    );
-  }
-
   return (
-    <span
-      className={`flex items-baseline gap-1.5 leading-none ${className}`}
-      aria-label="Aciers Grosjean"
-      data-logo="provisoire"
-    >
-      <span className={`h-title text-xl font-bold tracking-tight ${blanc ? "text-white" : "text-encre"}`}>
-        GROSJEAN
-      </span>
-      <span className={`h-sub text-xs ${blanc ? "text-soft-light" : "text-soft"}`}>aciers</span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={variante === "blanc" ? "/logo-blanc.svg" : "/logo.svg"}
+      alt="Aciers Grosjean"
+      width={Math.round(hauteur * RATIO)}
+      height={hauteur}
+      className={`w-auto ${className}`}
+      style={{ height: hauteur }}
+    />
   );
 }

@@ -81,7 +81,7 @@ export default function Hero() {
           {/* carte principale : le dépôt */}
           <div className="shine relative aspect-[4/3] overflow-hidden rounded-2xl border border-brume bg-nuage shadow-[0_40px_90px_-50px_rgba(51,54,66,.6)]">
             <ArtStock className="h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
-            <span className="tag-stock absolute left-5 top-5 z-10">500+ références</span>
+            <span className="tag-stock absolute left-5 top-5 z-10">495 produits</span>
           </div>
 
           {/* vignettes flottantes */}
