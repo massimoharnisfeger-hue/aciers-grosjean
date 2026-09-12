@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Demander un devis en 24h | Aciers Grosjean",
   description:
     "Décrivez votre projet acier : dimensions, quantités, usage. Devis sous 24h, sans engagement. Particuliers et professionnels.",
+  alternates: { canonical: "/devis" },
 };
 
 export default function DevisPage() {

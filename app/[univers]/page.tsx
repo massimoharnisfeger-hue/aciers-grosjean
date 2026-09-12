@@ -15,6 +15,7 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
+import { titre, description } from "@/lib/seo";
 
 type Params = { univers: string };
 
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const u = universBySlug(univers);
   if (!u) return { title: "Univers introuvable | Aciers Grosjean" };
   return {
-    title: `${u.titreSeo} | Aciers Grosjean`,
-    description: u.descSeo,
+    title: titre(u.titreSeo),
+    description: description(u.descSeo),
     alternates: { canonical: `/${u.slug}` },
   };
 }

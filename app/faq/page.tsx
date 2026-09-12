@@ -7,7 +7,7 @@ import { faq } from "@/lib/content";
 import { articles } from "@/lib/edito";
 
 export const metadata: Metadata = {
-  title: "Questions fréquentes — acheter de l'acier quand on n'est pas du métier",
+  title: "Questions fréquentes sur l'achat d'acier",
   description:
     "Faut-il être professionnel ? Livrez-vous ? En combien de temps un devis ? Galvanisé ou inox ? Les réponses aux questions qu'on nous pose tous les jours au comptoir.",
   alternates: { canonical: "/faq" },

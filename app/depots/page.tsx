@@ -6,9 +6,9 @@ import Reveal from "@/components/fx/Reveal";
 import { depotsDetail } from "@/lib/edito";
 
 export const metadata: Metadata = {
-  title: "4 dépôts acier — Charleroi, La Louvière, Tournai, Marville | Aciers Grosjean",
+  title: "4 dépôts acier en Wallonie et en France",
   description:
-    "Nos 4 dépôts : Charleroi, La Louvière, Tournai (Belgique) et Marville (France). Horaires, équipements de découpe sur place, communes desservies. Retrait le jour même.",
+    "Charleroi, La Louvière, Tournai et Marville : horaires, équipements de découpe sur place et communes desservies. Retrait le jour même.",
   alternates: { canonical: "/depots" },
 };
 

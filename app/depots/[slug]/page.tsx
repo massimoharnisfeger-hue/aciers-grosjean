@@ -6,6 +6,7 @@ import Reveal from "@/components/fx/Reveal";
 import { ArtStock } from "@/components/art/ProductArt";
 import { depotsDetail, depotBySlug, servicesDetail } from "@/lib/edito";
 import { univers } from "@/lib/catalogue";
+import { titre, description } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -18,11 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const d = depotBySlug(slug);
   if (!d) return { title: "Dépôt introuvable | Aciers Grosjean" };
   return {
-    title: `Acier à ${d.ville} — dépôt, découpe sur place et retrait le jour même | Aciers Grosjean`,
-    description: `Notre dépôt de ${d.ville} (${d.region}) : ${d.equipements
-      .slice(0, 3)
-      .join(", ")
-      .toLowerCase()}. Horaires, coordonnées et communes desservies. Retrait le jour même.`,
+    title: titre(`Acier à ${d.ville} — dépôt, découpe et retrait le jour même`),
+    description: description(
+      `Notre dépôt de ${d.ville} (${d.region}) : ${d.equipements.slice(0, 3).join(", ").toLowerCase()}. ` +
+        "Horaires, coordonnées et communes desservies."
+    ),
     alternates: { canonical: `/depots/${d.slug}` },
   };
 }

@@ -10,9 +10,9 @@ import { servicesDetail } from "@/lib/edito";
 import { ArtDecoupe, ArtAtelier, ArtStock } from "@/components/art/ProductArt";
 
 export const metadata: Metadata = {
-  title: "Découpe, pliage, perçage et transformation acier | Aciers Grosjean",
+  title: "Découpe, pliage et transformation acier sur mesure",
   description:
-    "Six services qui transforment la barre brute en pièce prête à poser : découpe aux cotes dès 2,50 €, pliage jusqu'à 3 m, perçage sur plan, conseil gratuit, click & collect, atelier certifié EN1090-Exc2.",
+    "Découpe aux cotes dès 2,50 €, pliage jusqu'à 3 m, perçage sur plan, soudure certifiée EN 1090-Exc2, galvanisation et retrait en dépôt.",
   alternates: { canonical: "/services" },
 };
 

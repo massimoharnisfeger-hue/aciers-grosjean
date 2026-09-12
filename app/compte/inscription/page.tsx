@@ -3,7 +3,7 @@ import PageEspace from "@/components/ui/PageEspace";
 
 export const metadata: Metadata = {
   title: "Créer un compte | Aciers Grosjean",
-  description: "Création d’un compte particulier sur le site Aciers Grosjean.",
+  description: "Créer un compte n’est pas obligatoire pour commander chez nous : envoyez votre demande, on chiffre sous 24 h et vous retirez en dépôt.",
   alternates: { canonical: "/compte/inscription" },
   robots: { index: false, follow: true },
 };

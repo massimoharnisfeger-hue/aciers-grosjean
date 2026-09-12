@@ -5,6 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 import FilAriane from "@/components/ui/FilAriane";
 import { articles, articleBySlug, type Bloc } from "@/lib/edito";
+import { titre, description } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -19,8 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const a = articleBySlug(slug);
   if (!a) return { title: "Article introuvable | Aciers Grosjean" };
   return {
-    title: `${a.titreSeo} | Aciers Grosjean`,
-    description: a.descSeo,
+    title: titre(a.titreSeo),
+    description: description(a.descSeo),
     alternates: { canonical: `/conseils/${a.slug}` },
   };
 }

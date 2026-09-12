@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageEspace from "@/components/ui/PageEspace";
 
 export const metadata: Metadata = {
-  title: "Connexion | Aciers Grosjean",
+  title: "Espace client — suivi de vos devis et commandes",
   description: "Espace client Aciers Grosjean : suivi de commandes, devis et documents.",
   alternates: { canonical: "/compte/connexion" },
   robots: { index: false, follow: true },

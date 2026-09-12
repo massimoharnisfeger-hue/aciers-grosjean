@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageLegale from "@/components/ui/PageLegale";
 
 export const metadata: Metadata = {
-  title: "Cookies | Aciers Grosjean",
+  title: "Cookies et traceurs — ce site ne vous suit pas",
   description:
     "Ce site ne dépose aucun cookie publicitaire ni traceur de réseau social. Voici ce qu'il utilise réellement.",
   alternates: { canonical: "/cookies" },

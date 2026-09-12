@@ -6,7 +6,7 @@ import Reveal from "@/components/fx/Reveal";
 import { univers, noeuds, produitsSous, formatPrix } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
-  title: "Nouveautés — les derniers produits entrés au catalogue | Aciers Grosjean",
+  title: "Nouveautés — derniers produits entrés au catalogue",
   description:
     "Les dernières références ajoutées au catalogue, univers par univers : acier, inox, aluminium, toiture, jardin et quincaillerie.",
   alternates: { canonical: "/nouveautes" },

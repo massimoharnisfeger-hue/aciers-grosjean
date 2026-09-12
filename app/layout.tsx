@@ -33,9 +33,11 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aciers Grosjean — L'acier de pro, accessible à tous",
+  metadataBase: new URL("https://www.aciersgrosjean.be"),
+  title: "Aciers Grosjean — l'acier de pro, accessible à tous",
   description:
-    "Négoce et transformation d'acier depuis 40 ans. Poutrelles, tôles, tubes, cornières, corten. Découpe sur mesure, devis en 24h, retrait le jour même. 4 dépôts en Wallonie et en France.",
+    "Poutrelles, tôles, tubes, cornières, corten. Découpe sur mesure, devis en 24 h, retrait le jour même dans nos 4 dépôts en Wallonie et en France.",
+  alternates: { canonical: "/" },
   keywords: [
     "acier",
     "poutrelles",

@@ -5,7 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 
 export const metadata: Metadata = {
-  title: "Engagement ESG — environnement, social, gouvernance | Aciers Grosjean",
+  title: "Engagement ESG — nos chiffres et nos objectifs",
   description:
     "112 points de contrôle, 993 heures de formation, une feuille de route jusqu'en 2030. Ce que nous mesurons et ce que nous nous engageons à améliorer.",
   alternates: { canonical: "/entreprise/engagement-esg" },

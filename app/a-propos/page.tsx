@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "À propos — 40 ans d'expertise acier | Aciers Grosjean",
   description:
     "Entreprise familiale wallonne, près de 40 ans d'expertise acier, 4 dépôts, certification EN1090-Exc2. L'acier de pro, accessible à tous.",
+  alternates: { canonical: "/a-propos" },
 };
 
 export default function AProposPage() {

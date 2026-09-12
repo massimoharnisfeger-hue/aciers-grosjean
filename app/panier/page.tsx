@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import PageEspace from "@/components/ui/PageEspace";
 
 export const metadata: Metadata = {
-  title: "Panier | Aciers Grosjean",
-  description: "Panier et commande en ligne Aciers Grosjean.",
+  title: "Panier — chiffrage immédiat, prix ferme sous 24 h",
+  description: "Estimez votre besoin sur chaque fiche produit : poids, découpe et total HTVA. Vous recevez le prix ferme sous 24 h et vous payez au retrait.",
   alternates: { canonical: "/panier" },
   robots: { index: false, follow: true },
 };

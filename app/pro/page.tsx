@@ -6,9 +6,9 @@ import Reveal from "@/components/fx/Reveal";
 import { site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Espace pro — compte professionnel, tarifs négociés et paiement différé",
+  title: "Espace pro — tarifs négociés et paiement différé",
   description:
-    "Ouvrez un compte professionnel : tarifs négociés selon vos volumes, paiement différé, historique de commandes et interlocuteur dédié. Réponse sous quelques jours ouvrables.",
+    "Tarifs négociés selon vos volumes, paiement différé et interlocuteur dédié. Un numéro de TVA suffit, réponse sous quelques jours ouvrables.",
   alternates: { canonical: "/pro" },
 };
 

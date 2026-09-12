@@ -15,6 +15,7 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
+import { titre, description } from "@/lib/seo";
 
 type Params = { univers: string; segments: string[] };
 
@@ -37,11 +38,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const total = produitsSous(chemin).length;
   const mini = prixMini(chemin);
   return {
-    title: `${n.titreSeo} | Aciers Grosjean`,
-    description:
+    title: titre(n.titreSeo),
+    description: description(
       `${total} référence${total > 1 ? "s" : ""} de ${n.nom.toLowerCase()} en stock` +
-      (mini !== null ? `, dès ${formatPrix(mini)}` : "") +
-      `. Poids et prix affichés, découpe aux cotes exactes, retrait le jour même dans nos 4 dépôts.`,
+        (mini !== null ? `, dès ${formatPrix(mini)}` : "") +
+        ". Poids et prix affichés, découpe aux cotes, retrait le jour même."
+    ),
     alternates: { canonical: chemin },
   };
 }

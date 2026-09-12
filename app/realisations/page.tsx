@@ -6,9 +6,9 @@ import Realisations from "@/components/sections/Realisations";
 import Reveal from "@/components/fx/Reveal";
 
 export const metadata: Metadata = {
-  title: "Réalisations — ce que nos clients construisent avec notre acier",
+  title: "Réalisations clients et listes de matière",
   description:
-    "Garde-corps, mezzanines, portails, terrasses en corten, bardages, escaliers : les projets de particuliers et de professionnels partis de nos dépôts, avec la matière utilisée.",
+    "Garde-corps, mezzanines, portails, terrasses corten, bardages, escaliers : six projets réels, avec la liste de matière exacte qui va avec.",
   alternates: { canonical: "/realisations" },
 };
 

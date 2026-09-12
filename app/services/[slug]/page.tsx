@@ -5,6 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 import { ArtDecoupe, ArtAtelier, ArtStock } from "@/components/art/ProductArt";
 import { servicesDetail, serviceBySlug } from "@/lib/edito";
+import { titre, description } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const s = serviceBySlug(slug);
   if (!s) return { title: "Service introuvable | Aciers Grosjean" };
   return {
-    title: `${s.titreSeo} | Aciers Grosjean`,
-    description: s.descSeo,
+    title: titre(s.titreSeo),
+    description: description(s.descSeo),
     alternates: { canonical: `/services/${s.slug}` },
   };
 }

@@ -6,7 +6,7 @@ import Reveal from "@/components/fx/Reveal";
 import { univers } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
-  title: "Documentation technique — fiches produits et notices | Aciers Grosjean",
+  title: "Documentation technique et fiches produits",
   description:
     "Fiches techniques, notices de pose et certificats matière par famille de produits. Demandez le document qui vous manque, on vous l'envoie.",
   alternates: { canonical: "/documentation" },

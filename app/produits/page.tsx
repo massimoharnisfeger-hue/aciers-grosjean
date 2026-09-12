@@ -13,10 +13,14 @@ import {
   formatPrix,
   totalProduits,
 } from "@/lib/catalogue";
+import { titre, description } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: `Catalogue acier — ${totalProduits} produits en stock, coupés sur mesure | Aciers Grosjean`,
-  description: `${totalProduits} références réparties en 6 univers : acier, inox, aluminium, toiture & bardage, jardin & clôture, quincaillerie. Poids et prix affichés, découpe aux cotes, retrait le jour même dans nos 4 dépôts.`,
+  title: titre(`Catalogue acier — ${totalProduits} produits en stock`),
+  description: description(
+    `${totalProduits} produits en 6 univers : acier, inox, aluminium, toiture & bardage, ` +
+      "jardin & clôture, quincaillerie. Poids et prix affichés, découpe aux cotes."
+  ),
   alternates: { canonical: "/produits" },
 };
 

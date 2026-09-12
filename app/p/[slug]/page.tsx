@@ -15,6 +15,7 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
+import { titre, description } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -29,17 +30,16 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const p = produitBySlug(slug);
   if (!p) return { title: "Produit introuvable | Aciers Grosjean" };
 
-  // Titre ≤ 60 caractères, sans double marque (reproche n°1 de l'audit SEO).
-  const prix = p.prix !== null ? ` — ${formatPrix(p.prix)}` : "";
-  const titre = `${p.nom}${prix}`.slice(0, 60);
-  const poids = p.kg !== null ? ` Poids ${p.kg.toString().replace(".", ",")} ${p.unitePoids}.` : "";
+  const prixTxt = p.prix !== null ? ` — ${formatPrix(p.prix)}` : "";
+  const poids = p.kg !== null ? ` ${p.kg.toString().replace(".", ",")} ${p.unitePoids}.` : "";
 
   return {
-    title: `${titre} | Aciers Grosjean`,
-    description:
+    title: titre(`${p.nom}${prixTxt}`),
+    description: description(
       `${p.nom} en stock.${poids}` +
-      (p.prix !== null ? ` ${formatPrix(p.prix)} ${p.unite}, HTVA.` : " Prix sur devis sous 24 h.") +
-      " Découpe aux cotes, retrait le jour même à Charleroi, La Louvière, Tournai ou Marville.",
+        (p.prix !== null ? ` ${formatPrix(p.prix)} ${p.unite} HTVA.` : " Prix sur devis sous 24 h.") +
+        " Découpe aux cotes, retrait le jour même dans nos 4 dépôts."
+    ),
     alternates: { canonical: `/p/${p.slug}` },
   };
 }

@@ -3,7 +3,7 @@ import PageEspace from "@/components/ui/PageEspace";
 
 export const metadata: Metadata = {
   title: "Mot de passe oublié | Aciers Grosjean",
-  description: "Récupération de mot de passe de l’espace client Aciers Grosjean.",
+  description: "Récupération de mot de passe de l’espace client. Pour retrouver un devis ou une commande passée, appelez-nous : on la retrouve dans nos dossiers.",
   alternates: { canonical: "/compte/mot-de-passe-oublie" },
   robots: { index: false, follow: true },
 };

@@ -100,6 +100,37 @@ html.lenis,html.lenis body{height:auto}
 .container-g{max-width:80rem;margin-inline:auto;padding-inline:1.25rem}
 @media(min-width:768px){.container-g{padding-inline:2rem}}
 
+/* ---------- LOGO ---------- */
+
+/* Le monogramme et le lettrage s'animent séparément : le « Gi » se pose,
+   le lettrage suit d'un souffle. Une seule fois, au chargement. */
+.logo-ag{display:block;overflow:visible}
+.logo-ag__mono,.logo-ag__mot{transition:transform .45s cubic-bezier(.22,1,.36,1),opacity .45s ease}
+.logo-ag__mono{transform-origin:14% 55%}
+
+.logo-ag--anime .logo-ag__mono{animation:logo-mono .7s cubic-bezier(.22,1,.36,1) both}
+.logo-ag--anime .logo-ag__mot{animation:logo-mot .6s cubic-bezier(.22,1,.36,1) .18s both}
+
+@keyframes logo-mono{
+  from{opacity:0;transform:scale(.82) rotate(-9deg)}
+  to{opacity:1;transform:scale(1) rotate(0)}
+}
+@keyframes logo-mot{
+  from{opacity:0;transform:translateX(-7px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+/* Au survol du lien qui porte le logo : le monogramme pivote légèrement. */
+a:hover > .logo-ag--anime .logo-ag__mono{transform:rotate(-7deg) scale(1.06)}
+a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
+
+@media (prefers-reduced-motion: reduce){
+  .logo-ag--anime .logo-ag__mono,
+  .logo-ag--anime .logo-ag__mot{animation:none}
+  a:hover > .logo-ag--anime .logo-ag__mono,
+  a:hover > .logo-ag--anime .logo-ag__mot{transform:none}
+}
+
 /* ---------- EFFETS ---------- */
 
 /* Balayage de reflet sur le métal (au survol de .group) */

@@ -6,7 +6,7 @@ import Reveal from "@/components/fx/Reveal";
 import { articles, categoriesArticles } from "@/lib/edito";
 
 export const metadata: Metadata = {
-  title: "Conseils — guides acier, corten, toiture et marché | Aciers Grosjean",
+  title: "Conseils acier — guides, matières et marché",
   description:
     "Guides d'achat, fiches matière et analyses de marché écrits par des négociants : corten, caillebotis, panneaux isolés, prix de l'acier en Belgique.",
   alternates: { canonical: "/conseils" },

@@ -6,6 +6,7 @@ import Faq from "@/components/sections/Faq";
 import Reveal from "@/components/fx/Reveal";
 import FilAriane from "@/components/ui/FilAriane";
 import { pagesAide, aideBySlug, type Bloc } from "@/lib/edito";
+import { titre, description } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -20,8 +21,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const p = aideBySlug(slug);
   if (!p) return { title: "Page introuvable | Aciers Grosjean" };
   return {
-    title: `${p.titreSeo} | Aciers Grosjean`,
-    description: p.descSeo,
+    title: titre(p.titreSeo),
+    description: description(p.descSeo),
     alternates: { canonical: `/aide/${p.slug}` },
   };
 }

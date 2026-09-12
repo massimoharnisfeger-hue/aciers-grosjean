@@ -5,7 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 
 export const metadata: Metadata = {
-  title: "Certifications — EN 1090-Exc2 et traçabilité matière | Aciers Grosjean",
+  title: "Certification EN 1090-Exc2 et traçabilité",
   description:
     "Certification EN 1090-Exc2 pour la fabrication des structures en acier : ce qu'elle couvre, pourquoi elle est exigée, et ce qu'elle change pour vos commandes.",
   alternates: { canonical: "/entreprise/certifications" },

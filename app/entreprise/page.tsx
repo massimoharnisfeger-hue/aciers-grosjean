@@ -9,7 +9,7 @@ import { histoire } from "@/lib/content";
 import { depotsDetail } from "@/lib/edito";
 
 export const metadata: Metadata = {
-  title: "L'entreprise — négoce acier en Wallonie depuis 40 ans | Aciers Grosjean",
+  title: "L'entreprise — 40 ans de négoce acier",
   description:
     "Entreprise familiale, quatre dépôts en Belgique et en France, certification EN 1090-Exc2. Quarante ans à rendre l'acier de qualité professionnelle accessible à tous.",
   alternates: { canonical: "/entreprise" },
