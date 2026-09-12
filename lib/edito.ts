@@ -1,8 +1,11 @@
 /**
- * Contenu éditorial — la partie du site que l'audit désignait comme manquante.
- * leboutte.be est positionné sur 347 mots-clés que Grosjean ne couvre pas :
- * ces guides sont la réponse, écrits sur les questions que les clients posent
- * vraiment au comptoir avant d'acheter.
+ * Contenu éditorial — calqué sur le site réel.
+ *
+ * Les 16 articles, leurs slugs, leurs titres et leurs plans de H2 viennent du
+ * crawl (blueprint § 21.3). Les textes sont réécrits : le crawl donne la
+ * structure, pas le corps des articles.
+ *
+ * Les 8 services et les 4 dépôts suivent les routes de la section 46.
  */
 
 export type Bloc =
@@ -13,587 +16,1208 @@ export type Bloc =
 
 export type Section = { titre: string; blocs: Bloc[] };
 
-export type Guide = {
+export type Article = {
   slug: string;
   titre: string;
   titreSeo: string;
   descSeo: string;
   chapo: string;
   categorie: string;
+  date: string;
   lecture: number;
-  maj: string;
   sections: Section[];
   liens: { label: string; href: string }[];
 };
 
-/* ------------------------------------------------------------------ */
-/*  GUIDES                                                             */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/*  ARTICLES — /conseils/{slug}                                        */
+/* ================================================================== */
 
-export const guides: Guide[] = [
+export const articles: Article[] = [
   {
-    slug: "galvanise-inox-ou-acier-peint",
-    titre: "Galvanisé, inox ou acier peint : lequel pour votre projet ?",
-    titreSeo: "Galvanisé, inox ou acier peint — comment choisir (et combien ça coûte)",
+    slug: "acier-corten-qu-est-ce-que-c-est",
+    titre: "L'acier corten, qu'est-ce que c'est ?",
+    titreSeo: "Qu'est-ce que l'acier corten ? Le guide complet",
     descSeo:
-      "Le comparatif honnête des trois protections de l'acier : coût au mètre, durée de vie, entretien, et le cas où chacun est le bon choix. Par un négociant, pas par un fabricant.",
+      "Pourquoi le corten rouille sans se détériorer, ses quatre propriétés, où l'utiliser — et les trois choses qu'il ne faut jamais faire avec.",
     chapo:
-      "C'est la question qu'on nous pose le plus au comptoir, et celle qui coûte le plus cher quand on se trompe. Voici comment trancher en trois minutes.",
-    categorie: "Choisir sa matière",
-    lecture: 4,
-    maj: "Septembre 2026",
-    sections: [
-      {
-        titre: "La vraie question n'est pas le prix d'achat",
-        blocs: [
-          {
-            type: "p",
-            texte:
-              "Un garde-corps en acier peint coûte environ deux fois moins cher qu'en inox à l'achat. Mais il se repeint tous les cinq à sept ans — ponçage, primaire, deux couches, une journée de travail à chaque fois. Sur trente ans, l'inox nu revient moins cher. Le bon arbitrage ne se fait donc pas sur la facture du jour, mais sur la durée pendant laquelle l'ouvrage doit tenir sans que vous y touchiez.",
-          },
-          {
-            type: "p",
-            texte:
-              "Posez-vous trois questions dans cet ordre : est-ce que la pièce est exposée à la pluie ? Est-ce qu'elle voit du sel, du chlore ou des embruns ? Est-ce que vous accepterez d'y revenir dans cinq ans ? Les réponses déterminent la matière plus sûrement que n'importe quel tableau.",
-          },
-        ],
-      },
-      {
-        titre: "Le comparatif en un coup d'œil",
-        blocs: [
-          {
-            type: "tableau",
-            entetes: ["", "Acier peint", "Galvanisé", "Inox 304"],
-            lignes: [
-              ["Coût matière", "Le plus bas", "+20 à 30 %", "×4 à ×5"],
-              ["Tenue en extérieur", "5 à 7 ans", "20 à 50 ans", "Illimitée"],
-              ["Entretien", "Repeindre", "Aucun", "Aucun"],
-              ["Aspect", "Toutes teintes", "Gris zinc", "Brossé"],
-              ["Soudage", "Facile", "Reprise au zinc", "Inox uniquement"],
-              ["Bord de mer", "Non", "Limité", "316L obligatoire"],
-            ],
-          },
-        ],
-      },
-      {
-        titre: "Quand choisir quoi",
-        blocs: [
-          {
-            type: "liste",
-            items: [
-              "Intérieur, atelier, garage, mezzanine : acier brut ou peint. Inutile de payer une protection contre une pluie qui ne viendra pas.",
-              "Clôture, portail, charpente d'abri, bardage : galvanisé. C'est le choix par défaut de l'extérieur, et de loin le meilleur rapport tenue/prix.",
-              "Garde-corps de terrasse, main courante, mobilier de jardin visible : inox 304 brossé. On le touche, on le voit, il ne doit jamais couler de rouille sur la façade.",
-              "Abords de piscine, bord de mer, station d'épuration : inox 316L, sans discussion. Le 304 y pique en quelques saisons.",
-              "Jardin contemporain, bardage assumé, bordures : acier corten, qui est un cas à part — il rouille exprès, et cette rouille le protège.",
-            ],
-          },
-          {
-            type: "encadre",
-            titre: "L'erreur la plus fréquente",
-            texte:
-              "Souder du galvanisé et repartir sans rien faire. La chaleur brûle le zinc sur trois à cinq centimètres de part et d'autre du cordon : la rouille démarre exactement là, et elle démarre vite. Une bombe de spray zinc coûte une douzaine d'euros et règle le problème définitivement.",
-          },
-        ],
-      },
-    ],
-    liens: [
-      { label: "Acier galvanisé", href: "/materiaux/galvanise" },
-      { label: "Inox 304 et 316L", href: "/materiaux/inox" },
-      { label: "Acier corten", href: "/materiaux/corten" },
-    ],
-  },
-
-  {
-    slug: "ipe-hea-heb-quelle-poutrelle-choisir",
-    titre: "IPE, HEA, HEB, UPN : quelle poutrelle pour quoi ?",
-    titreSeo: "IPE, HEA, HEB ou UPN — quelle poutrelle choisir et pourquoi",
-    descSeo:
-      "Les quatre profils de poutrelle expliqués simplement : ce que chacun sait faire, comment lire les cotes, et les erreurs qui reviennent le plus souvent en rénovation.",
-    chapo:
-      "Quatre lettres, quatre formes, quatre usages. Une fois qu'on a compris la logique, on ne se trompe plus.",
-    categorie: "Comprendre les produits",
+      "Un acier qui rouille exprès, et dont la rouille le protège. Voici comment ça marche, et ce que ça implique quand on le pose chez soi.",
+    categorie: "Corten",
+    date: "23 avril 2026",
     lecture: 5,
-    maj: "Septembre 2026",
     sections: [
       {
-        titre: "Tout part de la forme de la section",
+        titre: "Pourquoi l'acier corten rouille sans se détériorer",
         blocs: [
           {
             type: "p",
             texte:
-              "Une poutrelle résiste à la flexion grâce à la matière qui se trouve loin de son axe : ce sont les ailes, en haut et en bas, qui travaillent. L'âme, la partie verticale, sert surtout à les tenir écartées. C'est pourquoi un profil haut et étroit porte beaucoup mieux à plat qu'un profil bas et large.",
+              "L'acier ordinaire rouille en couches qui s'écaillent : chaque écaille emporte de la matière et découvre du métal neuf, qui rouille à son tour. Le processus ne s'arrête jamais — c'est pour ça qu'une grille non protégée finit par percer.",
           },
           {
             type: "p",
             texte:
-              "À partir de là, tout s'explique : l'IPE est haut et étroit, donc c'est le profil de la poutre horizontale. Le HEB est presque carré, donc il résiste aussi bien dans les deux sens — c'est le profil du poteau, qui peut flamber dans n'importe quelle direction.",
+              "Le corten est allié au cuivre, au chrome, au nickel et au phosphore. Ces éléments changent la nature de la rouille : au lieu d'une croûte poreuse, il se forme une couche dense, fine et adhérente, qui colle au métal et bloque l'oxygène et l'humidité. La corrosion s'arrête d'elle-même après quelques dixièmes de millimètre. On appelle ça une patine protectrice.",
           },
         ],
       },
       {
-        titre: "Les quatre profils",
-        blocs: [
-          {
-            type: "tableau",
-            entetes: ["Profil", "Forme", "Usage principal", "Repère"],
-            lignes: [
-              ["IPE", "I haut et étroit, ailes parallèles", "Poutre, linteau, plancher", "Le plus courant"],
-              ["IPN", "I à ailes inclinées", "Rénovation, reprise d'existant", "L'ancien"],
-              ["HEA", "H allégé, ailes larges", "Poteau, ossature", "Le compromis"],
-              ["HEB", "H lourd, section carrée", "Poteau, forte charge", "Le costaud"],
-              ["UPN", "U à ailes inclinées", "Chevêtre, rive, encadrement", "Se boulonne à plat"],
-            ],
-          },
-          {
-            type: "p",
-            texte:
-              "Le nombre qui suit la lettre est la hauteur du profil en millimètres — sauf pour les HEA, où la hauteur réelle est légèrement inférieure au chiffre annoncé : un HEA 200 mesure 190 mm de haut. C'est une source d'erreur classique quand on prépare des réservations dans un mur.",
-          },
-        ],
-      },
-      {
-        titre: "Trois erreurs qui reviennent",
+        titre: "Les propriétés du corten en quatre points",
         blocs: [
           {
             type: "liste",
             items: [
-              "Commander un IPE pour faire un poteau. Il porte très bien dans un sens et flambe dans l'autre. Pour un poteau, c'est HEA ou HEB.",
-              "Oublier la longueur d'appui. Un linteau ne se pose pas bord à bord sur la maçonnerie : il faut 15 à 20 cm de portée de chaque côté, et souvent une platine pour répartir la charge.",
-              "Confondre IPN et IPE en rénovation. Les ailes inclinées de l'IPN ne reçoivent pas une platine plate sans cale. Si vous reprenez un existant, mesurez l'inclinaison avant de commander.",
+              "Aucun entretien. Pas de peinture, pas de traitement, pas de reprise. Une fois la patine formée, on n'y touche plus.",
+              "Une teinte vivante. Orange vif les premiers mois, brun profond ensuite, avec des variations selon l'exposition à la pluie et au soleil. Deux pièces posées côte à côte ne vieillissent jamais exactement pareil.",
+              "Une résistance mécanique supérieure. Le S355J0WP est plus résistant que le S235 courant : à épaisseur égale, la pièce porte davantage.",
+              "Une durée de vie longue. En usage extérieur normal, comptez plusieurs décennies sans intervention.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Où utiliser le corten",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Partout où la pièce est exposée à l'air libre et peut sécher entre deux pluies : bardage de façade, bordures de massif, bacs à plantes, brise-vue, jardinières, signalétique, mobilier de jardin, habillage d'escalier extérieur.",
+          },
+          {
+            type: "p",
+            texte:
+              "En revanche, il n'a rien à faire en intérieur — la patine ne se formera pas — ni dans un endroit qui reste humide en permanence.",
+          },
+        ],
+      },
+      {
+        titre: "Ce qu'il ne faut jamais faire",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Le poser au contact permanent de la terre ou de l'eau stagnante. Sans cycles secs, la patine ne se forme pas et le corten se corrode comme un acier ordinaire — jusqu'à percer.",
+              "L'installer au-dessus d'un béton clair, d'une pierre bleue ou d'une terrasse claire sans protection. Pendant les premiers mois, l'eau de pluie emporte des oxydes qui tachent définitivement.",
+              "Le peindre ou le vernir. On annule exactement ce pour quoi on l'a payé.",
             ],
           },
           {
             type: "encadre",
-            titre: "Ce guide ne remplace pas un calcul",
+            titre: "Combien de temps pour la patine ?",
             texte:
-              "Dès qu'une poutrelle reprend une charge de structure — un plancher, un mur porteur, une toiture — le dimensionnement relève d'un ingénieur ou d'un architecte. Nous fournissons la matière aux cotes et le poids exact ; le calcul, c'est leur métier, et c'est votre assurance décennale qui en dépend.",
+              "De six à dix-huit mois selon l'exposition. Une façade plein sud battue par la pluie patine vite ; une pièce abritée sous un débord de toit met beaucoup plus longtemps et reste plus claire. C'est normal, et c'est même ce qui fait le charme de la matière.",
           },
         ],
       },
     ],
     liens: [
-      { label: "Toutes les poutrelles", href: "/produits/poutrelles" },
-      { label: "Poutrelle IPE 200", href: "/produits/poutrelles/ipe-200" },
-      { label: "Poutrelle HEB 140", href: "/produits/poutrelles/heb-140" },
+      { label: "Tôle corten", href: "/acier/toles/tole-corten" },
+      { label: "Bordures corten", href: "/jardin-cloture/amenagement/bordures" },
+      { label: "10 idées jardin en corten", href: "/conseils/idees-jardin-acier-corten-inspirations" },
     ],
   },
 
   {
-    slug: "quelle-epaisseur-de-tole",
-    titre: "Quelle épaisseur de tôle choisir ?",
-    titreSeo: "Épaisseur de tôle acier — le tableau des usages, de 1 à 20 mm",
+    slug: "bordure-jardin-acier-corten-guide-complet",
+    titre: "Bordure jardin corten : guide complet",
+    titreSeo: "Bordure de jardin en acier corten : le guide complet",
     descSeo:
-      "De la tôle de 1 mm à celle de 20 mm : à quoi sert chaque épaisseur, ce qu'elle pèse au m², ce qu'elle coûte, et jusqu'où elle se plie ou se découpe.",
+      "Hauteur, épaisseur, pose, prix au mètre et l'erreur n°1 à éviter. Tout ce qu'il faut savoir avant de commander une bordure corten.",
     chapo:
-      "Trop fine, elle ondule et vibre. Trop épaisse, elle coûte cher et ne se plie plus. Voici comment viser juste du premier coup.",
-    categorie: "Comprendre les produits",
-    lecture: 4,
-    maj: "Septembre 2026",
-    sections: [
-      {
-        titre: "Le repère : une tôle pèse 7,85 kg/m² par millimètre",
-        blocs: [
-          {
-            type: "p",
-            texte:
-              "C'est le seul chiffre à retenir. Une tôle de 2 mm pèse 15,7 kg/m², une tôle de 5 mm en pèse 39,25. Cela vous donne immédiatement le poids à manipuler, le coût approximatif — l'acier se vend au poids — et la faisabilité de la pose à deux personnes.",
-          },
-          {
-            type: "p",
-            texte:
-              "Concrètement : un panneau de 2 × 1 m en 3 mm pèse 47 kg. C'est la limite du portage à deux sans matériel. Au-delà, prévoyez un transpalette ou faites-le débiter en deux morceaux — la découpe coûte moins cher qu'un dos bloqué.",
-          },
-        ],
-      },
-      {
-        titre: "Le tableau des usages",
-        blocs: [
-          {
-            type: "tableau",
-            entetes: ["Épaisseur", "Poids", "Usages typiques"],
-            lignes: [
-              ["0,75 à 1 mm", "6 à 8 kg/m²", "Habillage, capotage, gouttière, signalétique"],
-              ["1,5 à 2 mm", "12 à 16 kg/m²", "Coffret, carter, habillage rigide, crédence"],
-              ["3 mm", "23,5 kg/m²", "Platine légère, seuil, plancher de remorque"],
-              ["4 à 5 mm", "31 à 39 kg/m²", "Platine de poteau, gousset, marche"],
-              ["6 à 8 mm", "47 à 63 kg/m²", "Platine de charpente, pièce structurelle"],
-              ["10 à 20 mm", "78 à 157 kg/m²", "Semelle, contrepoids, usinage lourd"],
-            ],
-          },
-        ],
-      },
-      {
-        titre: "Ce qui change avec l'épaisseur",
-        blocs: [
-          {
-            type: "liste",
-            items: [
-              "Jusqu'à 2 mm, la tôle se cisaille proprement et se plie sans difficulté sur une plieuse standard.",
-              "De 3 à 6 mm, le pliage demande une presse et un rayon intérieur d'au moins une épaisseur, sinon la fibre extérieure fissure.",
-              "Au-delà de 8 mm, on passe à l'oxycoupage plutôt qu'au cisaillage, et le bord demande un ébavurage.",
-              "En dessous de 1,5 mm sur une grande surface, la tôle ondule sous son propre poids : il faut un cadre, une nervure ou un contrecollage.",
-            ],
-          },
-          {
-            type: "encadre",
-            titre: "Notre conseil de comptoir",
-            texte:
-              "Dans le doute entre deux épaisseurs voisines, prenez la plus épaisse si la pièce est visible ou porte quelque chose, la plus fine si elle est cachée et ne fait qu'habiller. L'écart de prix est presque toujours inférieur à ce que coûte un remplacement.",
-          },
-        ],
-      },
-    ],
-    liens: [
-      { label: "Toutes les tôles", href: "/produits/toles" },
-      { label: "Tôle lisse 3 mm", href: "/produits/toles/tole-lisse-3mm" },
-      { label: "La découpe sur mesure", href: "/services/decoupe" },
-    ],
-  },
-
-  {
-    slug: "fabriquer-un-portail-en-acier",
-    titre: "Fabriquer un portail en acier : la liste de matière complète",
-    titreSeo: "Fabriquer un portail acier — liste de matière, cotes et budget réel",
-    descSeo:
-      "Tout ce qu'il faut commander pour un portail battant de 3 m : sections de tubes, quantités, budget matière, et les cinq points où les amateurs se trompent.",
-    chapo:
-      "Un portail battant de 3 mètres, c'est environ 28 mètres de tube et 180 € de matière. Voici la liste exacte, section par section.",
-    categorie: "Projets",
+      "La bordure corten sépare la pelouse du massif d'un trait net qui vieillit avec le jardin. Reste à choisir la bonne hauteur et la bonne épaisseur — c'est là que ça se joue.",
+    categorie: "Corten",
+    date: "9 avril 2026",
     lecture: 6,
-    maj: "Septembre 2026",
     sections: [
       {
-        titre: "Le principe : un cadre rigide, un remplissage léger",
-        blocs: [
-          {
-            type: "p",
-            texte:
-              "Un portail travaille en porte-à-faux : tout le poids pend sur deux gonds. La règle est donc de concentrer la matière dans le cadre périphérique et de rester léger au milieu. Un cadre en tube 50 × 50 × 2 et un remplissage en tube 30 × 30 × 2 tient beaucoup mieux qu'un ensemble homogène en 40 × 40, à poids égal.",
-          },
-          {
-            type: "p",
-            texte:
-              "La diagonale est l'autre point non négociable. Sans elle, le cadre est un parallélogramme articulé : il s'affaisse côté serrure en quelques mois. Une diagonale allant du gond haut vers la serrure basse règle définitivement la question.",
-          },
-        ],
-      },
-      {
-        titre: "La liste de matière — portail battant 2 vantaux, 3 × 1,60 m",
+        titre: "Corten, bois, béton ou plastique : le vrai comparatif",
         blocs: [
           {
             type: "tableau",
-            entetes: ["Poste", "Section", "Quantité", "Matière"],
+            entetes: ["", "Corten", "Bois", "Béton", "Plastique"],
             lignes: [
-              ["Cadre des vantaux", "Tube carré 50 × 50 × 2", "9,2 m", "Galvanisé"],
-              ["Traverses intermédiaires", "Tube carré 40 × 40 × 2", "6 m", "Galvanisé"],
-              ["Barreaudage", "Tube carré 30 × 30 × 2", "13 m", "Galvanisé"],
-              ["Diagonales", "Plat 40 × 5", "4 m", "Acier"],
-              ["Platines de gond", "Tôle lisse 6 mm", "0,2 m²", "Acier"],
-              ["Poteaux", "Tube carré 100 × 100 × 4", "2 × 2 m", "Galvanisé"],
+              ["Durée de vie", "30 ans et plus", "5 à 10 ans", "Très longue", "3 à 8 ans"],
+              ["Entretien", "Aucun", "Traitement régulier", "Aucun", "Aucun"],
+              ["Courbes", "Se cintre à la main", "Difficile", "Impossible", "Facile"],
+              ["Finesse du trait", "2 mm", "20 mm et plus", "60 mm et plus", "3 mm"],
+              ["Prix au mètre", "Élevé", "Bas", "Moyen", "Très bas"],
             ],
           },
           {
             type: "p",
             texte:
-              "Comptez environ 180 à 220 € de matière hors quincaillerie et hors poteaux, selon la nuance et la protection choisies. Ajoutez les gonds réglables, la serrure, et une bombe de spray zinc pour reprendre les soudures si vous partez sur du galvanisé.",
+              "Le corten gagne sur deux points que rien d'autre n'offre ensemble : un trait de 2 mm d'épaisseur qui disparaît visuellement, et une durée de vie qui dépasse celle de la plantation qu'il borde.",
           },
         ],
       },
       {
-        titre: "Les cinq erreurs à ne pas faire",
+        titre: "Quelle hauteur choisir",
         blocs: [
           {
             type: "liste",
             items: [
-              "Souder le cadre à plat sur un sol qui ne l'est pas. Le vantail sortira vrillé et ne fermera jamais. Calez et vérifiez les diagonales au mètre avant le premier point de soudure.",
-              "Oublier le jeu. Prévoyez 10 à 15 mm entre les vantaux et 15 mm au sol, sinon la dilatation d'été bloque la fermeture.",
-              "Sous-dimensionner les poteaux. Un vantail de 1,5 m exerce un levier considérable : en dessous du tube 100 × 100 × 4 correctement scellé, ça bouge.",
-              "Fermer le bas des tubes. L'eau entre par le haut, stagne, et le tube rouille de l'intérieur. Percez un trou de drainage de 6 mm en point bas de chaque montant.",
-              "Peindre sans dégraisser. Les tubes neufs sont huilés en sortie de laminage. Sans dégraissage à l'acétone, la peinture cloque dans l'année.",
+              "100 mm — séparation pelouse / gravier, là où il n'y a pas de dénivelé à retenir.",
+              "150 mm — la hauteur passe-partout : massif, potager, allée. C'est celle que nous tenons en stock.",
+              "200 mm — retenue de terre légère, massif surélevé de quelques centimètres.",
+              "300 mm et plus — vraie retenue de terre. À partir de là, il faut des piquets plus longs et un ancrage sérieux.",
             ],
+          },
+          {
+            type: "p",
+            texte:
+              "Attention : la hauteur annoncée est la hauteur totale. Il faut enterrer un tiers de la bordure pour qu'elle tienne. Une bordure de 150 mm laisse donc 100 mm visibles.",
+          },
+        ],
+      },
+      {
+        titre: "Quelle épaisseur",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "2 mm pour tout usage de jardin courant. C'est assez rigide pour rester droit et assez souple pour se cintrer à la main sur un rayon large. En dessous, la bordure ondule ; au-dessus, elle devient difficile à courber et le prix grimpe vite.",
+          },
+          {
+            type: "p",
+            texte:
+              "Pensez aussi que la patine consomme quelques dixièmes de millimètre. Sur une pièce de 2 mm c'est sans conséquence, mais c'est une raison de plus de ne pas descendre à 1 mm.",
+          },
+        ],
+      },
+      {
+        titre: "La pose, et l'erreur n°1",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'erreur qu'on voit le plus souvent : poser la bordure directement contre une terrasse en pierre claire ou un béton désactivé. Pendant la formation de la patine, les coulures d'oxyde tachent la surface de façon définitive. Aucun nettoyant ne les enlève complètement.",
+          },
+          {
+            type: "p",
+            texte:
+              "La parade est simple : ménagez une bande de gravier de dix centimètres entre la bordure et toute surface claire, ou posez la bordure du côté terre. Cela ne coûte rien et évite un regret durable.",
+          },
+          {
+            type: "encadre",
+            titre: "Prix au mètre",
+            texte:
+              "Comptez environ 15 € du mètre courant en hauteur 150 mm, piquets compris. C'est plus cher que le plastique la première année, et moins cher que le bois dès la huitième.",
           },
         ],
       },
     ],
     liens: [
-      { label: "Tubes carrés", href: "/produits/tubes" },
-      { label: "Tube carré 50 × 50 × 2", href: "/produits/tubes/tube-carre-50x50x2" },
-      { label: "Demander la découpe", href: "/services/decoupe" },
+      { label: "Bordures corten et galva", href: "/jardin-cloture/amenagement/bordures" },
+      { label: "Poser une bordure, pas à pas", href: "/conseils/comment-poser-bordure-jardin-acier-corten" },
+      { label: "Tôle corten", href: "/acier/toles/tole-corten" },
     ],
   },
 
   {
-    slug: "poser-une-cloture-rigide",
-    titre: "Poser une clôture à panneaux rigides, poteau par poteau",
-    titreSeo: "Poser une clôture rigide — entraxe, scellement, jambes de force",
+    slug: "comment-poser-bordure-jardin-acier-corten",
+    titre: "Poser une bordure corten, mode d'emploi",
+    titreSeo: "Poser une bordure jardin corten : guide pas-à-pas",
     descSeo:
-      "La méthode complète : calculer le nombre de poteaux, choisir la longueur, sceller correctement, et pourquoi la jambe de force n'est jamais optionnelle en bout de ligne.",
+      "Le matériel, les cinq étapes de pose et trois astuces de pro pour une bordure corten droite, stable et durable.",
     chapo:
-      "Une clôture rigide bien posée tient trente ans. Mal posée, elle penche dès le premier hiver — et c'est presque toujours le même détail qui manque.",
-    categorie: "Projets",
+      "Une bordure corten se pose en une demi-journée, sans béton et sans outillage particulier. À condition de suivre l'ordre.",
+    categorie: "Corten",
+    date: "24 avril 2026",
     lecture: 5,
-    maj: "Septembre 2026",
     sections: [
       {
-        titre: "Combien de poteaux, et de quelle longueur",
-        blocs: [
-          {
-            type: "p",
-            texte:
-              "Les panneaux rigides standard mesurent 2,50 m de large. Le nombre de poteaux est donc le nombre de panneaux plus un. Pour 20 mètres de clôture : 8 panneaux, 9 poteaux. Ajoutez un poteau à chaque angle et de part et d'autre d'un portillon.",
-          },
-          {
-            type: "p",
-            texte:
-              "Pour la longueur du poteau, la règle est simple : hauteur de clôture souhaitée plus 30 cm de scellement, arrondie à la longueur commerciale au-dessus. Une clôture de 1,50 m demande donc un poteau de 1,75 m, pas de 1,50.",
-          },
-        ],
-      },
-      {
-        titre: "Le scellement",
+        titre: "Ce qu'il vous faut",
         blocs: [
           {
             type: "liste",
             items: [
-              "Trou de 30 cm de profondeur sur 25 cm de diamètre, à la tarière ou à la bêche à trou.",
-              "Un lit de gravier de 5 cm au fond : le poteau ne baigne pas dans l'eau, et le béton ne remonte pas par capillarité.",
-              "Béton dosé à 350 kg/m³, soit un sac de 35 kg pour environ deux trous.",
-              "Vérifiez l'aplomb dans les deux sens au niveau à bulle, et calez avec des chutes de bois le temps de la prise.",
-              "48 heures avant de poser les panneaux. Tirer sur un poteau qui n'a pas fini de prendre le descelle sans qu'on le voie.",
+              "La bordure, et ses piquets d'ancrage (comptez trois piquets par élément de 2,5 m).",
+              "Une bêche ou un louchet pour ouvrir la saignée.",
+              "Un maillet en caoutchouc — pas un marteau, qui marque la tôle.",
+              "Un cordeau et des piquets de traçage.",
+              "Une chute de bois pour taper sans déformer le chant.",
+              "Des gants : le corten neuf a des arêtes vives.",
             ],
           },
         ],
       },
       {
-        titre: "Le détail qui fait tout : la jambe de force",
+        titre: "Les cinq étapes",
         blocs: [
           {
-            type: "p",
-            texte:
-              "Une ligne de clôture est sous tension. Chaque poteau intermédiaire est retenu de part et d'autre par ses voisins, mais le premier et le dernier de la ligne, ainsi que chaque poteau d'angle, ne le sont que d'un seul côté. Sans contreventement, ils s'inclinent vers l'intérieur, et toute la ligne suit.",
+            type: "liste",
+            items: [
+              "1. Tracez. Cordeau tendu pour les lignes droites, tuyau d'arrosage posé au sol pour les courbes — vous voyez le dessin avant de creuser.",
+              "2. Ouvrez une saignée au tiers de la hauteur de la bordure, soit 5 cm pour une bordure de 150 mm. Une largeur de bêche suffit.",
+              "3. Posez et emboîtez. Les éléments se recouvrent de quelques centimètres ; faites toujours recouvrir dans le sens de la vue principale, la jonction se voit beaucoup moins.",
+              "4. Enfoncez les piquets côté terre, jamais côté visible, en tapant à travers la chute de bois.",
+              "5. Remblayez des deux côtés et tassez au pied. La terre tassée fait plus pour la stabilité que les piquets.",
+            ],
           },
+        ],
+      },
+      {
+        titre: "Trois astuces de pro",
+        blocs: [
           {
-            type: "encadre",
-            titre: "La règle des trois positions",
-            texte:
-              "Une jambe de force au poteau de départ, une au poteau d'arrivée, et une de chaque côté de chaque angle. C'est la pièce à 16 € qu'on est tenté d'économiser, et c'est celle dont l'absence se voit à l'œil nu deux ans plus tard.",
+            type: "liste",
+            items: [
+              "Pour une courbe régulière, cintrez la bordure à plat sur l'herbe avant de la descendre dans la saignée. À la main, progressivement, sur toute la longueur — pas en forçant en un point.",
+              "Laissez 2 mm de jeu aux jonctions. Le métal se dilate au soleil, et une bordure posée serrée en août gondole dès la première canicule.",
+              "Ne nettoyez pas les traces d'orange des premières semaines. Elles partent seules quand la patine se stabilise, et frotter ne fait que marquer la surface.",
+            ],
           },
         ],
       },
     ],
     liens: [
-      { label: "Poteaux de clôture", href: "/produits/poteaux-cloture" },
-      { label: "Jambe de force Ø 48", href: "/produits/poteaux-cloture/jambe-de-force-48" },
+      { label: "Bordures corten et galva", href: "/jardin-cloture/amenagement/bordures" },
+      { label: "Le guide complet des bordures", href: "/conseils/bordure-jardin-acier-corten-guide-complet" },
       { label: "Nos dépôts", href: "/depots" },
     ],
   },
 
   {
-    slug: "acier-corten-ce-qu-il-faut-savoir",
-    titre: "Acier corten : ce que les vendeurs ne disent pas toujours",
-    titreSeo: "Acier corten — patine, coulures, durée de vie : le guide honnête",
+    slug: "bac-plantes-acier-corten-exterieur",
+    titre: "Bac à plantes en acier corten",
+    titreSeo: "Bac à plantes acier corten extérieur : choisir, poser, entretenir",
     descSeo:
-      "Le corten est magnifique et durable, mais il coule, il tache et il ne convient pas partout. Les trois limites à connaître avant de commander, et comment les gérer.",
+      "Corten, plastique, bois ou inox : le comparatif honnête. Taille, drainage, tenue au climat belge et prix réels.",
     chapo:
-      "Le corten mérite sa réputation. Mais trois choses surprennent systématiquement les clients, et il vaut mieux les savoir avant la livraison qu'après.",
-    categorie: "Choisir sa matière",
-    lecture: 4,
-    maj: "Septembre 2026",
+      "Un bac corten dure plus longtemps que la plupart des plantes qu'on y met. Encore faut-il régler la question du drainage — c'est là que tout se joue.",
+    categorie: "Corten",
+    date: "23 avril 2026",
+    lecture: 6,
     sections: [
       {
-        titre: "Comment ça marche",
+        titre: "Corten, plastique, bois ou inox",
         blocs: [
           {
-            type: "p",
-            texte:
-              "Le corten est un acier allié au cuivre, au chrome et au phosphore. Sa rouille, contrairement à celle de l'acier ordinaire, forme une couche dense et adhérente qui colle à la surface au lieu de s'écailler. Cette patine bloque l'oxygène et l'humidité : la corrosion s'arrête d'elle-même après quelques dixièmes de millimètre.",
-          },
-          {
-            type: "p",
-            texte:
-              "Elle met six à dix-huit mois à se stabiliser, selon l'exposition. Pendant cette période, la teinte évolue d'un orange vif à un brun profond, et la pièce n'a pas encore son aspect définitif.",
+            type: "tableau",
+            entetes: ["", "Corten", "Plastique", "Bois", "Inox"],
+            lignes: [
+              ["Durée de vie", "30 ans +", "5 à 10 ans", "8 à 15 ans", "30 ans +"],
+              ["Entretien", "Aucun", "Aucun", "Traitement annuel", "Nettoyage"],
+              ["Inertie thermique", "Bonne", "Faible", "Bonne", "Faible"],
+              ["Sur mesure", "Oui", "Non", "Oui", "Oui"],
+              ["Prix", "Élevé", "Bas", "Moyen", "Très élevé"],
+            ],
           },
         ],
       },
       {
-        titre: "Les trois surprises",
+        titre: "Le climat belge",
         blocs: [
           {
-            type: "liste",
-            items: [
-              "Il coule. Pendant la formation de la patine, la pluie emporte des oxydes qui tachent durablement le béton clair, la pierre bleue et les dalles de terrasse. Prévoyez un lit de gravier, une rigole ou un débord sous toute pièce corten posée au-dessus d'un sol clair.",
-              "Il lui faut sécher. La patine ne se forme qu'en alternance humide/sec. Une pièce en contact permanent avec la terre, l'eau stagnante ou un paillis humide se corrode comme un acier ordinaire — et là, elle perce.",
-              "Il perd de l'épaisseur. Comptez deux à trois dixièmes de millimètre consommés par la patine. Sans conséquence sur une tôle de 3 mm décorative, mais à intégrer au calcul pour une pièce qui porte.",
-            ],
+            type: "p",
+            texte:
+              "Nos hivers sont humides mais rarement très froids, et nos étés alternent pluie et soleil. C'est exactement le régime de cycles humide/sec dont le corten a besoin pour patiner correctement. Un bac corten vieillit donc très bien chez nous — mieux qu'en climat méditerranéen sec, où la patine met des années à se former.",
+          },
+          {
+            type: "p",
+            texte:
+              "Point d'attention : le métal conduit le gel. Un bac corten en pleine exposition protège moins les racines qu'un bac en bois. Pour les plantes sensibles, doublez l'intérieur d'une plaque de polystyrène de 2 cm.",
+          },
+        ],
+      },
+      {
+        titre: "La taille, et l'erreur de drainage",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Pour un arbuste, comptez 40 cm de profondeur minimum ; pour une graminée ou une vivace, 30 cm suffisent. Plus le bac est grand, plus le substrat reste stable en température et en humidité — les petits bacs sèchent en une journée d'été.",
           },
           {
             type: "encadre",
-            titre: "Peut-on accélérer la patine ?",
+            titre: "L'erreur qui tue le bac",
             texte:
-              "Oui, en alternant pulvérisations d'eau vinaigrée et séchages complets pendant une à deux semaines. Le résultat est plus rapide mais souvent plus irrégulier qu'une patine naturelle. Si l'aspect compte, laissez faire les saisons.",
+              "Un bac corten sans percement de fond garde l'eau. Les racines pourrissent, et surtout le fond baigne en permanence : la patine ne se forme pas à cet endroit, et c'est précisément là que le bac finit par percer. Exigez un fond percé, ou percez-le vous-même à 8 mm tous les 20 cm, puis posez le bac sur des cales de 2 cm.",
+          },
+        ],
+      },
+      {
+        titre: "Prix réels",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Un bac de 80 × 40 × 40 cm en 2 mm soudé d'un seul tenant coûte autour de 290 €. C'est trois à quatre fois le prix d'un bac plastique de même contenance, et c'est le dernier que vous achèterez pour cet emplacement.",
+          },
+          {
+            type: "p",
+            texte:
+              "Le sur-mesure ne coûte pas beaucoup plus cher que le standard : la découpe et le pliage sont les mêmes opérations, seules les cotes changent. Si vous avez une longueur de terrasse à occuper exactement, demandez plutôt que d'adapter.",
           },
         ],
       },
     ],
     liens: [
-      { label: "Acier corten", href: "/materiaux/corten" },
-      { label: "Produits corten", href: "/produits/corten" },
-      { label: "Bordure de jardin corten", href: "/produits/corten/bordure-jardin-corten" },
+      { label: "Tôle corten", href: "/acier/toles/tole-corten" },
+      { label: "Pliage et façonnage", href: "/services/pliage-faconnage" },
+      { label: "Demander un bac sur mesure", href: "/devis" },
     ],
   },
 
   {
-    slug: "calculer-le-poids-de-l-acier",
-    titre: "Calculer le poids de l'acier sans tableau",
-    titreSeo: "Calculer le poids de l'acier — les 4 formules à connaître par cœur",
+    slug: "brasero-acier-corten-jardin-quel-modele",
+    titre: "Brasero corten : lequel choisir ?",
+    titreSeo: "Brasero acier corten pour jardin : quel modèle choisir ?",
     descSeo:
-      "Tôle, plat, rond, tube : quatre formules simples pour connaître le poids au mètre de n'importe quelle section, et savoir si ça passe dans la voiture.",
+      "Les trois formats de brasero corten, les critères qui comptent vraiment et cinq règles d'or pour un usage sûr.",
     chapo:
-      "L'acier se vend au poids, se transporte au poids et se porte au poids. Ces quatre formules tiennent sur un coin de table et évitent les mauvaises surprises au dépôt.",
-    categorie: "Repères techniques",
-    lecture: 3,
-    maj: "Septembre 2026",
+      "Le corten et le feu vont bien ensemble : la chaleur accélère la patine et le métal ne craint pas les cycles de température. Reste à choisir le format.",
+    categorie: "Corten",
+    date: "24 avril 2026",
+    lecture: 5,
     sections: [
       {
-        titre: "Le point de départ",
+        titre: "Pourquoi un brasero en acier corten",
         blocs: [
           {
             type: "p",
             texte:
-              "L'acier pèse 7,85 kg par décimètre cube. Toutes les formules qui suivent en découlent. Pour l'inox, remplacez par 8,00 ; pour l'aluminium, par 2,70 — c'est-à-dire environ trois fois moins.",
+              "Un brasero passe sa vie dehors et encaisse des écarts de température extrêmes. La fonte fissure au choc thermique, l'acier peint perd sa peinture dès la première flambée, l'inox se marque en bleu. Le corten, lui, ne fait que patiner plus vite.",
           },
         ],
       },
       {
-        titre: "Les quatre formules",
-        blocs: [
-          {
-            type: "tableau",
-            entetes: ["Produit", "Formule", "Exemple"],
-            lignes: [
-              ["Tôle (kg/m²)", "épaisseur mm × 7,85", "3 mm → 23,6 kg/m²"],
-              ["Plat (kg/m)", "largeur × épaisseur × 0,00785", "40 × 5 → 1,57 kg/m"],
-              ["Rond plein (kg/m)", "Ø² × 0,00617", "Ø 20 → 2,47 kg/m"],
-              ["Tube (kg/m)", "(périmètre − 4×ép) × ép × 0,00785", "40×40×2 → 2,31 kg/m"],
-            ],
-          },
-          {
-            type: "p",
-            texte:
-              "Pour les poutrelles, il n'y a pas de formule simple : la section est trop complexe. Le poids au mètre figure sur chaque fiche produit du catalogue, et c'est la valeur normalisée officielle.",
-          },
-        ],
-      },
-      {
-        titre: "À quoi ça sert concrètement",
+        titre: "Les trois formats",
         blocs: [
           {
             type: "liste",
             items: [
-              "Savoir si ça rentre dans le véhicule. Une remorque de 500 kg de charge utile, c'est 21 mètres de tube 50 × 50 × 3, ou 12 m² de tôle de 5 mm. Pas plus.",
-              "Estimer le prix avant d'appeler. L'acier de base tourne autour de 1 à 1,50 € le kilo au détail selon le produit : le poids donne l'ordre de grandeur immédiatement.",
-              "Dimensionner la manutention. Au-delà de 50 kg par pièce, il faut être deux ; au-delà de 100, il faut du matériel.",
-              "Vérifier une facture. Le poids annoncé et le poids calculé doivent coïncider à quelques pour cent près.",
+              "La vasque basse, de 60 à 80 cm de diamètre : la plus conviviale, on s'assoit autour. C'est le format le plus vendu.",
+              "Le cube ou le cylindre sur pied : plus haut, plus graphique, il chauffe davantage à hauteur de buste et protège mieux la pelouse.",
+              "Le brasero-plancha, avec une couronne plate autour du foyer : il cuisine autant qu'il chauffe. Prévoyez une épaisseur de 4 mm minimum sur la partie cuisson, sinon elle se voile.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Quel brasero corten choisir",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'épaisseur est le seul critère technique qui compte vraiment. En dessous de 3 mm, le fond se déforme après quelques saisons de feu direct. À 4 mm, il tient indéfiniment. Le reste — diamètre, forme, pied — relève du goût et de la place disponible.",
+          },
+        ],
+      },
+      {
+        titre: "Cinq règles d'or",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Posez-le sur une surface non combustible et non claire : gravier ou dalle sombre. Jamais directement sur une terrasse en bois ni sur une pierre claire.",
+              "Laissez trois mètres de dégagement avec toute façade, haie ou mobilier.",
+              "Ne l'éteignez jamais à l'eau : le choc thermique sur un métal à 600 °C n'est bon ni pour le brasero, ni pour vous. Laissez mourir le feu.",
+              "Videz les cendres une fois froides. Humides, elles sont corrosives et retiennent l'eau au fond.",
+              "Renseignez-vous sur le règlement communal : le feu ouvert est réglementé et parfois interdit en période sèche.",
+            ],
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Tôle corten", href: "/acier/toles/tole-corten" },
+      { label: "Découpe et pliage sur mesure", href: "/services/pliage-faconnage" },
+      { label: "Nos dépôts", href: "/depots" },
+    ],
+  },
+
+  {
+    slug: "idees-jardin-acier-corten-inspirations",
+    titre: "10 idées jardin avec l'acier corten",
+    titreSeo: "Idées jardin acier corten : 8 inspirations",
+    descSeo:
+      "Bordures, jardinières, brise-vue, escaliers, fontaines : dix façons d'utiliser le corten au jardin, avec la matière à commander pour chacune.",
+    chapo:
+      "Le corten est devenu la matière du jardin contemporain. Voici dix usages concrets, du plus simple au plus ambitieux — et ce qu'il faut commander pour chacun.",
+    categorie: "Corten",
+    date: "23 avril 2026",
+    lecture: 5,
+    sections: [
+      {
+        titre: "Pourquoi le corten est devenu la tendance",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Parce qu'il fait exactement ce qu'un jardin demande à un matériau : il change avec les saisons, il ne demande rien, et sa teinte chaude va avec le vert de la végétation comme avec le gris du béton. C'est aussi l'un des rares matériaux qui devient plus beau en vieillissant.",
+          },
+        ],
+      },
+      {
+        titre: "Les dix idées",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Bordure de massif — le classique, et le plus rentable. Un trait de 2 mm qui structure tout le jardin. Tôle 2 mm pliée en L, ou bordure prête à poser.",
+              "Jardinière sur mesure, aux dimensions exactes de la terrasse. Tôle 2 mm, soudée et percée au fond.",
+              "Brise-vue ajouré au laser. Panneau de 1800 × 900 en 2 mm, motif au choix : il masque sans cloisonner et dessine des ombres au sol.",
+              "Contremarche d'escalier extérieur. Tôle 3 mm pliée en U, posée sur une structure existante.",
+              "Habillage de talus. Plusieurs tôles de 3 mm boulonnées entre elles sur profilés : ça retient la terre et ça remplace un mur.",
+              "Numéro de maison découpé. Une chute de 3 mm suffit, et le rendu vaut n'importe quelle plaque du commerce.",
+              "Lame d'eau ou fontaine murale. Tôle 3 mm pliée ; l'eau accélère la patine et crée des coulures qu'on recherche ici.",
+              "Support de barbecue ou plancha, en 4 mm pour la zone de feu.",
+              "Pare-vue de local technique — pompe à chaleur, poubelles, citerne. Tôle perforée ou pleine sur cadre en tube carré.",
+              "Chemin de gravier délimité par des bordures basses de 100 mm : le gravier ne migre plus dans la pelouse.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Où commander",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Tout part de la tôle corten, disponible en 2, 3, 4 et 5 mm aux formats 2000 × 1000 et 2500 × 1250. On la débite aux cotes et on la plie selon votre plan. Pour les pièces découpées au laser, envoyez un simple croquis coté : on s'occupe du reste.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Tôle corten", href: "/acier/toles/tole-corten" },
+      { label: "Bordures corten", href: "/jardin-cloture/amenagement/bordures" },
+      { label: "Pliage et façonnage", href: "/services/pliage-faconnage" },
+    ],
+  },
+
+  {
+    slug: "caillebotis-acier-guide-achat",
+    titre: "Caillebotis acier : guide d'achat",
+    titreSeo: "Caillebotis acier : guide d'achat",
+    descSeo:
+      "Galvanisé, inox ou aluminium ? Maille, portée, charge admissible : les critères de choix d'un caillebotis, et les trois erreurs classiques.",
+    chapo:
+      "Un caillebotis se choisit sur trois chiffres : la maille, la hauteur de porteur et la portée. Le reste est du détail.",
+    categorie: "Guides d'achat",
+    date: "24 avril 2026",
+    lecture: 6,
+    sections: [
+      {
+        titre: "Qu'est-ce qu'un caillebotis acier",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "C'est un plancher ajouré formé de plats verticaux, les porteurs, croisés par des barres torsadées ou lisses. Les porteurs travaillent sur chant : c'est ce qui donne une résistance très élevée pour un poids faible, tout en laissant passer l'eau et la lumière.",
+          },
+          {
+            type: "p",
+            texte:
+              "On le désigne par deux couples de chiffres, par exemple 30/30 - 30/2 : les 30/30 sont les entraxes de la maille en millimètres, les 30/2 la hauteur et l'épaisseur du porteur.",
+          },
+        ],
+      },
+      {
+        titre: "Galvanisé, inox ou aluminium",
+        blocs: [
+          {
+            type: "tableau",
+            entetes: ["", "Galvanisé", "Inox", "Aluminium"],
+            lignes: [
+              ["Usage", "Extérieur courant", "Alimentaire, chimie, littoral", "Léger, démontable"],
+              ["Tenue", "20 à 50 ans", "Illimitée", "Illimitée"],
+              ["Charge", "Élevée", "Élevée", "Modérée"],
+              ["Prix", "Référence", "×4 à ×6", "×2 à ×3"],
+            ],
+          },
+          {
+            type: "p",
+            texte:
+              "Pour neuf chantiers sur dix, le galvanisé est le bon choix. L'inox se justifie quand il y a du sel, du chlore ou une contrainte d'hygiène ; l'aluminium quand il faut soulever le panneau à la main régulièrement.",
+          },
+        ],
+      },
+      {
+        titre: "Les critères de choix",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "La maille. 30/30 est la maille passe-partout. Descendez à 30/10 si des talons fins doivent passer dessus, montez à 70/70 pour un usage purement technique où seul le passage de l'eau compte.",
+              "La hauteur du porteur. Elle détermine la portée admissible : 25 mm pour une portée de 70 cm, 30 mm pour 1 m, 40 mm au-delà. Dans le doute, prenez au-dessus.",
+              "La charge. Un caillebotis de circulation piétonne courante vise 500 kg/m². Un passage de transpalette demande un calcul.",
+              "L'encadrement. Un caillebotis posé sans cornière de rive s'ouvre en éventail sur les bords. La cornière fait partie du produit, pas de l'option.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Les trois erreurs à éviter",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Recouper un caillebotis à la meuleuse sans refermer la coupe. Les porteurs libérés s'écartent et le panneau perd sa rigidité. Toute recoupe demande une cornière de reprise soudée.",
+              "Oublier les pattes de fixation. Un caillebotis non fixé se soulève au passage d'une roue, et c'est un accident.",
+              "Choisir la maille sur le seul critère esthétique. Une maille large sous un escalier extérieur laisse passer les clés, les téléphones et les talons.",
+            ],
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Caillebotis et marches", href: "/quincaillerie/caillebotis-marches" },
+      { label: "Cornières acier", href: "/acier/profiles/corniere-egale" },
+      { label: "Demander un devis", href: "/devis" },
+    ],
+  },
+
+  {
+    slug: "vente-acier-particulier-belgique",
+    titre: "Acheter de l'acier en Belgique",
+    titreSeo: "Acheter de l'acier en Belgique : tarifs, découpe et retrait",
+    descSeo:
+      "Peut-on acheter de l'acier quand on est particulier ? Quel acier pour quel projet, comment commander, et à quels délais s'attendre.",
+    chapo:
+      "Oui, un particulier peut acheter de l'acier chez un négociant, aux mêmes prix qu'un professionnel. Voici comment ça se passe concrètement.",
+    categorie: "Guides d'achat",
+    date: "24 avril 2026",
+    lecture: 7,
+    sections: [
+      {
+        titre: "Acheter de l'acier quand on est particulier",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Il n'y a aucune obligation d'avoir un numéro de TVA ni un compte professionnel. Les particuliers représentent une part importante de notre clientèle, et les prix affichés sont les mêmes pour tout le monde : le tarif dépend de la quantité, pas du statut.",
+          },
+          {
+            type: "p",
+            texte:
+              "La seule différence tient au niveau de conseil attendu. Un métallier sait ce qu'il vient chercher ; un particulier décrit son projet et on traduit. C'est prévu, et c'est gratuit.",
+          },
+        ],
+      },
+      {
+        titre: "Quel acier pour quel projet",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Portail, garde-corps, ossature : tube carré ou rectangulaire, en galvanisé si c'est dehors.",
+              "Linteau, plancher, mezzanine : poutrelle IPE, HEA ou HEB — avec une note de calcul, toujours.",
+              "Renfort, cadre, support : cornière égale. La 40 × 40 × 4 est la section la plus vendue du catalogue.",
+              "Portail plein, grille, ferronnerie : plat et carré plein.",
+              "Platine, gousset, pièce découpée : tôle lisse de 3 à 8 mm.",
+              "Plancher technique, marche, passerelle : tôle larmée ou caillebotis.",
+              "Toiture d'abri, bardage : bac acier profilé, galvanisé ou prélaqué.",
+              "Dalle, chape, terrasse : treillis soudé et ronds à béton.",
+              "Jardin, bordure, bac : acier corten.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Découpe, délais et choix",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "La découpe aux cotes est le service qui change tout pour un particulier : au lieu d'acheter une barre de 6 mètres dont vous n'utiliserez que 2,40, vous payez la longueur utile. Comptez 2,50 € par coupe, et une tolérance de ± 2 mm.",
+          },
+          {
+            type: "p",
+            texte:
+              "Pour ce qui est en stock, le retrait est possible le jour même. Pour une section spécifique ou un façonnage, comptez deux à cinq jours ouvrables. On vous annonce le délai au devis, pas après.",
+          },
+        ],
+      },
+      {
+        titre: "Comment commander : trois options",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Par téléphone, du lundi au vendredi de 7 h à 17 h. Le plus rapide quand vous avez une question technique en même temps.",
+              "Par e-mail, avec une liste « section, longueur, quantité ». On confirme le prix et l'heure de retrait dans la journée.",
+              "Directement au comptoir, sans rendez-vous, dans l'un des quatre dépôts. Vous voyez la matière avant d'acheter.",
             ],
           },
           {
             type: "encadre",
-            titre: "Plus simple encore",
+            titre: "Et la livraison ?",
             texte:
-              "Chaque fiche produit du catalogue affiche le poids au mètre et un calculateur : entrez votre longueur, il vous donne le poids total et l'estimation de prix. C'est la même formule, mais faite pour vous.",
+              "Notre modèle est le retrait en dépôt. C'est ce qui nous permet de tenir des prix au mètre serrés — pas de flotte de camions à financer. Pour les gros volumes et les chantiers, un transport peut être organisé : demandez au devis.",
           },
         ],
       },
     ],
     liens: [
       { label: "Tout le catalogue", href: "/produits" },
-      { label: "Plats & barres", href: "/produits/plats-barres" },
-      { label: "Tubes", href: "/produits/tubes" },
+      { label: "La découpe sur mesure", href: "/services/decoupe" },
+      { label: "Nos 4 dépôts", href: "/depots" },
     ],
   },
 
   {
-    slug: "souder-quand-on-debute",
-    titre: "Souder l'acier quand on débute : le matériel et les réglages",
-    titreSeo: "Souder l'acier pour débuter — poste, électrodes et réglages de base",
+    slug: "analyse-marche-acier-belgique-2026",
+    titre: "Marché de l'acier 2026 en Belgique",
+    titreSeo: "Prix acier Belgique 2026 : analyse marché et perspectives",
     descSeo:
-      "Quel poste acheter, quelle électrode pour quelle épaisseur, à quelle intensité régler, et les cinq défauts de cordon qu'on reconnaît d'un coup d'œil.",
+      "MACF, marché belge, perspectives de printemps et impact concret sur vos chantiers et vos devis. L'analyse d'un négociant.",
     chapo:
-      "On peut apprendre à faire un cordon correct en un après-midi. Ce qui bloque les débutants, ce n'est pas le geste : c'est le réglage.",
-    categorie: "Repères techniques",
-    lecture: 5,
-    maj: "Septembre 2026",
+      "Le prix de l'acier ne se décide pas en Belgique. Voici ce qui le fait bouger en 2026, et ce que ça change pour un devis signé aujourd'hui.",
+    categorie: "Marché",
+    date: "25 mars 2026",
+    lecture: 6,
     sections: [
       {
-        titre: "Le matériel minimum",
+        titre: "01 — Le MACF change la donne",
         blocs: [
           {
-            type: "liste",
-            items: [
-              "Un poste à électrode enrobée (MMA) de 160 A suffit pour tout ce qu'un particulier soude : tube, plat, cornière jusqu'à 8 mm.",
-              "Un masque à cristaux liquides automatique. Le masque à main coûte trois fois moins cher et fait rater trois fois plus d'amorçages.",
-              "Des gants de soudeur, une veste en coton épais, et surtout des chaussures fermées : une goutte de laitier dans une basket ne s'oublie pas.",
-              "Une brosse métallique et un marteau à piquer pour retirer le laitier entre les passes.",
-            ],
-          },
-        ],
-      },
-      {
-        titre: "Quelle électrode, à quelle intensité",
-        blocs: [
-          {
-            type: "tableau",
-            entetes: ["Épaisseur", "Électrode", "Intensité"],
-            lignes: [
-              ["1,5 à 3 mm", "Ø 2,0 mm", "50 à 70 A"],
-              ["3 à 5 mm", "Ø 2,5 mm", "60 à 90 A"],
-              ["5 à 8 mm", "Ø 3,2 mm", "90 à 130 A"],
-              ["Plus de 8 mm", "Ø 4,0 mm", "130 à 170 A"],
-            ],
+            type: "p",
+            texte:
+              "Le mécanisme d'ajustement carbone aux frontières applique aux importations d'acier un coût correspondant à leur empreinte carbone. Concrètement, l'acier produit hors Union européenne dans des conditions moins contraintes perd une partie de son avantage de prix.",
           },
           {
             type: "p",
             texte:
-              "L'électrode rutile est celle du débutant : elle amorce facilement, le laitier se détache seul, et le cordon est visuellement lisible. Gardez les basiques pour plus tard, elles demandent un étuvage et une main plus sûre.",
+              "Pour un négociant belge, l'effet est double : les écarts entre origines se resserrent, et la traçabilité devient un sujet commercial et plus seulement réglementaire.",
           },
         ],
       },
       {
-        titre: "Lire son cordon",
+        titre: "02 — Le marché belge",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "La construction reste en recul, ce qui pèse sur les volumes. Mais la demande de rénovation et d'aménagement extérieur tient bien, portée par les particuliers et les petits artisans. Les carnets sont donc plus courts et plus fragmentés qu'il y a trois ans.",
+          },
+        ],
+      },
+      {
+        titre: "03 — Perspectives",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "La volatilité reste la caractéristique dominante. Ce n'est pas la tendance de fond qui pose problème — elle est modérément haussière — mais l'amplitude des variations d'une semaine à l'autre, qui rend impossible tout engagement de prix à long terme.",
+          },
+        ],
+      },
+      {
+        titre: "04 — Impact sur vos chantiers et vos devis",
         blocs: [
           {
             type: "liste",
             items: [
-              "Cordon haut et étroit, qui ne mouille pas les bords : intensité trop faible. Montez de 10 A.",
-              "Métal qui s'effondre, perforation : intensité trop forte, ou vitesse trop lente.",
-              "Projections partout : arc trop long. Rapprochez l'électrode, la longueur d'arc doit valoir son diamètre.",
-              "Cordon irrégulier en vagues : vitesse d'avance irrégulière. Appuyez le poignet et avancez lentement, de façon continue.",
-              "Caniveaux sur les bords : vous balayez trop large pour l'intensité. Réduisez l'amplitude.",
+              "Un devis acier a une validité de quinze jours, et ce n'est pas une clause de style : au-delà, le prix d'achat a réellement bougé.",
+              "Sur un chantier long, commandez la matière en une fois plutôt qu'au fil de l'eau. Vous figez le prix et vous évitez les écarts d'aspect entre lots.",
+              "Anticipez le printemps. Le pic de demande de mars à juin tend les délais autant que les prix.",
             ],
           },
+        ],
+      },
+      {
+        titre: "05 — Comment nous vous accompagnons",
+        blocs: [
           {
-            type: "encadre",
-            titre: "Le galvanisé et l'inox, pas maintenant",
+            type: "p",
             texte:
-              "Souder du galvanisé dégage des fumées de zinc réellement toxiques : ventilation obligatoire, et de préférence, meulez le zinc avant. L'inox ne se soude pas à l'électrode ordinaire — il lui faut une électrode inox, ou mieux, du TIG. Commencez sur de l'acier brut.",
+              "En tenant un stock profond, ce qui amortit les à-coups du marché ; en annonçant clairement la durée de validité de chaque devis ; et en vous disant franchement quand il vaut mieux attendre une semaine ou commander tout de suite.",
           },
         ],
       },
     ],
     liens: [
-      { label: "Électrodes et consommables", href: "/produits/visserie" },
-      { label: "Plats & barres", href: "/produits/plats-barres" },
-      { label: "Acier S235", href: "/materiaux/acier" },
+      { label: "Demander un devis", href: "/devis" },
+      { label: "Prix alu et inox en 2026", href: "/conseils/info-alu-inox-mars2026" },
+      { label: "Tout le catalogue", href: "/produits" },
+    ],
+  },
+
+  {
+    slug: "info-alu-inox-mars2026",
+    titre: "Prix aluminium et inox en 2026 : volatilité, causes et comment protéger vos projets",
+    titreSeo: "Prix aluminium et inox 2026 : volatilité et conseils",
+    descSeo:
+      "Pourquoi les prix de l'alu et de l'inox fluctuent autant, ce que ça change pour vos devis, et comment sécuriser un budget.",
+    chapo:
+      "L'aluminium et l'inox ne suivent pas la même logique de prix que l'acier au carbone. Comprendre pourquoi permet d'acheter au bon moment.",
+    categorie: "Marché",
+    date: "10 mars 2026",
+    lecture: 5,
+    sections: [
+      {
+        titre: "01 — Pourquoi les prix fluctuent",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'aluminium est coté en continu sur les marchés de métaux : son prix bouge chaque jour, et il est très sensible au coût de l'électricité, puisque sa production est avant tout un procédé électrolytique.",
+          },
+          {
+            type: "p",
+            texte:
+              "L'inox, lui, dépend du nickel et du chrome. Le nickel est un marché étroit, donc volatil : une tension d'approvisionnement suffit à déplacer le prix de plusieurs pour cent en quelques jours. C'est la raison du fameux « extrait d'alliage » que les producteurs répercutent mensuellement.",
+          },
+        ],
+      },
+      {
+        titre: "02 — Ce que ça change pour vos devis",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Sur un projet en inox, l'écart entre un devis de janvier et une commande de mai peut dépasser 10 %. Ce n'est pas une marge cachée, c'est l'extrait d'alliage. Mieux vaut donc commander la matière dès la signature plutôt qu'au démarrage du chantier.",
+          },
+        ],
+      },
+      {
+        titre: "03 — Comment nous nous adaptons",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "En tenant les sections courantes en stock, ce qui nous permet de vous vendre au prix de notre approvisionnement et non au prix du jour. Et en indiquant clairement, sur chaque devis inox et aluminium, la date de validité.",
+          },
+        ],
+      },
+      {
+        titre: "04 — Nos conseils",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Groupez vos besoins inox sur une seule commande plutôt que de les étaler.",
+              "Vérifiez si le 304 suffit avant de partir sur du 316L : l'écart de prix est réel, et le 316L n'est nécessaire qu'en milieu chloré.",
+              "En aluminium, regardez l'alliage autant que le prix : un 6060 et un 6082 ne s'usinent pas pareil et ne coûtent pas pareil.",
+              "Demandez un tarif du jour plutôt que de vous fier à un devis de plus d'un mois.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "05 — Obtenir un tarif du jour",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Un appel ou un e-mail suffit. Pour les projets significatifs, nous pouvons bloquer un prix sur une durée convenue, à condition que la commande soit ferme.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Inox 304", href: "/inox" },
+      { label: "Aluminium", href: "/aluminium" },
+      { label: "Demander un tarif du jour", href: "/devis" },
+    ],
+  },
+
+  {
+    slug: "panneau-isole-lattonedil-eurocopre-monolamiera-30mm",
+    titre: "Panneau isolé Eurocopre Monolamiera 30 mm : le guide complet pour votre toiture",
+    titreSeo: "Panneau isolé Eurocopre Monolamiera 30 mm | Aciers Grosjean",
+    descSeo:
+      "Composition, performances thermiques, longueurs en stock de 260 à 710 cm, applications et pose du panneau sandwich Eurocopre 30 mm.",
+    chapo:
+      "Isolation et couverture en une seule pose. Le panneau sandwich 30 mm est la solution la plus rapide pour couvrir un atelier, un carport ou une extension.",
+    categorie: "Toiture",
+    date: "4 février 2026",
+    lecture: 5,
+    sections: [
+      {
+        titre: "01 — Qu'est-ce qu'un panneau isolé",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "C'est un sandwich : une tôle profilée en face extérieure, une âme isolante en mousse polyuréthane, et un parement en face intérieure. Le tout est collé en usine et forme un élément porteur à lui seul.",
+          },
+          {
+            type: "p",
+            texte:
+              "L'avantage tient en une phrase : vous posez la couverture, l'isolation et le plafond en une seule opération, sans pare-vapeur rapporté ni ossature secondaire.",
+          },
+        ],
+      },
+      {
+        titre: "02 — Performances",
+        blocs: [
+          {
+            type: "tableau",
+            entetes: ["Caractéristique", "Valeur"],
+            lignes: [
+              ["Épaisseur d'isolant", "30 mm de polyuréthane"],
+              ["Largeur utile", "1 000 mm"],
+              ["Teinte standard", "RAL 7016 gris anthracite"],
+              ["Portée courante", "Jusqu'à 2,5 m entre pannes"],
+              ["Poids", "Environ 9 kg/m²"],
+            ],
+          },
+          {
+            type: "p",
+            texte:
+              "Le 30 mm est le bon compromis pour un local non chauffé : il coupe la condensation et les écarts de température sans le surcoût d'une isolation de bâtiment habité. Pour un atelier chauffé, montez à 40 ou 60 mm.",
+          },
+        ],
+      },
+      {
+        titre: "03 — Stock permanent : de 260 à 710 cm",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Nous tenons les longueurs courantes en stock, par pas de 50 cm de 260 à 710 cm. C'est ce qui permet un retrait le jour même, là où une commande usine demande plusieurs semaines. Les longueurs hors gamme restent possibles sur commande.",
+          },
+        ],
+      },
+      {
+        titre: "04 — Applications",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Toiture d'atelier, de garage ou de hangar agricole.",
+              "Carport et abri de voiture.",
+              "Extension et annexe non chauffée.",
+              "Remplacement d'une couverture en fibrociment.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "05 — Commander",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Donnez-nous la surface à couvrir et l'entraxe de vos pannes : on calcule le nombre de panneaux, les recouvrements et la visserie qui va avec. Prévoyez des vis autoforantes adaptées à l'épaisseur totale, rondelle EPDM comprise.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Panneaux isolés", href: "/toiture-bardage/panneaux-isoles" },
+      { label: "Vis autoforantes", href: "/quincaillerie/visserie" },
+      { label: "Demander un devis", href: "/devis" },
+    ],
+  },
+
+  {
+    slug: "une-entreprise-tournee-vers-lavenir",
+    titre: "Aciers Grosjean : 40 ans au service des professionnels de l'acier en Wallonie",
+    titreSeo: "Aciers Grosjean : négoce acier en Wallonie depuis 1986 | 4 dépôts",
+    descSeo:
+      "Quarante ans de négoce, quatre dépôts, deux usines et un département trading. L'histoire et l'organisation du Groupe Aciers Grosjean.",
+    chapo:
+      "D'un dépôt unique à quatre implantations, en Belgique et en France. Ce qui a changé, et ce qui n'a pas bougé.",
+    categorie: "Entreprise",
+    date: "2 février 2026",
+    lecture: 4,
+    sections: [
+      {
+        titre: "01 — Quarante ans de négoce",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'entreprise est née au milieu des années 1980, dans une région où l'acier faisait vivre des milliers de familles. Elle est restée familiale, et c'est encore la même conviction qui la guide : l'acier de qualité professionnelle doit être accessible à tous, du grand chantier au projet de week-end.",
+          },
+        ],
+      },
+      {
+        titre: "02 — Quatre dépôts, deux usines, un département trading",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Charleroi (Mont-sur-Marchienne) est le dépôt historique et le plus profond en stock : c'est de là que partent les transferts vers les autres sites. La Louvière et Tournai couvrent le Centre et l'ouest wallon. Marville, dans la Meuse, dessert le Grand Est et le sud de la Belgique.",
+          },
+        ],
+      },
+      {
+        titre: "03 — Le e-commerce, notre cinquième magasin",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Le catalogue en ligne n'est pas une vitrine : c'est un point de vente à part entière, avec les prix, les poids et les disponibilités. Il sert autant le professionnel qui commande à 6 h du matin que le particulier qui compare un dimanche soir.",
+          },
+        ],
+      },
+      {
+        titre: "04 — Engagement environnemental",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'acier est recyclable indéfiniment sans perte de propriétés — c'est l'un des rares matériaux dans ce cas. Notre premier rapport ESG formalise ce qui était jusque-là une pratique, et fixe une feuille de route jusqu'en 2030.",
+          },
+        ],
+      },
+      {
+        titre: "05 — Nous contacter",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Par téléphone du lundi au vendredi, par e-mail avec réponse sous 24 h, ou directement au comptoir, sans rendez-vous.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "L'entreprise", href: "/entreprise" },
+      { label: "Nos 4 dépôts", href: "/depots" },
+      { label: "Notre rapport ESG", href: "/conseils/rapport-esg-aciers-grosjean-2023" },
+    ],
+  },
+
+  {
+    slug: "rapport-esg-aciers-grosjean-2023",
+    titre: "Notre premier Rapport ESG 2023",
+    titreSeo: "Rapport ESG 2023 : notre engagement durabilité et responsabilité",
+    descSeo:
+      "112 points de contrôle, les chiffres clés 2023, les piliers environnement et social, et la feuille de route ESG jusqu'en 2030.",
+    chapo:
+      "Premier exercice de transparence formalisé : ce qu'on mesure, ce qu'on a trouvé, et ce qu'on s'engage à améliorer.",
+    categorie: "Entreprise",
+    date: "25 avril 2026",
+    lecture: 4,
+    sections: [
+      {
+        titre: "Qu'est-ce que l'ESG",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Trois lettres pour trois domaines : Environnement, Social, Gouvernance. C'est un cadre d'évaluation qui oblige à mesurer ce qu'une entreprise fait réellement, au-delà de ce qu'elle affiche.",
+          },
+        ],
+      },
+      {
+        titre: "112 points de contrôle",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'évaluation porte sur 112 points, de la consommation énergétique des dépôts à la politique de formation, en passant par la traçabilité des approvisionnements et la gouvernance familiale. Chaque point est documenté ou ne compte pas.",
+          },
+        ],
+      },
+      {
+        titre: "Pilier environnement",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'acier est recyclable à l'infini, ce qui place notre métier dans une position favorable de départ. L'enjeu est ailleurs : consommation des sites, optimisation des transferts entre dépôts, réduction des chutes grâce à la découpe à la demande — chaque coupe optimisée est de la matière qui ne part pas en ferraille.",
+          },
+        ],
+      },
+      {
+        titre: "Pilier social : 993 heures de formation",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "993 heures de formation dispensées sur l'exercice, dont une part significative en sécurité et en conduite d'engins de manutention. Dans un métier où l'on manipule des charges lourdes tous les jours, c'est la ligne budgétaire la moins discutable.",
+          },
+        ],
+      },
+      {
+        titre: "Feuille de route 2022-2030",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Des objectifs datés plutôt que des intentions : réduction de l'intensité énergétique des sites, amélioration continue du taux de valorisation des chutes, et extension de la certification à l'ensemble des activités de transformation.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Engagement ESG", href: "/entreprise/engagement-esg" },
+      { label: "L'entreprise", href: "/entreprise" },
+      { label: "Nos certifications", href: "/entreprise/certifications" },
+    ],
+  },
+
+  {
+    slug: "certification-en1090exc2",
+    titre: "Le Groupe Aciers Grosjean est certifié selon la Norme EN1090-Exc-2",
+    titreSeo: "Certification EN 1090-Exc2 | Aciers Grosjean",
+    descSeo:
+      "Ce que signifie la certification EN 1090-Exc2, pourquoi elle est exigée sur certains chantiers, et ce qu'elle change pour vos commandes.",
+    chapo:
+      "Une norme européenne qui encadre la fabrication des structures en acier. Peu d'acteurs de notre taille la détiennent.",
+    categorie: "Entreprise",
+    date: "2 février 2026",
+    lecture: 2,
+    sections: [
+      {
+        titre: "Ce que couvre la norme",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'EN 1090 encadre l'exécution des structures en acier et en aluminium destinées à la construction. Elle impose un système de contrôle de production en usine, la qualification des soudeurs et des modes opératoires de soudage, et la traçabilité des matériaux.",
+          },
+          {
+            type: "p",
+            texte:
+              "La mention Exc2 désigne la classe d'exécution : c'est celle qui couvre la grande majorité des ouvrages courants de bâtiment, au-dessus de l'Exc1 réservée aux structures les moins sollicitées.",
+          },
+        ],
+      },
+      {
+        titre: "Ce que ça change pour vous",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Sur un chantier soumis à contrôle, un ouvrage porteur doit provenir d'un atelier certifié. Sans certification, la pièce est refusée à la réception.",
+              "Les certificats matière sont disponibles sur demande pour les produits concernés.",
+              "Les soudures réalisées dans notre atelier suivent des modes opératoires qualifiés, pas l'habitude du soudeur.",
+            ],
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Nos certifications", href: "/entreprise/certifications" },
+      { label: "Transformation sur plan", href: "/services/soudure" },
+      { label: "L'entreprise", href: "/entreprise" },
+    ],
+  },
+
+  {
+    slug: "accessibilite-bricofer",
+    titre: "Travaux à La Louvière : comment accéder facilement à votre magasin",
+    titreSeo: "Travaux à La Louvière : accès au dépôt Aciers Grosjean",
+    descSeo:
+      "Itinéraire pas à pas pendant les travaux, accès depuis Mons, Charleroi et Bruxelles, horaires et ce que vous trouverez au dépôt.",
+    chapo:
+      "Des travaux perturbent les accès habituels au dépôt de La Louvière. Voici l'itinéraire qui fonctionne.",
+    categorie: "Dépôts",
+    date: "23 février 2026",
+    lecture: 3,
+    sections: [
+      {
+        titre: "L'itinéraire pas à pas",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Contournez le centre par le ring plutôt que de le traverser : le gain de temps est réel aux heures de pointe, même si le trajet paraît plus long sur la carte. Suivez la signalisation du zoning jusqu'à l'entrée poids lourds — c'est la même que pour les véhicules légers.",
+          },
+        ],
+      },
+      {
+        titre: "Accès depuis Mons, Charleroi et Bruxelles",
+        blocs: [
+          {
+            type: "liste",
+            items: [
+              "Depuis Mons : autoroute jusqu'à la sortie du zoning, puis la desserte locale. Environ 25 minutes.",
+              "Depuis Charleroi : si le trajet vous rapproche autant de Mont-sur-Marchienne, ce dépôt est plus profond en stock — appelez avant de choisir.",
+              "Depuis Bruxelles : comptez 50 minutes hors heures de pointe, et évitez la tranche 16 h – 18 h.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Horaires",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Du lundi au vendredi, de 7 h à 17 h, sans interruption. Le dépôt de La Louvière est fermé le samedi — c'est Charleroi qui assure la permanence du samedi matin.",
+          },
+        ],
+      },
+      {
+        titre: "Ce que vous trouverez au dépôt",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Le stock courant complet — tubes, cornières, plats, tôles — la scie à ruban et la cisaille sur place, et un chariot élévateur pour le chargement. Ce qui n'est pas sur place arrive par transfert interne depuis Charleroi sous 48 h.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Dépôt de La Louvière", href: "/depots/la-louviere" },
+      { label: "Tous nos dépôts", href: "/depots" },
+      { label: "Nous contacter", href: "/contact" },
+    ],
+  },
+
+  {
+    slug: "livraison-par-drone-stratos-grosjean-2000",
+    titre: "Logistique 4.0 : premier essai (presque) concluant pour notre livraison par drone « Stratos-Grosjean 2000 »",
+    titreSeo: "Livraison par drone : le premier essai du Stratos-Grosjean 2000",
+    descSeo:
+      "Récit du premier vol d'essai de notre drone de livraison de poutrelles. Publié un 1er avril.",
+    chapo:
+      "6 h 05, un IPE 240 accroché sous un drone de douze hélices. Ce qui devait arriver arriva.",
+    categorie: "Entreprise",
+    date: "1er avril 2026",
+    lecture: 2,
+    sections: [
+      {
+        titre: "6 h 05 : le décollage vers le futur",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "L'engin s'est arraché du sol avec une autorité qui a impressionné toute l'équipe logistique. Six mètres de poutrelle IPE 240, soit 184 kg, suspendus à un harnais textile. Les douze rotors ont tenu sept secondes.",
+          },
+        ],
+      },
+      {
+        titre: "6 h 18 : le test de résistance gravitationnelle (Nivelles)",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Le protocole ne prévoyait pas de test de chute libre. Il en a eu un. La poutrelle, elle, n'a rien. C'est bien la preuve de la qualité de notre acier — et c'est à peu près le seul enseignement exploitable de la matinée.",
+          },
+        ],
+      },
+      {
+        titre: "L'innovation ne s'arrête jamais",
+        blocs: [
+          {
+            type: "p",
+            texte:
+              "Le programme Stratos-Grosjean est suspendu jusqu'à nouvel ordre. En attendant, le retrait en dépôt reste disponible du lundi au vendredi de 7 h à 17 h, avec chariot élévateur et sans risque de chute depuis 40 mètres.",
+          },
+          {
+            type: "encadre",
+            titre: "Pour être tout à fait clair",
+            texte:
+              "Cet article a été publié un 1er avril. Nous ne livrons pas par drone. Nous n'avons jamais livré par drone. Le retrait se fait au comptoir, et c'est très bien comme ça.",
+          },
+        ],
+      },
+    ],
+    liens: [
+      { label: "Nos 4 dépôts", href: "/depots" },
+      { label: "Transport et livraison", href: "/services/transport-livraison" },
+      { label: "Poutrelles IPE", href: "/acier/poutrelles/ipe" },
     ],
   },
 ];
 
-export const guideBySlug = (slug: string) => guides.find((g) => g.slug === slug);
+export const articleBySlug = (slug: string) => articles.find((a) => a.slug === slug);
+export const categoriesArticles = Array.from(new Set(articles.map((a) => a.categorie)));
 
-/* ------------------------------------------------------------------ */
-/*  SERVICES                                                           */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/*  SERVICES — /services/{slug}                                        */
+/* ================================================================== */
 
 export type ServiceDetail = {
   slug: string;
@@ -615,25 +1239,16 @@ export const servicesDetail: ServiceDetail[] = [
     accroche: "Vos pièces aux cotes exactes, prêtes à assembler",
     titreSeo: "Découpe acier sur mesure — aux cotes exactes, dès 2,50 € la coupe",
     descSeo:
-      "Sciage, cisaillage et oxycoupage aux cotes exactes. Vous ne payez que la longueur utile, et vous repartez avec des pièces prêtes à souder. Retrait le jour même.",
+      "Sciage, cisaillage et oxycoupage aux cotes exactes. Vous ne payez que la longueur utile, et vous repartez avec des pièces prêtes à souder.",
     intro:
-      "C'est le service le plus demandé, et celui qui change le plus le prix final d'un projet. Acheter une barre de 6 m pour n'en utiliser que 2,40 revient à payer 60 % de chute. La découpe au dépôt supprime cette perte et vous fait gagner une demi-journée de travail.",
+      "C'est le service le plus demandé, et celui qui change le plus le prix final d'un projet. Acheter une barre de 6 m pour n'en utiliser que 2,40 revient à payer 60 % de chute. La découpe au dépôt supprime cette perte.",
     points: [
-      {
-        titre: "Vous ne payez que la longueur utile",
-        texte:
-          "Le débit se fait sur la barre commerciale et la chute repart au stock, pas dans votre facture. Sur un chantier de ferronnerie, c'est souvent 20 à 30 % du budget matière.",
-      },
-      {
-        titre: "Une tolérance de ± 2 mm",
-        texte:
-          "Sciage à froid pour les profilés, cisaillage pour les tôles jusqu'à 8 mm, oxycoupage au-delà. Dans tous les cas, la cote annoncée est la cote livrée.",
-      },
-      {
-        titre: "Donnez-nous une liste, pas un plan",
-        texte:
-          "Un tableau « section, longueur, quantité » suffit. Envoyez-le par mail, on vous confirme le prix et l'heure de retrait dans la journée.",
-      },
+      { titre: "Vous ne payez que la longueur utile",
+        texte: "Le débit se fait sur la barre commerciale et la chute repart au stock, pas dans votre facture. Sur un chantier de ferronnerie, c'est souvent 20 à 30 % du budget matière." },
+      { titre: "Une tolérance de ± 2 mm",
+        texte: "Sciage à froid pour les profilés, cisaillage pour les tôles jusqu'à 8 mm, oxycoupage au-delà. La cote annoncée est la cote livrée." },
+      { titre: "Donnez-nous une liste, pas un plan",
+        texte: "Un tableau « section, longueur, quantité » suffit. Envoyez-le par mail, on confirme le prix et l'heure de retrait dans la journée." },
     ],
     specs: [
       { label: "Tolérance", valeur: "± 2 mm" },
@@ -642,34 +1257,25 @@ export const servicesDetail: ServiceDetail[] = [
       { label: "Fortes épaisseurs", valeur: "Oxycoupage jusqu'à 100 mm" },
       { label: "Ébavurage", valeur: "Sur demande" },
     ],
-    delai: "Le jour même pour les demandes simples",
-    prix: "À partir de 2,50 € la coupe",
+    delai: "Le jour même",
+    prix: "Dès 2,50 € la coupe",
   },
   {
-    slug: "pliage",
+    slug: "pliage-faconnage",
     nom: "Pliage & façonnage",
     accroche: "La tôle arrive déjà en forme",
     titreSeo: "Pliage de tôle et façonnage acier — presse plieuse jusqu'à 3 m",
     descSeo:
       "Pliage sur presse jusqu'à 3 m de long et 8 mm d'épaisseur, cintrage de tubes et de plats. Vos pièces arrivent formées, prêtes à poser.",
     intro:
-      "Plier une tôle demande une presse, des outils et de l'expérience du retour élastique. Plutôt que d'improviser à l'étau, envoyez-nous la cote et l'angle : la pièce sort juste du premier coup.",
+      "Plier une tôle demande une presse, des outils et de l'expérience du retour élastique. Plutôt que d'improviser à l'étau, envoyez la cote et l'angle : la pièce sort juste du premier coup.",
     points: [
-      {
-        titre: "Jusqu'à 3 m de long",
-        texte:
-          "Presse plieuse 3 mètres. Au-delà, la pièce se plie en plusieurs tronçons à assembler, on vous dit tout de suite ce que ça implique.",
-      },
-      {
-        titre: "Le rayon compte",
-        texte:
-          "En dessous d'un rayon intérieur égal à l'épaisseur, la fibre extérieure fissure. On adapte l'outil à votre épaisseur plutôt que de forcer.",
-      },
-      {
-        titre: "Cintrage de tubes et de plats",
-        texte:
-          "Pour les mains courantes, les arceaux et les pièces courbes. Le rayon minimum dépend de la section — appelez-nous avant de dessiner.",
-      },
+      { titre: "Jusqu'à 3 m de long",
+        texte: "Presse plieuse 3 mètres. Au-delà, la pièce se plie en plusieurs tronçons à assembler — on vous dit tout de suite ce que ça implique." },
+      { titre: "Le rayon compte",
+        texte: "En dessous d'un rayon intérieur égal à l'épaisseur, la fibre extérieure fissure. On adapte l'outil à votre épaisseur plutôt que de forcer." },
+      { titre: "Cintrage de tubes et de plats",
+        texte: "Pour les mains courantes, les arceaux et les pièces courbes. Le rayon minimum dépend de la section — appelez avant de dessiner." },
     ],
     specs: [
       { label: "Longueur max", valeur: "3 000 mm" },
@@ -682,30 +1288,48 @@ export const servicesDetail: ServiceDetail[] = [
     prix: "Sur devis, selon le nombre de plis",
   },
   {
-    slug: "percage",
-    nom: "Perçage & poinçonnage",
+    slug: "coupe-plie-armatures",
+    nom: "Coupé-plié armatures",
+    accroche: "Vos armatures façonnées selon le plan de ferraillage",
+    titreSeo: "Coupé-plié et armatures assemblées sur mesure",
+    descSeo:
+      "Ronds à béton coupés, pliés et assemblés d'après votre plan de ferraillage : cadres, étriers, épingles, cages. Livrés repérés et prêts à poser.",
+    intro:
+      "Façonner des armatures sur chantier, c'est du temps perdu, des chutes et des cotes approximatives. En atelier, on travaille sur gabarit d'après le plan de ferraillage : les cadres sont tous identiques et les recouvrements tombent juste.",
+    points: [
+      { titre: "D'après votre plan de ferraillage",
+        texte: "Nomenclature, repères, quantités : on travaille sur le document du bureau d'études. Si une cote manque, on appelle plutôt que d'interpréter." },
+      { titre: "Cadres, étriers, épingles, cages",
+        texte: "Du simple cadre de poteau à la cage assemblée de longrine. Les éléments arrivent repérés, étiquetés et bottelés par ouvrage." },
+      { titre: "Moins de chutes, moins de manutention",
+        texte: "Le débit est optimisé sur les barres commerciales. Vous ne payez pas les chutes, et vous ne les évacuez pas non plus." },
+    ],
+    specs: [
+      { label: "Diamètres", valeur: "Ø 6 à Ø 20 mm" },
+      { label: "Nuance", valeur: "B500B haute adhérence" },
+      { label: "Formats acceptés", valeur: "Plan papier, PDF, DXF" },
+      { label: "Repérage", valeur: "Étiquetage par ouvrage" },
+      { label: "Assemblage", valeur: "Ligaturé ou soudé" },
+    ],
+    delai: "3 à 7 jours ouvrables selon volume",
+    prix: "Sur devis sous 24 h",
+  },
+  {
+    slug: "forage-poinconnage",
+    nom: "Forage & poinçonnage",
     accroche: "Les trous sont déjà faits, et ils tombent juste",
     titreSeo: "Perçage et poinçonnage acier — platines et profilés percés au plan",
     descSeo:
-      "Perçage sur plan de platines, profilés et tôles. Trous de Ø 6 à Ø 30, entraxes garantis, oblongs possibles. Vos pièces arrivent prêtes à boulonner.",
+      "Perçage sur plan de platines, profilés et tôles. Trous de Ø 6 à Ø 30, entraxes garantis au demi-millimètre, oblongs possibles.",
     intro:
-      "Percer une platine à la perceuse à main, c'est une demi-heure par trou et un entraxe approximatif. Sur perceuse à colonne avec un montage, c'est deux minutes et un entraxe au dixième — et c'est ce qui fait qu'une platine tombe en face des chevilles du premier coup.",
+      "Percer une platine à la perceuse à main, c'est une demi-heure par trou et un entraxe approximatif. Sur perceuse à colonne avec montage, c'est deux minutes et un entraxe au dixième — et c'est ce qui fait qu'une platine tombe en face des chevilles du premier coup.",
     points: [
-      {
-        titre: "L'entraxe est garanti",
-        texte:
-          "C'est ce qui compte vraiment : un trou mal placé condamne la pièce. On travaille au montage, pas au pointeau.",
-      },
-      {
-        titre: "Trous oblongs disponibles",
-        texte:
-          "Indispensables dès qu'il faut rattraper une tolérance de maçonnerie ou absorber une dilatation.",
-      },
-      {
-        titre: "Un croquis coté suffit",
-        texte:
-          "Pas besoin de DAO. Un croquis à main levée avec les cotes et les diamètres est parfaitement exploitable.",
-      },
+      { titre: "L'entraxe est garanti",
+        texte: "C'est ce qui compte vraiment : un trou mal placé condamne la pièce. On travaille au montage, pas au pointeau." },
+      { titre: "Trous oblongs disponibles",
+        texte: "Indispensables dès qu'il faut rattraper une tolérance de maçonnerie ou absorber une dilatation." },
+      { titre: "Un croquis coté suffit",
+        texte: "Pas besoin de DAO. Un croquis à main levée avec les cotes et les diamètres est parfaitement exploitable." },
     ],
     specs: [
       { label: "Diamètres", valeur: "Ø 6 à Ø 30 mm" },
@@ -715,126 +1339,127 @@ export const servicesDetail: ServiceDetail[] = [
       { label: "Chanfrein", valeur: "Sur demande" },
     ],
     delai: "2 à 4 jours ouvrables",
-    prix: "À partir de 1,20 € le trou",
+    prix: "Dès 1,20 € le trou",
   },
   {
-    slug: "conseil-technique",
-    nom: "Conseil technique",
-    accroche: "40 ans d'expérience au bout du fil",
-    titreSeo: "Conseil technique acier — nuance, épaisseur, protection : on vous oriente",
+    slug: "soudure",
+    nom: "Soudure & assemblage",
+    accroche: "Des ensembles mécanosoudés, certifiés EN 1090-Exc2",
+    titreSeo: "Soudure et assemblage acier — atelier certifié EN 1090-Exc2",
     descSeo:
-      "Un doute sur la nuance, l'épaisseur ou la protection ? Décrivez votre projet, on vous oriente vers le bon produit — gratuitement, et sans vous vendre plus que nécessaire.",
+      "Ensembles soudés et pièces mécanosoudées réalisés sur plan dans notre atelier certifié EN 1090-Exc2. De la platine au portique.",
     intro:
-      "La moitié des appels qu'on reçoit commencent par « je ne sais pas trop quoi demander ». C'est normal, et c'est exactement pour ça qu'on répond au téléphone. Décrivez ce que vous voulez construire, on traduit en références.",
+      "Pour ce qui dépasse la coupe et le pli, l'atelier prend le relais. Vous fournissez le plan ou le croquis, nous livrons la pièce finie, contrôlée et traçable.",
     points: [
-      {
-        titre: "On vous dit aussi quand c'est trop",
-        texte:
-          "Si une section plus petite suffit, on vous le dit. Un client qui revient vaut mieux qu'une vente surdimensionnée.",
-      },
-      {
-        titre: "On vous dit quand ça ne relève pas de nous",
-        texte:
-          "Dès qu'il y a une charge de structure, il faut un calcul d'ingénieur. On vous le dira clairement plutôt que de vous vendre une poutrelle au jugé.",
-      },
-      {
-        titre: "Particuliers bienvenus",
-        texte:
-          "Aucun compte professionnel n'est nécessaire, et aucune question n'est trop simple. On explique sans jargon.",
-      },
+      { titre: "Certifié EN 1090-Exc2",
+        texte: "La norme européenne qui encadre la fabrication des structures en acier. Elle est exigée dès qu'une pièce entre dans un ouvrage soumis à contrôle — sans elle, la pièce est refusée à la réception." },
+      { titre: "Soudeurs et modes opératoires qualifiés",
+        texte: "MIG/MAG, MMA et TIG. Les procédures sont qualifiées et les soudeurs certifiés : ce n'est pas l'habitude qui décide des paramètres." },
+      { titre: "Traçabilité matière",
+        texte: "Certificats matière disponibles sur demande, et repérage des pièces par ouvrage." },
     ],
     specs: [
-      { label: "Par téléphone", valeur: "Du lundi au vendredi, 7 h – 17 h" },
-      { label: "Par e-mail", valeur: "Réponse sous 24 h ouvrées" },
-      { label: "Au comptoir", valeur: "Dans les 4 dépôts, sans rendez-vous" },
-      { label: "Tarif", valeur: "Gratuit" },
-    ],
-    delai: "Immédiat par téléphone",
-    prix: "Gratuit",
-  },
-  {
-    slug: "click-and-collect",
-    nom: "Click & collect",
-    accroche: "Vous commandez, vous retirez — souvent le jour même",
-    titreSeo: "Click & collect acier — commande et retrait en dépôt le jour même",
-    descSeo:
-      "Commandez par mail ou par téléphone, retirez dans le dépôt de votre choix, souvent le jour même. Pas de frais de livraison, pas d'attente au comptoir.",
-    intro:
-      "Notre modèle est le retrait en dépôt, et c'est assumé : pas de camion à financer, donc des prix au mètre qui restent tenus. Vous commandez à l'avance, la commande est préparée, vous ne faites que charger.",
-    points: [
-      {
-        titre: "Préparé avant votre arrivée",
-        texte:
-          "Coupé, compté, mis de côté. Vous ne cherchez pas dans le rack et vous n'attendez pas derrière quelqu'un.",
-      },
-      {
-        titre: "Quatre dépôts",
-        texte:
-          "Charleroi, La Louvière, Tournai et Marville. Vous choisissez celui qui vous arrange, on transfère si la référence est ailleurs.",
-      },
-      {
-        titre: "Aide au chargement",
-        texte:
-          "Chariot élévateur disponible aux heures d'ouverture. Prévenez-nous si la pièce dépasse 100 kg ou 6 mètres.",
-      },
-    ],
-    specs: [
-      { label: "Commande", valeur: "Par e-mail ou par téléphone" },
-      { label: "Préparation", valeur: "Souvent le jour même" },
-      { label: "Dépôts", valeur: "Charleroi · La Louvière · Tournai · Marville" },
-      { label: "Frais", valeur: "Aucun" },
-      { label: "Paiement", valeur: "Au retrait" },
-    ],
-    delai: "Le jour même si en stock",
-    prix: "Sans frais",
-  },
-  {
-    slug: "transformation",
-    nom: "Transformation sur plan",
-    accroche: "Vous envoyez le plan, vous recevez la pièce",
-    titreSeo: "Transformation acier sur plan — pièces prêtes à poser, certifié EN1090",
-    descSeo:
-      "Ensembles soudés, assemblages et pièces complexes réalisés sur plan dans notre atelier certifié EN1090-Exc2. De la platine au portique.",
-    intro:
-      "Pour ce qui dépasse la coupe et le pli, l'atelier prend le relais. Assemblages soudés, ensembles mécanosoudés, pièces de reprise : vous fournissez le plan ou le croquis, nous livrons la pièce finie, contrôlée et traçable.",
-    points: [
-      {
-        titre: "Certifié EN1090-Exc2",
-        texte:
-          "C'est la norme européenne qui encadre la fabrication des structures en acier. Peu d'acteurs de notre taille la détiennent — elle est exigée dès qu'une pièce entre dans un ouvrage soumis à contrôle.",
-      },
-      {
-        titre: "Du croquis au plan DAO",
-        texte:
-          "On travaille aussi bien sur un dessin coté à la main que sur un DXF. Si le plan manque d'une cote, on appelle plutôt que d'interpréter.",
-      },
-      {
-        titre: "Protection incluse si besoin",
-        texte:
-          "Galvanisation à chaud ou thermolaquage RAL en sous-traitance suivie. La pièce arrive protégée, prête à poser.",
-      },
-    ],
-    specs: [
-      { label: "Certification", valeur: "EN1090-Exc2" },
-      { label: "Procédés", valeur: "MIG/MAG, MMA, TIG" },
+      { label: "Certification", valeur: "EN 1090-Exc2" },
+      { label: "Procédés", valeur: "MIG/MAG · MMA · TIG" },
       { label: "Formats", valeur: "Croquis coté, PDF, DXF" },
-      { label: "Protection", valeur: "Galvanisation ou thermolaquage" },
+      { label: "Contrôle", valeur: "Visuel systématique" },
       { label: "Traçabilité", valeur: "Certificat matière sur demande" },
     ],
     delai: "Sur planning, annoncé au devis",
     prix: "Sur devis sous 24 h",
   },
+  {
+    slug: "grenaillage-peinture-gpp",
+    nom: "Grenaillage & peinture",
+    accroche: "La pièce arrive protégée, prête à poser",
+    titreSeo: "Grenaillage et peinture acier — préparation de surface et primaire",
+    descSeo:
+      "Grenaillage de décapage puis primaire anticorrosion ou thermolaquage RAL. La finition posée telle quelle, sans reprise de chantier.",
+    intro:
+      "Une peinture ne tient que ce que vaut sa préparation. Le grenaillage projette de l'abrasif à grande vitesse : la calamine et la rouille partent, et la surface prend une rugosité qui accroche le primaire.",
+    points: [
+      { titre: "Le grenaillage d'abord",
+        texte: "Peindre sur une tôle calaminée, c'est peindre sur une croûte qui finira par se détacher avec la peinture dessus. Le grenaillage est la seule préparation qui garantisse l'accroche." },
+      { titre: "Primaire ou finition complète",
+        texte: "Primaire anticorrosion seul, si vous peignez ensuite vous-même. Ou finition thermolaquée à la teinte RAL de votre choix, prête à poser." },
+      { titre: "Dimensions maîtrisées",
+        texte: "Vérifiez les cotes maximales avant de concevoir : une pièce qui n'entre pas en cabine se peint à la brosse, et ça se voit." },
+    ],
+    specs: [
+      { label: "Préparation", valeur: "Grenaillage Sa 2½" },
+      { label: "Primaire", valeur: "Anticorrosion époxy" },
+      { label: "Finition", valeur: "Thermolaquage RAL au choix" },
+      { label: "Sous-traitance", valeur: "Suivie par nos soins" },
+    ],
+    delai: "5 à 10 jours ouvrables",
+    prix: "Sur devis, selon surface",
+  },
+  {
+    slug: "galvanisation",
+    nom: "Galvanisation à chaud",
+    accroche: "Vingt à cinquante ans dehors, sans entretien",
+    titreSeo: "Galvanisation à chaud — protection zinc EN ISO 1461",
+    descSeo:
+      "Trempage au bain de zinc selon EN ISO 1461. La protection la plus durable pour un ouvrage extérieur, sans peinture ni reprise.",
+    intro:
+      "La galvanisation à chaud trempe la pièce entière dans un bain de zinc en fusion. Le zinc ne se dépose pas seulement en surface : il forme un alliage avec l'acier. C'est ce qui la distingue de tous les autres traitements, et ce qui explique sa durée de vie.",
+    points: [
+      { titre: "Percez et coupez avant",
+        texte: "Toute coupe ou perçage réalisé après galvanisation met l'acier à nu. La règle est simple : toute la transformation d'abord, la galvanisation ensuite." },
+      { titre: "Prévoyez les trous d'évent",
+        texte: "Un caisson fermé explose dans le bain. Les profilés creux doivent être percés pour laisser entrer et sortir le zinc. On vous indique où au moment du devis." },
+      { titre: "Le zinc se sacrifie",
+        texte: "Une rayure ne condamne pas la pièce : le zinc voisin protège électrochimiquement l'acier mis à nu sur quelques millimètres." },
+    ],
+    specs: [
+      { label: "Norme", valeur: "EN ISO 1461" },
+      { label: "Épaisseur de zinc", valeur: "Selon épaisseur de la pièce" },
+      { label: "Durée de vie", valeur: "20 à 50 ans selon exposition" },
+      { label: "Entretien", valeur: "Aucun" },
+      { label: "Sous-traitance", valeur: "Suivie par nos soins" },
+    ],
+    delai: "7 à 14 jours ouvrables",
+    prix: "Sur devis, au poids",
+  },
+  {
+    slug: "transport-livraison",
+    nom: "Transport & retrait",
+    accroche: "Vous commandez, vous retirez — souvent le jour même",
+    titreSeo: "Retrait en dépôt et transport chantier — click & collect acier",
+    descSeo:
+      "Retrait en dépôt préparé à l'avance, souvent le jour même, dans nos 4 dépôts. Transport chantier possible sur devis pour les gros volumes.",
+    intro:
+      "Notre modèle est le retrait en dépôt, et c'est assumé : pas de flotte de camions à financer, donc des prix au mètre qui restent tenus. Vous commandez à l'avance, la commande est préparée, vous ne faites que charger.",
+    points: [
+      { titre: "Préparé avant votre arrivée",
+        texte: "Coupé, compté, mis de côté. Vous ne cherchez pas dans le rack et vous n'attendez pas derrière quelqu'un." },
+      { titre: "Quatre dépôts, transferts internes",
+        texte: "Charleroi, La Louvière, Tournai et Marville. Ce qui n'est pas sur place arrive par transfert interne, généralement sous 48 h." },
+      { titre: "Transport chantier sur devis",
+        texte: "Pour les gros volumes et les longueurs de 12 m, un transport peut être organisé. Précisez les contraintes d'accès au moment du devis." },
+    ],
+    specs: [
+      { label: "Commande", valeur: "Par e-mail ou par téléphone" },
+      { label: "Préparation", valeur: "Souvent le jour même" },
+      { label: "Dépôts", valeur: "Charleroi · La Louvière · Tournai · Marville" },
+      { label: "Chargement", valeur: "Chariot élévateur aux heures d'ouverture" },
+      { label: "Transport", valeur: "Sur devis, selon volume et accès" },
+    ],
+    delai: "Le jour même si en stock",
+    prix: "Retrait sans frais",
+  },
 ];
 
 export const serviceBySlug = (slug: string) => servicesDetail.find((s) => s.slug === slug);
 
-/* ------------------------------------------------------------------ */
-/*  DÉPÔTS                                                             */
-/* ------------------------------------------------------------------ */
+/* ================================================================== */
+/*  DÉPÔTS — /depots/{slug}                                            */
+/* ================================================================== */
 
 export type DepotDetail = {
   slug: string;
   ville: string;
+  nomComplet: string;
   pays: string;
   region: string;
   adresse: string;
@@ -847,11 +1472,12 @@ export type DepotDetail = {
 
 export const depotsDetail: DepotDetail[] = [
   {
-    slug: "charleroi",
+    slug: "charleroi-mont-sur-marchienne",
     ville: "Charleroi",
+    nomComplet: "Mont-sur-Marchienne (Charleroi)",
     pays: "Belgique",
     region: "Hainaut",
-    adresse: "Zoning industriel, Charleroi",
+    adresse: "Zoning industriel, Mont-sur-Marchienne",
     tel: "+32 (0)71 00 00 00",
     horaires: [
       { jours: "Lundi – Vendredi", heures: "7 h – 17 h" },
@@ -859,20 +1485,22 @@ export const depotsDetail: DepotDetail[] = [
       { jours: "Dimanche", heures: "Fermé" },
     ],
     intro:
-      "Le dépôt historique et le plus profond en stock. C'est ici que sont tenues les grandes longueurs et les sections lourdes, et c'est de là que partent les transferts vers les autres sites.",
+      "Le dépôt historique et le plus profond en stock. C'est ici que sont tenues les grandes longueurs et les sections lourdes, et c'est de là que partent les transferts vers les autres sites. C'est aussi le seul ouvert le samedi matin.",
     equipements: [
       "Scie à ruban jusqu'à 300 mm",
       "Cisaille 3 m",
       "Presse plieuse 3 m",
       "Oxycoupage",
+      "Perçage sur montage",
       "Chariot élévateur 5 t",
       "Parking poids lourd",
     ],
-    dessert: ["Charleroi", "Châtelet", "Fleurus", "Gerpinnes", "Courcelles", "Fontaine-l'Évêque"],
+    dessert: ["Charleroi", "Châtelet", "Fleurus", "Gerpinnes", "Courcelles", "Fontaine-l'Évêque", "Thuin"],
   },
   {
     slug: "la-louviere",
     ville: "La Louvière",
+    nomComplet: "La Louvière",
     pays: "Belgique",
     region: "Hainaut",
     adresse: "Zoning, La Louvière",
@@ -883,13 +1511,14 @@ export const depotsDetail: DepotDetail[] = [
       { jours: "Dimanche", heures: "Fermé" },
     ],
     intro:
-      "Le dépôt du Centre, orienté chantier et ferronnerie : tubes, cornières, plats et tôles courantes en stock permanent, avec la découpe sur place.",
+      "Le dépôt du Centre, orienté chantier et ferronnerie : tubes, cornières, plats et tôles courantes en stock permanent, avec la découpe sur place.",
     equipements: ["Scie à ruban", "Cisaille 2 m", "Perçage", "Chariot élévateur 3,5 t"],
-    dessert: ["La Louvière", "Binche", "Soignies", "Manage", "Morlanwelz", "Le Rœulx"],
+    dessert: ["La Louvière", "Binche", "Soignies", "Manage", "Morlanwelz", "Le Rœulx", "Écaussinnes"],
   },
   {
     slug: "tournai",
     ville: "Tournai",
+    nomComplet: "Tournai",
     pays: "Belgique",
     region: "Hainaut occidental",
     adresse: "Zoning, Tournai",
@@ -905,8 +1534,9 @@ export const depotsDetail: DepotDetail[] = [
     dessert: ["Tournai", "Ath", "Mouscron", "Leuze-en-Hainaut", "Péruwelz", "Lille (FR)"],
   },
   {
-    slug: "marville",
+    slug: "marville-france",
     ville: "Marville",
+    nomComplet: "Marville (France)",
     pays: "France",
     region: "Meuse (55)",
     adresse: "Zone d'activité, Marville",
@@ -924,3 +1554,132 @@ export const depotsDetail: DepotDetail[] = [
 ];
 
 export const depotBySlug = (slug: string) => depotsDetail.find((d) => d.slug === slug);
+
+/* ================================================================== */
+/*  AIDE — /aide/{slug}                                                */
+/* ================================================================== */
+
+export type PageAide = {
+  slug: string;
+  titre: string;
+  titreSeo: string;
+  descSeo: string;
+  chapo: string;
+  sections: Section[];
+};
+
+export const pagesAide: PageAide[] = [
+  {
+    slug: "livraison-retrait",
+    titre: "Livraison et retrait",
+    titreSeo: "Livraison et retrait en dépôt — comment ça marche",
+    descSeo:
+      "Retrait en dépôt préparé à l'avance, horaires, aide au chargement, transferts entre dépôts et transport chantier.",
+    chapo: "Comment récupérer votre commande, et ce qu'il faut prévoir.",
+    sections: [
+      {
+        titre: "Le retrait en dépôt",
+        blocs: [
+          { type: "p", texte: "Vous commandez par téléphone ou par e-mail, nous préparons, vous êtes prévenu dès que c'est prêt. Pour ce qui est en stock, c'est souvent le jour même." },
+          { type: "liste", items: [
+            "Présentez-vous avec un véhicule adapté à la longueur et à la masse commandées.",
+            "Le chargement se fait au chariot élévateur aux heures d'ouverture.",
+            "Prévenez-nous si une pièce dépasse 100 kg ou 6 mètres.",
+            "L'arrimage est à votre charge — prévoyez sangles et protections d'angle.",
+          ] },
+        ],
+      },
+      {
+        titre: "Entre dépôts",
+        blocs: [
+          { type: "p", texte: "Ce qui n'est pas sur place arrive par transfert interne, généralement sous 48 h. Vous choisissez le dépôt de retrait qui vous arrange, pas celui où la matière se trouve." },
+        ],
+      },
+      {
+        titre: "Transport chantier",
+        blocs: [
+          { type: "p", texte: "Pour les gros volumes et les longueurs de 12 m, un transport peut être organisé sur devis. Précisez les contraintes d'accès : hauteur sous porche, place de déchargement, présence d'un engin sur site." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "decoupe-et-tolerances",
+    titre: "Découpe et tolérances",
+    titreSeo: "Tolérances de découpe et de fabrication — ce qui est normal",
+    descSeo:
+      "Tolérances dimensionnelles et pondérales des produits sidérurgiques, tolérance de coupe à ± 2 mm, ébavurage et aspect de surface.",
+    chapo: "Ce qui relève de la tolérance normale, et ce qui est un défaut.",
+    sections: [
+      {
+        titre: "Tolérances de coupe",
+        blocs: [
+          { type: "tableau", entetes: ["Opération", "Tolérance"], lignes: [
+            ["Sciage de profilé", "± 2 mm"],
+            ["Cisaillage de tôle", "± 2 mm"],
+            ["Oxycoupage", "± 3 mm"],
+            ["Perçage — entraxe", "± 0,5 mm"],
+            ["Pliage — angle", "± 1°"],
+          ] },
+        ],
+      },
+      {
+        titre: "Tolérances de la matière",
+        blocs: [
+          { type: "p", texte: "Les produits sidérurgiques sont soumis aux tolérances dimensionnelles et pondérales des normes européennes. Une tôle annoncée en 3 mm peut mesurer 2,8 mm : c'est dans la norme, ce n'est pas un défaut de conformité." },
+          { type: "p", texte: "De même, le poids réel d'une barre peut s'écarter de quelques pour cent du poids théorique calculé. C'est pour cette raison que les prix affichés sur ce site sont indicatifs et que le devis fait foi." },
+        ],
+      },
+      {
+        titre: "Aspect de surface",
+        blocs: [
+          { type: "p", texte: "Les produits laminés à chaud présentent naturellement une calamine bleu-gris et une légère oxydation de surface. Ce n'est pas un défaut : c'est l'état de livraison normal. Si l'aspect compte, demandez du décapé, du laminé à froid, ou prévoyez un grenaillage." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "paiement",
+    titre: "Paiement",
+    titreSeo: "Moyens de paiement et compte professionnel",
+    descSeo:
+      "Paiement au retrait pour les particuliers, ouverture d'un compte professionnel, conditions et réserve de propriété.",
+    chapo: "Comment et quand on paie, selon que vous êtes particulier ou professionnel.",
+    sections: [
+      {
+        titre: "Particuliers",
+        blocs: [
+          { type: "p", texte: "Le paiement s'effectue au comptant lors du retrait, par carte ou en espèces dans les limites légales. Aucun acompte n'est demandé pour les produits en stock ; une commande spéciale ou une fabrication sur mesure peut en revanche faire l'objet d'un acompte, annoncé au devis." },
+        ],
+      },
+      {
+        titre: "Professionnels",
+        blocs: [
+          { type: "p", texte: "L'ouverture d'un compte professionnel donne accès à des conditions de paiement différées et à des tarifs négociés selon les volumes. La demande se fait en ligne et la réponse intervient sous quelques jours ouvrables." },
+          { type: "liste", items: [
+            "Numéro de TVA valide exigé.",
+            "Conditions de paiement définies à l'ouverture du compte.",
+            "Retards de paiement : intérêts et indemnité forfaitaire selon la loi sur le retard de paiement.",
+          ] },
+        ],
+      },
+      {
+        titre: "Réserve de propriété",
+        blocs: [
+          { type: "p", texte: "Les marchandises restent notre propriété jusqu'au paiement intégral du prix. Le transfert des risques s'opère en revanche dès le retrait." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "faq",
+    titre: "Questions fréquentes",
+    titreSeo: "Questions fréquentes — acheter de l'acier sans être du métier",
+    descSeo:
+      "Faut-il être professionnel ? Livrez-vous ? Combien de temps pour un devis ? Galvanisé ou inox ? Les réponses aux questions du comptoir.",
+    chapo: "Les questions qu'on nous pose tous les jours.",
+    sections: [],
+  },
+];
+
+export const aideBySlug = (slug: string) => pagesAide.find((p) => p.slug === slug);

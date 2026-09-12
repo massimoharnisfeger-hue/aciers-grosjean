@@ -4,7 +4,7 @@ import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/sections/CtaBand";
 import Faq from "@/components/sections/Faq";
 import { faq } from "@/lib/content";
-import { guides } from "@/lib/edito";
+import { articles } from "@/lib/edito";
 
 export const metadata: Metadata = {
   title: "Questions fréquentes — acheter de l'acier quand on n'est pas du métier",
@@ -48,10 +48,10 @@ export default function FaqPage() {
             complet.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {guides.slice(0, 4).map((g) => (
+            {articles.slice(0, 4).map((g) => (
               <Link
                 key={g.slug}
-                href={`/guides/${g.slug}`}
+                href={`/conseils/${g.slug}`}
                 className="group flex h-full flex-col rounded-2xl border border-brume bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_26px_60px_-34px_rgba(51,54,66,.5)]"
               >
                 <span className="font-mono text-xs text-soft">{g.lecture} min</span>
@@ -61,7 +61,7 @@ export default function FaqPage() {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/guides" className="btn-ghost">Tous les guides</Link>
+            <Link href="/conseils" className="btn-ghost">Tous les conseils</Link>
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ export const trust = [
   { valeur: "40 ans", label: "d'expertise acier" },
   { valeur: "4 dépôts", label: "Wallonie + France" },
   { valeur: "EN1090", label: "certifié Exc2" },
-  { valeur: "500+", label: "références en stock" },
+  { valeur: "495", label: "produits en stock" },
   { valeur: "24h", label: "devis sans engagement" },
 ];
 
@@ -24,7 +24,7 @@ export const arguments_ = [
   "Particuliers & pros",
   "Certifié EN1090-Exc2",
   "Entreprise familiale wallonne",
-  "500+ références en stock",
+  "495 produits en stock",
   "Sans engagement",
 ];
 
@@ -32,7 +32,7 @@ export const arguments_ = [
 export const chiffres = [
   { valeur: 40, suffixe: " ans", label: "d'expertise" },
   { valeur: 4, suffixe: "", label: "dépôts" },
-  { valeur: 500, suffixe: "+", label: "références en stock" },
+  { valeur: 495, suffixe: "", label: "produits en stock" },
   { valeur: 24, suffixe: "h", label: "pour votre devis" },
 ];
 
@@ -149,7 +149,7 @@ export const comparaison = {
   titre: "Pourquoi pas la grande surface ?",
   intro: "Le rayon métal d'un magasin de bricolage dépanne. Pour un projet qui doit tenir, la différence se voit — et se paie moins cher au mètre.",
   lignes: [
-    { critere: "Choix & épaisseurs", grosjean: "500+ références, toutes épaisseurs", autre: "Quelques formats standard" },
+    { critere: "Choix & épaisseurs", grosjean: "495 produits, toutes épaisseurs", autre: "Quelques formats standard" },
     { critere: "Découpe sur mesure", grosjean: "Oui, aux cotes exactes", autre: "Rarement, longueurs fixes" },
     { critere: "Conseil technique", grosjean: "40 ans d'expertise", autre: "Vendeur généraliste" },
     { critere: "Prix au mètre", grosjean: "Tarif négociant", autre: "Marge grande distribution" },

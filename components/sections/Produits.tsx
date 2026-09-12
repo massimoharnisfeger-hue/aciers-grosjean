@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Reveal from "@/components/fx/Reveal";
 import Tilt from "@/components/fx/Tilt";
-import { familles, totalRefs } from "@/lib/catalogue";
+import { univers, produitsSous, totalProduits } from "@/lib/catalogue";
 import { productArt, ArtPoutrelle } from "@/components/art/ProductArt";
 
 export default function Produits() {
@@ -16,19 +16,20 @@ export default function Produits() {
             Des produits <span className="mark-jaune">en stock</span>, prêts à partir
           </h2>
           <p className="mt-4 font-body text-lg text-soft">
-            {familles.length} familles, {totalRefs} références, un prix au mètre affiché sur
+            {univers.length} univers, {totalProduits} produits, un prix au mètre affiché sur
             chaque fiche. Tout se coupe aux cotes exactes, avec retrait le jour même.
           </p>
         </Reveal>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {familles.slice(0, 6).map((f, i) => {
+          {univers.map((f, i) => {
             const Art = productArt[f.art] ?? ArtPoutrelle;
+            const n = produitsSous(`/${f.slug}`).length;
             return (
               <Reveal key={f.slug} delay={(i % 3) * 0.08}>
                 <Tilt className="group h-full" intensity={7}>
                   <Link
-                    href={`/produits/${f.slug}`}
+                    href={`/${f.slug}`}
                     className="lift flex h-full flex-col overflow-hidden rounded-2xl border border-brume bg-white"
                   >
                     <div className="shine relative aspect-[4/3] overflow-hidden bg-nuage">
@@ -42,7 +43,7 @@ export default function Produits() {
                       <p className="mt-2 flex-1 font-body text-sm text-soft">{f.accroche}</p>
                       <div className="mt-5 flex items-center justify-between border-t border-brume pt-4">
                         <span className="font-mono text-xs text-soft">
-                          {f.refs.length} référence{f.refs.length > 1 ? "s" : ""}
+                          {n} produits
                         </span>
                         <span className="glow-jaune flex h-10 w-10 items-center justify-center rounded-full bg-jaune text-encre transition-transform duration-300 group-hover:rotate-45">
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

@@ -5,7 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 import { ArtStock } from "@/components/art/ProductArt";
 import { depotsDetail, depotBySlug, servicesDetail } from "@/lib/edito";
-import { familles } from "@/lib/catalogue";
+import { univers } from "@/lib/catalogue";
 
 type Params = { slug: string };
 
@@ -122,14 +122,13 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
             <Reveal delay={0.06}>
               <h2 className="h-display mt-14 text-2xl md:text-3xl">Ce qu'on y trouve</h2>
               <div className="mt-6 flex flex-wrap gap-3">
-                {familles.map((f) => (
+                {univers.map((x) => (
                   <Link
-                    key={f.slug}
-                    href={`/produits/${f.slug}`}
+                    key={x.slug}
+                    href={`/${x.slug}`}
                     className="rounded-full border border-brume px-4 py-2 font-body text-sm text-encre transition-colors hover:border-encre hover:bg-nuage"
                   >
-                    {f.nom}
-                    <span className="ml-2 font-mono text-xs text-soft">{f.refs.length}</span>
+                    {x.nom}
                   </Link>
                 ))}
               </div>

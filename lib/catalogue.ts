@@ -1,40 +1,47 @@
 /**
- * Catalogue Aciers Grosjean
- * ------------------------------------------------------------------
- * Calqué sur l'architecture réelle d'aciersgrosjean.be relevée à l'audit :
- *   · pages matière      (/inox, /aluminium)
- *   · familles produits  (poutrelles, cornières, poteaux de clôture, visserie…)
- *   · fiches au grain de la référence
- *     (/vis-autoforante-pour-acier-63x-100-tête-hexagonale-de-10mm)
+ * Catalogue Aciers Grosjean — GÉNÉRÉ, NE PAS ÉDITER À LA MAIN.
  *
- * Les URLs sont assainies : famille → référence, sans accent, sans identifiant CMS.
- * Les références sont les sections normalisées réellement tenues en stock par un
- * négoce acier (EN 10025 / 10219 / 10056). Poids calculés (densité 7,85 acier,
- * 8,00 inox, 2,70 aluminium) — prix indicatifs calibrés sur les tarifs publics
- * connus, à confirmer au devis (l'acier cote à la semaine).
+ * Source : AG_annexe_inventaire_URLs.csv (crawl réel du site, 665 URLs).
+ * Générateur : scripts/generer-catalogue.py
+ *
+ * L'arborescence et les slugs viennent de la colonne URL_cible_recommandee
+ * du crawl : ce sont les URLs propres définies par le blueprint (section 46),
+ * pas une invention. Les noms de produits sont ceux du site réel.
+ *
+ * Poids : formules normalisées (EN 10025/10056/10219), densité par matière.
+ * Prix : indicatifs, dérivés du poids, calibrés sur les tarifs publics connus.
  */
 
 export type Spec = { label: string; valeur: string };
 
-export type Ref = {
-  ref: string;
+export type Produit = {
+  slug: string;
   nom: string;
-  dims: string;
-  serie: string;
-  matiere: string;
-  kg: number;
+  categorie: string;
+  univers: string;
+  kg: number | null;
   unitePoids: string;
-  prix: number | null;
-  prixTexte: string;
   unite: string;
   uniteCourte: string;
-  stock: boolean;
-  resume: string;
+  prix: number | null;
   specs: Spec[];
-  usages: string[];
 };
 
-export type Famille = {
+export type Noeud = {
+  chemin: string;
+  segment: string;
+  /** Nom court, pour la navigation et le fil d'Ariane. */
+  nom: string;
+  /** Titre long affiché en H1 de la page. */
+  h1: string;
+  univers: string;
+  accroche: string;
+  titreSeo: string;
+  enfants: string[];
+  produits: string[];
+};
+
+export type Univers = {
   slug: string;
   nom: string;
   accroche: string;
@@ -42,51 +49,622 @@ export type Famille = {
   titreSeo: string;
   descSeo: string;
   art: string;
-  series: string[];
-  refs: Ref[];
+  enfants: string[];
 };
 
-export type Matiere = {
-  slug: string;
-  nom: string;
-  accroche: string;
-  intro: string;
-  titreSeo: string;
-  descSeo: string;
-  proprietes: Spec[];
-  usages: string[];
-  familles: string[];
-  aRetenir: { titre: string; texte: string }[];
+export const produits: Record<string, Produit> = {
+  "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 10mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 0.62, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "10 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "0,62 kg/m" }] },
+  "rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 12mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 0.89, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "12 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "0,89 kg/m" }] },
+  "rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 14mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 1.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "14 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "1,21 kg/m" }] },
+  "rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 16mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 1.58, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "16 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "1,58 kg/m" }] },
+  "rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 20mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 2.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "20 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "2,47 kg/m" }] },
+  "rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud": { slug: "rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud", nom: "Rond à béton de 8mm de diamètre en acier laminé à chaud", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", univers: "acier", kg: 0.39, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "8 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "0,39 kg/m" }] },
+  "rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid": { slug: "rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid", nom: "Rond à béton crénelé de 6mm de diamètre en acier laminé à froid", categorie: "/acier/armatures-beton/rond-a-beton-lamine-a-froid", univers: "acier", kg: 0.22, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Diamètre", valeur: "6 mm" }, { label: "Nuance", valeur: "B500B — haute adhérence" }, { label: "Surface", valeur: "Crénelée" }, { label: "Poids", valeur: "0,22 kg/m" }] },
+  "treillis-soude-100x100x10mm-5m-x-2m": { slug: "treillis-soude-100x100x10mm-5m-x-2m", nom: "Treillis soudé 100x100x10mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 123.4, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 141.9, specs: [{ label: "Maille", valeur: "100 × 100 mm" }, { label: "Fil", valeur: "10 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "12,34 kg/m²" }, { label: "Poids", valeur: "123,40 kg/panneau" }] },
+  "treillis-soude-100x100x5mm-5m-x-2m": { slug: "treillis-soude-100x100x5mm-5m-x-2m", nom: "Treillis soudé 100x100x5mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 30.9, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 35.5, specs: [{ label: "Maille", valeur: "100 × 100 mm" }, { label: "Fil", valeur: "5 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "3,08 kg/m²" }, { label: "Poids", valeur: "30,90 kg/panneau" }] },
+  "treillis-soude-100x100x8mm-5m-x-2m": { slug: "treillis-soude-100x100x8mm-5m-x-2m", nom: "Treillis soudé 100x100x8mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 79.0, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 90.8, specs: [{ label: "Maille", valeur: "100 × 100 mm" }, { label: "Fil", valeur: "8 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "7,90 kg/m²" }, { label: "Poids", valeur: "79,00 kg/panneau" }] },
+  "treillis-soude-150x150x10mm-5m-x-2m": { slug: "treillis-soude-150x150x10mm-5m-x-2m", nom: "Treillis soudé 150x150x10mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 82.3, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 94.6, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "10 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "8,23 kg/m²" }, { label: "Poids", valeur: "82,30 kg/panneau" }] },
+  "treillis-soude-150x150x12mm-5m-x-2m": { slug: "treillis-soude-150x150x12mm-5m-x-2m", nom: "Treillis soudé 150x150x12mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 118.5, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 136.3, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "12 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "11,85 kg/m²" }, { label: "Poids", valeur: "118,50 kg/panneau" }] },
+  "treillis-soude-150x150x5mm-2m-x-1m": { slug: "treillis-soude-150x150x5mm-2m-x-1m", nom: "Treillis soudé 150x150x5mm 2m x 1m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 4.1, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 4.7, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "5 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "2 × 1 m" }, { label: "Masse surfacique", valeur: "2,06 kg/m²" }, { label: "Poids", valeur: "4,10 kg/panneau" }] },
+  "treillis-soude-150x150x5mm-3m-x-2m": { slug: "treillis-soude-150x150x5mm-3m-x-2m", nom: "Treillis soudé 150x150x5mm 3m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 12.3, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 14.15, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "5 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "3 × 2 m" }, { label: "Masse surfacique", valeur: "2,06 kg/m²" }, { label: "Poids", valeur: "12,30 kg/panneau" }] },
+  "treillis-soude-150x150x5mm-5m-x-2m": { slug: "treillis-soude-150x150x5mm-5m-x-2m", nom: "Treillis soudé 150x150x5mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 20.6, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 23.7, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "5 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "2,06 kg/m²" }, { label: "Poids", valeur: "20,60 kg/panneau" }] },
+  "treillis-soude-150x150x6mm-3m-x-2m": { slug: "treillis-soude-150x150x6mm-3m-x-2m", nom: "Treillis soudé 150x150x6mm 3m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 17.8, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 20.5, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "6 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "3 × 2 m" }, { label: "Masse surfacique", valeur: "2,96 kg/m²" }, { label: "Poids", valeur: "17,80 kg/panneau" }] },
+  "treillis-soude-150x150x6mm-5m-x-2m": { slug: "treillis-soude-150x150x6mm-5m-x-2m", nom: "Treillis soudé 150x150x6mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 29.6, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 34.0, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "6 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "2,96 kg/m²" }, { label: "Poids", valeur: "29,60 kg/panneau" }] },
+  "treillis-soude-150x150x8mm-3m-x-2m": { slug: "treillis-soude-150x150x8mm-3m-x-2m", nom: "Treillis soudé 150x150x8mm 3m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 31.6, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 36.3, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "8 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "3 × 2 m" }, { label: "Masse surfacique", valeur: "5,27 kg/m²" }, { label: "Poids", valeur: "31,60 kg/panneau" }] },
+  "treillis-soude-150x150x8mm-5m-x-2m": { slug: "treillis-soude-150x150x8mm-5m-x-2m", nom: "Treillis soudé 150x150x8mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 52.7, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 60.6, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "8 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "5,27 kg/m²" }, { label: "Poids", valeur: "52,70 kg/panneau" }] },
+  "treillis-soude-50x50x4mm-3m-x-2m": { slug: "treillis-soude-50x50x4mm-3m-x-2m", nom: "Treillis soudé 50x50x4mm 3m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 23.7, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 27.3, specs: [{ label: "Maille", valeur: "50 × 50 mm" }, { label: "Fil", valeur: "4 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "3 × 2 m" }, { label: "Masse surfacique", valeur: "3,95 kg/m²" }, { label: "Poids", valeur: "23,70 kg/panneau" }] },
+  "treillis-soude-50x50x4mm-5m-x-2m": { slug: "treillis-soude-50x50x4mm-5m-x-2m", nom: "Treillis soudé 50x50x4mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 39.5, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 45.4, specs: [{ label: "Maille", valeur: "50 × 50 mm" }, { label: "Fil", valeur: "4 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "3,95 kg/m²" }, { label: "Poids", valeur: "39,50 kg/panneau" }] },
+  "treillis-soude-75x75x5mm-5m-x-2m": { slug: "treillis-soude-75x75x5mm-5m-x-2m", nom: "Treillis soudé 75x75x5mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 41.1, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 47.3, specs: [{ label: "Maille", valeur: "75 × 75 mm" }, { label: "Fil", valeur: "5 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "4,11 kg/m²" }, { label: "Poids", valeur: "41,10 kg/panneau" }] },
+  "treillis-soude-galvanise-50x50x4mm-3m-x-2m": { slug: "treillis-soude-galvanise-50x50x4mm-3m-x-2m", nom: "Treillis soudé galvanisé 50x50x4mm 3m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 23.7, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 27.3, specs: [{ label: "Maille", valeur: "50 × 50 mm" }, { label: "Fil", valeur: "4 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "3 × 2 m" }, { label: "Masse surfacique", valeur: "3,95 kg/m²" }, { label: "Poids", valeur: "23,70 kg/panneau" }] },
+  "treillis-soude-galvanise-50x50x4mm-5m-x-2m": { slug: "treillis-soude-galvanise-50x50x4mm-5m-x-2m", nom: "Treillis soudé galvanisé 50x50x4mm 5m x 2m", categorie: "/acier/armatures-beton/treillis-soudes", univers: "acier", kg: 39.5, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 45.4, specs: [{ label: "Maille", valeur: "50 × 50 mm" }, { label: "Fil", valeur: "4 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5 × 2 m" }, { label: "Masse surfacique", valeur: "3,95 kg/m²" }, { label: "Poids", valeur: "39,50 kg/panneau" }] },
+  "treillis-soude-avec-depassants-150x150x10mm-5-95m-x-2-35m": { slug: "treillis-soude-avec-depassants-150x150x10mm-5-95m-x-2-35m", nom: "Treillis soudé avec dépassants 150x150x10mm 5,95m x 2,35m", categorie: "/acier/armatures-beton/treillis-soudes-depassants", univers: "acier", kg: 115.0, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 132.2, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "10 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5,95 × 2,35 m" }, { label: "Masse surfacique", valeur: "8,23 kg/m²" }, { label: "Poids", valeur: "115,00 kg/panneau" }] },
+  "treillis-soude-avec-depassants-150x150x12mm-5-95m-x-2-35m": { slug: "treillis-soude-avec-depassants-150x150x12mm-5-95m-x-2-35m", nom: "Treillis soudé avec dépassants 150x150x12mm 5,95m x 2,35m", categorie: "/acier/armatures-beton/treillis-soudes-depassants", univers: "acier", kg: 165.6, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 190.4, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "12 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5,95 × 2,35 m" }, { label: "Masse surfacique", valeur: "11,85 kg/m²" }, { label: "Poids", valeur: "165,60 kg/panneau" }] },
+  "treillis-soude-avec-depassants-150x150x6mm-5-95m-x-2-35m": { slug: "treillis-soude-avec-depassants-150x150x6mm-5-95m-x-2-35m", nom: "Treillis soudé avec dépassants 150x150x6mm 5,95m x 2,35m", categorie: "/acier/armatures-beton/treillis-soudes-depassants", univers: "acier", kg: 41.4, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 47.6, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "6 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5,95 × 2,35 m" }, { label: "Masse surfacique", valeur: "2,96 kg/m²" }, { label: "Poids", valeur: "41,40 kg/panneau" }] },
+  "treillis-soude-avec-depassants-150x150x8mm-5-95m-x-2-35m": { slug: "treillis-soude-avec-depassants-150x150x8mm-5-95m-x-2-35m", nom: "Treillis soudé avec dépassants 150x150x8mm 5,95m x 2,35m", categorie: "/acier/armatures-beton/treillis-soudes-depassants", univers: "acier", kg: 73.6, unitePoids: "kg/panneau", unite: "au panneau", uniteCourte: "€/pce", prix: 84.6, specs: [{ label: "Maille", valeur: "150 × 150 mm" }, { label: "Fil", valeur: "8 mm" }, { label: "Nuance", valeur: "B500A" }, { label: "Panneau", valeur: "5,95 × 2,35 m" }, { label: "Masse surfacique", valeur: "5,27 kg/m²" }, { label: "Poids", valeur: "73,60 kg/panneau" }] },
+  "poutrelle-hea-100-en-acier": { slug: "poutrelle-hea-100-en-acier", nom: "Poutrelle HEA 100 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 16.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 17.55, specs: [{ label: "Hauteur (h)", valeur: "96 mm" }, { label: "Largeur d'aile (b)", valeur: "100 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "16,70 kg/m" }] },
+  "poutrelle-hea-120-en-acier": { slug: "poutrelle-hea-120-en-acier", nom: "Poutrelle HEA 120 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 19.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 20.9, specs: [{ label: "Hauteur (h)", valeur: "114 mm" }, { label: "Largeur d'aile (b)", valeur: "120 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "19,90 kg/m" }] },
+  "poutrelle-hea-140-en-acier": { slug: "poutrelle-hea-140-en-acier", nom: "Poutrelle HEA 140 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 24.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 25.9, specs: [{ label: "Hauteur (h)", valeur: "133 mm" }, { label: "Largeur d'aile (b)", valeur: "140 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "24,70 kg/m" }] },
+  "poutrelle-hea-160-en-acier": { slug: "poutrelle-hea-160-en-acier", nom: "Poutrelle HEA 160 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 30.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 31.9, specs: [{ label: "Hauteur (h)", valeur: "152 mm" }, { label: "Largeur d'aile (b)", valeur: "160 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "9 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "30,40 kg/m" }] },
+  "poutrelle-hea-180-en-acier": { slug: "poutrelle-hea-180-en-acier", nom: "Poutrelle HEA 180 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 35.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 37.3, specs: [{ label: "Hauteur (h)", valeur: "171 mm" }, { label: "Largeur d'aile (b)", valeur: "180 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "9,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "35,50 kg/m" }] },
+  "poutrelle-hea-200-en-acier": { slug: "poutrelle-hea-200-en-acier", nom: "Poutrelle HEA 200 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 42.3, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 44.4, specs: [{ label: "Hauteur (h)", valeur: "190 mm" }, { label: "Largeur d'aile (b)", valeur: "200 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "42,30 kg/m" }] },
+  "poutrelle-hea-220-en-acier": { slug: "poutrelle-hea-220-en-acier", nom: "Poutrelle HEA 220 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 50.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 53.0, specs: [{ label: "Hauteur (h)", valeur: "210 mm" }, { label: "Largeur d'aile (b)", valeur: "220 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "11 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "50,50 kg/m" }] },
+  "poutrelle-hea-240-en-acier": { slug: "poutrelle-hea-240-en-acier", nom: "Poutrelle HEA 240 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 60.3, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 63.3, specs: [{ label: "Hauteur (h)", valeur: "230 mm" }, { label: "Largeur d'aile (b)", valeur: "240 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "12 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "60,30 kg/m" }] },
+  "poutrelle-hea-260-en-acier": { slug: "poutrelle-hea-260-en-acier", nom: "Poutrelle HEA 260 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 68.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 71.6, specs: [{ label: "Hauteur (h)", valeur: "250 mm" }, { label: "Largeur d'aile (b)", valeur: "260 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "12,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "68,20 kg/m" }] },
+  "poutrelle-hea-280-en-acier": { slug: "poutrelle-hea-280-en-acier", nom: "Poutrelle HEA 280 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 76.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 80.2, specs: [{ label: "Hauteur (h)", valeur: "270 mm" }, { label: "Largeur d'aile (b)", valeur: "280 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "13 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "76,40 kg/m" }] },
+  "poutrelle-hea-300-en-acier": { slug: "poutrelle-hea-300-en-acier", nom: "Poutrelle HEA 300 en acier", categorie: "/acier/poutrelles/hea", univers: "acier", kg: 88.3, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 92.7, specs: [{ label: "Hauteur (h)", valeur: "290 mm" }, { label: "Largeur d'aile (b)", valeur: "300 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "14 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "88,30 kg/m" }] },
+  "poutrelle-heb-100-en-acier": { slug: "poutrelle-heb-100-en-acier", nom: "Poutrelle HEB 100 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 20.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 21.4, specs: [{ label: "Hauteur (h)", valeur: "100 mm" }, { label: "Largeur d'aile (b)", valeur: "100 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "20,40 kg/m" }] },
+  "poutrelle-heb-120-en-acier": { slug: "poutrelle-heb-120-en-acier", nom: "Poutrelle HEB 120 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 26.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 28.0, specs: [{ label: "Hauteur (h)", valeur: "120 mm" }, { label: "Largeur d'aile (b)", valeur: "120 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "11 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "26,70 kg/m" }] },
+  "poutrelle-heb-140-en-acier": { slug: "poutrelle-heb-140-en-acier", nom: "Poutrelle HEB 140 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 33.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 35.4, specs: [{ label: "Hauteur (h)", valeur: "140 mm" }, { label: "Largeur d'aile (b)", valeur: "140 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "12 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "33,70 kg/m" }] },
+  "poutrelle-heb-160-en-acier": { slug: "poutrelle-heb-160-en-acier", nom: "Poutrelle HEB 160 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 42.6, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 44.7, specs: [{ label: "Hauteur (h)", valeur: "160 mm" }, { label: "Largeur d'aile (b)", valeur: "160 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "13 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "42,60 kg/m" }] },
+  "poutrelle-heb-180-en-acier": { slug: "poutrelle-heb-180-en-acier", nom: "Poutrelle HEB 180 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 51.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 53.8, specs: [{ label: "Hauteur (h)", valeur: "180 mm" }, { label: "Largeur d'aile (b)", valeur: "180 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "14 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "51,20 kg/m" }] },
+  "poutrelle-heb-200-en-acier": { slug: "poutrelle-heb-200-en-acier", nom: "Poutrelle HEB 200 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 61.3, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 64.4, specs: [{ label: "Hauteur (h)", valeur: "200 mm" }, { label: "Largeur d'aile (b)", valeur: "200 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "9 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "15 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "61,30 kg/m" }] },
+  "poutrelle-heb-220-en-acier": { slug: "poutrelle-heb-220-en-acier", nom: "Poutrelle HEB 220 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 71.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 75.1, specs: [{ label: "Hauteur (h)", valeur: "220 mm" }, { label: "Largeur d'aile (b)", valeur: "220 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "9,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "16 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "71,50 kg/m" }] },
+  "poutrelle-heb-240-en-acier": { slug: "poutrelle-heb-240-en-acier", nom: "Poutrelle HEB 240 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 83.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 87.4, specs: [{ label: "Hauteur (h)", valeur: "240 mm" }, { label: "Largeur d'aile (b)", valeur: "240 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "17 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "83,20 kg/m" }] },
+  "poutrelle-heb-260-en-acier": { slug: "poutrelle-heb-260-en-acier", nom: "Poutrelle HEB 260 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 93.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 97.6, specs: [{ label: "Hauteur (h)", valeur: "260 mm" }, { label: "Largeur d'aile (b)", valeur: "260 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "17,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "93,00 kg/m" }] },
+  "poutrelle-heb-280-en-acier": { slug: "poutrelle-heb-280-en-acier", nom: "Poutrelle HEB 280 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 103.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 108.2, specs: [{ label: "Hauteur (h)", valeur: "280 mm" }, { label: "Largeur d'aile (b)", valeur: "280 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "18 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "103,00 kg/m" }] },
+  "poutrelle-heb-300-en-acier": { slug: "poutrelle-heb-300-en-acier", nom: "Poutrelle HEB 300 en acier", categorie: "/acier/poutrelles/heb", univers: "acier", kg: 117.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 122.8, specs: [{ label: "Hauteur (h)", valeur: "300 mm" }, { label: "Largeur d'aile (b)", valeur: "300 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "11 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "19 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "117,00 kg/m" }] },
+  "poutrelle-ipe-100-en-acier": { slug: "poutrelle-ipe-100-en-acier", nom: "Poutrelle IPE 100 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 8.1, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.5, specs: [{ label: "Hauteur (h)", valeur: "100 mm" }, { label: "Largeur d'aile (b)", valeur: "55 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "4,1 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "5,7 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "8,10 kg/m" }] },
+  "poutrelle-ipe-120-en-acier": { slug: "poutrelle-ipe-120-en-acier", nom: "Poutrelle IPE 120 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 10.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.9, specs: [{ label: "Hauteur (h)", valeur: "120 mm" }, { label: "Largeur d'aile (b)", valeur: "64 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "4,4 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "6,3 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "10,40 kg/m" }] },
+  "poutrelle-ipe-140-en-acier": { slug: "poutrelle-ipe-140-en-acier", nom: "Poutrelle IPE 140 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 12.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 13.55, specs: [{ label: "Hauteur (h)", valeur: "140 mm" }, { label: "Largeur d'aile (b)", valeur: "73 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "4,7 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "6,9 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "12,90 kg/m" }] },
+  "poutrelle-ipe-160-en-acier": { slug: "poutrelle-ipe-160-en-acier", nom: "Poutrelle IPE 160 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 15.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 16.6, specs: [{ label: "Hauteur (h)", valeur: "160 mm" }, { label: "Largeur d'aile (b)", valeur: "82 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "7,4 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "15,80 kg/m" }] },
+  "poutrelle-ipe-180-en-acier": { slug: "poutrelle-ipe-180-en-acier", nom: "Poutrelle IPE 180 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 18.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 19.75, specs: [{ label: "Hauteur (h)", valeur: "180 mm" }, { label: "Largeur d'aile (b)", valeur: "91 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5,3 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "18,80 kg/m" }] },
+  "poutrelle-ipe-200-en-acier": { slug: "poutrelle-ipe-200-en-acier", nom: "Poutrelle IPE 200 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 22.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 23.5, specs: [{ label: "Hauteur (h)", valeur: "200 mm" }, { label: "Largeur d'aile (b)", valeur: "100 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5,6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "22,40 kg/m" }] },
+  "poutrelle-ipe-220-en-acier": { slug: "poutrelle-ipe-220-en-acier", nom: "Poutrelle IPE 220 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 26.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 27.5, specs: [{ label: "Hauteur (h)", valeur: "220 mm" }, { label: "Largeur d'aile (b)", valeur: "110 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "5,9 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "9,2 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "26,20 kg/m" }] },
+  "poutrelle-ipe-240-en-acier": { slug: "poutrelle-ipe-240-en-acier", nom: "Poutrelle IPE 240 en acier", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 30.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 32.2, specs: [{ label: "Hauteur (h)", valeur: "240 mm" }, { label: "Largeur d'aile (b)", valeur: "120 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6,2 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "9,8 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "30,70 kg/m" }] },
+  "poutrelle-ipe-270": { slug: "poutrelle-ipe-270", nom: "Poutrelle IPE 270", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 36.1, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 37.9, specs: [{ label: "Hauteur (h)", valeur: "270 mm" }, { label: "Largeur d'aile (b)", valeur: "135 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6,6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10,2 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "36,10 kg/m" }] },
+  "poutrelle-ipe-300": { slug: "poutrelle-ipe-300", nom: "Poutrelle IPE 300", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 42.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 44.3, specs: [{ label: "Hauteur (h)", valeur: "300 mm" }, { label: "Largeur d'aile (b)", valeur: "150 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7,1 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10,7 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "42,20 kg/m" }] },
+  "poutrelle-ipe-330": { slug: "poutrelle-ipe-330", nom: "Poutrelle IPE 330", categorie: "/acier/poutrelles/ipe", univers: "acier", kg: 49.1, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 51.6, specs: [{ label: "Hauteur (h)", valeur: "330 mm" }, { label: "Largeur d'aile (b)", valeur: "160 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "11,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "49,10 kg/m" }] },
+  "poutrelle-upn-100-en-acier": { slug: "poutrelle-upn-100-en-acier", nom: "Poutrelle UPN 100 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 10.6, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.15, specs: [{ label: "Hauteur (h)", valeur: "100 mm" }, { label: "Largeur d'aile (b)", valeur: "50 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "10,60 kg/m" }] },
+  "poutrelle-upn-120-en-acier": { slug: "poutrelle-upn-120-en-acier", nom: "Poutrelle UPN 120 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 13.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 14.05, specs: [{ label: "Hauteur (h)", valeur: "120 mm" }, { label: "Largeur d'aile (b)", valeur: "55 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "9 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "13,40 kg/m" }] },
+  "poutrelle-upn-140-en-acier": { slug: "poutrelle-upn-140-en-acier", nom: "Poutrelle UPN 140 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 16.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 16.8, specs: [{ label: "Hauteur (h)", valeur: "140 mm" }, { label: "Largeur d'aile (b)", valeur: "60 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "16,00 kg/m" }] },
+  "poutrelle-upn-160-en-acier": { slug: "poutrelle-upn-160-en-acier", nom: "Poutrelle UPN 160 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 18.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 19.75, specs: [{ label: "Hauteur (h)", valeur: "160 mm" }, { label: "Largeur d'aile (b)", valeur: "65 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "7,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "10,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "18,80 kg/m" }] },
+  "poutrelle-upn-180-en-acier": { slug: "poutrelle-upn-180-en-acier", nom: "Poutrelle UPN 180 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 22.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 23.1, specs: [{ label: "Hauteur (h)", valeur: "180 mm" }, { label: "Largeur d'aile (b)", valeur: "70 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "11 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "22,00 kg/m" }] },
+  "poutrelle-upn-200-en-acier": { slug: "poutrelle-upn-200-en-acier", nom: "Poutrelle UPN 200 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 25.3, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 26.6, specs: [{ label: "Hauteur (h)", valeur: "200 mm" }, { label: "Largeur d'aile (b)", valeur: "75 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "8,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "11,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "25,30 kg/m" }] },
+  "poutrelle-upn-220-en-acier": { slug: "poutrelle-upn-220-en-acier", nom: "Poutrelle UPN 220 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 29.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 30.9, specs: [{ label: "Hauteur (h)", valeur: "220 mm" }, { label: "Largeur d'aile (b)", valeur: "80 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "9 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "12,5 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "29,40 kg/m" }] },
+  "poutrelle-upn-240-en-acier": { slug: "poutrelle-upn-240-en-acier", nom: "Poutrelle UPN 240 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 33.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 34.9, specs: [{ label: "Hauteur (h)", valeur: "240 mm" }, { label: "Largeur d'aile (b)", valeur: "85 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "9,5 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "13 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "33,20 kg/m" }] },
+  "poutrelle-upn-260-en-acier": { slug: "poutrelle-upn-260-en-acier", nom: "Poutrelle UPN 260 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 37.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 39.8, specs: [{ label: "Hauteur (h)", valeur: "260 mm" }, { label: "Largeur d'aile (b)", valeur: "90 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "14 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "37,90 kg/m" }] },
+  "poutrelle-upn-280-en-acier": { slug: "poutrelle-upn-280-en-acier", nom: "Poutrelle UPN 280 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 41.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 43.9, specs: [{ label: "Hauteur (h)", valeur: "280 mm" }, { label: "Largeur d'aile (b)", valeur: "95 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "15 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "41,80 kg/m" }] },
+  "poutrelle-upn-300-en-acier": { slug: "poutrelle-upn-300-en-acier", nom: "Poutrelle UPN 300 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 46.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 48.5, specs: [{ label: "Hauteur (h)", valeur: "300 mm" }, { label: "Largeur d'aile (b)", valeur: "100 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "10 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "16 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "46,20 kg/m" }] },
+  "poutrelle-upn-80-en-acier": { slug: "poutrelle-upn-80-en-acier", nom: "Poutrelle UPN 80 en acier", categorie: "/acier/poutrelles/upn", univers: "acier", kg: 8.64, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.05, specs: [{ label: "Hauteur (h)", valeur: "80 mm" }, { label: "Largeur d'aile (b)", valeur: "45 mm" }, { label: "Épaisseur d'âme (tw)", valeur: "6 mm" }, { label: "Épaisseur d'aile (tf)", valeur: "8 mm" }, { label: "Nuance", valeur: "S235JR — EN 10025-2" }, { label: "Procédé", valeur: "Laminé à chaud" }, { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" }, { label: "Poids", valeur: "8,64 kg/m" }] },
+  "carre-plein-de-10x10mm-en-acier": { slug: "carre-plein-de-10x10mm-en-acier", nom: "Carré plein de 10x10mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 0.79, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Section", valeur: "10 × 10 mm" }, { label: "Poids", valeur: "0,79 kg/m" }] },
+  "carre-plein-de-12x12mm-en-acier": { slug: "carre-plein-de-12x12mm-en-acier", nom: "Carré plein de 12x12mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 1.13, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Section", valeur: "12 × 12 mm" }, { label: "Poids", valeur: "1,13 kg/m" }] },
+  "carre-plein-de-14x14mm-en-acier": { slug: "carre-plein-de-14x14mm-en-acier", nom: "Carré plein de 14x14mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 1.54, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.9, specs: [{ label: "Section", valeur: "14 × 14 mm" }, { label: "Poids", valeur: "1,54 kg/m" }] },
+  "carre-plein-de-16x16mm-en-acier": { slug: "carre-plein-de-16x16mm-en-acier", nom: "Carré plein de 16x16mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 2.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.5, specs: [{ label: "Section", valeur: "16 × 16 mm" }, { label: "Poids", valeur: "2,01 kg/m" }] },
+  "carre-plein-de-20x20mm-en-acier": { slug: "carre-plein-de-20x20mm-en-acier", nom: "Carré plein de 20x20mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 3.14, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.9, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Poids", valeur: "3,14 kg/m" }] },
+  "carre-plein-de-6x6mm-en-acier": { slug: "carre-plein-de-6x6mm-en-acier", nom: "Carré plein de 6x6mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 0.28, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Section", valeur: "6 × 6 mm" }, { label: "Poids", valeur: "0,28 kg/m" }] },
+  "carre-plein-de-8x8mm-en-acier": { slug: "carre-plein-de-8x8mm-en-acier", nom: "Carré plein de 8x8mm en acier", categorie: "/acier/profiles/carre-plein", univers: "acier", kg: 0.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Section", valeur: "8 × 8 mm" }, { label: "Poids", valeur: "0,50 kg/m" }] },
+  "corniere-egale-100x100x10mm-acier-lac": { slug: "corniere-egale-100x100x10mm-acier-lac", nom: "Cornière égale 100x100x10mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 15.11, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 17.8, specs: [{ label: "Ailes", valeur: "100 × 100 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "15,11 kg/m" }] },
+  "corniere-egale-20x20x3mm-acier-lac": { slug: "corniere-egale-20x20x3mm-acier-lac", nom: "Cornière égale 20x20x3mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 0.88, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.6, specs: [{ label: "Ailes", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,88 kg/m" }] },
+  "corniere-egale-25x25x3mm-acier-lac": { slug: "corniere-egale-25x25x3mm-acier-lac", nom: "Cornière égale 25x25x3mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 1.12, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.6, specs: [{ label: "Ailes", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "1,12 kg/m" }] },
+  "corniere-egale-30x30x3mm-acier-lac": { slug: "corniere-egale-30x30x3mm-acier-lac", nom: "Cornière égale 30x30x3mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 1.36, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.6, specs: [{ label: "Ailes", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "1,36 kg/m" }] },
+  "corniere-egale-40x40x3mm-acier-lac": { slug: "corniere-egale-40x40x3mm-acier-lac", nom: "Cornière égale 40x40x3mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 1.84, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.15, specs: [{ label: "Ailes", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "1,84 kg/m" }] },
+  "corniere-egale-40x40x4mm-acier-lac": { slug: "corniere-egale-40x40x4mm-acier-lac", nom: "Cornière égale 40x40x4mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 2.42, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.85, specs: [{ label: "Ailes", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "2,42 kg/m" }] },
+  "corniere-egale-50x50x3mm-acier-lac": { slug: "corniere-egale-50x50x3mm-acier-lac", nom: "Cornière égale 50x50x3mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 2.31, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.7, specs: [{ label: "Ailes", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "2,31 kg/m" }] },
+  "corniere-egale-50x50x5mm-acier-lac": { slug: "corniere-egale-50x50x5mm-acier-lac", nom: "Cornière égale 50x50x5mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 3.78, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.45, specs: [{ label: "Ailes", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "3,78 kg/m" }] },
+  "corniere-egale-60x60x6mm-acier-lac": { slug: "corniere-egale-60x60x6mm-acier-lac", nom: "Cornière égale 60x60x6mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 5.44, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.4, specs: [{ label: "Ailes", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "5,44 kg/m" }] },
+  "corniere-egale-80x80x8mm-acier-lac": { slug: "corniere-egale-80x80x8mm-acier-lac", nom: "Cornière égale 80x80x8mm Acier LAC", categorie: "/acier/profiles/corniere-egale", univers: "acier", kg: 9.67, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.4, specs: [{ label: "Ailes", valeur: "80 × 80 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "9,67 kg/m" }] },
+  "corniere-inegale-100x50x6mm-acier-lac": { slug: "corniere-inegale-100x50x6mm-acier-lac", nom: "Cornière inégale 100x50x6mm Acier LAC", categorie: "/acier/profiles/corniere-inegale", univers: "acier", kg: 6.87, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.1, specs: [{ label: "Ailes", valeur: "100 × 50 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "6,87 kg/m" }] },
+  "corniere-inegale-150x100x10mm-acier-lac": { slug: "corniere-inegale-150x100x10mm-acier-lac", nom: "Cornière inégale 150x100x10mm Acier LAC", categorie: "/acier/profiles/corniere-inegale", univers: "acier", kg: 19.08, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 22.5, specs: [{ label: "Ailes", valeur: "150 × 100 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "19,08 kg/m" }] },
+  "corniere-inegale-200x100x10mm-acier-lac": { slug: "corniere-inegale-200x100x10mm-acier-lac", nom: "Cornière inégale 200x100x10mm Acier LAC", categorie: "/acier/profiles/corniere-inegale", univers: "acier", kg: 23.06, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 27.2, specs: [{ label: "Ailes", valeur: "200 × 100 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "23,06 kg/m" }] },
+  "corniere-inegale-60x40x5mm-acier-lac": { slug: "corniere-inegale-60x40x5mm-acier-lac", nom: "Cornière inégale 60x40x5mm Acier LAC", categorie: "/acier/profiles/corniere-inegale", univers: "acier", kg: 3.78, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.45, specs: [{ label: "Ailes", valeur: "60 × 40 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "3,78 kg/m" }] },
+  "corniere-inegale-70x50x6mm-acier-lac": { slug: "corniere-inegale-70x50x6mm-acier-lac", nom: "Cornière inégale 70x50x6mm Acier LAC", categorie: "/acier/profiles/corniere-inegale", univers: "acier", kg: 5.44, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.4, specs: [{ label: "Ailes", valeur: "70 × 50 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "5,44 kg/m" }] },
+  "fer-en-t-20x3mm-en-acier-lamine-a-chaud": { slug: "fer-en-t-20x3mm-en-acier-lamine-a-chaud", nom: "Fer en T 20x3mm en acier laminé à chaud", categorie: "/acier/profiles/fer-t", univers: "acier", kg: 0.88, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,88 kg/m" }] },
+  "fer-en-t-30x4mm-en-acier-lamine-a-chaud": { slug: "fer-en-t-30x4mm-en-acier-lamine-a-chaud", nom: "Fer en T 30x4mm en acier laminé à chaud", categorie: "/acier/profiles/fer-t", univers: "acier", kg: 1.78, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "1,78 kg/m" }] },
+  "fer-en-t-40x5mm-en-acier-lamine-a-chaud": { slug: "fer-en-t-40x5mm-en-acier-lamine-a-chaud", nom: "Fer en T 40x5mm en acier laminé à chaud", categorie: "/acier/profiles/fer-t", univers: "acier", kg: 2.98, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.7, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "2,98 kg/m" }] },
+  "fer-en-t-50x6mm-en-acier-lamine-a-chaud": { slug: "fer-en-t-50x6mm-en-acier-lamine-a-chaud", nom: "Fer en T 50x6mm en acier laminé à chaud", categorie: "/acier/profiles/fer-t", univers: "acier", kg: 4.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.6, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "4,48 kg/m" }] },
+  "fer-en-t-60x7mm-en-acier-lamine-a-chaud": { slug: "fer-en-t-60x7mm-en-acier-lamine-a-chaud", nom: "Fer en T 60x7mm en acier laminé à chaud", categorie: "/acier/profiles/fer-t", univers: "acier", kg: 6.29, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.85, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "7 mm" }, { label: "Poids", valeur: "6,29 kg/m" }] },
+  "large-plat-180x10mm-en-acier-lamine-a-chaud": { slug: "large-plat-180x10mm-en-acier-lamine-a-chaud", nom: "Large plat 180x10mm en acier laminé à chaud", categorie: "/acier/profiles/large-plat", univers: "acier", kg: 14.13, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 18.35, specs: [{ label: "Largeur", valeur: "180 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "14,13 kg/m" }] },
+  "large-plat-200x10mm-en-acier-lamine-a-chaud": { slug: "large-plat-200x10mm-en-acier-lamine-a-chaud", nom: "Large plat 200x10mm en acier laminé à chaud", categorie: "/acier/profiles/large-plat", univers: "acier", kg: 15.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 20.4, specs: [{ label: "Largeur", valeur: "200 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "15,70 kg/m" }] },
+  "large-plat-en-acier-lamine-a-chaud-160x10mm": { slug: "large-plat-en-acier-lamine-a-chaud-160x10mm", nom: "Large plat en acier laminé à chaud 160x10mm", categorie: "/acier/profiles/large-plat", univers: "acier", kg: 12.56, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 16.35, specs: [{ label: "Largeur", valeur: "160 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "12,56 kg/m" }] },
+  "plat-100x10mm-en-acier-lamine-a-chaud": { slug: "plat-100x10mm-en-acier-lamine-a-chaud", nom: "Plat 100x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 7.85, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.2, specs: [{ label: "Largeur", valeur: "100 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "7,85 kg/m" }] },
+  "plat-100x5mm-en-acier-lamine-a-chaud": { slug: "plat-100x5mm-en-acier-lamine-a-chaud", nom: "Plat 100x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 3.92, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.1, specs: [{ label: "Largeur", valeur: "100 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "3,92 kg/m" }] },
+  "plat-100x8mm-en-acier-lamine-a-chaud": { slug: "plat-100x8mm-en-acier-lamine-a-chaud", nom: "Plat 100x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 6.28, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.15, specs: [{ label: "Largeur", valeur: "100 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "6,28 kg/m" }] },
+  "plat-10x3mm-en-acier-lamine-a-chaud": { slug: "plat-10x3mm-en-acier-lamine-a-chaud", nom: "Plat 10x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.24, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "10 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,24 kg/m" }] },
+  "plat-120x10mm-en-acier-lamine-a-chaud": { slug: "plat-120x10mm-en-acier-lamine-a-chaud", nom: "Plat 120x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 9.42, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.25, specs: [{ label: "Largeur", valeur: "120 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "9,42 kg/m" }] },
+  "plat-120x5mm-en-acier-lamine-a-chaud": { slug: "plat-120x5mm-en-acier-lamine-a-chaud", nom: "Plat 120x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 4.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.1, specs: [{ label: "Largeur", valeur: "120 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "4,71 kg/m" }] },
+  "plat-140x10mm-en-acier-lamine-a-chaud": { slug: "plat-140x10mm-en-acier-lamine-a-chaud", nom: "Plat 140x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 10.99, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 14.3, specs: [{ label: "Largeur", valeur: "140 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "10,99 kg/m" }] },
+  "plat-150x10mm-en-acier-lamine-a-chaud": { slug: "plat-150x10mm-en-acier-lamine-a-chaud", nom: "Plat 150x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 11.78, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 15.3, specs: [{ label: "Largeur", valeur: "150 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "11,78 kg/m" }] },
+  "plat-150x5mm-en-acier-lamine-a-chaud": { slug: "plat-150x5mm-en-acier-lamine-a-chaud", nom: "Plat 150x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 5.89, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.65, specs: [{ label: "Largeur", valeur: "150 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "5,89 kg/m" }] },
+  "plat-20x10mm-en-acier-lamine-a-chaud": { slug: "plat-20x10mm-en-acier-lamine-a-chaud", nom: "Plat 20x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.57, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.05, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "1,57 kg/m" }] },
+  "plat-20x3mm-en-acier-lamine-a-chaud": { slug: "plat-20x3mm-en-acier-lamine-a-chaud", nom: "Plat 20x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,47 kg/m" }] },
+  "plat-20x5mm-en-acier-lamine-a-chaud": { slug: "plat-20x5mm-en-acier-lamine-a-chaud", nom: "Plat 20x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.79, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "0,79 kg/m" }] },
+  "plat-25x10mm-en-acier-lamine-a-chaud": { slug: "plat-25x10mm-en-acier-lamine-a-chaud", nom: "Plat 25x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.96, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.55, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "1,96 kg/m" }] },
+  "plat-25x3mm-en-acier-lamine-a-chaud": { slug: "plat-25x3mm-en-acier-lamine-a-chaud", nom: "Plat 25x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.59, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,59 kg/m" }] },
+  "plat-25x4mm-en-acier-lamine-a-chaud": { slug: "plat-25x4mm-en-acier-lamine-a-chaud", nom: "Plat 25x4mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.79, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "0,79 kg/m" }] },
+  "plat-25x5mm-en-acier-lamine-a-chaud": { slug: "plat-25x5mm-en-acier-lamine-a-chaud", nom: "Plat 25x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.98, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "0,98 kg/m" }] },
+  "plat-30x10mm-en-acier-lamine-a-chaud": { slug: "plat-30x10mm-en-acier-lamine-a-chaud", nom: "Plat 30x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 2.35, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.05, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "2,35 kg/m" }] },
+  "plat-30x20mm-en-acier-lamine-a-chaud": { slug: "plat-30x20mm-en-acier-lamine-a-chaud", nom: "Plat 30x20mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 4.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.1, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "20 mm" }, { label: "Poids", valeur: "4,71 kg/m" }] },
+  "plat-30x3mm-en-acier-lamine-a-chaud": { slug: "plat-30x3mm-en-acier-lamine-a-chaud", nom: "Plat 30x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,71 kg/m" }] },
+  "plat-30x5mm-en-acier-lamine-a-chaud": { slug: "plat-30x5mm-en-acier-lamine-a-chaud", nom: "Plat 30x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.18, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "1,18 kg/m" }] },
+  "plat-30x6mm-en-acier-lamine-a-chaud": { slug: "plat-30x6mm-en-acier-lamine-a-chaud", nom: "Plat 30x6mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.41, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "1,41 kg/m" }] },
+  "plat-30x8mm-en-acier-lamine-a-chaud": { slug: "plat-30x8mm-en-acier-lamine-a-chaud", nom: "Plat 30x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.88, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.45, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "1,88 kg/m" }] },
+  "plat-40x10mm-en-acier-lamine-a-chaud": { slug: "plat-40x10mm-en-acier-lamine-a-chaud", nom: "Plat 40x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 3.14, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.1, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "3,14 kg/m" }] },
+  "plat-40x3mm-en-acier-lamine-a-chaud": { slug: "plat-40x3mm-en-acier-lamine-a-chaud", nom: "Plat 40x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 0.94, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "0,94 kg/m" }] },
+  "plat-40x4mm-en-acier-lamine-a-chaud": { slug: "plat-40x4mm-en-acier-lamine-a-chaud", nom: "Plat 40x4mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.26, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "1,26 kg/m" }] },
+  "plat-40x5mm-en-acier-lamine-a-chaud": { slug: "plat-40x5mm-en-acier-lamine-a-chaud", nom: "Plat 40x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.57, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.05, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "1,57 kg/m" }] },
+  "plat-40x8mm-en-acier-lamine-a-chaud": { slug: "plat-40x8mm-en-acier-lamine-a-chaud", nom: "Plat 40x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 2.51, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.25, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "2,51 kg/m" }] },
+  "plat-50x10mm-en-acier-lamine-a-chaud": { slug: "plat-50x10mm-en-acier-lamine-a-chaud", nom: "Plat 50x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 3.92, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.1, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "3,92 kg/m" }] },
+  "plat-50x3mm-en-acier-lamine-a-chaud": { slug: "plat-50x3mm-en-acier-lamine-a-chaud", nom: "Plat 50x3mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.18, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.95, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "1,18 kg/m" }] },
+  "plat-50x5mm-en-acier-lamine-a-chaud": { slug: "plat-50x5mm-en-acier-lamine-a-chaud", nom: "Plat 50x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 1.96, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.55, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "1,96 kg/m" }] },
+  "plat-50x8mm-en-acier-lamine-a-chaud": { slug: "plat-50x8mm-en-acier-lamine-a-chaud", nom: "Plat 50x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 3.14, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.1, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "3,14 kg/m" }] },
+  "plat-60x10mm-en-acier-lamine-a-chaud": { slug: "plat-60x10mm-en-acier-lamine-a-chaud", nom: "Plat 60x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 4.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.1, specs: [{ label: "Largeur", valeur: "60 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "4,71 kg/m" }] },
+  "plat-60x5mm-en-acier-lamine-a-chaud": { slug: "plat-60x5mm-en-acier-lamine-a-chaud", nom: "Plat 60x5mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 2.35, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.05, specs: [{ label: "Largeur", valeur: "60 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "2,35 kg/m" }] },
+  "plat-60x8mm-en-acier-lamine-a-chaud": { slug: "plat-60x8mm-en-acier-lamine-a-chaud", nom: "Plat 60x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 3.77, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.9, specs: [{ label: "Largeur", valeur: "60 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "3,77 kg/m" }] },
+  "plat-70x10mm-en-acier-lamine-a-chaud": { slug: "plat-70x10mm-en-acier-lamine-a-chaud", nom: "Plat 70x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 5.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.15, specs: [{ label: "Largeur", valeur: "70 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "5,50 kg/m" }] },
+  "plat-80x10mm-en-acier-lamine-a-chaud": { slug: "plat-80x10mm-en-acier-lamine-a-chaud", nom: "Plat 80x10mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 6.28, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.15, specs: [{ label: "Largeur", valeur: "80 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "6,28 kg/m" }] },
+  "plat-80x8mm-en-acier-lamine-a-chaud": { slug: "plat-80x8mm-en-acier-lamine-a-chaud", nom: "Plat 80x8mm en acier laminé à chaud", categorie: "/acier/profiles/plat", univers: "acier", kg: 5.02, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.55, specs: [{ label: "Largeur", valeur: "80 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Poids", valeur: "5,02 kg/m" }] },
+  "rond-lisse-10mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-10mm-en-acier-laminee-a-chaud", nom: "Rond lisse 10mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 0.62, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Diamètre", valeur: "10 mm" }, { label: "Poids", valeur: "0,62 kg/m" }] },
+  "rond-lisse-12mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-12mm-en-acier-laminee-a-chaud", nom: "Rond lisse 12mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 0.89, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Diamètre", valeur: "12 mm" }, { label: "Poids", valeur: "0,89 kg/m" }] },
+  "rond-lisse-14mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-14mm-en-acier-laminee-a-chaud", nom: "Rond lisse 14mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 1.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Diamètre", valeur: "14 mm" }, { label: "Poids", valeur: "1,21 kg/m" }] },
+  "rond-lisse-16mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-16mm-en-acier-laminee-a-chaud", nom: "Rond lisse 16mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 1.58, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.0, specs: [{ label: "Diamètre", valeur: "16 mm" }, { label: "Poids", valeur: "1,58 kg/m" }] },
+  "rond-lisse-18mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-18mm-en-acier-laminee-a-chaud", nom: "Rond lisse 18mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 2.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.5, specs: [{ label: "Diamètre", valeur: "18 mm" }, { label: "Poids", valeur: "2,00 kg/m" }] },
+  "rond-lisse-20mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-20mm-en-acier-laminee-a-chaud", nom: "Rond lisse 20mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 2.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.1, specs: [{ label: "Diamètre", valeur: "20 mm" }, { label: "Poids", valeur: "2,47 kg/m" }] },
+  "rond-lisse-22mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-22mm-en-acier-laminee-a-chaud", nom: "Rond lisse 22mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 2.98, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.7, specs: [{ label: "Diamètre", valeur: "22 mm" }, { label: "Poids", valeur: "2,98 kg/m" }] },
+  "rond-lisse-6mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-6mm-en-acier-laminee-a-chaud", nom: "Rond lisse 6mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 0.22, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Diamètre", valeur: "6 mm" }, { label: "Poids", valeur: "0,22 kg/m" }] },
+  "rond-lisse-8mm-en-acier-laminee-a-chaud": { slug: "rond-lisse-8mm-en-acier-laminee-a-chaud", nom: "Rond lisse 8mm en acier laminée à chaud", categorie: "/acier/profiles/rond-plein", univers: "acier", kg: 0.39, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 1.5, specs: [{ label: "Diamètre", valeur: "8 mm" }, { label: "Poids", valeur: "0,39 kg/m" }] },
+  "tole-de-2000x1000x3mm-plane-en-acier-corten": { slug: "tole-de-2000x1000x3mm-plane-en-acier-corten", nom: "Tôle de 2000x1000x3mm plane en acier Corten", categorie: "/acier/toles/tole-corten", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 122.5, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "tole-de-2500x1250x2mm-plane-en-acier-corten": { slug: "tole-de-2500x1250x2mm-plane-en-acier-corten", nom: "Tôle de 2500x1250x2mm plane en acier Corten", categorie: "/acier/toles/tole-corten", univers: "acier", kg: 49.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 127.7, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "49,10 kg/plaque" }] },
+  "tole-de-2500x1250x3mm-plane-en-acier-corten": { slug: "tole-de-2500x1250x3mm-plane-en-acier-corten", nom: "Tôle de 2500x1250x3mm plane en acier Corten", categorie: "/acier/toles/tole-corten", univers: "acier", kg: 73.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 191.4, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "73,60 kg/plaque" }] },
+  "tole-de-3000x1500x2mm-plane-en-acier-corten": { slug: "tole-de-3000x1500x2mm-plane-en-acier-corten", nom: "Tôle de 3000x1500x2mm plane en acier Corten", categorie: "/acier/toles/tole-corten", univers: "acier", kg: 70.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 183.6, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "70,60 kg/plaque" }] },
+  "tole-de-3000x1500x3mm-plane-en-acier-corten": { slug: "tole-de-3000x1500x3mm-plane-en-acier-corten", nom: "Tôle de 3000x1500x3mm plane en acier Corten", categorie: "/acier/toles/tole-corten", univers: "acier", kg: 106.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 275.6, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "106,00 kg/plaque" }] },
+  "tole-de-2000x1000x1-5mm-en-acier-galvanisee": { slug: "tole-de-2000x1000x1-5mm-en-acier-galvanisee", nom: "Tôle de 2000x1000x1,5mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 23.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 36.4, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "23,50 kg/plaque" }] },
+  "tole-de-2000x1000x1mm-en-acier-galvanisee": { slug: "tole-de-2000x1000x1mm-en-acier-galvanisee", nom: "Tôle de 2000x1000x1mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 15.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 24.3, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "15,70 kg/plaque" }] },
+  "tole-de-2000x1000x2mm-en-acier-galvanisee": { slug: "tole-de-2000x1000x2mm-en-acier-galvanisee", nom: "Tôle de 2000x1000x2mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 48.7, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "tole-de-2000x1000x3mm-en-acier-galvanisee": { slug: "tole-de-2000x1000x3mm-en-acier-galvanisee", nom: "Tôle de 2000x1000x3mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 73.0, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "tole-de-2500x1250x1-5mm-en-acier-galvanisee": { slug: "tole-de-2500x1250x1-5mm-en-acier-galvanisee", nom: "Tôle de 2500x1250x1,5mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 36.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 57.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "36,80 kg/plaque" }] },
+  "tole-de-2500x1250x1mm-en-acier-galvanisee": { slug: "tole-de-2500x1250x1mm-en-acier-galvanisee", nom: "Tôle de 2500x1250x1mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 24.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 38.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "24,50 kg/plaque" }] },
+  "tole-de-2500x1250x2mm-en-acier-galvanisee": { slug: "tole-de-2500x1250x2mm-en-acier-galvanisee", nom: "Tôle de 2500x1250x2mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 49.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 76.1, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "49,10 kg/plaque" }] },
+  "tole-de-2500x1250x3mm-en-acier-galvanisee": { slug: "tole-de-2500x1250x3mm-en-acier-galvanisee", nom: "Tôle de 2500x1250x3mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 73.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 114.1, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "73,60 kg/plaque" }] },
+  "tole-de-3000x1500x1-5mm-en-acier-galvanisee": { slug: "tole-de-3000x1500x1-5mm-en-acier-galvanisee", nom: "Tôle de 3000x1500x1,5mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 53.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 82.2, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "53,00 kg/plaque" }] },
+  "tole-de-3000x1500x1mm-en-acier-galvanisee": { slug: "tole-de-3000x1500x1mm-en-acier-galvanisee", nom: "Tôle de 3000x1500x1mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 35.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 54.7, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "35,30 kg/plaque" }] },
+  "tole-de-3000x1500x2mm-en-acier-galvanisee": { slug: "tole-de-3000x1500x2mm-en-acier-galvanisee", nom: "Tôle de 3000x1500x2mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 70.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 109.4, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "70,60 kg/plaque" }] },
+  "tole-de-3000x1500x3mm-en-acier-galvanisee": { slug: "tole-de-3000x1500x3mm-en-acier-galvanisee", nom: "Tôle de 3000x1500x3mm en acier galvanisée", categorie: "/acier/toles/tole-galvanisee", univers: "acier", kg: 106.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 164.3, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "106,00 kg/plaque" }] },
+  "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud": { slug: "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud", nom: "Tôle de 2000x1000x10mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 157.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 185.3, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "157,00 kg/plaque" }] },
+  "tole-de-2000x1000x12mm-en-acier-laminee-a-chaud": { slug: "tole-de-2000x1000x12mm-en-acier-laminee-a-chaud", nom: "Tôle de 2000x1000x12mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 188.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 222.3, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "12 mm" }, { label: "Masse surfacique", valeur: "94,20 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "188,40 kg/plaque" }] },
+  "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud": { slug: "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud", nom: "Tôle de 2000x1000x2mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud": { slug: "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud", nom: "Tôle de 2000x1000x3mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 55.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "tole-de-2000x1000x5mm-en-acier-laminee-a-chaud": { slug: "tole-de-2000x1000x5mm-en-acier-laminee-a-chaud", nom: "Tôle de 2000x1000x5mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 78.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 92.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "78,50 kg/plaque" }] },
+  "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud": { slug: "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud", nom: "Tôle de 2500x1250x10mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 245.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 289.5, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "245,30 kg/plaque" }] },
+  "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud": { slug: "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud", nom: "Tôle de 2500x1250x2mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 49.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 57.9, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "49,10 kg/plaque" }] },
+  "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud": { slug: "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud", nom: "Tôle de 2500x1250x3mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 73.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 86.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "73,60 kg/plaque" }] },
+  "tole-de-2500x1250x5mm-en-acier-laminee-a-chaud": { slug: "tole-de-2500x1250x5mm-en-acier-laminee-a-chaud", nom: "Tôle de 2500x1250x5mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 122.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 144.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "122,70 kg/plaque" }] },
+  "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud": { slug: "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud", nom: "Tôle de 3000x1500x10mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 353.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 416.8, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "353,20 kg/plaque" }] },
+  "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud": { slug: "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud", nom: "Tôle de 3000x1500x3mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 106.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 125.1, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "106,00 kg/plaque" }] },
+  "tole-de-3000x1500x8mm-en-acier-laminee-a-chaud": { slug: "tole-de-3000x1500x8mm-en-acier-laminee-a-chaud", nom: "Tôle de 3000x1500x8mm en acier laminée à chaud", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 282.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 333.5, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Masse surfacique", valeur: "62,80 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "282,60 kg/plaque" }] },
+  "tole-plane-laserpressplus-240-skinpass-de-3000x1500x5mm": { slug: "tole-plane-laserpressplus-240-skinpass-de-3000x1500x5mm", nom: "Tôle plane LaserpressPlus® 240 skinpass de 3000x1500x5mm", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 176.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 208.4, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "176,60 kg/plaque" }] },
+  "tole-plane-de-2000x1000x10mm-laserpressplus": { slug: "tole-plane-de-2000x1000x10mm-laserpressplus", nom: "Tôle plane de 2000x1000x10mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 157.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 185.3, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "157,00 kg/plaque" }] },
+  "tole-plane-de-2000x1000x15mm-laserpressplus": { slug: "tole-plane-de-2000x1000x15mm-laserpressplus", nom: "Tôle plane de 2000x1000x15mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 235.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 277.9, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "15 mm" }, { label: "Masse surfacique", valeur: "117,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "235,50 kg/plaque" }] },
+  "tole-plane-de-2000x1000x2mm-laserpressplus": { slug: "tole-plane-de-2000x1000x2mm-laserpressplus", nom: "Tôle plane de 2000x1000x2mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "tole-plane-de-2000x1000x3mm-laserpressplus": { slug: "tole-plane-de-2000x1000x3mm-laserpressplus", nom: "Tôle plane de 2000x1000x3mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 55.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "tole-plane-de-2000x1000x4mm-laserpressplus": { slug: "tole-plane-de-2000x1000x4mm-laserpressplus", nom: "Tôle plane de 2000x1000x4mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 62.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 74.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Masse surfacique", valeur: "31,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "62,80 kg/plaque" }] },
+  "tole-plane-de-2000x1000x5mm-laserpressplus": { slug: "tole-plane-de-2000x1000x5mm-laserpressplus", nom: "Tôle plane de 2000x1000x5mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 78.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 92.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "78,50 kg/plaque" }] },
+  "tole-plane-de-2000x1000x6mm-laserpressplus": { slug: "tole-plane-de-2000x1000x6mm-laserpressplus", nom: "Tôle plane de 2000x1000x6mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 94.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 111.2, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Masse surfacique", valeur: "47,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "94,20 kg/plaque" }] },
+  "tole-plane-de-2000x1000x8mm-laserpressplus": { slug: "tole-plane-de-2000x1000x8mm-laserpressplus", nom: "Tôle plane de 2000x1000x8mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 125.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 148.2, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Masse surfacique", valeur: "62,80 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "125,60 kg/plaque" }] },
+  "tole-plane-de-2500x1250x10mm-laserpressplus": { slug: "tole-plane-de-2500x1250x10mm-laserpressplus", nom: "Tôle plane de 2500x1250x10mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 245.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 289.5, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "245,30 kg/plaque" }] },
+  "tole-plane-de-2500x1250x15mm-laserpressplus": { slug: "tole-plane-de-2500x1250x15mm-laserpressplus", nom: "Tôle plane de 2500x1250x15mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 368.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 434.2, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "15 mm" }, { label: "Masse surfacique", valeur: "117,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "368,00 kg/plaque" }] },
+  "tole-plane-de-2500x1250x2mm-laserpressplus": { slug: "tole-plane-de-2500x1250x2mm-laserpressplus", nom: "Tôle plane de 2500x1250x2mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 49.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 57.9, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "49,10 kg/plaque" }] },
+  "tole-plane-de-2500x1250x3mm-laserpressplus": { slug: "tole-plane-de-2500x1250x3mm-laserpressplus", nom: "Tôle plane de 2500x1250x3mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 73.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 86.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "73,60 kg/plaque" }] },
+  "tole-plane-de-2500x1250x4mm-laserpressplus": { slug: "tole-plane-de-2500x1250x4mm-laserpressplus", nom: "Tôle plane de 2500x1250x4mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 98.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 115.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Masse surfacique", valeur: "31,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "98,10 kg/plaque" }] },
+  "tole-plane-de-2500x1250x5mm-laserpressplus": { slug: "tole-plane-de-2500x1250x5mm-laserpressplus", nom: "Tôle plane de 2500x1250x5mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 122.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 144.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "122,70 kg/plaque" }] },
+  "tole-plane-de-2500x1250x6mm-laserpressplus": { slug: "tole-plane-de-2500x1250x6mm-laserpressplus", nom: "Tôle plane de 2500x1250x6mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 147.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 173.7, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Masse surfacique", valeur: "47,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "147,20 kg/plaque" }] },
+  "tole-plane-de-2500x1250x8mm-laserpressplus": { slug: "tole-plane-de-2500x1250x8mm-laserpressplus", nom: "Tôle plane de 2500x1250x8mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 196.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 231.5, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Masse surfacique", valeur: "62,80 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "196,20 kg/plaque" }] },
+  "tole-plane-de-3000x1500x10mm-laserpressplus": { slug: "tole-plane-de-3000x1500x10mm-laserpressplus", nom: "Tôle plane de 3000x1500x10mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 353.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 416.8, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Masse surfacique", valeur: "78,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "353,20 kg/plaque" }] },
+  "tole-plane-de-3000x1500x15mm-laserpressplus": { slug: "tole-plane-de-3000x1500x15mm-laserpressplus", nom: "Tôle plane de 3000x1500x15mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 529.9, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 625.3, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "15 mm" }, { label: "Masse surfacique", valeur: "117,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "529,90 kg/plaque" }] },
+  "tole-plane-de-3000x1500x2mm-laserpressplus": { slug: "tole-plane-de-3000x1500x2mm-laserpressplus", nom: "Tôle plane de 3000x1500x2mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 70.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 83.3, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "70,60 kg/plaque" }] },
+  "tole-plane-de-3000x1500x3mm-laserpressplus": { slug: "tole-plane-de-3000x1500x3mm-laserpressplus", nom: "Tôle plane de 3000x1500x3mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 106.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 125.1, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "106,00 kg/plaque" }] },
+  "tole-plane-de-3000x1500x4mm-laserpressplus": { slug: "tole-plane-de-3000x1500x4mm-laserpressplus", nom: "Tôle plane de 3000x1500x4mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 141.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 166.7, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Masse surfacique", valeur: "31,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "141,30 kg/plaque" }] },
+  "tole-plane-de-3000x1500x6mm-laserpressplus": { slug: "tole-plane-de-3000x1500x6mm-laserpressplus", nom: "Tôle plane de 3000x1500x6mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 212.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 250.2, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Masse surfacique", valeur: "47,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "212,00 kg/plaque" }] },
+  "tole-plane-de-3000x1500x8mm-laserpressplus": { slug: "tole-plane-de-3000x1500x8mm-laserpressplus", nom: "Tôle plane de 3000x1500x8mm LaserpressPlus®", categorie: "/acier/toles/tole-laminee-a-chaud", univers: "acier", kg: 282.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 333.5, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "8 mm" }, { label: "Masse surfacique", valeur: "62,80 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "282,60 kg/plaque" }] },
+  "tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid": { slug: "tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid", nom: "Tôle de 2000x1000x1,5mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 23.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 27.7, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "23,50 kg/plaque" }] },
+  "tole-de-2000x1000x1mm-en-acier-lamine-a-froid": { slug: "tole-de-2000x1000x1mm-en-acier-lamine-a-froid", nom: "Tôle de 2000x1000x1mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 15.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 18.55, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "15,70 kg/plaque" }] },
+  "tole-de-2000x1000x2mm-en-acier-lamine-a-froid": { slug: "tole-de-2000x1000x2mm-en-acier-lamine-a-froid", nom: "Tôle de 2000x1000x2mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid": { slug: "tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid", nom: "Tôle de 2500x1250x1,5mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 36.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 43.4, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "36,80 kg/plaque" }] },
+  "tole-de-2500x1250x1mm-en-acier-lamine-a-froid": { slug: "tole-de-2500x1250x1mm-en-acier-lamine-a-froid", nom: "Tôle de 2500x1250x1mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 24.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 28.9, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "24,50 kg/plaque" }] },
+  "tole-de-2500x1250x2mm-en-acier-lamine-a-froid": { slug: "tole-de-2500x1250x2mm-en-acier-lamine-a-froid", nom: "Tôle de 2500x1250x2mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 49.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 57.9, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "49,10 kg/plaque" }] },
+  "tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid": { slug: "tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid", nom: "Tôle de 3000x1500x1,5mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 53.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 62.5, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1,5 mm" }, { label: "Masse surfacique", valeur: "11,77 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "53,00 kg/plaque" }] },
+  "tole-de-3000x1500x1mm-en-acier-lamine-a-froid": { slug: "tole-de-3000x1500x1mm-en-acier-lamine-a-froid", nom: "Tôle de 3000x1500x1mm en acier laminé à froid", categorie: "/acier/toles/tole-laminee-a-froid", univers: "acier", kg: 35.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 41.7, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "35,30 kg/plaque" }] },
+  "tole-de-2000x1000x3-5mm-en-acier-larmee": { slug: "tole-de-2000x1000x3-5mm-en-acier-larmee", nom: "Tôle de 2000x1000x3/5mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 55.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3/5 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "tole-de-2000x1000x5-7mm-en-acier-larmee": { slug: "tole-de-2000x1000x5-7mm-en-acier-larmee", nom: "Tôle de 2000x1000x5/7mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 78.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 92.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "78,50 kg/plaque" }] },
+  "tole-de-2500x1250x3-5mm-en-acier-larmee": { slug: "tole-de-2500x1250x3-5mm-en-acier-larmee", nom: "Tôle de 2500x1250x3/5mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 73.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 86.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3/5 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "73,60 kg/plaque" }] },
+  "tole-de-2500x1250x5-7mm-en-acier-larmee": { slug: "tole-de-2500x1250x5-7mm-en-acier-larmee", nom: "Tôle de 2500x1250x5/7mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 122.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 144.8, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "122,70 kg/plaque" }] },
+  "tole-de-3000x1500x3-5mm-en-acier-larmee": { slug: "tole-de-3000x1500x3-5mm-en-acier-larmee", nom: "Tôle de 3000x1500x3/5mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 106.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 125.1, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3/5 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "106,00 kg/plaque" }] },
+  "tole-de-3000x1500x5-7mm-en-acier-larmee": { slug: "tole-de-3000x1500x5-7mm-en-acier-larmee", nom: "Tôle de 3000x1500x5/7mm en acier larmée", categorie: "/acier/toles/tole-larmee", univers: "acier", kg: 176.6, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 208.4, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "39,25 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "176,60 kg/plaque" }] },
+  "toles-perforees-aleatoire-2000-x-1000-x-1": { slug: "toles-perforees-aleatoire-2000-x-1000-x-1", nom: "TOLES PERFOREES - aléatoire 2000 x 1000 x 1", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 15.7, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 18.55, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "7,85 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "15,70 kg/plaque" }] },
+  "toles-perforees-trous-carres-2000-x-1000-x-2-0-c10-u15": { slug: "toles-perforees-trous-carres-2000-x-1000-x-2-0-c10-u15", nom: "TOLES PERFOREES - trous carrés - 2000 x 1000 x 2,0 - C10 U15", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "toles-perforees-trous-ronds-2000-x-1000-x-2-r5-t8": { slug: "toles-perforees-trous-ronds-2000-x-1000-x-2-r5-t8", nom: "TOLES PERFOREES - trous ronds - 2000 x 1000 x 2 - R5 T8", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "toles-perforees-trous-ronds-2000-x-1000-x-2-0-r10-t15": { slug: "toles-perforees-trous-ronds-2000-x-1000-x-2-0-r10-t15", nom: "TOLES PERFOREES - trous ronds - 2000 x 1000 x 2,0 - R10 T15", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r10-t15": { slug: "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r10-t15", nom: "TOLES PERFOREES - trous ronds - 2000 x 1000 x 3,0 - R10 T15", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 55.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r5-t8": { slug: "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r5-t8", nom: "TOLES PERFOREES - trous ronds - 2000 x 1000 x 3,0 - R5 T8", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 47.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 55.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "23,55 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "47,10 kg/plaque" }] },
+  "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-r10-t15": { slug: "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-r10-t15", nom: "TOLES PERFOREES GALVA - trous ronds - 2000 x 1000 x 2 - R10 T15", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-0-r5-t8": { slug: "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-0-r5-t8", nom: "TOLES PERFOREES GALVA - trous ronds - 2000 x 1000 x 2,0 - R5 T8", categorie: "/acier/toles/tole-perforee", univers: "acier", kg: 31.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 37.1, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "15,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "31,40 kg/plaque" }] },
+  "tole-de-2000x1000x20mm-en-acier-quarto": { slug: "tole-de-2000x1000x20mm-en-acier-quarto", nom: "Tôle de 2000x1000x20mm en acier Quarto", categorie: "/acier/toles/tole-quarto", univers: "acier", kg: 314.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 370.5, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "20 mm" }, { label: "Masse surfacique", valeur: "157,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Poids", valeur: "314,00 kg/plaque" }] },
+  "tube-carre-100x100x10mm-en-acier": { slug: "tube-carre-100x100x10mm-en-acier", nom: "Tube carré 100x100x10mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 27.41, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 38.0, specs: [{ label: "Section", valeur: "100 × 100 mm" }, { label: "Épaisseur", valeur: "10 mm" }, { label: "Poids", valeur: "27,41 kg/m" }] },
+  "tube-carre-100x100x3mm-en-acier": { slug: "tube-carre-100x100x3mm-en-acier", nom: "Tube carré 100x100x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 8.86, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.25, specs: [{ label: "Section", valeur: "100 × 100 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "8,86 kg/m" }] },
+  "tube-carre-100x100x4mm-en-acier": { slug: "tube-carre-100x100x4mm-en-acier", nom: "Tube carré 100x100x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 11.7, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 16.2, specs: [{ label: "Section", valeur: "100 × 100 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "11,70 kg/m" }] },
+  "tube-carre-100x100x5mm-en-acier": { slug: "tube-carre-100x100x5mm-en-acier", nom: "Tube carré 100x100x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 14.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 20.0, specs: [{ label: "Section", valeur: "100 × 100 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "14,47 kg/m" }] },
+  "tube-carre-120x120x4mm-en-acier": { slug: "tube-carre-120x120x4mm-en-acier", nom: "Tube carré 120x120x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 14.13, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 19.55, specs: [{ label: "Section", valeur: "120 × 120 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "14,13 kg/m" }] },
+  "tube-carre-120x120x5mm-en-acier": { slug: "tube-carre-120x120x5mm-en-acier", nom: "Tube carré 120x120x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 17.51, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 24.3, specs: [{ label: "Section", valeur: "120 × 120 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "17,51 kg/m" }] },
+  "tube-carre-140x140x5mm-en-acier": { slug: "tube-carre-140x140x5mm-en-acier", nom: "Tube carré 140x140x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 20.56, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 28.5, specs: [{ label: "Section", valeur: "140 × 140 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "20,56 kg/m" }] },
+  "tube-carre-150x150x5mm-en-acier": { slug: "tube-carre-150x150x5mm-en-acier", nom: "Tube carré 150x150x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 22.08, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 30.6, specs: [{ label: "Section", valeur: "150 × 150 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "22,08 kg/m" }] },
+  "tube-carre-15x15x2mm-en-acier": { slug: "tube-carre-15x15x2mm-en-acier", nom: "Tube carré 15x15x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 0.79, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "15 × 15 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "0,79 kg/m" }] },
+  "tube-carre-20x20x2mm-en-acier": { slug: "tube-carre-20x20x2mm-en-acier", nom: "Tube carré 20x20x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 1.1, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,10 kg/m" }] },
+  "tube-carre-250x250x6mm-en-acier": { slug: "tube-carre-250x250x6mm-en-acier", nom: "Tube carré 250x250x6mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 44.59, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 61.8, specs: [{ label: "Section", valeur: "250 × 250 mm" }, { label: "Épaisseur", valeur: "6 mm" }, { label: "Poids", valeur: "44,59 kg/m" }] },
+  "tube-carre-25x25x2mm-en-acier": { slug: "tube-carre-25x25x2mm-en-acier", nom: "Tube carré 25x25x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 1.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,40 kg/m" }] },
+  "tube-carre-25x25x3mm-en-acier": { slug: "tube-carre-25x25x3mm-en-acier", nom: "Tube carré 25x25x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.8, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "2,01 kg/m" }] },
+  "tube-carre-30x30x2mm-en-acier": { slug: "tube-carre-30x30x2mm-en-acier", nom: "Tube carré 30x30x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 1.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.35, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,71 kg/m" }] },
+  "tube-carre-30x30x3mm-en-acier": { slug: "tube-carre-30x30x3mm-en-acier", nom: "Tube carré 30x30x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.4, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "2,47 kg/m" }] },
+  "tube-carre-35x35x2mm-en-acier": { slug: "tube-carre-35x35x2mm-en-acier", nom: "Tube carré 35x35x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.8, specs: [{ label: "Section", valeur: "35 × 35 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,01 kg/m" }] },
+  "tube-carre-40x40x2mm-en-acier": { slug: "tube-carre-40x40x2mm-en-acier", nom: "Tube carré 40x40x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.31, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.2, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,31 kg/m" }] },
+  "tube-carre-40x40x3mm-en-acier": { slug: "tube-carre-40x40x3mm-en-acier", nom: "Tube carré 40x40x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 3.38, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.7, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "3,38 kg/m" }] },
+  "tube-carre-40x40x4mm-en-acier": { slug: "tube-carre-40x40x4mm-en-acier", nom: "Tube carré 40x40x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 4.39, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.1, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "4,39 kg/m" }] },
+  "tube-carre-45x45x2mm-en-acier": { slug: "tube-carre-45x45x2mm-en-acier", nom: "Tube carré 45x45x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.62, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.65, specs: [{ label: "Section", valeur: "45 × 45 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,62 kg/m" }] },
+  "tube-carre-45x45x3mm-en-acier": { slug: "tube-carre-45x45x3mm-en-acier", nom: "Tube carré 45x45x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 3.84, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.3, specs: [{ label: "Section", valeur: "45 × 45 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "3,84 kg/m" }] },
+  "tube-carre-50x50x2mm-en-acier": { slug: "tube-carre-50x50x2mm-en-acier", nom: "Tube carré 50x50x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 2.92, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.05, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,92 kg/m" }] },
+  "tube-carre-50x50x3mm-en-acier": { slug: "tube-carre-50x50x3mm-en-acier", nom: "Tube carré 50x50x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 4.29, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.95, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "4,29 kg/m" }] },
+  "tube-carre-50x50x4mm-en-acier": { slug: "tube-carre-50x50x4mm-en-acier", nom: "Tube carré 50x50x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 5.6, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.75, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "5,60 kg/m" }] },
+  "tube-carre-50x50x5mm-en-acier": { slug: "tube-carre-50x50x5mm-en-acier", nom: "Tube carré 50x50x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 6.85, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.5, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "6,85 kg/m" }] },
+  "tube-carre-60x60x2mm-en-acier": { slug: "tube-carre-60x60x2mm-en-acier", nom: "Tube carré 60x60x2mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 3.53, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.9, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "3,53 kg/m" }] },
+  "tube-carre-60x60x3mm-en-acier": { slug: "tube-carre-60x60x3mm-en-acier", nom: "Tube carré 60x60x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 5.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.2, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "5,21 kg/m" }] },
+  "tube-carre-60x60x4mm-en-acier": { slug: "tube-carre-60x60x4mm-en-acier", nom: "Tube carré 60x60x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 6.82, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.45, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "6,82 kg/m" }] },
+  "tube-carre-60x60x5mm-en-acier": { slug: "tube-carre-60x60x5mm-en-acier", nom: "Tube carré 60x60x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 8.38, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.6, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "8,38 kg/m" }] },
+  "tube-carre-70x70x3mm-en-acier": { slug: "tube-carre-70x70x3mm-en-acier", nom: "Tube carré 70x70x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 6.12, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.5, specs: [{ label: "Section", valeur: "70 × 70 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "6,12 kg/m" }] },
+  "tube-carre-70x70x4mm-en-acier": { slug: "tube-carre-70x70x4mm-en-acier", nom: "Tube carré 70x70x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 8.04, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.15, specs: [{ label: "Section", valeur: "70 × 70 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "8,04 kg/m" }] },
+  "tube-carre-70x70x5mm-en-acier": { slug: "tube-carre-70x70x5mm-en-acier", nom: "Tube carré 70x70x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 9.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 13.7, specs: [{ label: "Section", valeur: "70 × 70 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "9,90 kg/m" }] },
+  "tube-carre-80x80x3mm-en-acier": { slug: "tube-carre-80x80x3mm-en-acier", nom: "Tube carré 80x80x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 7.04, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.75, specs: [{ label: "Section", valeur: "80 × 80 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "7,04 kg/m" }] },
+  "tube-carre-80x80x4mm-en-acier": { slug: "tube-carre-80x80x4mm-en-acier", nom: "Tube carré 80x80x4mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 9.26, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.85, specs: [{ label: "Section", valeur: "80 × 80 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "9,26 kg/m" }] },
+  "tube-carre-80x80x5mm-en-acier": { slug: "tube-carre-80x80x5mm-en-acier", nom: "Tube carré 80x80x5mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 11.42, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 15.8, specs: [{ label: "Section", valeur: "80 × 80 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "11,42 kg/m" }] },
+  "tube-carre-90x90x3mm-en-acier": { slug: "tube-carre-90x90x3mm-en-acier", nom: "Tube carré 90x90x3mm en acier", categorie: "/acier/tubes/tube-carre", univers: "acier", kg: 7.95, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.0, specs: [{ label: "Section", valeur: "90 × 90 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "7,95 kg/m" }] },
+  "tube-rectangle-100x50x3mm-en-acier": { slug: "tube-rectangle-100x50x3mm-en-acier", nom: "Tube rectangle 100x50x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 6.58, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.1, specs: [{ label: "Section", valeur: "100 × 50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "6,58 kg/m" }] },
+  "tube-rectangle-100x50x4mm-en-acier": { slug: "tube-rectangle-100x50x4mm-en-acier", nom: "Tube rectangle 100x50x4mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 8.65, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.0, specs: [{ label: "Section", valeur: "100 × 50 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "8,65 kg/m" }] },
+  "tube-rectangle-120x60x3mm-en-acier": { slug: "tube-rectangle-120x60x3mm-en-acier", nom: "Tube rectangle 120x60x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 7.95, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.0, specs: [{ label: "Section", valeur: "120 × 60 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "7,95 kg/m" }] },
+  "tube-rectangle-120x60x4mm-en-acier": { slug: "tube-rectangle-120x60x4mm-en-acier", nom: "Tube rectangle 120x60x4mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 10.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 14.5, specs: [{ label: "Section", valeur: "120 × 60 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "10,48 kg/m" }] },
+  "tube-rectangle-200x100x5mm-en-acier": { slug: "tube-rectangle-200x100x5mm-en-acier", nom: "Tube rectangle 200x100x5mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 22.08, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 30.6, specs: [{ label: "Section", valeur: "200 × 100 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Poids", valeur: "22,08 kg/m" }] },
+  "tube-rectangle-30x15x2mm-en-acier": { slug: "tube-rectangle-30x15x2mm-en-acier", nom: "Tube rectangle 30x15x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 1.25, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "30 × 15 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,25 kg/m" }] },
+  "tube-rectangle-30x20x2mm-en-acier": { slug: "tube-rectangle-30x20x2mm-en-acier", nom: "Tube rectangle 30x20x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 1.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Section", valeur: "30 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,40 kg/m" }] },
+  "tube-rectangle-40x20x2mm-en-acier": { slug: "tube-rectangle-40x20x2mm-en-acier", nom: "Tube rectangle 40x20x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 1.71, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.35, specs: [{ label: "Section", valeur: "40 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "1,71 kg/m" }] },
+  "tube-rectangle-40x20x3mm-en-acier": { slug: "tube-rectangle-40x20x3mm-en-acier", nom: "Tube rectangle 40x20x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.4, specs: [{ label: "Section", valeur: "40 × 20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "2,47 kg/m" }] },
+  "tube-rectangle-40x30x2mm-en-acier": { slug: "tube-rectangle-40x30x2mm-en-acier", nom: "Tube rectangle 40x30x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.8, specs: [{ label: "Section", valeur: "40 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,01 kg/m" }] },
+  "tube-rectangle-50x20x2mm-en-acier": { slug: "tube-rectangle-50x20x2mm-en-acier", nom: "Tube rectangle 50x20x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.8, specs: [{ label: "Section", valeur: "50 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,01 kg/m" }] },
+  "tube-rectangle-50x25x2mm-en-acier": { slug: "tube-rectangle-50x25x2mm-en-acier", nom: "Tube rectangle 50x25x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.16, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.0, specs: [{ label: "Section", valeur: "50 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,16 kg/m" }] },
+  "tube-rectangle-50x30x2mm-en-acier": { slug: "tube-rectangle-50x30x2mm-en-acier", nom: "Tube rectangle 50x30x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.31, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.2, specs: [{ label: "Section", valeur: "50 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,31 kg/m" }] },
+  "tube-rectangle-50x30x3mm-en-acier": { slug: "tube-rectangle-50x30x3mm-en-acier", nom: "Tube rectangle 50x30x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 3.38, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.7, specs: [{ label: "Section", valeur: "50 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "3,38 kg/m" }] },
+  "tube-rectangle-60x30x2mm-en-acier": { slug: "tube-rectangle-60x30x2mm-en-acier", nom: "Tube rectangle 60x30x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.62, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.65, specs: [{ label: "Section", valeur: "60 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,62 kg/m" }] },
+  "tube-rectangle-60x30x3mm-en-acier": { slug: "tube-rectangle-60x30x3mm-en-acier", nom: "Tube rectangle 60x30x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 3.84, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.3, specs: [{ label: "Section", valeur: "60 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "3,84 kg/m" }] },
+  "tube-rectangle-60x40x2mm-en-acier": { slug: "tube-rectangle-60x40x2mm-en-acier", nom: "Tube rectangle 60x40x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 2.92, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.05, specs: [{ label: "Section", valeur: "60 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "2,92 kg/m" }] },
+  "tube-rectangle-60x40x3mm-en-acier": { slug: "tube-rectangle-60x40x3mm-en-acier", nom: "Tube rectangle 60x40x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 4.29, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.95, specs: [{ label: "Section", valeur: "60 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "4,29 kg/m" }] },
+  "tube-rectangle-80x40x2mm-en-acier": { slug: "tube-rectangle-80x40x2mm-en-acier", nom: "Tube rectangle 80x40x2mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 3.53, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.9, specs: [{ label: "Section", valeur: "80 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "3,53 kg/m" }] },
+  "tube-rectangle-80x40x3mm-en-acier": { slug: "tube-rectangle-80x40x3mm-en-acier", nom: "Tube rectangle 80x40x3mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 5.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.2, specs: [{ label: "Section", valeur: "80 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "5,21 kg/m" }] },
+  "tube-rectangle-80x40x4mm-en-acier": { slug: "tube-rectangle-80x40x4mm-en-acier", nom: "Tube rectangle 80x40x4mm en acier", categorie: "/acier/tubes/tube-rectangulaire", univers: "acier", kg: 6.82, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.45, specs: [{ label: "Section", valeur: "80 × 40 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Poids", valeur: "6,82 kg/m" }] },
+  "tube-rond-101-6x3-65mm-en-acier-brut-serie-legere": { slug: "tube-rond-101-6x3-65mm-en-acier-brut-serie-legere", nom: "Tube rond 101,6x3,65mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 8.82, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.2, specs: [{ label: "Diamètre extérieur", valeur: "101,6 mm" }, { label: "Épaisseur", valeur: "3,65 mm" }, { label: "Poids", valeur: "8,82 kg/m" }] },
+  "tube-rond-114-3x3-65mm-en-acier-brut-serie-legere": { slug: "tube-rond-114-3x3-65mm-en-acier-brut-serie-legere", nom: "Tube rond 114,3x3,65mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 9.96, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 13.8, specs: [{ label: "Diamètre extérieur", valeur: "114,3 mm" }, { label: "Épaisseur", valeur: "3,65 mm" }, { label: "Poids", valeur: "9,96 kg/m" }] },
+  "tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere": { slug: "tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere", nom: "Tube rond 17,2(18)x2mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 0.75, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Diamètre extérieur", valeur: "17,2 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "0,75 kg/m" }] },
+  "tube-rond-21-3x2mm-en-acier-brut-serie-legere": { slug: "tube-rond-21-3x2mm-en-acier-brut-serie-legere", nom: "Tube rond 21,3x2mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 0.95, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Diamètre extérieur", valeur: "21,3 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Poids", valeur: "0,95 kg/m" }] },
+  "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere": { slug: "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere", nom: "Tube rond 26,9x2,5mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 1.5, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.2, specs: [{ label: "Diamètre extérieur", valeur: "26,9 mm" }, { label: "Épaisseur", valeur: "2,5 mm" }, { label: "Poids", valeur: "1,50 kg/m" }] },
+  "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere": { slug: "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere", nom: "Tube rond 33,7x2,5mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 1.92, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 2.65, specs: [{ label: "Diamètre extérieur", valeur: "33,7 mm" }, { label: "Épaisseur", valeur: "2,5 mm" }, { label: "Poids", valeur: "1,92 kg/m" }] },
+  "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere": { slug: "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere", nom: "Tube rond 42,4x2,5mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 2.46, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 3.4, specs: [{ label: "Diamètre extérieur", valeur: "42,4 mm" }, { label: "Épaisseur", valeur: "2,5 mm" }, { label: "Poids", valeur: "2,46 kg/m" }] },
+  "tube-rond-48-3x3mm-en-acier-brut-serie-legere": { slug: "tube-rond-48-3x3mm-en-acier-brut-serie-legere", nom: "Tube rond 48,3x3mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 3.35, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 4.65, specs: [{ label: "Diamètre extérieur", valeur: "48,3 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "3,35 kg/m" }] },
+  "tube-rond-60-3x3mm-en-acier-brut-serie-legere": { slug: "tube-rond-60-3x3mm-en-acier-brut-serie-legere", nom: "Tube rond 60,3x3mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 4.24, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.85, specs: [{ label: "Diamètre extérieur", valeur: "60,3 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "4,24 kg/m" }] },
+  "tube-rond-76-1x3-25mm-en-acier-brut-serie-legere": { slug: "tube-rond-76-1x3-25mm-en-acier-brut-serie-legere", nom: "Tube rond 76,1x3,25mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 5.84, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.1, specs: [{ label: "Diamètre extérieur", valeur: "76,1 mm" }, { label: "Épaisseur", valeur: "3,25 mm" }, { label: "Poids", valeur: "5,84 kg/m" }] },
+  "tube-rond-88-9x3-00mm-en-acier-brut-serie-legere": { slug: "tube-rond-88-9x3-00mm-en-acier-brut-serie-legere", nom: "Tube rond 88,9x3,00mm en acier brut série légère", categorie: "/acier/tubes/tube-rond", univers: "acier", kg: 6.36, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.8, specs: [{ label: "Diamètre extérieur", valeur: "88,9 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Poids", valeur: "6,36 kg/m" }] },
+  "corniere-egale-20x20x2mm-en-aluminium": { slug: "corniere-egale-20x20x2mm-en-aluminium", nom: "Cornière égale 20x20x2mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,21 kg/m" }] },
+  "corniere-egale-25x25x2mm-en-aluminium": { slug: "corniere-egale-25x25x2mm-en-aluminium", nom: "Cornière égale 25x25x2mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.26, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,26 kg/m" }] },
+  "corniere-egale-30x30x2mm-en-aluminium": { slug: "corniere-egale-30x30x2mm-en-aluminium", nom: "Cornière égale 30x30x2mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.32, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,32 kg/m" }] },
+  "corniere-egale-30x30x3mm-en-aluminium": { slug: "corniere-egale-30x30x3mm-en-aluminium", nom: "Cornière égale 30x30x3mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.47, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,47 kg/m" }] },
+  "corniere-egale-40x40x2mm-en-aluminium": { slug: "corniere-egale-40x40x2mm-en-aluminium", nom: "Cornière égale 40x40x2mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.43, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,43 kg/m" }] },
+  "corniere-egale-40x40x3mm-en-aluminium": { slug: "corniere-egale-40x40x3mm-en-aluminium", nom: "Cornière égale 40x40x3mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.63, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,63 kg/m" }] },
+  "corniere-egale-50x50x3mm-en-aluminium": { slug: "corniere-egale-50x50x3mm-en-aluminium", nom: "Cornière égale 50x50x3mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Ailes", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,80 kg/m" }] },
+  "corniere-egale-60x60x3mm-en-aluminium": { slug: "corniere-egale-60x60x3mm-en-aluminium", nom: "Cornière égale 60x60x3mm en aluminium", categorie: "/aluminium/profiles/corniere-egale", univers: "aluminium", kg: 0.96, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.95, specs: [{ label: "Ailes", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,96 kg/m" }] },
+  "plat-de-100x5mm-en-aluminium": { slug: "plat-de-100x5mm-en-aluminium", nom: "Plat de 100x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 1.35, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.35, specs: [{ label: "Largeur", valeur: "100 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,35 kg/m" }] },
+  "plat-de-20x3mm-en-aluminium": { slug: "plat-de-20x3mm-en-aluminium", nom: "Plat de 20x3mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.16, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,16 kg/m" }] },
+  "plat-de-25x3mm-en-aluminium": { slug: "plat-de-25x3mm-en-aluminium", nom: "Plat de 25x3mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,20 kg/m" }] },
+  "plat-de-30x3mm-en-aluminium": { slug: "plat-de-30x3mm-en-aluminium", nom: "Plat de 30x3mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.24, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,24 kg/m" }] },
+  "plat-de-30x5mm-en-aluminium": { slug: "plat-de-30x5mm-en-aluminium", nom: "Plat de 30x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.41, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,41 kg/m" }] },
+  "plat-de-40x3mm-en-aluminium": { slug: "plat-de-40x3mm-en-aluminium", nom: "Plat de 40x3mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.32, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,32 kg/m" }] },
+  "plat-de-40x5mm-en-aluminium": { slug: "plat-de-40x5mm-en-aluminium", nom: "Plat de 40x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.54, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,54 kg/m" }] },
+  "plat-de-50x3mm-en-aluminium": { slug: "plat-de-50x3mm-en-aluminium", nom: "Plat de 50x3mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.41, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,41 kg/m" }] },
+  "plat-de-50x5mm-en-aluminium": { slug: "plat-de-50x5mm-en-aluminium", nom: "Plat de 50x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.68, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,68 kg/m" }] },
+  "plat-de-60x5mm-en-aluminium": { slug: "plat-de-60x5mm-en-aluminium", nom: "Plat de 60x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 0.81, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Largeur", valeur: "60 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,81 kg/m" }] },
+  "plat-de-80x5mm-en-aluminium": { slug: "plat-de-80x5mm-en-aluminium", nom: "Plat de 80x5mm en aluminium", categorie: "/aluminium/profiles/plat", univers: "aluminium", kg: 1.08, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.7, specs: [{ label: "Largeur", valeur: "80 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,08 kg/m" }] },
+  "profil-en-t-20x20x2mm-en-aluminium": { slug: "profil-en-t-20x20x2mm-en-aluminium", nom: "Profil en T 20x20x2mm en aluminium", categorie: "/aluminium/profiles/profil-t", univers: "aluminium", kg: 0.21, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,21 kg/m" }] },
+  "profil-en-t-25x25x2mm-en-aluminium": { slug: "profil-en-t-25x25x2mm-en-aluminium", nom: "Profil en T 25x25x2mm en aluminium", categorie: "/aluminium/profiles/profil-t", univers: "aluminium", kg: 0.26, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,26 kg/m" }] },
+  "profil-en-t-30x30x2mm-en-aluminium": { slug: "profil-en-t-30x30x2mm-en-aluminium", nom: "Profil en T 30x30x2mm en aluminium", categorie: "/aluminium/profiles/profil-t", univers: "aluminium", kg: 0.31, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,31 kg/m" }] },
+  "profil-en-u-20x20x20x2mm-en-aluminium": { slug: "profil-en-u-20x20x20x2mm-en-aluminium", nom: "Profil en U 20x20x20x2mm en Aluminium", categorie: "/aluminium/profiles/profil-u", univers: "aluminium", kg: 1.08, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.7, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "20 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,08 kg/m" }] },
+  "profil-en-u-25x25x25x2mm-en-aluminium": { slug: "profil-en-u-25x25x25x2mm-en-aluminium", nom: "Profil en U 25x25x25x2mm en Aluminium", categorie: "/aluminium/profiles/profil-u", univers: "aluminium", kg: 1.69, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.5, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "25 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,69 kg/m" }] },
+  "profil-en-u-40x40x40x2mm-en-aluminium": { slug: "profil-en-u-40x40x40x2mm-en-aluminium", nom: "Profil en U 40x40x40x2mm en Aluminium", categorie: "/aluminium/profiles/profil-u", univers: "aluminium", kg: 4.32, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 26.8, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "40 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "4,32 kg/m" }] },
+  "profil-en-u-en-30x30x30x2mm-aluminium": { slug: "profil-en-u-en-30x30x30x2mm-aluminium", nom: "Profil en U en 30x30x30x2mm Aluminium", categorie: "/aluminium/profiles/profil-u", univers: "aluminium", kg: 2.43, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 15.05, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "30 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "2,43 kg/m" }] },
+  "tole-de-2000x1000x1mm-en-aluminium": { slug: "tole-de-2000x1000x1mm-en-aluminium", nom: "Tôle de 2000x1000x1mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 5.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 36.7, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "2,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "5,40 kg/plaque" }] },
+  "tole-de-2000x1000x2mm-en-aluminium": { slug: "tole-de-2000x1000x2mm-en-aluminium", nom: "Tôle de 2000x1000x2mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 10.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 73.4, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "5,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "10,80 kg/plaque" }] },
+  "tole-de-2000x1000x3mm-en-aluminium": { slug: "tole-de-2000x1000x3mm-en-aluminium", nom: "Tôle de 2000x1000x3mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 16.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 110.2, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "8,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "16,20 kg/plaque" }] },
+  "tole-de-2500x1250x1mm-en-aluminium": { slug: "tole-de-2500x1250x1mm-en-aluminium", nom: "Tôle de 2500x1250x1mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 8.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 57.1, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "2,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "8,40 kg/plaque" }] },
+  "tole-de-2500x1250x2mm-en-aluminium": { slug: "tole-de-2500x1250x2mm-en-aluminium", nom: "Tôle de 2500x1250x2mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 16.9, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 114.9, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "5,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "16,90 kg/plaque" }] },
+  "tole-de-2500x1250x3mm-en-aluminium": { slug: "tole-de-2500x1250x3mm-en-aluminium", nom: "Tôle de 2500x1250x3mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 25.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 172.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "8,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "25,30 kg/plaque" }] },
+  "tole-de-3000x1500x1mm-en-aluminium": { slug: "tole-de-3000x1500x1mm-en-aluminium", nom: "Tôle de 3000x1500x1mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 12.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 83.0, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "2,70 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "12,20 kg/plaque" }] },
+  "tole-de-3000x1500x2mm-en-aluminium": { slug: "tole-de-3000x1500x2mm-en-aluminium", nom: "Tôle de 3000x1500x2mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 24.3, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 165.2, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "5,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "24,30 kg/plaque" }] },
+  "tole-de-3000x1500x3mm-en-aluminium": { slug: "tole-de-3000x1500x3mm-en-aluminium", nom: "Tôle de 3000x1500x3mm en aluminium", categorie: "/aluminium/toles/tole-plane", univers: "aluminium", kg: 36.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 247.5, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "8,10 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "36,40 kg/plaque" }] },
+  "tole-striee-de-2000x1000x2-5-4mm-en-aluminium": { slug: "tole-striee-de-2000x1000x2-5-4mm-en-aluminium", nom: "Tôle striée de 2000x1000x2,5/4mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 13.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 91.8, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2,5/4 mm" }, { label: "Masse surfacique", valeur: "6,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "13,50 kg/plaque" }] },
+  "tole-striee-de-2000x1000x3-5-5mm-en-aluminium": { slug: "tole-striee-de-2000x1000x3-5-5mm-en-aluminium", nom: "Tôle striée de 2000x1000x3,5/5mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 18.9, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 128.5, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3,5/5 mm" }, { label: "Masse surfacique", valeur: "9,45 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "18,90 kg/plaque" }] },
+  "tole-striee-de-2000x1000x5-7mm-en-aluminium": { slug: "tole-striee-de-2000x1000x5-7mm-en-aluminium", nom: "Tôle striée de 2000x1000x5/7mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 27.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 183.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "13,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "27,00 kg/plaque" }] },
+  "tole-striee-de-2500x1250x2-5-4mm-en-aluminium": { slug: "tole-striee-de-2500x1250x2-5-4mm-en-aluminium", nom: "Tôle striée de 2500x1250x2,5/4mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 21.1, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 143.5, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2,5/4 mm" }, { label: "Masse surfacique", valeur: "6,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "21,10 kg/plaque" }] },
+  "tole-striee-de-2500x1250x3-5-5mm-en-aluminium": { slug: "tole-striee-de-2500x1250x3-5-5mm-en-aluminium", nom: "Tôle striée de 2500x1250x3,5/5mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 29.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 200.6, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3,5/5 mm" }, { label: "Masse surfacique", valeur: "9,45 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "29,50 kg/plaque" }] },
+  "tole-striee-de-2500x1250x5-7mm-en-aluminium": { slug: "tole-striee-de-2500x1250x5-7mm-en-aluminium", nom: "Tôle striée de 2500x1250x5/7mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 42.2, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 287.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "13,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "42,20 kg/plaque" }] },
+  "tole-striee-de-3000x1500x2-5-4mm-en-aluminium": { slug: "tole-striee-de-3000x1500x2-5-4mm-en-aluminium", nom: "Tôle striée de 3000x1500x2,5/4mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 30.4, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 206.7, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2,5/4 mm" }, { label: "Masse surfacique", valeur: "6,75 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "30,40 kg/plaque" }] },
+  "tole-striee-de-3000x1500x3-5-5mm-en-aluminium": { slug: "tole-striee-de-3000x1500x3-5-5mm-en-aluminium", nom: "Tôle striée de 3000x1500x3,5/5mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 42.5, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 289.0, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3,5/5 mm" }, { label: "Masse surfacique", valeur: "9,45 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "42,50 kg/plaque" }] },
+  "tole-striee-de-3000x1500x5-7mm-en-aluminium": { slug: "tole-striee-de-3000x1500x5-7mm-en-aluminium", nom: "Tôle striée de 3000x1500x5/7mm en aluminium", categorie: "/aluminium/toles/tole-striee", univers: "aluminium", kg: 60.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 413.4, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "5/7 mm" }, { label: "Masse surfacique", valeur: "13,50 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "60,80 kg/plaque" }] },
+  "tube-carre-de-15x15x2mm-en-aluminium": { slug: "tube-carre-de-15x15x2mm-en-aluminium", nom: "Tube carré de 15x15x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 0.27, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "15 × 15 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,27 kg/m" }] },
+  "tube-carre-de-20x20x2mm-en-aluminium": { slug: "tube-carre-de-20x20x2mm-en-aluminium", nom: "Tube carré de 20x20x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 0.38, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,38 kg/m" }] },
+  "tube-carre-de-25x25x2mm-en-aluminium": { slug: "tube-carre-de-25x25x2mm-en-aluminium", nom: "Tube carré de 25x25x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 0.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,48 kg/m" }] },
+  "tube-carre-de-35x35x2mm-en-aluminium": { slug: "tube-carre-de-35x35x2mm-en-aluminium", nom: "Tube carré de 35x35x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 0.69, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "35 × 35 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,69 kg/m" }] },
+  "tube-carre-de-40x40x2mm-en-aluminium": { slug: "tube-carre-de-40x40x2mm-en-aluminium", nom: "Tube carré de 40x40x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 0.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,80 kg/m" }] },
+  "tube-carre-de-40x40x3mm-en-aluminium": { slug: "tube-carre-de-40x40x3mm-en-aluminium", nom: "Tube carré de 40x40x3mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 1.16, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.2, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,16 kg/m" }] },
+  "tube-carre-de-50x50x2mm-en-aluminium": { slug: "tube-carre-de-50x50x2mm-en-aluminium", nom: "Tube carré de 50x50x2mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 1.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.25, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,01 kg/m" }] },
+  "tube-carre-de-60x60x3mm-en-aluminium": { slug: "tube-carre-de-60x60x3mm-en-aluminium", nom: "Tube carré de 60x60x3mm en aluminium", categorie: "/aluminium/tubes/tube-carre", univers: "aluminium", kg: 1.79, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 11.1, specs: [{ label: "Section", valeur: "60 × 60 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,79 kg/m" }] },
+  "tube-rectangle-de-30x20x2mm-en-aluminium": { slug: "tube-rectangle-de-30x20x2mm-en-aluminium", nom: "Tube rectangle de 30x20x2mm en aluminium", categorie: "/aluminium/tubes/tube-rectangulaire", univers: "aluminium", kg: 0.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "30 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,48 kg/m" }] },
+  "tube-rectangle-de-50x30x2mm-en-aluminium": { slug: "tube-rectangle-de-50x30x2mm-en-aluminium", nom: "Tube rectangle de 50x30x2mm en aluminium", categorie: "/aluminium/tubes/tube-rectangulaire", univers: "aluminium", kg: 0.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Section", valeur: "50 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,80 kg/m" }] },
+  "tube-rectangle-de-60x30x3mm-en-aluminium": { slug: "tube-rectangle-de-60x30x3mm-en-aluminium", nom: "Tube rectangle de 60x30x3mm en aluminium", categorie: "/aluminium/tubes/tube-rectangulaire", univers: "aluminium", kg: 1.32, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.2, specs: [{ label: "Section", valeur: "60 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,32 kg/m" }] },
+  "tube-rectangle-de-60x40x2mm-en-aluminium": { slug: "tube-rectangle-de-60x40x2mm-en-aluminium", nom: "Tube rectangle de 60x40x2mm en aluminium", categorie: "/aluminium/tubes/tube-rectangulaire", univers: "aluminium", kg: 1.01, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.25, specs: [{ label: "Section", valeur: "60 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,01 kg/m" }] },
+  "tube-rectangle-de-60x40x3mm-en-aluminium": { slug: "tube-rectangle-de-60x40x3mm-en-aluminium", nom: "Tube rectangle de 60x40x3mm en aluminium", categorie: "/aluminium/tubes/tube-rectangulaire", univers: "aluminium", kg: 1.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.2, specs: [{ label: "Section", valeur: "60 × 40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "1,48 kg/m" }] },
+  "tube-rond-de-20x2mm-en-aluminium": { slug: "tube-rond-de-20x2mm-en-aluminium", nom: "Tube rond de 20x2mm en aluminium", categorie: "/aluminium/tubes/tube-rond", univers: "aluminium", kg: 0.31, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Diamètre extérieur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,31 kg/m" }] },
+  "tube-rond-de-25x2mm-en-aluminium": { slug: "tube-rond-de-25x2mm-en-aluminium", nom: "Tube rond de 25x2mm en aluminium", categorie: "/aluminium/tubes/tube-rond", univers: "aluminium", kg: 0.39, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Diamètre extérieur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,39 kg/m" }] },
+  "tube-rond-de-30x2mm-en-aluminium": { slug: "tube-rond-de-30x2mm-en-aluminium", nom: "Tube rond de 30x2mm en aluminium", categorie: "/aluminium/tubes/tube-rond", univers: "aluminium", kg: 0.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Diamètre extérieur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,48 kg/m" }] },
+  "tube-rond-de-35x2mm-en-aluminium": { slug: "tube-rond-de-35x2mm-en-aluminium", nom: "Tube rond de 35x2mm en aluminium", categorie: "/aluminium/tubes/tube-rond", univers: "aluminium", kg: 0.56, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Diamètre extérieur", valeur: "35 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,56 kg/m" }] },
+  "tube-rond-de-40x2mm-en-aluminium": { slug: "tube-rond-de-40x2mm-en-aluminium", nom: "Tube rond de 40x2mm en aluminium", categorie: "/aluminium/tubes/tube-rond", univers: "aluminium", kg: 0.64, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 5.0, specs: [{ label: "Diamètre extérieur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Alliage", valeur: "6060 T66" }, { label: "Poids", valeur: "0,64 kg/m" }] },
+  "corniere-egale-20x20x3mm-en-inox": { slug: "corniere-egale-20x20x3mm-en-inox", nom: "Cornière égale 20x20x3mm en Inox", categorie: "/inox/profiles/corniere-egale", univers: "inox", kg: 0.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Ailes", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,90 kg/m" }] },
+  "corniere-egale-25x25x3mm-en-inox": { slug: "corniere-egale-25x25x3mm-en-inox", nom: "Cornière égale 25x25x3mm en Inox", categorie: "/inox/profiles/corniere-egale", univers: "inox", kg: 1.14, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Ailes", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,14 kg/m" }] },
+  "corniere-egale-30x30x3mm-en-inox": { slug: "corniere-egale-30x30x3mm-en-inox", nom: "Cornière égale 30x30x3mm en Inox", categorie: "/inox/profiles/corniere-egale", univers: "inox", kg: 1.39, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.25, specs: [{ label: "Ailes", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,39 kg/m" }] },
+  "corniere-egale-40x40x4mm-en-inox": { slug: "corniere-egale-40x40x4mm-en-inox", nom: "Cornière égale 40x40x4mm en Inox", categorie: "/inox/profiles/corniere-egale", univers: "inox", kg: 2.46, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.8, specs: [{ label: "Ailes", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "4 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,46 kg/m" }] },
+  "corniere-egale-50x50x5mm-en-inox": { slug: "corniere-egale-50x50x5mm-en-inox", nom: "Cornière égale 50x50x5mm en Inox", categorie: "/inox/profiles/corniere-egale", univers: "inox", kg: 3.85, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 20.0, specs: [{ label: "Ailes", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "3,85 kg/m" }] },
+  "plat-20x3mm-en-inox-304": { slug: "plat-20x3mm-en-inox-304", nom: "Plat 20x3mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 0.48, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,48 kg/m" }] },
+  "plat-20x5mm-en-inox-304": { slug: "plat-20x5mm-en-inox-304", nom: "Plat 20x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 0.8, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "20 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,80 kg/m" }] },
+  "plat-25x3mm-en-inox-304": { slug: "plat-25x3mm-en-inox-304", nom: "Plat 25x3mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 0.6, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,60 kg/m" }] },
+  "plat-25x5mm-en-inox-304": { slug: "plat-25x5mm-en-inox-304", nom: "Plat 25x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 1.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "25 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,00 kg/m" }] },
+  "plat-30x3mm-en-inox-304": { slug: "plat-30x3mm-en-inox-304", nom: "Plat 30x3mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 0.72, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,72 kg/m" }] },
+  "plat-30x5mm-en-inox-304": { slug: "plat-30x5mm-en-inox-304", nom: "Plat 30x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 1.2, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.25, specs: [{ label: "Largeur", valeur: "30 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,20 kg/m" }] },
+  "plat-40x3mm-en-inox-304": { slug: "plat-40x3mm-en-inox-304", nom: "Plat 40x3mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 0.96, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,96 kg/m" }] },
+  "plat-40x5mm-en-inox-304": { slug: "plat-40x5mm-en-inox-304", nom: "Plat 40x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 1.6, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.3, specs: [{ label: "Largeur", valeur: "40 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,60 kg/m" }] },
+  "plat-50x5mm-en-inox-304": { slug: "plat-50x5mm-en-inox-304", nom: "Plat 50x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 2.0, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.4, specs: [{ label: "Largeur", valeur: "50 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,00 kg/m" }] },
+  "plat-60x5mm-en-inox-304": { slug: "plat-60x5mm-en-inox-304", nom: "Plat 60x5mm en Inox 304", categorie: "/inox/profiles/plat", univers: "inox", kg: 2.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.5, specs: [{ label: "Largeur", valeur: "60 mm" }, { label: "Épaisseur", valeur: "5 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,40 kg/m" }] },
+  "rond-plein-lisse-diametre-10mm-en-inox": { slug: "rond-plein-lisse-diametre-10mm-en-inox", nom: "Rond plein lisse diamètre 10mm en Inox", categorie: "/inox/profiles/rond-plein", univers: "inox", kg: 0.63, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Diamètre", valeur: "10 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,63 kg/m" }] },
+  "rond-plein-lisse-diametre-12mm-en-inox": { slug: "rond-plein-lisse-diametre-12mm-en-inox", nom: "Rond plein lisse diamètre 12mm en Inox", categorie: "/inox/profiles/rond-plein", univers: "inox", kg: 0.9, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Diamètre", valeur: "12 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,90 kg/m" }] },
+  "rond-plein-lisse-diametre-8mm-en-inox": { slug: "rond-plein-lisse-diametre-8mm-en-inox", nom: "Rond plein lisse diamètre 8mm en Inox", categorie: "/inox/profiles/rond-plein", univers: "inox", kg: 0.4, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Diamètre", valeur: "8 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,40 kg/m" }] },
+  "tole-2000x1000x1mm-plane-en-inox-304-gr320": { slug: "tole-2000x1000x1mm-plane-en-inox-304-gr320", nom: "Tôle 2000x1000x1mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 16.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 89.6, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "8,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "16,00 kg/plaque" }] },
+  "tole-2000x1000x2mm-plane-en-inox-304-gr320": { slug: "tole-2000x1000x2mm-plane-en-inox-304-gr320", nom: "Tôle 2000x1000x2mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 32.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 179.2, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "16,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "32,00 kg/plaque" }] },
+  "tole-2000x1000x3mm-plane-en-inox-304-gr320": { slug: "tole-2000x1000x3mm-plane-en-inox-304-gr320", nom: "Tôle 2000x1000x3mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 48.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 268.8, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "24,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "48,00 kg/plaque" }] },
+  "tole-2500x1250x1mm-plane-en-inox-304-gr320": { slug: "tole-2500x1250x1mm-plane-en-inox-304-gr320", nom: "Tôle 2500x1250x1mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 25.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 140.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "8,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "25,00 kg/plaque" }] },
+  "tole-2500x1250x2mm-plane-en-inox-304-gr320": { slug: "tole-2500x1250x2mm-plane-en-inox-304-gr320", nom: "Tôle 2500x1250x2mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 50.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 280.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "16,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "50,00 kg/plaque" }] },
+  "tole-2500x1250x3mm-plane-en-inox-304-gr320": { slug: "tole-2500x1250x3mm-plane-en-inox-304-gr320", nom: "Tôle 2500x1250x3mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 75.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 420.0, specs: [{ label: "Format", valeur: "2500 × 1250 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "24,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "75,00 kg/plaque" }] },
+  "tole-3000x1500x1mm-plane-en-inox-304-gr320": { slug: "tole-3000x1500x1mm-plane-en-inox-304-gr320", nom: "Tôle 3000x1500x1mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 36.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 201.6, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "1 mm" }, { label: "Masse surfacique", valeur: "8,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "36,00 kg/plaque" }] },
+  "tole-3000x1500x2mm-plane-en-inox-304-gr320": { slug: "tole-3000x1500x2mm-plane-en-inox-304-gr320", nom: "Tôle 3000x1500x2mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 72.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 403.2, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Masse surfacique", valeur: "16,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "72,00 kg/plaque" }] },
+  "tole-3000x1500x3mm-plane-en-inox-304-gr320": { slug: "tole-3000x1500x3mm-plane-en-inox-304-gr320", nom: "Tôle 3000x1500x3mm plane en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 108.0, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 604.8, specs: [{ label: "Format", valeur: "3000 × 1500 mm" }, { label: "Épaisseur", valeur: "3 mm" }, { label: "Masse surfacique", valeur: "24,00 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "108,00 kg/plaque" }] },
+  "tole-plane-2000x1000x0-8mm-en-inox-304-gr320": { slug: "tole-plane-2000x1000x0-8mm-en-inox-304-gr320", nom: "Tôle plane 2000x1000x0,8mm en Inox 304 GR320", categorie: "/inox/toles/tole-plane-304-brossee", univers: "inox", kg: 12.8, unitePoids: "kg/plaque", unite: "à la plaque", uniteCourte: "€/pce", prix: 71.7, specs: [{ label: "Format", valeur: "2000 × 1000 mm" }, { label: "Épaisseur", valeur: "0,8 mm" }, { label: "Masse surfacique", valeur: "6,40 kg/m²" }, { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "12,80 kg/plaque" }] },
+  "tube-carre-20x20x2mm-en-inox-304": { slug: "tube-carre-20x20x2mm-en-inox-304", nom: "Tube carré 20x20x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 1.12, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Section", valeur: "20 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,12 kg/m" }] },
+  "tube-carre-25x25x2mm-en-inox-304": { slug: "tube-carre-25x25x2mm-en-inox-304", nom: "Tube carré 25x25x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 1.43, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 7.45, specs: [{ label: "Section", valeur: "25 × 25 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,43 kg/m" }] },
+  "tube-carre-30x30x2mm-en-inox-304": { slug: "tube-carre-30x30x2mm-en-inox-304", nom: "Tube carré 30x30x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 1.74, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.05, specs: [{ label: "Section", valeur: "30 × 30 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,74 kg/m" }] },
+  "tube-carre-35x35x2mm-en-inox-304": { slug: "tube-carre-35x35x2mm-en-inox-304", nom: "Tube carré 35x35x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 2.05, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.65, specs: [{ label: "Section", valeur: "35 × 35 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,05 kg/m" }] },
+  "tube-carre-40x40x2mm-en-inox-304": { slug: "tube-carre-40x40x2mm-en-inox-304", nom: "Tube carré 40x40x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 2.36, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.25, specs: [{ label: "Section", valeur: "40 × 40 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,36 kg/m" }] },
+  "tube-carre-50x50x2mm-en-inox-304": { slug: "tube-carre-50x50x2mm-en-inox-304", nom: "Tube carré 50x50x2mm en Inox 304", categorie: "/inox/tubes/tube-carre", univers: "inox", kg: 2.98, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 15.5, specs: [{ label: "Section", valeur: "50 × 50 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,98 kg/m" }] },
+  "tube-rectangle-40x20x2mm-en-inox-304": { slug: "tube-rectangle-40x20x2mm-en-inox-304", nom: "Tube rectangle 40x20x2mm en Inox 304", categorie: "/inox/tubes/tube-rectangulaire", univers: "inox", kg: 1.74, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 9.05, specs: [{ label: "Section", valeur: "40 × 20 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,74 kg/m" }] },
+  "tube-rond-17-2x2mm-en-inox-304": { slug: "tube-rond-17-2x2mm-en-inox-304", nom: "Tube rond 17,2x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 0.76, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Diamètre extérieur", valeur: "17,2 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,76 kg/m" }] },
+  "tube-rond-21-3x2mm-en-inox-304": { slug: "tube-rond-21-3x2mm-en-inox-304", nom: "Tube rond 21,3x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 0.97, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.0, specs: [{ label: "Diamètre extérieur", valeur: "21,3 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "0,97 kg/m" }] },
+  "tube-rond-26-9x2mm-en-inox-304": { slug: "tube-rond-26-9x2mm-en-inox-304", nom: "Tube rond 26,9x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 1.25, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 6.5, specs: [{ label: "Diamètre extérieur", valeur: "26,9 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,25 kg/m" }] },
+  "tube-rond-33-7x2mm-en-inox-304": { slug: "tube-rond-33-7x2mm-en-inox-304", nom: "Tube rond 33,7x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 1.59, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 8.25, specs: [{ label: "Diamètre extérieur", valeur: "33,7 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "1,59 kg/m" }] },
+  "tube-rond-42-4x2mm-en-inox-304": { slug: "tube-rond-42-4x2mm-en-inox-304", nom: "Tube rond 42,4x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 2.03, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 10.55, specs: [{ label: "Diamètre extérieur", valeur: "42,4 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,03 kg/m" }] },
+  "tube-rond-48-3x2mm-en-inox-304": { slug: "tube-rond-48-3x2mm-en-inox-304", nom: "Tube rond 48,3x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 2.33, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 12.1, specs: [{ label: "Diamètre extérieur", valeur: "48,3 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,33 kg/m" }] },
+  "tube-rond-60-3x2mm-en-inox-304": { slug: "tube-rond-60-3x2mm-en-inox-304", nom: "Tube rond 60,3x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 2.93, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 15.25, specs: [{ label: "Diamètre extérieur", valeur: "60,3 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "2,93 kg/m" }] },
+  "tube-rond-76-1x2mm-en-inox-304": { slug: "tube-rond-76-1x2mm-en-inox-304", nom: "Tube rond 76,1x2mm en Inox 304", categorie: "/inox/tubes/tube-rond", univers: "inox", kg: 3.72, unitePoids: "kg/m", unite: "au mètre", uniteCourte: "€/m", prix: 19.35, specs: [{ label: "Diamètre extérieur", valeur: "76,1 mm" }, { label: "Épaisseur", valeur: "2 mm" }, { label: "Nuance", valeur: "304 (1.4301) — brossé grain 320" }, { label: "Poids", valeur: "3,72 kg/m" }] },
+  "bordure-en-acier-corten-150-25-x-2500mm": { slug: "bordure-en-acier-corten-150-25-x-2500mm", nom: "Bordure en acier Corten® 150/25 x 2500mm", categorie: "/jardin-cloture/amenagement/bordures", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "25 × 2500 mm" }] },
+  "bordure-en-acier-galvanise-150-25-x-2500mm": { slug: "bordure-en-acier-galvanise-150-25-x-2500mm", nom: "Bordure en acier galvanisé 150/25 x 2500mm", categorie: "/jardin-cloture/amenagement/bordures", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "25 × 2500 mm" }] },
+  "bride-rapide-en-inox": { slug: "bride-rapide-en-inox", nom: "BRIDE RAPIDE EN INOX", categorie: "/jardin-cloture/clotures/fixations", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "cle-de-montage-bride-rapide": { slug: "cle-de-montage-bride-rapide", nom: "CLÉ DE MONTAGE BRIDE RAPIDE", categorie: "/jardin-cloture/clotures/fixations", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "fixation-bride-30-nv-noir": { slug: "fixation-bride-30-nv-noir", nom: "FIXATION BRIDE 30 NV NOIR", categorie: "/jardin-cloture/clotures/fixations", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "kit-12-serveurs-clogriff-64": { slug: "kit-12-serveurs-clogriff-64", nom: "KIT 12 SERVEURS CLOGRIFF 64", categorie: "/jardin-cloture/clotures/fixations", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "kit-50-fixations-brides-30-nv-noir": { slug: "kit-50-fixations-brides-30-nv-noir", nom: "KIT 50 FIXATIONS BRIDES 30 NV NOIR", categorie: "/jardin-cloture/clotures/fixations", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m53-gris-ral-7016": { slug: "panneaux-medium-3d-fils-5-4-h-1m53-gris-ral-7016", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – GRIS RAL 7016", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m53-noir-ral-9005": { slug: "panneaux-medium-3d-fils-5-4-h-1m53-noir-ral-9005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – NOIR RAL 9005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m53-vert-ral-6005": { slug: "panneaux-medium-3d-fils-5-4-h-1m53-vert-ral-6005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – VERT RAL 6005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m73-gris-ral-7016": { slug: "panneaux-medium-3d-fils-5-4-h-1m73-gris-ral-7016", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – GRIS RAL 7016", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m73-noir-ral-9005": { slug: "panneaux-medium-3d-fils-5-4-h-1m73-noir-ral-9005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – NOIR RAL 9005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m73-vert-ral-6005": { slug: "panneaux-medium-3d-fils-5-4-h-1m73-vert-ral-6005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – VERT RAL 6005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m93-gris-ral-7016": { slug: "panneaux-medium-3d-fils-5-4-h-1m93-gris-ral-7016", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – GRIS RAL 7016", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m93-noir-ral-9005": { slug: "panneaux-medium-3d-fils-5-4-h-1m93-noir-ral-9005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – NOIR RAL 9005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-medium-3d-fils-5-4-h-1m93-vert-ral-6005": { slug: "panneaux-medium-3d-fils-5-4-h-1m93-vert-ral-6005", nom: "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – VERT RAL 6005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-plis-205-fils-5-5-3d-h-1m73-gris-7016": { slug: "panneaux-plis-205-fils-5-5-3d-h-1m73-gris-7016", nom: "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m73 – GRIS 7016", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-plis-205-fils-5-5-3d-h-1m73-noir-ral-9005": { slug: "panneaux-plis-205-fils-5-5-3d-h-1m73-noir-ral-9005", nom: "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m73 – NOIR RAL 9005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-plis-205-fils-5-5-3d-h-1m93-gris-7016": { slug: "panneaux-plis-205-fils-5-5-3d-h-1m93-gris-7016", nom: "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m93 – GRIS 7016", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "panneaux-plis-205-fils-5-5-3d-h-1m93-noir-ral-9005": { slug: "panneaux-plis-205-fils-5-5-3d-h-1m93-noir-ral-9005", nom: "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m93 – NOIR RAL 9005", categorie: "/jardin-cloture/clotures/panneaux-rigides", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m00-gris-ral-7016": { slug: "poteau-de-cloture-cloplus-40-2m00-gris-ral-7016", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - GRIS RAL 7016", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m00-noir-ral-9005": { slug: "poteau-de-cloture-cloplus-40-2m00-noir-ral-9005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m00-vert-ral-6005": { slug: "poteau-de-cloture-cloplus-40-2m00-vert-ral-6005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m30-gris-ral-7016": { slug: "poteau-de-cloture-cloplus-40-2m30-gris-ral-7016", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - GRIS RAL 7016", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m30-noir-ral-9005": { slug: "poteau-de-cloture-cloplus-40-2m30-noir-ral-9005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m30-vert-ral-6005": { slug: "poteau-de-cloture-cloplus-40-2m30-vert-ral-6005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m50-gris-ral-7016": { slug: "poteau-de-cloture-cloplus-40-2m50-gris-ral-7016", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - GRIS RAL 7016", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m50-noir-ral-9005": { slug: "poteau-de-cloture-cloplus-40-2m50-noir-ral-9005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-cloplus-40-2m50-vert-ral-6005": { slug: "poteau-de-cloture-cloplus-40-2m50-vert-ral-6005", nom: "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m00-noir-ral-9005": { slug: "poteau-de-cloture-clogriff-64-2m00-noir-ral-9005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m00-vert-ral-6005": { slug: "poteau-de-cloture-clogriff-64-2m00-vert-ral-6005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m00-gris-ral-7016": { slug: "poteau-de-cloture-clogriff-64-2m00-gris-ral-7016", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 -GRIS RAL 7016", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m30-noir-ral-9005": { slug: "poteau-de-cloture-clogriff-64-2m30-noir-ral-9005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M30 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m30-vert-ral-6005": { slug: "poteau-de-cloture-clogriff-64-2m30-vert-ral-6005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M30 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m50-noir-ral-9005": { slug: "poteau-de-cloture-clogriff-64-2m50-noir-ral-9005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - NOIR RAL 9005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m50-vert-ral-6005": { slug: "poteau-de-cloture-clogriff-64-2m50-vert-ral-6005", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - VERT RAL 6005", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016": { slug: "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016", nom: "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - VERT RAL 7016", categorie: "/jardin-cloture/clotures/poteaux", univers: "jardin-cloture", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "caillebotis-galvanise-1000x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-1000x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 1000x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1000 × 1000 mm" }] },
+  "caillebotis-galvanise-1010x1190mm-70-70-25-2": { slug: "caillebotis-galvanise-1010x1190mm-70-70-25-2", nom: "Caillebotis Galvanisé 1010x1190mm - 70/70 - 25/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1010 × 1190 mm" }] },
+  "caillebotis-galvanise-1200x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-1200x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 1200x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1200 × 1000 mm" }] },
+  "caillebotis-galvanise-400x1000mm-33-33-30-2": { slug: "caillebotis-galvanise-400x1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 400x1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "400 × 1000 mm" }] },
+  "caillebotis-galvanise-500x1000mm-33-33-30-2": { slug: "caillebotis-galvanise-500x1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 500x1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "500 × 1000 mm" }] },
+  "caillebotis-galvanise-600x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-600x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 600x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "600 × 1000 mm" }] },
+  "caillebotis-galvanise-700x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-700x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 700x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "700 × 1000 mm" }] },
+  "caillebotis-galvanise-800x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-800x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 800x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "800 × 1000 mm" }] },
+  "caillebotis-galvanise-900x-1000mm-33-33-30-2": { slug: "caillebotis-galvanise-900x-1000mm-33-33-30-2", nom: "Caillebotis Galvanisé 900x 1000mm - 33/33-30/2", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "900 × 1000 mm" }] },
+  "caillebotis-galvanises-1200x-1000mm-33-33-30-3": { slug: "caillebotis-galvanises-1200x-1000mm-33-33-30-3", nom: "Caillebotis Galvanisés 1200x 1000mm - 33/33-30/3", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1200 × 1000 mm" }] },
+  "marche-d-escalier-caillebotis-1000x230mm": { slug: "marche-d-escalier-caillebotis-1000x230mm", nom: "Marche d'escalier caillebotis 1000x230mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1000 × 230 mm" }] },
+  "marche-d-escalier-caillebotis-600x200mm": { slug: "marche-d-escalier-caillebotis-600x200mm", nom: "Marche d'escalier caillebotis 600x200mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "600 × 200 mm" }] },
+  "marche-d-escalier-caillebotis-700x230mm": { slug: "marche-d-escalier-caillebotis-700x230mm", nom: "Marche d'escalier caillebotis 700x230mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "700 × 230 mm" }] },
+  "marche-d-escalier-caillebotis-800x230mm": { slug: "marche-d-escalier-caillebotis-800x230mm", nom: "Marche d'escalier caillebotis 800x230mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "800 × 230 mm" }] },
+  "marche-d-escalier-caillebotis-900x230mm": { slug: "marche-d-escalier-caillebotis-900x230mm", nom: "Marche d'escalier caillebotis 900x230mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "900 × 230 mm" }] },
+  "marche-securit-pcp-o2-achil-1000x250mm": { slug: "marche-securit-pcp-o2-achil-1000x250mm", nom: "Marche securit PCP O2 ACHIL 1000x250mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1000 × 250 mm" }] },
+  "marche-securit-pcp-o2-achil-800-x-250mm": { slug: "marche-securit-pcp-o2-achil-800-x-250mm", nom: "Marche securit PCP O2 ACHIL 800 x 250mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "800 × 250 mm" }] },
+  "marche-securit-pcp-o2-achil-900x250mm": { slug: "marche-securit-pcp-o2-achil-900x250mm", nom: "Marche securit PCP O2 ACHIL 900x250mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "900 × 250 mm" }] },
+  "plancher-securit-pcp-o2-1000x1000mm": { slug: "plancher-securit-pcp-o2-1000x1000mm", nom: "Plancher securit PCP O2 - 1000x1000mm", categorie: "/quincaillerie/caillebotis-marches", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "1000 × 1000 mm" }] },
+  "meuleuse-d-angle-flex-l-1001-1010w-125-mm": { slug: "meuleuse-d-angle-flex-l-1001-1010w-125-mm", nom: "Meuleuse d'angle FLEX L 1001 – 1010W / 125 mm", categorie: "/quincaillerie/outillage", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "dl-chemicals-parabond-600-290ml-gris": { slug: "dl-chemicals-parabond-600-290ml-gris", nom: "DL CHEMICALS PARABOND 600 – 290ml - gris", categorie: "/quincaillerie/protection-chimie/colles-etancheite", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "dl-chemicals-parabond-800-290ml": { slug: "dl-chemicals-parabond-800-290ml", nom: "DL CHEMICALS PARABOND 800 – 290ml", categorie: "/quincaillerie/protection-chimie/colles-etancheite", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "dl-chemicals-parachim-vinylester-300ml": { slug: "dl-chemicals-parachim-vinylester-300ml", nom: "DL CHEMICALS PARACHIM VINYLESTER – 300ml", categorie: "/quincaillerie/protection-chimie/colles-etancheite", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "dl-chemicals-parasilico-am85-1-300ml-transparent": { slug: "dl-chemicals-parasilico-am85-1-300ml-transparent", nom: "DL CHEMICALS PARASILICO AM85-1 - 300ml - transparent", categorie: "/quincaillerie/protection-chimie/colles-etancheite", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zinga-film-galvanisant-1kg": { slug: "zinga-film-galvanisant-1kg", nom: "ZINGA - FILM GALVANISANT 1KG", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zinga-film-galvanisant-2kg": { slug: "zinga-film-galvanisant-2kg", nom: "ZINGA - FILM GALVANISANT 2KG", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zinga-zingasolv-1l": { slug: "zinga-zingasolv-1l", nom: "ZINGA ZINGASOLV – 1L", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zinga-zingatarfree-1l": { slug: "zinga-zingatarfree-1l", nom: "ZINGA ZINGATARFREE – 1L", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zinga-zingatarfree-5l": { slug: "zinga-zingatarfree-5l", nom: "ZINGA ZINGATARFREE – 5L", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zingaluspray-500ml": { slug: "zingaluspray-500ml", nom: "ZINGALUSPRAY - 500ML", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "zingaspray-500ml": { slug: "zingaspray-500ml", nom: "ZINGASPRAY - 500ML", categorie: "/quincaillerie/protection-chimie/galvanisation-a-froid", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-1l-blanc-ral-9010": { slug: "primer-anticorrosion-1l-blanc-ral-9010", nom: "PRIMER ANTICORROSION - 1L BLANC RAL 9010", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-1l-brun-rouge-ral-8012": { slug: "primer-anticorrosion-1l-brun-rouge-ral-8012", nom: "PRIMER ANTICORROSION - 1L BRUN ROUGE RAL 8012", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-1l-gris-ral-7016": { slug: "primer-anticorrosion-1l-gris-ral-7016", nom: "PRIMER ANTICORROSION - 1L GRIS RAL 7016", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-1l-noir-ral-9005": { slug: "primer-anticorrosion-1l-noir-ral-9005", nom: "PRIMER ANTICORROSION - 1L NOIR RAL 9005", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-5l-brun-rouge-ral-8012": { slug: "primer-anticorrosion-5l-brun-rouge-ral-8012", nom: "PRIMER ANTICORROSION - 5L BRUN ROUGE RAL 8012", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "primer-anticorrosion-5l-gris-ral-7016": { slug: "primer-anticorrosion-5l-gris-ral-7016", nom: "PRIMER ANTICORROSION - 5L GRIS RAL 7016", categorie: "/quincaillerie/protection-chimie/peintures-primaires", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [] },
+  "vis-autoforante-pour-acier-6-3x-100-tete-hexagonale-de-10mm": { slug: "vis-autoforante-pour-acier-6-3x-100-tete-hexagonale-de-10mm", nom: "Vis autoforante pour acier 6,3x 100 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 100 mm" }] },
+  "vis-autoforante-pour-acier-6-3x-65-tete-hexagonale-de-10mm": { slug: "vis-autoforante-pour-acier-6-3x-65-tete-hexagonale-de-10mm", nom: "Vis autoforante pour acier 6,3x 65 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 65 mm" }] },
+  "vis-a-bois-6-3x-100-tete-hexagonale-de-10mm": { slug: "vis-a-bois-6-3x-100-tete-hexagonale-de-10mm", nom: "Vis à bois 6,3x 100 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 100 mm" }] },
+  "vis-a-bois-6-3x-130-tete-hexagonale-de-10mm": { slug: "vis-a-bois-6-3x-130-tete-hexagonale-de-10mm", nom: "Vis à bois 6,3x 130 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 130 mm" }] },
+  "vis-a-bois-6-3x-150-tete-hexagonale-de-10mm": { slug: "vis-a-bois-6-3x-150-tete-hexagonale-de-10mm", nom: "Vis à bois 6,3x 150 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 150 mm" }] },
+  "vis-a-bois-6-3x-75-tete-hexagonale-de-10mm": { slug: "vis-a-bois-6-3x-75-tete-hexagonale-de-10mm", nom: "Vis à bois 6,3x 75 - tête hexagonale de 10mm", categorie: "/quincaillerie/visserie", univers: "quincaillerie", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "6.3 × 75 mm" }] },
+  "tasseau-40x40-71x250cm-parement-chene-clair": { slug: "tasseau-40x40-71x250cm-parement-chene-clair", nom: "Tasseau 40x40 71x250cm - Parement | Chêne clair", categorie: "/toiture-bardage/bardage/imitation-bois", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "40 × 40 mm" }] },
+  "tasseau-40x40-71x300cm-parement-chene-clair": { slug: "tasseau-40x40-71x300cm-parement-chene-clair", nom: "Tasseau 40x40 71x300cm - Parement | Chêne clair", categorie: "/toiture-bardage/bardage/imitation-bois", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "40 × 40 mm" }] },
+  "panneau-isole-eco-30mm-260x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-260x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 260x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "260 × 105 mm" }] },
+  "panneau-isole-eco-30mm-310x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-310x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 310x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "310 × 105 mm" }] },
+  "panneau-isole-eco-30mm-360x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-360x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 360x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "360 × 105 mm" }] },
+  "panneau-isole-eco-30mm-410x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-410x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 410x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "410 × 105 mm" }] },
+  "panneau-isole-eco-30mm-460x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-460x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 460x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "460 × 105 mm" }] },
+  "panneau-isole-eco-30mm-510x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-510x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 510x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "510 × 105 mm" }] },
+  "panneau-isole-eco-30mm-560x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-560x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 560x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "560 × 105 mm" }] },
+  "panneau-isole-eco-30mm-610x105cm-ral-7016": { slug: "panneau-isole-eco-30mm-610x105cm-ral-7016", nom: "Panneau isolé ECO 30mm – 610x105cm - RAL 7016", categorie: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "610 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-200x105cm": { slug: "tole-30-200-1000-ral-7016-200x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 200X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "200 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-250x105cm": { slug: "tole-30-200-1000-ral-7016-250x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 250X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "250 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-300x105cm": { slug: "tole-30-200-1000-ral-7016-300x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 300X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "300 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-350x105cm": { slug: "tole-30-200-1000-ral-7016-350x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 350X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "350 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-400x105cm": { slug: "tole-30-200-1000-ral-7016-400x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 400X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "400 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-450x105cm": { slug: "tole-30-200-1000-ral-7016-450x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 450X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "450 × 105 mm" }] },
+  "tole-30-200-1000-ral-7016-500x105cm": { slug: "tole-30-200-1000-ral-7016-500x105cm", nom: "Tôle 30.200.1000 - RAL 7016 - 500X105cm", categorie: "/toiture-bardage/toles-profilees/profil-30-200-1000", univers: "toiture-bardage", kg: null, unitePoids: "", unite: "à l'unité", uniteCourte: "€/pce", prix: null, specs: [{ label: "Dimensions", valeur: "500 × 105 mm" }] },
 };
 
-/* ------------------------------------------------------------------ */
-/*  Tarification                                                       */
-/* ------------------------------------------------------------------ */
-
-const TARIF: Record<string, { kg: number; min: number }> = {
-  poutrelles: { kg: 1.05, min: 6.0 },
-  cornieres: { kg: 1.18, min: 1.6 },
-  "plats-barres": { kg: 1.3, min: 1.95 },
-  tubes: { kg: 1.385, min: 2.2 },
-  toles: { kg: 1.18, min: 12.0 },
-  treillis: { kg: 1.15, min: 3.0 },
-  corten: { kg: 2.6, min: 18.0 },
-  "poteaux-cloture": { kg: 1.9, min: 8.0 },
-  visserie: { kg: 1.0, min: 0 },
-  inox: { kg: 5.2, min: 6.0 },
-  aluminium: { kg: 6.5, min: 5.0 },
+export const noeuds: Record<string, Noeud> = {
+  "/acier": { chemin: "/acier", segment: "acier", nom: "Acier", h1: "Acier", univers: "acier", accroche: "", titreSeo: "Acier — en stock, coupé sur mesure", enfants: ["/acier/armatures-beton", "/acier/poutrelles", "/acier/profiles", "/acier/toles", "/acier/tubes"], produits: [] },
+  "/acier/armatures-beton": { chemin: "/acier/armatures-beton", segment: "armatures-beton", nom: "Armatures béton", h1: "Armature béton — ronds, treillis & façonnage sur mesure", univers: "acier", accroche: "Ce qui arme le béton", titreSeo: "Armature béton — ronds, treillis & façonnage sur mesure — en stock, coupé sur mesure", enfants: ["/acier/armatures-beton/rond-a-beton-lamine-a-chaud", "/acier/armatures-beton/rond-a-beton-lamine-a-froid", "/acier/armatures-beton/treillis-soudes", "/acier/armatures-beton/treillis-soudes-depassants"], produits: [] },
+  "/acier/armatures-beton/rond-a-beton-lamine-a-chaud": { chemin: "/acier/armatures-beton/rond-a-beton-lamine-a-chaud", segment: "rond-a-beton-lamine-a-chaud", nom: "Rond à béton laminé à chaud", h1: "Rond à béton crénelé à chaud – Fer à béton armature", univers: "acier", accroche: "Barre crénelée haute adhérence B500B : l'armature des poutres, poteaux et chaînages coulés en place.", titreSeo: "Rond à béton crénelé à chaud – Fer à béton armature", enfants: [], produits: ["rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud", "rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud", "rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud", "rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud", "rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud", "rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud"] },
+  "/acier/armatures-beton/rond-a-beton-lamine-a-froid": { chemin: "/acier/armatures-beton/rond-a-beton-lamine-a-froid", segment: "rond-a-beton-lamine-a-froid", nom: "Rond à béton laminé à froid", h1: "Rond à béton crénelé à froid – Acier haute adhérence", univers: "acier", accroche: "Crénelage obtenu à froid, pour les petits diamètres et les armatures légères.", titreSeo: "Rond à béton crénelé à froid – Acier haute adhérence", enfants: [], produits: ["rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid"] },
+  "/acier/armatures-beton/treillis-soudes": { chemin: "/acier/armatures-beton/treillis-soudes", segment: "treillis-soudes", nom: "Treillis soudés", h1: "Treillis soudé pour béton armé – Panneaux bruts et galvanisés", univers: "acier", accroche: "Panneaux d'armature pour dalles, chapes et terrasses. Format chantier 5 × 2 m.", titreSeo: "Treillis soudé pour béton armé – panneaux acier", enfants: [], produits: ["treillis-soude-100x100x10mm-5m-x-2m", "treillis-soude-100x100x5mm-5m-x-2m", "treillis-soude-100x100x8mm-5m-x-2m", "treillis-soude-150x150x10mm-5m-x-2m", "treillis-soude-150x150x12mm-5m-x-2m", "treillis-soude-150x150x5mm-2m-x-1m", "treillis-soude-150x150x5mm-3m-x-2m", "treillis-soude-150x150x5mm-5m-x-2m", "treillis-soude-150x150x6mm-3m-x-2m", "treillis-soude-150x150x6mm-5m-x-2m", "treillis-soude-150x150x8mm-3m-x-2m", "treillis-soude-150x150x8mm-5m-x-2m", "treillis-soude-50x50x4mm-3m-x-2m", "treillis-soude-50x50x4mm-5m-x-2m", "treillis-soude-75x75x5mm-5m-x-2m", "treillis-soude-galvanise-50x50x4mm-3m-x-2m", "treillis-soude-galvanise-50x50x4mm-5m-x-2m"] },
+  "/acier/armatures-beton/treillis-soudes-depassants": { chemin: "/acier/armatures-beton/treillis-soudes-depassants", segment: "treillis-soudes-depassants", nom: "Treillis à dépassants", h1: "Treillis soudé avec dépassants Armature béton prête à l’emploi", univers: "acier", accroche: "Fils dépassants pour recouvrir les panneaux entre eux sans recoupe. Format 5,95 × 2,35 m.", titreSeo: "Treillis soudé avec dépassants – panneau béton armé", enfants: [], produits: ["treillis-soude-avec-depassants-150x150x10mm-5-95m-x-2-35m", "treillis-soude-avec-depassants-150x150x12mm-5-95m-x-2-35m", "treillis-soude-avec-depassants-150x150x6mm-5-95m-x-2-35m", "treillis-soude-avec-depassants-150x150x8mm-5-95m-x-2-35m"] },
+  "/acier/poutrelles": { chemin: "/acier/poutrelles", segment: "poutrelles", nom: "Poutrelles", h1: "Poutrelle acier – Solidité et polyvalence pour toutes vos constructions", univers: "acier", accroche: "IPE, IPN, HEA, HEB, UPN — la structure porteuse", titreSeo: "Poutrelle acier – Solidité et polyvalence pour toutes vos constructions", enfants: ["/acier/poutrelles/hea", "/acier/poutrelles/heb", "/acier/poutrelles/ipe", "/acier/poutrelles/upn"], produits: [] },
+  "/acier/poutrelles/hea": { chemin: "/acier/poutrelles/hea", segment: "hea", nom: "Poutrelle HEA", h1: "Poutrelle HEA en acier : robustesse et polyvalence pour vos constructions", univers: "acier", accroche: "Profil H allégé : ailes larges pour la compression, âme fine pour le poids. Le compromis des poteaux et des ossatures courantes.", titreSeo: "Poutrelle HEA en acier : robustesse et polyvalence pour vos constructions", enfants: [], produits: ["poutrelle-hea-100-en-acier", "poutrelle-hea-120-en-acier", "poutrelle-hea-140-en-acier", "poutrelle-hea-160-en-acier", "poutrelle-hea-180-en-acier", "poutrelle-hea-200-en-acier", "poutrelle-hea-220-en-acier", "poutrelle-hea-240-en-acier", "poutrelle-hea-260-en-acier", "poutrelle-hea-280-en-acier", "poutrelle-hea-300-en-acier"] },
+  "/acier/poutrelles/heb": { chemin: "/acier/poutrelles/heb", segment: "heb", nom: "Poutrelle HEB", h1: "Poutrelle HEB en acier : performance et endurance pour charges lourdes", univers: "acier", accroche: "Profil H lourd, section quasi carrée : le plus résistant à encombrement égal. Poteaux, reprises de charge, portiques.", titreSeo: "Poutrelle HEB en acier : performance et endurance pour charges lourdes", enfants: [], produits: ["poutrelle-heb-100-en-acier", "poutrelle-heb-120-en-acier", "poutrelle-heb-140-en-acier", "poutrelle-heb-160-en-acier", "poutrelle-heb-180-en-acier", "poutrelle-heb-200-en-acier", "poutrelle-heb-220-en-acier", "poutrelle-heb-240-en-acier", "poutrelle-heb-260-en-acier", "poutrelle-heb-280-en-acier", "poutrelle-heb-300-en-acier"] },
+  "/acier/poutrelles/ipe": { chemin: "/acier/poutrelles/ipe", segment: "ipe", nom: "Poutrelle IPE", h1: "Poutrelle en acier pour la construction IPE", univers: "acier", accroche: "Profil en I à ailes parallèles : le meilleur rendement en flexion sur longue portée. C'est le profil des linteaux et des planchers.", titreSeo: "Poutrelle IPE en acier – Profilé en I pour constructions légères", enfants: [], produits: ["poutrelle-ipe-100-en-acier", "poutrelle-ipe-120-en-acier", "poutrelle-ipe-140-en-acier", "poutrelle-ipe-160-en-acier", "poutrelle-ipe-180-en-acier", "poutrelle-ipe-200-en-acier", "poutrelle-ipe-220-en-acier", "poutrelle-ipe-240-en-acier", "poutrelle-ipe-270", "poutrelle-ipe-300", "poutrelle-ipe-330"] },
+  "/acier/poutrelles/upn": { chemin: "/acier/poutrelles/upn", segment: "upn", nom: "Poutrelle UPN", h1: "Poutrelle UPN en acier : robustesse et polyvalence pour vos structures métalliques", univers: "acier", accroche: "Profil en U à ailes inclinées : chevêtres, rives de plancher, encadrements. Se boulonne à plat sans usinage.", titreSeo: "Poutrelle UPN en acier : robustesse et polyvalence pour vos structures métalliques", enfants: [], produits: ["poutrelle-upn-100-en-acier", "poutrelle-upn-120-en-acier", "poutrelle-upn-140-en-acier", "poutrelle-upn-160-en-acier", "poutrelle-upn-180-en-acier", "poutrelle-upn-200-en-acier", "poutrelle-upn-220-en-acier", "poutrelle-upn-240-en-acier", "poutrelle-upn-260-en-acier", "poutrelle-upn-280-en-acier", "poutrelle-upn-300-en-acier", "poutrelle-upn-80-en-acier"] },
+  "/acier/profiles": { chemin: "/acier/profiles", segment: "profiles", nom: "Profilés", h1: "Produits longs : cornières, fers U et T, plats & ronds", univers: "acier", accroche: "Le fer de ferronnerie", titreSeo: "Produits longs : cornières, fers U et T, plats & ronds — en stock, coupé sur mesure", enfants: ["/acier/profiles/carre-plein", "/acier/profiles/corniere-egale", "/acier/profiles/corniere-inegale", "/acier/profiles/fer-t", "/acier/profiles/large-plat", "/acier/profiles/plat", "/acier/profiles/rond-plein"], produits: [] },
+  "/acier/profiles/carre-plein": { chemin: "/acier/profiles/carre-plein", segment: "carre-plein", nom: "Carré plein", h1: "Carré plein", univers: "acier", accroche: "Barreaudage décoratif, grilles de défense, ferronnerie traditionnelle.", titreSeo: "Carré plein — en stock, coupé sur mesure", enfants: [], produits: ["carre-plein-de-10x10mm-en-acier", "carre-plein-de-12x12mm-en-acier", "carre-plein-de-14x14mm-en-acier", "carre-plein-de-16x16mm-en-acier", "carre-plein-de-20x20mm-en-acier", "carre-plein-de-6x6mm-en-acier", "carre-plein-de-8x8mm-en-acier"] },
+  "/acier/profiles/corniere-egale": { chemin: "/acier/profiles/corniere-egale", segment: "corniere-egale", nom: "Cornière égale", h1: "Cornière égale en acier laminé à chaud – S235JR", univers: "acier", accroche: "La pièce de renfort universelle : cadre, support, raidisseur, bordure. La plus demandée du catalogue.", titreSeo: "Cornière égale en acier laminé à chaud – S235JR", enfants: [], produits: ["corniere-egale-100x100x10mm-acier-lac", "corniere-egale-20x20x3mm-acier-lac", "corniere-egale-25x25x3mm-acier-lac", "corniere-egale-30x30x3mm-acier-lac", "corniere-egale-40x40x3mm-acier-lac", "corniere-egale-40x40x4mm-acier-lac", "corniere-egale-50x50x3mm-acier-lac", "corniere-egale-50x50x5mm-acier-lac", "corniere-egale-60x60x6mm-acier-lac", "corniere-egale-80x80x8mm-acier-lac"] },
+  "/acier/profiles/corniere-inegale": { chemin: "/acier/profiles/corniere-inegale", segment: "corniere-inegale", nom: "Cornière inégale", h1: "Cornière inégale en acier laminé à chaud", univers: "acier", accroche: "Ailes de largeurs différentes : la grande aile porte, la petite se fixe. Rives, seuils, supports asymétriques.", titreSeo: "Cornière inégale en acier laminé à chaud", enfants: [], produits: ["corniere-inegale-100x50x6mm-acier-lac", "corniere-inegale-150x100x10mm-acier-lac", "corniere-inegale-200x100x10mm-acier-lac", "corniere-inegale-60x40x5mm-acier-lac", "corniere-inegale-70x50x6mm-acier-lac"] },
+  "/acier/profiles/fer-t": { chemin: "/acier/profiles/fer-t", segment: "fer-t", nom: "Fer T", h1: "Fer T", univers: "acier", accroche: "Profil en T laminé : encadrements, séparations, renforts d'angle plat.", titreSeo: "Fer T — en stock, coupé sur mesure", enfants: [], produits: ["fer-en-t-20x3mm-en-acier-lamine-a-chaud", "fer-en-t-30x4mm-en-acier-lamine-a-chaud", "fer-en-t-40x5mm-en-acier-lamine-a-chaud", "fer-en-t-50x6mm-en-acier-lamine-a-chaud", "fer-en-t-60x7mm-en-acier-lamine-a-chaud"] },
+  "/acier/profiles/large-plat": { chemin: "/acier/profiles/large-plat", segment: "large-plat", nom: "Large plat", h1: "Large plat en acier laminé à chaud", univers: "acier", accroche: "Au-delà de 150 mm de largeur, le plat devient un large plat : semelles, platines de forte section.", titreSeo: "Large plat en acier laminé à chaud", enfants: [], produits: ["large-plat-180x10mm-en-acier-lamine-a-chaud", "large-plat-200x10mm-en-acier-lamine-a-chaud", "large-plat-en-acier-lamine-a-chaud-160x10mm"] },
+  "/acier/profiles/plat": { chemin: "/acier/profiles/plat", segment: "plat", nom: "Plat", h1: "Plat en acier laminé à chaud", univers: "acier", accroche: "Le fer plat de ferronnerie : portails, grilles, pièces de liaison, platines.", titreSeo: "Plat en acier laminé à chaud", enfants: [], produits: ["plat-100x10mm-en-acier-lamine-a-chaud", "plat-100x5mm-en-acier-lamine-a-chaud", "plat-100x8mm-en-acier-lamine-a-chaud", "plat-10x3mm-en-acier-lamine-a-chaud", "plat-120x10mm-en-acier-lamine-a-chaud", "plat-120x5mm-en-acier-lamine-a-chaud", "plat-140x10mm-en-acier-lamine-a-chaud", "plat-150x10mm-en-acier-lamine-a-chaud", "plat-150x5mm-en-acier-lamine-a-chaud", "plat-20x10mm-en-acier-lamine-a-chaud", "plat-20x3mm-en-acier-lamine-a-chaud", "plat-20x5mm-en-acier-lamine-a-chaud", "plat-25x10mm-en-acier-lamine-a-chaud", "plat-25x3mm-en-acier-lamine-a-chaud", "plat-25x4mm-en-acier-lamine-a-chaud", "plat-25x5mm-en-acier-lamine-a-chaud", "plat-30x10mm-en-acier-lamine-a-chaud", "plat-30x20mm-en-acier-lamine-a-chaud", "plat-30x3mm-en-acier-lamine-a-chaud", "plat-30x5mm-en-acier-lamine-a-chaud", "plat-30x6mm-en-acier-lamine-a-chaud", "plat-30x8mm-en-acier-lamine-a-chaud", "plat-40x10mm-en-acier-lamine-a-chaud", "plat-40x3mm-en-acier-lamine-a-chaud", "plat-40x4mm-en-acier-lamine-a-chaud", "plat-40x5mm-en-acier-lamine-a-chaud", "plat-40x8mm-en-acier-lamine-a-chaud", "plat-50x10mm-en-acier-lamine-a-chaud", "plat-50x3mm-en-acier-lamine-a-chaud", "plat-50x5mm-en-acier-lamine-a-chaud", "plat-50x8mm-en-acier-lamine-a-chaud", "plat-60x10mm-en-acier-lamine-a-chaud", "plat-60x5mm-en-acier-lamine-a-chaud", "plat-60x8mm-en-acier-lamine-a-chaud", "plat-70x10mm-en-acier-lamine-a-chaud", "plat-80x10mm-en-acier-lamine-a-chaud", "plat-80x8mm-en-acier-lamine-a-chaud"] },
+  "/acier/profiles/rond-plein": { chemin: "/acier/profiles/rond-plein", segment: "rond-plein", nom: "Rond plein", h1: "Rond plein lisse", univers: "acier", accroche: "Barre ronde pleine laminée : barreaudage, axes, tiges, pièces tournées. Encaisse la torsion.", titreSeo: "Rond plein lisse — en stock, coupé sur mesure", enfants: [], produits: ["rond-lisse-10mm-en-acier-laminee-a-chaud", "rond-lisse-12mm-en-acier-laminee-a-chaud", "rond-lisse-14mm-en-acier-laminee-a-chaud", "rond-lisse-16mm-en-acier-laminee-a-chaud", "rond-lisse-18mm-en-acier-laminee-a-chaud", "rond-lisse-20mm-en-acier-laminee-a-chaud", "rond-lisse-22mm-en-acier-laminee-a-chaud", "rond-lisse-6mm-en-acier-laminee-a-chaud", "rond-lisse-8mm-en-acier-laminee-a-chaud"] },
+  "/acier/toles": { chemin: "/acier/toles", segment: "toles", nom: "Tôles", h1: "Tôles et Plaques en Acier – Vente en ligne et sur mesure", univers: "acier", accroche: "Couvrir, habiller, fermer", titreSeo: "Tôles et Plaques en Acier – Vente en ligne et sur mesure", enfants: ["/acier/toles/tole-corten", "/acier/toles/tole-galvanisee", "/acier/toles/tole-laminee-a-chaud", "/acier/toles/tole-laminee-a-froid", "/acier/toles/tole-larmee", "/acier/toles/tole-perforee", "/acier/toles/tole-quarto"], produits: [] },
+  "/acier/toles/tole-corten": { chemin: "/acier/toles/tole-corten", segment: "tole-corten", nom: "Tôle corten", h1: "Tôle Corten - L'acier qui rouille... naturellement !", univers: "acier", accroche: "L'acier qui se protège en rouillant. La patine se stabilise en 6 à 18 mois, puis fait barrière.", titreSeo: "Tôle Corten - L'acier qui rouille... naturellement ! — en stock, coupé sur mesure", enfants: [], produits: ["tole-de-2000x1000x3mm-plane-en-acier-corten", "tole-de-2500x1250x2mm-plane-en-acier-corten", "tole-de-2500x1250x3mm-plane-en-acier-corten", "tole-de-3000x1500x2mm-plane-en-acier-corten", "tole-de-3000x1500x3mm-plane-en-acier-corten"] },
+  "/acier/toles/tole-galvanisee": { chemin: "/acier/toles/tole-galvanisee", segment: "tole-galvanisee", nom: "Tôle galvanisée", h1: "Tôle galvanisée - Protection contre la corrosion et la rouille", univers: "acier", accroche: "Revêtement de zinc appliqué en continu : elle part dehors sans peinture ni traitement complémentaire.", titreSeo: "Tôle galvanisée - Protection contre la corrosion et la rouille", enfants: [], produits: ["tole-de-2000x1000x1-5mm-en-acier-galvanisee", "tole-de-2000x1000x1mm-en-acier-galvanisee", "tole-de-2000x1000x2mm-en-acier-galvanisee", "tole-de-2000x1000x3mm-en-acier-galvanisee", "tole-de-2500x1250x1-5mm-en-acier-galvanisee", "tole-de-2500x1250x1mm-en-acier-galvanisee", "tole-de-2500x1250x2mm-en-acier-galvanisee", "tole-de-2500x1250x3mm-en-acier-galvanisee", "tole-de-3000x1500x1-5mm-en-acier-galvanisee", "tole-de-3000x1500x1mm-en-acier-galvanisee", "tole-de-3000x1500x2mm-en-acier-galvanisee", "tole-de-3000x1500x3mm-en-acier-galvanisee"] },
+  "/acier/toles/tole-laminee-a-chaud": { chemin: "/acier/toles/tole-laminee-a-chaud", segment: "tole-laminee-a-chaud", nom: "Tôle laminée à chaud", h1: "Tôle laminée à chaud S235JR – Acier de construction polyvalent", univers: "acier", accroche: "Tôle de construction S235JR : platines, goussets, pièces structurelles découpées au plan.", titreSeo: "Tôle laminée à chaud S235JR – Acier de construction", enfants: [], produits: ["tole-de-2000x1000x10mm-en-acier-laminee-a-chaud", "tole-de-2000x1000x12mm-en-acier-laminee-a-chaud", "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud", "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud", "tole-de-2000x1000x5mm-en-acier-laminee-a-chaud", "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud", "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud", "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud", "tole-de-2500x1250x5mm-en-acier-laminee-a-chaud", "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud", "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud", "tole-de-3000x1500x8mm-en-acier-laminee-a-chaud", "tole-plane-de-2000x1000x10mm-laserpressplus", "tole-plane-de-2000x1000x15mm-laserpressplus", "tole-plane-de-2000x1000x2mm-laserpressplus", "tole-plane-de-2000x1000x3mm-laserpressplus", "tole-plane-de-2000x1000x4mm-laserpressplus", "tole-plane-de-2000x1000x5mm-laserpressplus", "tole-plane-de-2000x1000x6mm-laserpressplus", "tole-plane-de-2000x1000x8mm-laserpressplus", "tole-plane-de-2500x1250x10mm-laserpressplus", "tole-plane-de-2500x1250x15mm-laserpressplus", "tole-plane-de-2500x1250x2mm-laserpressplus", "tole-plane-de-2500x1250x3mm-laserpressplus", "tole-plane-de-2500x1250x4mm-laserpressplus", "tole-plane-de-2500x1250x5mm-laserpressplus", "tole-plane-de-2500x1250x6mm-laserpressplus", "tole-plane-de-2500x1250x8mm-laserpressplus", "tole-plane-de-3000x1500x10mm-laserpressplus", "tole-plane-de-3000x1500x15mm-laserpressplus", "tole-plane-de-3000x1500x2mm-laserpressplus", "tole-plane-de-3000x1500x3mm-laserpressplus", "tole-plane-de-3000x1500x4mm-laserpressplus", "tole-plane-de-3000x1500x6mm-laserpressplus", "tole-plane-de-3000x1500x8mm-laserpressplus", "tole-plane-laserpressplus-240-skinpass-de-3000x1500x5mm"] },
+  "/acier/toles/tole-laminee-a-froid": { chemin: "/acier/toles/tole-laminee-a-froid", segment: "tole-laminee-a-froid", nom: "Tôle laminée à froid", h1: "Tôle laminée à froid S235JR - Acier de précision", univers: "acier", accroche: "Surface plus lisse et tolérances plus serrées que le laminé à chaud. Pour ce qui se voit ou s'emboîte.", titreSeo: "tôle laminée à froid - Acier de précision", enfants: [], produits: ["tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid", "tole-de-2000x1000x1mm-en-acier-lamine-a-froid", "tole-de-2000x1000x2mm-en-acier-lamine-a-froid", "tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid", "tole-de-2500x1250x1mm-en-acier-lamine-a-froid", "tole-de-2500x1250x2mm-en-acier-lamine-a-froid", "tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid", "tole-de-3000x1500x1mm-en-acier-lamine-a-froid"] },
+  "/acier/toles/tole-larmee": { chemin: "/acier/toles/tole-larmee", segment: "tole-larmee", nom: "Tôle larmée", h1: "Tôle larmée en acier – Antidérapante et robuste", univers: "acier", accroche: "Motif damier en relief laminé dans la masse : planchers techniques, marches, passerelles, seuils.", titreSeo: "Tôle larmée en acier – Antidérapante et robuste", enfants: [], produits: ["tole-de-2000x1000x3-5mm-en-acier-larmee", "tole-de-2000x1000x5-7mm-en-acier-larmee", "tole-de-2500x1250x3-5mm-en-acier-larmee", "tole-de-2500x1250x5-7mm-en-acier-larmee", "tole-de-3000x1500x3-5mm-en-acier-larmee", "tole-de-3000x1500x5-7mm-en-acier-larmee"] },
+  "/acier/toles/tole-perforee": { chemin: "/acier/toles/tole-perforee", segment: "tole-perforee", nom: "Tôle perforée", h1: "Tôles Perforées en Acier et Acier Galvanisé : Trous Ronds, Carrés et Aléatoires", univers: "acier", accroche: "Perforations rondes, carrées ou aléatoires : ventilation, brise-vue, habillage de façade, protection de machine.", titreSeo: "Tôles Perforées Acier & Galva | Ronds, Carrés, Aléatoires | Aciers Grosjean", enfants: [], produits: ["toles-perforees-aleatoire-2000-x-1000-x-1", "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-0-r5-t8", "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-r10-t15", "toles-perforees-trous-carres-2000-x-1000-x-2-0-c10-u15", "toles-perforees-trous-ronds-2000-x-1000-x-2-0-r10-t15", "toles-perforees-trous-ronds-2000-x-1000-x-2-r5-t8", "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r10-t15", "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r5-t8"] },
+  "/acier/toles/tole-quarto": { chemin: "/acier/toles/tole-quarto", segment: "tole-quarto", nom: "Tôle quarto", h1: "Tôle quarto - Grande résistance mécanique", univers: "acier", accroche: "Forte épaisseur laminée sur quarto : grande résistance mécanique pour les pièces lourdes.", titreSeo: "Tôle quarto - Grande résistance mécanique — en stock, coupé sur mesure", enfants: [], produits: ["tole-de-2000x1000x20mm-en-acier-quarto"] },
+  "/acier/tubes": { chemin: "/acier/tubes", segment: "tubes", nom: "Tubes", h1: "Tubes acier ronds, carrés et rectangulaires", univers: "acier", accroche: "L'ossature creuse, légère et rigide", titreSeo: "Tubes acier ronds, carrés et rectangulaires — en stock, coupé sur mesure", enfants: ["/acier/tubes/tube-carre", "/acier/tubes/tube-rectangulaire", "/acier/tubes/tube-rond"], produits: [] },
+  "/acier/tubes/tube-carre": { chemin: "/acier/tubes/tube-carre", segment: "tube-carre", nom: "Tube carré", h1: "Tube carré acier", univers: "acier", accroche: "Le tube d'ossature par défaut : quatre faces planes qui se soudent d'équerre sans préparation.", titreSeo: "Tube carré en acier – Robuste, polyvalent et disponible sur mesure", enfants: [], produits: ["tube-carre-100x100x10mm-en-acier", "tube-carre-100x100x3mm-en-acier", "tube-carre-100x100x4mm-en-acier", "tube-carre-100x100x5mm-en-acier", "tube-carre-120x120x4mm-en-acier", "tube-carre-120x120x5mm-en-acier", "tube-carre-140x140x5mm-en-acier", "tube-carre-150x150x5mm-en-acier", "tube-carre-15x15x2mm-en-acier", "tube-carre-20x20x2mm-en-acier", "tube-carre-250x250x6mm-en-acier", "tube-carre-25x25x2mm-en-acier", "tube-carre-25x25x3mm-en-acier", "tube-carre-30x30x2mm-en-acier", "tube-carre-30x30x3mm-en-acier", "tube-carre-35x35x2mm-en-acier", "tube-carre-40x40x2mm-en-acier", "tube-carre-40x40x3mm-en-acier", "tube-carre-40x40x4mm-en-acier", "tube-carre-45x45x2mm-en-acier", "tube-carre-45x45x3mm-en-acier", "tube-carre-50x50x2mm-en-acier", "tube-carre-50x50x3mm-en-acier", "tube-carre-50x50x4mm-en-acier", "tube-carre-50x50x5mm-en-acier", "tube-carre-60x60x2mm-en-acier", "tube-carre-60x60x3mm-en-acier", "tube-carre-60x60x4mm-en-acier", "tube-carre-60x60x5mm-en-acier", "tube-carre-70x70x3mm-en-acier", "tube-carre-70x70x4mm-en-acier", "tube-carre-70x70x5mm-en-acier", "tube-carre-80x80x3mm-en-acier", "tube-carre-80x80x4mm-en-acier", "tube-carre-80x80x5mm-en-acier", "tube-carre-90x90x3mm-en-acier"] },
+  "/acier/tubes/tube-rectangulaire": { chemin: "/acier/tubes/tube-rectangulaire", segment: "tube-rectangulaire", nom: "Tube rectangulaire", h1: "Tube rectangulaire acier – Robustesse et performance pour vos constructions", univers: "acier", accroche: "La rigidité se concentre dans le sens de la hauteur. Le profil des traverses et des poutres de portail.", titreSeo: "Tube rectangulaire acier – Robustesse et performance pour vos constructions", enfants: [], produits: ["tube-rectangle-100x50x3mm-en-acier", "tube-rectangle-100x50x4mm-en-acier", "tube-rectangle-120x60x3mm-en-acier", "tube-rectangle-120x60x4mm-en-acier", "tube-rectangle-200x100x5mm-en-acier", "tube-rectangle-30x15x2mm-en-acier", "tube-rectangle-30x20x2mm-en-acier", "tube-rectangle-40x20x2mm-en-acier", "tube-rectangle-40x20x3mm-en-acier", "tube-rectangle-40x30x2mm-en-acier", "tube-rectangle-50x20x2mm-en-acier", "tube-rectangle-50x25x2mm-en-acier", "tube-rectangle-50x30x2mm-en-acier", "tube-rectangle-50x30x3mm-en-acier", "tube-rectangle-60x30x2mm-en-acier", "tube-rectangle-60x30x3mm-en-acier", "tube-rectangle-60x40x2mm-en-acier", "tube-rectangle-60x40x3mm-en-acier", "tube-rectangle-80x40x2mm-en-acier", "tube-rectangle-80x40x3mm-en-acier", "tube-rectangle-80x40x4mm-en-acier"] },
+  "/acier/tubes/tube-rond": { chemin: "/acier/tubes/tube-rond", segment: "tube-rond", nom: "Tube rond", h1: "Tube rond en acier – Résistant, polyvalent et prêt à l’emploi", univers: "acier", accroche: "Mains courantes, barrières, mobilier et structures cintrées. Série légère en acier brut.", titreSeo: "Tube rond en acier – Résistant, polyvalent et prêt à l’emploi", enfants: [], produits: ["tube-rond-101-6x3-65mm-en-acier-brut-serie-legere", "tube-rond-114-3x3-65mm-en-acier-brut-serie-legere", "tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere", "tube-rond-21-3x2mm-en-acier-brut-serie-legere", "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere", "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere", "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere", "tube-rond-48-3x3mm-en-acier-brut-serie-legere", "tube-rond-60-3x3mm-en-acier-brut-serie-legere", "tube-rond-76-1x3-25mm-en-acier-brut-serie-legere", "tube-rond-88-9x3-00mm-en-acier-brut-serie-legere"] },
+  "/aluminium": { chemin: "/aluminium", segment: "aluminium", nom: "Aluminium", h1: "Aluminium", univers: "aluminium", accroche: "", titreSeo: "Aluminium — en stock, coupé sur mesure", enfants: ["/aluminium/profiles", "/aluminium/toles", "/aluminium/tubes"], produits: [] },
+  "/aluminium/profiles": { chemin: "/aluminium/profiles", segment: "profiles", nom: "Profilés", h1: "Profilés aluminium : cornières, U, T, ronds, carrés & plats", univers: "aluminium", accroche: "Profilés aluminium 6060", titreSeo: "Profilés aluminium : cornières, U, T, ronds, carrés & plats — en stock, coupé sur mesure", enfants: ["/aluminium/profiles/corniere-egale", "/aluminium/profiles/plat", "/aluminium/profiles/profil-t", "/aluminium/profiles/profil-u"], produits: [] },
+  "/aluminium/profiles/corniere-egale": { chemin: "/aluminium/profiles/corniere-egale", segment: "corniere-egale", nom: "Cornière égale", h1: "Cornière égale en aluminium", univers: "aluminium", accroche: "", titreSeo: "Cornière égale en aluminium — en stock, coupé sur mesure", enfants: [], produits: ["corniere-egale-20x20x2mm-en-aluminium", "corniere-egale-25x25x2mm-en-aluminium", "corniere-egale-30x30x2mm-en-aluminium", "corniere-egale-30x30x3mm-en-aluminium", "corniere-egale-40x40x2mm-en-aluminium", "corniere-egale-40x40x3mm-en-aluminium", "corniere-egale-50x50x3mm-en-aluminium", "corniere-egale-60x60x3mm-en-aluminium"] },
+  "/aluminium/profiles/plat": { chemin: "/aluminium/profiles/plat", segment: "plat", nom: "Plat", h1: "Profil plat en aluminium – léger, robuste et polyvalent.", univers: "aluminium", accroche: "", titreSeo: "Profil plat en aluminium – léger, robuste et polyvalent. — en stock, coupé sur mesure", enfants: [], produits: ["plat-de-100x5mm-en-aluminium", "plat-de-20x3mm-en-aluminium", "plat-de-25x3mm-en-aluminium", "plat-de-30x3mm-en-aluminium", "plat-de-30x5mm-en-aluminium", "plat-de-40x3mm-en-aluminium", "plat-de-40x5mm-en-aluminium", "plat-de-50x3mm-en-aluminium", "plat-de-50x5mm-en-aluminium", "plat-de-60x5mm-en-aluminium", "plat-de-80x5mm-en-aluminium"] },
+  "/aluminium/profiles/profil-t": { chemin: "/aluminium/profiles/profil-t", segment: "profil-t", nom: "Profil T", h1: "Profil en T en aluminium - Léger, résistant & polyvalent", univers: "aluminium", accroche: "", titreSeo: "Profil en T en aluminium - Léger, résistant & polyvalent — en stock, coupé sur mesure", enfants: [], produits: ["profil-en-t-20x20x2mm-en-aluminium", "profil-en-t-25x25x2mm-en-aluminium", "profil-en-t-30x30x2mm-en-aluminium"] },
+  "/aluminium/profiles/profil-u": { chemin: "/aluminium/profiles/profil-u", segment: "profil-u", nom: "Profil U", h1: "Profil en U en Aluminium", univers: "aluminium", accroche: "", titreSeo: "Profil en U en Aluminium — en stock, coupé sur mesure", enfants: [], produits: ["profil-en-u-20x20x20x2mm-en-aluminium", "profil-en-u-25x25x25x2mm-en-aluminium", "profil-en-u-40x40x40x2mm-en-aluminium", "profil-en-u-en-30x30x30x2mm-aluminium"] },
+  "/aluminium/toles": { chemin: "/aluminium/toles", segment: "toles", nom: "Tôles", h1: "Tole Alu", univers: "aluminium", accroche: "Tôles aluminium planes et striées", titreSeo: "Tôles en Aluminium : Planes & Striées sur Mesure | Grosjean", enfants: ["/aluminium/toles/tole-plane", "/aluminium/toles/tole-striee"], produits: [] },
+  "/aluminium/toles/tole-plane": { chemin: "/aluminium/toles/tole-plane", segment: "tole-plane", nom: "Tôle plane", h1: "Tôle plane en Aluminium", univers: "aluminium", accroche: "", titreSeo: "Tôle Plane en Aluminium sur Mesure | Aciers Grosjean", enfants: [], produits: ["tole-de-2000x1000x1mm-en-aluminium", "tole-de-2000x1000x2mm-en-aluminium", "tole-de-2000x1000x3mm-en-aluminium", "tole-de-2500x1250x1mm-en-aluminium", "tole-de-2500x1250x2mm-en-aluminium", "tole-de-2500x1250x3mm-en-aluminium", "tole-de-3000x1500x1mm-en-aluminium", "tole-de-3000x1500x2mm-en-aluminium", "tole-de-3000x1500x3mm-en-aluminium"] },
+  "/aluminium/toles/tole-striee": { chemin: "/aluminium/toles/tole-striee", segment: "tole-striee", nom: "Tôle striée", h1: "Tôle striée en aluminium", univers: "aluminium", accroche: "", titreSeo: "Tôle Striée Aluminium (2,5/4 à 5/7mm) Antidérapante | Grosjean", enfants: [], produits: ["tole-striee-de-2000x1000x2-5-4mm-en-aluminium", "tole-striee-de-2000x1000x3-5-5mm-en-aluminium", "tole-striee-de-2000x1000x5-7mm-en-aluminium", "tole-striee-de-2500x1250x2-5-4mm-en-aluminium", "tole-striee-de-2500x1250x3-5-5mm-en-aluminium", "tole-striee-de-2500x1250x5-7mm-en-aluminium", "tole-striee-de-3000x1500x2-5-4mm-en-aluminium", "tole-striee-de-3000x1500x3-5-5mm-en-aluminium", "tole-striee-de-3000x1500x5-7mm-en-aluminium"] },
+  "/aluminium/tubes": { chemin: "/aluminium/tubes", segment: "tubes", nom: "Tubes", h1: "Tubes aluminium : rond, carré, rectangulaire", univers: "aluminium", accroche: "Tubes aluminium", titreSeo: "Tubes aluminium : rond, carré, rectangulaire — en stock, coupé sur mesure", enfants: ["/aluminium/tubes/tube-carre", "/aluminium/tubes/tube-rectangulaire", "/aluminium/tubes/tube-rond"], produits: [] },
+  "/aluminium/tubes/tube-carre": { chemin: "/aluminium/tubes/tube-carre", segment: "tube-carre", nom: "Tube carré", h1: "Tube carré en aluminium - Robuste, léger et polyvalent", univers: "aluminium", accroche: "", titreSeo: "Tube carré en aluminium - Robuste, léger et polyvalent — en stock, coupé sur mesure", enfants: [], produits: ["tube-carre-de-15x15x2mm-en-aluminium", "tube-carre-de-20x20x2mm-en-aluminium", "tube-carre-de-25x25x2mm-en-aluminium", "tube-carre-de-35x35x2mm-en-aluminium", "tube-carre-de-40x40x2mm-en-aluminium", "tube-carre-de-40x40x3mm-en-aluminium", "tube-carre-de-50x50x2mm-en-aluminium", "tube-carre-de-60x60x3mm-en-aluminium"] },
+  "/aluminium/tubes/tube-rectangulaire": { chemin: "/aluminium/tubes/tube-rectangulaire", segment: "tube-rectangulaire", nom: "Tube rectangulaire", h1: "Tube rectangle en aluminium - Robuste, léger et polyvalent", univers: "aluminium", accroche: "", titreSeo: "Tube rectangle en aluminium - Robuste, léger et polyvalent — en stock, coupé sur mesure", enfants: [], produits: ["tube-rectangle-de-30x20x2mm-en-aluminium", "tube-rectangle-de-50x30x2mm-en-aluminium", "tube-rectangle-de-60x30x3mm-en-aluminium", "tube-rectangle-de-60x40x2mm-en-aluminium", "tube-rectangle-de-60x40x3mm-en-aluminium"] },
+  "/aluminium/tubes/tube-rond": { chemin: "/aluminium/tubes/tube-rond", segment: "tube-rond", nom: "Tube rond", h1: "Tube rond en aluminium - légèreté, résistance à la corrosion et durabilité", univers: "aluminium", accroche: "", titreSeo: "Tube rond en aluminium - légèreté, résistance à la corrosion et durabilité — en stock, coupé sur mesure", enfants: [], produits: ["tube-rond-de-20x2mm-en-aluminium", "tube-rond-de-25x2mm-en-aluminium", "tube-rond-de-30x2mm-en-aluminium", "tube-rond-de-35x2mm-en-aluminium", "tube-rond-de-40x2mm-en-aluminium"] },
+  "/inox": { chemin: "/inox", segment: "inox", nom: "Inox", h1: "Inox", univers: "inox", accroche: "", titreSeo: "Inox — en stock, coupé sur mesure", enfants: ["/inox/profiles", "/inox/toles", "/inox/tubes"], produits: [] },
+  "/inox/profiles": { chemin: "/inox/profiles", segment: "profiles", nom: "Profilés", h1: "Produits longs inox : rond, cornières & plat", univers: "inox", accroche: "Profilés inox 304", titreSeo: "Produits longs inox : rond, cornières & plat — en stock, coupé sur mesure", enfants: ["/inox/profiles/corniere-egale", "/inox/profiles/plat", "/inox/profiles/rond-plein"], produits: [] },
+  "/inox/profiles/corniere-egale": { chemin: "/inox/profiles/corniere-egale", segment: "corniere-egale", nom: "Cornière égale", h1: "Cornière égale en Inox 304 – Rigidité et Protection Durable", univers: "inox", accroche: "", titreSeo: "Cornière égale en Inox 304 – Rigidité et Protection Durable — en stock, coupé sur mesure", enfants: [], produits: ["corniere-egale-20x20x3mm-en-inox", "corniere-egale-25x25x3mm-en-inox", "corniere-egale-30x30x3mm-en-inox", "corniere-egale-40x40x4mm-en-inox", "corniere-egale-50x50x5mm-en-inox"] },
+  "/inox/profiles/plat": { chemin: "/inox/profiles/plat", segment: "plat", nom: "Plat", h1: "Plat en Inox 304 – La référence pour vos finitions et structures", univers: "inox", accroche: "", titreSeo: "Plat en Inox 304 – La référence pour vos finitions et structures — en stock, coupé sur mesure", enfants: [], produits: ["plat-20x3mm-en-inox-304", "plat-20x5mm-en-inox-304", "plat-25x3mm-en-inox-304", "plat-25x5mm-en-inox-304", "plat-30x3mm-en-inox-304", "plat-30x5mm-en-inox-304", "plat-40x3mm-en-inox-304", "plat-40x5mm-en-inox-304", "plat-50x5mm-en-inox-304", "plat-60x5mm-en-inox-304"] },
+  "/inox/profiles/rond-plein": { chemin: "/inox/profiles/rond-plein", segment: "rond-plein", nom: "Rond plein", h1: "Rond plein lisse en Inox 304", univers: "inox", accroche: "", titreSeo: "Rond plein lisse en Inox 304 — en stock, coupé sur mesure", enfants: [], produits: ["rond-plein-lisse-diametre-10mm-en-inox", "rond-plein-lisse-diametre-12mm-en-inox", "rond-plein-lisse-diametre-8mm-en-inox"] },
+  "/inox/toles": { chemin: "/inox/toles", segment: "toles", nom: "Tôles", h1: "Tôles inox — planes & grain 320 brossé", univers: "inox", accroche: "Tôles inox 304 brossées", titreSeo: "Tôles inox — planes & grain 320 brossé — en stock, coupé sur mesure", enfants: ["/inox/toles/tole-plane-304-brossee"], produits: [] },
+  "/inox/toles/tole-plane-304-brossee": { chemin: "/inox/toles/tole-plane-304-brossee", segment: "tole-plane-304-brossee", nom: "Tôle plane 304 brossée", h1: "Tôle Inox 304L – Finition Brossée Grain 320", univers: "inox", accroche: "", titreSeo: "Tôle plane en Inox 304 GR320", enfants: [], produits: ["tole-2000x1000x1mm-plane-en-inox-304-gr320", "tole-2000x1000x2mm-plane-en-inox-304-gr320", "tole-2000x1000x3mm-plane-en-inox-304-gr320", "tole-2500x1250x1mm-plane-en-inox-304-gr320", "tole-2500x1250x2mm-plane-en-inox-304-gr320", "tole-2500x1250x3mm-plane-en-inox-304-gr320", "tole-3000x1500x1mm-plane-en-inox-304-gr320", "tole-3000x1500x2mm-plane-en-inox-304-gr320", "tole-3000x1500x3mm-plane-en-inox-304-gr320", "tole-plane-2000x1000x0-8mm-en-inox-304-gr320"] },
+  "/inox/tubes": { chemin: "/inox/tubes", segment: "tubes", nom: "Tubes", h1: "Tubes inox ronds, carrés et rectangulaires", univers: "inox", accroche: "Tubes inox 304", titreSeo: "Tubes inox ronds, carrés et rectangulaires — en stock, coupé sur mesure", enfants: ["/inox/tubes/tube-carre", "/inox/tubes/tube-rectangulaire", "/inox/tubes/tube-rond"], produits: [] },
+  "/inox/tubes/tube-carre": { chemin: "/inox/tubes/tube-carre", segment: "tube-carre", nom: "Tube carré", h1: "Tube inox carré – précision et solidité pour vos projets", univers: "inox", accroche: "", titreSeo: "Tube inox carré – robustesse et précision pour vos structures", enfants: [], produits: ["tube-carre-20x20x2mm-en-inox-304", "tube-carre-25x25x2mm-en-inox-304", "tube-carre-30x30x2mm-en-inox-304", "tube-carre-35x35x2mm-en-inox-304", "tube-carre-40x40x2mm-en-inox-304", "tube-carre-50x50x2mm-en-inox-304"] },
+  "/inox/tubes/tube-rectangulaire": { chemin: "/inox/tubes/tube-rectangulaire", segment: "tube-rectangulaire", nom: "Tube rectangulaire", h1: "Tube inox rectangulaire – la solution solide et polyvalente", univers: "inox", accroche: "", titreSeo: "Tube inox rectangulaire – résistance et polyvalence", enfants: [], produits: ["tube-rectangle-40x20x2mm-en-inox-304"] },
+  "/inox/tubes/tube-rond": { chemin: "/inox/tubes/tube-rond", segment: "tube-rond", nom: "Tube rond", h1: "Tube inox rond – performance et longévité au service des professionnels", univers: "inox", accroche: "", titreSeo: "Tube inox rond – robustesse et esthétisme pour vos projets professionnels", enfants: [], produits: ["tube-rond-17-2x2mm-en-inox-304", "tube-rond-21-3x2mm-en-inox-304", "tube-rond-26-9x2mm-en-inox-304", "tube-rond-33-7x2mm-en-inox-304", "tube-rond-42-4x2mm-en-inox-304", "tube-rond-48-3x2mm-en-inox-304", "tube-rond-60-3x2mm-en-inox-304", "tube-rond-76-1x2mm-en-inox-304"] },
+  "/jardin-cloture": { chemin: "/jardin-cloture", segment: "jardin-cloture", nom: "Jardin cloture", h1: "Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean", univers: "jardin-cloture", accroche: "", titreSeo: "Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean — en stock, coupé sur mesure", enfants: ["/jardin-cloture/amenagement", "/jardin-cloture/clotures"], produits: [] },
+  "/jardin-cloture/amenagement": { chemin: "/jardin-cloture/amenagement", segment: "amenagement", nom: "Aménagement", h1: "Aménagement Extérieur & Design de Jardin", univers: "jardin-cloture", accroche: "Dessiner le jardin", titreSeo: "Aménagement Jardin en Acier & Corten | Aciers Grosjean", enfants: ["/jardin-cloture/amenagement/bordures"], produits: [] },
+  "/jardin-cloture/amenagement/bordures": { chemin: "/jardin-cloture/amenagement/bordures", segment: "bordures", nom: "Bordures", h1: "Bordures de jardins", univers: "jardin-cloture", accroche: "", titreSeo: "Bordures de jardins — en stock, coupé sur mesure", enfants: [], produits: ["bordure-en-acier-corten-150-25-x-2500mm", "bordure-en-acier-galvanise-150-25-x-2500mm"] },
+  "/jardin-cloture/clotures": { chemin: "/jardin-cloture/clotures", segment: "clotures", nom: "Clôtures", h1: "Ensembles Clôtures, Poteaux et Fixations : La Solution Complète Aciers Grosjean", univers: "jardin-cloture", accroche: "La clôture complète", titreSeo: "Ensembles Clôtures, Poteaux et Fixations : La Solution Complète Aciers Grosjean — en stock, coupé sur mesure", enfants: ["/jardin-cloture/clotures/fixations", "/jardin-cloture/clotures/panneaux-rigides", "/jardin-cloture/clotures/poteaux"], produits: [] },
+  "/jardin-cloture/clotures/fixations": { chemin: "/jardin-cloture/clotures/fixations", segment: "fixations", nom: "Fixations", h1: "Fixations et Accessoires de Clôture : Quincaillerie de Pose Professionnelle", univers: "jardin-cloture", accroche: "", titreSeo: "Fixations et Accessoires de Clôture : Quincaillerie de Pose Professionnelle — en stock, coupé sur mesure", enfants: [], produits: ["bride-rapide-en-inox", "cle-de-montage-bride-rapide", "fixation-bride-30-nv-noir", "kit-12-serveurs-clogriff-64", "kit-50-fixations-brides-30-nv-noir"] },
+  "/jardin-cloture/clotures/panneaux-rigides": { chemin: "/jardin-cloture/clotures/panneaux-rigides", segment: "panneaux-rigides", nom: "Panneaux rigides", h1: "Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean", univers: "jardin-cloture", accroche: "", titreSeo: "Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean — en stock, coupé sur mesure", enfants: [], produits: ["panneaux-medium-3d-fils-5-4-h-1m53-gris-ral-7016", "panneaux-medium-3d-fils-5-4-h-1m53-noir-ral-9005", "panneaux-medium-3d-fils-5-4-h-1m53-vert-ral-6005", "panneaux-medium-3d-fils-5-4-h-1m73-gris-ral-7016", "panneaux-medium-3d-fils-5-4-h-1m73-noir-ral-9005", "panneaux-medium-3d-fils-5-4-h-1m73-vert-ral-6005", "panneaux-medium-3d-fils-5-4-h-1m93-gris-ral-7016", "panneaux-medium-3d-fils-5-4-h-1m93-noir-ral-9005", "panneaux-medium-3d-fils-5-4-h-1m93-vert-ral-6005", "panneaux-plis-205-fils-5-5-3d-h-1m73-gris-7016", "panneaux-plis-205-fils-5-5-3d-h-1m73-noir-ral-9005", "panneaux-plis-205-fils-5-5-3d-h-1m93-gris-7016", "panneaux-plis-205-fils-5-5-3d-h-1m93-noir-ral-9005"] },
+  "/jardin-cloture/clotures/poteaux": { chemin: "/jardin-cloture/clotures/poteaux", segment: "poteaux", nom: "Poteaux", h1: "Poteaux de Clôture en Acier : Robustesse et Systèmes de Fixation Professionnels", univers: "jardin-cloture", accroche: "", titreSeo: "Poteaux de Clôture en Acier : Robustesse et Systèmes de Fixation Professionnels — en stock, coupé sur mesure", enfants: [], produits: ["poteau-de-cloture-clogriff-64-2m00-gris-ral-7016", "poteau-de-cloture-clogriff-64-2m00-noir-ral-9005", "poteau-de-cloture-clogriff-64-2m00-vert-ral-6005", "poteau-de-cloture-clogriff-64-2m30-noir-ral-9005", "poteau-de-cloture-clogriff-64-2m30-vert-ral-6005", "poteau-de-cloture-clogriff-64-2m50-noir-ral-9005", "poteau-de-cloture-clogriff-64-2m50-vert-ral-6005", "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016", "poteau-de-cloture-cloplus-40-2m00-gris-ral-7016", "poteau-de-cloture-cloplus-40-2m00-noir-ral-9005", "poteau-de-cloture-cloplus-40-2m00-vert-ral-6005", "poteau-de-cloture-cloplus-40-2m30-gris-ral-7016", "poteau-de-cloture-cloplus-40-2m30-noir-ral-9005", "poteau-de-cloture-cloplus-40-2m30-vert-ral-6005", "poteau-de-cloture-cloplus-40-2m50-gris-ral-7016", "poteau-de-cloture-cloplus-40-2m50-noir-ral-9005", "poteau-de-cloture-cloplus-40-2m50-vert-ral-6005"] },
+  "/quincaillerie": { chemin: "/quincaillerie", segment: "quincaillerie", nom: "Quincaillerie & ferronnerie", h1: "Quincaillerie & ferronnerie", univers: "quincaillerie", accroche: "", titreSeo: "Quincaillerie & ferronnerie — en stock, coupé sur mesure", enfants: ["/quincaillerie/caillebotis-marches", "/quincaillerie/outillage", "/quincaillerie/protection-chimie", "/quincaillerie/visserie"], produits: [] },
+  "/quincaillerie/caillebotis-marches": { chemin: "/quincaillerie/caillebotis-marches", segment: "caillebotis-marches", nom: "Caillebotis & marches", h1: "Marches d'Escaliers et planchers en Caillebotis et Securit", univers: "quincaillerie", accroche: "", titreSeo: "Marches d'Escaliers et planchers en Caillebotis et Securit — en stock, coupé sur mesure", enfants: [], produits: ["caillebotis-galvanise-1000x-1000mm-33-33-30-2", "caillebotis-galvanise-1010x1190mm-70-70-25-2", "caillebotis-galvanise-1200x-1000mm-33-33-30-2", "caillebotis-galvanise-400x1000mm-33-33-30-2", "caillebotis-galvanise-500x1000mm-33-33-30-2", "caillebotis-galvanise-600x-1000mm-33-33-30-2", "caillebotis-galvanise-700x-1000mm-33-33-30-2", "caillebotis-galvanise-800x-1000mm-33-33-30-2", "caillebotis-galvanise-900x-1000mm-33-33-30-2", "caillebotis-galvanises-1200x-1000mm-33-33-30-3", "marche-d-escalier-caillebotis-1000x230mm", "marche-d-escalier-caillebotis-600x200mm", "marche-d-escalier-caillebotis-700x230mm", "marche-d-escalier-caillebotis-800x230mm", "marche-d-escalier-caillebotis-900x230mm", "marche-securit-pcp-o2-achil-1000x250mm", "marche-securit-pcp-o2-achil-800-x-250mm", "marche-securit-pcp-o2-achil-900x250mm", "plancher-securit-pcp-o2-1000x1000mm"] },
+  "/quincaillerie/outillage": { chemin: "/quincaillerie/outillage", segment: "outillage", nom: "Outillage", h1: "Outillage", univers: "quincaillerie", accroche: "", titreSeo: "Outillage — en stock, coupé sur mesure", enfants: [], produits: ["meuleuse-d-angle-flex-l-1001-1010w-125-mm"] },
+  "/quincaillerie/protection-chimie": { chemin: "/quincaillerie/protection-chimie", segment: "protection-chimie", nom: "Protection & chimie", h1: "Chimie du Bâtiment : Protection, Finition et Étanchéité des Métaux", univers: "quincaillerie", accroche: "Protéger le métal", titreSeo: "Chimie du Bâtiment : Protection, Finition et Étanchéité des Métaux — en stock, coupé sur mesure", enfants: ["/quincaillerie/protection-chimie/colles-etancheite", "/quincaillerie/protection-chimie/galvanisation-a-froid", "/quincaillerie/protection-chimie/peintures-primaires"], produits: [] },
+  "/quincaillerie/protection-chimie/colles-etancheite": { chemin: "/quincaillerie/protection-chimie/colles-etancheite", segment: "colles-etancheite", nom: "Colles & étanchéité", h1: "Colle et Étanchéité : Solutions Professionnelles DL Chemicals", univers: "quincaillerie", accroche: "", titreSeo: "Colle et Étanchéité : Solutions Professionnelles DL Chemicals — en stock, coupé sur mesure", enfants: [], produits: ["dl-chemicals-parabond-600-290ml-gris", "dl-chemicals-parabond-800-290ml", "dl-chemicals-parachim-vinylester-300ml", "dl-chemicals-parasilico-am85-1-300ml-transparent"] },
+  "/quincaillerie/protection-chimie/galvanisation-a-froid": { chemin: "/quincaillerie/protection-chimie/galvanisation-a-froid", segment: "galvanisation-a-froid", nom: "Galvanisation à froid", h1: "Zinc et Galvanisation à Froid : Système Anti-Corrosion Zinga", univers: "quincaillerie", accroche: "", titreSeo: "Zinc et Galvanisation à Froid : Système Anti-Corrosion Zinga — en stock, coupé sur mesure", enfants: [], produits: ["zinga-film-galvanisant-1kg", "zinga-film-galvanisant-2kg", "zinga-zingasolv-1l", "zinga-zingatarfree-1l", "zinga-zingatarfree-5l", "zingaluspray-500ml", "zingaspray-500ml"] },
+  "/quincaillerie/protection-chimie/peintures-primaires": { chemin: "/quincaillerie/protection-chimie/peintures-primaires", segment: "peintures-primaires", nom: "Peintures & primaires", h1: "Couleur et Finition : Primaires et Peintures Techniques", univers: "quincaillerie", accroche: "", titreSeo: "Couleur et Finition : Primaires et Peintures Techniques — en stock, coupé sur mesure", enfants: [], produits: ["primer-anticorrosion-1l-blanc-ral-9010", "primer-anticorrosion-1l-brun-rouge-ral-8012", "primer-anticorrosion-1l-gris-ral-7016", "primer-anticorrosion-1l-noir-ral-9005", "primer-anticorrosion-5l-brun-rouge-ral-8012", "primer-anticorrosion-5l-gris-ral-7016"] },
+  "/quincaillerie/visserie": { chemin: "/quincaillerie/visserie", segment: "visserie", nom: "Visserie", h1: "Visserie et Fixations pour Toiture : La performance au service de vos travaux", univers: "quincaillerie", accroche: "", titreSeo: "Visserie et Fixations pour Toiture : La performance au service de vos travaux — en stock, coupé sur mesure", enfants: [], produits: ["vis-a-bois-6-3x-100-tete-hexagonale-de-10mm", "vis-a-bois-6-3x-130-tete-hexagonale-de-10mm", "vis-a-bois-6-3x-150-tete-hexagonale-de-10mm", "vis-a-bois-6-3x-75-tete-hexagonale-de-10mm", "vis-autoforante-pour-acier-6-3x-100-tete-hexagonale-de-10mm", "vis-autoforante-pour-acier-6-3x-65-tete-hexagonale-de-10mm"] },
+  "/toiture-bardage": { chemin: "/toiture-bardage", segment: "toiture-bardage", nom: "Toiture & Bardage", h1: "Toiture & Bardage", univers: "toiture-bardage", accroche: "", titreSeo: "Toiture & Bardage — en stock, coupé sur mesure", enfants: ["/toiture-bardage/bardage", "/toiture-bardage/panneaux-isoles", "/toiture-bardage/toles-profilees"], produits: [] },
+  "/toiture-bardage/bardage": { chemin: "/toiture-bardage/bardage", segment: "bardage", nom: "Bardage", h1: "Bardage acier — habillage de façade durable", univers: "toiture-bardage", accroche: "Habiller une façade", titreSeo: "Bardage acier — habillage de façade durable — en stock, coupé sur mesure", enfants: ["/toiture-bardage/bardage/imitation-bois"], produits: [] },
+  "/toiture-bardage/bardage/imitation-bois": { chemin: "/toiture-bardage/bardage/imitation-bois", segment: "imitation-bois", nom: "Imitation bois", h1: "Parement imitation bois", univers: "toiture-bardage", accroche: "", titreSeo: "Bardage Métallique Imitation Bois 40x40 & 20x20 | Aciers Grosjean", enfants: [], produits: ["tasseau-40x40-71x250cm-parement-chene-clair", "tasseau-40x40-71x300cm-parement-chene-clair"] },
+  "/toiture-bardage/panneaux-isoles": { chemin: "/toiture-bardage/panneaux-isoles", segment: "panneaux-isoles", nom: "Panneaux isolés", h1: "Panneaux isolés", univers: "toiture-bardage", accroche: "Panneaux sandwich", titreSeo: "Panneaux isolés — en stock, coupé sur mesure", enfants: ["/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco"], produits: [] },
+  "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco": { chemin: "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco", segment: "eurocopre-monolamiera-eco", nom: "Panneau ECO Eurocopre", h1: "Panneau ECO Toiture Lattonedil Eurocopre® Monolamiera", univers: "toiture-bardage", accroche: "", titreSeo: "Panneau ECO Toiture Lattonedil Eurocopre® Monolamiera — en stock, coupé sur mesure", enfants: [], produits: ["panneau-isole-eco-30mm-260x105cm-ral-7016", "panneau-isole-eco-30mm-310x105cm-ral-7016", "panneau-isole-eco-30mm-360x105cm-ral-7016", "panneau-isole-eco-30mm-410x105cm-ral-7016", "panneau-isole-eco-30mm-460x105cm-ral-7016", "panneau-isole-eco-30mm-510x105cm-ral-7016", "panneau-isole-eco-30mm-560x105cm-ral-7016", "panneau-isole-eco-30mm-610x105cm-ral-7016"] },
+  "/toiture-bardage/toles-profilees": { chemin: "/toiture-bardage/toles-profilees", segment: "toles-profilees", nom: "Tôles profilées", h1: "Tôle profilée non isolée : L'efficacité au meilleur prix", univers: "toiture-bardage", accroche: "Bac acier non isolé", titreSeo: "Tôle profilée non isolée : L'efficacité au meilleur prix — en stock, coupé sur mesure", enfants: ["/toiture-bardage/toles-profilees/profil-30-200-1000"], produits: [] },
+  "/toiture-bardage/toles-profilees/profil-30-200-1000": { chemin: "/toiture-bardage/toles-profilees/profil-30-200-1000", segment: "profil-30-200-1000", nom: "Profil 30.200.1000", h1: "Tôle profilée 30.200.1000 : Toiture et Bardage sur mesure", univers: "toiture-bardage", accroche: "", titreSeo: "Tôle profilée 30.200.1000 : Toiture et Bardage sur mesure — en stock, coupé sur mesure", enfants: [], produits: ["tole-30-200-1000-ral-7016-200x105cm", "tole-30-200-1000-ral-7016-250x105cm", "tole-30-200-1000-ral-7016-300x105cm", "tole-30-200-1000-ral-7016-350x105cm", "tole-30-200-1000-ral-7016-400x105cm", "tole-30-200-1000-ral-7016-450x105cm", "tole-30-200-1000-ral-7016-500x105cm"] },
 };
 
-/** Arrondi commercial : pas de 5 centimes sous 20 €, de 10 au-dessus. */
-function arrondi(v: number) {
-  const pas = v < 20 ? 0.05 : 0.1;
-  return Math.round(v / pas) * pas;
+export const univers: Univers[] = [
+  { slug: "acier", nom: "Acier", accroche: "La matière de structure, brute ou protégée", intro: "L'acier de construction couvre l'essentiel des besoins : ossature, ferronnerie, armature, couverture. Brut à l'intérieur ou sous peinture, galvanisé dès que l'ouvrage est exposé. C'est la matière la plus disponible, la plus facile à souder et la mieux placée en prix.", titreSeo: "Acier S235 — poutrelles, tubes, tôles, profilés et armatures", descSeo: "Tout l'acier de construction en stock : poutrelles IPE HEA HEB UPN, tubes, tôles, cornières, plats, ronds à béton et treillis. Découpe aux cotes, retrait le jour même.", art: "poutrelles", enfants: ["/acier/armatures-beton", "/acier/poutrelles", "/acier/profiles", "/acier/toles", "/acier/tubes"] },
+  { slug: "aluminium", nom: "Aluminium", accroche: "Trois fois plus léger, jamais de rouille", intro: "Le profilé aluminium s'impose dès que le poids compte ou que la structure doit rester nue. Il s'usine et se perce très facilement, se plie à froid, et sa couche d'alumine le protège naturellement. Il se soude en revanche au TIG ou au MIG, pas à l'électrode.", titreSeo: "Aluminium — profilés, tubes et tôles coupés à la demande", descSeo: "Aluminium 6060 et 5754 : cornières, plats, profils U et T, tubes carrés, rectangulaires et ronds, tôles planes et striées. Léger, inoxydable, anodisable.", art: "cornieres-plats", enfants: ["/aluminium/profiles", "/aluminium/toles", "/aluminium/tubes"] },
+  { slug: "inox", nom: "Inox", accroche: "Ce qui reste dehors sans rouiller", intro: "L'inox ne rouille pas : le chrome forme en surface une couche d'oxyde qui se reconstitue seule à chaque rayure. Le 304 brossé couvre la majorité des usages extérieurs et alimentaires ; le 316L s'impose en bord de mer et en milieu chloré.", titreSeo: "Inox 304 brossé — tubes, tôles, plats et cornières sur mesure", descSeo: "Inox 304 grain 320 : tubes ronds, carrés et rectangulaires, tôles planes, plats, cornières et ronds pleins. Garde-corps, cuisine professionnelle, extérieur.", art: "tubes", enfants: ["/inox/profiles", "/inox/toles", "/inox/tubes"] },
+  { slug: "toiture-bardage", nom: "Toiture & bardage", accroche: "Fermer et couvrir, isolé ou non", intro: "Tôles profilées, panneaux sandwich isolés, panneaux-tuile et bardage à clins. Toutes les longueurs se coupent à la demande, et les teintes RAL courantes sont tenues en stock permanent.", titreSeo: "Toiture et bardage acier — bac acier, panneaux isolés, panneau-tuile", descSeo: "Tôles profilées, panneaux sandwich isolés Eurocopre, panneau-tuile et bardage imitation bois. Longueurs sur mesure, teintes RAL en stock. 4 dépôts.", art: "toles", enfants: ["/toiture-bardage/bardage", "/toiture-bardage/panneaux-isoles", "/toiture-bardage/toles-profilees"] },
+  { slug: "jardin-cloture", nom: "Jardin & clôture", accroche: "Délimiter, masquer, aménager", intro: "Panneaux rigides, poteaux, fixations et bordures : de quoi monter une clôture complète et dessiner un jardin. Tout est galvanisé ou thermolaqué — rien ne se repeint.", titreSeo: "Clôture rigide et bordure de jardin — panneaux, poteaux, fixations", descSeo: "Panneaux rigides 3D, poteaux Cloplus, brides et fixations en RAL 7016, 9005 et 6005, bordures corten et galvanisées. Vendus à l'unité, retrait en dépôt.", art: "poteaux-cloture", enfants: ["/jardin-cloture/amenagement", "/jardin-cloture/clotures"] },
+  { slug: "quincaillerie", nom: "Quincaillerie & ferronnerie", accroche: "Ce qui assemble, protège et finit", intro: "Visserie, caillebotis et marches, galvanisation à froid, primaires anticorrosion, colles et étanchéité. Les consommables qu'on oublie de commander et qui arrêtent un chantier — ils sont en stock permanent.", titreSeo: "Quincaillerie acier — visserie, caillebotis, zinc et primaires", descSeo: "Vis autoforantes, caillebotis galvanisés et marches, ZINGA galvanisation à froid, primaires anticorrosion RAL, colles et mastics. Retrait le jour même.", art: "visserie", enfants: ["/quincaillerie/caillebotis-marches", "/quincaillerie/outillage", "/quincaillerie/protection-chimie", "/quincaillerie/visserie"] },
+];
+
+
+export const universBySlug = (s: string) => univers.find((u) => u.slug === s);
+export const noeudByChemin = (c: string) => noeuds[c];
+export const produitBySlug = (s: string) => produits[s];
+
+export const tousProduits = Object.values(produits);
+export const totalProduits = tousProduits.length;
+export const totalNoeuds = Object.keys(noeuds).length;
+
+/** Tous les produits sous un chemin, en descendant l'arbre. */
+export function produitsSous(chemin: string): Produit[] {
+  const n = noeuds[chemin];
+  if (!n) return [];
+  const directs = n.produits.map((s) => produits[s]).filter(Boolean);
+  return [...directs, ...n.enfants.flatMap(produitsSous)];
 }
 
-function tarifer(famille: string, kg: number) {
-  const t = TARIF[famille];
-  if (!t) return null;
-  return arrondi(Math.max(t.min, kg * t.kg));
+/** Fil d'Ariane : liste des nœuds parents d'un chemin, racine d'abord. */
+export function ancetres(chemin: string): Noeud[] {
+  const parts = chemin.replace(/^\//, "").split("/");
+  const out: Noeud[] = [];
+  for (let i = 1; i <= parts.length; i++) {
+    const n = noeuds["/" + parts.slice(0, i).join("/")];
+    if (n) out.push(n);
+  }
+  return out;
 }
 
 export function formatPrix(v: number | null) {
@@ -94,1448 +672,9 @@ export function formatPrix(v: number | null) {
   return v.toLocaleString("fr-BE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
 }
 
-const nb = (v: number, d = 2) =>
-  v.toLocaleString("fr-BE", { minimumFractionDigits: d, maximumFractionDigits: d });
-
-/* ------------------------------------------------------------------ */
-/*  Fabrique de référence                                              */
-/* ------------------------------------------------------------------ */
-
-type MkArgs = {
-  famille: string;
-  ref: string;
-  nom: string;
-  dims: string;
-  serie: string;
-  matiere?: string;
-  kg: number;
-  unitePoids?: string;
-  unite?: string;
-  uniteCourte?: string;
-  resume: string;
-  specs: Spec[];
-  usages: string[];
-  prix?: number | null;
-  surDevis?: boolean;
-  stock?: boolean;
-};
-
-function mk(a: MkArgs): Ref {
-  const unitePoids = a.unitePoids ?? "kg/m";
-  const prix = a.surDevis ? null : a.prix !== undefined ? a.prix : tarifer(a.famille, a.kg);
-  return {
-    ref: a.ref,
-    nom: a.nom,
-    dims: a.dims,
-    serie: a.serie,
-    matiere: a.matiere ?? "acier",
-    kg: a.kg,
-    unitePoids,
-    prix,
-    prixTexte: formatPrix(prix),
-    unite: a.unite ?? "au mètre",
-    uniteCourte: a.uniteCourte ?? "€/m",
-    stock: a.stock ?? true,
-    resume: a.resume,
-    specs: [...a.specs, { label: "Poids", valeur: `${nb(a.kg)} ${unitePoids}` }],
-    usages: a.usages,
-  };
-}
-
-const LONG_STD = { label: "Longueur standard", valeur: "6 m — découpe aux cotes" };
-const LONG_PROFIL = { label: "Longueur standard", valeur: "6 m ou 12 m — découpe aux cotes" };
-
-/* ------------------------------------------------------------------ */
-/*  1 · POUTRELLES & PROFILÉS                                          */
-/* ------------------------------------------------------------------ */
-
-type Profil = [nom: string, h: number, b: number, tw: number, tf: number, kg: number];
-
-const IPE: Profil[] = [
-  ["80", 80, 46, 3.8, 5.2, 6.0], ["100", 100, 55, 4.1, 5.7, 8.1],
-  ["120", 120, 64, 4.4, 6.3, 10.4], ["140", 140, 73, 4.7, 6.9, 12.9],
-  ["160", 160, 82, 5.0, 7.4, 15.8], ["180", 180, 91, 5.3, 8.0, 18.8],
-  ["200", 200, 100, 5.6, 8.5, 22.4], ["220", 220, 110, 5.9, 9.2, 26.2],
-  ["240", 240, 120, 6.2, 9.8, 30.7], ["270", 270, 135, 6.6, 10.2, 36.1],
-  ["300", 300, 150, 7.1, 10.7, 42.2], ["330", 330, 160, 7.5, 11.5, 49.1],
-  ["360", 360, 170, 8.0, 12.7, 57.1], ["400", 400, 180, 8.6, 13.5, 66.3],
-  ["450", 450, 190, 9.4, 14.6, 77.6], ["500", 500, 200, 10.2, 16.0, 90.7],
-  ["550", 550, 210, 11.1, 17.2, 106.0], ["600", 600, 220, 12.0, 19.0, 122.0],
-];
-
-const HEA: Profil[] = [
-  ["100", 96, 100, 5.0, 8.0, 16.7], ["120", 114, 120, 5.0, 8.0, 19.9],
-  ["140", 133, 140, 5.5, 8.5, 24.7], ["160", 152, 160, 6.0, 9.0, 30.4],
-  ["180", 171, 180, 6.0, 9.5, 35.5], ["200", 190, 200, 6.5, 10.0, 42.3],
-  ["220", 210, 220, 7.0, 11.0, 50.5], ["240", 230, 240, 7.5, 12.0, 60.3],
-  ["260", 250, 260, 7.5, 12.5, 68.2], ["280", 270, 280, 8.0, 13.0, 76.4],
-  ["300", 290, 300, 8.5, 14.0, 88.3],
-];
-
-const HEB: Profil[] = [
-  ["100", 100, 100, 6.0, 10.0, 20.4], ["120", 120, 120, 6.5, 11.0, 26.7],
-  ["140", 140, 140, 7.0, 12.0, 33.7], ["160", 160, 160, 8.0, 13.0, 42.6],
-  ["180", 180, 180, 8.5, 14.0, 51.2], ["200", 200, 200, 9.0, 15.0, 61.3],
-  ["220", 220, 220, 9.5, 16.0, 71.5], ["240", 240, 240, 10.0, 17.0, 83.2],
-  ["260", 260, 260, 10.0, 17.5, 93.0], ["280", 280, 280, 10.5, 18.0, 103.0],
-  ["300", 300, 300, 11.0, 19.0, 117.0],
-];
-
-const IPN: Profil[] = [
-  ["80", 80, 42, 3.9, 5.9, 5.94], ["100", 100, 50, 4.5, 6.8, 8.34],
-  ["120", 120, 58, 5.1, 7.7, 11.1], ["140", 140, 66, 5.7, 8.6, 14.3],
-  ["160", 160, 74, 6.3, 9.5, 17.9], ["180", 180, 82, 6.9, 10.4, 21.9],
-  ["200", 200, 90, 7.5, 11.3, 26.2], ["220", 220, 98, 8.1, 12.2, 31.1],
-  ["240", 240, 106, 8.7, 13.1, 36.2],
-];
-
-const UPN: Profil[] = [
-  ["50", 50, 25, 5.0, 7.0, 5.59], ["65", 65, 42, 5.5, 7.5, 7.09],
-  ["80", 80, 45, 6.0, 8.0, 8.64], ["100", 100, 50, 6.0, 8.5, 10.6],
-  ["120", 120, 55, 7.0, 9.0, 13.4], ["140", 140, 60, 7.0, 10.0, 16.0],
-  ["160", 160, 65, 7.5, 10.5, 18.8], ["180", 180, 70, 8.0, 11.0, 22.0],
-  ["200", 200, 75, 8.5, 11.5, 25.3], ["220", 220, 80, 9.0, 12.5, 29.4],
-  ["240", 240, 85, 9.5, 13.0, 33.2], ["260", 260, 90, 10.0, 14.0, 37.9],
-  ["300", 300, 100, 10.0, 16.0, 46.2],
-];
-
-const RESUME_PROFIL: Record<string, string> = {
-  IPE: "Profil en I à ailes parallèles : le meilleur rendement en flexion sur longue portée. C'est le profil des linteaux et des planchers.",
-  IPN: "Profil en I à ailes inclinées, le plus ancien du catalogue. Toujours demandé en rénovation pour reprendre un existant à l'identique.",
-  HEA: "Profil H allégé : ailes larges pour la compression, âme fine pour le poids. Le compromis des poteaux et des ossatures courantes.",
-  HEB: "Profil H lourd, section quasi carrée : le plus résistant à encombrement égal. Poteaux, reprises de charge, portiques.",
-  UPN: "Profil en U à ailes inclinées : chevêtres, rives de plancher, glissières, encadrements. Se boulonne à plat sans usinage.",
-};
-
-const USAGES_PROFIL: Record<string, string[]> = {
-  IPE: ["Linteau", "Plancher", "Poutre", "Mezzanine"],
-  IPN: ["Rénovation", "Linteau", "Reprise d'existant"],
-  HEA: ["Poteau", "Ossature", "Charpente"],
-  HEB: ["Poteau", "Reprise de charge", "Portique"],
-  UPN: ["Chevêtre", "Rive de plancher", "Encadrement", "Glissière"],
-};
-
-function profils(serie: string, table: Profil[]): Ref[] {
-  return table.map(([n, h, b, tw, tf, kg]) =>
-    mk({
-      famille: "poutrelles",
-      ref: `${serie.toLowerCase()}-${n}`,
-      nom: `Poutrelle ${serie} ${n}`,
-      dims: `${h} × ${b} mm`,
-      serie,
-      kg,
-      resume: RESUME_PROFIL[serie],
-      specs: [
-        { label: "Hauteur (h)", valeur: `${nb(h, 0)} mm` },
-        { label: "Largeur d'aile (b)", valeur: `${nb(b, 0)} mm` },
-        { label: "Épaisseur d'âme (tw)", valeur: `${nb(tw, 1)} mm` },
-        { label: "Épaisseur d'aile (tf)", valeur: `${nb(tf, 1)} mm` },
-        { label: "Nuance", valeur: "S235JR — EN 10025-2" },
-        { label: "Procédé", valeur: "Laminé à chaud" },
-        LONG_PROFIL,
-      ],
-      usages: USAGES_PROFIL[serie],
-    })
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  2 · CORNIÈRES                                                      */
-/* ------------------------------------------------------------------ */
-
-const CORN_EGALES: [number, number][] = [
-  [20, 3], [25, 3], [25, 4], [30, 3], [30, 4], [30, 5], [35, 4], [40, 4], [40, 5],
-  [45, 5], [50, 5], [50, 6], [60, 6], [60, 8], [70, 7], [80, 8], [90, 9],
-  [100, 10], [120, 12],
-];
-
-const CORN_INEGALES: [number, number, number][] = [
-  [30, 20, 3], [40, 20, 4], [40, 25, 4], [50, 30, 5], [60, 40, 5], [60, 40, 6],
-  [65, 50, 5], [70, 50, 6], [80, 40, 6], [80, 60, 7], [100, 50, 8], [100, 65, 8],
-  [100, 75, 10],
-];
-
-/** Congé de raccordement et arrondis de bec : +1,3 % sur la section théorique
- *  d'une cornière (EN 10056). Sans ce facteur, la 40×40×4 tombe à 2,39 kg/m
- *  au lieu des 2,42 kg/m normalisés — et le prix public de 2,85 €/m est faux. */
-const CONGE_CORNIERE = 1.013;
-
-const cornieresEgales: Ref[] = CORN_EGALES.map(([a, e]) => {
-  const kg = +(((2 * a - e) * e * 7.85 * CONGE_CORNIERE) / 1000).toFixed(2);
-  return mk({
-    famille: "cornieres",
-    ref: `corniere-egale-${a}x${a}x${e}`,
-    nom: `Cornière égale ${a} × ${a} × ${e}`,
-    dims: `${a} × ${a} × ${e} mm`,
-    serie: "Cornière égale",
-    kg,
-    resume:
-      a === 40 && e === 4
-        ? "La référence la plus demandée du catalogue. Laminée à chaud, ailes égales, prête à souder ou à boulonner."
-        : "Cornière à ailes égales laminée à chaud : la pièce de renfort universelle — cadre, support, raidisseur, bordure.",
-    specs: [
-      { label: "Ailes", valeur: `${a} × ${a} mm` },
-      { label: "Épaisseur", valeur: `${e} mm` },
-      { label: "Nuance", valeur: "S235JR — EN 10056" },
-      { label: "Procédé", valeur: "Laminé à chaud" },
-      LONG_STD,
-    ],
-    usages: ["Cadre", "Renfort", "Support", "Bordure"],
-  });
-});
-
-const cornieresInegales: Ref[] = CORN_INEGALES.map(([a, b, e]) => {
-  const kg = +(((a + b - e) * e * 7.85 * CONGE_CORNIERE) / 1000).toFixed(2);
-  return mk({
-    famille: "cornieres",
-    ref: `corniere-inegale-${a}x${b}x${e}`,
-    nom: `Cornière inégale ${a} × ${b} × ${e}`,
-    dims: `${a} × ${b} × ${e} mm`,
-    serie: "Cornière inégale",
-    kg,
-    resume:
-      "Ailes de largeurs différentes : la grande aile porte, la petite se fixe. Le profil des rives, des seuils et des supports asymétriques.",
-    specs: [
-      { label: "Grande aile", valeur: `${a} mm` },
-      { label: "Petite aile", valeur: `${b} mm` },
-      { label: "Épaisseur", valeur: `${e} mm` },
-      { label: "Nuance", valeur: "S235JR — EN 10056" },
-      LONG_STD,
-    ],
-    usages: ["Rive", "Seuil", "Support", "Encadrement"],
-  });
-});
-
-/* ------------------------------------------------------------------ */
-/*  3 · PLATS & BARRES                                                 */
-/* ------------------------------------------------------------------ */
-
-const PLATS: [number, number][] = [
-  [20, 3], [20, 4], [20, 5], [25, 3], [25, 4], [25, 5], [30, 3], [30, 4], [30, 5],
-  [30, 6], [35, 5], [40, 3], [40, 4], [40, 5], [40, 6], [40, 8], [45, 5], [50, 4],
-  [50, 5], [50, 6], [50, 8], [50, 10], [60, 5], [60, 6], [60, 8], [60, 10],
-  [70, 6], [70, 8], [80, 6], [80, 8], [80, 10], [90, 8], [100, 6], [100, 8],
-  [100, 10], [100, 12], [120, 10], [150, 10],
-];
-
-const RONDS = [6, 8, 10, 12, 14, 16, 18, 20, 22, 25, 28, 30, 35, 40, 45, 50, 60, 70, 80];
-const CARRES = [8, 10, 12, 14, 16, 20, 25, 30, 35, 40, 50];
-
-const plats: Ref[] = PLATS.map(([l, e]) => {
-  const kg = +((l * e * 7.85) / 1000).toFixed(2);
-  return mk({
-    famille: "plats-barres",
-    ref: `plat-${l}x${e}`,
-    nom: `Plat acier ${l} × ${e}`,
-    dims: `${l} × ${e} mm`,
-    serie: "Plat",
-    kg,
-    resume:
-      "Le fer plat de ferronnerie : portails, grilles, pièces de liaison, platines. Se perce, se cintre et se soude sans préparation.",
-    specs: [
-      { label: "Largeur", valeur: `${l} mm` },
-      { label: "Épaisseur", valeur: `${e} mm` },
-      { label: "Nuance", valeur: "S235JR — EN 10058" },
-      { label: "Procédé", valeur: "Laminé à chaud" },
-      LONG_STD,
-    ],
-    usages: ["Ferronnerie", "Portail", "Grille", "Platine"],
-  });
-});
-
-const ronds: Ref[] = RONDS.map((d) => {
-  const kg = +(d * d * 0.00617).toFixed(2);
-  return mk({
-    famille: "plats-barres",
-    ref: `rond-plein-${d}`,
-    nom: `Rond plein Ø ${d}`,
-    dims: `Ø ${d} mm`,
-    serie: "Rond plein",
-    kg,
-    resume:
-      "Barre ronde pleine laminée : barreaudage, axes, tiges, pièces tournées. La section pleine encaisse la torsion.",
-    specs: [
-      { label: "Diamètre", valeur: `${d} mm` },
-      { label: "Nuance", valeur: "S235JR" },
-      { label: "Procédé", valeur: "Laminé à chaud" },
-      LONG_STD,
-    ],
-    usages: ["Barreaudage", "Axe", "Tige", "Usinage"],
-  });
-});
-
-const carres: Ref[] = CARRES.map((a) => {
-  const kg = +(a * a * 0.00785).toFixed(2);
-  return mk({
-    famille: "plats-barres",
-    ref: `carre-plein-${a}`,
-    nom: `Carré plein ${a} × ${a}`,
-    dims: `${a} × ${a} mm`,
-    serie: "Carré plein",
-    kg,
-    resume:
-      "Barre carrée pleine : barreaudage décoratif, grilles de défense, pièces de ferronnerie traditionnelle.",
-    specs: [
-      { label: "Section", valeur: `${a} × ${a} mm` },
-      { label: "Nuance", valeur: "S235JR" },
-      { label: "Procédé", valeur: "Laminé à chaud" },
-      LONG_STD,
-    ],
-    usages: ["Barreaudage", "Grille", "Ferronnerie"],
-  });
-});
-
-/* ------------------------------------------------------------------ */
-/*  4 · TUBES                                                          */
-/* ------------------------------------------------------------------ */
-
-const TUBES_CARRES: [number, number][] = [
-  [20, 2], [25, 2], [30, 2], [30, 3], [35, 2], [40, 2], [40, 3], [40, 4],
-  [50, 2], [50, 3], [50, 4], [50, 5], [60, 3], [60, 4], [60, 5], [70, 3],
-  [70, 4], [80, 3], [80, 4], [80, 5], [90, 4], [100, 3], [100, 4], [100, 5],
-  [120, 5], [140, 5], [150, 6],
-];
-
-const TUBES_RECT: [number, number, number][] = [
-  [40, 20, 2], [50, 25, 2], [50, 30, 2], [60, 30, 2], [60, 40, 2], [60, 40, 3],
-  [70, 50, 3], [80, 40, 3], [80, 40, 4], [80, 60, 3], [90, 50, 3], [100, 50, 3],
-  [100, 50, 4], [100, 60, 4], [120, 60, 4], [120, 80, 4], [140, 80, 4], [150, 100, 5],
-];
-
-const TUBES_RONDS: [string, number, number][] = [
-  ["21-3", 21.3, 2], ["26-9", 26.9, 2], ["33-7", 33.7, 2], ["33-7-26", 33.7, 2.6],
-  ["42-4", 42.4, 2], ["42-4-26", 42.4, 2.6], ["48-3", 48.3, 2], ["48-3-3", 48.3, 3],
-  ["60-3", 60.3, 2.9], ["60-3-36", 60.3, 3.6], ["76-1", 76.1, 3],
-  ["88-9", 88.9, 3.2], ["101-6", 101.6, 3.6], ["114-3", 114.3, 3.6], ["139-7", 139.7, 4],
-];
-
-const tubesCarres: Ref[] = TUBES_CARRES.map(([a, e]) => {
-  const kg = +(4 * (a - e) * e * 0.00785 * 0.97).toFixed(2);
-  return mk({
-    famille: "tubes",
-    ref: `tube-carre-${a}x${a}x${e}`,
-    nom: `Tube carré ${a} × ${a} × ${e}`,
-    dims: `${a} × ${a} × ${e} mm`,
-    serie: "Tube carré",
-    kg,
-    resume:
-      "Le tube d'ossature par défaut : à poids égal, il est plus rigide que le plein, et ses quatre faces planes se soudent d'équerre sans préparation.",
-    specs: [
-      { label: "Section", valeur: `${a} × ${a} mm` },
-      { label: "Épaisseur", valeur: `${e} mm` },
-      { label: "Nuance", valeur: "S235JRH — EN 10219" },
-      { label: "Formage", valeur: "Profilé à froid, soudé" },
-      LONG_STD,
-    ],
-    usages: ["Portail", "Garde-corps", "Ossature", "Mobilier"],
-  });
-});
-
-const tubesRect: Ref[] = TUBES_RECT.map(([a, b, e]) => {
-  const kg = +(2 * (a + b - 2 * e) * e * 0.00785 * 0.97).toFixed(2);
-  return mk({
-    famille: "tubes",
-    ref: `tube-rectangulaire-${a}x${b}x${e}`,
-    nom: `Tube rectangulaire ${a} × ${b} × ${e}`,
-    dims: `${a} × ${b} × ${e} mm`,
-    serie: "Tube rectangulaire",
-    kg,
-    resume:
-      "Section rectangulaire : la rigidité se concentre dans le sens de la hauteur. Le profil des traverses et des poutres de portail.",
-    specs: [
-      { label: "Section", valeur: `${a} × ${b} mm` },
-      { label: "Épaisseur", valeur: `${e} mm` },
-      { label: "Nuance", valeur: "S235JRH — EN 10219" },
-      { label: "Formage", valeur: "Profilé à froid, soudé" },
-      LONG_STD,
-    ],
-    usages: ["Traverse", "Poutre de portail", "Ossature", "Châssis"],
-  });
-});
-
-const tubesRonds: Ref[] = TUBES_RONDS.map(([id, d, e]) => {
-  const kg = +((d - e) * e * 0.02466).toFixed(2);
-  return mk({
-    famille: "tubes",
-    ref: `tube-rond-${id}`,
-    nom: `Tube rond Ø ${nb(d, 1)} × ${nb(e, 1)}`,
-    dims: `Ø ${nb(d, 1)} × ${nb(e, 1)} mm`,
-    serie: "Tube rond",
-    kg,
-    resume:
-      d === 33.7
-        ? "Diamètre de main courante normalisé — la prise en main de référence des garde-corps."
-        : "Tube rond soudé : mains courantes, barrières, mobilier, structures cintrées.",
-    specs: [
-      { label: "Diamètre extérieur", valeur: `${nb(d, 1)} mm` },
-      { label: "Épaisseur", valeur: `${nb(e, 1)} mm` },
-      { label: "Diamètre intérieur", valeur: `${nb(d - 2 * e, 1)} mm` },
-      { label: "Nuance", valeur: "S235JRH — EN 10219" },
-      LONG_STD,
-    ],
-    usages: ["Main courante", "Barrière", "Mobilier", "Cintrage"],
-  });
-});
-
-/* ------------------------------------------------------------------ */
-/*  5 · TÔLES                                                          */
-/* ------------------------------------------------------------------ */
-
-const EP_LISSES = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 15, 20];
-const EP_LARMEES: [number, number][] = [[2, 4], [3, 5], [4, 6], [5, 7], [6, 8]];
-const EP_GALVA = [0.75, 1, 1.5, 2, 2.5, 3];
-
-const tolesLisses: Ref[] = EP_LISSES.map((e) => {
-  const kg = +(e * 7.85).toFixed(2);
-  return mk({
-    famille: "toles",
-    ref: `tole-lisse-${String(e).replace(".", "-")}mm`,
-    nom: `Tôle lisse ${nb(e, e % 1 ? 1 : 0)} mm`,
-    dims: `épaisseur ${nb(e, e % 1 ? 1 : 0)} mm`,
-    serie: "Tôle lisse",
-    kg,
-    unitePoids: "kg/m²",
-    unite: "au m²",
-    uniteCourte: "€/m²",
-    resume:
-      "Tôle laminée à surface plane : platines, goussets, habillages, pièces découpées au plan. Se débite aux cotes exactes.",
-    specs: [
-      { label: "Épaisseur", valeur: `${nb(e, e % 1 ? 1 : 0)} mm` },
-      { label: "Nuance", valeur: e <= 3 ? "DC01 — laminé à froid" : "S235JR — laminé à chaud" },
-      { label: "Formats", valeur: "2000 × 1000 · 2500 × 1250 · 3000 × 1500 mm" },
-      { label: "Découpe", valeur: "Cisaillage ou oxycoupage aux cotes" },
-    ],
-    usages: ["Platine", "Gousset", "Habillage", "Pièce au plan"],
-  });
-});
-
-const tolesLarmees: Ref[] = EP_LARMEES.map(([e, t]) => {
-  const kg = +(e * 7.85 + 1.6).toFixed(2);
-  return mk({
-    famille: "toles",
-    ref: `tole-larmee-${e}-${t}mm`,
-    nom: `Tôle larmée ${e}/${t} mm`,
-    dims: `${e}/${t} mm — motif damier`,
-    serie: "Tôle larmée",
-    kg,
-    unitePoids: "kg/m²",
-    unite: "au m²",
-    uniteCourte: "€/m²",
-    resume:
-      "Motif en relief antidérapant laminé dans la masse : planchers techniques, marches, passerelles, seuils de véhicule.",
-    specs: [
-      { label: "Épaisseur de base", valeur: `${e} mm` },
-      { label: "Épaisseur au relief", valeur: `${t} mm` },
-      { label: "Motif", valeur: "Damier (larmes croisées)" },
-      { label: "Nuance", valeur: "S235JR" },
-      { label: "Formats", valeur: "2000 × 1000 · 2500 × 1250 mm" },
-    ],
-    usages: ["Plancher technique", "Marche", "Passerelle", "Seuil"],
-  });
-});
-
-const tolesGalva: Ref[] = EP_GALVA.map((e) => {
-  const kg = +(e * 7.85).toFixed(2);
-  return mk({
-    famille: "toles",
-    ref: `tole-galvanisee-${String(e).replace(".", "-")}mm`,
-    nom: `Tôle galvanisée ${nb(e, e % 1 ? 2 : 0)} mm`,
-    dims: `épaisseur ${nb(e, e % 1 ? 2 : 0)} mm`,
-    serie: "Tôle galvanisée",
-    matiere: "galvanise",
-    kg,
-    unitePoids: "kg/m²",
-    unite: "au m²",
-    uniteCourte: "€/m²",
-    prix: arrondi(Math.max(14, e * 7.85 * 1.55)),
-    resume:
-      "Tôle protégée par un revêtement de zinc appliqué en continu : elle part dehors sans peinture ni traitement complémentaire.",
-    specs: [
-      { label: "Épaisseur", valeur: `${nb(e, e % 1 ? 2 : 0)} mm` },
-      { label: "Revêtement", valeur: "Z275 — 275 g/m² de zinc" },
-      { label: "Nuance", valeur: "DX51D — EN 10346" },
-      { label: "Formats", valeur: "2000 × 1000 · 2500 × 1250 mm" },
-      { label: "Découpe", valeur: "Cisaillage aux cotes" },
-    ],
-    usages: ["Extérieur", "Bardage", "Habillage", "Gouttière"],
-  });
-});
-
-const tolesSpeciales: Ref[] = [
-  mk({
-    famille: "toles", ref: "tole-nervuree-bac-acier", nom: "Tôle nervurée — bac acier",
-    dims: "profil 27/200 · 35/207", serie: "Tôle nervurée", matiere: "galvanise",
-    kg: 5.9, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²", prix: 14.71,
-    resume: "Bac acier de toiture et de bardage : grande portée entre pannes, pose rapide par recouvrement, galvanisé ou prélaqué à la teinte.",
-    specs: [
-      { label: "Profils", valeur: "27/200 · 35/207 · 39/333" },
-      { label: "Finitions", valeur: "Galvanisé Z275 ou prélaqué RAL" },
-      { label: "Longueurs", valeur: "Sur mesure, à la coupe" },
-      { label: "Recouvrement", valeur: "1 nervure latérale" },
-    ],
-    usages: ["Toiture", "Bardage", "Abri", "Hangar"],
-  }),
-  mk({
-    famille: "toles", ref: "tole-ondulee", nom: "Tôle ondulée",
-    dims: "onde 76/18", serie: "Tôle nervurée", matiere: "galvanise",
-    kg: 5.2, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²", prix: 13.4,
-    resume: "L'onde sinusoïdale classique : couverture d'abri, de préau et de bâtiment agricole. Plus souple à cintrer qu'un bac nervuré.",
-    specs: [
-      { label: "Profil", valeur: "Onde 76/18" },
-      { label: "Finition", valeur: "Galvanisé Z275" },
-      { label: "Longueurs", valeur: "Sur mesure, à la coupe" },
-      { label: "Cintrage", valeur: "Possible dans le sens de l'onde" },
-    ],
-    usages: ["Abri", "Préau", "Agricole", "Couverture"],
-  }),
-  mk({
-    famille: "toles", ref: "tole-perforee-r5t8", nom: "Tôle perforée R5 T8",
-    dims: "trous Ø5 — entraxe 8 mm", serie: "Tôle perforée",
-    kg: 9.4, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²", prix: 46.0,
-    resume: "Perforation ronde en quinconce, 35 % de vide : ventilation, brise-vue, habillage de façade, protection de machine.",
-    specs: [
-      { label: "Perforation", valeur: "Ronde Ø 5 mm" },
-      { label: "Entraxe", valeur: "8 mm, quinconce 60°" },
-      { label: "Taux de vide", valeur: "35 %" },
-      { label: "Épaisseur", valeur: "1,5 mm" },
-      { label: "Formats", valeur: "2000 × 1000 mm" },
-    ],
-    usages: ["Ventilation", "Brise-vue", "Façade", "Protection"],
-  }),
-  mk({
-    famille: "toles", ref: "tole-perforee-r10t15", nom: "Tôle perforée R10 T15",
-    dims: "trous Ø10 — entraxe 15 mm", serie: "Tôle perforée",
-    kg: 9.0, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²", prix: 44.0,
-    resume: "Perforation large : le maximum de passage d'air et de lumière pour un habillage qui reste structurel.",
-    specs: [
-      { label: "Perforation", valeur: "Ronde Ø 10 mm" },
-      { label: "Entraxe", valeur: "15 mm, quinconce 60°" },
-      { label: "Taux de vide", valeur: "40 %" },
-      { label: "Épaisseur", valeur: "1,5 mm" },
-      { label: "Formats", valeur: "2000 × 1000 mm" },
-    ],
-    usages: ["Ventilation", "Claustra", "Garde-corps", "Décor"],
-  }),
-  mk({
-    famille: "toles", ref: "tole-striee-larme-fine", nom: "Tôle striée à larme fine",
-    dims: "3 mm — stries parallèles", serie: "Tôle larmée",
-    kg: 24.5, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-    resume: "Stries parallèles plutôt qu'un damier : l'adhérence se fait dans un seul sens, idéal pour les rampes et les plans inclinés.",
-    specs: [
-      { label: "Épaisseur de base", valeur: "3 mm" },
-      { label: "Motif", valeur: "Stries parallèles" },
-      { label: "Nuance", valeur: "S235JR" },
-      { label: "Formats", valeur: "2000 × 1000 mm" },
-    ],
-    usages: ["Rampe", "Plan incliné", "Marche", "Remorque"],
-  }),
-  mk({
-    famille: "toles", ref: "tole-prelaquee-ral", nom: "Tôle prélaquée RAL",
-    dims: "0,63 mm — teinte au choix", serie: "Tôle galvanisée", matiere: "galvanise",
-    kg: 5.0, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²", prix: 19.8,
-    resume: "Galvanisée puis laquée en continu à la teinte RAL : la finition posée telle quelle, sans peinture de chantier.",
-    specs: [
-      { label: "Épaisseur", valeur: "0,63 mm" },
-      { label: "Laquage", valeur: "25 µm polyester, face extérieure" },
-      { label: "Teintes", valeur: "RAL standard — nous consulter" },
-      { label: "Support", valeur: "Acier galvanisé Z275" },
-    ],
-    usages: ["Bardage", "Habillage", "Couverture", "Finition"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  6 · TREILLIS & ARMATURES                                           */
-/* ------------------------------------------------------------------ */
-
-const treillisRefs: Ref[] = [
-  ...[
-    ["st-25c", "Treillis soudé ST 25 C", "Ø 6 — maille 150 × 150", 3.02, "Le treillis d'armature courant des dalles de garage, terrasses et chapes fibrées."],
-    ["st-30", "Treillis soudé ST 30", "Ø 6 — maille 100 × 200", 3.83, "Maille resserrée dans un sens : les dalles portant principalement dans une direction."],
-    ["st-50", "Treillis soudé ST 50", "Ø 8 — maille 150 × 150", 5.37, "Section renforcée pour les dalles circulées et les planchers portés."],
-    ["panneau-6x2-4", "Panneau treillis 6 × 2,4 m", "format standard chantier", 3.02, "Le panneau entier livré au format de chantier, sans recoupe ni perte."],
-  ].map(([ref, nom, dims, kg, resume]) =>
-    mk({
-      famille: "treillis", ref: ref as string, nom: nom as string, dims: dims as string,
-      serie: "Treillis soudé", kg: kg as number, unitePoids: "kg/m²",
-      unite: "au m²", uniteCourte: "€/m²",
-      resume: resume as string,
-      specs: [
-        { label: "Fil", valeur: (dims as string).split(" — ")[0] },
-        { label: "Maille", valeur: (dims as string).split(" — ")[1] ?? "150 × 150 mm" },
-        { label: "Nuance", valeur: "B500A — acier pour béton armé" },
-        { label: "Panneau standard", valeur: "6000 × 2400 mm" },
-      ],
-      usages: ["Dalle", "Chape", "Terrasse", "Béton armé"],
-    })
-  ),
-  ...[6, 8, 10, 12, 14, 16, 20].map((d) => {
-    const kg = +(d * d * 0.00617).toFixed(2);
-    return mk({
-      famille: "treillis", ref: `rond-beton-${d}`, nom: `Rond à béton Ø ${d}`,
-      dims: `Ø ${d} mm — haute adhérence`, serie: "Rond à béton", kg,
-      resume: "Barre crénelée à haute adhérence : l'armature des poutres, poteaux et chaînages coulés en place.",
-      specs: [
-        { label: "Diamètre", valeur: `${d} mm` },
-        { label: "Nuance", valeur: "B500B — haute adhérence" },
-        { label: "Surface", valeur: "Crénelée" },
-        { label: "Longueur", valeur: "6 m ou 12 m — coupe et façonnage" },
-      ],
-      usages: ["Poutre", "Poteau", "Chaînage", "Fondation"],
-    });
-  }),
-  mk({
-    famille: "treillis", ref: "fil-recuit-1-2", nom: "Fil recuit Ø 1,2",
-    dims: "bobine 5 kg", serie: "Accessoire", kg: 5, unitePoids: "kg/bobine",
-    unite: "à la bobine", uniteCourte: "€/bobine", prix: 12.5,
-    resume: "Le fil noir qui ligature les armatures entre elles. Recuit, donc souple : il se noue à la main ou à la pince.",
-    specs: [
-      { label: "Diamètre", valeur: "1,2 mm" },
-      { label: "État", valeur: "Recuit (noir)" },
-      { label: "Conditionnement", valeur: "Bobine de 5 kg" },
-    ],
-    usages: ["Ligature", "Armature", "Attache"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  7 · CORTEN                                                         */
-/* ------------------------------------------------------------------ */
-
-const cortenRefs: Ref[] = [
-  ...[2, 3, 4, 5].map((e) => {
-    const kg = +(e * 7.85).toFixed(2);
-    return mk({
-      famille: "corten", ref: `tole-corten-${e}mm`, nom: `Tôle corten ${e} mm`,
-      dims: `épaisseur ${e} mm`, serie: "Tôle corten", matiere: "corten", kg,
-      unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-      resume: "L'acier qui se protège en rouillant. La patine se stabilise en 6 à 18 mois selon l'exposition, puis fait barrière — aucun entretien ensuite.",
-      specs: [
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Nuance", valeur: "S355J0WP — EN 10025-5" },
-        { label: "Patine", valeur: "Stabilisée en 6 à 18 mois" },
-        { label: "Formats", valeur: "2000 × 1000 · 3000 × 1500 mm" },
-        { label: "Entretien", valeur: "Aucun" },
-      ],
-      usages: ["Bardage", "Déco jardin", "Habillage", "Signalétique"],
-    });
-  }),
-  mk({
-    famille: "corten", ref: "bordure-jardin-corten", nom: "Bordure de jardin corten",
-    dims: "h 150 mm × L 2000 mm", serie: "Aménagement", matiere: "corten",
-    kg: 4.7, unitePoids: "kg/pce", unite: "à l'unité", uniteCourte: "€/pce", prix: 38.0,
-    resume: "Sépare la pelouse du massif d'un trait net qui rouille avec le jardin. Livrée avec les piquets d'ancrage.",
-    specs: [
-      { label: "Hauteur", valeur: "150 mm" },
-      { label: "Longueur", valeur: "2000 mm" },
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Fourni avec", valeur: "3 piquets d'ancrage" },
-      { label: "Hauteurs disponibles", valeur: "100 · 150 · 200 · 300 mm" },
-    ],
-    usages: ["Massif", "Allée", "Potager", "Pelouse"],
-  }),
-  mk({
-    famille: "corten", ref: "bac-a-fleurs-corten", nom: "Bac à fleurs corten",
-    dims: "800 × 400 × 400 mm", serie: "Aménagement", matiere: "corten",
-    kg: 28, unitePoids: "kg/pce", unite: "à l'unité", uniteCourte: "€/pce", prix: 290.0,
-    resume: "Bac soudé d'un seul tenant, fond percé pour le drainage. Sur mesure aux dimensions de votre terrasse.",
-    specs: [
-      { label: "Dimensions", valeur: "800 × 400 × 400 mm" },
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Fond", valeur: "Percé, drainage" },
-      { label: "Sur mesure", valeur: "Toutes dimensions — sur plan" },
-    ],
-    usages: ["Terrasse", "Jardin", "Balcon", "Aménagement"],
-  }),
-  mk({
-    famille: "corten", ref: "brise-vue-corten", nom: "Panneau brise-vue corten",
-    dims: "1800 × 900 mm — découpe laser", serie: "Aménagement", matiere: "corten",
-    kg: 25, unitePoids: "kg/pce", unite: "à l'unité", uniteCourte: "€/pce", prix: 340.0,
-    resume: "Panneau ajouré au laser selon le motif de votre choix : il masque sans cloisonner, et la lumière dessine le motif au sol.",
-    specs: [
-      { label: "Dimensions", valeur: "1800 × 900 mm" },
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Découpe", valeur: "Laser, motif au choix" },
-      { label: "Fixation", valeur: "Poteaux ou platines" },
-    ],
-    usages: ["Terrasse", "Clôture", "Séparation", "Décor"],
-  }),
-  mk({
-    famille: "corten", ref: "bardage-corten", nom: "Bardage corten à clins",
-    dims: "lames 200 mm — longueur libre", serie: "Bardage", matiere: "corten",
-    kg: 15.7, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-    resume: "Lames pliées à recouvrement pour l'habillage de façade. La patine uniformise les teintes en une saison.",
-    specs: [
-      { label: "Largeur utile", valeur: "200 mm" },
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Longueur", valeur: "Sur mesure jusqu'à 3 m" },
-      { label: "Pose", valeur: "Clins à recouvrement sur tasseaux" },
-    ],
-    usages: ["Façade", "Extension", "Abri", "Habillage"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  8 · POTEAUX & CLÔTURE                                              */
-/* ------------------------------------------------------------------ */
-
-const poteauxRefs: Ref[] = [
-  ...([[48, 1500], [48, 1750], [48, 2000], [48, 2500]] as [number, number][]).map(
-    ([d, l]) => {
-      const kg = +(((d - 2) * 2 * 0.02466 * l) / 1000).toFixed(2);
-      return mk({
-        famille: "poteaux-cloture", ref: `poteau-rond-${d}x${l}`,
-        nom: `Poteau rond Ø ${d} — ${l} mm`, dims: `Ø ${d} mm × ${l} mm`,
-        serie: "Poteau rond", matiere: "galvanise", kg, unitePoids: "kg/pce",
-        unite: "à l'unité", uniteCourte: "€/pce",
-        prix: arrondi(Math.max(14, kg * 3.2)),
-        resume: `Poteau galvanisé pour grillage souple ou panneau rigide. Hauteur libre ${((l - 300) / 1000)
-          .toFixed(2)
-          .replace(".", ",")} m après scellement de 30 cm.`,
-        specs: [
-          { label: "Diamètre", valeur: `${d} mm` },
-          { label: "Longueur totale", valeur: `${l} mm` },
-          { label: "Épaisseur", valeur: "2 mm" },
-          { label: "Protection", valeur: "Galvanisé à chaud" },
-          { label: "Pose", valeur: "Scellement béton ou platine" },
-        ],
-        usages: ["Clôture", "Grillage", "Panneau rigide"],
-      });
-    }
-  ),
-  ...([[40, 1500], [40, 2000], [60, 2000]] as [number, number][]).map(([a, l]) => {
-    const kg = +((4 * (a - 2) * 2 * 0.00785 * l) / 1000).toFixed(2);
-    return mk({
-      famille: "poteaux-cloture", ref: `poteau-carre-${a}x${l}`,
-      nom: `Poteau carré ${a} × ${a} — ${l} mm`, dims: `${a} × ${a} mm × ${l} mm`,
-      serie: "Poteau carré", matiere: "galvanise", kg, unitePoids: "kg/pce",
-      unite: "à l'unité", uniteCourte: "€/pce",
-      prix: arrondi(Math.max(16, kg * 3.4)),
-      resume: "Section carrée : les panneaux rigides se clipsent à plat sans collier, et l'alignement se règle à l'œil.",
-      specs: [
-        { label: "Section", valeur: `${a} × ${a} mm` },
-        { label: "Longueur totale", valeur: `${l} mm` },
-        { label: "Épaisseur", valeur: "2 mm" },
-        { label: "Protection", valeur: "Galvanisé à chaud" },
-        { label: "Pose", valeur: "Scellement ou platine boulonnée" },
-      ],
-      usages: ["Panneau rigide", "Clôture", "Portillon"],
-    });
-  }),
-  mk({
-    famille: "poteaux-cloture", ref: "platine-poteau-100x100",
-    nom: "Platine de poteau 100 × 100", dims: "100 × 100 × 6 mm — 4 trous Ø 12",
-    serie: "Accessoire", kg: 0.47, unitePoids: "kg/pce", unite: "à l'unité",
-    uniteCourte: "€/pce", prix: 6.5,
-    resume: "Se soude en pied de poteau pour boulonner sur une dalle existante — pas de scellement, pas de béton à couler.",
-    specs: [
-      { label: "Dimensions", valeur: "100 × 100 mm" },
-      { label: "Épaisseur", valeur: "6 mm" },
-      { label: "Perçage", valeur: "4 trous Ø 12 mm" },
-      { label: "Finition", valeur: "Brut ou galvanisé" },
-    ],
-    usages: ["Fixation sur dalle", "Poteau", "Garde-corps"],
-  }),
-  mk({
-    famille: "poteaux-cloture", ref: "capuchon-poteau-48",
-    nom: "Capuchon de poteau Ø 48", dims: "Ø 48 mm — PVC noir", serie: "Accessoire",
-    kg: 0.02, unitePoids: "kg/pce", unite: "à l'unité", uniteCourte: "€/pce", prix: 1.2,
-    resume: "Bouche le haut du poteau : l'eau n'entre pas, le poteau ne rouille pas de l'intérieur.",
-    specs: [
-      { label: "Diamètre", valeur: "48 mm" },
-      { label: "Matière", valeur: "PVC noir" },
-      { label: "Pose", valeur: "Emboîtement à force" },
-    ],
-    usages: ["Finition", "Étanchéité", "Clôture"],
-  }),
-  mk({
-    famille: "poteaux-cloture", ref: "jambe-de-force-48",
-    nom: "Jambe de force Ø 48", dims: "Ø 48 × 1500 mm", serie: "Accessoire",
-    matiere: "galvanise", kg: 3.4, unitePoids: "kg/pce", unite: "à l'unité",
-    uniteCourte: "€/pce", prix: 16.5,
-    resume: "Contrevente le poteau d'angle et le poteau de départ : sans elle, la tension du grillage finit par coucher la ligne.",
-    specs: [
-      { label: "Diamètre", valeur: "48 mm" },
-      { label: "Longueur", valeur: "1500 mm" },
-      { label: "Protection", valeur: "Galvanisé à chaud" },
-      { label: "Fourni avec", valeur: "Collier de liaison" },
-    ],
-    usages: ["Angle", "Départ", "Contreventement"],
-  }),
-  mk({
-    famille: "poteaux-cloture", ref: "collier-fixation-48",
-    nom: "Collier de fixation Ø 48", dims: "Ø 48 mm — galvanisé", serie: "Accessoire",
-    matiere: "galvanise", kg: 0.09, unitePoids: "kg/pce", unite: "à l'unité",
-    uniteCourte: "€/pce", prix: 1.9,
-    resume: "Serre le fil de tension ou le panneau contre le poteau. Vendu à l'unité, boulon inclus.",
-    specs: [
-      { label: "Diamètre", valeur: "48 mm" },
-      { label: "Protection", valeur: "Galvanisé" },
-      { label: "Fourni avec", valeur: "Boulon M8" },
-    ],
-    usages: ["Grillage", "Panneau", "Fil de tension"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  9 · VISSERIE & FIXATION                                            */
-/* ------------------------------------------------------------------ */
-
-const AUTOFORANTES: [number, number, string, number][] = [
-  [4.8, 20, "Hexagonale 8", 9.9], [4.8, 35, "Hexagonale 8", 11.5],
-  [5.5, 25, "Hexagonale 8", 11.9], [5.5, 50, "Hexagonale 8", 14.9],
-  [6.3, 60, "Hexagonale 10", 19.9], [6.3, 80, "Hexagonale 10", 23.5],
-  [6.3, 100, "Hexagonale 10", 27.9],
-];
-
-const BOULONS: [number, number, number][] = [
-  [8, 40, 0.38], [8, 60, 0.45], [10, 50, 0.62], [10, 80, 0.78], [12, 60, 0.95],
-  [12, 100, 1.25],
-];
-
-const visserieRefs: Ref[] = [
-  ...AUTOFORANTES.map(([d, l, tete, prix]) =>
-    mk({
-      famille: "visserie",
-      ref: `vis-autoforante-${String(d).replace(".", "-")}x${l}-hex-${tete.split(" ")[1]}`,
-      nom: `Vis autoforante ${nb(d, 1)} × ${l} — tête ${tete.toLowerCase()}`,
-      dims: `${nb(d, 1)} × ${l} mm`, serie: "Vis autoforante", matiere: "galvanise",
-      // masse d'une boîte de 100 : volume du fût × 7,85, majoré de 15 % (tête + filet)
-      kg: +(((d * d * l * 0.7854 * 7.85 * 1.15) / 1e6) * 100).toFixed(2),
-      unitePoids: "kg/boîte",
-      unite: "à la boîte de 100", uniteCourte: "€/boîte", prix,
-      resume:
-        "Perce et fixe en une seule opération, sans avant-trou. Pointe autoforante, rondelle d'étanchéité EPDM intégrée.",
-      specs: [
-        { label: "Diamètre", valeur: `${nb(d, 1)} mm` },
-        { label: "Longueur", valeur: `${l} mm` },
-        { label: "Tête", valeur: `${tete} mm` },
-        { label: "Pointe", valeur: "Autoforante, sans avant-trou" },
-        { label: "Étanchéité", valeur: "Rondelle EPDM intégrée" },
-        { label: "Protection", valeur: "Zinguée blanc" },
-        { label: "Conditionnement", valeur: "Boîte de 100" },
-      ],
-      usages: ["Bac acier", "Bardage", "Ossature métallique", "Couverture"],
-    })
-  ),
-  ...BOULONS.map(([d, l, prix]) =>
-    mk({
-      famille: "visserie", ref: `boulon-hm-${d}x${l}`,
-      nom: `Boulon HM ${d} × ${l}`, dims: `M${d} × ${l} mm`, serie: "Boulonnerie",
-      matiere: "galvanise",
-      // fût + tête hexagonale + écrou + rondelle ≈ 1,4 × le volume du fût
-      kg: +((d * d * l * 0.7854 * 7.85 * 1.4) / 1e6).toFixed(3),
-      unitePoids: "kg/pce",
-      unite: "à l'unité", uniteCourte: "€/pce", prix,
-      resume:
-        "Boulon à tête hexagonale classe 8.8 : l'assemblage démontable de la construction métallique. Écrou et rondelle vendus avec.",
-      specs: [
-        { label: "Filetage", valeur: `M${d}` },
-        { label: "Longueur", valeur: `${l} mm` },
-        { label: "Classe", valeur: "8.8 — haute résistance" },
-        { label: "Protection", valeur: "Zingué" },
-        { label: "Fourni avec", valeur: "Écrou + rondelle plate" },
-      ],
-      usages: ["Assemblage", "Platine", "Charpente", "Démontable"],
-    })
-  ),
-  mk({
-    famille: "visserie", ref: "tire-fond-8x80", nom: "Tire-fond 8 × 80",
-    dims: "Ø 8 × 80 mm", serie: "Boulonnerie", kg: 0.03, unitePoids: "kg/pce",
-    unite: "à l'unité", uniteCourte: "€/pce", prix: 0.55,
-    resume: "Vis à bois de forte section pour fixer le métal sur une charpente bois : pannes, tasseaux, ossature.",
-    specs: [
-      { label: "Diamètre", valeur: "8 mm" },
-      { label: "Longueur", valeur: "80 mm" },
-      { label: "Tête", valeur: "Hexagonale 13" },
-      { label: "Protection", valeur: "Zinguée" },
-    ],
-    usages: ["Charpente bois", "Panne", "Ossature mixte"],
-  }),
-  mk({
-    famille: "visserie", ref: "cheville-metallique-m10",
-    nom: "Cheville métallique M10", dims: "M10 × 90 mm", serie: "Ancrage",
-    kg: 0.06, unitePoids: "kg/pce", unite: "à l'unité", uniteCourte: "€/pce", prix: 1.85,
-    resume: "Ancrage à expansion pour béton : c'est ce qui tient une platine de poteau ou un garde-corps sur une dalle.",
-    specs: [
-      { label: "Filetage", valeur: "M10" },
-      { label: "Longueur", valeur: "90 mm" },
-      { label: "Support", valeur: "Béton non fissuré" },
-      { label: "Perçage", valeur: "Ø 10 mm, profondeur 80 mm" },
-    ],
-    usages: ["Platine", "Garde-corps", "Dalle béton", "Ancrage"],
-  }),
-  mk({
-    famille: "visserie", ref: "rondelle-etancheite-16",
-    nom: "Rondelle d'étanchéité Ø 16", dims: "Ø 16 mm — EPDM", serie: "Accessoire",
-    kg: 0.003, unitePoids: "kg/pce", unite: "au sachet de 100", uniteCourte: "€/sachet",
-    prix: 7.9,
-    resume: "Rondelle métal + joint EPDM : elle ferme le trou de vis sur une couverture. Sans elle, chaque vis est une fuite.",
-    specs: [
-      { label: "Diamètre", valeur: "16 mm" },
-      { label: "Joint", valeur: "EPDM vulcanisé" },
-      { label: "Support", valeur: "Inox ou zingué" },
-      { label: "Conditionnement", valeur: "Sachet de 100" },
-    ],
-    usages: ["Couverture", "Bac acier", "Étanchéité"],
-  }),
-  mk({
-    famille: "visserie", ref: "electrode-rutile-2-5",
-    nom: "Électrode rutile Ø 2,5", dims: "Ø 2,5 × 350 mm — étui 2,5 kg",
-    serie: "Soudage", kg: 2.5, unitePoids: "kg/étui", unite: "à l'étui",
-    uniteCourte: "€/étui", prix: 14.5,
-    resume: "L'électrode enrobée passe-partout pour l'acier doux : amorçage facile, laitier qui se détache seul. Le consommable du soudeur occasionnel.",
-    specs: [
-      { label: "Diamètre", valeur: "2,5 mm" },
-      { label: "Longueur", valeur: "350 mm" },
-      { label: "Enrobage", valeur: "Rutile" },
-      { label: "Intensité", valeur: "60 à 90 A" },
-      { label: "Conditionnement", valeur: "Étui de 2,5 kg" },
-    ],
-    usages: ["Soudage", "Acier doux", "Réparation"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  10 · INOX                                                          */
-/* ------------------------------------------------------------------ */
-
-const inoxRefs: Ref[] = [
-  ...([[33.7, 2], [42.4, 2], [48.3, 2]] as [number, number][]).map(([d, e]) => {
-    const kg = +((d - e) * e * 0.02513).toFixed(2);
-    return mk({
-      famille: "inox", ref: `tube-rond-inox-${String(d).replace(".", "-")}x${e}`,
-      nom: `Tube rond inox Ø ${nb(d, 1)} × ${e}`, dims: `Ø ${nb(d, 1)} × ${e} mm`,
-      serie: "Tube inox", matiere: "inox", kg,
-      resume: "Tube inox 304 brossé grain 240 : la main courante qui ne rouille pas et ne se repeint jamais.",
-      specs: [
-        { label: "Diamètre extérieur", valeur: `${nb(d, 1)} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Nuance", valeur: "304 (1.4301)" },
-        { label: "Finition", valeur: "Brossé grain 240" },
-        LONG_STD,
-      ],
-      usages: ["Main courante", "Garde-corps", "Mobilier", "Extérieur"],
-    });
-  }),
-  mk({
-    famille: "inox", ref: "tube-carre-inox-40x40x2", nom: "Tube carré inox 40 × 40 × 2",
-    dims: "40 × 40 × 2 mm", serie: "Tube inox", matiere: "inox", kg: 2.36,
-    resume: "Ossature inox pour les ouvrages exposés en permanence : abords de piscine, bord de mer, agroalimentaire.",
-    specs: [
-      { label: "Section", valeur: "40 × 40 mm" },
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Nuance", valeur: "304 (1.4301)" },
-      { label: "Finition", valeur: "Brossé grain 240" },
-      LONG_STD,
-    ],
-    usages: ["Ossature", "Piscine", "Agroalimentaire", "Extérieur"],
-  }),
-  ...([[30, 3], [40, 5], [50, 5]] as [number, number][]).map(([l, e]) => {
-    const kg = +((l * e * 8.0) / 1000).toFixed(2);
-    return mk({
-      famille: "inox", ref: `plat-inox-${l}x${e}`, nom: `Plat inox ${l} × ${e}`,
-      dims: `${l} × ${e} mm`, serie: "Plat inox", matiere: "inox", kg,
-      resume: "Fer plat inox pour la ferronnerie exposée : fixations, brides, pièces de liaison qui restent brillantes.",
-      specs: [
-        { label: "Largeur", valeur: `${l} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Nuance", valeur: "304 (1.4301)" },
-        { label: "Finition", valeur: "Brut ou brossé" },
-        LONG_STD,
-      ],
-      usages: ["Ferronnerie", "Bride", "Liaison", "Extérieur"],
-    });
-  }),
-  ...([[40, 4], [50, 5]] as [number, number][]).map(([a, e]) => {
-    const kg = +(((2 * a - e) * e * 8.0) / 1000).toFixed(2);
-    return mk({
-      famille: "inox", ref: `corniere-inox-${a}x${a}x${e}`,
-      nom: `Cornière inox ${a} × ${a} × ${e}`, dims: `${a} × ${a} × ${e} mm`,
-      serie: "Cornière inox", matiere: "inox", kg,
-      resume: "Angle inox pour les cadres et les protections d'arête en milieu humide ou alimentaire.",
-      specs: [
-        { label: "Ailes", valeur: `${a} × ${a} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Nuance", valeur: "304 (1.4301)" },
-        LONG_STD,
-      ],
-      usages: ["Cadre", "Protection d'arête", "Agroalimentaire"],
-    });
-  }),
-  ...[1.5, 2, 3].map((e) => {
-    const kg = +(e * 8.0).toFixed(2);
-    return mk({
-      famille: "inox", ref: `tole-inox-${String(e).replace(".", "-")}mm`,
-      nom: `Tôle inox ${nb(e, e % 1 ? 1 : 0)} mm`,
-      dims: `épaisseur ${nb(e, e % 1 ? 1 : 0)} mm`, serie: "Tôle inox", matiere: "inox",
-      kg, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-      resume: "Tôle inox brossée : plan de travail, crédence, habillage de cuisine professionnelle, plaque de propreté.",
-      specs: [
-        { label: "Épaisseur", valeur: `${nb(e, e % 1 ? 1 : 0)} mm` },
-        { label: "Nuance", valeur: "304 (1.4301)" },
-        { label: "Finition", valeur: "Brossé grain 240, film de protection" },
-        { label: "Formats", valeur: "2000 × 1000 · 2500 × 1250 mm" },
-      ],
-      usages: ["Crédence", "Plan de travail", "Habillage", "Cuisine pro"],
-    });
-  }),
-  ...[12, 16, 20].map((d) => {
-    const kg = +(d * d * 0.00629).toFixed(2);
-    return mk({
-      famille: "inox", ref: `rond-inox-${d}`, nom: `Rond plein inox Ø ${d}`,
-      dims: `Ø ${d} mm`, serie: "Rond inox", matiere: "inox", kg,
-      resume: "Barre ronde inox : barreaudage de garde-corps, axes, tiges filetables qui ne grippent pas.",
-      specs: [
-        { label: "Diamètre", valeur: `${d} mm` },
-        { label: "Nuance", valeur: "304 (1.4301)" },
-        { label: "Finition", valeur: "Brossé" },
-        LONG_STD,
-      ],
-      usages: ["Barreaudage", "Axe", "Garde-corps"],
-    });
-  }),
-  mk({
-    famille: "inox", ref: "tole-inox-316l-2mm", nom: "Tôle inox 316L 2 mm",
-    dims: "épaisseur 2 mm — qualité marine", serie: "Tôle inox", matiere: "inox",
-    kg: 16.0, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-    prix: arrondi(16.0 * 7.4),
-    resume: "Le 316L contient du molybdène : c'est la nuance qui tient en bord de mer, en piscine et au contact des chlorures.",
-    specs: [
-      { label: "Épaisseur", valeur: "2 mm" },
-      { label: "Nuance", valeur: "316L (1.4404)" },
-      { label: "Particularité", valeur: "Allié molybdène — milieu chloré" },
-      { label: "Formats", valeur: "2000 × 1000 mm" },
-    ],
-    usages: ["Bord de mer", "Piscine", "Chimie", "Agroalimentaire"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  11 · ALUMINIUM                                                     */
-/* ------------------------------------------------------------------ */
-
-const aluRefs: Ref[] = [
-  ...([[20, 2], [30, 3], [40, 4], [50, 5]] as [number, number][]).map(([a, e]) => {
-    const kg = +(((2 * a - e) * e * 2.7) / 1000).toFixed(2);
-    return mk({
-      famille: "aluminium", ref: `corniere-alu-${a}x${a}x${e}`,
-      nom: `Cornière alu ${a} × ${a} × ${e}`, dims: `${a} × ${a} × ${e} mm`,
-      serie: "Profilé alu", matiere: "aluminium", kg,
-      resume: "Angle aluminium : protection d'arête, encadrement, finition. Se coupe à la scie à métaux et ne rouille jamais.",
-      specs: [
-        { label: "Ailes", valeur: `${a} × ${a} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Alliage", valeur: "6060 T66" },
-        { label: "Finition", valeur: "Brut — anodisable" },
-        { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-      ],
-      usages: ["Protection d'arête", "Encadrement", "Finition"],
-    });
-  }),
-  ...([[30, 3], [40, 5]] as [number, number][]).map(([l, e]) => {
-    const kg = +((l * e * 2.7) / 1000).toFixed(2);
-    return mk({
-      famille: "aluminium", ref: `plat-alu-${l}x${e}`, nom: `Plat alu ${l} × ${e}`,
-      dims: `${l} × ${e} mm`, serie: "Profilé alu", matiere: "aluminium", kg,
-      resume: "Fer plat aluminium : signalétique, supports légers, pièces à percer et visser sans soudure.",
-      specs: [
-        { label: "Largeur", valeur: `${l} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Alliage", valeur: "6060 T66" },
-        { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-      ],
-      usages: ["Signalétique", "Support", "Habillage"],
-    });
-  }),
-  ...([[30, 2], [40, 2], [50, 3]] as [number, number][]).map(([a, e]) => {
-    const kg = +(4 * (a - e) * e * 0.0027).toFixed(2);
-    return mk({
-      famille: "aluminium", ref: `tube-carre-alu-${a}x${a}x${e}`,
-      nom: `Tube carré alu ${a} × ${a} × ${e}`, dims: `${a} × ${a} × ${e} mm`,
-      serie: "Tube alu", matiere: "aluminium", kg,
-      resume: "Ossature légère : trois fois plus léger que l'acier à section égale, pour les structures qu'on déplace ou qu'on porte.",
-      specs: [
-        { label: "Section", valeur: `${a} × ${a} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Alliage", valeur: "6060 T66" },
-        { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-      ],
-      usages: ["Structure légère", "Mobilier", "Stand", "Menuiserie"],
-    });
-  }),
-  ...([[30, 2], [40, 2]] as [number, number][]).map(([d, e]) => {
-    const kg = +((d - e) * e * 0.00848).toFixed(2);
-    return mk({
-      famille: "aluminium", ref: `tube-rond-alu-${d}x${e}`,
-      nom: `Tube rond alu Ø ${d} × ${e}`, dims: `Ø ${d} × ${e} mm`,
-      serie: "Tube alu", matiere: "aluminium", kg,
-      resume: "Tube rond aluminium pour mains courantes légères, mâts, supports et mobilier d'extérieur.",
-      specs: [
-        { label: "Diamètre extérieur", valeur: `${d} mm` },
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Alliage", valeur: "6060 T66" },
-        { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-      ],
-      usages: ["Main courante", "Mât", "Mobilier"],
-    });
-  }),
-  ...[1, 2, 3].map((e) => {
-    const kg = +(e * 2.7).toFixed(2);
-    return mk({
-      famille: "aluminium", ref: `tole-alu-${e}mm`, nom: `Tôle alu ${e} mm`,
-      dims: `épaisseur ${e} mm`, serie: "Tôle alu", matiere: "aluminium", kg,
-      unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-      resume: "Tôle aluminium lisse : habillage, capotage, signalétique. Se plie à froid et se découpe proprement.",
-      specs: [
-        { label: "Épaisseur", valeur: `${e} mm` },
-        { label: "Alliage", valeur: "5754 ou 1050 selon usage" },
-        { label: "Formats", valeur: "2000 × 1000 · 2500 × 1250 mm" },
-        { label: "Finition", valeur: "Brut — anodisable ou laquable" },
-      ],
-      usages: ["Habillage", "Capotage", "Signalétique"],
-    });
-  }),
-  mk({
-    famille: "aluminium", ref: "tole-alu-larmee-3mm", nom: "Tôle alu larmée 3 mm",
-    dims: "3/4,5 mm — motif duett", serie: "Tôle alu", matiere: "aluminium",
-    kg: 9.2, unitePoids: "kg/m²", unite: "au m²", uniteCourte: "€/m²",
-    resume: "Antidérapante et inoxydable : marchepieds de véhicule, planchers de remorque, seuils exposés.",
-    specs: [
-      { label: "Épaisseur de base", valeur: "3 mm" },
-      { label: "Motif", valeur: "Duett (deux larmes)" },
-      { label: "Alliage", valeur: "5754" },
-      { label: "Formats", valeur: "2000 × 1000 mm" },
-    ],
-    usages: ["Marchepied", "Remorque", "Plancher", "Seuil"],
-  }),
-  mk({
-    famille: "aluminium", ref: "profile-u-alu-40x40",
-    nom: "Profilé U alu 40 × 40 × 3", dims: "40 × 40 × 3 mm", serie: "Profilé alu",
-    matiere: "aluminium", kg: 0.89,
-    resume: "Le U aluminium reçoit un panneau, un verre ou une plaque : rail de guidage, encadrement, finition de chant.",
-    specs: [
-      { label: "Section", valeur: "40 × 40 mm" },
-      { label: "Épaisseur", valeur: "3 mm" },
-      { label: "Alliage", valeur: "6060 T66" },
-      { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-    ],
-    usages: ["Rail", "Encadrement", "Chant", "Panneau"],
-  }),
-  mk({
-    famille: "aluminium", ref: "rond-alu-20", nom: "Rond plein alu Ø 20",
-    dims: "Ø 20 mm", serie: "Profilé alu", matiere: "aluminium", kg: 0.85,
-    resume: "Barre ronde aluminium pour l'usinage, les entretoises et les pièces tournées légères.",
-    specs: [
-      { label: "Diamètre", valeur: "20 mm" },
-      { label: "Alliage", valeur: "6082 T6 — usinage" },
-      { label: "Longueur standard", valeur: "6 m — découpe aux cotes" },
-    ],
-    usages: ["Usinage", "Entretoise", "Axe léger"],
-  }),
-];
-
-/* ------------------------------------------------------------------ */
-/*  FAMILLES                                                           */
-/* ------------------------------------------------------------------ */
-
-export const familles: Famille[] = [
-  {
-    slug: "poutrelles",
-    nom: "Poutrelles & profilés",
-    accroche: "IPE, IPN, HEA, HEB, UPN — la structure porteuse",
-    intro:
-      "Profilés normalisés laminés à chaud, la matière des ossatures. L'IPE porte en flexion sur de longues portées ; les HEA et HEB, plus larges d'aile, reprennent la compression et font les poteaux ; l'UPN se boulonne à plat en rive. Coupés à la longueur, percés et livrés prêts à monter.",
-    titreSeo: "Poutrelles IPE, HEA, HEB, UPN — prix au mètre, découpe sur mesure",
-    descSeo:
-      "62 sections de poutrelles acier en stock : IPE, IPN, HEA, HEB, UPN. Poids, cotes et prix au mètre affichés. Découpe aux cotes, retrait le jour même dans nos 4 dépôts.",
-    art: "poutrelles",
-    series: ["IPE", "IPN", "HEA", "HEB", "UPN"],
-    refs: [
-      ...profils("IPE", IPE), ...profils("HEA", HEA), ...profils("HEB", HEB),
-      ...profils("IPN", IPN), ...profils("UPN", UPN),
-    ],
-  },
-  {
-    slug: "cornieres",
-    nom: "Cornières",
-    accroche: "L'angle qui raidit tout",
-    intro:
-      "La cornière laminée à chaud est la pièce de renfort universelle : cadre, support, raidisseur, bordure. Ailes égales pour les cadres symétriques, ailes inégales quand une face porte et l'autre se fixe. C'est la famille la plus demandée du catalogue.",
-    titreSeo: "Cornière acier égale et inégale — dès 1,60 €/m, coupée sur mesure",
-    descSeo:
-      "32 sections de cornières acier laminées à chaud, de 20 × 20 × 3 à 120 × 120 × 12. Prix au mètre, poids, découpe aux cotes exactes. Stock permanent dans nos 4 dépôts.",
-    art: "cornieres-plats",
-    series: ["Cornière égale", "Cornière inégale"],
-    refs: [...cornieresEgales, ...cornieresInegales],
-  },
-  {
-    slug: "plats-barres",
-    nom: "Plats & barres",
-    accroche: "Le fer de ferronnerie",
-    intro:
-      "Plats laminés, ronds et carrés pleins : la matière première du ferronnier. Le plat se perce, se cintre et se soude sans préparation ; le rond encaisse la torsion ; le carré fait le barreaudage traditionnel. Toutes les sections se coupent à la demande.",
-    titreSeo: "Plat acier, rond et carré plein — dès 1,95 €/m, toutes sections",
-    descSeo:
-      "68 sections de plats, ronds et carrés pleins en acier S235. Prix au mètre et poids affichés, découpe aux cotes. Portails, grilles, ferronnerie — retrait le jour même.",
-    art: "plats",
-    series: ["Plat", "Rond plein", "Carré plein"],
-    refs: [...plats, ...ronds, ...carres],
-  },
-  {
-    slug: "tubes",
-    nom: "Tubes",
-    accroche: "L'ossature creuse, légère et rigide",
-    intro:
-      "À poids égal, le tube est plus rigide que le plein — c'est pourquoi il fait les portails, les garde-corps et les structures de mobilier. Carré pour souder d'équerre sans préparation, rectangulaire pour porter dans un sens, rond pour les mains courantes et le cintrage.",
-    titreSeo: "Tube acier carré, rectangulaire et rond — dès 2,20 €/m, sur mesure",
-    descSeo:
-      "60 sections de tubes acier profilés à froid EN 10219 : carré, rectangulaire, rond. Prix au mètre, poids, découpe aux cotes. Portail, garde-corps, ossature — 4 dépôts.",
-    art: "tubes",
-    series: ["Tube carré", "Tube rectangulaire", "Tube rond"],
-    refs: [...tubesCarres, ...tubesRect, ...tubesRonds],
-  },
-  {
-    slug: "toles",
-    nom: "Tôles",
-    accroche: "Couvrir, habiller, fermer",
-    intro:
-      "Lisse pour les platines et les pièces au plan, larmée pour les sols antidérapants, galvanisée pour ce qui part dehors, nervurée pour la toiture et le bardage, perforée pour ventiler ou tamiser. Toutes disponibles au format et débitées aux cotes.",
-    titreSeo: "Tôle acier lisse, larmée, galvanisée et nervurée — prix au m²",
-    descSeo:
-      "34 références de tôles : lisse de 1 à 20 mm, larmée antidérapante, galvanisée Z275, bac acier dès 14,71 €/m², perforée. Découpe aux cotes dans nos 4 dépôts.",
-    art: "toles",
-    series: ["Tôle lisse", "Tôle larmée", "Tôle galvanisée", "Tôle nervurée", "Tôle perforée"],
-    refs: [...tolesLisses, ...tolesLarmees, ...tolesGalva, ...tolesSpeciales],
-  },
-  {
-    slug: "treillis",
-    nom: "Treillis & armatures",
-    accroche: "Ce qui arme le béton",
-    intro:
-      "Treillis soudés et aciers à béton pour les dalles, chapes, poutres et chaînages. Panneaux au format chantier, ronds crénelés coupés et façonnés à la demande, plus les accessoires de ligature.",
-    titreSeo: "Treillis soudé et rond à béton — panneaux 6 × 2,4 m, coupe et façonnage",
-    descSeo:
-      "Treillis soudés ST 25 C, ST 30, ST 50 et ronds à béton B500B de Ø 6 à Ø 20. Panneaux au format chantier, coupe et façonnage sur plan. Retrait en dépôt.",
-    art: "treillis",
-    series: ["Treillis soudé", "Rond à béton", "Accessoire"],
-    refs: treillisRefs,
-  },
-  {
-    slug: "corten",
-    nom: "Acier corten",
-    accroche: "La rouille qui protège",
-    intro:
-      "Le corten développe une patine dense qui fait barrière et stoppe la corrosion au lieu de l'entretenir. Zéro peinture, zéro entretien, une teinte qui évolue avec les saisons — c'est devenu la matière des jardins contemporains et des façades qui assument leur matière.",
-    titreSeo: "Acier corten — tôle, bordure de jardin, bac à fleurs, bardage sur mesure",
-    descSeo:
-      "Tôle corten de 2 à 5 mm, bordures de jardin, bacs à fleurs, brise-vue découpés au laser et bardage à clins. Patine stabilisée, aucun entretien. Fabrication sur mesure.",
-    art: "corten",
-    series: ["Tôle corten", "Aménagement", "Bardage"],
-    refs: cortenRefs,
-  },
-  {
-    slug: "poteaux-cloture",
-    nom: "Poteaux de clôture",
-    accroche: "Ce qui tient la clôture debout",
-    intro:
-      "Poteaux galvanisés prêts à sceller ou à platiner, dimensionnés pour les grillages souples et les panneaux rigides, avec tous les accessoires : jambes de force, colliers, capuchons, platines. Vendus à l'unité, sans lot minimum.",
-    titreSeo: "Poteaux de clôture acier galvanisé — ronds, carrés et accessoires",
-    descSeo:
-      "Poteaux de clôture galvanisés Ø 48 et carrés 40/60, de 1,50 à 2,50 m, plus jambes de force, colliers, capuchons et platines. Vendus à l'unité, retrait en dépôt.",
-    art: "poteaux-cloture",
-    series: ["Poteau rond", "Poteau carré", "Accessoire"],
-    refs: poteauxRefs,
-  },
-  {
-    slug: "visserie",
-    nom: "Visserie & fixation",
-    accroche: "Ce qui assemble le reste",
-    intro:
-      "Vis autoforantes pour bac acier, boulonnerie 8.8, ancrages béton, consommables de soudage. Ce sont les pièces qu'on oublie de commander et qui arrêtent un chantier — elles sont en stock permanent.",
-    titreSeo: "Vis autoforante, boulon HM et fixation acier — stock permanent",
-    descSeo:
-      "Vis autoforantes 4,8 à 6,3 mm avec rondelle EPDM, boulonnerie 8.8, chevilles béton, tire-fond et électrodes. Boîtes de 100 ou à l'unité. Retrait le jour même.",
-    art: "visserie",
-    series: ["Vis autoforante", "Boulonnerie", "Ancrage", "Accessoire", "Soudage"],
-    refs: visserieRefs,
-  },
-  {
-    slug: "inox",
-    nom: "Inox",
-    accroche: "Ce qui reste dehors sans rouiller",
-    intro:
-      "Tubes, plats, cornières, tôles et ronds en 304 brossé, plus le 316L pour les milieux chlorés. L'inox coûte plus cher au mètre mais ne se repeint jamais : sur la durée de vie d'un garde-corps extérieur, il revient moins cher que l'acier peint.",
-    titreSeo: "Inox 304 et 316L — tube, tôle, plat, cornière coupés sur mesure",
-    descSeo:
-      "Inox 304 brossé grain 240 et 316L qualité marine : tubes ronds et carrés, tôles, plats, cornières, ronds. Prix au mètre, découpe aux cotes. Garde-corps, cuisine pro, bord de mer.",
-    art: "tubes",
-    series: ["Tube inox", "Plat inox", "Cornière inox", "Tôle inox", "Rond inox"],
-    refs: inoxRefs,
-  },
-  {
-    slug: "aluminium",
-    nom: "Aluminium",
-    accroche: "Trois fois plus léger, jamais de rouille",
-    intro:
-      "Profilés, tubes et tôles en alliage 6060 et 5754. L'aluminium s'impose dès que le poids compte ou que la structure doit rester nue : il se coupe à la scie à métaux, se perce sans effort et ne demande aucune protection.",
-    titreSeo: "Profilé aluminium, tube et tôle alu — coupe sur mesure, dès 5 €/m",
-    descSeo:
-      "Profilés aluminium 6060 : cornières, plats, U, tubes carrés et ronds, tôles lisses et larmées 5754. Découpe aux cotes, anodisable et laquable. 4 dépôts en Wallonie et France.",
-    art: "cornieres-plats",
-    series: ["Profilé alu", "Tube alu", "Tôle alu"],
-    refs: aluRefs,
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  MATIÈRES                                                           */
-/* ------------------------------------------------------------------ */
-
-export const matieres: Matiere[] = [
-  {
-    slug: "acier",
-    nom: "Acier",
-    accroche: "La matière de structure, brute ou protégée",
-    intro:
-      "L'acier de construction couvre l'essentiel des besoins : structure, ossature, ferronnerie. Brut à l'intérieur ou sous peinture, galvanisé dès que l'ouvrage est exposé. C'est la matière la plus disponible, la plus facile à souder et la mieux placée en prix.",
-    titreSeo: "Acier S235 — poutrelles, tubes, tôles et cornières coupés sur mesure",
-    descSeo:
-      "Acier de construction S235JR en stock : poutrelles, cornières, plats, tubes, tôles. Prix au mètre affichés, découpe aux cotes, retrait le jour même dans nos 4 dépôts.",
-    proprietes: [
-      { label: "Nuances courantes", valeur: "S235JR · S275JR · S355JR" },
-      { label: "Densité", valeur: "7,85 kg/dm³" },
-      { label: "États", valeur: "Brut laminé à chaud, profilé à froid" },
-      { label: "Soudabilité", valeur: "Excellente — tous procédés" },
-      { label: "Tenue extérieure", valeur: "Peinture ou galvanisation requise" },
-    ],
-    usages: ["Charpente", "Mezzanine", "Portail", "Garde-corps", "Ferronnerie", "Ossature"],
-    familles: ["poutrelles", "cornieres", "plats-barres", "tubes", "toles", "treillis"],
-    aRetenir: [
-      { titre: "S235, et ça suffit", texte: "Pour 95 % des ouvrages courants, le S235JR est la bonne nuance. Les S275 et S355 ne se justifient que si le calcul de structure l'impose." },
-      { titre: "Il rouille — c'est prévu", texte: "L'acier brut s'oxyde en surface dès qu'il est dehors. Peinture antirouille, galvanisation ou changement de matière : le choix se fait avant la commande, pas après." },
-      { titre: "Il se soude partout", texte: "C'est son vrai avantage sur l'inox et l'alu : un poste à souder d'entrée de gamme et une électrode rutile suffisent." },
-    ],
-  },
-  {
-    slug: "galvanise",
-    nom: "Acier galvanisé",
-    accroche: "L'acier qui part dehors sans peinture",
-    intro:
-      "La galvanisation dépose une couche de zinc qui se sacrifie à la place de l'acier. Résultat : 20 à 50 ans de tenue en extérieur, sans peinture, sans reprise. C'est le compromis évident entre l'acier brut et l'inox — et c'est ce qu'on recommande par défaut pour une clôture ou une charpente exposée.",
-    titreSeo: "Acier galvanisé — tôle Z275, poteaux et bac acier, tenue 20 ans dehors",
-    descSeo:
-      "Acier galvanisé à chaud Z275 : tôles de 0,75 à 3 mm, bac acier, tôles prélaquées RAL, poteaux de clôture. Sans peinture, sans entretien. Découpe aux cotes en dépôt.",
-    proprietes: [
-      { label: "Revêtement", valeur: "Z275 — 275 g/m² de zinc" },
-      { label: "Norme", valeur: "EN 10346 (continu) · EN ISO 1461 (bain)" },
-      { label: "Durée de vie", valeur: "20 à 50 ans selon l'exposition" },
-      { label: "Entretien", valeur: "Aucun" },
-      { label: "Soudage", valeur: "Possible — reprise au spray zinc obligatoire" },
-    ],
-    usages: ["Clôture", "Bardage", "Toiture", "Charpente exposée", "Gouttière"],
-    familles: ["toles", "poteaux-cloture", "visserie"],
-    aRetenir: [
-      { titre: "Le zinc se sacrifie", texte: "Une rayure ne condamne pas la pièce : le zinc voisin protège électrochimiquement l'acier mis à nu sur quelques millimètres." },
-      { titre: "Souder détruit la galva", texte: "La chaleur brûle le zinc sur 3 à 5 cm. Toute soudure doit être reprise au spray de zinc, sinon la rouille démarre là." },
-      { titre: "Coupez avant, pas après", texte: "En galvanisation au bain, on coupe et on perce avant de tremper. En tôle prégalvanisée, la tranche reste protégée par effet de bord." },
-    ],
-  },
-  {
-    slug: "inox",
-    nom: "Inox",
-    accroche: "Pour ce qui doit tenir dehors, sans entretien",
-    intro:
-      "L'inox ne rouille pas : le chrome forme en surface une couche d'oxyde qui se reconstitue seule à chaque rayure. Le 304 couvre la majorité des usages extérieurs ; le 316L, allié au molybdène, résiste en bord de mer, en piscine et au contact des produits chlorés.",
-    titreSeo: "Inox 304 et 316L — tube, tôle et plat, découpe sur mesure en Wallonie",
-    descSeo:
-      "Inox 304 brossé et 316L qualité marine : tubes, tôles, plats, cornières, ronds. Garde-corps, cuisine professionnelle, bord de mer. Prix affichés, coupe aux cotes.",
-    proprietes: [
-      { label: "Nuances", valeur: "304 (1.4301) · 316L (1.4404)" },
-      { label: "Densité", valeur: "8,00 kg/dm³" },
-      { label: "Finitions", valeur: "Brut 2B, brossé grain 240, poli miroir" },
-      { label: "Tenue à la corrosion", valeur: "Très élevée — sans traitement" },
-      { label: "Usage littoral / chloré", valeur: "316L obligatoire" },
-    ],
-    usages: ["Garde-corps", "Agroalimentaire", "Bord de mer", "Piscine", "Cuisine pro", "Mobilier"],
-    familles: ["inox"],
-    aRetenir: [
-      { titre: "304 ou 316L ?", texte: "304 partout, sauf si la pièce voit du sel ou du chlore en continu — bord de mer, abords de piscine, station d'épuration. Là, 316L, sans discussion." },
-      { titre: "L'inox peut quand même rouiller", texte: "Pas lui : les particules d'acier déposées dessus. Ne jamais meuler de l'acier à côté d'une pièce inox, ni utiliser la même brosse métallique." },
-      { titre: "Il revient moins cher qu'il n'en a l'air", texte: "Un garde-corps acier peint se repeint tous les 5 à 7 ans. Sur 30 ans, l'inox nu coûte moins que l'acier + la main d'œuvre de reprise." },
-    ],
-  },
-  {
-    slug: "aluminium",
-    nom: "Aluminium",
-    accroche: "Trois fois plus léger, jamais de rouille",
-    intro:
-      "Le profilé aluminium s'impose dès que le poids compte ou que la structure doit rester nue. Il s'usine et se perce très facilement, se plie à froid, et sa couche d'alumine le protège naturellement. Il se soude en revanche différemment de l'acier — on vous oriente sur l'assemblage.",
-    titreSeo: "Profilé aluminium 6060 — tube, tôle, cornière coupés à la demande",
-    descSeo:
-      "Aluminium 6060 et 5754 : cornières, plats, U, tubes carrés et ronds, tôles lisses et larmées. Léger, inoxydable, anodisable. Découpe aux cotes dans nos 4 dépôts.",
-    proprietes: [
-      { label: "Alliages", valeur: "6060 T66 (profilés) · 6082 T6 (usinage) · 5754 (tôle)" },
-      { label: "Densité", valeur: "2,70 — contre 7,85 pour l'acier" },
-      { label: "Tenue à la corrosion", valeur: "Naturelle — couche d'alumine" },
-      { label: "Finitions", valeur: "Brut, anodisé, thermolaqué RAL" },
-      { label: "Soudage", valeur: "TIG ou MIG sous argon — pas à l'électrode" },
-    ],
-    usages: ["Habillage", "Menuiserie", "Structure légère", "Mobilier", "Signalétique", "Remorque"],
-    familles: ["aluminium"],
-    aRetenir: [
-      { titre: "Léger ne veut pas dire faible", texte: "L'alu est trois fois moins dense mais aussi trois fois moins rigide. À section égale il fléchit plus : on compense en augmentant la section, pas en espérant." },
-      { titre: "Pas d'électrode enrobée", texte: "L'aluminium se soude au TIG ou au MIG sous argon. Un poste à électrode classique ne fait rien de propre dessus." },
-      { titre: "Attention au contact acier", texte: "Alu et acier en contact direct avec de l'humidité créent une pile : l'alu se corrode. On isole avec une rondelle nylon ou une fixation inox." },
-    ],
-  },
-  {
-    slug: "corten",
-    nom: "Acier corten",
-    accroche: "La rouille qui protège au lieu de détruire",
-    intro:
-      "Le corten est un acier allié au cuivre, au chrome et au phosphore. Sa rouille ne s'écaille pas : elle forme une patine dense et adhérente qui bloque l'oxydation en profondeur. On l'achète pour sa tenue, on le garde pour sa couleur.",
-    titreSeo: "Acier corten — tôle, bordure, bac et bardage, patine sans entretien",
-    descSeo:
-      "Acier corten S355J0WP : tôle de 2 à 5 mm, bordures de jardin, bacs à fleurs, brise-vue laser, bardage à clins. Patine stabilisée en 6 à 18 mois, zéro entretien.",
-    proprietes: [
-      { label: "Nuance", valeur: "S355J0WP — EN 10025-5" },
-      { label: "Alliage", valeur: "Cuivre, chrome, phosphore" },
-      { label: "Patine", valeur: "Stabilisée en 6 à 18 mois" },
-      { label: "Entretien", valeur: "Aucun" },
-      { label: "Soudabilité", valeur: "Bonne — fil ou électrode adaptés" },
-    ],
-    usages: ["Bardage", "Déco jardin", "Bordure", "Bac à fleurs", "Signalétique", "Mobilier"],
-    familles: ["corten"],
-    aRetenir: [
-      { titre: "Il coule pendant sa patine", texte: "Les premiers mois, l'eau de pluie emporte des oxydes qui tachent durablement le béton clair et la pierre. Prévoyez un gravier ou un écoulement." },
-      { titre: "Il lui faut des cycles secs", texte: "La patine ne se forme qu'en alternant humide et sec. En contact permanent avec l'eau ou la terre, le corten se corrode comme un acier ordinaire." },
-      { titre: "Comptez l'épaisseur perdue", texte: "La patine consomme quelques dixièmes de millimètre. Pour une pièce structurelle, on part d'une épaisseur supérieure au calcul." },
-    ],
-  },
-];
-
-/* ------------------------------------------------------------------ */
-/*  HELPERS                                                            */
-/* ------------------------------------------------------------------ */
-
-export const familleBySlug = (slug: string) => familles.find((f) => f.slug === slug);
-export const matiereBySlug = (slug: string) => matieres.find((m) => m.slug === slug);
-export const refBySlug = (famille: string, ref: string) =>
-  familleBySlug(famille)?.refs.find((r) => r.ref === ref);
-
-export const allRefs = familles.flatMap((f) => f.refs.map((r) => ({ famille: f, ref: r })));
-
-export const totalRefs = allRefs.length;
-
-export const refsParMatiere = (matiere: string) =>
-  allRefs.filter(({ ref }) => ref.matiere === matiere);
-
-/** Prix d'entrée d'une famille, pour les cartes de catalogue. */
-export function prixMini(f: Famille) {
-  const prix = f.refs.map((r) => r.prix).filter((p): p is number => p !== null);
-  if (!prix.length) return null;
-  const min = Math.min(...prix);
-  const r = f.refs.find((x) => x.prix === min)!;
-  return { valeur: min, unite: r.uniteCourte, texte: `dès ${formatPrix(min)}/${r.uniteCourte.slice(2)}` };
+/** Prix d'entrée sous un chemin. */
+export function prixMini(chemin: string) {
+  const p = produitsSous(chemin).map((x) => x.prix).filter((x): x is number => x !== null);
+  if (!p.length) return null;
+  return Math.min(...p);
 }
