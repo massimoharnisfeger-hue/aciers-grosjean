@@ -4,12 +4,13 @@
 export const site = {
   nom: "Aciers Grosjean",
   baseline: "L'acier de pro, accessible à tous",
-  tel: "+32 (0)71 00 00 00",
+  // Service commercial, relevé sur aciersgrosjean.be le 14/09/2026.
+  tel: "+32 (0)71 47 10 40",
   email: "info@aciersgrosjean.be",
 };
 
 /**
- * Lien d'appel au format international : « +32 (0)71 00 00 00 » → « tel:+3271000000 ».
+ * Lien d'appel au format international : « +32 (0)71 47 10 40 » → « tel:+3271471040 ».
  * Le (0) ne se compose pas depuis l'étranger ni depuis un mobile en itinérance.
  */
 export const lienTel = (tel: string) => "tel:" + tel.replace(/\(0\)/g, "").replace(/[^+\d]/g, "");
@@ -78,11 +79,13 @@ export const etapes = [
 
 export type Depot = { ville: string; pays: string; adresse: string; tel: string; horaires: string };
 
+// Coordonnées et horaires relevés sur les pages « Points de vente » de aciersgrosjean.be (14/09/2026).
+const HORAIRES_BE = "Lun–Ven 8h–12h · 12h45–17h (ven. 16h30) · juil.–août 7h–16h (ven. 15h30)";
 export const depots: Depot[] = [
-  { ville: "Charleroi", pays: "Belgique", adresse: "Zoning industriel — Charleroi", tel: "+32 (0)71 00 00 00", horaires: "Lun–Ven 7h–17h · Sam 8h–12h" },
-  { ville: "La Louvière", pays: "Belgique", adresse: "Zoning — La Louvière", tel: "+32 (0)64 00 00 00", horaires: "Lun–Ven 7h–17h" },
-  { ville: "Tournai", pays: "Belgique", adresse: "Zoning — Tournai", tel: "+32 (0)69 00 00 00", horaires: "Lun–Ven 7h–17h" },
-  { ville: "Marville", pays: "France", adresse: "Zone d'activité — Marville", tel: "+33 (0)3 00 00 00 00", horaires: "Lun–Ven 8h–17h" },
+  { ville: "Charleroi", pays: "Belgique", adresse: "Rue de Zone 23, 6032 Mont-sur-Marchienne", tel: "+32 (0)71 47 10 40", horaires: HORAIRES_BE },
+  { ville: "La Louvière", pays: "Belgique", adresse: "Rue des Boulonneries 15, 7100 La Louvière", tel: "+32 (0)64 26 59 55", horaires: HORAIRES_BE },
+  { ville: "Tournai", pays: "Belgique", adresse: "Rue Lefèbvre-Caters 46, 7500 Tournai", tel: "+32 (0)69 22 12 12", horaires: HORAIRES_BE },
+  { ville: "Marville", pays: "France", adresse: "ZI Ancienne Base Canadienne, 55600 Marville", tel: "+33 (0)3 29 88 10 62", horaires: "Lun–Ven 8h–12h · 12h30–16h30" },
 ];
 
 // Réalisations (placeholders — à remplacer par de vraies photos de projets)

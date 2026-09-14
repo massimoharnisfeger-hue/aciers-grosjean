@@ -1470,6 +1470,15 @@ export type DepotDetail = {
   dessert: string[];
 };
 
+// Coordonnées et horaires relevés sur les pages « Points de vente » de aciersgrosjean.be (14/09/2026).
+const HORAIRES_DEPOTS_BE = [
+  { jours: "Lundi – Jeudi (sept. – juin)", heures: "8 h – 12 h · 12 h 45 – 17 h" },
+  { jours: "Vendredi (sept. – juin)", heures: "8 h – 12 h · 12 h 45 – 16 h 30" },
+  { jours: "Lundi – Jeudi (juil. – août)", heures: "7 h – 12 h · 12 h 45 – 16 h" },
+  { jours: "Vendredi (juil. – août)", heures: "7 h – 12 h · 12 h 45 – 15 h 30" },
+  { jours: "Samedi – Dimanche", heures: "Fermé" },
+];
+
 export const depotsDetail: DepotDetail[] = [
   {
     slug: "charleroi-mont-sur-marchienne",
@@ -1477,15 +1486,11 @@ export const depotsDetail: DepotDetail[] = [
     nomComplet: "Mont-sur-Marchienne (Charleroi)",
     pays: "Belgique",
     region: "Hainaut",
-    adresse: "Zoning industriel, Mont-sur-Marchienne",
-    tel: "+32 (0)71 00 00 00",
-    horaires: [
-      { jours: "Lundi – Vendredi", heures: "7 h – 17 h" },
-      { jours: "Samedi", heures: "8 h – 12 h" },
-      { jours: "Dimanche", heures: "Fermé" },
-    ],
+    adresse: "Rue de Zone 23, 6032 Mont-sur-Marchienne (accès via la sortie 5 du R3)",
+    tel: "+32 (0)71 47 10 40",
+    horaires: HORAIRES_DEPOTS_BE,
     intro:
-      "Le dépôt historique et le plus profond en stock. C'est ici que sont tenues les grandes longueurs et les sections lourdes, et c'est de là que partent les transferts vers les autres sites. C'est aussi le seul ouvert le samedi matin.",
+      "Le dépôt historique et le plus profond en stock. C'est ici que sont tenues les grandes longueurs et les sections lourdes, et c'est de là que partent les transferts vers les autres sites.",
     equipements: [
       "Scie à ruban jusqu'à 300 mm",
       "Cisaille 3 m",
@@ -1503,13 +1508,9 @@ export const depotsDetail: DepotDetail[] = [
     nomComplet: "La Louvière",
     pays: "Belgique",
     region: "Hainaut",
-    adresse: "Zoning, La Louvière",
-    tel: "+32 (0)64 00 00 00",
-    horaires: [
-      { jours: "Lundi – Vendredi", heures: "7 h – 17 h" },
-      { jours: "Samedi", heures: "Fermé" },
-      { jours: "Dimanche", heures: "Fermé" },
-    ],
+    adresse: "Bricofer SA — Rue des Boulonneries 15, 7100 La Louvière",
+    tel: "+32 (0)64 26 59 55",
+    horaires: HORAIRES_DEPOTS_BE,
     intro:
       "Le dépôt du Centre, orienté chantier et ferronnerie : tubes, cornières, plats et tôles courantes en stock permanent, avec la découpe sur place.",
     equipements: ["Scie à ruban", "Cisaille 2 m", "Perçage", "Chariot élévateur 3,5 t"],
@@ -1521,13 +1522,9 @@ export const depotsDetail: DepotDetail[] = [
     nomComplet: "Tournai",
     pays: "Belgique",
     region: "Hainaut occidental",
-    adresse: "Zoning, Tournai",
-    tel: "+32 (0)69 00 00 00",
-    horaires: [
-      { jours: "Lundi – Vendredi", heures: "7 h – 17 h" },
-      { jours: "Samedi", heures: "Fermé" },
-      { jours: "Dimanche", heures: "Fermé" },
-    ],
+    adresse: "Ferutil SA — Rue Lefèbvre-Caters 46, 7500 Tournai",
+    tel: "+32 (0)69 22 12 12",
+    horaires: HORAIRES_DEPOTS_BE,
     intro:
       "Le dépôt de l'ouest wallon, à vingt minutes de la frontière française. Stock courant complet et transferts quotidiens depuis Charleroi pour les références spécifiques.",
     equipements: ["Scie à ruban", "Cisaille 2 m", "Chariot élévateur 3,5 t"],
@@ -1539,12 +1536,11 @@ export const depotsDetail: DepotDetail[] = [
     nomComplet: "Marville (France)",
     pays: "France",
     region: "Meuse (55)",
-    adresse: "Zone d'activité, Marville",
-    tel: "+33 (0)3 00 00 00 00",
+    adresse: "Aciers Grosjean France — ZI Ancienne Base Canadienne, 55600 Marville",
+    tel: "+33 (0)3 29 88 10 62",
     horaires: [
-      { jours: "Lundi – Vendredi", heures: "8 h – 17 h" },
-      { jours: "Samedi", heures: "Fermé" },
-      { jours: "Dimanche", heures: "Fermé" },
+      { jours: "Lundi – Vendredi", heures: "8 h – 12 h · 12 h 30 – 16 h 30" },
+      { jours: "Samedi – Dimanche", heures: "Fermé" },
     ],
     intro:
       "Notre implantation française, au nord de la Meuse. Elle dessert le Grand Est et le sud de la Belgique, avec le même catalogue et les mêmes services de découpe.",

@@ -59,7 +59,7 @@ export default function Footer() {
                     {site.email}
                   </a>
                 </li>
-                <li className="text-white/45">Lun–Ven 7 h – 17 h</li>
+                <li className="text-white/45">Lun–Jeu 8 h – 17 h · Ven 8 h – 16 h 30</li>
               </ul>
             </div>
             <div>

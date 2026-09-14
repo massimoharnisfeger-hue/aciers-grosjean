@@ -61,8 +61,13 @@ body{
   box-decoration-break:clone;
 }
 
-/* Titres charte */
+/* Titres charte.
+   Dans @layer components : une classe de couleur Tailwind (text-white sur fond encre)
+   doit pouvoir remplacer la couleur encre par défaut. Hors layer, elle était écrasée
+   et les titres blancs s'affichaient en encre sur fond encre. */
+@layer components {
 .h-display{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;line-height:1.04;letter-spacing:-0.02em;color:#333642;text-wrap:balance}
+}
 .h-title{text-wrap:balance}
 .h-sub{font-family:var(--font-comfortaa),"Comfortaa",sans-serif;font-weight:500}
 

@@ -9,7 +9,7 @@ import { depotsDetail } from "@/lib/edito";
 export const metadata: Metadata = {
   title: "Contact — téléphone, e-mail et 4 dépôts | Aciers Grosjean",
   description:
-    "Joignez-nous par téléphone du lundi au vendredi de 7 h à 17 h, par e-mail avec réponse sous 24 h, ou passez directement dans l'un de nos 4 dépôts sans rendez-vous.",
+    "Par téléphone du lundi au jeudi de 8 h à 17 h, le vendredi jusqu'à 16 h 30, par e-mail, ou directement dans l'un de nos 4 dépôts sans rendez-vous.",
   alternates: { canonical: "/contact" },
 };
 
@@ -33,7 +33,7 @@ export default function ContactPage() {
               t: "Par téléphone",
               s: site.tel,
               h: lienTel(site.tel),
-              d: "Du lundi au vendredi, 7 h – 17 h. C'est le plus rapide pour une question technique.",
+              d: "Du lundi au jeudi de 8 h à 17 h, le vendredi jusqu'à 16 h 30. C'est le plus rapide pour une question technique.",
               icon: "M4 5c0-1 1-2 2-2h2l2 5-2 1a12 12 0 006 6l1-2 5 2v2c0 1-1 2-2 2A17 17 0 014 5z",
             },
             {
