@@ -39,12 +39,16 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
 - **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
 - **Seul motif d'arrêt :** une donnée à afficher manque ou se contredit. Demander, ne jamais inventer.
 - **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` ; chaque itération reprend là où la précédente s'est arrêtée. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
+- **Carnet de leçons (obligatoire) :** lire `_DOCS/rendus-3d/lecons.md` au début de **chaque** itération, avant de toucher au code. Le compléter après chaque famille et après chaque correction du propriétaire, en suivant les règles d'écriture en tête du fichier.
+  - Un réglage validé (matière, lumière, cadrage, échantillons) devient un préréglage réutilisable dans le code : ne pas le re-régler pour la famille suivante.
+  - Un défaut vu deux fois devient un contrôle automatique qui tourne sur toutes les images, sans inspection manuelle.
+  - Avant de lancer une série, estimer sa durée d'après les temps réellement mesurés dans le carnet.
 - **Modèle et limites d'usage :** Claude ne peut pas changer de modèle lui-même. À la limite d'usage, Claude Code (≥ 2.1.234) attend la réinitialisation et reprend seul : la production ralentit mais ne s'arrête pas. Au premier lancement, rappeler une seule fois au propriétaire :
   1. fermer navigateurs et autres fenêtres Claude Code (15 Go de RAM, souvent presque pleine) ;
   2. brancher le PC et désactiver la mise en veille ;
   3. pour éviter les attentes : activer les crédits d'usage (`/usage-credits`, avec un plafond) ; ou, au message « limite atteinte » de Fable, taper `/model` et choisir **Opus 5**, le plus puissant après Fable.
 - **Commande de lancement** (boucle à rythme libre) :
-  `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets l'avancement à jour. Quand les 477 fiches sont intégrées, vérifiées et poussées, arrête la boucle.`
+  `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/lecons.md puis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets à jour l'avancement et, si tu as appris quelque chose, le carnet de leçons. Quand les 477 fiches sont intégrées, vérifiées et poussées, arrête la boucle.`
 - Pendant la journée, si le propriétaire doit utiliser le PC : limiter Blender à 4 cœurs (`-t 4`).
 
 ## Fin de session (obligatoire)
