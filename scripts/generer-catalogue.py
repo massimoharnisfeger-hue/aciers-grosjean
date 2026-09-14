@@ -562,6 +562,27 @@ def js(s):
     return json.dumps(s, ensure_ascii=False)
 
 
+DESCRIPTIONS_SITE = OUT.parent / "descriptions-site-actuel.json"
+DESCRIPTIONS = json.loads(DESCRIPTIONS_SITE.read_text(encoding="utf-8")) if DESCRIPTIONS_SITE.exists() else {}
+
+
+def specs_inox(slug, nom):
+    """Nuance et surface des fiches inox, d'après le nom et la description du site actuel (14/09/2026) :
+    « 304 » → 304 (1.4301), « 304L » → 304L (1.4307) (numéros EN 10088) ; les deux sur la même page (tôles GR320) :
+    rien d'affiché. Finition « brut ou brossé » laissée au choix : non affichée, sauf tôles GR320 (brossée 1 face)."""
+    texte = nom + " " + json.dumps(DESCRIPTIONS.get(slug, {}), ensure_ascii=False)
+    en_304l = re.search(r"\b304\s?L\b", texte, re.I)
+    en_304 = re.search(r"\b304\b(?!\s?L)", texte, re.I)
+    sp = []
+    if en_304 and not en_304l:
+        sp.append(("Nuance", "304 (1.4301)"))
+    elif en_304l and not en_304:
+        sp.append(("Nuance", "304L (1.4307)"))
+    if re.search(r"GR\s?320", nom, re.I) and re.search(r"grain 320", texte, re.I) and re.search(r"sur 1 face", texte, re.I):
+        sp.append(("Surface", "Brossée grain 320, 1 face"))
+    return sp
+
+
 out = []
 w = out.append
 w("""/**
@@ -646,7 +667,7 @@ for chemin, lst in sorted(groupes.items()):
         prix = prix_de(chemin, kg, unite)
         sp = list(specs)
         if univers == "inox" and not any(k == "Nuance" for k, _ in sp):
-            sp.append(("Nuance", "304 (1.4301) — brossé grain 320"))
+            sp += specs_inox(slug, nom)
         if univers == "aluminium" and not any(k == "Alliage" for k, _ in sp):
             sp.append(("Alliage", "6060 T66"))
         if kg is not None:

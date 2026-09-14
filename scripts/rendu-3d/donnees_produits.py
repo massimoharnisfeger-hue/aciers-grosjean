@@ -91,7 +91,8 @@ def nuance_et_norme(texte):
     du 14/09/2026) et premiere norme citee (« norme 10025 » -> « EN 10025 », norme europeenne des produits
     lamines a chaud en aciers de construction)."""
     nuance = re.search(rf"\b{NUANCE}(?:\s*(?:/|,|ou|et)\s*{NUANCE})*\b", texte)
-    norme = re.search(r"\b(?:EN|NF EN|norme)\s*(10025(?:-\d)?|10034|10279|10219|10210|10056|10058|10059|1090)\b", texte, re.I)
+    norme = re.search(r"\b(?:EN|NF EN|norme)\s*:?\s*(10025(?:-\d)?|10034|10279|10219|10210|10056|10058|10059|1090|10130|10346|10088(?:-\d)?)\b",
+                      texte, re.I)
     return (nuance.group(0) if nuance else None, f"EN {norme.group(1)}" if norme else None)
 
 
@@ -404,35 +405,74 @@ def tubes(cat, reel, desc):
     return produits
 
 
+def nuance_inox(v, alertes, nom, texte):
+    """Nuance inox du nom et de la description (même règle que specs_inox du générateur de catalogue) :
+    « 304 » → 304 (1.4301), « 304L » → 304L (1.4307) (numéros EN 10088) ; les deux sur la page : non affichée."""
+    en_304l = re.search(r"\b304\s?L\b", nom + " " + texte, re.I)
+    en_304 = re.search(r"\b304\b(?!\s?L)", nom + " " + texte, re.I)
+    if en_304 and en_304l:
+        alertes.append("nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)")
+    elif en_304 or en_304l:
+        v["nuance"] = valeur("304 (1.4301)" if en_304 else "304L (1.4307)", "",
+                             "nom ou description ; numéro EN 10088 de la nuance")
+
+
+# tôles planes : catégorie -> (famille, matière du rendu, masse volumique kg/dm³, source de la matière)
+TOLES_PLANES = {
+    "/acier/toles/tole-laminee-a-chaud": ("tole-laminee-a-chaud", "BRUT", 7.85),
+    "/acier/toles/tole-quarto": ("tole-quarto", "BRUT", 7.85),
+    "/acier/toles/tole-laminee-a-froid": ("tole-laminee-a-froid", "FROID", 7.85),
+    "/acier/toles/tole-galvanisee": ("tole-galvanisee", "GALVA", 7.85),
+    "/acier/toles/tole-corten": ("tole-corten", "CORTEN", 7.85),
+    "/aluminium/toles/tole-plane": ("tole-aluminium", "ALU", 2.70),
+    "/inox/toles/tole-plane-304-brossee": ("tole-inox-brossee", "INOX", 7.93),
+}
+
+
 def toles(cat, reel, desc):
-    """Tôles vendues à la plaque (laminées à chaud, quarto) : format et épaisseur du nom, recoupés avec les cotes
-    A/B/C du site ; poids de la plaque comparé au poids théorique (7,85 kg/dm³)."""
-    familles = {"/acier/toles/tole-laminee-a-chaud": "tole-laminee-a-chaud", "/acier/toles/tole-quarto": "tole-quarto"}
+    """Tôles planes vendues à la plaque : format et épaisseur du nom, recoupés avec les cotes A/B/C du site ;
+    poids de la plaque comparé au poids théorique (masse volumique de la matière)."""
+    familles = {c: f for c, (f, _, _) in TOLES_PLANES.items()}
     produits = {}
     for slug, c in cat.items():
         famille = familles.get(c["categorie"])
         d_nom = re.search(r"(\d+)\s*x\s*(\d+)\s*x\s*(\d+(?:,\d+)?)\s*mm", c["nom"], re.I)
         if not famille or not d_nom:
             continue
+        _, matiere, densite = TOLES_PLANES[c["categorie"]]
         L, l, e = int(d_nom.group(1)), int(d_nom.group(2)), nombre(d_nom.group(3))
         v, alertes = {"serie": valeur("TOLE", "", SRC_NOM), "L": valeur(L, "mm", SRC_NOM), "l": valeur(l, "mm", SRC_NOM),
                       "e": valeur(e, "mm", SRC_NOM)}, []
         r = reel.get(slug, {})
         if r.get("kg") is not None:
-            theorique = L * l * e * 7.85e-6
+            theorique = L * l * e * densite * 1e-6
             v["poids"] = valeur(r["kg"], "kg/plaque", SRC_SITE)
             if abs(theorique - r["kg"]) / theorique > 0.03:
                 alertes.append(f"poids site {r['kg']} kg ≠ théorique {theorique:.1f} kg (écart > 3 %) : non affiché")
                 v["poids"]["supposee"] = True
         texte = texte_description(desc, slug)
-        nuance, _ = nuance_et_norme(texte)
-        if nuance:
-            v["nuance"] = valeur(nuance, "", SRC_DESC)
+        if matiere in ("BRUT", "FROID", "GALVA", "CORTEN"):  # nuances d'acier (les alliages alu/inox : plus bas)
+            nuance, norme = nuance_et_norme(texte)
+            if nuance and matiere == "FROID":
+                # « Norme : EN 10130 • Matière : Acier S235JR ou équivalent » : EN 10130 couvre les aciers DC01…,
+                # pas le S235JR ; la fiche fournisseur publiée dit EN 10130 → nuance non affichée (question en attente)
+                v["nuance"] = valeur(nuance, "", SRC_DESC + " — contredite par la norme EN 10130 citée, non affichée", supposee=True)
+            elif nuance:
+                v["nuance"] = valeur(nuance, "", SRC_DESC)
+            if norme and matiere == "FROID":
+                v["norme"] = valeur(norme, "", SRC_DESC + " et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)")
+        if matiere == "INOX":
+            nuance_inox(v, alertes, c["nom"], texte)
+            if re.search(r"GR\s?320", c["nom"], re.I) and re.search(r"grain 320", texte, re.I) and re.search(r"sur 1 face", texte, re.I):
+                v["surface"] = valeur("Brossée grain 320, 1 face", "", SRC_DESC + " (« Finition Brossée Grain 320 (K320) sur 1 face »)")
         if "laserpress" in slug:
             v["marque"] = valeur("LaserpressPlus® 240 skinpass", "", SRC_DESC)
         if procede(texte) or famille == "tole-laminee-a-chaud" and re.search(r"lamin\w+ à chaud", c["nom"], re.I):
             v["procede"] = valeur("Laminé à chaud", "", SRC_DESC if procede(texte) else SRC_NOM)
-        v["finition"] = valeur("BRUT", "", "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée", supposee=True)
+        elif re.search(r"lamin\w+ à froid", c["nom"], re.I):
+            v["procede"] = valeur("Laminé à froid", "", SRC_NOM)
+        # matière du rendu, jamais affichée (le nom de la tôle la donne déjà : galvanisée, Corten, aluminium, inox)
+        v["finition"] = valeur(matiere, "", f"catégorie « {c['categorie']} » — matière du rendu, non affichée", supposee=True)
         controle_cotes_site(v, alertes, desc.get(slug, {}), {"A": "L", "B": "l", "C": "e"})
         produits[slug] = {"nom": c["nom"], "categorie": c["categorie"], "famille": famille, "valeurs": v, "alertes": alertes}
     return produits
@@ -496,8 +536,77 @@ def armatures(cat, reel, desc):
     return produits
 
 
+def profils_alu_inox(cat, reel, desc):
+    """Profilés et tubes en aluminium et en inox : cotes du nom (recoupées avec les cotes du site), poids de la fiche
+    comparé au poids théorique (alu 2,70 ; inox 7,93 kg/dm³). Pas de tableau fournisseur publié : rayons des angles
+    pris à des valeurs usuelles de filage ou de pliage, marqués « supposés » (forme seulement, jamais affichés)."""
+    produits = {}
+    for slug, c in cat.items():
+        m = re.match(r"/(aluminium|inox)/(profiles|tubes)/([a-z-]+)$", c["categorie"])
+        if not m:
+            continue
+        univers, sorte = m.group(1), m.group(3)
+        rho, matiere = (2.70, "ALU") if univers == "aluminium" else (7.93, "INOX")
+        nom = c["nom"]
+        nombres_nom = [nombre(x) for x in re.findall(r"\d+(?:,\d+)?", re.sub(r"(?i)inox\s*304|304", "", nom))]
+        v, alertes = {}, []
+        src_forme = "valeur usuelle — forme du modèle, non affichée"
+        r = reel.get(slug, {})
+        lettres = {}
+        if sorte == "corniere-egale":
+            a, t = nombres_nom[0], nombres_nom[2]
+            v.update(serie=valeur("L", "", SRC_NOM), a=valeur(a, "mm", SRC_NOM), b=valeur(a, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM),
+                     r1=valeur(t * (0.5 if matiere == "ALU" else 1.0), "mm", src_forme, supposee=True),
+                     r2=valeur(0.0 if matiere == "ALU" else t * 0.5, "mm", src_forme, supposee=True))
+            theorique = t * (2 * a - t) * rho * 1e-3
+            lettres = {"A": "a", "B": "b", "C": "t"}
+        elif sorte == "plat":
+            b, t = nombres_nom[0], nombres_nom[1]
+            v.update(serie=valeur("PLAT", "", SRC_NOM), b=valeur(b, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM))
+            theorique = b * t * rho * 1e-3
+            lettres = {"A": "b", "B": "t"}
+        elif sorte == "profil-t":
+            h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[2]
+            v.update(serie=valeur("T", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM),
+                     r=valeur(t * 0.5, "mm", src_forme, supposee=True), r1=valeur(0.0, "mm", src_forme, supposee=True),
+                     r2=valeur(0.0, "mm", src_forme, supposee=True))
+            theorique = t * (b + h - t) * rho * 1e-3
+            lettres = {"A": "h", "B": "b", "C": "t"}
+        elif sorte == "profil-u":
+            h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[3]  # « 20x20x20x2 » : fond, ailes, épaisseur
+            v.update(serie=valeur("U-ALU", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM),
+                     tw=valeur(t, "mm", SRC_NOM), tf=valeur(t, "mm", SRC_NOM),
+                     r1=valeur(t * 0.5, "mm", src_forme, supposee=True), r2=valeur(0.0, "mm", src_forme, supposee=True))
+            theorique = t * (h + 2 * b - 2 * t) * rho * 1e-3
+        elif sorte == "rond-plein":
+            d = nombres_nom[0]
+            v.update(serie=valeur("ROND", "", SRC_NOM), d=valeur(d, "mm", SRC_NOM))
+            theorique = math.pi * d * d / 4 * rho * 1e-3
+            lettres = {"A": "d"}
+        elif sorte in ("tube-carre", "tube-rectangulaire"):
+            h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[2]
+            v.update(serie=valeur("TC" if h == b else "TR", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM),
+                     t=valeur(t, "mm", SRC_NOM), r1=valeur(t * (0.75 if matiere == "ALU" else 1.5), "mm", src_forme, supposee=True))
+            theorique = (h * b - (h - 2 * t) * (b - 2 * t)) * rho * 1e-3
+            lettres = {"A": "h", "B": "b", "C": "t"}
+        elif sorte == "tube-rond":
+            d, t = nombres_nom[0], nombres_nom[1]
+            v.update(serie=valeur("TUBE-ROND", "", SRC_NOM), d=valeur(d, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM))
+            theorique = math.pi * t * (d - t) * rho * 1e-3
+            lettres = {"A": "d", "B": "t"}
+        else:
+            continue
+        poids_et_controle(v, alertes, r, theorique=theorique)
+        if matiere == "INOX":
+            nuance_inox(v, alertes, nom, texte_description(desc, slug))
+        v["finition"] = valeur(matiere, "", f"univers {univers} — matière du rendu, non affichée", supposee=True)
+        controle_cotes_site(v, alertes, desc.get(slug, {}), lettres)
+        produits[slug] = {"nom": nom, "categorie": c["categorie"], "famille": f"{univers}-{sorte}", "valeurs": v, "alertes": alertes}
+    return produits
+
+
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
-            "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures}
+            "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox}
 
 
 def main():

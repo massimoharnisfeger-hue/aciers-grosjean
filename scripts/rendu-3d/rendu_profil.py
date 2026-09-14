@@ -15,6 +15,7 @@ Produit <sortie>/<slug>.png (fond transparent + ombre) et, en mode caracteristiq
 (coordonnées écran des points utiles aux cotes, pour l'habillage 2D).
 """
 
+import hashlib
 import json
 import math
 import os
@@ -28,6 +29,13 @@ from mathutils import Vector
 
 MM = 0.001
 PARAMS = {}
+# empreinte du code de rendu, écrite dans chaque <slug>.json : controler_rendus.py signale une famille dont les
+# images viennent de deux versions (reprise partielle après un correctif, vérification des cornières du 14/09)
+try:
+    with open(__file__, "rb") as _f:
+        EMPREINTE = hashlib.sha1(_f.read()).hexdigest()[:10]
+except (NameError, OSError):
+    EMPREINTE = None
 
 # Teintes (sRGB 0-255) calées sur les vraies photos du site actuel ; converties en linéaire pour Cycles.
 TEINTE_GPP = PARAMS.get("teinte_gpp", (122, 52, 40))
@@ -402,9 +410,12 @@ def materiau_coupe():
     return m
 
 
-def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0.0, stries_y=0.0, anisotropie=0.0):
+def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0.0, stries_y=0.0, anisotropie=0.0,
+                   ecart_rugosite=0.2):
     """Métal nu générique : `cellules` = échelle de fleurage (galvanisé, cellules de Voronoï par mètre),
-    `stries_y` = échelle de stries le long de la barre (filage alu, brossage inox), `anisotropie` = reflet étiré."""
+    `stries_y` = échelle de stries le long de la barre (filage alu, brossage inox), `anisotropie` = reflet étiré
+    (sans carte UV, Cycles étire le reflet en cercles autour de l'axe Z : croix sombre sur une tôle, à éviter),
+    `ecart_rugosite` = variation relative de la rugosité (taches larges de 25 cm : faible sur les grandes tôles)."""
     m = bpy.data.materials.new(nom)
     m.use_nodes = True
     nt = m.node_tree
@@ -431,8 +442,8 @@ def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0
     nt.links.new(rampe.outputs["Color"], bsdf.inputs["Base Color"])
     rug = nt.nodes.new("ShaderNodeMapRange")
     rug.location = (-500, 0)
-    rug.inputs["To Min"].default_value = rugosite * 0.8
-    rug.inputs["To Max"].default_value = rugosite * 1.25
+    rug.inputs["To Min"].default_value = rugosite * (1 - ecart_rugosite)
+    rug.inputs["To Max"].default_value = rugosite * (1 + ecart_rugosite)
     nt.links.new(sortie, rug.inputs["Value"])
     nt.links.new(rug.outputs["Result"], bsdf.inputs["Roughness"])
     if stries_y:  # stries fines le long de y : bruit très étiré
@@ -456,22 +467,50 @@ def materiau_galva():
 
 
 def materiau_alu():
-    """Aluminium brut de filage ou de laminage : gris clair satiné, stries fines dans le sens de la barre."""
-    return materiau_metal("alu", (0.62, 0.63, 0.64), 0.30, variation=0.04, stries_y=900.0)
+    """Aluminium brut de filage ou de laminage : gris très clair, reflet diffus (essai du 14/09 : à 0,30 de rugosité,
+    la tôle reflétait une traînée sombre du studio), stries fines dans le sens de la barre."""
+    return materiau_metal("alu", (0.78, 0.79, 0.80), 0.42, variation=0.03, stries_y=900.0, ecart_rugosite=0.08)
 
 
 def materiau_inox():
-    """Inox 304 brossé (grain 320) : gris acier, brossage fin dans le sens de la barre, reflet étiré."""
-    return materiau_metal("inox", (0.50, 0.50, 0.50), 0.20, variation=0.03, stries_y=2500.0, anisotropie=0.55)
+    """Inox 304 satiné : gris acier, brossage fin dans le sens de la barre (relief), reflet adouci, sans anisotropie."""
+    return materiau_metal("inox", (0.56, 0.56, 0.55), 0.30, variation=0.02, stries_y=2500.0, ecart_rugosite=0.06)
 
 
 def materiau_froid():
-    """Acier laminé à froid : gris foncé lisse et satiné, sans calamine."""
-    return materiau_metal("froid", (0.22, 0.23, 0.24), 0.28, variation=0.05, metallic=0.9)
+    """Acier laminé à froid : gris moyen lisse et satiné, sans calamine ni taches (essai du 14/09)."""
+    return materiau_metal("froid", (0.30, 0.31, 0.32), 0.32, variation=0.02, metallic=1.0, ecart_rugosite=0.06)
+
+
+def materiau_corten():
+    """Acier Corten patiné (aspect rouillé mis en avant par la description du site) : brun-orangé mat, taches."""
+    m = bpy.data.materials.new("corten")
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    coord = nt.nodes.new("ShaderNodeTexCoord")
+    taches = noeud(nt, "ShaderNodeTexNoise", (-900, 200), Scale=18.0, Detail=10.0, Roughness=0.65)
+    nt.links.new(coord.outputs["Object"], taches.inputs["Vector"])
+    rampe = nt.nodes.new("ShaderNodeValToRGB")
+    rampe.location = (-600, 300)
+    rampe.color_ramp.elements[0].position = 0.35
+    rampe.color_ramp.elements[0].color = (0.16, 0.045, 0.018, 1)
+    rampe.color_ramp.elements[1].position = 0.75
+    rampe.color_ramp.elements[1].color = (0.36, 0.12, 0.04, 1)
+    nt.links.new(taches.outputs["Fac"], rampe.inputs["Fac"])
+    nt.links.new(rampe.outputs["Color"], bsdf.inputs["Base Color"])
+    grain = noeud(nt, "ShaderNodeTexNoise", (-900, -250), Scale=1100.0, Detail=4.0)
+    nt.links.new(coord.outputs["Object"], grain.inputs["Vector"])
+    relief = noeud(nt, "ShaderNodeBump", (-400, -250), Strength=0.15, Distance=0.0004)
+    nt.links.new(grain.outputs["Fac"], relief.inputs["Height"])
+    nt.links.new(relief.outputs["Normal"], bsdf.inputs["Normal"])
+    bsdf.inputs["Metallic"].default_value = 0.0
+    bsdf.inputs["Roughness"].default_value = 0.85
+    return m
 
 
 MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp, "GALVA": materiau_galva, "ALU": materiau_alu,
-            "INOX": materiau_inox, "FROID": materiau_froid}
+            "INOX": materiau_inox, "FROID": materiau_froid, "CORTEN": materiau_corten}
 
 
 # ---------------------------------------------------------------- scène
@@ -678,7 +717,7 @@ def rendre(p):
     sortie = os.path.expandvars(p["sortie"])
     os.makedirs(sortie, exist_ok=True)
     scene.render.filepath = os.path.join(sortie, p["slug"] + ".png")
-    bpy.ops.render.render(write_still=True)
+    calculer_image(p)
 
     if mode == "caracteristiques" and typ == "TOLE":
         W, H = scene.render.resolution_x, scene.render.resolution_y
@@ -715,12 +754,10 @@ def rendre(p):
         scene.cycles.samples = min(p.get("samples", 64), 24)
         scene.render.filepath = os.path.join(sortie, p["slug"] + "-loupe.png")
         bpy.context.view_layer.update()
-        bpy.ops.render.render(write_still=True)
+        calculer_image(p)
         points["loupe_haut"] = ecran(x_loupe, 0, e, (T, T))
         points["loupe_bas"] = ecran(x_loupe, 0, 0, (T, T))
-        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "loupe": T, "points": points,
-                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+        ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "loupe": T, "points": points})
     elif mode == "caracteristiques" and typ == "TREILLIS":
         W, H = scene.render.resolution_x, scene.render.resolution_y
 
@@ -743,9 +780,7 @@ def rendre(p):
             # diamètre du fil pincé au bout du fil longitudinal de droite
             "ame_gauche": ecran(xs[-1] - d / 2, 0, d / 2), "ame_droite": ecran(xs[-1] + d / 2, 0, d / 2),
         }
-        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "points": points,
-                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+        ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "points": points})
     elif mode == "caracteristiques":
         W, H = scene.render.resolution_x, scene.render.resolution_y
 
@@ -786,15 +821,30 @@ def rendre(p):
             "aile_haut_ext": ecran(x_aile, 0, h),
             "aile_haut_int": ecran(x_aile, 0, h - tf),
         }
-        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": cote_b, "points": points,
-                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+        ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": cote_b, "points": points})
     else:  # composition de la photo studio, reprise dans le texte alternatif sur le site
-        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump({"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y, "mode": "studio",
-                       "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"]} for q in pieces],
-                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
-    print(f"RENDU OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
+        ecrire_json(p, sortie, t0, {"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y,
+                                    "mode": "studio", "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"]} for q in pieces]})
+    print(f"{'POINTS' if p.get('points_seuls') else 'RENDU'} OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
+
+
+def calculer_image(p):
+    """Rendu Cycles, sauf en mode « points_seuls » : cadrage et coordonnées des cotes recalculés sans image, pour
+    rhabiller après un correctif qui ne touche pas la pièce (ex. jour des lignes de rappel). Même caméra : le
+    cadrage ne dépend que de la géométrie."""
+    if not p.get("points_seuls"):
+        bpy.ops.render.render(write_still=True)
+
+
+def ecrire_json(p, sortie, t0, donnees):
+    """<slug>.json : données d'habillage + empreinte du code ; en mode points seuls, garde la durée du vrai rendu."""
+    chemin = os.path.join(sortie, p["slug"] + ".json")
+    duree = round(time.time() - t0, 1)
+    if p.get("points_seuls") and os.path.exists(chemin):
+        with open(chemin, encoding="utf-8") as f:
+            duree = json.load(f).get("duree_s", duree)
+    with open(chemin, "w", encoding="utf-8") as f:
+        json.dump({**donnees, "duree_s": duree, "code": EMPREINTE, "points_seuls": bool(p.get("points_seuls"))}, f, indent=2)
 
 
 def main():

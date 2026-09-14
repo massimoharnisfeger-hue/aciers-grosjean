@@ -37,7 +37,8 @@ PAGE = {"Hauteur (h)": ["h"], "Largeur d'aile (b)": ["b"], "Épaisseur d'âme (t
         "Ailes": ["a", "b"], "Section": ["h", "b"], "Largeur": ["b"], "Épaisseur": ["t"], "Diamètre": ["d"],
         "Diamètre extérieur": ["d"], "Surface": ["surface"], "Nuance": ["nuance"], "Norme": ["norme"]}
 PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"], "Épaisseur": ["e"]},
-                  "TREILLIS": {"Maille": ["maille"], "Fil": ["d"], "Panneau": ["format"]}}
+                  "TREILLIS": {"Maille": ["maille"], "Fil": ["d"], "Panneau": ["format"]},
+                  "U-ALU": {"Section": ["b", "h", "b"], "Épaisseur": ["tw"]}}
 COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "nuance", "norme"}
 
 
@@ -94,6 +95,37 @@ def part_noire(chemin, creux=False):
     dans_piece = sum(1 for v in a.tobytes() if v >= 250)
     noirs = sum(1 for v, al in zip(clair.tobytes(), a.tobytes()) if al >= 250 and v <= 6)
     return noirs / max(dans_piece, 1)
+
+
+def jours_rappel(chemin, points):
+    """Écart en pixels entre le début de chaque ligne de rappel et le pixel de pièce le plus proche (transparence du
+    rendu brut). Vérification indépendante des cornières : rappels à 67 px de la pièce sur les images rendues avant
+    le correctif du jour. Distance au plus proche plutôt que le long du trait : sur les petites sections, le talon
+    chanfreiné passe à côté du prolongement du trait. -> {clé: (jour ou None au-delà de la fenêtre, longueur)}"""
+    with Image.open(chemin) as img:
+        alpha = img.convert("RGBA").split()[3]
+    jours = {}
+    for cle, debut in points.items():
+        fin = points.get(cle[:-len("_debut")] + "_fin") if cle.startswith("rappel_") and cle.endswith("_debut") else None
+        if not fin:
+            continue
+        longueur = ((debut[0] - fin[0]) ** 2 + (debut[1] - fin[1]) ** 2) ** 0.5
+        if longueur < 1:
+            continue
+        rayon = int(max(40, min(3 * longueur, 200)))
+        x0, y0 = int(debut[0]) - rayon, int(debut[1]) - rayon
+        cote = 2 * rayon + 1
+        fenetre = alpha.crop((x0, y0, x0 + cote, y0 + cote)).tobytes()  # hors image : transparent
+        meilleur = None
+        for i, v in enumerate(fenetre):
+            if v >= 250:
+                yy, xx = divmod(i, cote)
+                d2 = (x0 + xx - debut[0]) ** 2 + (y0 + yy - debut[1]) ** 2
+                if meilleur is None or d2 < meilleur:
+                    meilleur = d2
+        jour = round(meilleur ** 0.5) if meilleur is not None and meilleur <= rayon * rayon else None
+        jours[cle] = (jour, longueur)
+    return jours
 
 
 def marges_blanches(chemin, bande=16):
@@ -166,6 +198,7 @@ def controler(famille, produits, pages):
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
 
+    versions = set()  # empreintes du code de rendu (rendu_profil.py) des images de la famille
     for slug in slugs:
         p, nom = produits[slug], slug + "-caracteristiques"
         brut = fichier(slug + ".png")
@@ -182,6 +215,15 @@ def controler(famille, produits, pages):
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
+            geo = FINAL / (slug + ".json")
+            if geo.exists():
+                infos = json.loads(geo.read_text(encoding="utf-8"))
+                versions.add(infos.get("code"))
+                for cle, (jour, longueur) in sorted(jours_rappel(brut, infos["points"]).items()):
+                    if jour is None:
+                        ecarts.append(f"{slug} : {cle} loin de toute piece (fenetre de recherche depassee)")
+                    elif jour > 25 or jour > longueur / 2:
+                        ecarts.append(f"{slug} : {cle} decollee de la piece ({jour} px pour un trait de {longueur:.0f} px)")
         ctrl = fichier(nom + ".controles.json")
         if not ctrl:
             continue
@@ -219,7 +261,7 @@ def controler(famille, produits, pages):
             if libelle not in page:
                 continue
             couvertes.update(cles)
-            if cles in (["nuance"], ["norme"]):
+            if cles in (["nuance"], ["norme"], ["surface"]):  # textes : égalité stricte
                 if cles[0] not in affiche:
                     ecarts.append(f"{slug} : {libelle} « {page[libelle]} » sur la page, absente de l'image")
                 elif valeurs[cles[0]]["valeur"] != page[libelle]:
@@ -242,6 +284,8 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
+    if len(versions) > 1:  # reprise partielle : refaire la famille, ou au moins recalculer ses points (--points-seuls)
+        ecarts.append(f"{famille} : visuels issus de {len(versions)} versions du code de rendu ({', '.join(sorted(str(v) for v in versions))})")
     return ecarts, planches(famille, images) if images else []
 
 

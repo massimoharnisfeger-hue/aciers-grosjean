@@ -36,3 +36,9 @@ Règle : aucune valeur supposée affichée ; en cas de doute, demander.
 ## Reste à faire
 - Poutrelles puis cornières, profils et tubes : habillage, contrôle, vérificateur indépendant, intégration, build, commit.
 - Tôles laminées à chaud et armatures (fin de la vague 1), puis vagues 2 et 3 (avancement.md).
+
+## Suite (mode automatique) — cornières, inox, vague 2
+- Vérification indépendante des cornières : CONFORME ; lignes de rappel décollées sur les petites tailles (rendues avant un correctif) → points recalculés sans rendu, rhabillage, contrôle automatique créé ; intégration, build OK.
+- Constat : « 304 (1.4301) — brossé grain 320 » sur les 43 fiches inox venait du générateur. Descriptions du site : 304 (plats, tubes, cornières), 304L (ronds pleins), 304 et 304L (tôles GR320), finition « brut ou brossé ». Pages corrigées ; questions 16 à 18 en attente.
+- Vague 2 : données tôles et profilés alu/inox faites ; matières des tôles corrigées après essai ; tôles larmées, striées et perforées : références et dimensions de motif relevées (EN 10363 type T : larme ≈ 30 × 10 mm, relief 1 à 2 mm ; quintette alu d'après la photo du site), géométrie à faire.
+- Reste : séries profils/tubes, tôles et armatures en cours dans Blender ; vague 2 (larmées, striées, perforées, alu, inox) ; vague 3 ; visserie.

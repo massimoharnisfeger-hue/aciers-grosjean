@@ -237,6 +237,9 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
 
 
 def cotes_du_type(typ, p):
+    if p["valeurs"].get("serie", {}).get("valeur") == "U-ALU":  # U alu filé : une seule épaisseur
+        return (("h", "h"), ("b", "b"), ("t", "tw"), None,
+                [("Hauteur", "h", "h"), ("Largeur d'aile", "b", "b"), ("Épaisseur", "t", "tw")])
     if typ == "L":  # cornière (EN 10056) : ailes a et b, épaisseur t
         if p["valeurs"]["a"]["valeur"] == p["valeurs"]["b"]["valeur"]:
             return ("a", "a"), ("a", "b"), ("t", "t"), None, [("Aile", "a", "a"), ("Épaisseur", "t", "t")]

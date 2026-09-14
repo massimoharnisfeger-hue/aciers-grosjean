@@ -4,14 +4,14 @@ Mis à jour le 14/09/2026 vers 17 h (séance https://claude.ai/code/session_011V
 Règles : `CLAUDE.md` (section Visuels 3D) et `_DOCS/rendus-3d/lecons.md`. Brief : `_DOCS/BRIEF-RENDUS-3D.md`.
 Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : valeur non affichée, question notée).
 
-## Où on en est (14/09, 18 h 15)
+## Où on en est (14/09, soir)
 - **Mode automatique (CLAUDE.md).** Décisions du propriétaire du 14/09 appliquées (carnet de leçons).
-- **Poutrelles : TERMINÉES** — 45 visuels + 4 studios, 0 écart, vérification indépendante CONFORME (3 défauts mineurs corrigés), intégrées sur le site (`public/images/produits/acier/poutrelles/`), copie dans `_DEPOT/images/visuels-3d/`.
-- **Armatures** (ronds à béton crénelés, treillis soudés) : données, géométrie et tests conformes ; série à préparer derrière les tôles. Pages : nuances B500B / B500A du catalogue non sourcées (questions 10 et 11).
-- **Cornières** : série en cours (`serie-cornieres.json`, 15 + 2 studio).
-- **Fers T, plats, larges plats, ronds, carrés, tubes** : tests conformes ; série `serie-profils-tubes.json` (129 + 8 studio) en file derrière les cornières (~7 h).
-- **Tôles laminées à chaud et quarto** : test conforme (plaque + loupe d'épaisseur) ; série `serie-toles.json` (37 + 2 studio) en file derrière les profils et tubes.
-- Reste pour finir la vague 1 : armatures (ronds à béton crénelés, treillis soudés) — données et géométrie à faire.
+- **Poutrelles : TERMINÉES** — 45 visuels + 4 studios, CONFORME, intégrées (`public/images/produits/acier/poutrelles/`).
+- **Cornières : TERMINÉES** — 15 visuels + 2 studios, CONFORME (rappels décollés corrigés par recalcul des points), intégrées (`public/images/produits/acier/profiles/`). Défaut mineur non corrigé, sans effet visible : chanfrein à peine visible sur la face coupée des 40x40x3 et 50x50x3.
+- **Fers T, plats, larges plats, ronds, carrés, tubes** : série `serie-profils-tubes.json` (129 + 8 studio) en cours dans Blender (~15 images faites à 19 h ; ~3 min 30 par image).
+- **Tôles laminées à chaud et quarto** : série `serie-toles.json` (37 + 2) en file derrière (surveillance en arrière-plan).
+- **Armatures** : série `serie-armatures.json` (28 + 4) en file derrière les tôles. Avant intégration : retirer des pages les nuances B500B / B500A non sourcées (questions 10 et 11).
+- **Vague 2** : données faites pour les tôles à froid, galvanisées, Corten, alu, inox et les profilés/tubes alu et inox (77) ; pages inox corrigées (nuance sourcée). Matières corrigées après essai ; essai profilés alu/inox en cours (`essais/essai-alu-inox.json`). À faire : géométrie des tôles larmées (EN 10363 type T), striées (quintette) et perforées (R10 T15, R5 T8, C10 U15, aléatoire) ; pages de ces tôles : « Masse surfacique » et poids calculés par le générateur sans relief ni perforations (à corriger).
 
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.
@@ -22,17 +22,19 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 | Famille | Fiches | Données | Test | Série | Contrôle | Vérif. | Site |
 |---|---|---|---|---|---|---|---|
 | Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | fait | 0 écart | CONFORME | intégré |
-| Cornières égales, inégales | 15 | fait | fait | en cours | — | — | — |
-| Fers T | 5 | fait | fait | en file | — | — | — |
-| Plats, larges plats | 40 | fait | fait | en file | — | — | — |
-| Ronds lisses, carrés pleins | 16 | fait | fait | en file | — | — | — |
-| Tubes carrés, rectangulaires, ronds | 68 | fait | fait | en file | — | — | — |
+| Cornières égales, inégales | 15 | fait | fait | fait | 0 écart | CONFORME | intégré |
+| Fers T | 5 | fait | fait | en cours | — | — | — |
+| Plats, larges plats | 40 | fait | fait | en cours | — | — | — |
+| Ronds lisses, carrés pleins | 16 | fait | fait | en cours | — | — | — |
+| Tubes carrés, rectangulaires, ronds | 68 | fait | fait | en cours | — | — | — |
 | Tôles laminées à chaud (+ quarto) | 37 | fait | fait | en file | — | — | — |
-| Armatures : ronds à béton, treillis | 28 | fait | fait | à lancer | — | — | — |
+| Armatures : ronds à béton, treillis | 28 | fait | fait | en file | — | — | — |
 
 | Autres vagues | Fiches | État |
 |---|---|---|
-| Vague 2 : tôles à froid, galvanisées, corten, larmées, perforées ; alu ; inox | 145 | — |
+| Vague 2 : tôles à froid, galvanisées, corten, alu, inox (planes) | 44 | données faites, essai matières corrigé |
+| Vague 2 : profilés et tubes alu (44) et inox (33) | 77 | données faites, essai en cours |
+| Vague 2 : tôles larmées (6), striées alu (9), perforées (8) | 23 | références et motifs relevés, géométrie à faire |
 | Vague 3 : clôtures, bordures, caillebotis, tôles profilées, panneaux isolés, tasseaux | 73 | — |
 | Visserie | 6 | — |
 

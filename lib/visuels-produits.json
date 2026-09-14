@@ -1,5 +1,95 @@
 {
  "produits": {
+  "corniere-egale-100x100x10mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-100x100x10mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 100x100x10mm Acier LAC : rendu 3D aux cotes (a 100 mm, t 10 mm) et fiche technique"
+  },
+  "corniere-egale-20x20x3mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-20x20x3mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 20x20x3mm Acier LAC : rendu 3D aux cotes (a 20 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-25x25x3mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-25x25x3mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 25x25x3mm Acier LAC : rendu 3D aux cotes (a 25 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-30x30x3mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-30x30x3mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 30x30x3mm Acier LAC : rendu 3D aux cotes (a 30 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-40x40x3mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-40x40x3mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 40x40x3mm Acier LAC : rendu 3D aux cotes (a 40 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-40x40x4mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-40x40x4mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 40x40x4mm Acier LAC : rendu 3D aux cotes (a 40 mm, t 4 mm) et fiche technique"
+  },
+  "corniere-egale-50x50x3mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-50x50x3mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 50x50x3mm Acier LAC : rendu 3D aux cotes (a 50 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-50x50x5mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-50x50x5mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 50x50x5mm Acier LAC : rendu 3D aux cotes (a 50 mm, t 5 mm) et fiche technique"
+  },
+  "corniere-egale-60x60x6mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-60x60x6mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 60x60x6mm Acier LAC : rendu 3D aux cotes (a 60 mm, t 6 mm) et fiche technique"
+  },
+  "corniere-egale-80x80x8mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-80x80x8mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 80x80x8mm Acier LAC : rendu 3D aux cotes (a 80 mm, t 8 mm) et fiche technique"
+  },
+  "corniere-inegale-100x50x6mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-100x50x6mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale 100x50x6mm Acier LAC : rendu 3D aux cotes (a 100 mm, b 50 mm, t 6 mm) et fiche technique"
+  },
+  "corniere-inegale-150x100x10mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-150x100x10mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale 150x100x10mm Acier LAC : rendu 3D aux cotes (a 150 mm, b 100 mm, t 10 mm) et fiche technique"
+  },
+  "corniere-inegale-200x100x10mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-200x100x10mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale 200x100x10mm Acier LAC : rendu 3D aux cotes (a 200 mm, b 100 mm, t 10 mm) et fiche technique"
+  },
+  "corniere-inegale-60x40x5mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-60x40x5mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale 60x40x5mm Acier LAC : rendu 3D aux cotes (a 60 mm, b 40 mm, t 5 mm) et fiche technique"
+  },
+  "corniere-inegale-70x50x6mm-acier-lac": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-70x50x6mm-acier-lac-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale 70x50x6mm Acier LAC : rendu 3D aux cotes (a 70 mm, b 50 mm, t 6 mm) et fiche technique"
+  },
   "poutrelle-hea-100-en-acier": {
    "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-100-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -295,6 +385,18 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Poutrelle UPN en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/acier/profiles/corniere-egale": {
+   "src": "/images/produits/acier/profiles/corniere-egale/studio-corniere-egale.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/acier/profiles/corniere-inegale": {
+   "src": "/images/produits/acier/profiles/corniere-inegale/studio-corniere-inegale.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière inégale en acier : trois tailles côte à côte, photo studio sur fond blanc"
   }
  }
 }

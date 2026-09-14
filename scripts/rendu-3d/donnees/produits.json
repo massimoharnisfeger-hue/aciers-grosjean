@@ -239,6 +239,55 @@
   },
   "alertes": []
  },
+ "corniere-egale-20x20x2mm-en-aluminium": {
+  "nom": "Cornière égale 20x20x2mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "corniere-egale-20x20x3mm-acier-lac": {
   "nom": "Cornière égale 20x20x3mm Acier LAC",
   "categorie": "/acier/profiles/corniere-egale",
@@ -286,6 +335,108 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-20x20x3mm-en-inox": {
+  "nom": "Cornière égale 20x20x3mm en Inox",
+  "categorie": "/inox/profiles/corniere-egale",
+  "famille": "inox-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.9,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-25x25x2mm-en-aluminium": {
+  "nom": "Cornière égale 25x25x2mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.26,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
    }
   },
   "alertes": []
@@ -341,6 +492,108 @@
   },
   "alertes": []
  },
+ "corniere-egale-25x25x3mm-en-inox": {
+  "nom": "Cornière égale 25x25x3mm en Inox",
+  "categorie": "/inox/profiles/corniere-egale",
+  "famille": "inox-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.15,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-30x30x2mm-en-aluminium": {
+  "nom": "Cornière égale 30x30x2mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.32,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "corniere-egale-30x30x3mm-acier-lac": {
   "nom": "Cornière égale 30x30x3mm Acier LAC",
   "categorie": "/acier/profiles/corniere-egale",
@@ -388,6 +641,157 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-30x30x3mm-en-aluminium": {
+  "nom": "Cornière égale 30x30x3mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.46,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-30x30x3mm-en-inox": {
+  "nom": "Cornière égale 30x30x3mm en Inox",
+  "categorie": "/inox/profiles/corniere-egale",
+  "famille": "inox-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-40x40x2mm-en-aluminium": {
+  "nom": "Cornière égale 40x40x2mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.43,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
    }
   },
   "alertes": []
@@ -443,6 +847,55 @@
   },
   "alertes": []
  },
+ "corniere-egale-40x40x3mm-en-aluminium": {
+  "nom": "Cornière égale 40x40x3mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.62,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "corniere-egale-40x40x4mm-acier-lac": {
   "nom": "Cornière égale 40x40x4mm Acier LAC",
   "categorie": "/acier/profiles/corniere-egale",
@@ -490,6 +943,59 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-40x40x4mm-en-inox": {
+  "nom": "Cornière égale 40x40x4mm en Inox",
+  "categorie": "/inox/profiles/corniere-egale",
+  "famille": "inox-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 2.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 2.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
    }
   },
   "alertes": []
@@ -551,6 +1057,55 @@
    "poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché"
   ]
  },
+ "corniere-egale-50x50x3mm-en-aluminium": {
+  "nom": "Cornière égale 50x50x3mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.79,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "corniere-egale-50x50x5mm-acier-lac": {
   "nom": "Cornière égale 50x50x5mm Acier LAC",
   "categorie": "/acier/profiles/corniere-egale",
@@ -598,6 +1153,108 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-50x50x5mm-en-inox": {
+  "nom": "Cornière égale 50x50x5mm en Inox",
+  "categorie": "/inox/profiles/corniere-egale",
+  "famille": "inox-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 5.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 2.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 3.85,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-60x60x3mm-en-aluminium": {
+  "nom": "Cornière égale 60x60x3mm en aluminium",
+  "categorie": "/aluminium/profiles/corniere-egale",
+  "famille": "aluminium-corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.95,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
    }
   },
   "alertes": []
@@ -1743,6 +2400,42 @@
   },
   "alertes": []
  },
+ "plat-20x3mm-en-inox-304": {
+  "nom": "Plat 20x3mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "plat-20x5mm-en-acier-lamine-a-chaud": {
   "nom": "Plat 20x5mm en acier laminé à chaud",
   "categorie": "/acier/profiles/plat",
@@ -1774,6 +2467,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-20x5mm-en-inox-304": {
+  "nom": "Plat 20x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -1851,6 +2580,42 @@
   },
   "alertes": []
  },
+ "plat-25x3mm-en-inox-304": {
+  "nom": "Plat 25x3mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.6,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "plat-25x4mm-en-acier-lamine-a-chaud": {
   "nom": "Plat 25x4mm en acier laminé à chaud",
   "categorie": "/acier/profiles/plat",
@@ -1918,6 +2683,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-25x5mm-en-inox-304": {
+  "nom": "Plat 25x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -2031,6 +2832,42 @@
   },
   "alertes": []
  },
+ "plat-30x3mm-en-inox-304": {
+  "nom": "Plat 30x3mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.72,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "plat-30x5mm-en-acier-lamine-a-chaud": {
   "nom": "Plat 30x5mm en acier laminé à chaud",
   "categorie": "/acier/profiles/plat",
@@ -2062,6 +2899,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x5mm-en-inox-304": {
+  "nom": "Plat 30x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.2,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -2211,6 +3084,42 @@
   },
   "alertes": []
  },
+ "plat-40x3mm-en-inox-304": {
+  "nom": "Plat 40x3mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.96,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "plat-40x4mm-en-acier-lamine-a-chaud": {
   "nom": "Plat 40x4mm en acier laminé à chaud",
   "categorie": "/acier/profiles/plat",
@@ -2278,6 +3187,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x5mm-en-inox-304": {
+  "nom": "Plat 40x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.6,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -2427,6 +3372,42 @@
   },
   "alertes": []
  },
+ "plat-50x5mm-en-inox-304": {
+  "nom": "Plat 50x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "plat-50x8mm-en-acier-lamine-a-chaud": {
   "nom": "Plat 50x8mm en acier laminé à chaud",
   "categorie": "/acier/profiles/plat",
@@ -2530,6 +3511,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-60x5mm-en-inox-304": {
+  "nom": "Plat 60x5mm en Inox 304",
+  "categorie": "/inox/profiles/plat",
+  "famille": "inox-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.4,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -2684,6 +3701,364 @@
   "alertes": [
    "poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché"
   ]
+ },
+ "plat-de-100x5mm-en-aluminium": {
+  "nom": "Plat de 100x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.35,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-20x3mm-en-aluminium": {
+  "nom": "Plat de 20x3mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.17,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.16 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 0.17 kg/m ≠ théorique 0.16 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "plat-de-25x3mm-en-aluminium": {
+  "nom": "Plat de 25x3mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.21,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.20 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 0.21 kg/m ≠ théorique 0.20 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "plat-de-30x3mm-en-aluminium": {
+  "nom": "Plat de 30x3mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-30x5mm-en-aluminium": {
+  "nom": "Plat de 30x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.41,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-40x3mm-en-aluminium": {
+  "nom": "Plat de 40x3mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.33,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-40x5mm-en-aluminium": {
+  "nom": "Plat de 40x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.54,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-50x3mm-en-aluminium": {
+  "nom": "Plat de 50x3mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.41,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-50x5mm-en-aluminium": {
+  "nom": "Plat de 50x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.68,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-60x5mm-en-aluminium": {
+  "nom": "Plat de 60x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.81,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-de-80x5mm-en-aluminium": {
+  "nom": "Plat de 80x5mm en aluminium",
+  "categorie": "/aluminium/profiles/plat",
+  "famille": "aluminium-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 80.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.08,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
  },
  "poutrelle-hea-100-en-acier": {
   "nom": "Poutrelle HEA 100 en acier",
@@ -5775,6 +7150,390 @@
   },
   "alertes": []
  },
+ "profil-en-t-20x20x2mm-en-aluminium": {
+  "nom": "Profil en T 20x20x2mm en aluminium",
+  "categorie": "/aluminium/profiles/profil-t",
+  "famille": "aluminium-profil-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r1": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "profil-en-t-25x25x2mm-en-aluminium": {
+  "nom": "Profil en T 25x25x2mm en aluminium",
+  "categorie": "/aluminium/profiles/profil-t",
+  "famille": "aluminium-profil-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r1": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.27,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.26 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 0.27 kg/m ≠ théorique 0.26 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "profil-en-t-30x30x2mm-en-aluminium": {
+  "nom": "Profil en T 30x30x2mm en aluminium",
+  "categorie": "/aluminium/profiles/profil-t",
+  "famille": "aluminium-profil-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r1": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.32,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "profil-en-u-20x20x20x2mm-en-aluminium": {
+  "nom": "Profil en U 20x20x20x2mm en Aluminium",
+  "categorie": "/aluminium/profiles/profil-u",
+  "famille": "aluminium-profil-u",
+  "valeurs": {
+   "serie": {
+    "valeur": "U-ALU",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.3,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "profil-en-u-25x25x25x2mm-en-aluminium": {
+  "nom": "Profil en U 25x25x25x2mm en Aluminium",
+  "categorie": "/aluminium/profiles/profil-u",
+  "famille": "aluminium-profil-u",
+  "valeurs": {
+   "serie": {
+    "valeur": "U-ALU",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "profil-en-u-40x40x40x2mm-en-aluminium": {
+  "nom": "Profil en U 40x40x40x2mm en Aluminium",
+  "categorie": "/aluminium/profiles/profil-u",
+  "famille": "aluminium-profil-u",
+  "valeurs": {
+   "serie": {
+    "valeur": "U-ALU",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "profil-en-u-en-30x30x30x2mm-aluminium": {
+  "nom": "Profil en U en 30x30x30x2mm Aluminium",
+  "categorie": "/aluminium/profiles/profil-u",
+  "famille": "aluminium-profil-u",
+  "valeurs": {
+   "serie": {
+    "valeur": "U-ALU",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 0.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.46,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid": {
   "nom": "Rond à béton crénelé de 6mm de diamètre en acier laminé à froid",
   "categorie": "/acier/armatures-beton/rond-a-beton-lamine-a-froid",
@@ -6365,6 +8124,573 @@
   },
   "alertes": []
  },
+ "rond-plein-lisse-diametre-10mm-en-inox": {
+  "nom": "Rond plein lisse diamètre 10mm en Inox",
+  "categorie": "/inox/profiles/rond-plein",
+  "famille": "inox-rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304L (1.4307)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-plein-lisse-diametre-12mm-en-inox": {
+  "nom": "Rond plein lisse diamètre 12mm en Inox",
+  "categorie": "/inox/profiles/rond-plein",
+  "famille": "inox-rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 12.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.91,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304L (1.4307)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-plein-lisse-diametre-8mm-en-inox": {
+  "nom": "Rond plein lisse diamètre 8mm en Inox",
+  "categorie": "/inox/profiles/rond-plein",
+  "famille": "inox-rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.4,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304L (1.4307)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-2000x1000x1mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2000x1000x1mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-2000x1000x2mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2000x1000x2mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 32.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-2000x1000x3mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2000x1000x3mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 48.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-2500x1250x1mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2500x1250x1mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 25.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-2500x1250x2mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2500x1250x2mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-2500x1250x3mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 2500x1250x3mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 75.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-3000x1500x1mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 3000x1500x1mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 36.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-3000x1500x2mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 3000x1500x2mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 72.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-3000x1500x3mm-plane-en-inox-304-gr320": {
+  "nom": "Tôle 3000x1500x3mm plane en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 108.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
+ },
+ "tole-de-2000x1000x1-5mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2000x1000x1,5mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 24.12,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2000x1000x1,5mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 24.12,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud": {
   "nom": "Tôle de 2000x1000x10mm en acier laminée à chaud",
   "categorie": "/acier/toles/tole-laminee-a-chaud",
@@ -6404,7 +8730,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6449,7 +8775,131 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x1mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2000x1000x1mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.08,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x1mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2000x1000x1mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.08,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x1mm-en-aluminium": {
+  "nom": "Tôle de 2000x1000x1mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.55,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6486,7 +8936,94 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-quarto » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x2mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2000x1000x2mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 32.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x2mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2000x1000x2mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 32.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6531,11 +9068,88 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
   "alertes": []
+ },
+ "tole-de-2000x1000x2mm-en-aluminium": {
+  "nom": "Tôle de 2000x1000x2mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 11.11,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x3mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2000x1000x3mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 49.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 49.16 kg ≠ théorique 47.1 kg (écart > 3 %) : non affiché"
+  ]
  },
  "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud": {
   "nom": "Tôle de 2000x1000x3mm en acier laminée à chaud",
@@ -6576,7 +9190,81 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x3mm-en-aluminium": {
+  "nom": "Tôle de 2000x1000x3mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.66,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x3mm-plane-en-acier-corten": {
+  "nom": "Tôle de 2000x1000x3mm plane en acier Corten",
+  "categorie": "/acier/toles/tole-corten",
+  "famille": "tole-corten",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 48.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6621,7 +9309,94 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x1-5mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2500x1250x1,5mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 37.69,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2500x1250x1,5mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 37.69,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6666,7 +9441,218 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x1mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2500x1250x1mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 25.13,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x1mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2500x1250x1mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 25.13,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x1mm-en-aluminium": {
+  "nom": "Tôle de 2500x1250x1mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.68,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x2mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2500x1250x2mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x2mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 2500x1250x2mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6711,11 +9697,125 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
   "alertes": []
+ },
+ "tole-de-2500x1250x2mm-en-aluminium": {
+  "nom": "Tôle de 2500x1250x2mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 17.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x2mm-plane-en-acier-corten": {
+  "nom": "Tôle de 2500x1250x2mm plane en acier Corten",
+  "categorie": "/acier/toles/tole-corten",
+  "famille": "tole-corten",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x3mm-en-acier-galvanisee": {
+  "nom": "Tôle de 2500x1250x3mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 76.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 76.82 kg ≠ théorique 73.6 kg (écart > 3 %) : non affiché"
+  ]
  },
  "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud": {
   "nom": "Tôle de 2500x1250x3mm en acier laminée à chaud",
@@ -6756,7 +9856,81 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x3mm-en-aluminium": {
+  "nom": "Tôle de 2500x1250x3mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 26.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x3mm-plane-en-acier-corten": {
+  "nom": "Tôle de 2500x1250x3mm plane en acier Corten",
+  "categorie": "/acier/toles/tole-corten",
+  "famille": "tole-corten",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 75.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6801,7 +9975,94 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x1-5mm-en-acier-galvanisee": {
+  "nom": "Tôle de 3000x1500x1,5mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 54.27,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 3000x1500x1,5mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 54.27,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6846,11 +10107,286 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
   "alertes": []
+ },
+ "tole-de-3000x1500x1mm-en-acier-galvanisee": {
+  "nom": "Tôle de 3000x1500x1mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 36.18,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x1mm-en-acier-lamine-a-froid": {
+  "nom": "Tôle de 3000x1500x1mm en acier laminé à froid",
+  "categorie": "/acier/toles/tole-laminee-a-froid",
+  "famille": "tole-laminee-a-froid",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 36.18,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche — contredite par la norme EN 10130 citée, non affichée",
+    "supposee": true
+   },
+   "norme": {
+    "valeur": "EN 10130",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée (ACIERS GROSJEAN - TOLES LAC)"
+   },
+   "procede": {
+    "valeur": "Laminé à froid",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "FROID",
+    "source": "catégorie « /acier/toles/tole-laminee-a-froid » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x1mm-en-aluminium": {
+  "nom": "Tôle de 3000x1500x1mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 12.5,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x2mm-en-acier-galvanisee": {
+  "nom": "Tôle de 3000x1500x2mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 72.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x2mm-en-aluminium": {
+  "nom": "Tôle de 3000x1500x2mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 24.99,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x2mm-plane-en-acier-corten": {
+  "nom": "Tôle de 3000x1500x2mm plane en acier Corten",
+  "categorie": "/acier/toles/tole-corten",
+  "famille": "tole-corten",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 72.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x3mm-en-acier-galvanisee": {
+  "nom": "Tôle de 3000x1500x3mm en acier galvanisée",
+  "categorie": "/acier/toles/tole-galvanisee",
+  "famille": "tole-galvanisee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 110.61,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "catégorie « /acier/toles/tole-galvanisee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 110.61 kg ≠ théorique 106.0 kg (écart > 3 %) : non affiché"
+  ]
  },
  "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud": {
   "nom": "Tôle de 3000x1500x3mm en acier laminée à chaud",
@@ -6891,7 +10427,81 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x3mm-en-aluminium": {
+  "nom": "Tôle de 3000x1500x3mm en aluminium",
+  "categorie": "/aluminium/toles/tole-plane",
+  "famille": "tole-aluminium",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 37.49,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-plane » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x3mm-plane-en-acier-corten": {
+  "nom": "Tôle de 3000x1500x3mm plane en acier Corten",
+  "categorie": "/acier/toles/tole-corten",
+  "famille": "tole-corten",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 108.54,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -6936,11 +10546,54 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
   "alertes": []
+ },
+ "tole-plane-2000x1000x0-8mm-en-inox-304-gr320": {
+  "nom": "Tôle plane 2000x1000x0,8mm en Inox 304 GR320",
+  "categorie": "/inox/toles/tole-plane-304-brossee",
+  "famille": "tole-inox-brossee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 0.8,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 12.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "surface": {
+    "valeur": "Brossée grain 320, 1 face",
+    "source": "site actuel — description de la fiche (« Finition Brossée Grain 320 (K320) sur 1 face »)"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "catégorie « /inox/toles/tole-plane-304-brossee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
+  ]
  },
  "tole-plane-de-2000x1000x10mm-laserpressplus": {
   "nom": "Tôle plane de 2000x1000x10mm LaserpressPlus®",
@@ -6977,7 +10630,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7018,7 +10671,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7059,7 +10712,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7100,7 +10753,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7141,7 +10794,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7182,7 +10835,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7223,7 +10876,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7264,7 +10917,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7305,7 +10958,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7346,7 +10999,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7387,7 +11040,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7428,7 +11081,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7469,7 +11122,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7510,7 +11163,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7551,7 +11204,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7592,7 +11245,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7633,7 +11286,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7674,7 +11327,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7715,7 +11368,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7756,7 +11409,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7797,7 +11450,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7838,7 +11491,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7879,7 +11532,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -7920,7 +11573,7 @@
    },
    "finition": {
     "valeur": "BRUT",
-    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -9634,6 +13287,56 @@
    "poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché"
   ]
  },
+ "tube-carre-20x20x2mm-en-inox-304": {
+  "nom": "Tube carré 20x20x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.22,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.14 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.22 kg/m ≠ théorique 1.14 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-carre-250x250x6mm-en-acier": {
   "nom": "Tube carré 250x250x6mm en acier",
   "categorie": "/acier/tubes/tube-carre",
@@ -9726,6 +13429,56 @@
   },
   "alertes": []
  },
+ "tube-carre-25x25x2mm-en-inox-304": {
+  "nom": "Tube carré 25x25x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.54,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.46 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.54 kg/m ≠ théorique 1.46 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-carre-25x25x3mm-en-acier": {
   "nom": "Tube carré 25x25x3mm en acier",
   "categorie": "/acier/tubes/tube-carre",
@@ -9817,6 +13570,56 @@
    }
   },
   "alertes": []
+ },
+ "tube-carre-30x30x2mm-en-inox-304": {
+  "nom": "Tube carré 30x30x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.86,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.78 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.86 kg/m ≠ théorique 1.78 kg/m (écart > 3 %) : non affiché"
+  ]
  },
  "tube-carre-30x30x3mm-en-acier": {
   "nom": "Tube carré 30x30x3mm en acier",
@@ -9913,6 +13716,56 @@
    "poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché"
   ]
  },
+ "tube-carre-35x35x2mm-en-inox-304": {
+  "nom": "Tube carré 35x35x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 35.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 35.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 2.18,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.09 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.18 kg/m ≠ théorique 2.09 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-carre-40x40x2mm-en-acier": {
   "nom": "Tube carré 40x40x2mm en acier",
   "categorie": "/acier/tubes/tube-carre",
@@ -9958,6 +13811,56 @@
    }
   },
   "alertes": []
+ },
+ "tube-carre-40x40x2mm-en-inox-304": {
+  "nom": "Tube carré 40x40x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 2.5,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.41 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.5 kg/m ≠ théorique 2.41 kg/m (écart > 3 %) : non affiché"
+  ]
  },
  "tube-carre-40x40x3mm-en-acier": {
   "nom": "Tube carré 40x40x3mm en acier",
@@ -10194,6 +14097,56 @@
    }
   },
   "alertes": []
+ },
+ "tube-carre-50x50x2mm-en-inox-304": {
+  "nom": "Tube carré 50x50x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-carre",
+  "famille": "inox-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 3.14,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 3.05 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 3.14 kg/m ≠ théorique 3.05 kg/m (écart > 3 %) : non affiché"
+  ]
  },
  "tube-carre-50x50x3mm-en-acier": {
   "nom": "Tube carré 50x50x3mm en acier",
@@ -10839,6 +14792,353 @@
   },
   "alertes": []
  },
+ "tube-carre-de-15x15x2mm-en-aluminium": {
+  "nom": "Tube carré de 15x15x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 15.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 15.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.31,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.28 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 0.31 kg/m ≠ théorique 0.28 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-de-20x20x2mm-en-aluminium": {
+  "nom": "Tube carré de 20x20x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.39,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-25x25x2mm-en-aluminium": {
+  "nom": "Tube carré de 25x25x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.5,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-35x35x2mm-en-aluminium": {
+  "nom": "Tube carré de 35x35x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 35.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 35.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.71,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-40x40x2mm-en-aluminium": {
+  "nom": "Tube carré de 40x40x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-40x40x3mm-en-aluminium": {
+  "nom": "Tube carré de 40x40x3mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.25,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.2,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-50x50x2mm-en-aluminium": {
+  "nom": "Tube carré de 50x50x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.04,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-de-60x60x3mm-en-aluminium": {
+  "nom": "Tube carré de 60x60x3mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-carre",
+  "famille": "aluminium-tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.25,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.85,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tube-rectangle-100x50x3mm-en-acier": {
   "nom": "Tube rectangle 100x50x3mm en acier",
   "categorie": "/acier/tubes/tube-rectangulaire",
@@ -11223,6 +15523,56 @@
   },
   "alertes": [
    "poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-40x20x2mm-en-inox-304": {
+  "nom": "Tube rectangle 40x20x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rectangulaire",
+  "famille": "inox-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.86,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.78 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.86 kg/m ≠ théorique 1.78 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "tube-rectangle-40x20x3mm-en-acier": {
@@ -11859,6 +16209,221 @@
    "poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché"
   ]
  },
+ "tube-rectangle-de-30x20x2mm-en-aluminium": {
+  "nom": "Tube rectangle de 30x20x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rectangulaire",
+  "famille": "aluminium-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.5,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-de-50x30x2mm-en-aluminium": {
+  "nom": "Tube rectangle de 50x30x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rectangulaire",
+  "famille": "aluminium-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 0.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-de-60x30x3mm-en-aluminium": {
+  "nom": "Tube rectangle de 60x30x3mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rectangulaire",
+  "famille": "aluminium-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.25,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-de-60x40x2mm-en-aluminium": {
+  "nom": "Tube rectangle de 60x40x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rectangulaire",
+  "famille": "aluminium-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.04,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-de-60x40x3mm-en-aluminium": {
+  "nom": "Tube rectangle de 60x40x3mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rectangulaire",
+  "famille": "aluminium-tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.25,
+    "source": "valeur usuelle — forme du modèle, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 1.52,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tube-rond-101-6x3-65mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 101,6x3,65mm en acier brut série légère",
   "categorie": "/acier/tubes/tube-rond",
@@ -11957,6 +16522,42 @@
   },
   "alertes": []
  },
+ "tube-rond-17-2x2mm-en-inox-304": {
+  "nom": "Tube rond 17,2x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 17.2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.76,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tube-rond-21-3x2mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 21,3x2mm en acier brut série légère",
   "categorie": "/acier/tubes/tube-rond",
@@ -11984,6 +16585,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-21-3x2mm-en-inox-304": {
+  "nom": "Tube rond 21,3x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 21.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.95,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -12024,6 +16661,45 @@
    "poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché"
   ]
  },
+ "tube-rond-26-9x2mm-en-inox-304": {
+  "nom": "Tube rond 26,9x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 26.9,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.2,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.24 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.2 kg/m ≠ théorique 1.24 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 33,7x2,5mm en acier brut série légère",
   "categorie": "/acier/tubes/tube-rond",
@@ -12055,6 +16731,45 @@
    }
   },
   "alertes": []
+ },
+ "tube-rond-33-7x2mm-en-inox-304": {
+  "nom": "Tube rond 33,7x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 33.7,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.5,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.58 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.5 kg/m ≠ théorique 1.58 kg/m (écart > 3 %) : non affiché"
+  ]
  },
  "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 42,4x2,5mm en acier brut série légère",
@@ -12088,6 +16803,84 @@
   },
   "alertes": []
  },
+ "tube-rond-42-4x2mm-en-inox-304": {
+  "nom": "Tube rond 42,4x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 42.4,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.95,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.01 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.95 kg/m ≠ théorique 2.01 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rond-48-3x2mm-en-inox-304": {
+  "nom": "Tube rond 48,3x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 48.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.2,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.31 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.2 kg/m ≠ théorique 2.31 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-rond-48-3x3mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 48,3x3mm en acier brut série légère",
   "categorie": "/acier/tubes/tube-rond",
@@ -12120,6 +16913,45 @@
   },
   "alertes": []
  },
+ "tube-rond-60-3x2mm-en-inox-304": {
+  "nom": "Tube rond 60,3x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 60.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.76,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.90 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.76 kg/m ≠ théorique 2.90 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "tube-rond-60-3x3mm-en-acier-brut-serie-legere": {
   "nom": "Tube rond 60,3x3mm en acier brut série légère",
   "categorie": "/acier/tubes/tube-rond",
@@ -12147,6 +16979,42 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-76-1x2mm-en-inox-304": {
+  "nom": "Tube rond 76,1x2mm en Inox 304",
+  "categorie": "/inox/tubes/tube-rond",
+  "famille": "inox-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 76.1,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.73,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "304 (1.4301)",
+    "source": "nom ou description ; numéro EN 10088 de la nuance"
+   },
+   "finition": {
+    "valeur": "INOX",
+    "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -12218,5 +17086,165 @@
   "alertes": [
    "poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché"
   ]
+ },
+ "tube-rond-de-20x2mm-en-aluminium": {
+  "nom": "Tube rond de 20x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rond",
+  "famille": "aluminium-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.31,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-de-25x2mm-en-aluminium": {
+  "nom": "Tube rond de 25x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rond",
+  "famille": "aluminium-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 25.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.39,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-de-30x2mm-en-aluminium": {
+  "nom": "Tube rond de 30x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rond",
+  "famille": "aluminium-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 30.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-de-35x2mm-en-aluminium": {
+  "nom": "Tube rond de 35x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rond",
+  "famille": "aluminium-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 35.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.56,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-de-40x2mm-en-aluminium": {
+  "nom": "Tube rond de 40x2mm en aluminium",
+  "categorie": "/aluminium/tubes/tube-rond",
+  "famille": "aluminium-tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 40.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.64,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "univers aluminium — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
  }
 }
