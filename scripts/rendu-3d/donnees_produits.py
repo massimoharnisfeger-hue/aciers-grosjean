@@ -147,6 +147,9 @@ def poutrelles(cat, reel, desc):
             v["norme"] = valeur(norme, "", SRC_DESC)
         if procede(texte):
             v["procede"] = valeur(procede(texte), "", SRC_DESC)
+        elif serie in ("HEA", "HEB"):
+            # la fiche fournisseur publiée cite les tolérances EN 10034 : poutrelles I et H laminées à chaud
+            v["procede"] = valeur("Laminé à chaud", "", f"{src_vm} — tolérances EN 10034 (profilés I et H laminés à chaud)")
         if serie == "UPN":
             # pente des faces interieures d'aile : non chiffree par la fiche, definie par la norme qu'elle cite
             v["pente_aile"] = valeur(8, "%", f"norme DIN 1026-1 citée par {nom_pdf} (forme du modèle, non affichée)")
@@ -435,8 +438,66 @@ def toles(cat, reel, desc):
     return produits
 
 
+def armatures(cat, reel, desc):
+    """Ronds à béton crénelés et treillis soudés : cotes du nom (et cotes A–E du site pour les dépassants),
+    poids comparé au poids nominal des aciers pour béton (0,00617 × d² kg/m, EN 10080 publié sur le site).
+    Nuance (B500A ou B500B) non tranchée par le site : jamais affichée."""
+    src_texte = "site actuel — description (« surface crenelée »)"
+    produits = {}
+    for slug, c in cat.items():
+        cat_ = c["categorie"]
+        texte = texte_description(desc, slug)
+        r = reel.get(slug, {})
+        v, alertes = {}, []
+        if cat_.startswith("/acier/armatures-beton/rond-a-beton"):
+            d_nom = re.search(r"(\d+(?:,\d+)?)\s*mm", c["nom"], re.I)
+            d = nombre(d_nom.group(1))
+            v["serie"] = valeur("ROND-BETON", "", SRC_NOM)
+            v["d"] = valeur(d, "mm", SRC_NOM)
+            poids_et_controle(v, alertes, r, theorique=0.00617 * d * d)
+            if re.search(r"cr[ée]nel", texte + c["nom"], re.I):
+                v["surface"] = valeur("Crénelée", "", src_texte)
+            procede = re.search(r"lamin\w*\s+à\s+(chaud|froid)", c["nom"], re.I)
+            if procede:
+                v["procede"] = valeur(f"Laminé à {procede.group(1).lower()}", "", SRC_NOM)
+            famille = cat_.rsplit("/", 1)[-1]  # une famille par catégorie (laminé à chaud / à froid) : une photo studio chacune
+        elif cat_.startswith("/acier/armatures-beton/treillis-soudes"):
+            m = re.search(r"(\d+)\s*x\s*(\d+)\s*x\s*(\d+(?:,\d+)?)\s*mm\s+(\d+(?:,\d+)?)\s*m\s*x\s*(\d+(?:,\d+)?)\s*m", c["nom"], re.I)
+            if not m:
+                continue
+            a, b, d = int(m.group(1)), int(m.group(2)), nombre(m.group(3))
+            L, l = round(nombre(m.group(4)) * 1000), round(nombre(m.group(5)) * 1000)
+            v["serie"] = valeur("TREILLIS", "", SRC_NOM)
+            v["maille_a"], v["maille_b"] = valeur(a, "mm", SRC_NOM), valeur(b, "mm", SRC_NOM)
+            v["maille"] = valeur(f"{a} × {b} mm", "", SRC_NOM)
+            v["d"] = valeur(d, "mm", SRC_NOM)
+            v["L"], v["l"] = valeur(L, "mm", SRC_NOM), valeur(l, "mm", SRC_NOM)
+            v["format"] = valeur(f"{L / 1000:g} × {l / 1000:g} m".replace(".", ","), "", SRC_NOM)
+            # pas de référence fiable pour le poids d'un panneau (nombre de fils et débords propres au fabricant,
+            # fiches fournisseurs publiées en image) : poids de la fiche affiché sans comparaison
+            poids_et_controle(v, alertes, r)
+            if v.get("poids"):
+                v["poids"]["unite"] = "kg/panneau"
+            if "depassant" in slug:
+                v["depassants"] = valeur(True, "", SRC_NOM)
+            if "galvanis" in slug:  # matière du rendu ; déjà écrit dans le titre, la page n'a pas de ligne finition
+                v["finition"] = valeur("GALVA", "", SRC_NOM + " — non affichée (déjà dans le titre)", supposee=True)
+            if re.search(r"cr[ée]nel", texte, re.I):
+                v["surface"] = valeur("Crénelée", "", src_texte)
+            famille = "treillis-soude-depassants" if "depassant" in slug else "treillis-soude"
+            controle_cotes_site(v, alertes, desc.get(slug, {}), {"A": "L", "B": "l", "C": "maille_a", "D": "maille_b", "E": "d"})
+            for k in ("L", "l", "maille_a", "maille_b", "d"):  # nom et cotes du site en désaccord : valeur non affichée
+                if any(re.search(rf"≠ {k} \(", a_) for a_ in alertes):
+                    v[k]["supposee"] = True
+        else:
+            continue
+        v.setdefault("finition", valeur("BRUT", "", "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée", supposee=True))
+        produits[slug] = {"nom": c["nom"], "categorie": cat_, "famille": famille, "valeurs": v, "alertes": alertes}
+    return produits
+
+
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
-            "pleins": pleins, "tubes": tubes, "toles": toles}
+            "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures}
 
 
 def main():

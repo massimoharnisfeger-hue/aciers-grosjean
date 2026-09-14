@@ -6,7 +6,8 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 
 ## Où on en est (14/09, 18 h 15)
 - **Mode automatique (CLAUDE.md).** Décisions du propriétaire du 14/09 appliquées (carnet de leçons).
-- **Poutrelles** : 45 visuels + 4 studios rendus, habillés, `controler_rendus.py` = 0 écart ; **vérification indépendante en cours**. Ensuite : `integrer_visuels.py --verdict CONFORME poutrelle-ipe poutrelle-hea poutrelle-heb poutrelle-upn`, build, commit.
+- **Poutrelles : TERMINÉES** — 45 visuels + 4 studios, 0 écart, vérification indépendante CONFORME (3 défauts mineurs corrigés), intégrées sur le site (`public/images/produits/acier/poutrelles/`), copie dans `_DEPOT/images/visuels-3d/`.
+- **Armatures** (ronds à béton crénelés, treillis soudés) : données, géométrie et tests conformes ; série à préparer derrière les tôles. Pages : nuances B500B / B500A du catalogue non sourcées (questions 10 et 11).
 - **Cornières** : série en cours (`serie-cornieres.json`, 15 + 2 studio).
 - **Fers T, plats, larges plats, ronds, carrés, tubes** : tests conformes ; série `serie-profils-tubes.json` (129 + 8 studio) en file derrière les cornières (~7 h).
 - **Tôles laminées à chaud et quarto** : test conforme (plaque + loupe d'épaisseur) ; série `serie-toles.json` (37 + 2 studio) en file derrière les profils et tubes.
@@ -20,14 +21,14 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 ## Familles (vague 1)
 | Famille | Fiches | Données | Test | Série | Contrôle | Vérif. | Site |
 |---|---|---|---|---|---|---|---|
-| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | fait | 0 écart | en cours | — |
+| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | fait | 0 écart | CONFORME | intégré |
 | Cornières égales, inégales | 15 | fait | fait | en cours | — | — | — |
 | Fers T | 5 | fait | fait | en file | — | — | — |
 | Plats, larges plats | 40 | fait | fait | en file | — | — | — |
 | Ronds lisses, carrés pleins | 16 | fait | fait | en file | — | — | — |
 | Tubes carrés, rectangulaires, ronds | 68 | fait | fait | en file | — | — | — |
 | Tôles laminées à chaud (+ quarto) | 37 | fait | fait | en file | — | — | — |
-| Armatures : ronds à béton, treillis | 28 | — | — | — | — | — | — |
+| Armatures : ronds à béton, treillis | 28 | fait | fait | à lancer | — | — | — |
 
 | Autres vagues | Fiches | État |
 |---|---|---|

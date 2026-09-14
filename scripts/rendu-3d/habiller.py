@@ -82,7 +82,7 @@ def affichable(p, cle):
         return None
     v, unite = d["valeur"], d.get("unite", "")
     if isinstance(v, (int, float)):
-        texte = f"{v:.2f}" if unite == "kg/m" else f"{v:g}"
+        texte = f"{v:.2f}" if unite.startswith("kg") else f"{v:g}"  # poids : deux décimales, comme la page
         return f"{texte.replace('.', ',')} {unite}".strip()
     return str(v)
 
@@ -95,6 +95,7 @@ def pt(p):
 
 TRACES = []  # tracés en deux passes, halo blanc puis trait
 PASTILLES = []
+TRAITS_COTES = []  # extrémités du trait de chaque étiquette de cote (même rang que PASTILLES), None pour les pinces
 
 
 def fleche(pointe, depuis, couleur, long_=13, larg=5.5):
@@ -152,6 +153,8 @@ def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
     ligne(a, b, ENCRE)
     fleche(a, b, ENCRE)
     fleche(b, a, ENCRE)
+    TRAITS_COTES.extend([None] * (len(PASTILLES) - len(TRAITS_COTES)))  # étiquettes sans trait (pinces)
+    TRAITS_COTES.append((a, b))
     PASTILLES.append(((a[0] + (b[0] - a[0]) * position, a[1] + (b[1] - a[1]) * position), lettre, valeur, cle))
 
 
@@ -169,6 +172,10 @@ COTES = {
     "TC": (("b", "h"), ("b", "b"), ("t", "t"), None, [("Côté", "b", "b"), ("Épaisseur", "t", "t")]),
     "TR": (("h", "h"), ("b", "b"), ("t", "t"), None, [("Hauteur", "h", "h"), ("Largeur", "b", "b"), ("Épaisseur", "t", "t")]),
     "TUBE-ROND": (("d", "d"), None, ("t", "t"), None, [("Diamètre extérieur", "d", "d"), ("Épaisseur", "t", "t")]),
+    "ROND-BETON": (("d", "d"), None, None, None, [("Diamètre nominal", "d", "d")]),
+    # treillis : mailles a (le long) et b (en travers) entre axes des fils, diamètre des fils pincé
+    "TREILLIS": (("a", "maille_a"), ("b", "maille_b"), ("d", "d"), None,
+                 [("Maille", "", "maille"), ("Diamètre des fils", "d", "d"), ("Panneau", "", "format")]),
     # tôle : cote « verticale » = longueur (bord gauche, au sol), horizontale = largeur (devant) ; épaisseur en loupe
     "TOLE": (("L", "L"), ("l", "l"), None, None, [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur", "e", "e")]),
 }
@@ -242,7 +249,9 @@ def decale(p, dx, dy):
     return (p[0] + dx, p[1] + dy)
 
 
-def rendu_sur_blanc(chemin, fondu=90):
+def rendu_sur_blanc(chemin, fondu=90, fiche=False):
+    """Rendu sur fond blanc. `fiche` : l'ombre s'efface aussi avant la colonne de la fiche technique (x ≥ 0,655 W),
+    pour que le texte reste sur un fond clair (grandes sections HEA/HEB, vérification du 14/09)."""
     rendu = Image.open(chemin).convert("RGBA")
     # ombre allégée : la pièce est opaque, l'ombre du sol est semi-transparente
     r_, g_, b_, a_ = rendu.split()
@@ -259,6 +268,11 @@ def rendu_sur_blanc(chemin, fondu=90):
         bord_y = Image.new("L", (1, h))
         bord_y.putdata([rampe(y, h) for y in range(h)])
         masque = ImageChops.darker(bord_x.resize((w, h), Image.NEAREST), bord_y.resize((w, h), Image.NEAREST))
+        if fiche:
+            debut, fin = int(w * 0.58), int(w * 0.645)
+            colonne = Image.new("L", (w, 1))
+            colonne.putdata([255 if x < debut else max(0, int(255 * (fin - x) / (fin - debut))) for x in range(w)])
+            masque = ImageChops.darker(masque, colonne.resize((w, h), Image.NEAREST))
         ombre = ImageChops.multiply(ombre, masque)
     a_ = Image.composite(a_, ombre, piece)
     rendu = Image.merge("RGBA", (r_, g_, b_, a_))
@@ -280,7 +294,9 @@ def studio(nom, dossier):
 
 
 def caracteristiques(slug, dossier):
-    image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"))
+    image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"), fiche=True)
+    # fond de la colonne de la fiche, mesuré avant le texte : il doit rester clair
+    fond_fiche = ImageStat.Stat(image.convert("L").crop((int(image.width * 0.655), 60, image.width - 40, image.height - 60))).extrema[0][0]
     with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:
         geo = json.load(f)
     P, W, H = geo["points"], geo["largeur"], geo["hauteur"]
@@ -358,12 +374,14 @@ def caracteristiques(slug, dossier):
     for taille in (44, 38, 34):
         f_titre = police("Poppins-SemiBold.ttf", taille)
         lignes_titre = []
-        for mot in titre.split():
+        # « 5m x 2m » reste sur une ligne : le « x » est lié à ses voisins
+        for mot in re.sub(r" x (?=\S)", " x ", titre).split(" "):
             essai = f"{lignes_titre[-1]} {mot}" if lignes_titre else mot
             if lignes_titre and d.textlength(essai, font=f_titre) <= x1 - x0:
                 lignes_titre[-1] = essai
             else:
                 lignes_titre.append(mot)
+        lignes_titre = [t.replace(" ", " ") for t in lignes_titre]
         if len(lignes_titre) <= 3 and all(d.textlength(t, font=f_titre) <= x1 - x0 for t in lignes_titre):
             break
     interligne_titre = round(taille * 1.25) * S
@@ -377,6 +395,7 @@ def caracteristiques(slug, dossier):
         ("Poids", "", "poids", affichable(p, "poids")),
         ("Nuance", "", "nuance", affichable(p, "nuance")),
         ("Norme", "", "norme", affichable(p, "norme")),
+        ("Surface", "", "surface", affichable(p, "surface")),
         ("Procédé", "", "procede", affichable(p, "procede")),
         ("Finition", "", "finition", finition),
     ]
@@ -435,6 +454,15 @@ def caracteristiques(slug, dossier):
         for i, (a0, b0, a1, b1) in enumerate(boites):
             if a0 < cx + r + 5 and cx - r - 5 < a1 and b0 < cy + r + 5 and cy - r - 5 < b1:
                 problemes.append(f"loupe sous l'étiquette {PASTILLES[i][1]}")
+    # pointes de flèche de chaque cote visibles : hors de sa propre étiquette (cotes courtes : cornières, T, plats)
+    for i, (centre, lettre, _, _) in enumerate(PASTILLES):
+        if i < len(TRAITS_COTES) and TRAITS_COTES[i]:
+            a0, b0, a1, b1 = boites[i]
+            for pointe in TRAITS_COTES[i]:
+                if a0 - 6 < pointe[0] < a1 + 6 and b0 - 6 < pointe[1] < b1 + 6:
+                    problemes.append(f"pointe de la cote {lettre} sous son étiquette")
+    if fond_fiche < 238:
+        problemes.append(f"fond de la fiche technique trop sombre ({fond_fiche}/255)")
     if x0 / S + largeur_titre > x1 / S:
         problemes.append("titre trop long pour la colonne")
     if y / S > H - 70:

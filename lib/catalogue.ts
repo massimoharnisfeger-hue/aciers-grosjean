@@ -724,7 +724,7 @@ for (const [slug, r] of Object.entries(siteActuel as unknown as Record<string, D
   p.urlSiteActuel = r.url;
   p.specs = p.specs.filter((s) => s.label !== "Poids" && !r.specsRetirees.includes(s.label));
   if (p.kg !== null) {
-    const valeur = p.kg.toLocaleString("fr-BE", { maximumFractionDigits: 2 });
+    const valeur = p.kg.toLocaleString("fr-BE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     p.specs.push({ label: "Poids", valeur: `${valeur} ${p.unitePoids || "kg"}` });
   }
 }

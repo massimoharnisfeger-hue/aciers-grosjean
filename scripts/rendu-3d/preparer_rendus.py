@@ -40,6 +40,13 @@ def piece(p, longueur, ratio):
         out = {"type": "TUBE-ROND", "h": v["d"], "b": v["d"], "t": v["t"]}
     elif serie == "TOLE":  # plaque à plat : largeur × épaisseur, extrudée sur toute la longueur du format
         return {"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"]}, v.get("finition", "BRUT")
+    elif serie == "ROND-BETON":
+        out = {"type": "ROND-BETON", "h": v["d"], "b": v["d"]}
+    elif serie == "TREILLIS":  # portion de 3 × 4 mailles, débord d'une demi-maille (le panneau entier : dans la fiche)
+        nx, ny = 4, 5
+        return ({"type": "TREILLIS", "h": 2.45 * v["d"], "b": nx * v["maille_b"], "t": v["d"], "maille_a": v["maille_a"],
+                 "maille_b": v["maille_b"], "nx": nx, "ny": ny, "longueur": ny * v["maille_a"]},
+                v.get("finition", "BRUT"))
     else:
         type_ = "U" if v.get("serie") == "UPN" else "I"
         out = {"type": type_, "h": v["h"], "b": v["b"], "tw": v["tw"], "tf": v["tf"]}
@@ -69,7 +76,8 @@ def main():
         for slug in reste:
             pc, finition = piece(produits[slug], 500, 6.25)
             # tôle vue de plus haut : dessus lisible et plaque plus grande dans le cadre (l'épaisseur est en loupe)
-            vue = {"elevation": 48, "azimut": 10} if pc["type"] == "TOLE" else {}
+            vue = ({"elevation": 48, "azimut": 10} if pc["type"] == "TOLE" else
+                   {"elevation": 35} if pc["type"] == "TREILLIS" else {})
             liste.append({**commun, **vue, "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
@@ -80,12 +88,12 @@ def main():
             finitions.add(finition)
         # même longueur pour toutes les pièces de la photo, proportionnée à la plus grande section (sauf tôle entière)
         for pc in pieces:
-            if pc["type"] != "TOLE":
+            if pc["type"] not in ("TOLE", "TREILLIS"):
                 pc["longueur"] = min(900, round(7 * max(max(q["h"], q["b"]) for q in pieces)))
         if len(finitions) > 1:
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
         liste.append({**commun, "slug": nom, "mode": "studio", "pieces": pieces, "finition": finitions.pop(),
-                      "azimut": 24, "elevation": 30 if pieces[0]["type"] == "TOLE" else 20})
+                      "azimut": 24, "elevation": 30 if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")
 

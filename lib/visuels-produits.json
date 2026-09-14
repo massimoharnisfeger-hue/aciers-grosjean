@@ -1,4 +1,300 @@
 {
- "produits": {},
- "categories": {}
+ "produits": {
+  "poutrelle-hea-100-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-100-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 100 en acier : rendu 3D aux cotes (h 96 mm, b 100 mm, tw 5 mm, tf 8 mm) et fiche technique"
+  },
+  "poutrelle-hea-120-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-120-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 120 en acier : rendu 3D aux cotes (h 114 mm, b 120 mm, tw 5 mm, tf 8 mm) et fiche technique"
+  },
+  "poutrelle-hea-140-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-140-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 140 en acier : rendu 3D aux cotes (h 133 mm, b 140 mm, tw 5,5 mm, tf 8,5 mm) et fiche technique"
+  },
+  "poutrelle-hea-160-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-160-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 160 en acier : rendu 3D aux cotes (h 152 mm, b 160 mm, tw 6 mm, tf 9 mm) et fiche technique"
+  },
+  "poutrelle-hea-180-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-180-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 180 en acier : rendu 3D aux cotes (h 171 mm, b 180 mm, tw 6 mm, tf 9,5 mm) et fiche technique"
+  },
+  "poutrelle-hea-200-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-200-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 200 en acier : rendu 3D aux cotes (h 190 mm, b 200 mm, tw 6,5 mm, tf 10 mm) et fiche technique"
+  },
+  "poutrelle-hea-220-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-220-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 220 en acier : rendu 3D aux cotes (h 210 mm, b 220 mm, tw 7 mm, tf 11 mm) et fiche technique"
+  },
+  "poutrelle-hea-240-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-240-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 240 en acier : rendu 3D aux cotes (h 230 mm, b 240 mm, tw 7,5 mm, tf 12 mm) et fiche technique"
+  },
+  "poutrelle-hea-260-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-260-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 260 en acier : rendu 3D aux cotes (h 250 mm, b 260 mm, tw 7,5 mm, tf 12,5 mm) et fiche technique"
+  },
+  "poutrelle-hea-280-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-280-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 280 en acier : rendu 3D aux cotes (h 270 mm, b 280 mm, tw 8 mm, tf 13 mm) et fiche technique"
+  },
+  "poutrelle-hea-300-en-acier": {
+   "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-300-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA 300 en acier : rendu 3D aux cotes (h 290 mm, b 300 mm, tw 8,5 mm, tf 14 mm) et fiche technique"
+  },
+  "poutrelle-heb-100-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-100-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 100 en acier : rendu 3D aux cotes (h 100 mm, b 100 mm, tw 6 mm, tf 10 mm) et fiche technique"
+  },
+  "poutrelle-heb-120-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-120-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 120 en acier : rendu 3D aux cotes (h 120 mm, b 120 mm, tw 6,5 mm, tf 11 mm) et fiche technique"
+  },
+  "poutrelle-heb-140-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-140-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 140 en acier : rendu 3D aux cotes (h 140 mm, b 140 mm, tw 7 mm, tf 12 mm) et fiche technique"
+  },
+  "poutrelle-heb-160-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-160-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 160 en acier : rendu 3D aux cotes (h 160 mm, b 160 mm, tw 8 mm, tf 13 mm) et fiche technique"
+  },
+  "poutrelle-heb-180-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-180-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 180 en acier : rendu 3D aux cotes (h 180 mm, b 180 mm, tw 8,5 mm, tf 14 mm) et fiche technique"
+  },
+  "poutrelle-heb-200-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-200-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 200 en acier : rendu 3D aux cotes (h 200 mm, b 200 mm, tw 9 mm, tf 15 mm) et fiche technique"
+  },
+  "poutrelle-heb-220-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-220-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 220 en acier : rendu 3D aux cotes (h 220 mm, b 220 mm, tw 9,5 mm, tf 16 mm) et fiche technique"
+  },
+  "poutrelle-heb-240-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-240-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 240 en acier : rendu 3D aux cotes (h 240 mm, b 240 mm, tw 10 mm, tf 17 mm) et fiche technique"
+  },
+  "poutrelle-heb-260-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-260-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 260 en acier : rendu 3D aux cotes (h 260 mm, b 260 mm, tw 10 mm, tf 17,5 mm) et fiche technique"
+  },
+  "poutrelle-heb-280-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-280-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 280 en acier : rendu 3D aux cotes (h 280 mm, b 280 mm, tw 10,5 mm, tf 18 mm) et fiche technique"
+  },
+  "poutrelle-heb-300-en-acier": {
+   "src": "/images/produits/acier/poutrelles/heb/poutrelle-heb-300-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB 300 en acier : rendu 3D aux cotes (h 300 mm, b 300 mm, tw 11 mm, tf 19 mm) et fiche technique"
+  },
+  "poutrelle-ipe-100-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-100-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 100 en acier : rendu 3D aux cotes (h 100 mm, b 55 mm, tw 4,1 mm, tf 5,7 mm) et fiche technique"
+  },
+  "poutrelle-ipe-120-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-120-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 120 en acier : rendu 3D aux cotes (h 120 mm, b 64 mm, tw 4,4 mm, tf 6,3 mm) et fiche technique"
+  },
+  "poutrelle-ipe-140-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-140-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 140 en acier : rendu 3D aux cotes (h 140 mm, b 73 mm, tw 4,7 mm, tf 6,9 mm) et fiche technique"
+  },
+  "poutrelle-ipe-160-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-160-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 160 en acier : rendu 3D aux cotes (h 160 mm, b 82 mm, tw 5 mm, tf 7,4 mm) et fiche technique"
+  },
+  "poutrelle-ipe-180-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-180-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 180 en acier : rendu 3D aux cotes (h 180 mm, b 91 mm, tw 5,3 mm, tf 8 mm) et fiche technique"
+  },
+  "poutrelle-ipe-200-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-200-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 200 en acier : rendu 3D aux cotes (h 200 mm, b 100 mm, tw 5,6 mm, tf 8,5 mm) et fiche technique"
+  },
+  "poutrelle-ipe-220-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-220-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 220 en acier : rendu 3D aux cotes (h 220 mm, b 110 mm, tw 5,9 mm, tf 9,2 mm) et fiche technique"
+  },
+  "poutrelle-ipe-240-en-acier": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-240-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 240 en acier : rendu 3D aux cotes (h 240 mm, b 120 mm, tw 6,2 mm, tf 9,8 mm) et fiche technique"
+  },
+  "poutrelle-ipe-270": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-270-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 270 : rendu 3D aux cotes (h 270 mm, b 135 mm, tw 6,6 mm, tf 10,2 mm) et fiche technique"
+  },
+  "poutrelle-ipe-300": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-300-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 300 : rendu 3D aux cotes (h 300 mm, b 150 mm, tw 7,1 mm, tf 10,7 mm) et fiche technique"
+  },
+  "poutrelle-ipe-330": {
+   "src": "/images/produits/acier/poutrelles/ipe/poutrelle-ipe-330-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE 330 : rendu 3D aux cotes (h 330 mm, b 160 mm, tw 7,5 mm, tf 11,5 mm) et fiche technique"
+  },
+  "poutrelle-upn-100-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-100-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 100 en acier : rendu 3D aux cotes (h 100 mm, b 50 mm, tw 6 mm, tf 8,5 mm) et fiche technique"
+  },
+  "poutrelle-upn-120-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-120-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 120 en acier : rendu 3D aux cotes (h 120 mm, b 55 mm, tw 7 mm, tf 9 mm) et fiche technique"
+  },
+  "poutrelle-upn-140-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-140-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 140 en acier : rendu 3D aux cotes (h 140 mm, b 60 mm, tw 7 mm, tf 10 mm) et fiche technique"
+  },
+  "poutrelle-upn-160-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-160-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 160 en acier : rendu 3D aux cotes (h 160 mm, b 65 mm, tw 7,5 mm, tf 10,5 mm) et fiche technique"
+  },
+  "poutrelle-upn-180-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-180-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 180 en acier : rendu 3D aux cotes (h 180 mm, b 70 mm, tw 8 mm, tf 11 mm) et fiche technique"
+  },
+  "poutrelle-upn-200-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-200-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 200 en acier : rendu 3D aux cotes (h 200 mm, b 75 mm, tw 8,5 mm, tf 11,5 mm) et fiche technique"
+  },
+  "poutrelle-upn-220-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-220-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 220 en acier : rendu 3D aux cotes (h 220 mm, b 80 mm, tw 9 mm, tf 12,5 mm) et fiche technique"
+  },
+  "poutrelle-upn-240-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-240-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 240 en acier : rendu 3D aux cotes (h 240 mm, b 85 mm, tw 9,5 mm, tf 13 mm) et fiche technique"
+  },
+  "poutrelle-upn-260-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-260-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 260 en acier : rendu 3D aux cotes (h 260 mm, b 90 mm, tw 10 mm, tf 14 mm) et fiche technique"
+  },
+  "poutrelle-upn-280-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-280-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 280 en acier : rendu 3D aux cotes (h 280 mm, b 95 mm, tw 10 mm, tf 15 mm) et fiche technique"
+  },
+  "poutrelle-upn-300-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-300-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 300 en acier : rendu 3D aux cotes (h 300 mm, b 100 mm, tw 10 mm, tf 16 mm) et fiche technique"
+  },
+  "poutrelle-upn-80-en-acier": {
+   "src": "/images/produits/acier/poutrelles/upn/poutrelle-upn-80-en-acier-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN 80 en acier : rendu 3D aux cotes (h 80 mm, b 45 mm, tw 6 mm, tf 8 mm) et fiche technique"
+  }
+ },
+ "categories": {
+  "/acier/poutrelles/hea": {
+   "src": "/images/produits/acier/poutrelles/hea/studio-poutrelle-hea.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEA en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/acier/poutrelles/heb": {
+   "src": "/images/produits/acier/poutrelles/heb/studio-poutrelle-heb.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle HEB en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/acier/poutrelles/ipe": {
+   "src": "/images/produits/acier/poutrelles/ipe/studio-poutrelle-ipe.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle IPE en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/acier/poutrelles/upn": {
+   "src": "/images/produits/acier/poutrelles/upn/studio-poutrelle-upn.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poutrelle UPN en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  }
+ }
 }

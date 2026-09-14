@@ -205,6 +205,62 @@ def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
     return obj
 
 
+def courbe_tube(nom, points, rayon, rayons_points=None, resolution=4):
+    """Tube le long d'une polyligne (mm) : nervure de barre crénelée. `rayons_points` module l'épaisseur."""
+    cu = bpy.data.curves.new(nom, "CURVE")
+    cu.dimensions = "3D"
+    cu.bevel_depth = rayon * MM
+    cu.bevel_resolution = resolution
+    cu.use_fill_caps = True
+    sp = cu.splines.new("POLY")
+    sp.points.add(len(points) - 1)
+    for i, (x, y, z) in enumerate(points):
+        sp.points[i].co = (x * MM, y * MM, z * MM, 1.0)
+        if rayons_points:
+            sp.points[i].radius = rayons_points[i]
+    obj = bpy.data.objects.new(nom, cu)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def nervures_barre(d, L, dx, nom):
+    """Barre crénelée (aciers pour béton) : deux nervures longitudinales et deux rangées de nervures transverses en
+    croissant, inclinées en sens opposés. Proportions usuelles (hauteur ≈ 0,065 d, pas ≈ 0,7 d, 55°) : forme seulement."""
+    R, cz = d / 2, d / 2
+    h_n = 0.065 * d
+    objs = [courbe_tube(f"{nom}-long-{s}", [(dx + s * R, 0, cz), (dx + s * R, L, cz)], h_n * 0.8) for s in (-1, 1)]
+    pas, k = 0.7 * d, 1 / math.tan(math.radians(55))
+    n = 14
+    for rangee, (t0, t1, sens) in enumerate(((12, 168, 1), (192, 348, -1))):
+        y0 = pas / 2 + rangee * pas / 2
+        while y0 + R * k < L - pas / 2:
+            ts = [math.radians(t0 + (t1 - t0) * i / (n - 1)) for i in range(n)]
+            pts = [(dx + R * math.cos(t), y0 + sens * R * math.sin(t) * k, cz + R * math.sin(t)) for t in ts]
+            rayons = [0.25 + 0.75 * math.sin(math.pi * i / (n - 1)) for i in range(n)]  # croissant : fin aux bouts
+            objs.append(courbe_tube(f"{nom}-n{rangee}-{y0:.0f}", pts, h_n, rayons))
+            y0 += pas
+    return objs
+
+
+def fils_treillis(piece, dx, nom):
+    """Portion de treillis soudé : fils longitudinaux (le long de y) posés au sol, fils transversaux soudés dessus.
+    Débord d'une demi-maille autour des fils extérieurs. Fils lisses (crénelure invisible à cette échelle)."""
+    d, ma, mb, nx, ny = piece["t"], piece["maille_a"], piece["maille_b"], piece["nx"], piece["ny"]
+    Ly, Lx = ny * ma, nx * mb
+    objs = []
+    for i in range(nx):
+        x = dx + (i - (nx - 1) / 2) * mb
+        objs.append(extruder([(xx + x, zz) for xx, zz in cercle(d / 2, d / 2, 24)], Ly, f"{nom}-long-{i}"))
+    for j in range(ny):
+        y = ma / 2 + j * ma
+        obj = extruder(cercle(d / 2, 0, 24), Lx, f"{nom}-trans-{j}")
+        # extrudé le long de y puis tourné de 90° autour de z : fil le long de x, centré, posé sur les fils longitudinaux
+        obj.rotation_euler = (0, 0, math.radians(-90))
+        obj.location = ((dx - Lx / 2) * MM, y * MM, 1.45 * d * MM)
+        objs.append(obj)
+    return objs
+
+
 def section_de(piece):
     t = piece["type"]
     if t == "TOLE":  # plaque posée à plat : section largeur × épaisseur, extrudée sur la longueur
@@ -213,7 +269,7 @@ def section_de(piece):
         return section_t(piece["h"], piece["b"], piece["t"], piece["r"], piece["r1"], piece["r2"])
     if t in ("PLAT", "CARRE"):
         return section_rectangle(piece["h"], piece["b"])
-    if t == "ROND":
+    if t in ("ROND", "ROND-BETON"):
         return cercle(piece["h"] / 2, piece["h"] / 2)
     if t in ("TC", "TR"):
         return section_tube_rect(piece["h"], piece["b"], piece["t"], piece["r1"])
@@ -339,7 +395,7 @@ MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp}
 # ---------------------------------------------------------------- scène
 
 def vider_scene():
-    for collection in (bpy.data.objects, bpy.data.meshes, bpy.data.materials, bpy.data.lights,
+    for collection in (bpy.data.objects, bpy.data.meshes, bpy.data.curves, bpy.data.materials, bpy.data.lights,
                        bpy.data.cameras, bpy.data.worlds, bpy.data.images):
         for bloc in list(collection):
             collection.remove(bloc)
@@ -431,17 +487,24 @@ def rendre(p):
     boite_pts = []
     for i, piece in enumerate(pieces):
         L = piece.get("longueur", p.get("longueur", 500))
-        if i:
-            x += p.get("ecart_studio", 0.9) * piece["h"]
+        if i:  # écart minimal de 12 % de la largeur (treillis : pièces larges et plates)
+            x += max(p.get("ecart_studio", 0.9) * piece["h"], 0.12 * piece["b"])
         dx = x + piece["b"] / 2
-        obj = extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)
-        obj.data.materials.append(mat_surface)
-        obj.data.materials.append(mat_coupe)
+        if piece["type"] == "TREILLIS":
+            objs = fils_treillis(piece, dx, f"{p['slug']}-{i}")
+        else:
+            objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)]
+            if piece["type"] == "ROND-BETON":
+                objs += nervures_barre(piece["h"], L, dx, f"{p['slug']}-{i}")
+        for obj in objs:
+            obj.data.materials.append(mat_surface)
+            if obj.type == "MESH":
+                obj.data.materials.append(mat_coupe)
         boite_pts += [((dx + sx * piece["b"] / 2) * MM, y * MM, z * MM)
                       for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
         x += piece["b"]
     centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
-    for obj in [o for o in bpy.data.objects if o.type == "MESH"]:
+    for obj in [o for o in bpy.data.objects if o.type in ("MESH", "CURVE")]:
         obj.location.x -= centre_x
     boite_pts = [(q[0] - centre_x, q[1], q[2]) for q in boite_pts]
 
@@ -451,6 +514,9 @@ def rendre(p):
 
     cam_data = bpy.data.cameras.new("cam")
     cam_data.lens = p.get("focale", 50)
+    # petites sections (rond de 6 mm, plat 10x3) : la caméra passe à quelques centimètres ; la découpe proche par
+    # défaut (10 cm) coupait l'avant de la pièce et du sol
+    cam_data.clip_start = 0.001
     cam = bpy.data.objects.new("cam", cam_data)
     bpy.context.collection.objects.link(cam)
     scene.camera = cam
@@ -470,15 +536,20 @@ def rendre(p):
     # cote horizontale : sous la pièce, au-dessus pour le T (largeur de l'aile), aucune pour plat, rond et tube rond
     cote_b = None if typ in ("PLAT", "ROND", "TUBE-ROND") else ("haut" if typ == "T" else "bas")
     z_cote_b = h + off if cote_b == "haut" else -off
-    if typ == "TOLE":  # tôle posée à plat : cotes au sol, largeur devant, longueur à gauche, épaisseur en loupe
+    if typ in ("TOLE", "TREILLIS"):  # pièces à plat : cotes au sol ou au niveau des fils
         off = b * 0.12
         cible = Vector((0, L0 * MM * 0.5, 0))
     points_cadrage = list(boite_pts)
+    if mode == "caracteristiques" and typ == "TREILLIS":
+        points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, L0 * MM, 0),
+                           (-b / 2 * MM, -off * 1.6 * MM, 0), (b / 2 * MM, -off * 1.6 * MM, 0)]
     if mode == "caracteristiques" and typ == "TOLE":
         points_cadrage += [((b / 2 + off * 1.6) * MM, 0, 0), ((b / 2 + off * 1.6) * MM, L0 * MM, 0),
                            (-b / 2 * MM, -off * 1.6 * MM, 0), (b / 2 * MM, -off * 1.6 * MM, 0)]
         # colonne de gauche laissée libre pour la loupe de l'épaisseur
         boite = tuple(p.get("boite", (0.25, 0.08, 0.62, 0.92)))
+    elif mode == "caracteristiques" and typ == "TREILLIS":
+        boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
     elif mode == "caracteristiques":
         points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM)]
         if cote_b:
@@ -568,6 +639,31 @@ def rendre(p):
         with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
             json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "loupe": T, "points": points,
                        "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+    elif mode == "caracteristiques" and typ == "TREILLIS":
+        W, H = scene.render.resolution_x, scene.render.resolution_y
+
+        def ecran(x, y, z):
+            q = world_to_camera_view(scene, cam, Vector((x * MM, y * MM, z * MM)))
+            return [round(q.x * W, 2), round((1 - q.y) * H, 2)]
+
+        d, ma, mb, nx = piece["t"], piece["maille_a"], piece["maille_b"], piece["nx"]
+        xs = [(i - (nx - 1) / 2) * mb for i in range(nx)]
+        z_t = 1.45 * d  # axe des fils transversaux
+        points = {
+            # maille b entre les deux premiers fils longitudinaux, au sol devant la portion
+            "cote_b_gauche": ecran(xs[0], -off, 0), "cote_b_droit": ecran(xs[1], -off, 0),
+            "rappel_b_gauche_debut": ecran(xs[0], -4, 0), "rappel_b_gauche_fin": ecran(xs[0], -off * 1.2, 0),
+            "rappel_b_droit_debut": ecran(xs[1], -4, 0), "rappel_b_droit_fin": ecran(xs[1], -off * 1.2, 0),
+            # maille a entre les deux premiers fils transversaux, à gauche
+            "cote_h_bas": ecran(-b / 2 - off, ma / 2, z_t), "cote_h_haut": ecran(-b / 2 - off, ma * 1.5, z_t),
+            "rappel_h_bas_debut": ecran(-b / 2 - 4, ma / 2, z_t), "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, ma / 2, z_t),
+            "rappel_h_haut_debut": ecran(-b / 2 - 4, ma * 1.5, z_t), "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, ma * 1.5, z_t),
+            # diamètre du fil pincé au bout du fil longitudinal de droite
+            "ame_gauche": ecran(xs[-1] - d / 2, 0, d / 2), "ame_droite": ecran(xs[-1] + d / 2, 0, d / 2),
+        }
+        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
+            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "points": points,
+                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
     elif mode == "caracteristiques":
         W, H = scene.render.resolution_x, scene.render.resolution_y
 
@@ -589,18 +685,19 @@ def rendre(p):
         x_rappel = 0.0 if typ in ("ROND", "TUBE-ROND") else -b / 2
         sens = 1 if cote_b == "haut" else -1
         z_bord_b = h if cote_b == "haut" else 0.0
+        g = min(4.0, off * 0.18)  # jour entre la pièce et la ligne de rappel (4 mm, moins sur les petites sections)
         points = {
             "cote_h_bas": ecran(-b / 2 - off, 0, 0),
             "cote_h_haut": ecran(-b / 2 - off, 0, h),
             "cote_b_gauche": ecran(-b / 2, 0, z_cote_b),
             "cote_b_droit": ecran(b / 2, 0, z_cote_b),
-            "rappel_h_bas_debut": ecran(x_rappel - 4, 0, 0),
+            "rappel_h_bas_debut": ecran(x_rappel - g, 0, 0),
             "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, 0, 0),
-            "rappel_h_haut_debut": ecran(x_rappel - 4, 0, h),
+            "rappel_h_haut_debut": ecran(x_rappel - g, 0, h),
             "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, 0, h),
-            "rappel_b_gauche_debut": ecran(-b / 2, 0, z_bord_b + sens * 4),
+            "rappel_b_gauche_debut": ecran(-b / 2, 0, z_bord_b + sens * g),
             "rappel_b_gauche_fin": ecran(-b / 2, 0, z_bord_b + sens * off * 1.2),
-            "rappel_b_droit_debut": ecran(b / 2, 0, z_bord_b + sens * 4),
+            "rappel_b_droit_debut": ecran(b / 2, 0, z_bord_b + sens * g),
             "rappel_b_droit_fin": ecran(b / 2, 0, z_bord_b + sens * off * 1.2),
             "ame_gauche": ecran(x_ame - tw / 2, 0, z_pince),
             "ame_droite": ecran(x_ame + tw / 2, 0, z_pince),

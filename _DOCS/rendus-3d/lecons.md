@@ -62,6 +62,10 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - 2e occurrence du conflit flèche d'épaisseur / étiquette de cote verticale (UPN 80, déjà vu sur les cornières) : l'étiquette verticale descend automatiquement à 28 % de la cote quand une flèche passe à sa hauteur (`habiller.py`), sans nouveau rendu. `[poutrelles, 14/09]`
 - Photos studio : l'ombre douce touchait les bords (marges non blanches, détecté par `controler_rendus.py` sur les 4 studios poutrelles). `rendu_sur_blanc` estompe l'ombre sur 90 px et l'annule sur les 24 derniers : marges d'un blanc pur sur toutes les images. `[poutrelles, 14/09]`
 - Arrêt volontaire de Blender après les visuels d'une série (pour sauter des rendus devenus inutiles) : code de sortie 255 attendu, pas une erreur. `[poutrelles, 14/09]`
+- Petites pièces (rond à béton 12, plat 10x3, rond 6) : avant de la pièce et sol coupés, face avant noire. Découpe proche de la caméra (10 cm par défaut) : `clip_start = 1 mm` pour toutes les caméras. Détecté à l'œil sur un essai, **pas par les contrôles** : regarder chaque essai. `[armatures, 14/09]`
+- Lignes de rappel à 4 mm fixes de la pièce : détachées sur les sections de 10 mm. Jour = min(4 mm, 0,18 × écart de cote). `[armatures, 14/09]`
+- Vérification indépendante poutrelles (CONFORME) : ombre des grandes sections sous la fiche (fond 230/255) → l'ombre s'efface avant x = 0,645 W et contrôle « fond de la fiche ≥ 238 » ; poids « 8,3 » sur la page contre « 8,30 » sur l'image → deux décimales partout ; « Procédé : laminé à chaud » des pages HEA/HEB non sourcé → sourcé par la norme EN 10034 citée par la fiche fournisseur et affiché sur l'image. `[poutrelles, 14/09] (vérification indépendante)`
+- Contrôle ajouté (proposé par le vérificateur) : pointes de flèche d'une cote hors de sa propre étiquette (cotes courtes). `[poutrelles, 14/09]`
 - Fiches fournisseurs publiées sur le site : « Nuance d'acier : S235 » (IPE, HEA, HEB, tubes), en contradiction avec les descriptions (IPE S275, HEB S275/S355) : ne pas en déduire une nuance, question en attente. `[vague 1, 14/09]`
 
 ## Temps et ressources mesurés

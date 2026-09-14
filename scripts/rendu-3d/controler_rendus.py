@@ -35,8 +35,9 @@ COLONNE_FICHE = 0.655  # debut de la fiche technique (habiller.py)
 # libelles des specifications de la page produit -> cles des donnees (plusieurs cles : « 100 × 50 mm »)
 PAGE = {"Hauteur (h)": ["h"], "Largeur d'aile (b)": ["b"], "Épaisseur d'âme (tw)": ["tw"], "Épaisseur d'aile (tf)": ["tf"],
         "Ailes": ["a", "b"], "Section": ["h", "b"], "Largeur": ["b"], "Épaisseur": ["t"], "Diamètre": ["d"],
-        "Diamètre extérieur": ["d"], "Nuance": ["nuance"], "Norme": ["norme"]}
-PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"], "Épaisseur": ["e"]}}
+        "Diamètre extérieur": ["d"], "Surface": ["surface"], "Nuance": ["nuance"], "Norme": ["norme"]}
+PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"], "Épaisseur": ["e"]},
+                  "TREILLIS": {"Maille": ["maille"], "Fil": ["d"], "Panneau": ["format"]}}
 COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "nuance", "norme"}
 
 
@@ -208,7 +209,12 @@ def controler(famille, produits, pages):
                     ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image « {valeurs[cles[0]]['valeur']} »")
                 continue
             nombres = [float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", str(page[libelle]))]
-            attendus = [valeurs[k]["valeur"] for k in cles if k in valeurs]
+            attendus = []  # valeurs numériques, ou nombres contenus dans un texte (« 150 × 150 mm »)
+            for k in cles:
+                if k in valeurs:
+                    val = valeurs[k]["valeur"]
+                    attendus += ([float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", val)]
+                                 if isinstance(val, str) else [val])
             if len(nombres) != len(attendus) or any(abs(n - a) > 1e-6 for n, a in zip(nombres, attendus)):
                 ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image {attendus}")
         for cle in sorted(affiche & COTES_AFFICHABLES - couvertes):
