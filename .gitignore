@@ -14,3 +14,13 @@ srv.log
 shoot*.js
 capture.js
 shots/
+
+# python
+__pycache__/
+*.pyc
+
+# depot local (photos brutes, documents) : sauvegarde par OneDrive, pas par Git (depot public)
+/_DEPOT/
+
+# historique technique de la synchro
+/_OUTILS/synchro.log
