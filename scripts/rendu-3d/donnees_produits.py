@@ -478,6 +478,101 @@ def toles(cat, reel, desc):
     return produits
 
 
+# tôles à relief : catégorie -> (famille, matière du rendu, masse volumique, motif du rendu, source du motif)
+TOLES_RELIEF = {
+    "/acier/toles/tole-larmee": ("tole-larmee", "BRUT", 7.85, "LARMES",
+                                 "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90)"),
+    "/aluminium/toles/tole-striee": ("tole-aluminium-striee", "ALU", 2.70, "QUINTETTE",
+                                     "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) »)"),
+}
+
+
+def toles_relief(cat, reel, desc):
+    """Tôles larmées (acier) et striées (aluminium) : « 3/5 mm » = épaisseur de la tôle de base / épaisseur au sommet
+    du relief (description du site). Poids de la fiche affiché s'il est compris entre le poids de la tôle de base et
+    +25 % (le relief ajoute environ 10 à 15 %) ; motif du relief : forme du rendu seulement, jamais affiché."""
+    produits = {}
+    for slug, c in cat.items():
+        if c["categorie"] not in TOLES_RELIEF:
+            continue
+        famille, matiere, densite, motif, src_motif = TOLES_RELIEF[c["categorie"]]
+        m = re.search(r"(\d+)\s*x\s*(\d+)\s*x\s*(\d+(?:,\d+)?)\s*/\s*(\d+(?:,\d+)?)\s*mm", c["nom"], re.I)
+        if not m:
+            continue
+        L, l, e, e_total = int(m.group(1)), int(m.group(2)), nombre(m.group(3)), nombre(m.group(4))
+        v, alertes = {"serie": valeur("TOLE-RELIEF", "", SRC_NOM), "L": valeur(L, "mm", SRC_NOM), "l": valeur(l, "mm", SRC_NOM),
+                      "e": valeur(e, "mm", SRC_NOM + " (épaisseur de la tôle de base)"),
+                      "e_total": valeur(e_total, "mm", SRC_NOM + " (épaisseur au sommet du relief)")}, []
+        r = reel.get(slug, {})
+        if r.get("kg") is not None:
+            base = L * l * e * densite * 1e-6
+            v["poids"] = valeur(r["kg"], "kg/plaque", SRC_SITE)
+            if not base <= r["kg"] <= base * 1.25:
+                alertes.append(f"poids site {r['kg']} kg hors de [{base:.1f} ; {base * 1.25:.1f}] kg (tôle de base à +25 %) : non affiché")
+                v["poids"]["supposee"] = True
+        texte = texte_description(desc, slug)
+        if procede(texte):
+            v["procede"] = valeur(procede(texte), "", SRC_DESC)
+        v["motif"] = valeur(motif, "", src_motif + " — forme du rendu, non affichée", supposee=True)
+        v["finition"] = valeur(matiere, "", f"catégorie « {c['categorie']} » — matière du rendu, non affichée", supposee=True)
+        controle_cotes_site(v, alertes, desc.get(slug, {}), {"A": "L", "B": "l"})
+        produits[slug] = {"nom": c["nom"], "categorie": c["categorie"], "famille": famille, "valeurs": v, "alertes": alertes}
+    return produits
+
+
+def toles_perforees(cat, reel, desc):
+    """Tôles perforées : format et épaisseur du nom ; perforation du code du nom (R = trous ronds de diamètre R,
+    T = entraxe en quinconce ; C = trous carrés de côté C, U = pas en rangées droites), recoupée avec la description
+    (« Trous ronds en quinconce (R10 T15) », « Diamètre des trous (R) : 10 mm »…). Motif aléatoire : aucune cote.
+    Le site ne donne pas de poids (1 kg factice écarté) : rien d'affiché."""
+    produits = {}
+    for slug, c in cat.items():
+        if c["categorie"] != "/acier/toles/tole-perforee":
+            continue
+        m = re.search(r"(\d+)\s*x\s*(\d+)\s*x\s*(\d+(?:,\d+)?)", c["nom"], re.I)
+        if not m:
+            continue
+        L, l, e = int(m.group(1)), int(m.group(2)), nombre(m.group(3))
+        texte = texte_description(desc, slug)
+        v, alertes = {"serie": valeur("TOLE-PERFOREE", "", SRC_NOM), "L": valeur(L, "mm", SRC_NOM), "l": valeur(l, "mm", SRC_NOM),
+                      "e": valeur(e, "mm", SRC_NOM)}, []
+        code = re.search(r"\b([RC])\s*(\d+(?:,\d+)?)\s*([TU])\s*(\d+(?:,\d+)?)\b", c["nom"])
+        if code:
+            forme, cote, disposition, pas = code.group(1), nombre(code.group(2)), code.group(3), nombre(code.group(4))
+            src = SRC_NOM + f" (code {code.group(0)})"
+            if re.search(rf"\({re.escape(code.group(0))}\)", texte):
+                src += " et description"
+            v["perforation"] = valeur({"forme": "RONDE" if forme == "R" else "CARREE", "cote": cote, "pas": pas,
+                                       "disposition": "QUINCONCE" if disposition == "T" else "LIGNE"}, "", src + " — géométrie du rendu",
+                                      supposee=True)
+            if forme == "R":
+                v["trous"] = valeur(f"ronds Ø {texte_nombre(cote)} mm", "", src)
+                v["entraxe"] = valeur(f"{texte_nombre(pas)} mm en quinconce", "", src)
+            else:
+                v["trous"] = valeur(f"carrés {texte_nombre(cote)} × {texte_nombre(cote)} mm", "", src)
+                v["entraxe"] = valeur(f"{texte_nombre(pas)} mm en rangées droites", "", src)
+            if disposition == "T" and re.search(r"rang[ée]es droites", texte, re.I) or disposition == "U" and re.search(r"quinconce", texte, re.I):
+                alertes.append("disposition du code ≠ description : perforation non affichée")
+                v["trous"]["supposee"] = v["entraxe"]["supposee"] = True
+        elif re.search(r"al[ée]atoire", c["nom"], re.I):
+            v["perforation"] = valeur({"forme": "ALEATOIRE"}, "", SRC_NOM + " — géométrie du rendu", supposee=True)
+            v["trous"] = valeur("aléatoires, diamètres variables", "", SRC_DESC + " (« diamètres variables et disposition irrégulière »)")
+        else:
+            alertes.append("perforation introuvable dans le nom")
+            continue
+        nuance, _ = nuance_et_norme(texte)
+        if nuance and "galva" not in slug:
+            v["nuance"] = valeur(nuance, "", SRC_DESC)
+        v["finition"] = valeur("GALVA" if "galva" in slug else "BRUT", "",
+                               SRC_NOM + " / description (acier brut ou galvanisé) — matière du rendu, non affichée", supposee=True)
+        produits[slug] = {"nom": c["nom"], "categorie": c["categorie"], "famille": "tole-perforee", "valeurs": v, "alertes": alertes}
+    return produits
+
+
+def texte_nombre(x):
+    return f"{x:g}".replace(".", ",")
+
+
 def armatures(cat, reel, desc):
     """Ronds à béton crénelés et treillis soudés : cotes du nom (et cotes A–E du site pour les dépassants),
     poids comparé au poids nominal des aciers pour béton (0,00617 × d² kg/m, EN 10080 publié sur le site).
@@ -606,7 +701,8 @@ def profils_alu_inox(cat, reel, desc):
 
 
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
-            "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox}
+            "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox,
+            "toles-relief": toles_relief, "toles-perforees": toles_perforees}
 
 
 def main():

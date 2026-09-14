@@ -11,6 +11,7 @@ Sorties : lib/site-actuel.json               prix, poids, longueurs, finition, u
 Relancer apres un nouveau releve : explorer.py -> analyser.py -> integrer.py.
 """
 import csv
+import filecmp
 import hashlib
 import json
 import os
@@ -61,11 +62,30 @@ def produits_refonte():
                        r'uniteCourte: "([^"]*)", prix: ([^,]+),', re.M)
     out = {}
     for m in motif.finditer(ts):
+        ligne = ts[m.start():ts.find("\n", m.start())]
         out[m.group(1)] = {"slug": m.group(1), "nom": json.loads(m.group(2)), "categorie": m.group(3),
                            "unitePoids": m.group(6), "unite": m.group(7), "uniteCourte": m.group(8),
                            "kg": None if m.group(5) == "null" else float(m.group(5)),
-                           "prix": None if m.group(9) == "null" else float(m.group(9))}
+                           "prix": None if m.group(9) == "null" else float(m.group(9)),
+                           "specs": dict(re.findall(r'\{ label: "([^"]+)", valeur: "([^"]*)" \}', ligne))}
     return out
+
+
+def masse_surfacique_contredite(r, kg):
+    """« Masse surfacique » calculée par la refonte (épaisseur × densité) : fausse pour une tôle perforée (trous) et
+    contredite par le poids réel de la plaque ou du panneau au-delà de 3 % (tôles larmées et striées : relief)."""
+    valeur = r["specs"].get("Masse surfacique")
+    if not valeur:
+        return False
+    if r["categorie"].endswith("/tole-perforee"):
+        return True
+    dims = re.findall(r"[\d.,]+", r["specs"].get("Format") or r["specs"].get("Panneau") or "")
+    if kg is None or len(dims) != 2:
+        return False
+    facteur = 1e-6 if "Format" in r["specs"] else 1.0  # « 2000 × 1000 mm » ou « 5 × 2 m »
+    surface = float(dims[0].replace(",", ".")) * float(dims[1].replace(",", ".")) * facteur
+    kg_m2 = float(re.search(r"[\d.,]+", valeur).group(0).replace(",", "."))
+    return abs(kg_m2 * surface - kg) / kg > 0.03
 
 
 # ---------------------------------------------------------------- descriptions
@@ -256,14 +276,18 @@ def main():
             retirer.append("Alliage")
         if r["categorie"].startswith("/inox") and "304" not in texte_reel:
             retirer.append("Nuance")
+        if masse_surfacique_contredite(r, kg):
+            retirer.append("Masse surfacique")
         donnees[slug]["specsRetirees"] = retirer
 
     # ---- publication des PDF sous des noms lisibles
     titres_doc = titres_liens_documentation()
     dossier_public = PROJET / "public" / "documents"
     dossier_public.mkdir(parents=True, exist_ok=True)
-    for ancien in dossier_public.glob("*.pdf"):  # dossier entierement genere par ce script
-        ancien.unlink()
+    # dossier entierement genere par ce script, mais synchronise par OneDrive qui verrouille des fichiers : on ne
+    # recopie que les PDF changes et on ne supprime qu'a la fin ceux qui ne sont plus publies (le 14/09, vider le
+    # dossier d'abord a laisse 51 PDF supprimes quand un verrou a arrete le script)
+    anciens = {f.name for f in dossier_public.glob("*.pdf")}
     documents, noms_pris, doc_par_sha = [], set(), {}
 
     def reserver(base):
@@ -354,11 +378,18 @@ def main():
             base = slugifier(Path(slug_url).stem)
             groupe = "entreprise" if "esg" in slug_url.lower() else "toiture-bardage"
         nom = reserver(base[:80]) + ".pdf"
-        shutil.copyfile(PDF_SOURCE / fichier_par_sha[sha], dossier_public / nom)
+        source, cible = PDF_SOURCE / fichier_par_sha[sha], dossier_public / nom
+        if not (cible.exists() and filecmp.cmp(source, cible, shallow=False)):
+            shutil.copyfile(source, cible)
         doc = {"fichier": f"/documents/{nom}", "titre": titre, "groupe": groupe,
                "tailleKo": int(l["taille_ko"] or 0), "produits": len({s for s, _ in lies})}
         doc_par_sha[sha] = doc
         documents.append(doc)
+    for perime in sorted(anciens - {Path(d["fichier"]).name for d in documents}):
+        try:
+            (dossier_public / perime).unlink()
+        except PermissionError:
+            print("PDF perime verrouille (OneDrive ?), a supprimer plus tard :", perime)
 
     ecarts = []
     for d in donnees.values():

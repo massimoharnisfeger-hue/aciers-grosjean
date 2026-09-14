@@ -11,7 +11,7 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - **Fers T, plats, larges plats, ronds, carrés, tubes** : série `serie-profils-tubes.json` (129 + 8 studio) en cours dans Blender (~15 images faites à 19 h ; ~3 min 30 par image).
 - **Tôles laminées à chaud et quarto** : série `serie-toles.json` (37 + 2) en file derrière (surveillance en arrière-plan).
 - **Armatures** : série `serie-armatures.json` (28 + 4) en file derrière les tôles. Avant intégration : retirer des pages les nuances B500B / B500A non sourcées (questions 10 et 11).
-- **Vague 2** : données faites pour les tôles à froid, galvanisées, Corten, alu, inox et les profilés/tubes alu et inox (77) ; pages inox corrigées (nuance sourcée). Matières corrigées après essai ; essai profilés alu/inox en cours (`essais/essai-alu-inox.json`). À faire : géométrie des tôles larmées (EN 10363 type T), striées (quintette) et perforées (R10 T15, R5 T8, C10 U15, aléatoire) ; pages de ces tôles : « Masse surfacique » et poids calculés par le générateur sans relief ni perforations (à corriger).
+- **Vague 2** : données faites pour les tôles planes (froid, galva, Corten, alu, inox), profilés/tubes alu et inox (77), tôles larmées et striées (15), tôles perforées (8) ; pages inox corrigées (nuance sourcée) ; « Masse surfacique » contredite retirée de 36 pages (`integrer.py`). Essais conformes : matières, profilés alu/inox, tôles à relief (loupe e / E). Série `serie-vague2.json` (121 + 18 studios) en file derrière les armatures. Essai perforées en cours ; ensuite série `serie-vague2b.json` (relief + perforées).
 
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.

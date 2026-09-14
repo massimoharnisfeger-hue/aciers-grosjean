@@ -19,6 +19,7 @@ import hashlib
 import json
 import math
 import os
+import random
 import sys
 import time
 
@@ -279,6 +280,335 @@ def fils_treillis(piece, dx, nom):
         obj.rotation_euler = (0, 0, math.radians(-90))
         obj.location = ((dx - Lx / 2) * MM, y * MM, 1.45 * d * MM)
         objs.append(obj)
+    return objs
+
+
+# ---------------------------------------------------------------- tôles à relief (larmées, striées)
+
+# formes du relief (mm) : larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90), pas mesuré sur la vraie
+# photo du site (groupe G038) ; quintette alu : 5 barrettes, proportions mesurées sur la photo du site (groupe G060).
+# Forme du rendu seulement : aucune de ces cotes n'est affichée.
+# `decalage_e` : distance entre le relief coupé par le chant et la pince de l'épaisseur de base, prise sur la tôle nue
+# (larme : hors de sa coupe de 14 mm ; quintette : milieu du plat entre la barrette centrale et sa voisine)
+MOTIFS_RELIEF = {
+    "LARMES": {"longueur": 30.0, "largeur": 10.0, "barrettes": 1, "ecart": 0.0, "pas": 35.0, "grille_45": False,
+               "decalage_e": 12.0},
+    "QUINTETTE": {"longueur": 40.0, "largeur": 3.5, "barrettes": 5, "ecart": 7.5, "pas": 44.0, "grille_45": True,
+                  "decalage_e": 5.3},
+}
+
+
+def champ_loupe(piece):
+    """Largeur du champ de la loupe (mm) : 10 épaisseurs, 30 mm au moins ; tôle à relief : 6 épaisseurs au sommet du
+    relief (essai du 14/09 : à 10, les pinces de 3 et 5 mm se distinguaient mal)."""
+    relief = piece.get("relief")
+    return max(6 * relief["e_total"], 30.0) if relief else max(10 * piece["h"], 30.0)
+
+
+def x_relief_coupe(piece):
+    """Abscisse (pièce centrée) du relief coupé par le chant avant, à droite de la pince de l'épaisseur de base."""
+    return -piece["b"] * 0.3 + MOTIFS_RELIEF[piece["relief"]["motif"]]["decalage_e"]
+
+
+def lentille(longueur, largeur, hauteur, dy=0.0, nu=16, nv=6):
+    """Élément de relief le long de x, centré en (0, dy), base à z = 0 : contour en fuseau, dos bombé à flancs raides,
+    fond plat. -> (sommets, faces) en mm ; les pointes (sommets confondus) sont fusionnées à la création du maillage."""
+    verts, faces = [], []
+    for i in range(nu + 1):
+        u = -1 + 2 * i / nu
+        demi = largeur / 2 * (1 - u * u)
+        for j in range(nv + 1):
+            v = -1 + 2 * j / nv
+            verts.append((u * longueur / 2, dy + v * demi, hauteur * (1 - v ** 4) * (1 - u * u) ** 0.35))
+
+    def k(i, j):
+        return i * (nv + 1) + j
+
+    faces = [(k(i, j), k(i + 1, j), k(i + 1, j + 1), k(i, j + 1)) for i in range(nu) for j in range(nv)]
+    faces.append(tuple(k(i, 0) for i in range(nu, -1, -1)) + tuple(k(i, nv) for i in range(1, nu)))  # fond
+    return verts, faces
+
+
+def element_relief(motif, hauteur):
+    """Larme seule ou groupe de barrettes parallèles (quintette), le long de x, centré à l'origine."""
+    m = MOTIFS_RELIEF[motif]
+    verts, faces = [], []
+    for n in range(m["barrettes"]):
+        v, f = lentille(m["longueur"], m["largeur"], hauteur, dy=(n - (m["barrettes"] - 1) / 2) * m["ecart"])
+        faces += [tuple(i + len(verts) for i in face) for face in f]
+        verts += v
+    return verts, faces
+
+
+def maillage(nom, verts, faces, rotation_z=0.0, position=(0.0, 0.0, 0.0), aretes_vives=False):
+    """Objet maillé à partir de sommets en mm, tourné autour de z (degrés) puis placé ; pointes fusionnées, normales
+    vers l'extérieur, lissé (`aretes_vives` : arêtes de plus de 30° gardées vives, pour les dalles percées)."""
+    c, s = math.cos(math.radians(rotation_z)), math.sin(math.radians(rotation_z))
+    me = bpy.data.meshes.new(nom)
+    me.from_pydata([((x * c - y * s + position[0]) * MM, (x * s + y * c + position[1]) * MM, (z + position[2]) * MM)
+                    for x, y, z in verts], [], faces)
+    bm = bmesh.new()
+    bm.from_mesh(me)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-6)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    if aretes_vives:
+        aretes_par_angle(bm)
+    bm.to_mesh(me)
+    bm.free()
+    if not aretes_vives:
+        for poly in me.polygons:
+            poly.use_smooth = True
+    obj = bpy.data.objects.new(nom, me)
+    bpy.context.collection.objects.link(obj)
+    return obj
+
+
+def relief_tole(piece, dx, nom):
+    """Relief d'une tôle larmée ou striée posé sur la face supérieure (z = épaisseur de base) : éléments en instances
+    (deux orientations à ±45°, en damier), entièrement dans la plaque, plus un élément réel coupé par le chant avant
+    à `x_relief_coupe` (épaisseur totale mesurée dans la loupe). -> objets à matérialiser."""
+    r = piece["relief"]
+    m = MOTIFS_RELIEF[r["motif"]]
+    b, L, e, hauteur = piece["b"], piece["longueur"], piece["h"], r["hauteur"]
+    z0 = e - 0.02  # base légèrement enfoncée dans la tôle : pas de jour sous le relief, sommet à e + hauteur
+    verts, faces = element_relief(r["motif"], hauteur + 0.02)
+    rayon = max(math.hypot(x, y) for x, y, _ in verts)
+    objs = []
+    # éléments en instances : un gabarit par orientation, enfant d'un nuage de points (instanciation par sommets)
+    pas, marge = m["pas"], rayon + 2.0
+    x_coupe = dx + x_relief_coupe(piece)
+    centres = {45: [], -45: []}
+    n = int(max(b, L) / pas) + 2
+    for i in range(-n, n + 1):
+        for j in range(-n, n + 1):
+            if m["grille_45"]:  # grille tournée de 45° : barrettes parallèles aux axes de la grille
+                u, v = (i - j) * pas / math.sqrt(2), (i + j) * pas / math.sqrt(2)
+            else:
+                u, v = i * pas, j * pas
+            x, y = dx + u, L / 2 + v
+            if not (dx - b / 2 + marge <= x <= dx + b / 2 - marge and marge <= y <= L - marge):
+                continue
+            if math.hypot(x - x_coupe, y) < 2 * rayon + 2:
+                continue  # place du relief coupé par le chant
+            centres[45 if (i + j) % 2 == 0 else -45].append((x, y, z0))
+    for angle, pts in centres.items():
+        if not pts:
+            continue
+        gabarit = maillage(f"{nom}-relief{angle}", verts, faces, rotation_z=angle)
+        me = bpy.data.meshes.new(f"{nom}-points{angle}")
+        me.from_pydata([(x * MM, y * MM, z * MM) for x, y, z in pts], [], [])
+        nuage = bpy.data.objects.new(f"{nom}-points{angle}", me)
+        bpy.context.collection.objects.link(nuage)
+        nuage.instance_type = "VERTS"
+        nuage.show_instancer_for_render = False
+        gabarit.parent = nuage
+        objs.append(gabarit)
+    # relief coupé par le chant avant (y = 0) : on garde y ≥ 0 et on ferme la face coupée (matière de coupe)
+    coupe = maillage(f"{nom}-relief-coupe", verts, faces, rotation_z=45, position=(x_coupe, 0.0, z0))
+    bm = bmesh.new()
+    bm.from_mesh(coupe.data)
+    res = bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], dist=1e-7,
+                                 plane_co=(0, 0, 0), plane_no=(0, -1, 0), clear_outer=True)
+    bords = [g for g in res["geom_cut"] if isinstance(g, bmesh.types.BMEdge)]
+    if bords:
+        bmesh.ops.holes_fill(bm, edges=bords, sides=0)
+    for f in bm.faces:
+        if all(abs(v.co.y) < 1e-6 for v in f.verts):
+            f.material_index = 1
+            f.smooth = False
+    bm.to_mesh(coupe.data)
+    bm.free()
+    objs.append(coupe)
+    return objs
+
+
+# ---------------------------------------------------------------- tôles perforées
+
+def dalle_percee(contour, trous, e):
+    """Dalle pleine d'épaisseur e (z de 0 à e) : contour (x, y) en mm moins des trous (contours fermés), dessus et
+    dessous triangulés, parois extérieures et parois des trous. -> (sommets, faces) en mm."""
+    from mathutils.geometry import tessellate_polygon
+    boucles = [contour] + list(trous)
+    plat = [pt for boucle in boucles for pt in boucle]
+    n = len(plat)
+    tris = tessellate_polygon([[Vector((x, y, 0.0)) for x, y in boucle] for boucle in boucles])
+    verts = [(x, y, e) for x, y in plat] + [(x, y, 0.0) for x, y in plat]
+    faces = [tuple(t) for t in tris] + [tuple(i + n for i in reversed(t)) for t in tris]
+    debut = 0
+    for boucle in boucles:
+        m = len(boucle)
+        faces += [(debut + k, debut + (k + 1) % m, debut + (k + 1) % m + n, debut + k + n) for k in range(m)]
+        debut += m
+    return verts, faces
+
+
+def cercle_xy(cx, cy, d, n):
+    return [(cx + d / 2 * math.cos(2 * math.pi * k / n), cy + d / 2 * math.sin(2 * math.pi * k / n)) for k in range(n)]
+
+
+def tuile_aleatoire(S, graine=7):
+    """Tuile carrée périodique de S mm à trous de diamètres variables placés au hasard (tirage fixe) : distances
+    mesurées sur un tore, un trou qui dépasse un bord se prolonge par une encoche sur le bord opposé, les tuiles
+    jointives ne montrent donc aucune couture (essai du 14/09 : tuile fermée de 250 mm vue en damier). Ligament
+    1,5 mm, un peu plus d'un tiers de vide. Le site ne donne ni diamètres ni taux de vide : forme du rendu
+    seulement, d'après la vraie photo (groupe G039). -> (contour à encoches, trous intérieurs, encoches du bord y = -S/2)"""
+    rnd = random.Random(graine)
+    diametres, ligament, case = (3.0, 4.0, 5.0, 6.0, 8.0, 10.0, 12.0), 1.5, 15.0
+    n = int(S // case)
+    trous, vide, grille = [], 0.0, {}
+
+    def torique(u):
+        return min(abs(u), S - abs(u))
+
+    for _ in range(60000):
+        if vide >= 0.36 * S * S:
+            break
+        d = rnd.choice(diametres)
+        x, y = rnd.uniform(-S / 2, S / 2), rnd.uniform(-S / 2, S / 2)
+        if abs(x) > S / 2 - d / 2 - ligament and abs(y) > S / 2 - d / 2 - ligament:
+            continue  # pas de trou sur un coin de tuile
+        cx, cy = int((x + S / 2) // case) % n, int((y + S / 2) // case) % n
+        voisins = [t for i in (-1, 0, 1) for j in (-1, 0, 1) for t in grille.get(((cx + i) % n, (cy + j) % n), [])]
+        if all(math.hypot(torique(x - a), torique(y - b_)) >= (d + dd) / 2 + ligament for a, b_, dd in voisins):
+            trous.append((x, y, d))
+            grille.setdefault((cx, cy), []).append((x, y, d))
+            vide += math.pi * d * d / 4
+    interieurs, cercles = [], []
+    for x, y, d in trous:
+        if abs(x) + d / 2 < S / 2 - 1e-3 and abs(y) + d / 2 < S / 2 - 1e-3:
+            interieurs.append(cercle_xy(x, y, d, 12 if d <= 5 else 18))
+        else:  # trou à cheval sur un bord : lui et ses images sur les bords opposés deviennent des encoches
+            cercles += [(x + i * S, y + j * S, d) for i in (-1, 0, 1) for j in (-1, 0, 1)]
+    h = S / 2
+    # bords parcourus dans le sens trigonométrique : (départ, direction), coordonnée le long du bord
+    bords = [((-h, -h), (1, 0)), ((h, -h), (0, 1)), ((h, h), (-1, 0)), ((-h, h), (0, -1))]
+    contour, encoches_bas = [], []
+    for (x0, y0), (ux, uy) in bords:
+        entailles = []
+        for cx, cy, d in cercles:
+            r = d / 2
+            dist = (cy - y0) if uy == 0 else (cx - x0)  # écart du centre à la droite du bord
+            if abs(dist) >= r - 1e-6:
+                continue
+            demi = math.sqrt(r * r - dist * dist)
+            s_c = (cx - x0) * ux + (cy - y0) * uy  # position du centre le long du bord
+            if s_c - demi <= 1e-6 or s_c + demi >= S - 1e-6:
+                continue
+            entailles.append((s_c - demi, s_c + demi, cx, cy, r))
+        contour.append((x0, y0))
+        for s0, s1, cx, cy, r in sorted(entailles):
+            p0, p1 = (x0 + ux * s0, y0 + uy * s0), (x0 + ux * s1, y0 + uy * s1)
+            t0, t1 = math.atan2(p0[1] - cy, p0[0] - cx), math.atan2(p1[1] - cy, p1[0] - cx)
+            if t1 >= t0:
+                t1 -= 2 * math.pi  # arc parcouru dans le sens horaire : le trou reste à droite du contour
+            pas_arc = max(3, int((t0 - t1) / (2 * math.pi) * 18))
+            contour += [(cx + r * math.cos(t0 + (t1 - t0) * k / pas_arc), cy + r * math.sin(t0 + (t1 - t0) * k / pas_arc))
+                        for k in range(pas_arc + 1)]
+            if uy == 0 and ux == 1:
+                encoches_bas.append((s0 - h, s1 - h))
+    return contour, interieurs, encoches_bas
+
+
+def aretes_par_angle(bm):
+    """Faces lisses, arêtes vives au-delà de 30° (comme `extruder`) ; faces du chant avant et arrière en matière de coupe."""
+    for f in bm.faces:
+        f.smooth = True
+    for ar in bm.edges:
+        ar.smooth = len(ar.link_faces) == 2 and ar.link_faces[0].normal.angle(ar.link_faces[1].normal, 0.0) < math.radians(30)
+
+
+def plaque_perforee(piece, dx, nom):
+    """Tôle perforée : cellules percées répétées (hexagones à trou rond pour la quinconce R/T, carrés à trou carré en
+    rangées droites C/U, tuiles aléatoires tournées), en instances à l'intérieur de la plaque ; cellules du bord coupées
+    aux dimensions exactes et réunies dans un seul maillage. Première rangée à trous entiers : chant avant plein
+    (épaisseur pincée dans la loupe). -> objets à matérialiser."""
+    perfo, e, b, L = piece["perforation"], piece["h"], piece["b"], piece["longueur"]
+    x_min, x_max = dx - b / 2, dx + b / 2
+    if perfo["forme"] == "RONDE":
+        T, d = perfo["pas"], perfo["cote"]
+        R = T / math.sqrt(3)  # hexagone pointe en haut : voisins à T sur la rangée et à 60°
+        contour = [(R * math.cos(math.radians(90 + 60 * k)), R * math.sin(math.radians(90 + 60 * k))) for k in range(6)]
+        trous = [cercle_xy(0.0, 0.0, d, 24)]
+        demi_x, demi_y, pas_x, pas_y, decale_impair, variantes = T / 2, R, T, T * math.sqrt(3) / 2, T / 2, [0]
+    elif perfo["forme"] == "CARREE":
+        U, c = perfo["pas"], perfo["cote"]
+        contour = [(-U / 2, -U / 2), (U / 2, -U / 2), (U / 2, U / 2), (-U / 2, U / 2)]
+        trous = [[(-c / 2, -c / 2), (-c / 2, c / 2), (c / 2, c / 2), (c / 2, -c / 2)]]
+        demi_x, demi_y, pas_x, pas_y, decale_impair, variantes = U / 2, U / 2, U, U, 0.0, [0]
+    else:  # ALEATOIRE : tuile périodique, sans rotation (les encoches des bords doivent se correspondre)
+        S = 500.0
+        contour, trous, encoches_bas = tuile_aleatoire(S)
+        demi_x, demi_y, pas_x, pas_y, decale_impair, variantes = S / 2, S / 2, S, S, 0.0, [0]
+        # chant avant entaillé par les trous : la pince de la loupe va sur le plein le plus proche de -0,3 b
+        cible = dx - b * 0.3
+        entailles = [(x_min + S / 2 + i * S + s0, x_min + S / 2 + i * S + s1)
+                     for i in range(int(b / S) + 1) for s0, s1 in encoches_bas]
+        for a0, a1 in entailles:
+            if a0 - 3 <= cible <= a1 + 3:
+                cible = a0 - 3 if cible - (a0 - 3) < (a1 + 3) - cible else a1 + 3
+        piece["x_loupe"] = cible - dx
+    verts, faces = dalle_percee(contour, trous, e)
+    tirage = random.Random(3)
+    interieurs, bords = {v: [] for v in variantes}, []
+    for j in range(-1, int(L / pas_y) + 2):
+        cy = pas_y / 2 + j * pas_y
+        for i in range(-2, int(b / pas_x) + 3):
+            cx = x_min + pas_x / 2 + i * pas_x + (decale_impair if j % 2 else 0.0)
+            if cx + demi_x <= x_min or cx - demi_x >= x_max or cy + demi_y <= 0 or cy - demi_y >= L:
+                continue
+            rot = tirage.choice(variantes)
+            if x_min - 1e-6 <= cx - demi_x and cx + demi_x <= x_max + 1e-6 and -1e-6 <= cy - demi_y and cy + demi_y <= L + 1e-6:
+                interieurs[rot].append((cx, cy, 0.0))
+            else:
+                bords.append((cx, cy, rot))
+    objs = []
+    for rot, pts in interieurs.items():
+        if not pts:
+            continue
+        gabarit = maillage(f"{nom}-cellule{rot}", verts, faces, rotation_z=rot, aretes_vives=True)
+        me = bpy.data.meshes.new(f"{nom}-cellules{rot}")
+        me.from_pydata([(x * MM, y * MM, z * MM) for x, y, z in pts], [], [])
+        nuage = bpy.data.objects.new(f"{nom}-cellules{rot}", me)
+        bpy.context.collection.objects.link(nuage)
+        nuage.instance_type = "VERTS"
+        nuage.show_instancer_for_render = False
+        gabarit.parent = nuage
+        objs.append(gabarit)
+    # cellules du bord : coupées par les plans de la plaque (on garde l'intérieur) puis refermées
+    plans = (((x_min, 0, 0), (-1, 0, 0)), ((x_max, 0, 0), (1, 0, 0)), ((0, 0, 0), (0, -1, 0)), ((0, L, 0), (0, 1, 0)))
+    bm_bord = bmesh.new()
+    for cx, cy, rot in bords:
+        bm = bmesh.new()
+        c, s = math.cos(math.radians(rot)), math.sin(math.radians(rot))
+        vs = [bm.verts.new((x * c - y * s + cx, x * s + y * c + cy, z)) for x, y, z in verts]
+        for face in faces:
+            bm.faces.new([vs[k] for k in face])
+        for co, no in plans:
+            valeurs = [(v.co.x - co[0]) * no[0] + (v.co.y - co[1]) * no[1] for v in bm.verts]
+            if not valeurs or max(valeurs) <= 1e-6:
+                continue  # cellule entièrement du bon côté de ce plan
+            res = bmesh.ops.bisect_plane(bm, geom=bm.verts[:] + bm.edges[:] + bm.faces[:], dist=1e-6,
+                                         plane_co=co, plane_no=no, clear_outer=True)
+            coupe = [g for g in res["geom_cut"] if isinstance(g, bmesh.types.BMEdge) and g.is_valid]
+            if coupe:
+                bmesh.ops.holes_fill(bm, edges=coupe, sides=0)
+        if bm.faces:
+            bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+            tmp = bpy.data.meshes.new("tmp")
+            bm.to_mesh(tmp)
+            bm_bord.from_mesh(tmp)
+            bpy.data.meshes.remove(tmp)
+        bm.free()
+    for f in bm_bord.faces:  # chant avant et arrière : matière de coupe, comme les tôles pleines
+        f.material_index = 1 if all(abs(v.co.y) < 1e-4 or abs(v.co.y - L) < 1e-4 for v in f.verts) else 0
+    aretes_par_angle(bm_bord)
+    bmesh.ops.scale(bm_bord, vec=(MM, MM, MM), verts=bm_bord.verts)
+    me = bpy.data.meshes.new(f"{nom}-bord")
+    bm_bord.to_mesh(me)
+    bm_bord.free()
+    obj = bpy.data.objects.new(f"{nom}-bord", me)
+    bpy.context.collection.objects.link(obj)
+    objs.append(obj)
     return objs
 
 
@@ -613,10 +943,14 @@ def rendre(p):
         dx = x + piece["b"] / 2
         if piece["type"] == "TREILLIS":
             objs = fils_treillis(piece, dx, f"{p['slug']}-{i}")
+        elif piece.get("perforation"):  # tôle perforée : cellules percées au lieu d'une plaque pleine
+            objs = plaque_perforee(piece, dx, f"{p['slug']}-{i}")
         else:
             objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)]
             if piece["type"] == "ROND-BETON":
                 objs += nervures_barre(piece["h"], L, dx, f"{p['slug']}-{i}")
+            if piece.get("relief"):  # tôle larmée ou striée
+                objs += relief_tole(piece, dx, f"{p['slug']}-{i}")
         for obj in objs:
             obj.data.materials.append(mat_surface)
             if obj.type == "MESH":
@@ -625,8 +959,8 @@ def rendre(p):
                       for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
         x += piece["b"]
     centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
-    for obj in [o for o in bpy.data.objects if o.type in ("MESH", "CURVE")]:
-        obj.location.x -= centre_x
+    for obj in [o for o in bpy.data.objects if o.type in ("MESH", "CURVE") and o.parent is None]:
+        obj.location.x -= centre_x  # les gabarits du relief suivent leur nuage de points
     boite_pts = [(q[0] - centre_x, q[1], q[2]) for q in boite_pts]
 
     # sol attrape-ombre
@@ -727,7 +1061,9 @@ def rendre(p):
             return [round(q.x * taille[0], 2), round((1 - q.y) * taille[1], 2)]
 
         e, L = h, L0
-        x_loupe = -b * 0.3  # point du chant avant montré dans la loupe, côté gauche où la loupe se place
+        # point du chant avant montré dans la loupe, côté gauche où la loupe se place (tôle perforée aléatoire :
+        # déplacé sur le plein le plus proche par plaque_perforee)
+        x_loupe = piece.get("x_loupe", -b * 0.3)
         points = {
             "cote_b_gauche": ecran(-b / 2, -off, 0), "cote_b_droit": ecran(b / 2, -off, 0),
             "rappel_b_gauche_debut": ecran(-b / 2, -4, 0), "rappel_b_gauche_fin": ecran(-b / 2, -off * 1.2, 0),
@@ -741,14 +1077,17 @@ def rendre(p):
             "loupe_ancres": [ecran(-b * k, 0, e) for k in (0.47, 0.42, 0.36, 0.3)],
         }
         # loupe : gros plan sur le chant avant, même orientation, champ de 10 épaisseurs (30 mm au moins) ;
-        # la caméra passe à quelques centimètres de la pièce : découpe proche abaissée à 1 mm
+        # la caméra passe à quelques centimètres de la pièce : découpe proche abaissée à 1 mm.
+        # Tôle à relief : champ sur l'épaisseur au sommet du relief, centré entre l'épaisseur de base et le relief coupé
         T = p.get("taille_loupe", 700)
+        relief = piece.get("relief")
         az_l, el_l = math.radians(20), math.radians(p.get("elevation_loupe", 14))
         dir_l = Vector((math.sin(az_l) * math.cos(el_l), -math.cos(az_l) * math.cos(el_l), math.sin(el_l)))
-        cible_l = Vector((x_loupe * MM, 0, e / 2 * MM))
+        x_centre = (x_loupe + x_relief_coupe(piece)) / 2 if relief else x_loupe
+        cible_l = Vector((x_centre * MM, 0, (relief["e_total"] if relief else e) / 2 * MM))
         cam.data.clip_start = 0.001
         cam.data.shift_x = cam.data.shift_y = 0.0
-        cam.location = cible_l + dir_l * (max(10 * e, 30.0) * MM * cam.data.lens / cam.data.sensor_width)
+        cam.location = cible_l + dir_l * (champ_loupe(piece) * MM * cam.data.lens / cam.data.sensor_width)
         cam.rotation_euler = (-dir_l).to_track_quat("-Z", "Y").to_euler()
         scene.render.resolution_x = scene.render.resolution_y = T
         scene.cycles.samples = min(p.get("samples", 64), 24)
@@ -757,6 +1096,9 @@ def rendre(p):
         calculer_image(p)
         points["loupe_haut"] = ecran(x_loupe, 0, e, (T, T))
         points["loupe_bas"] = ecran(x_loupe, 0, 0, (T, T))
+        if relief:  # épaisseur totale au sommet du relief coupé par le chant
+            points["loupe_relief_haut"] = ecran(x_relief_coupe(piece), 0, relief["e_total"], (T, T))
+            points["loupe_relief_bas"] = ecran(x_relief_coupe(piece), 0, 0, (T, T))
         ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "loupe": T, "points": points})
     elif mode == "caracteristiques" and typ == "TREILLIS":
         W, H = scene.render.resolution_x, scene.render.resolution_y

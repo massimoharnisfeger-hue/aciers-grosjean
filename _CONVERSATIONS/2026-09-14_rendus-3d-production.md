@@ -42,3 +42,5 @@ Règle : aucune valeur supposée affichée ; en cas de doute, demander.
 - Constat : « 304 (1.4301) — brossé grain 320 » sur les 43 fiches inox venait du générateur. Descriptions du site : 304 (plats, tubes, cornières), 304L (ronds pleins), 304 et 304L (tôles GR320), finition « brut ou brossé ». Pages corrigées ; questions 16 à 18 en attente.
 - Vague 2 : données tôles et profilés alu/inox faites ; matières des tôles corrigées après essai ; tôles larmées, striées et perforées : références et dimensions de motif relevées (EN 10363 type T : larme ≈ 30 × 10 mm, relief 1 à 2 mm ; quintette alu d'après la photo du site), géométrie à faire.
 - Reste : séries profils/tubes, tôles et armatures en cours dans Blender ; vague 2 (larmées, striées, perforées, alu, inox) ; vague 3 ; visserie.
+- Tôles larmées, striées et perforées : géométrie (relief en instances, cellules percées, tuile aléatoire périodique), loupe e / E, essais conformes ; séries en file (139 puis 26 visuels).
+- Pages : masse surfacique contredite retirée de 36 fiches (`integrer.py`) ; incident OneDrive sur `public/documents/` (51 PDF supprimés puis restaurés) et script corrigé.

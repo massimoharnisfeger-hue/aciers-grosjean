@@ -41,6 +41,13 @@ def piece(p, longueur, ratio):
         out = {"type": "TUBE-ROND", "h": v["d"], "b": v["d"], "t": v["t"]}
     elif serie == "TOLE":  # plaque à plat : largeur × épaisseur, extrudée sur toute la longueur du format
         return {"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"]}, v.get("finition", "BRUT")
+    elif serie == "TOLE-PERFOREE":  # perforation : forme, cote et pas du code du nom (R/T, C/U) ou motif aléatoire
+        return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"], "perforation": v["perforation"]},
+                v.get("finition", "BRUT"))
+    elif serie == "TOLE-RELIEF":  # tôle larmée ou striée : tôle de base + relief jusqu'à l'épaisseur totale
+        return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"],
+                 "relief": {"motif": v["motif"], "hauteur": round(v["e_total"] - v["e"], 3), "e_total": v["e_total"]}},
+                v.get("finition", "BRUT"))
     elif serie == "ROND-BETON":
         out = {"type": "ROND-BETON", "h": v["d"], "b": v["d"]}
     elif serie == "TREILLIS":  # portion de 3 × 4 mailles, débord d'une demi-maille (le panneau entier : dans la fiche)

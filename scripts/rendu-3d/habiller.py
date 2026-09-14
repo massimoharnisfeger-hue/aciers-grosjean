@@ -188,8 +188,9 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
     D, r = DIAMETRE_LOUPE, DIAMETRE_LOUPE / 2
     alpha = image_brute.split()[3].point(lambda v: 255 if v >= 250 else 0)
     zones = [(c[0] - 95, c[1] - 30, c[0] + 95, c[1] + 30) for c, *_ in PASTILLES]
-    # loupe dans la colonne de gauche laissée libre au cadrage, étiquette e dessous
-    candidats = [(r + 30, y) for y in (H * 0.30, H * 0.40, H * 0.50, H * 0.60) if y + r + 80 < H - 60]
+    # loupe dans la colonne de gauche laissée libre au cadrage, étiquette e dessous (et E du relief sous e)
+    relief = "loupe_relief_haut" in P
+    candidats = [(r + 30, y) for y in (H * 0.30, H * 0.40, H * 0.50, H * 0.60) if y + r + (134 if relief else 80) < H - 60]
     ancres = P.get("loupe_ancres") or [P["loupe_ancre"]]
 
     def dans_zone(x, y):
@@ -232,11 +233,32 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
     fleche(bas, decale(bas, 0, 34), ENCRE)
     fleches_pince.append(("e", haut[0] - 7, haut[1] - 34, haut[0] + 7, haut[1]))
     fleches_pince.append(("e", bas[0] - 7, bas[1], bas[0] + 7, bas[1] + 34))
-    PASTILLES.append(((cx, cy + r + 42), "e", affichable(p, "e"), "e"))
+    if not relief:
+        PASTILLES.append(((cx, cy + r + 42), "e", affichable(p, "e"), "e"))
+        return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
+    # tôle à relief : épaisseur totale pincée sur le relief coupé, à droite ; étiquettes sous chaque pince
+    haut_r, bas_r = dans_loupe(P["loupe_relief_haut"]), dans_loupe(P["loupe_relief_bas"])
+    ligne(decale(haut_r, 0, -34), haut_r, ENCRE)
+    fleche(haut_r, decale(haut_r, 0, -34), ENCRE)
+    ligne(decale(bas_r, 0, 34), bas_r, ENCRE)
+    fleche(bas_r, decale(bas_r, 0, 34), ENCRE)
+    fleches_pince.append(("E", haut_r[0] - 7, haut_r[1] - 34, haut_r[0] + 7, haut_r[1]))
+    fleches_pince.append(("E", bas_r[0] - 7, bas_r[1], bas_r[0] + 7, bas_r[1] + 34))
+    PASTILLES.append(((max(cx - r + 60, haut[0]), cy + r + 42), "e", affichable(p, "e"), "e"))
+    PASTILLES.append(((min(cx + r - 20, haut_r[0]), cy + r + 96), "E", affichable(p, "e_total"), "e_total"))
     return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
 
 
 def cotes_du_type(typ, p):
+    if p["valeurs"].get("serie", {}).get("valeur") == "TOLE-PERFOREE":  # perforation écrite dans la fiche, sans lettre
+        ronde = p["valeurs"]["perforation"]["valeur"].get("forme") == "RONDE"
+        return (("L", "L"), ("l", "l"), None, None,
+                [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur", "e", "e"), ("Trous", "", "trous"),
+                 ("Entraxe" if ronde else "Pas", "", "entraxe")])
+    if p["valeurs"].get("serie", {}).get("valeur") == "TOLE-RELIEF":  # « 3/5 mm » : base e, sommet du relief E
+        return (("L", "L"), ("l", "l"), None, None,
+                [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur de base", "e", "e"),
+                 ("Épaisseur au relief", "E", "e_total")])
     if p["valeurs"].get("serie", {}).get("valeur") == "U-ALU":  # U alu filé : une seule épaisseur
         return (("h", "h"), ("b", "b"), ("t", "tw"), None,
                 [("Hauteur", "h", "h"), ("Largeur d'aile", "b", "b"), ("Épaisseur", "t", "tw")])

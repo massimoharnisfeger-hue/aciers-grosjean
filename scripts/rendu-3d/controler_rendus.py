@@ -38,8 +38,10 @@ PAGE = {"Hauteur (h)": ["h"], "Largeur d'aile (b)": ["b"], "Épaisseur d'âme (t
         "Diamètre extérieur": ["d"], "Surface": ["surface"], "Nuance": ["nuance"], "Norme": ["norme"]}
 PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"], "Épaisseur": ["e"]},
                   "TREILLIS": {"Maille": ["maille"], "Fil": ["d"], "Panneau": ["format"]},
-                  "U-ALU": {"Section": ["b", "h", "b"], "Épaisseur": ["tw"]}}
-COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "nuance", "norme"}
+                  "U-ALU": {"Section": ["b", "h", "b"], "Épaisseur": ["tw"]},
+                  "TOLE-RELIEF": {"Format": ["L", "l"], "Épaisseur": ["e", "e_total"]},
+                  "TOLE-PERFOREE": {"Format": ["L", "l"], "Épaisseur": ["e"]}}
+COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "e_total", "nuance", "norme"}
 
 
 def nombre(texte):

@@ -9111,6 +9111,57 @@
   },
   "alertes": []
  },
+ "tole-de-2000x1000x3-5mm-en-acier-larmee": {
+  "nom": "Tôle de 2000x1000x3/5mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 53.26,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tole-de-2000x1000x3mm-en-acier-galvanisee": {
   "nom": "Tôle de 2000x1000x3mm en acier galvanisée",
   "categorie": "/acier/toles/tole-galvanisee",
@@ -9265,6 +9316,57 @@
    "finition": {
     "valeur": "CORTEN",
     "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x5-7mm-en-acier-larmee": {
+  "nom": "Tôle de 2000x1000x5/7mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 86.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -9777,6 +9879,57 @@
   },
   "alertes": []
  },
+ "tole-de-2500x1250x3-5mm-en-acier-larmee": {
+  "nom": "Tôle de 2500x1250x3/5mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 83.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tole-de-2500x1250x3mm-en-acier-galvanisee": {
   "nom": "Tôle de 2500x1250x3mm en acier galvanisée",
   "categorie": "/acier/toles/tole-galvanisee",
@@ -9931,6 +10084,57 @@
    "finition": {
     "valeur": "CORTEN",
     "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x5-7mm-en-acier-larmee": {
+  "nom": "Tôle de 2500x1250x5/7mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 134.43,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -10348,6 +10552,57 @@
   },
   "alertes": []
  },
+ "tole-de-3000x1500x3-5mm-en-acier-larmee": {
+  "nom": "Tôle de 3000x1500x3/5mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 119.83,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tole-de-3000x1500x3mm-en-acier-galvanisee": {
   "nom": "Tôle de 3000x1500x3mm en acier galvanisée",
   "categorie": "/acier/toles/tole-galvanisee",
@@ -10502,6 +10757,57 @@
    "finition": {
     "valeur": "CORTEN",
     "source": "catégorie « /acier/toles/tole-corten » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x5-7mm-en-acier-larmee": {
+  "nom": "Tôle de 3000x1500x5/7mm en acier larmée",
+  "categorie": "/acier/toles/tole-larmee",
+  "famille": "tole-larmee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 193.57,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "motif": {
+    "valeur": "LARMES",
+    "source": "vraie photo du site actuel (groupe G038) ; larme EN 10363 type T ≈ 30 × 10 mm (catalogue ArcelorMittal A90) — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "catégorie « /acier/toles/tole-larmee » — matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -11574,6 +11880,846 @@
    "finition": {
     "valeur": "BRUT",
     "source": "catégorie « /acier/toles/tole-laminee-a-chaud » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2000x1000x2-5-4mm-en-aluminium": {
+  "nom": "Tôle striée de 2000x1000x2,5/4mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 4.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 15.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2000x1000x3-5-5mm-en-aluminium": {
+  "nom": "Tôle striée de 2000x1000x3,5/5mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 21.3,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2000x1000x5-7mm-en-aluminium": {
+  "nom": "Tôle striée de 2000x1000x5/7mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 30.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2500x1250x2-5-4mm-en-aluminium": {
+  "nom": "Tôle striée de 2500x1250x2,5/4mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 4.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 23.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2500x1250x3-5-5mm-en-aluminium": {
+  "nom": "Tôle striée de 2500x1250x3,5/5mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 33.28,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-2500x1250x5-7mm-en-aluminium": {
+  "nom": "Tôle striée de 2500x1250x5/7mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 46.88,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-3000x1500x2-5-4mm-en-aluminium": {
+  "nom": "Tôle striée de 3000x1500x2,5/4mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 4.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 33.75,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-3000x1500x3-5-5mm-en-aluminium": {
+  "nom": "Tôle striée de 3000x1500x3,5/5mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.5,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 47.93,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-striee-de-3000x1500x5-7mm-en-aluminium": {
+  "nom": "Tôle striée de 3000x1500x5/7mm en aluminium",
+  "categorie": "/aluminium/toles/tole-striee",
+  "famille": "tole-aluminium-striee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-RELIEF",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit (épaisseur de la tôle de base)",
+    "unite": "mm"
+   },
+   "e_total": {
+    "valeur": 7.0,
+    "source": "nom du produit (épaisseur au sommet du relief)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 67.5,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "motif": {
+    "valeur": "QUINTETTE",
+    "source": "vraie photo du site actuel (groupe G060) et description (« motif de 5 larmes (quintet) ») — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "ALU",
+    "source": "catégorie « /aluminium/toles/tole-striee » — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-aleatoire-2000-x-1000-x-1": {
+  "nom": "TOLES PERFOREES - aléatoire 2000 x 1000 x 1",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 1.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "ALEATOIRE"
+    },
+    "source": "nom du produit — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "aléatoires, diamètres variables",
+    "source": "site actuel — description de la fiche (« diamètres variables et disposition irrégulière »)"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-0-r5-t8": {
+  "nom": "TOLES PERFOREES GALVA - trous ronds - 2000 x 1000 x 2,0 - R5 T8",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 5.0,
+     "pas": 8.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R5 T8) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 5 mm",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "entraxe": {
+    "valeur": "8 mm en quinconce",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-galva-trous-ronds-2000-x-1000-x-2-r10-t15": {
+  "nom": "TOLES PERFOREES GALVA - trous ronds - 2000 x 1000 x 2 - R10 T15",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 10.0,
+     "pas": 15.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R10 T15) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 10 mm",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "entraxe": {
+    "valeur": "15 mm en quinconce",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-trous-carres-2000-x-1000-x-2-0-c10-u15": {
+  "nom": "TOLES PERFOREES - trous carrés - 2000 x 1000 x 2,0 - C10 U15",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "CARREE",
+     "cote": 10.0,
+     "pas": 15.0,
+     "disposition": "LIGNE"
+    },
+    "source": "nom du produit (code C10 U15) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "carrés 10 × 10 mm",
+    "source": "nom du produit (code C10 U15) et description"
+   },
+   "entraxe": {
+    "valeur": "15 mm en rangées droites",
+    "source": "nom du produit (code C10 U15) et description"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-trous-ronds-2000-x-1000-x-2-0-r10-t15": {
+  "nom": "TOLES PERFOREES - trous ronds - 2000 x 1000 x 2,0 - R10 T15",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 10.0,
+     "pas": 15.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R10 T15) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 10 mm",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "entraxe": {
+    "valeur": "15 mm en quinconce",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-trous-ronds-2000-x-1000-x-2-r5-t8": {
+  "nom": "TOLES PERFOREES - trous ronds - 2000 x 1000 x 2 - R5 T8",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 5.0,
+     "pas": 8.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R5 T8) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 5 mm",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "entraxe": {
+    "valeur": "8 mm en quinconce",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r10-t15": {
+  "nom": "TOLES PERFOREES - trous ronds - 2000 x 1000 x 3,0 - R10 T15",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 10.0,
+     "pas": 15.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R10 T15) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 10 mm",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "entraxe": {
+    "valeur": "15 mm en quinconce",
+    "source": "nom du produit (code R10 T15) et description"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "toles-perforees-trous-ronds-2000-x-1000-x-3-0-r5-t8": {
+  "nom": "TOLES PERFOREES - trous ronds - 2000 x 1000 x 3,0 - R5 T8",
+  "categorie": "/acier/toles/tole-perforee",
+  "famille": "tole-perforee",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE-PERFOREE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "perforation": {
+    "valeur": {
+     "forme": "RONDE",
+     "cote": 5.0,
+     "pas": 8.0,
+     "disposition": "QUINCONCE"
+    },
+    "source": "nom du produit (code R5 T8) et description — géométrie du rendu",
+    "supposee": true
+   },
+   "trous": {
+    "valeur": "ronds Ø 5 mm",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "entraxe": {
+    "valeur": "8 mm en quinconce",
+    "source": "nom du produit (code R5 T8) et description"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "nom du produit / description (acier brut ou galvanisé) — matière du rendu, non affichée",
     "supposee": true
    }
   },
