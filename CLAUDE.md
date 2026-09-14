@@ -39,6 +39,10 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
 - **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
 - **Seul motif d'arrêt :** une donnée à afficher manque ou se contredit. Demander, ne jamais inventer.
 - **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` ; chaque itération reprend là où la précédente s'est arrêtée. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
+- **Rangement et noms des images (obligatoire) :**
+  - Atelier (`%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\`) : essais, comparaisons et brouillons dans `essais/`, jamais dans `final/`. `final/` ne contient que les rendus de production.
+  - Sur le site, après la vérification « CONFORME » : `public/images/produits/<univers>/<catégorie>/`, calqué sur l'adresse de la catégorie (ex. `public/images/produits/acier/poutrelles/ipe/`). Dans chaque dossier : `<slug>-caracteristiques.webp` (une par fiche) et `studio-<famille>.webp` (une par catégorie). Les photos de mise en situation du propriétaire, déposées dans `_DEPOT/images/situation/<catégorie>/`, y entrent sous `situation-<famille>.webp`.
+  - Inventaire : `_DOCS/rendus-3d/inventaire-visuels.csv` (slug, catégorie, fichier, type, verdict, date), mis à jour à chaque intégration.
 - **Carnet de leçons (obligatoire) :** lire `_DOCS/rendus-3d/lecons.md` au début de **chaque** itération, avant de toucher au code. Le compléter après chaque famille et après chaque correction du propriétaire, en suivant les règles d'écriture en tête du fichier.
   - Un réglage validé (matière, lumière, cadrage, échantillons) devient un préréglage réutilisable dans le code : ne pas le re-régler pour la famille suivante.
   - Un défaut vu deux fois devient un contrôle automatique qui tourne sur toutes les images, sans inspection manuelle.
