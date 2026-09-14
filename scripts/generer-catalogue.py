@@ -253,6 +253,22 @@ def diametre_de(nom):
     return f(m.group(1)) if m else None
 
 
+# Noms faux sur le site actuel, corriges avec le proprietaire (14/09/2026). Le slug (adresse de la page) ne change pas ;
+# scripts/inventaire/integrer.py retrouve le produit du site actuel par son ancien nom (NOMS_SITE_ACTUEL).
+NOMS_CORRIGES = {
+    # « VERT RAL 7016 » : le RAL 7016 est un gris anthracite (pastille de la photo du site) ; le vert de la serie est le RAL 6005
+    "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - GRIS RAL 7016",
+}
+
+# Nuance et norme des poutrelles : celles des descriptions du site actuel, telles quelles (decision du
+# proprietaire, 14/09/2026). HEA : aucune nuance publiee, question en attente (_DOCS/rendus-3d/questions-en-attente.md).
+NUANCES_POUTRELLES = {
+    "IPE": [("Nuance", "S275"), ("Norme", "EN 10025")],
+    "HEB": [("Nuance", "S275/S355")],
+    "UPN": [("Nuance", "S235 ou S275")],
+}
+
+
 def poids_et_specs(cat_path, nom, densite):
     """Retourne (kg, unite_poids, unite_vente, unite_courte, [specs])."""
     d = dims_de(nom)
@@ -266,14 +282,16 @@ def poids_et_specs(cat_path, nom, densite):
         t = PROFILS.get(serie, {}).get(h)
         if t:
             hh, b, tw, tf, kg = t
-            specs = [("Hauteur (h)", f"{hh:g} mm"), ("Largeur d'aile (b)", f"{b:g} mm"),
-                     ("Épaisseur d'âme (tw)", f"{tw:g} mm".replace(".", ",")),
-                     ("Épaisseur d'aile (tf)", f"{tf:g} mm".replace(".", ",")),
-                     ("Nuance", "S235JR — EN 10025-2"), ("Procédé", "Laminé à chaud"),
-                     ("Longueur standard", "6 m ou 12 m — découpe aux cotes")]
+            specs = ([("Hauteur (h)", f"{hh:g} mm"), ("Largeur d'aile (b)", f"{b:g} mm"),
+                      ("Épaisseur d'âme (tw)", f"{tw:g} mm".replace(".", ",")),
+                      ("Épaisseur d'aile (tf)", f"{tf:g} mm".replace(".", ","))]
+                     + NUANCES_POUTRELLES.get(serie, [])
+                     # longueurs standard : celles du site actuel (fusion en bas de catalogue.ts) ; au-dela, sans
+                     # chiffre, les textes du site disant « jusqu'a 15 m » ou « 3 a 12 m »
+                     + [("Procédé", "Laminé à chaud"), ("Longueurs supérieures", "Sur demande")])
             return kg, "kg/m", "au mètre", "€/m", specs
         return None, "", "au mètre", "€/m", [("Série", serie), ("Hauteur", f"{h} mm"),
-                                             ("Nuance", "S235JR"), ("Disponibilité", "Sur commande")]
+                                             ("Disponibilité", "Sur commande")]
 
     # --- tôles vendues à la plaque : L x l x e ---
     if "tole" in seg or "tôle" in nom.lower()[:6] or seg.startswith("tole"):
@@ -623,7 +641,7 @@ for chemin, lst in sorted(groupes.items()):
         if slug in vus:
             continue
         vus.add(slug)
-        nom = r["H1_ou_nom"] or r["Page"]
+        nom = NOMS_CORRIGES.get(slug, r["H1_ou_nom"] or r["Page"])
         kg, up, unite, uc, specs = poids_et_specs(chemin, nom, dens)
         prix = prix_de(chemin, kg, unite)
         sp = list(specs)

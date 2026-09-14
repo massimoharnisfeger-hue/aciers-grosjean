@@ -353,21 +353,23 @@ def rendre(p):
     mat_surface = MATIERES.get(finition, materiau_calamine)()
     mat_coupe = materiau_coupe()
 
-    # pièces côte à côte (studio), la plus grande à gauche ; espacement proportionnel
-    ecart = max(q["b"] for q in pieces) * 0.55
+    # pièces côte à côte (studio) : la plus haute à gauche, extrémités alignées. La caméra, à droite, voit chaque
+    # pièce par-dessus sa voisine de droite : un écart d'environ sa hauteur évite qu'elle cache la précédente.
+    if len(pieces) > 1:
+        pieces.sort(key=lambda q: -q["h"])
     x = 0.0
     boite_pts = []
     for i, piece in enumerate(pieces):
         L = piece.get("longueur", p.get("longueur", 500))
+        if i:
+            x += p.get("ecart_studio", 0.9) * piece["h"]
         dx = x + piece["b"] / 2
         obj = extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)
         obj.data.materials.append(mat_surface)
         obj.data.materials.append(mat_coupe)
-        # recul en profondeur des pièces suivantes : elles ne se masquent pas
-        obj.location.y = i * piece["b"] * 0.9 * MM
-        boite_pts += [((dx + sx * piece["b"] / 2) * MM, obj.location.y + y * MM, z * MM)
+        boite_pts += [((dx + sx * piece["b"] / 2) * MM, y * MM, z * MM)
                       for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
-        x += piece["b"] + ecart
+        x += piece["b"]
     centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
     for obj in [o for o in bpy.data.objects if o.type == "MESH"]:
         obj.location.x -= centre_x
@@ -474,6 +476,11 @@ def rendre(p):
         }
         with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
             json.dump({"largeur": W, "hauteur": H, "type": piece["type"], "points": points,
+                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+    else:  # composition de la photo studio, reprise dans le texte alternatif sur le site
+        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
+            json.dump({"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y, "mode": "studio",
+                       "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"]} for q in pieces],
                        "duree_s": round(time.time() - t0, 1)}, f, indent=2)
     print(f"RENDU OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
 

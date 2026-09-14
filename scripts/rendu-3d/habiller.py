@@ -3,6 +3,7 @@ Habillage 2D des rendus Blender.
 
   python scripts/rendu-3d/habiller.py <slug>            visuel caracteristiques : cotes + fiche technique
   python scripts/rendu-3d/habiller.py --studio <nom>    photo studio : fond blanc pur, ombre douce
+  --essai (avant les arguments) : lit et ecrit dans rendu3d/essais/ au lieu de rendu3d/final/
 
 Lit    %LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/final/<slug>.png et <slug>.json (rendu_profil.py)
        scripts/rendu-3d/donnees/produits.json : seules les valeurs sourcees (non « supposees ») s'affichent
@@ -153,13 +154,11 @@ def enregistrer(image, base):
 
 # ---------------------------------------------------------------- compositions
 
-def studio(nom):
-    dossier = os.path.join(TRAVAIL, "final")
+def studio(nom, dossier):
     enregistrer(rendu_sur_blanc(os.path.join(dossier, nom + ".png")), os.path.join(dossier, nom + "-studio"))
 
 
-def caracteristiques(slug):
-    dossier = os.path.join(TRAVAIL, "final")
+def caracteristiques(slug, dossier):
     image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"))
     with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:
         geo = json.load(f)
@@ -274,11 +273,20 @@ def caracteristiques(slug):
     calque = calque.resize((W, H), Image.LANCZOS)
     image = Image.alpha_composite(image, calque)
     enregistrer(image, os.path.join(dossier, slug + "-caracteristiques"))
+    # textes réellement écrits et contrôles, relus par controler_rendus.py
+    with open(os.path.join(dossier, slug + "-caracteristiques.controles.json"), "w", encoding="utf-8") as f:
+        json.dump({"surtitre": surtitre, "titre": titre, "fiche": {label: valeur for label, _, valeur in lignes},
+                   "pastilles": [[lettre, valeur] for _, lettre, valeur in PASTILLES], "problemes": problemes},
+                  f, ensure_ascii=False, indent=1)
     print("CONTROLES :", "; ".join(problemes) if problemes else "aucun problème")
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == "--studio":
-        studio(sys.argv[2])
+    args = sys.argv[1:]
+    # --essai : rendus d'essai (rendu3d/essais/), jamais melanges a la production (rendu3d/final/)
+    dossier = os.path.join(TRAVAIL, "essais" if "--essai" in args else "final")
+    args = [a for a in args if a != "--essai"]
+    if args[0] == "--studio":
+        studio(args[1], dossier)
     else:
-        caracteristiques(sys.argv[1])
+        caracteristiques(args[0], dossier)

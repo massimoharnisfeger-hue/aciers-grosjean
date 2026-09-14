@@ -4,9 +4,11 @@ Mis à jour le 14/09/2026 (séance https://claude.ai/code/session_011Va2LRc8Chev
 Règles : `CLAUDE.md` (section Visuels 3D) et `_DOCS/rendus-3d/lecons.md`. Brief : `_DOCS/BRIEF-RENDUS-3D.md`.
 
 ## Où on en est
-- **Poutrelles : en attente du propriétaire.** Rendu test envoyé le 14/09 ; il a demandé à le voir avant d'aller plus loin. Questions 1 à 4 ci-dessous. Le rendu en série peut précéder les réponses (l'habillage se refait en quelques secondes), l'intégration non.
-- Famille suivante non bloquée, dans l'ordre du brief : cornières (vague 1).
+- **Mode automatique (CLAUDE.md)** : les familles s'enchaînent, le propriétaire est informé sans attente ; s'il répond, appliquer ses corrections avant d'aller plus loin.
+- **Poutrelles : série lancée le 14/09** (`serie-poutrelles.json`, 45 caractéristiques + 4 studio une barre, 32 échantillons, `-t 4`, ~2 h à 3 h). Rendu test et questions envoyés au propriétaire. Ensuite : habillage, contrôle de chaque image, vérification indépendante (`verificateur-rendus`), intégration `public/images/produits/acier/poutrelles/<serie>/`, inventaire, build, commit.
+- Les questions 1 à 4 ne bloquent pas les visuels (aucune valeur litigieuse n'y est affichée) : la 1 choisit la photo studio à intégrer (une barre par défaut, re-rendu 4 × 2 min si « 3 tailles »), les 2 à 4 portent sur les fiches du catalogue.
 - Questions 5 et 6 : bloquent seulement les poteaux de clôture (vague 3).
+- Famille suivante : cornières (vague 1) — données à sourcer pendant que la série tourne.
 
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu (épaisseur 2 mm, poids recalculé), tôles alu et inox sans oxycoupage.
@@ -16,13 +18,13 @@ Règles : `CLAUDE.md` (section Visuels 3D) et `_DOCS/rendus-3d/lecons.md`. Brief
 ## Familles
 | Famille | Fiches | Données | Test | Validation | Série | Contrôle | Site |
 |---|---|---|---|---|---|---|---|
-| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | en attente | — | — | — |
+| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | informé 14/09 | en cours | — | — |
 | Cornières, fers T, plats, ronds, carrés, tubes, tôles laminées à chaud, armatures (fin de vague 1) | 208 | — | — | — | — | — | — |
 | Vague 2 : tôles à froid, galvanisées, corten, larmées, perforées ; alu ; inox | 145 | — | — | — | — | — | — |
 | Vague 3 : clôtures, bordures, caillebotis, tôles profilées, panneaux isolés, tasseaux | 73 | — | — | — | — | — | — |
 | Visserie | 6 | — | — | — | — | — | — |
 
-## Questions ouvertes (bloquantes)
+## Questions ouvertes (posées au propriétaire le 14/09)
 1. Photo studio : une barre ou trois tailles côte à côte ? (Variante trois tailles : écarter davantage les barres, elles se masquent un peu.)
 2. Fiches poutrelles : le générateur affiche « Nuance S235JR — EN 10025-2 » et « Longueur standard 6 m ou 12 m » sur les 45 fiches ; le site actuel dit S275 (IPE), S275/S355 (HEB), S235 ou S275 (UPN), rien (HEA), longueurs proposées 1 à 6 m, « jusqu'à 15 m suivant la section », et « 3 à 12 mètres » dans le texte UPN.
 3. Site actuel, « norme 10025 » : afficher « EN 10025 » ?

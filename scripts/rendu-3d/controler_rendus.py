@@ -1,0 +1,221 @@
+"""
+Controles automatiques des visuels 3D, sur toutes les images d'une ou plusieurs familles, avant la verification
+independante (agent verificateur-rendus) et l'integration sur le site.
+
+  python scripts/rendu-3d/controler_rendus.py poutrelle-ipe [poutrelle-hea ...]
+
+Pour chaque famille (cle `famille` de scripts/rendu-3d/donnees/produits.json) :
+- fichiers : <slug>.png (rendu brut), <slug>-caracteristiques.png/.webp/.controles.json par fiche,
+  studio-<famille>.png et studio-<famille>-studio.png/.webp pour la categorie ;
+- images finales en 1600 x 1200, WebP < 200 Ko ;
+- piece entierement dans le cadre (rendu brut), et a gauche de la fiche technique sur le visuel caracteristiques ;
+- photo studio : marges d'un blanc pur ;
+- visuel caracteristiques : aucun probleme d'etiquette releve par habiller.py ; chaque texte ecrit = donnee sourcee
+  non supposee ; meme valeur que la fiche produit du site (lib/catalogue.ts + lib/site-actuel.json).
+Ecrit des planches contact (12 images) dans %LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/controle/.
+Code de sortie 1 s'il reste un ecart.
+"""
+import json
+import os
+import re
+import sys
+from pathlib import Path
+
+from PIL import Image, ImageDraw, ImageFont
+
+ICI = Path(__file__).resolve().parent
+PROJET = ICI.parents[1]
+TRAVAIL = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "SiteAciersGrosjean" / "rendu3d"
+FINAL, CONTROLE = TRAVAIL / "final", TRAVAIL / "controle"
+LARGEUR, HAUTEUR, WEBP_MAX_KO = 1600, 1200, 200
+COLONNE_FICHE = 0.655  # debut de la fiche technique (habiller.py)
+
+# libelles de la fiche de l'image -> cle des donnees
+FICHE = {"Hauteur": "h", "Largeur d'aile": "b", "Épaisseur d'âme": "tw", "Épaisseur d'aile": "tf", "Poids": "poids",
+         "Nuance": "nuance", "Norme": "norme", "Procédé": "procede", "Finition": "finition"}
+# libelles des specifications de la page produit -> cle des donnees
+PAGE = {"Hauteur (h)": "h", "Largeur d'aile (b)": "b", "Épaisseur d'âme (tw)": "tw", "Épaisseur d'aile (tf)": "tf",
+        "Nuance": "nuance", "Norme": "norme"}
+
+
+def nombre(texte):
+    m = re.search(r"-?\d+(?:[.,]\d+)?", str(texte))
+    return float(m.group(0).replace(",", ".")) if m else None
+
+
+def meme_valeur(a, b):
+    na, nb = nombre(a), nombre(b)
+    if isinstance(a, (int, float)) or isinstance(b, (int, float)):
+        return na is not None and nb is not None and abs(na - nb) < 1e-6
+    return str(a).strip() == str(b).strip()
+
+
+def specs_page():
+    """slug -> {libelle: valeur} tel qu'affiche par la page (specs du catalogue, poids et finition du site actuel)."""
+    ts = (PROJET / "lib" / "catalogue.ts").read_text(encoding="utf-8")
+    reel = json.loads((PROJET / "lib" / "site-actuel.json").read_text(encoding="utf-8"))
+    pages = {}
+    for m in re.finditer(r'^\s*"([^"]+)": \{ slug: .*?specs: \[(.*)\] \},$', ts, re.M):
+        specs = dict(re.findall(r'\{ label: "([^"]+)", valeur: "([^"]*)" \}', m.group(2)))
+        r = reel.get(m.group(1), {})
+        specs.pop("Poids", None)  # remplace a la fusion quand le site actuel donne un poids
+        for cle in r.get("specsRetirees", []):
+            specs.pop(cle, None)
+        if r.get("kg") is not None:
+            specs["Poids"] = r["kg"]
+        if r.get("finition"):
+            specs["Finition"] = r["finition"]
+        pages[m.group(1)] = specs
+    return pages
+
+
+def cadre_piece(chemin):
+    """Boite des pixels opaques du rendu brut (la piece, sans l'ombre)."""
+    with Image.open(chemin) as img:
+        alpha = img.convert("RGBA").split()[3]
+    return alpha.point(lambda v: 255 if v >= 250 else 0).getbbox()
+
+
+def marges_blanches(chemin, bande=16):
+    with Image.open(chemin) as img:
+        rgb = img.convert("RGB")
+    w, h = rgb.size
+    zones = [(0, 0, w, bande), (0, h - bande, w, h), (0, 0, bande, h), (w - bande, 0, w, h)]
+    return sum(1 for z in zones for px in rgb.crop(z).getdata() if min(px) < 255)
+
+
+def planches(famille, images):
+    CONTROLE.mkdir(parents=True, exist_ok=True)
+    for vieille in CONTROLE.glob(f"{famille}-planche-*.jpg"):
+        vieille.unlink()
+    tw, th, legende = 520, 390, 26
+    police = ImageFont.load_default(size=16)
+    for n in range(0, len(images), 12):
+        lot = images[n:n + 12]
+        lignes = (len(lot) + 2) // 3
+        planche = Image.new("RGB", (3 * tw, lignes * (th + legende)), "white")
+        d = ImageDraw.Draw(planche)
+        for i, chemin in enumerate(lot):
+            x, y = (i % 3) * tw, (i // 3) * (th + legende)
+            with Image.open(chemin) as img:
+                planche.paste(img.convert("RGB").resize((tw - 8, th - 6), Image.LANCZOS), (x + 4, y + 3))
+            d.text((x + 6, y + th + 3), chemin.stem, fill=(60, 60, 60), font=police)
+        planche.save(CONTROLE / f"{famille}-planche-{n // 12 + 1:02d}.jpg", quality=88)
+    return sorted(CONTROLE.glob(f"{famille}-planche-*.jpg"))
+
+
+def controler(famille, produits, pages):
+    ecarts = []
+    slugs = sorted(s for s, p in produits.items() if p["famille"] == famille)
+    if not slugs:
+        return [f"{famille} : aucune fiche dans produits.json"], []
+
+    def fichier(nom):
+        chemin = FINAL / nom
+        if not chemin.exists():
+            ecarts.append(f"{nom} : manquant")
+            return None
+        return chemin
+
+    def image_finale(nom):
+        png, webp = fichier(nom + ".png"), fichier(nom + ".webp")
+        if png:
+            with Image.open(png) as img:
+                if img.size != (LARGEUR, HAUTEUR):
+                    ecarts.append(f"{png.name} : {img.size[0]} x {img.size[1]} au lieu de {LARGEUR} x {HAUTEUR}")
+        if webp and webp.stat().st_size > WEBP_MAX_KO * 1024:
+            ecarts.append(f"{webp.name} : {webp.stat().st_size // 1024} Ko (> {WEBP_MAX_KO} Ko)")
+        return png
+
+    # photo studio de la categorie
+    studio = f"studio-{famille}"
+    images = []
+    brut = fichier(studio + ".png")
+    png = image_finale(studio + "-studio")
+    if brut:
+        x0, y0, x1, y1 = cadre_piece(brut) or (0, 0, LARGEUR, HAUTEUR)
+        if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or x1 > LARGEUR * 0.98 or y1 > HAUTEUR * 0.98:
+            ecarts.append(f"{brut.name} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+    if png:
+        images.append(png)
+        n = marges_blanches(png)
+        if n:
+            ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
+
+    for slug in slugs:
+        p, nom = produits[slug], slug + "-caracteristiques"
+        brut = fichier(slug + ".png")
+        png = image_finale(nom)
+        if png:
+            images.append(png)
+        if brut:
+            x0, y0, x1, y1 = cadre_piece(brut) or (0, 0, LARGEUR, HAUTEUR)
+            if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or y1 > HAUTEUR * 0.98:
+                ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+            if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
+                ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
+        ctrl = fichier(nom + ".controles.json")
+        if not ctrl:
+            continue
+        c = json.loads(ctrl.read_text(encoding="utf-8"))
+        ecarts += [f"{slug} : {pb}" for pb in c["problemes"]]
+        titre = re.sub(r"\s+en acier$", "", p["nom"].strip())
+        if c["titre"] != titre:
+            ecarts.append(f"{slug} : titre « {c['titre']} » au lieu de « {titre} »")
+        valeurs = p["valeurs"]
+        for label, ecrit in c["fiche"].items():
+            d = valeurs.get(FICHE.get(label, ""))
+            if not d:
+                ecarts.append(f"{slug} : « {label} {ecrit} » ecrit sans donnee sourcee")
+            elif d.get("supposee"):
+                ecarts.append(f"{slug} : « {label} » affiche une valeur supposee")
+            elif label == "Finition":
+                if not ecrit.startswith(str(d["valeur"])):
+                    ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
+            elif not meme_valeur(d["valeur"], ecrit):
+                ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
+        for lettre, ecrit in c["pastilles"]:
+            d = valeurs.get(lettre)
+            if not d or not meme_valeur(d["valeur"], ecrit):
+                ecarts.append(f"{slug} : pastille {lettre} « {ecrit} » ≠ donnee {d and d['valeur']}")
+        # l'image dit la meme chose que la page
+        page = pages.get(slug)
+        if page is None:
+            ecarts.append(f"{slug} : fiche absente de lib/catalogue.ts")
+            continue
+        for libelle, cle in PAGE.items():
+            sur_image = cle in valeurs and not valeurs[cle].get("supposee")
+            if libelle in page and sur_image and not meme_valeur(valeurs[cle]["valeur"], page[libelle]):
+                ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image « {valeurs[cle]['valeur']} »")
+            elif libelle in page and cle in ("nuance", "norme") and not sur_image:
+                ecarts.append(f"{slug} : {libelle} « {page[libelle]} » sur la page, absente de l'image")
+            elif sur_image and libelle not in page:
+                ecarts.append(f"{slug} : {libelle} sur l'image, absente de la page")
+        if "Poids" in c["fiche"] and not meme_valeur(page.get("Poids"), c["fiche"]["Poids"]):
+            ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {c['fiche']['Poids']}")
+        if "Finition" in c["fiche"] and not c["fiche"]["Finition"].startswith(str(page.get("Finition"))):
+            ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {c['fiche']['Finition']}")
+    return ecarts, planches(famille, images) if images else []
+
+
+def main():
+    familles = sys.argv[1:]
+    if not familles:
+        raise SystemExit(__doc__)
+    produits = json.loads((ICI / "donnees" / "produits.json").read_text(encoding="utf-8"))
+    pages = specs_page()
+    total = 0
+    for famille in familles:
+        ecarts, fichiers = controler(famille, produits, pages)
+        total += len(ecarts)
+        n = sum(1 for p in produits.values() if p["famille"] == famille)
+        print(f"== {famille} : {n} fiches + 1 photo studio | {len(ecarts)} ecart(s)")
+        for e in ecarts:
+            print("   -", e)
+        for f in fichiers:
+            print("   planche :", f)
+    sys.exit(1 if total else 0)
+
+
+if __name__ == "__main__":
+    main()

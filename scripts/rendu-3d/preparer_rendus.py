@@ -4,6 +4,7 @@ Prepare la liste de parametres Blender (rendu_profil.py) a partir des donnees so
   python scripts/rendu-3d/preparer_rendus.py <sortie.json> car <slug> [<slug> ...]
   python scripts/rendu-3d/preparer_rendus.py <sortie.json> studio <nom> <slug> [<slug> ...]
 Options (avant les commandes) : --samples N  --seuil X  --ajouter (complete le fichier au lieu de l'ecraser)
+  --essai LARGEUR : image reduite (hauteur = 3/4) rangee dans rendu3d/essais/, jamais dans final/
 
 Les cotes viennent de scripts/rendu-3d/donnees/produits.json ; la finition « supposee » n'est utilisee
 que pour la matiere du rendu, jamais affichee.
@@ -32,16 +33,17 @@ def piece(p, longueur):
 def main():
     args = sys.argv[1:]
     # 32 echantillons a seuil 0,03 : identique a l'oeil a 64 / 0,02 (test poutrelles), ~2 min 15 au lieu de 3 min 45
-    options = {"samples": 32, "seuil": 0.03, "ajouter": False}
+    options = {"samples": 32, "seuil": 0.03, "ajouter": False, "essai": 0}
     while args and args[0].startswith("--"):
         cle = args.pop(0)[2:]
         options[cle] = True if cle == "ajouter" else float(args.pop(0))
     sortie, commande, reste = Path(args[0]), args[1], args[2:]
     produits = json.loads((ICI / "donnees" / "produits.json").read_text(encoding="utf-8"))
     liste = json.loads(sortie.read_text(encoding="utf-8")) if options["ajouter"] and sortie.exists() else []
-    commun = {"sortie": "%LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/final", "samples": int(options["samples"]),
-              "seuil_adaptatif": options["seuil"], "exposition": -1.15, "largeur": 1600, "hauteur": 1200,
-              "teinte_gpp": TEINTE_GPP}
+    largeur = int(options["essai"]) or 1600
+    commun = {"sortie": "%LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/" + ("essais" if options["essai"] else "final"),
+              "samples": int(options["samples"]), "seuil_adaptatif": options["seuil"], "exposition": -1.15,
+              "largeur": largeur, "hauteur": largeur * 3 // 4, "teinte_gpp": TEINTE_GPP}
     if commande == "car":
         for slug in reste:
             pc, finition = piece(produits[slug], 500)

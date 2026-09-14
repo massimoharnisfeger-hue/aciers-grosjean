@@ -81,15 +81,16 @@ def tableau_vm2013(motif_fichier, motif_designation, colonnes):
     return fichier.name, lignes
 
 
+NUANCE = r"S\s?(?:235|275|355)(?:\s?(?:JR|J0|J2))?"
+
+
 def nuance_et_norme(texte):
-    """Toutes les nuances citees (« S275/S355 selon besoins » -> « S275 / S355 ») et la premiere norme."""
-    nuances = []
-    for m in re.finditer(r"\bS\s?(235|275|355)\s?(JR|J0|J2)?\b", texte):
-        n = f"S{m.group(1)}{m.group(2) or ''}"
-        if n not in nuances:
-            nuances.append(n)
+    """Nuances telles qu'ecrites sur le site (« S275/S355 », « S235 ou S275 » : decision du proprietaire
+    du 14/09/2026) et premiere norme citee (« norme 10025 » -> « EN 10025 », norme europeenne des produits
+    lamines a chaud en aciers de construction)."""
+    nuance = re.search(rf"\b{NUANCE}(?:\s*(?:/|,|ou|et)\s*{NUANCE})*\b", texte)
     norme = re.search(r"\b(?:EN|NF EN|norme)\s*(10025(?:-\d)?|10034|10279|10219|10210|10056|10058|10059|1090)\b", texte, re.I)
-    return (" / ".join(nuances) or None, f"EN {norme.group(1)}" if norme else None)
+    return (nuance.group(0) if nuance else None, f"EN {norme.group(1)}" if norme else None)
 
 
 def procede(texte):

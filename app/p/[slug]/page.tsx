@@ -5,6 +5,7 @@ import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
 import FilAriane from "@/components/ui/FilAriane";
 import Calculateur from "@/components/catalogue/Calculateur";
+import GalerieProduit, { type VisuelProduit, type VueGalerie } from "@/components/catalogue/GalerieProduit";
 import { productArt, ArtPoutrelle } from "@/components/art/ProductArt";
 import {
   produits as tous,
@@ -17,8 +18,15 @@ import {
 import { artPour } from "@/lib/visuels";
 import { titre, description } from "@/lib/seo";
 import descriptionsBrutes from "@/lib/descriptions-site-actuel.json";
+import visuelsBruts from "@/lib/visuels-produits.json";
 
 type Params = { slug: string };
+
+/** Visuels 3D intégrés (scripts/rendu-3d/integrer_visuels.py) : un par fiche, une photo studio par catégorie. */
+const visuels = visuelsBruts as unknown as {
+  produits: Record<string, VisuelProduit>;
+  categories: Record<string, VisuelProduit>;
+};
 
 /** Description relevée sur le site actuel, en texte brut (scripts/inventaire/integrer.py). */
 type BlocDescription = { t: "p" | "h"; texte: string } | { t: "ul"; items: string[] };
@@ -111,6 +119,14 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
 
   const options = (p.longueurs?.length ?? 0) > 0 || Boolean(p.finition);
 
+  const vues: VueGalerie[] = [];
+  if (visuels.produits[p.slug]) {
+    vues.push({ ...visuels.produits[p.slug], legende: "Caractéristiques · rendu 3D aux cotes" });
+  }
+  if (visuels.categories[p.categorie]) {
+    vues.push({ ...visuels.categories[p.categorie], legende: `Photo studio · ${cat?.nom ?? u.nom}` });
+  }
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -126,16 +142,20 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
           {/* visuel */}
           <Reveal>
             <div className="lg:sticky lg:top-28">
-              <div className="group relative aspect-square overflow-hidden rounded-2xl border border-brume bg-nuage">
-                <div className="grid-industrie absolute inset-0 opacity-70" />
-                <div className="shine absolute inset-0">
-                  <Art className="h-full w-full transition-transform duration-700 group-hover:scale-105" />
+              {vues.length > 0 ? (
+                <GalerieProduit vues={vues} />
+              ) : (
+                <div className="group relative aspect-square overflow-hidden rounded-2xl border border-brume bg-nuage">
+                  <div className="grid-industrie absolute inset-0 opacity-70" />
+                  <div className="shine absolute inset-0">
+                    <Art className="h-full w-full transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                  <span className="tag-stock absolute left-5 top-5">En stock</span>
+                  <span className="absolute bottom-5 left-5 right-5 truncate font-mono text-[11px] uppercase tracking-[0.16em] text-soft">
+                    Schéma technique · {cat?.nom}
+                  </span>
                 </div>
-                <span className="tag-stock absolute left-5 top-5">En stock</span>
-                <span className="absolute bottom-5 left-5 right-5 truncate font-mono text-[11px] uppercase tracking-[0.16em] text-soft">
-                  Schéma technique · {cat?.nom}
-                </span>
-              </div>
+              )}
 
               <ul className="mt-5 grid grid-cols-3 gap-3">
                 {[

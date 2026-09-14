@@ -28,6 +28,10 @@ RELEVE = PROJET / "_DOCS" / "catalogue-site-actuel"
 PDF_SOURCE = PROJET / "_DEPOT" / "documents" / "pdf-site-actuel"
 CRAWL = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "SiteAciersGrosjean" / "crawl"
 TVA = 1.21  # TVA belge 21 %
+# Produits renommes dans la refonte (NOMS_CORRIGES de scripts/generer-catalogue.py) : nom encore utilise par le site actuel
+NOMS_SITE_ACTUEL = {
+    "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - VERT RAL 7016",
+}
 
 
 def normaliser(s):
@@ -192,7 +196,7 @@ def main():
     produits_par_sha = defaultdict(list)
     changements_unite = Counter()
     for slug, r in refonte.items():
-        candidats = par_nom.get(normaliser(r["nom"]), [])
+        candidats = par_nom.get(normaliser(NOMS_SITE_ACTUEL.get(slug, r["nom"])), [])
         candidats = [c for c in candidats if c["_feuille"]] or candidats
         if not candidats:
             non_apparies.append(r["nom"])

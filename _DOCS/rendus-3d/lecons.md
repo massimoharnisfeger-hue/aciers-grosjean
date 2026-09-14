@@ -19,6 +19,12 @@ Règles d'écriture :
 - Photo studio : fond blanc pur, pièce seule, sans cote, ombre douce, 1600 × 1200. Visuel caractéristiques : modèle `_DEPOT/images/test-blender/poutrelle-ipe-200-en-acier-caracteristiques.png`. `[14/09] (validé propriétaire)`
 - Finition : `lib/site-actuel.json` d'abord, puis la description, puis une vraie photo ; sinon la finition la plus courante, marquée « supposée » et jamais affichée. `[14/09] (validé propriétaire)`
 - 18 produits sous emballage (DL Chemicals, Zinga, primaires, Flex) : pas de 3D, seulement dire si la photo du site actuel est utilisable (fait : `references-recap.md`). `[14/09] (validé propriétaire)`
+- Photo studio : **trois tailles côte à côte** quand la famille a plusieurs tailles ; une seule pièce pour les familles sans gamme (tôles, produits uniques). `[poutrelles, 14/09] (validé propriétaire)`
+- Nuance affichée = celle du site actuel telle quelle (S275 IPE, S275/S355 HEB, S235 ou S275 UPN) ; aucune nuance quand le site n'en donne pas (HEA → questions en attente). « EN 10025-2 » seulement si une source le mentionne. `[poutrelles, 14/09] (validé propriétaire)`
+- Longueurs affichées = celles du site actuel (1 à 6 m) + « longueurs supérieures sur demande » sans chiffre (les textes disent « jusqu'à 15 m » et « 3 à 12 m » : écart en attente). `[poutrelles, 14/09] (validé propriétaire)`
+- Deux poids sur une même page du site actuel : afficher celui de la **fiche**, l'image doit dire la même chose que la page ; noter l'écart en attente. `[poutrelles, 14/09] (validé propriétaire)`
+- Clogriff 64 2M50 « VERT RAL 7016 » : c'est un **gris anthracite RAL 7016** (pastille de la photo du site ; le vert de la série est le RAL 6005) → nom corrigé en « GRIS RAL 7016 ». `[clôture, 14/09] (validé propriétaire)`
+- Poteaux Cloplus 40 : **aluminium** (fiche fabricant `GAG - FT-CP40-Plis205.pdf` : « poteau en aluminium », « alliage d'aluminium à très haute limite élastique »). `[clôture, 14/09] (validé propriétaire)`
 
 ## Réglages validés
 Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer depuis dans `rendu_profil.py` : le code fait foi.

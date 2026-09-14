@@ -26,5 +26,10 @@ Règle : aucune valeur supposée affichée ; en cas de doute, demander.
 5. Clogriff 64 2M50 « VERT RAL 7016 » : vert 6005 ou gris 7016 ?
 6. Cloplus 40 : légende « (ALU) » sur l'image fabricant — aluminium ou acier ?
 
+## Réponses du propriétaire (14/09) et suite
+- Décisions : studio en trois tailles ; nuances du site telles quelles, HEA sans nuance (en attente) ; « longueurs supérieures sur demande » ; poids de la fiche (écart UPN en attente) ; Clogriff 2M50 → « GRIS RAL 7016 » ; Cloplus 40 en aluminium. Nouvelle règle CLAUDE.md : site officiel, puis internet, sinon `questions-en-attente.md` et on continue.
+- Fait : décisions notées au carnet ; catalogue et générateur corrigés ; `questions-en-attente.md` ; composition studio multi-tailles validée à l'essai ; contrôle automatique (`controler_rendus.py`) et intégration (`integrer_visuels.py`, galerie de la fiche produit) prêts ; build OK.
+- En cours : série poutrelles (45 visuels puis 4 photos studio trois tailles), puis contrôle, vérification indépendante, intégration.
+
 ## Reste à faire
-- Réponses du propriétaire → corriger, série poutrelles (~2 h), contrôle de chaque image, vérification indépendante, intégration, puis familles suivantes (avancement.md).
+- Finir la famille poutrelles (contrôle, vérificateur, intégration, build, commit), puis cornières et la suite de la vague 1 (avancement.md).
