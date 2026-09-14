@@ -37,7 +37,11 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
 
 - **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → **vérification indépendante** → intégration sur le site → vérification du build → commit et push → famille suivante.
 - **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
-- **Seul motif d'arrêt :** une donnée à afficher manque ou se contredit. Demander, ne jamais inventer.
+- **Question ou donnée manquante : ne pas s'arrêter.** Dans l'ordre :
+  1. chercher sur le site officiel https://www.aciersgrosjean.be (fiche produit, description, PDF), et dans ses copies locales (`lib/site-actuel.json`, `lib/descriptions-site-actuel.json`, `_DEPOT/documents/pdf-site-actuel/`) ;
+  2. sinon, chercher sur internet une source fiable (fiche du fabricant, norme, tableau fournisseur) et noter la source ;
+  3. si le doute persiste ou si les sources se contredisent : ne pas afficher la valeur, noter la question dans `_DOCS/rendus-3d/questions-en-attente.md` (produit, question, ce qui a été trouvé, sources), puis continuer avec le reste. On y reviendra avec le propriétaire.
+  - Ce qui dépend de l'entreprise (nuance réellement livrée, finition en stock, longueurs disponibles) ne se tranche jamais par internet : si le site officiel ne le dit pas, la question va en attente.
 - **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` ; chaque itération reprend là où la précédente s'est arrêtée. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
 - **Rangement et noms des images (obligatoire) :**
   - Atelier (`%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\`) : essais, comparaisons et brouillons dans `essais/`, jamais dans `final/`. `final/` ne contient que les rendus de production.
