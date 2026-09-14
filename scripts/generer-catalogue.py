@@ -183,7 +183,7 @@ CATEG_TXT = {
     "acier/profiles/rond-plein": "Barre ronde pleine laminée : barreaudage, axes, tiges, pièces tournées. Encaisse la torsion.",
     "acier/profiles/carre-plein": "Barreaudage décoratif, grilles de défense, ferronnerie traditionnelle.",
     "acier/profiles/fer-t": "Profil en T laminé : encadrements, séparations, renforts d'angle plat.",
-    "acier/armatures-beton/rond-a-beton-lamine-a-chaud": "Barre crénelée haute adhérence B500B : l'armature des poutres, poteaux et chaînages coulés en place.",
+    "acier/armatures-beton/rond-a-beton-lamine-a-chaud": "Barre crénelée haute adhérence : l'armature des poutres, poteaux et chaînages coulés en place.",
     "acier/armatures-beton/rond-a-beton-lamine-a-froid": "Crénelage obtenu à froid, pour les petits diamètres et les armatures légères.",
     "acier/armatures-beton/treillis-soudes": "Panneaux d'armature pour dalles, chapes et terrasses. Format chantier 5 × 2 m.",
     "acier/armatures-beton/treillis-soudes-depassants": "Fils dépassants pour recouvrir les panneaux entre eux sans recoupe. Format 5,95 × 2,35 m.",
@@ -371,19 +371,18 @@ def poids_et_specs(cat_path, nom, densite):
         dia = diametre_de(nom)
         if dia:
             kg = round(dia * dia * 0.00617, 2)
-            return kg, "kg/m", "au mètre", "€/m", [("Diamètre", f"{dia:g} mm"),
-                                                   ("Nuance", "B500B — haute adhérence"),
-                                                   ("Surface", "Crénelée")]
+            # nuance (B500A ou B500B) : le site actuel ne la publie pas, question 10 en attente — rien d'affiché
+            return kg, "kg/m", "au mètre", "€/m", [("Diamètre", f"{dia:g} mm"), ("Surface", "Crénelée")]
     if "treillis" in seg and len(d) == 3:
         maille_a, maille_b, fil = d
         kgm2 = 2 * (1000 / maille_a) * (fil * fil * 0.00617)
         mf = re.search(NUM + r"\s*m\s*[x×]\s*" + NUM + r"\s*m", nom, re.I)
+        # nuance (B500A ou B500B) non publiée par le site actuel, question 11 en attente — rien d'affiché
         specs = [("Maille", f"{maille_a:g} × {maille_b:g} mm"), ("Fil", f"{fil:g} mm"),
-                 ("Nuance", "B500A"),
                  ("Masse surfacique", f"{kgm2:.2f} kg/m²".replace(".", ","))]
         if mf:
             L, l = f(mf.group(1)), f(mf.group(2))
-            specs.insert(3, ("Panneau", f"{mf.group(1)} × {mf.group(2)} m"))
+            specs.insert(2, ("Panneau", f"{mf.group(1)} × {mf.group(2)} m"))
             return round(kgm2 * L * l, 1), "kg/panneau", "au panneau", "€/pce", specs
         return round(kgm2, 2), "kg/m²", "au m²", "€/m²", specs
 
