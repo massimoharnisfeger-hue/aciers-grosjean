@@ -1,0 +1,9 @@
+{
+  "slug": "poutrelle-ipe-200-en-acier",
+  "type": "I",
+  "h": 200, "b": 100, "tw": 5.6, "tf": 8.5, "r": 12,
+  "sortie": "%LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/final",
+  "samples": 64,
+  "exposition": -1.15,
+  "largeur": 1600, "hauteur": 1200
+}
