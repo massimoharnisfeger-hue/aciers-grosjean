@@ -1,0 +1,138 @@
+﻿groupe;type;filigrane;apprend;taille;nb_images;nb_produits;categories;image_reference
+G001;rendu;;ronds à béton crénelés, acier gris;625x416;7;7;acier-armatures-beton-rond-a-beton-lamine-a-chaud | acier-armatures-beton-rond-a-beton-lamine-a-froid;acier-armatures-beton-rond-a-beton-lamine-a-froid/0001069_rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid.jpeg
+G002;photo;;treillis soudés empilés, acier brut rouillé;1920x1920;4;4;acier-armatures-beton-treillis-soudes;acier-armatures-beton-treillis-soudes/0004980_3fd1f73b1a934333a58eb298612d979b.jpeg
+G003;photo;;treillis soudés en pile, acier brut;1741x1741;13;13;acier-armatures-beton-treillis-soudes;acier-armatures-beton-treillis-soudes/0002373_119efc4a361345abb9c2ddd88629c9b8.jpeg
+G004;schema;;treillis : cotes A, B, C, D, E;591x591;21;21;acier-armatures-beton-treillis-soudes | acier-armatures-beton-treillis-soudes-depassants;acier-armatures-beton-treillis-soudes-depassants/0002146_4ede0b981ad04119bbf3a5b103714996.jpeg
+G005;photo;;treillis en pile, extrémités peintes orange;1920x1920;4;4;acier-armatures-beton-treillis-soudes-depassants;acier-armatures-beton-treillis-soudes-depassants/0002145_e37096cff2ef4119b298a402ccbc2a09.jpeg
+G006;photo;;HEA en GPP : primaire rouge-brun mat;1918x1920;11;11;acier-poutrelles-hea;acier-poutrelles-hea/0004213_2df611c9d0724eff9fbb7847401f1bd7.jpeg
+G007;schema;;section en I : A, B, C, D;591x591;22;22;acier-poutrelles-hea | acier-poutrelles-heb;acier-poutrelles-hea/0004214_72e3f415a1b3462c9b81e9c29c85404a.jpeg
+G008;photo;;HEB en GPP, gros plan : primaire rouge-brun;1920x1920;11;11;acier-poutrelles-heb;acier-poutrelles-heb/0004261_bba4442a6af945acbbedfe86edf25af4.jpeg
+G009;rendu;;IPE, acier gris uni (basse définition);240x240;11;11;acier-poutrelles-ipe;acier-poutrelles-ipe/0001958_301d853d94904278bab6df7a5e4e9837.jpeg
+G010;photo;;IPE en GPP en pile : primaire rouge-brun, extrémités peintes;1918x1920;8;8;acier-poutrelles-ipe;acier-poutrelles-ipe/0003777_865646b7f22d4415a556de7af7de1a3a.jpeg
+G011;schema;;section IPE : A, B, C, D;591x591;11;11;acier-poutrelles-ipe;acier-poutrelles-ipe/0001959_6f329e0775024112b648699a75024e37.jpeg
+G012;photo;;UPN brutes : calamine noire, rouille légère, marques de peinture jaune-vert en bout;1920x1920;12;12;acier-poutrelles-upn;acier-poutrelles-upn/0004320_poutrelle-upn-80-en-acier.jpeg
+G013;schema;;section en U : A, B, C (ailes dessinées parallèles);591x591;12;12;acier-poutrelles-upn;acier-poutrelles-upn/0004321_poutrelle-upn-80-en-acier.jpeg
+G014;rendu;;carrés pleins, acier gris;360x240;7;7;acier-profiles-carre-plein;acier-profiles-carre-plein/0001150_1974c1114e75479792190a683f0cbbd6.jpeg
+G015;schema;;carré plein : A, B;591x591;6;6;acier-profiles-carre-plein;acier-profiles-carre-plein/0001149_d9830754331949be911c0f314a59613a.jpeg
+G016;schema;;profil en T : A, B, C — ERREUR du site actuel : aussi affiché sur une fiche carré plein;591x591;6;6;acier-profiles-carre-plein | acier-profiles-fer-t;acier-profiles-carre-plein/0001161_b8e4eb159ce34a1cb2d37fe378f81e58.jpeg
+G017;rendu;;cornière égale, acier gris;360x240;10;10;acier-profiles-corniere-egale;acier-profiles-corniere-egale/0001201_1d6d2f584e27476b9e2172b3446a3961.jpeg
+G018;schema;;cornière : A, B, C;591x591;23;23;acier-profiles-corniere-egale | aluminium-profiles-corniere-egale | inox-profiles-corniere-egale;acier-profiles-corniere-egale/0001202_d7b5f83c2bc643f29a57d9147f31965a.jpeg
+G019;banque;;cornières d'aspect galvanisé, basse définition : ne correspond pas à l'acier LAC;240x240;10;10;acier-profiles-corniere-egale;acier-profiles-corniere-egale/0001224_0fa741891730488eafb1f4b926c0da74.jpeg
+G020;photo;;cornières inégales : acier brut, calamine et rouille;1920x1920;5;5;acier-profiles-corniere-inegale;acier-profiles-corniere-inegale/0002043_568045700be845c698dae4d193f03345.jpeg
+G021;schema;;cornière inégale : A, B, C;591x591;5;5;acier-profiles-corniere-inegale;acier-profiles-corniere-inegale/0002044_8c63b248380742a58cb7ee70c535c6c8.jpeg
+G022;rendu;;fer T, acier gris;360x240;5;5;acier-profiles-fer-t;acier-profiles-fer-t/0003203_3bd0ad7b7d244fd7867325d4b861a955.jpeg
+G023;photo;;fers T en vrac : acier brut, marques de peinture verte;1920x1920;5;5;acier-profiles-fer-t;acier-profiles-fer-t/0003204_44f621b173e84271b36aa08dea10fa65.jpeg
+G024;rendu;;large plat, acier sombre;1920x1058;3;3;acier-profiles-large-plat;acier-profiles-large-plat/0002123_large-plat-200x10mm-en-acier-lamine-a-chaud.jpeg
+G025;schema;;plat : A, B;591x591;61;61;acier-profiles-large-plat | acier-profiles-plat | aluminium-profiles-plat | inox-profiles-plat;acier-profiles-large-plat/0002142_large-plat-en-acier-lamine-a-chaud-160x10mm.jpeg
+G026;photo;;large plats en pile : calamine grise;1920x1080;3;3;acier-profiles-large-plat;acier-profiles-large-plat/0002143_large-plat-en-acier-lamine-a-chaud-160x10mm.jpeg
+G027;rendu;;plat, acier gris;360x240;37;37;acier-profiles-plat;acier-profiles-plat/0002435_ce43fb87dfbe40e3ae2a3399819dca3d.jpeg
+G028;photo;;plats en pile : extrémités peintes jaune;1920x1920;37;37;acier-profiles-plat;acier-profiles-plat/0002437_1dd4b5b814dc4613a7aefd263158b7c7.jpeg
+G029;rendu;;rond plein, acier gris;240x240;9;9;acier-profiles-rond-plein;acier-profiles-rond-plein/0003112_0e6b9c1def5f449f8bd7c62e33796d1a.jpeg
+G030;schema;;rond : A;591x591;12;12;acier-profiles-rond-plein | inox-profiles-rond-plein;acier-profiles-rond-plein/0003113_20b3d8c37642497f865a3609338212e0.jpeg
+G031;schema;;tôle : A, B, C;591x591;96;96;acier-toles-tole-corten | acier-toles-tole-galvanisee | acier-toles-tole-laminee-a-chaud | acier-toles-tole-laminee-a-froid | acier-toles-tole-larmee | acier-toles-tole-quarto | aluminium-toles-tole-plane | aluminium-toles-tole-striee | inox-toles-tole-plane-304-brossee;acier-toles-tole-corten/0001732_c9466469d8bc4d9a8154d4f6bf2efa96.jpeg
+G032;banque;;surface corten rouillée, basse définition;240x240;5;5;acier-toles-tole-corten;acier-toles-tole-corten/0001731_672e4c997303413db8716042b2d67ba9.jpeg
+G033;banque;Adobe Stock (vu à la loupe);pile de tôles, même image que G035;667x667;5;5;acier-toles-tole-corten;acier-toles-tole-corten/0001733_d918159827554d8da08e908b50cda647.jpeg
+G034;banque;;tôles brillantes en usine, image lissée;240x240;12;12;acier-toles-tole-galvanisee;acier-toles-tole-galvanisee/0001821_06ac2cf4986043c781756ac8ca0e8fc1.jpeg
+G035;banque;Adobe Stock (visible);pile de tôles laminées;667x667;12;12;acier-toles-tole-laminee-a-chaud;acier-toles-tole-laminee-a-chaud/0003871_4b0f447213104a4493f03dbf72bffe39.jpeg
+G036;photo;;tôle LaserpressPlus : marquage « LASERPRESSPLUS 240 »;591x591;24;24;acier-toles-tole-laminee-a-chaud;acier-toles-tole-laminee-a-chaud/0003921_7236111eec4f4902a8e8910e50f232d4.jpeg
+G037;banque;;tôles brillantes, basse définition;194x194;8;8;acier-toles-tole-laminee-a-froid;acier-toles-tole-laminee-a-froid/0004025_ef48640afc2e40f8b8c1b0222471157a.jpeg
+G038;photo;;tôle larmée : relief en grains de riz croisés, acier brut;1918x1920;6;6;acier-toles-tole-larmee;acier-toles-tole-larmee/0004386_f34b175c6cfe40558cd368a2227784ec.jpeg
+G039;photo;;tôle perforée à trous aléatoires (origine incertaine);625x624;1;1;acier-toles-tole-perforee;acier-toles-tole-perforee/0005197_8d9fe7cc2c2f4effa2e5d8b4ef9430dc.jpeg
+G040;motif;;perforation carrée (C10 U15);625x297;1;1;acier-toles-tole-perforee;acier-toles-tole-perforee/0005186_92c62f3fe8ed48f798b0db943a1d46c7.jpeg
+G041;motif;;perforation ronde, grands trous;625x293;3;3;acier-toles-tole-perforee;acier-toles-tole-perforee/0005180_0ae017cbbdbe40f6a68a6642c37f1cab.jpeg
+G042;motif;;perforation ronde, petits trous;625x290;3;3;acier-toles-tole-perforee;acier-toles-tole-perforee/0005175_f0c57b06129046aca254cd4004821606.jpeg
+G043;photo;;tôles quarto épaisses : calamine sombre;1920x1920;1;1;acier-toles-tole-quarto;acier-toles-tole-quarto/0002173_ca770557973e4a2ab434a6342755a555.jpeg
+G044;rendu;;tube carré, acier gris;240x240;36;36;acier-tubes-tube-carre;acier-tubes-tube-carre/0003449_a96813615c2c4ada93f185f2e4a1f382.jpeg
+G045;photo;;tubes carrés en pile : acier noir brut, cordon de soudure non visible;1416x1416;36;36;acier-tubes-tube-carre;acier-tubes-tube-carre/0003450_a7916f5e912d41b48f1845ec84aaa32d.jpeg
+G046;schema;;tube carré : A, B, C;591x591;42;42;acier-tubes-tube-carre | inox-tubes-tube-carre;acier-tubes-tube-carre/0003451_a7ebfed5f16b4da79eeecc756272bdc9.jpeg
+G047;rendu;;tube rectangulaire, acier gris;240x240;21;21;acier-tubes-tube-rectangulaire;acier-tubes-tube-rectangulaire/0003224_1bb59926d63e40869479a768827af763.jpeg
+G048;photo;;tubes rectangulaires en pile : acier brut;1920x1920;21;21;acier-tubes-tube-rectangulaire;acier-tubes-tube-rectangulaire/0003225_68eeabcee47a4ce78d38c8988bdd3344.jpeg
+G049;schema;;tube rectangulaire : A, B, C;591x591;22;22;acier-tubes-tube-rectangulaire | inox-tubes-tube-rectangulaire;acier-tubes-tube-rectangulaire/0003262_7cb09336ff45488a9196b513349259b3.jpeg
+G050;rendu;;tube rond, acier gris;240x240;11;11;acier-tubes-tube-rond;acier-tubes-tube-rond/0003682_93bc025889194a1587ec2c3f596fb5df.jpeg
+G051;schema;;tube rond : A, B;591x591;24;24;acier-tubes-tube-rond | aluminium-tubes-tube-rond | inox-tubes-tube-rond;acier-tubes-tube-rond/0003684_c04852ce9aec40249d1269bd849b1aa6.jpeg
+G052;banque;;tubes ronds en pile, basse définition;240x240;11;11;acier-tubes-tube-rond;acier-tubes-tube-rond/0003683_24bc39bf53c84642b960d12b8d0548b4.jpeg
+G053;photo;;cornières alu : aluminium brut mat clair;1652x1652;8;8;aluminium-profiles-corniere-egale;aluminium-profiles-corniere-egale/0004438_9ea65cbd431c4fc8b77ec3babf8dab61.jpeg
+G054;photo;;plats alu : aluminium brut;1920x1920;11;11;aluminium-profiles-plat;aluminium-profiles-plat/0004530_bb8154a4aad7410bb37ae1141e8b854d.jpeg
+G055;photo;;profil T alu : aluminium brut;1324x1324;3;3;aluminium-profiles-profil-t;aluminium-profiles-profil-t/0004507_dd3866850de544e48e0a664d8250efde.jpeg
+G056;schema;;profil T : A, B, C;591x591;3;3;aluminium-profiles-profil-t;aluminium-profiles-profil-t/0004508_4e535accfe0349cc8ac848af2898d3bb.jpeg
+G057;photo;;profils U alu : paroi fine, aluminium brut;1920x1920;4;4;aluminium-profiles-profil-u;aluminium-profiles-profil-u/0004481_d2fae24968854c59934f29d57e4ac128.jpeg
+G058;schema;;profil U : A, B, C, D;1181x1181;4;4;aluminium-profiles-profil-u;aluminium-profiles-profil-u/0004482_cd1adff35d934b97bc40967560f63344.jpeg
+G059;banque;;tôles alu brillantes, basse définition;240x240;9;9;aluminium-toles-tole-plane;aluminium-toles-tole-plane/0004352_44d69f17442543279343b1bda7307530.jpeg
+G060;photo;;tôle alu striée : barres en diagonale (quintette);1920x1920;9;9;aluminium-toles-tole-striee;aluminium-toles-tole-striee/0004405_0b545054b57d46c7a4d518df819c1381.jpeg
+G061;photo;;tubes carrés alu;1415x1415;8;8;aluminium-tubes-tube-carre;aluminium-tubes-tube-carre/0004564_078644d871ff466b8db49e39134ffbce.jpeg
+G062;schema;;tube carré : A, B, C;591x591;8;8;aluminium-tubes-tube-carre;aluminium-tubes-tube-carre/0004565_80c8fa5449bc4e6aa4dc8ffe7827b261.jpeg
+G063;photo;;tubes rectangulaires alu;1920x1920;5;5;aluminium-tubes-tube-rectangulaire;aluminium-tubes-tube-rectangulaire/0004584_ff248b62307a4df491383ee3cf9378d3.jpeg
+G064;schema;;tube rectangulaire : A, B, C;591x591;5;5;aluminium-tubes-tube-rectangulaire;aluminium-tubes-tube-rectangulaire/0004585_c21eb1ec1a974da9a33a531c864be4c5.jpeg
+G065;photo;;tubes ronds alu;1920x1920;5;5;aluminium-tubes-tube-rond;aluminium-tubes-tube-rond/0004608_e5425110ce5c466e97b6baa91fd49565.jpeg
+G066;vide;;vignette « NO IMAGE » du site actuel;625x625;1;0;hors-catalogue;hors-catalogue/default-image.png
+G067;banque;;cornières inox brossé sur fond blanc, image lissée;240x240;5;5;inox-profiles-corniere-egale;inox-profiles-corniere-egale/0004680_a35b9e0245624d0886e7b1810eb39945.jpeg
+G068;banque;;plats inox sur fond blanc, image lissée;429x240;10;10;inox-profiles-plat;inox-profiles-plat/0004691_615d544f89574d65ba9c62867707314c.jpeg
+G069;banque;;ronds inox sur fond blanc, image lissée;240x240;3;3;inox-profiles-rond-plein;inox-profiles-rond-plein/0004671_50477a3b05364de8add96c574b9e74fe.jpeg
+G070;banque;;tôles inox brossé, image lissée;367x240;10;10;inox-toles-tole-plane-304-brossee;inox-toles-tole-plane-304-brossee/0004647_716749d64e3649fd9030bb356137ead6.jpeg
+G071;banque;;tubes carrés inox en pyramide sur fond blanc;197x197;6;6;inox-tubes-tube-carre;inox-tubes-tube-carre/0004765_9ac5d84b2d744040acfba079593660a3.jpeg
+G072;banque;;tubes rectangulaires inox sur fond blanc;214x214;1;1;inox-tubes-tube-rectangulaire;inox-tubes-tube-rectangulaire/0004752_38d4f77e35c44ecca7f16a3ecd3676eb.jpeg
+G073;banque;;tubes ronds inox en pyramide sur fond blanc;179x179;8;8;inox-tubes-tube-rond;inox-tubes-tube-rond/0004731_4a7d457c65f94bc080cf4f2854e99f52.jpeg
+G074;ambiance;;bordure corten au jardin;694x694;1;1;jardin-cloture-amenagement-bordures;jardin-cloture-amenagement-bordures/0005238_bordure-en-acier-corten-15025-x-2500mm.jpeg
+G075;ambiance;;bordure galvanisée au jardin;554x554;1;1;jardin-cloture-amenagement-bordures;jardin-cloture-amenagement-bordures/0005245_bordure-en-acier-galvanise-15025-x-2500mm.jpeg
+G076;packshot;;bordure : bande avec retour plié en tête (forme du 150/25);321x321;2;2;jardin-cloture-amenagement-bordures;jardin-cloture-amenagement-bordures/0005239_bordure-en-acier-corten-15025-x-2500mm.jpeg
+G077;packshot;;clé de montage brides rapides, bandeau Grosjean;625x625;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004839_72bb0675675d4aa592f7e4cfa30b2f4d.jpeg
+G078;packshot;;fixation bride 30 NV noir : vis, écrou, bride plastique noire;625x625;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004844_65c72d63757645099bad50fde9b1ab4e.jpeg
+G079;packshot;;fixations brides 30 NV noir (50 pièces);625x625;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004845_5a92a74c31624cbd946b4cae93b78394.jpeg
+G080;packshot;;bride rapide inox;625x625;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004846_9f733380e1ca416e8c113b2fabda822c.jpeg
+G081;packshot;;kit 12 serveurs Clogriff : cale plastique noire;591x591;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004842_e38c4492ee6a486398ac7ba6047c28a9.jpeg
+G082;packshot;;kit 12 serveurs Clogriff en sachet;591x591;1;1;jardin-cloture-clotures-fixations;jardin-cloture-clotures-fixations/0004843_491cd5517de244ebacd631361137cc45.jpeg
+G083;ambiance;;panneau Plis 205 fil 5/4 RAL 6005 posé;591x591;13;13;jardin-cloture-clotures-panneaux-rigides;jardin-cloture-clotures-panneaux-rigides/0004896_55fe1c3dd03d41bcabb9f0d8459c5963.jpeg
+G084;photo;;panneaux de clôture sur palette : vert foncé;1920x1080;5;5;jardin-cloture-clotures-panneaux-rigides;jardin-cloture-clotures-panneaux-rigides/0004936_ecc6340a836a4f0a9114e94987f4545c.jpeg
+G085;photo;;panneaux de clôture sur palettes;1920x1080;5;5;jardin-cloture-clotures-panneaux-rigides;jardin-cloture-clotures-panneaux-rigides/0004939_730f52a466874b4fb84fd8e2b48e6449.jpeg
+G086;photo;;panneaux de clôture sur palette;1920x1080;3;3;jardin-cloture-clotures-panneaux-rigides;jardin-cloture-clotures-panneaux-rigides/0004941_345b263236d64be3919b9a88a13602b3.jpeg
+G087;ambiance;;poteau Clogriff 64 posé, RAL 6005;625x625;8;8;jardin-cloture-clotures-poteaux;jardin-cloture-clotures-poteaux/0004875_44feafb7670a4e628b6892c51c15b3ab.jpeg
+G088;ambiance;;poteau Cloplus 40 posé, RAL 6005, légende « (ALU) »;625x625;9;9;jardin-cloture-clotures-poteaux;jardin-cloture-clotures-poteaux/0004887_ae575272fed141ffb2a32c8985df4327.jpeg
+G089;packshot;;marches caillebotis perforées antidérapantes, logo Gi;625x625;1;1;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005067_940aa60af337488380a780163987e4e8.jpeg
+G090;packshot;;marche caillebotis perforée, logo Gi;591x591;3;3;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005051_e6f172b18b5e45e4b44a9b52e47fcfc1.jpeg
+G091;packshot;;marche caillebotis à grille, logo Gi;591x591;5;5;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005057_fe0e8e79878745b0ac8a0166af617a0a.jpeg
+G092;packshot;;caillebotis galvanisés en pile, logo Gi;591x591;10;10;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005068_6c7cdb5dfb654922a05b4321f9012704.jpeg
+G093;photo;;caillebotis galvanisés au dépôt;1920x1920;5;5;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005058_b7ef002650b94490b5e1472492a340c2.jpeg
+G094;photo;aucun (vu à la loupe);marche perforée galvanisée : relief antidérapant, trou de fixation latéral (origine incertaine);667x667;3;3;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005089_d6776fe095cc47ad95ae715325d5b198.jpeg
+G095;photo;aucun (vu à la loupe);caillebotis galvanisés en pile : maille rectangulaire, barres porteuses (origine incertaine);667x667;10;10;quincaillerie-caillebotis-marches;quincaillerie-caillebotis-marches/0005092_0da4a27b991742c383155abca3d496f9.jpeg
+G096;packshot;;meuleuse Flex : photo fabricant;768x768;1;1;quincaillerie-outillage;quincaillerie-outillage/0005145_21c824bdbb2341dd892922f49cbe60bf.jpeg
+G097;schema;;meuleuse Flex : plan coté fabricant;768x768;1;1;quincaillerie-outillage;quincaillerie-outillage/0005146_256e1bde058a490ba49eb99bfab86b75.jpeg
+G098;packshot;;DL Chemicals Parasilico : cartouche détourée;625x625;1;1;quincaillerie-protection-chimie-colles-etancheite;quincaillerie-protection-chimie-colles-etancheite/0005022_f5c2208bccd4452d8fe021e3057168de.jpeg
+G099;packshot;;DL Chemicals Parabond 600 : cartouche détourée;625x625;1;1;quincaillerie-protection-chimie-colles-etancheite;quincaillerie-protection-chimie-colles-etancheite/0005023_6032948e10a640dda4f372ea3f7485f8.jpeg
+G100;packshot;;DL Chemicals Parabond 800 : cartouche détourée;625x625;1;1;quincaillerie-protection-chimie-colles-etancheite;quincaillerie-protection-chimie-colles-etancheite/0005026_222b8c420e0e446fba3bf272b9035e44.jpeg
+G101;packshot;;DL Chemicals Parachim : cartouche détourée;591x591;1;1;quincaillerie-protection-chimie-colles-etancheite;quincaillerie-protection-chimie-colles-etancheite/0005024_1fb620f2a0ca47b9be67e699d60c06e1.jpeg
+G102;rayon;;cartouches Parachim en rayon;1920x1920;1;1;quincaillerie-protection-chimie-colles-etancheite;quincaillerie-protection-chimie-colles-etancheite/0005025_b0570a776df345ed9a80acc579920a30.jpeg
+G103;packshot;;gamme Zinga : visuel fabricant;625x625;2;2;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005013_11108bd9798b49ed98af53b263715a08.jpeg
+G104;packshot;;Zingatar / Zingatarfree : visuel fabricant;591x591;2;2;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005000_922daabf10b74abaa5ba9ae1ada1e593.jpeg
+G105;packshot;;Zingasolv : visuel fabricant;591x591;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005004_47154b38881f489aacb151f3658cb5ac.jpeg
+G106;packshot;;Zingaspray : visuel fabricant;591x591;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005009_zingaspray-500ml.jpeg
+G107;packshot;;Zingaluspray : visuel fabricant;591x591;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005011_8890917dc6904cffa888f11f1723aea7.jpeg
+G108;rayon;;Zingatarfree en rayon;1920x1920;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005003_c80adcd54a4b4d148eb3793c861f0ddf.jpeg
+G109;rayon;;Zingasolv en rayon;1920x1920;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005005_68b6789b55694cc19c86ec067f69c623.jpeg
+G110;rayon;;Zinga 1 kg en rayon;1920x1920;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005008_96fbcc478755487a92d5a59369d05eb9.jpeg
+G111;rayon;;Zingaspray en rayon;1920x1920;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005010_zingaspray-500ml.jpeg
+G112;rayon;;Zingaluspray en rayon;1920x1920;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005012_502e001e497b4342bf21ed30386e3f84.jpeg
+G113;rayon;;Zingatarfree 5 L en rayon;1570x1570;1;1;quincaillerie-protection-chimie-galvanisation-a-froid;quincaillerie-protection-chimie-galvanisation-a-froid/0005001_ffe124d9372d41c6bd10d23e7dde3cf0.jpeg
+G114;banque;;pot de peinture générique gris-bleu (pas le produit);625x625;2;2;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005033_efb9c86d937b4b96b49169bb0b0ddede.jpeg
+G115;banque;;pot de peinture générique brun (pas le produit);591x591;2;2;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005029_499ef9347d6e43f09ea7e44f3027b15f.jpeg
+G116;banque;;pot de peinture générique blanc (pas le produit);591x591;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005030_4308b70261fa4d75b41878ab944046c6.jpeg
+G117;banque;;pot de peinture générique noir (pas le produit);591x591;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005034_b84068e5688d4bd784eae274a08ef9dd.jpeg
+G118;rayon;;étiquette All Meta Prim Coat;1920x1920;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005035_55c8f0b757054f699927cd92a57a275e.jpeg
+G119;rayon;;Vibol Prim Coat RAL 7016 en rayon;1920x1920;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005036_ccc9c6d498464af88101fc03e831deac.jpeg
+G120;rayon;;Vibol Prim Coat RAL 8012 5 L en rayon;1920x1920;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005037_9c0d748bc8594becaea1c6db6cf77b67.jpeg
+G121;rayon;;Vibol Prim Coat en rayon;1920x1920;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005038_2dc4a2a4653b422086bfd9c4a9b4231b.jpeg
+G122;rayon;;Vibol Prim Coat RAL 8012 1 L en rayon;1920x1920;1;1;quincaillerie-protection-chimie-peintures-primaires;quincaillerie-protection-chimie-peintures-primaires/0005039_602a5c609cdd418cb9b57f8567dceacb.jpeg
+G123;photo;;sachet de vis TH P5 6,3x55 + Vulca : tête hexagonale, rondelle EPDM, zingué blanc;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004094_068c4102eb004d67be382f01c7011752.jpeg
+G124;photo;;sachet de vis TH P5 6,3x100 + Vulca;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004096_a4e4cae3917048d1bedaf6f21fbfe287.jpeg
+G125;photo;;sachet de vis TH P5 6,3x76 : zingué jaune;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004102_0617f558a7e946e6b9c2443bca9e59dc.jpeg
+G126;photo;;sachet de vis TH 6,3x100 Rapidbois + Vulca : zingué jaune;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004103_898ddad0a93c4e3790de637445cd4c6d.jpeg
+G127;photo;;sachet de vis TH 6,3x55 Rapidbois + Vulca;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004104_3cba36203d9945f59cbe3704fa510dfa.jpeg
+G128;photo;;sachet de vis TH 6,3x100 + Vulca;625x625;1;1;quincaillerie-visserie;quincaillerie-visserie/0004105_9698a98826b14082a4798c6308cc5d5f.jpeg
+G129;rendu;;tasseaux imitation bois « Version Maxi » (fabricant);1200x1200;2;2;toiture-bardage-bardage-imitation-bois;toiture-bardage-bardage-imitation-bois/0005128_tasseau-40x40-71x300cm-parement-chene-clair.jpeg
+G130;rendu;;tasseaux imitation bois en vue rapprochée (fabricant);1200x1200;2;2;toiture-bardage-bardage-imitation-bois;toiture-bardage-bardage-imitation-bois/0005129_tasseau-40x40-71x300cm-parement-chene-clair.jpeg
+G131;ambiance;;bardage imitation bois posé (rendu fabricant);1200x1200;2;2;toiture-bardage-bardage-imitation-bois;toiture-bardage-bardage-imitation-bois/0005130_tasseau-40x40-71x300cm-parement-chene-clair.jpeg
+G132;schema;;profil de tasseau coté : 40 mm, 37 mm, largeur 710 mm (fabricant);1200x1200;2;2;toiture-bardage-bardage-imitation-bois;toiture-bardage-bardage-imitation-bois/0005131_tasseau-40x40-71x300cm-parement-chene-clair.jpeg
+G133;photo;;panneaux isolés en pile au dépôt : âme mousse crème, parements acier gris;1920x1920;8;8;toiture-bardage-panneaux-isoles-eurocopre-monolamiera-eco;toiture-bardage-panneaux-isoles-eurocopre-monolamiera-eco/0004918_3abf8c3b41dd4920b3d535e1a0a41634.jpeg
+G134;photo;;panneaux isolés en pile au dépôt;1920x1920;8;8;toiture-bardage-panneaux-isoles-eurocopre-monolamiera-eco;toiture-bardage-panneaux-isoles-eurocopre-monolamiera-eco/0004919_47d9e88972e34317bcc70fe7adc95ea7.jpeg
+G135;rendu;;tôle profil 30.200.1000, gris (Grosjean);1920x1920;7;7;toiture-bardage-toles-profilees-profil-30-200-1000;toiture-bardage-toles-profilees-profil-30-200-1000/0003835_tole-302001000-ral-7016-200x105cm.jpeg
+G136;photo;;tôle profilée trapézoïdale, métal nu (origine incertaine);1920x1919;7;7;toiture-bardage-toles-profilees-profil-30-200-1000;toiture-bardage-toles-profilees-profil-30-200-1000/0003836_tole-302001000-ral-7016-200x105cm.jpeg
+G137;schema;;tôle profilée : longueur utile, longueur (Grosjean);1920x1920;7;7;toiture-bardage-toles-profilees-profil-30-200-1000;toiture-bardage-toles-profilees-profil-30-200-1000/0003837_tole-302001000-ral-7016-200x105cm.jpeg

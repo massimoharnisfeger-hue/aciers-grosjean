@@ -240,6 +240,12 @@ def dims_de(nom):
     return []
 
 
+def suite_cotes(nom):
+    """Tous les nombres de la première suite AxBx…xN du nom : « 40x40x40x2mm » -> [40, 40, 40, 2]."""
+    m = re.search(NUM + r"(?:\s*[x×]\s*" + NUM + r")+", nom, re.I)
+    return [f(x) for x in re.findall(NUM, m.group(0))] if m else []
+
+
 def diametre_de(nom):
     m = re.search(NUM + r"\s*mm\s+de\s+diam", nom, re.I) or \
         re.search(r"diam[èe]tre\s+" + NUM, nom, re.I) or \
@@ -278,10 +284,13 @@ def poids_et_specs(cat_path, nom, densite):
             base = f(m2.group(1)) if m2 else e
             kgm2 = round(base * densite, 2)
             kg = round(kgm2 * (L / 1000) * (l / 1000), 1)
+            # l'oxycoupage ne s'applique qu'à l'acier : jamais sur l'aluminium ni l'inox
+            decoupe = ("Cisaillage aux cotes" if cat_path.startswith(("/aluminium", "/inox"))
+                       else "Cisaillage ou oxycoupage aux cotes")
             specs = [("Format", f"{L:g} × {l:g} mm"),
                      ("Épaisseur", (f"{m2.group(1)}/{m2.group(2)} mm" if m2 else f"{e:g} mm").replace(".", ",")),
                      ("Masse surfacique", f"{kgm2:.2f} kg/m²".replace(".", ",")),
-                     ("Découpe", "Cisaillage ou oxycoupage aux cotes")]
+                     ("Découpe", decoupe)]
             return kg, "kg/plaque", "à la plaque", "€/pce", specs
 
     # --- profilés au mètre ---
@@ -313,10 +322,13 @@ def poids_et_specs(cat_path, nom, densite):
             kg = round((2 * a - e) * e * densite * CONGE / 1000, 2)
             return kg, "kg/m", "au mètre", "€/m", [("Section", f"{a:g} × {a:g} mm"), ("Épaisseur", f"{e:g} mm")]
     if "profil-u" in seg:
-        if len(d) >= 2:
-            a, e = d[0], d[-1]
+        # « 40x40x40x2mm » : aile × âme × aile × épaisseur ; dims_de n'en lit que trois
+        cotes = suite_cotes(nom)
+        if len(cotes) >= 2:
+            a, e = cotes[0], cotes[-1]
             kg = round((3 * a - 2 * e) * e * densite / 1000, 2)
-            return kg, "kg/m", "au mètre", "€/m", [("Section", f"{a:g} × {a:g} mm"), ("Épaisseur", f"{e:g} mm")]
+            section = " × ".join(f"{x:g}" for x in cotes[:-1])
+            return kg, "kg/m", "au mètre", "€/m", [("Section", f"{section} mm"), ("Épaisseur", f"{e:g} mm")]
     if "profil-t" in seg:
         if len(d) >= 2:
             a, e = d[0], d[-1]

@@ -1,14 +1,17 @@
 """
-Rendu Blender d'un profilé acier à partir de ses cotes.
+Rendu Blender de profilés acier à partir de leurs cotes.
 
 Usage :
   blender -b --factory-startup -P rendu_profil.py -- params.json
 
-params.json :
-  {"slug": "...", "type": "I", "h": 200, "b": 100, "tw": 5.6, "tf": 8.5, "r": 12,
-   "longueur": 700, "sortie": "dossier", "samples": 96, "largeur": 1600, "hauteur": 1200}
+params.json : un objet ou une LISTE d'objets (une seule instance Blender pour toute la liste) :
+  {"slug": "...", "mode": "caracteristiques" | "studio", "sortie": "dossier",
+   "pieces": [{"type": "I", "h": 200, "b": 100, "tw": 5.6, "tf": 8.5, "r": 12, "longueur": 700}],
+   "finition": "GPP" | "BRUT", "samples": 64, "largeur": 1600, "hauteur": 1200}
+  Type "U" : "r1", "r2", "pente" (%) à la place de "r". Mode caracteristiques : une seule pièce.
+  Pour compatibilité, les cotes peuvent aussi être données à la racine (une pièce).
 
-Produit <sortie>/<slug>.png (fond transparent + ombre) et <slug>.json
+Produit <sortie>/<slug>.png (fond transparent + ombre) et, en mode caracteristiques, <slug>.json
 (coordonnées écran des points utiles aux cotes, pour l'habillage 2D).
 """
 
@@ -26,6 +29,9 @@ from mathutils import Vector
 MM = 0.001
 PARAMS = {}
 
+# Teintes (sRGB 0-255) calées sur les vraies photos du site actuel ; converties en linéaire pour Cycles.
+TEINTE_GPP = PARAMS.get("teinte_gpp", (122, 52, 40))
+
 
 def p_mat(cle, defaut):
     """Réglage matière surchargeable depuis params.json."""
@@ -35,8 +41,13 @@ def p_mat(cle, defaut):
 def lire_params():
     argv = sys.argv
     chemin = argv[argv.index("--") + 1]
-    with open(chemin, encoding="utf-8") as f:
+    with open(chemin, encoding="utf-8-sig") as f:  # tolère le BOM ajouté par PowerShell
         return json.load(f)
+
+
+def lineaire(c):
+    c = c / 255.0
+    return c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4
 
 
 # ---------------------------------------------------------------- géométrie
@@ -50,8 +61,16 @@ def arc(cx, cz, r, a0, a1, n):
     return pts
 
 
+def dedoublonner(p):
+    propre = []
+    for q in p:
+        if not propre or (abs(q[0] - propre[-1][0]) > 1e-9 or abs(q[1] - propre[-1][1]) > 1e-9):
+            propre.append(q)
+    return propre
+
+
 def section_i(h, b, tw, tf, r, n=10):
-    """Section en I (IPE, HEA, HEB) : ailes parallèles, 4 congés de raccordement."""
+    """Section en I (IPE, HEA, HEB) : ailes parallèles, 4 congés de raccordement, centrée en x."""
     x = tw / 2
     p = [(-b / 2, 0), (b / 2, 0), (b / 2, tf)]
     p += arc(x + r, tf + r, r, 270, 180, n)
@@ -60,17 +79,47 @@ def section_i(h, b, tw, tf, r, n=10):
     p += arc(-x - r, h - tf - r, r, 90, 0, n)
     p += arc(-x - r, tf + r, r, 0, -90, n)
     p += [(-b / 2, tf)]
-    propre = []
-    for q in p:
-        if not propre or (abs(q[0] - propre[-1][0]) > 1e-9 or abs(q[1] - propre[-1][1]) > 1e-9):
-            propre.append(q)
-    return propre
+    return dedoublonner(p)
 
 
-def extruder(section_mm, longueur_mm, nom):
+def coin_arrondi(p0, p1, p2, r, n=10):
+    """Remplace le sommet p1 par un arc de rayon r tangent aux segments p1-p0 et p1-p2."""
+    if r <= 0:
+        return [p1]
+    v1 = Vector((p0[0] - p1[0], p0[1] - p1[1])).normalized()
+    v2 = Vector((p2[0] - p1[0], p2[1] - p1[1])).normalized()
+    ang = math.acos(max(-1.0, min(1.0, v1.dot(v2))))
+    if ang < 1e-3 or abs(ang - math.pi) < 1e-3:
+        return [p1]
+    d = r / math.tan(ang / 2)
+    t1 = Vector(p1) + v1 * d
+    t2 = Vector(p1) + v2 * d
+    c = Vector(p1) + (v1 + v2).normalized() * (r / math.sin(ang / 2))
+    a1 = math.atan2(t1.y - c.y, t1.x - c.x)
+    a2 = math.atan2(t2.y - c.y, t2.x - c.x)
+    da = (a2 - a1 + math.pi) % (2 * math.pi) - math.pi
+    return [(c.x + r * math.cos(a1 + da * i / n), c.y + r * math.sin(a1 + da * i / n)) for i in range(n + 1)]
+
+
+def section_u(h, b, tw, tf, r1, r2, pente=8.0, n=10):
+    """Section en U à ailes inclinées (UPN, DIN 1026-1) : épaisseur d'aile tf mesurée à b/2,
+    faces intérieures inclinées de `pente` %, congé r1 à la racine, arrondi r2 au bout d'aile.
+    Âme à gauche, ouverture vers +x ; centrée en x."""
+    k = pente / 100.0
+    t_bout = tf - (b / 2) * k          # épaisseur au bout de l'aile (x = b)
+    t_racine = tf + (b / 2 - tw) * k   # épaisseur contre l'âme (x = tw)
+    coins = [(0, 0), (b, 0), (b, t_bout), (tw, t_racine), (tw, h - t_racine), (b, h - t_bout), (b, h), (0, h)]
+    rayons = [0, 0, r2, r1, r1, r2, 0, 0]
+    p = []
+    for i, c in enumerate(coins):
+        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
+    return dedoublonner([(x - b / 2, z) for x, z in p])
+
+
+def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
     me = bpy.data.meshes.new(nom)
     bm = bmesh.new()
-    verts = [bm.verts.new((x * MM, 0.0, z * MM)) for x, z in section_mm]
+    verts = [bm.verts.new(((x + decalage_x) * MM, 0.0, z * MM)) for x, z in section_mm]
     face = bm.faces.new(verts)
     res = bmesh.ops.extrude_face_region(bm, geom=[face])
     nouveaux = [e for e in res["geom"] if isinstance(e, bmesh.types.BMVert)]
@@ -101,6 +150,12 @@ def extruder(section_mm, longueur_mm, nom):
     return obj
 
 
+def section_de(piece):
+    if piece["type"] == "U":
+        return section_u(piece["h"], piece["b"], piece["tw"], piece["tf"], piece["r1"], piece["r2"], piece.get("pente", 8.0))
+    return section_i(piece["h"], piece["b"], piece["tw"], piece["tf"], piece["r"])
+
+
 # ---------------------------------------------------------------- matériaux
 
 def noeud(nt, type_, loc, **inputs):
@@ -112,7 +167,7 @@ def noeud(nt, type_, loc, **inputs):
 
 
 def materiau_calamine():
-    """Acier laminé à chaud : calamine gris bleuté, satinée, marbrée."""
+    """Acier laminé à chaud brut : calamine gris bleuté, satinée, marbrée."""
     m = bpy.data.materials.new("calamine")
     m.use_nodes = True
     nt = m.node_tree
@@ -149,6 +204,39 @@ def materiau_calamine():
     return m
 
 
+def materiau_gpp():
+    """GPP : grenaillé puis peinture primaire (description du site actuel). Teinte calée sur la vraie photo."""
+    m = bpy.data.materials.new("gpp")
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    r, g, b = (lineaire(c) for c in p_mat("teinte_gpp", TEINTE_GPP))
+
+    coord = nt.nodes.new("ShaderNodeTexCoord")
+    nuage = noeud(nt, "ShaderNodeTexNoise", (-900, 200), Scale=3.0, Detail=6.0, Roughness=0.5)
+    nt.links.new(coord.outputs["Object"], nuage.inputs["Vector"])
+    rampe = nt.nodes.new("ShaderNodeValToRGB")
+    rampe.location = (-600, 300)
+    rampe.color_ramp.elements[0].position = 0.25
+    rampe.color_ramp.elements[0].color = (r * 0.88, g * 0.88, b * 0.88, 1)
+    rampe.color_ramp.elements[1].position = 0.85
+    rampe.color_ramp.elements[1].color = (r * 1.08, g * 1.06, b * 1.06, 1)
+    nt.links.new(nuage.outputs["Fac"], rampe.inputs["Fac"])
+    nt.links.new(rampe.outputs["Color"], bsdf.inputs["Base Color"])
+
+    # peinture mate sur surface grenaillée : grain fin
+    grain = noeud(nt, "ShaderNodeTexNoise", (-900, -250), Scale=1400.0, Detail=3.0)
+    nt.links.new(coord.outputs["Object"], grain.inputs["Vector"])
+    relief = noeud(nt, "ShaderNodeBump", (-400, -250), Strength=0.05, Distance=0.0003)
+    nt.links.new(grain.outputs["Fac"], relief.inputs["Height"])
+    nt.links.new(relief.outputs["Normal"], bsdf.inputs["Normal"])
+
+    bsdf.inputs["Metallic"].default_value = 0.0
+    bsdf.inputs["Roughness"].default_value = p_mat("rugosite_gpp", 0.62)
+    bsdf.inputs["Specular IOR Level"].default_value = 0.4
+    return m
+
+
 def materiau_coupe():
     """Face sciée : acier nu clair, stries de scie."""
     m = bpy.data.materials.new("coupe")
@@ -175,11 +263,16 @@ def materiau_coupe():
     return m
 
 
+MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp}
+
+
 # ---------------------------------------------------------------- scène
 
 def vider_scene():
-    for o in list(bpy.data.objects):
-        bpy.data.objects.remove(o, do_unlink=True)
+    for collection in (bpy.data.objects, bpy.data.meshes, bpy.data.materials, bpy.data.lights,
+                       bpy.data.cameras, bpy.data.worlds, bpy.data.images):
+        for bloc in list(collection):
+            collection.remove(bloc)
 
 
 def lumiere_zone(nom, pos, cible, taille, energie):
@@ -219,6 +312,7 @@ def cadrer(cam, scene, points, boite, direction, cible):
     largeur_boite, hauteur_boite = u1 - u0, v1 - v0
     cu, cv = (u0 + u1) / 2, (v0 + v1) / 2
     ratio = scene.render.resolution_x / scene.render.resolution_y
+    cam.data.shift_x = cam.data.shift_y = 0.0
 
     def etendue(d):
         cam.location = Vector(cible) + direction * d
@@ -244,26 +338,45 @@ def cadrer(cam, scene, points, boite, direction, cible):
     etendue(haut)
 
 
-def main():
-    p = lire_params()
+def rendre(p):
+    PARAMS.clear()
     PARAMS.update(p)
     t0 = time.time()
     vider_scene()
     scene = bpy.context.scene
+    mode = p.get("mode", "caracteristiques")
+    pieces = p.get("pieces") or [{k: p[k] for k in ("type", "h", "b", "tw", "tf", "r", "r1", "r2", "pente", "longueur") if k in p}]
+    for piece in pieces:
+        piece.setdefault("type", "I")
 
-    h, b = p["h"], p["b"]
-    L = p.get("longueur", 500)
-    sec = section_i(h, b, p["tw"], p["tf"], p["r"])
-    obj = extruder(sec, L, p["slug"])
-    obj.data.materials.append(materiau_calamine())
-    obj.data.materials.append(materiau_coupe())
+    finition = p.get("finition", "BRUT")
+    mat_surface = MATIERES.get(finition, materiau_calamine)()
+    mat_coupe = materiau_coupe()
+
+    # pièces côte à côte (studio), la plus grande à gauche ; espacement proportionnel
+    ecart = max(q["b"] for q in pieces) * 0.55
+    x = 0.0
+    boite_pts = []
+    for i, piece in enumerate(pieces):
+        L = piece.get("longueur", p.get("longueur", 500))
+        dx = x + piece["b"] / 2
+        obj = extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)
+        obj.data.materials.append(mat_surface)
+        obj.data.materials.append(mat_coupe)
+        # recul en profondeur des pièces suivantes : elles ne se masquent pas
+        obj.location.y = i * piece["b"] * 0.9 * MM
+        boite_pts += [((dx + sx * piece["b"] / 2) * MM, obj.location.y + y * MM, z * MM)
+                      for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
+        x += piece["b"] + ecart
+    centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
+    for obj in [o for o in bpy.data.objects if o.type == "MESH"]:
+        obj.location.x -= centre_x
+    boite_pts = [(q[0] - centre_x, q[1], q[2]) for q in boite_pts]
 
     # sol attrape-ombre
-    bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, 0))
-    sol = bpy.context.active_object
-    sol.is_shadow_catcher = True
+    bpy.ops.mesh.primitive_plane_add(size=40, location=(0, 0, 0))
+    bpy.context.active_object.is_shadow_catcher = True
 
-    # caméra : trois-quarts avant gauche, légère plongée, focale produit
     cam_data = bpy.data.cameras.new("cam")
     cam_data.lens = p.get("focale", 50)
     cam = bpy.data.objects.new("cam", cam_data)
@@ -273,25 +386,29 @@ def main():
     # caméra côté +X : la section apparaît à gauche, le corps file vers la droite
     az, el = math.radians(p.get("azimut", 20)), math.radians(p.get("elevation", 17))
     direction = Vector((math.sin(az) * math.cos(el), -math.cos(az) * math.cos(el), math.sin(el)))
-    cible = Vector((0, L * MM * 0.35, h * MM * 0.5))
+    h_max = max(q["h"] for q in pieces)
+    L0 = pieces[0].get("longueur", p.get("longueur", 500))
+    cible = Vector((0, L0 * MM * 0.35, h_max * MM * 0.5))
     cam.rotation_euler = (-direction).to_track_quat("-Z", "Y").to_euler()
 
+    piece = pieces[0]
+    h, b = piece["h"], piece["b"]
     off = max(h, b) * 0.28  # écart des lignes de cote, en mm
-    points_cadrage = [
-        (x * MM, y * MM, z * MM)
-        for x in (-b / 2, b / 2) for y in (0, L) for z in (0, h)
-    ] + [
-        ((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM),
-        (-b / 2 * MM, 0, -off * 1.6 * MM), (b / 2 * MM, 0, -off * 1.6 * MM),
-    ]
+    points_cadrage = list(boite_pts)
+    if mode == "caracteristiques":
+        points_cadrage += [
+            ((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM),
+            (-b / 2 * MM, 0, -off * 1.6 * MM), (b / 2 * MM, 0, -off * 1.6 * MM),
+        ]
+        boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
+    else:
+        boite = tuple(p.get("boite", (0.12, 0.14, 0.88, 0.86)))
 
     scene.render.resolution_x = p.get("largeur", 1600)
     scene.render.resolution_y = p.get("hauteur", 1200)
     scene.render.resolution_percentage = 100
-    boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
     cadrer(cam, scene, points_cadrage, boite, direction, cible)
 
-    # éclairage studio : boîte à lumière principale, débouchage, contre-jour, dessus
     t = cible
     lumiere_zone("cle", t + Vector((-0.3, -1.2, 2.4)), t, 2.0, p.get("e_cle", 110))
     lumiere_zone("debouchage", t + Vector((1.6, -1.4, 0.7)), t, 2.0, p.get("e_debouchage", 35))
@@ -299,18 +416,18 @@ def main():
     lumiere_zone("dessus", t + Vector((0.0, 0.3, 2.5)), t, 2.5, p.get("e_dessus", 45))
     monde_studio()
 
-    # rendu
     scene.render.engine = "CYCLES"
     scene.cycles.device = "CPU"
-    scene.cycles.samples = p.get("samples", 96)
+    scene.cycles.samples = p.get("samples", 64)
     scene.cycles.use_adaptive_sampling = True
-    scene.cycles.adaptive_threshold = 0.02
+    scene.cycles.adaptive_threshold = p.get("seuil_adaptatif", 0.02)
     scene.cycles.use_denoising = True
     scene.cycles.denoiser = "OPENIMAGEDENOISE"
-    scene.cycles.max_bounces = 8
-    scene.cycles.glossy_bounces = 4
+    scene.cycles.max_bounces = p.get("rebonds", 8)
+    scene.cycles.glossy_bounces = min(4, p.get("rebonds", 8))
     scene.cycles.caustics_reflective = False
     scene.cycles.caustics_refractive = False
+    scene.render.use_persistent_data = True
     scene.render.film_transparent = True
     scene.view_settings.view_transform = "AgX"
     scene.view_settings.exposure = p.get("exposition", -1.3)
@@ -326,36 +443,45 @@ def main():
     scene.render.filepath = os.path.join(sortie, p["slug"] + ".png")
     bpy.ops.render.render(write_still=True)
 
-    # points écran pour l'habillage (pixels, origine en haut à gauche)
-    W, H = scene.render.resolution_x, scene.render.resolution_y
+    if mode == "caracteristiques":
+        W, H = scene.render.resolution_x, scene.render.resolution_y
 
-    def ecran(x, y, z):
-        q = world_to_camera_view(scene, cam, Vector((x * MM, y * MM, z * MM)))
-        return [round(q.x * W, 2), round((1 - q.y) * H, 2)]
+        def ecran(x, y, z):
+            q = world_to_camera_view(scene, cam, Vector((x * MM, y * MM, z * MM)))
+            return [round(q.x * W, 2), round((1 - q.y) * H, 2)]
 
-    tw, tf = p["tw"], p["tf"]
-    points = {
-        "cote_h_bas": ecran(-b / 2 - off, 0, 0),
-        "cote_h_haut": ecran(-b / 2 - off, 0, h),
-        "cote_b_gauche": ecran(-b / 2, 0, -off),
-        "cote_b_droit": ecran(b / 2, 0, -off),
-        "rappel_h_bas_debut": ecran(-b / 2 - 4, 0, 0),
-        "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, 0, 0),
-        "rappel_h_haut_debut": ecran(-b / 2 - 4, 0, h),
-        "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, 0, h),
-        "rappel_b_gauche_debut": ecran(-b / 2, 0, -4),
-        "rappel_b_gauche_fin": ecran(-b / 2, 0, -off * 1.2),
-        "rappel_b_droit_debut": ecran(b / 2, 0, -4),
-        "rappel_b_droit_fin": ecran(b / 2, 0, -off * 1.2),
-        "ame_gauche": ecran(-tw / 2, 0, h * 0.5),
-        "ame_droite": ecran(tw / 2, 0, h * 0.5),
-        "aile_haut_ext": ecran(-b * 0.3, 0, h),
-        "aile_haut_int": ecran(-b * 0.3, 0, h - tf),
-    }
-    with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-        json.dump({"largeur": W, "hauteur": H, "points": points,
-                   "duree_s": round(time.time() - t0, 1)}, f, indent=2)
-    print(f"RENDU OK {p['slug']} en {time.time() - t0:.1f} s")
+        tw, tf = piece["tw"], piece["tf"]
+        # âme : au centre pour un I, contre le bord gauche pour un U ; épaisseur d'aile relevée à b/2 (norme)
+        x_ame = 0.0 if piece["type"] == "I" else -b / 2 + tw / 2
+        x_aile = -b * 0.3 if piece["type"] == "I" else 0.0
+        points = {
+            "cote_h_bas": ecran(-b / 2 - off, 0, 0),
+            "cote_h_haut": ecran(-b / 2 - off, 0, h),
+            "cote_b_gauche": ecran(-b / 2, 0, -off),
+            "cote_b_droit": ecran(b / 2, 0, -off),
+            "rappel_h_bas_debut": ecran(-b / 2 - 4, 0, 0),
+            "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, 0, 0),
+            "rappel_h_haut_debut": ecran(-b / 2 - 4, 0, h),
+            "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, 0, h),
+            "rappel_b_gauche_debut": ecran(-b / 2, 0, -4),
+            "rappel_b_gauche_fin": ecran(-b / 2, 0, -off * 1.2),
+            "rappel_b_droit_debut": ecran(b / 2, 0, -4),
+            "rappel_b_droit_fin": ecran(b / 2, 0, -off * 1.2),
+            "ame_gauche": ecran(x_ame - tw / 2, 0, h * 0.5),
+            "ame_droite": ecran(x_ame + tw / 2, 0, h * 0.5),
+            "aile_haut_ext": ecran(x_aile, 0, h),
+            "aile_haut_int": ecran(x_aile, 0, h - tf),
+        }
+        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
+            json.dump({"largeur": W, "hauteur": H, "type": piece["type"], "points": points,
+                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+    print(f"RENDU OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
+
+
+def main():
+    params = lire_params()
+    for p in (params if isinstance(params, list) else [params]):
+        rendre(p)
 
 
 main()

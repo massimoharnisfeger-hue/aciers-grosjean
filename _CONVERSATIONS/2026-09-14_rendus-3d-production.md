@@ -1,0 +1,30 @@
+# 14 septembre 2026 — Production des visuels 3D (étapes 0 à 2 et test poutrelles)
+
+Séance Claude Code sur le PC : https://claude.ai/code/session_011Va2LRc8Chevt4WRj964Em
+
+## Demande
+Deux visuels Blender par fiche : photo studio (fond blanc, 1 par catégorie) et visuel caractéristiques (1 par fiche, cotes + fiche technique, modèle `_DEPOT/images/test-blender/poutrelle-ipe-200-en-acier-caracteristiques.png`).
+477 fiches ; 18 produits sous emballage exclus (dire seulement si la photo du site actuel est utilisable).
+Ordre imposé : étapes 0 (corriger le générateur), 1 (références visuelles), 2 (données sourcées), puis rendu test des poutrelles IPE, HEA, HEB, UPN, à montrer avant d'aller plus loin. Au premier test, demander : photo studio avec une barre ou 2-3 tailles.
+Règle : aucune valeur supposée affichée ; en cas de doute, demander.
+
+## Fait
+- **Étape 0** : générateur corrigé — profils U alu (section « 20 × 20 × 20 mm »…, épaisseur 2 mm, poids recalculés 0,30/0,38/0,46/0,63 kg/m) et 28 tôles alu/inox sans « oxycoupage » (générateur + `lib/catalogue.ts`).
+- **Étape 1** : 1 093 images du site actuel téléchargées (`references_telecharger.py` → `_DEPOT/images/site-actuel/`), regroupées en 137 visuels (`references_planches.py`, dHash), classées une à une (`references_classer.py` → `references.csv`, `references-groupes.csv`) ; récapitulatif par famille et réponse pour les 18 produits sous emballage : `_DOCS/rendus-3d/references-recap.md`.
+- **Étape 2 (poutrelles)** : `donnees_produits.py` → `donnees/produits.json` + `donnees-produits.csv`. 45 fiches, 0 alerte. h, b, tw, tf, r (r1/r2 UPN) des tableaux VM 2013 ; poids, finition, longueurs du site actuel ; nuance et norme des descriptions (S275 IPE, S275/S355 HEB, S235/S275 UPN, rien HEA) ; recoupements automatiques cotes/poids site ↔ fournisseur.
+- **Rendu test poutrelles** : `rendu_profil.py` réécrit (liste de rendus en une instance Blender, section U à ailes inclinées 8 % DIN 1026-1, matière GPP calée sur la vraie photo du dépôt [135, 66, 50], calamine pour BRUT) ; `habiller.py` réécrit (lit uniquement les données sourcées, `affichable()` masque toute valeur supposée, contrôles automatiques) ; `preparer_rendus.py` (préréglages).
+  9 rendus : caractéristiques IPE/HEA/HEB/UPN 200 + studio IPE (1 barre), IPE 3 tailles, HEA, HEB, UPN. 107 à 172 s par image (32 échantillons, seuil 0,03) ; comparaison 64 échantillons : identique à l'œil, préréglage passé à 32.
+  Autocontrôle : formes conformes (UPN à ailes inclinées), textes = données sourcées, aucun chevauchement, WebP 14–37 Ko. Images envoyées au propriétaire.
+- `_OUTILS/site-local.ps1 -Mode verifier` : TypeScript et build de production OK (catalogue.ts modifié).
+- Carnet de leçons complété (réglages validés, erreurs corrigées, temps mesurés, préréglages et contrôles créés) ; `avancement.md` créé.
+
+## Constats à trancher (posés au propriétaire, notés dans avancement.md)
+1. Studio : une barre ou trois tailles côte à côte ?
+2. Générateur : « Nuance S235JR — EN 10025-2 » et « Longueur standard 6 m ou 12 m » sur les 45 fiches poutrelles ≠ site actuel (S275 IPE, S275/S355 HEB, S235/S275 UPN, rien HEA ; longueurs 1–6 m, « jusqu'à 15 m »).
+3. « norme 10025 » du site → « EN 10025 » ?
+4. Poids UPN : description (tableau fournisseur) ≠ fiche (+0,1 à +0,8 %) sur la même page du site actuel.
+5. Clogriff 64 2M50 « VERT RAL 7016 » : vert 6005 ou gris 7016 ?
+6. Cloplus 40 : légende « (ALU) » sur l'image fabricant — aluminium ou acier ?
+
+## Reste à faire
+- Réponses du propriétaire → corriger, série poutrelles (~2 h), contrôle de chaque image, vérification indépendante, intégration, puis familles suivantes (avancement.md).

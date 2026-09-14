@@ -1,0 +1,3004 @@
+{
+ "poutrelle-hea-100-en-acier": {
+  "nom": "Poutrelle HEA 100 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 96.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 17.1,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-120-en-acier": {
+  "nom": "Poutrelle HEA 120 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 114.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 20.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-140-en-acier": {
+  "nom": "Poutrelle HEA 140 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 133.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 140.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 25.3,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-160-en-acier": {
+  "nom": "Poutrelle HEA 160 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 152.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 31.14,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-180-en-acier": {
+  "nom": "Poutrelle HEA 180 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 171.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 180.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 9.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 36.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-200-en-acier": {
+  "nom": "Poutrelle HEA 200 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 190.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 43.32,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-220-en-acier": {
+  "nom": "Poutrelle HEA 220 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 210.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 220.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 11.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 51.72,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-240-en-acier": {
+  "nom": "Poutrelle HEA 240 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 230.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 240.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 21.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 61.76,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-260-en-acier": {
+  "nom": "Poutrelle HEA 260 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 250.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 260.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 12.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 24.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 69.85,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-280-en-acier": {
+  "nom": "Poutrelle HEA 280 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 270.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 280.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 13.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 24.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 78.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-hea-300-en-acier": {
+  "nom": "Poutrelle HEA 300 en acier",
+  "categorie": "/acier/poutrelles/hea",
+  "famille": "poutrelle-hea",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEA",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 290.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 300.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 14.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 27.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 90.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-100-en-acier": {
+  "nom": "Poutrelle HEB 100 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 20.89,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-120-en-acier": {
+  "nom": "Poutrelle HEB 120 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 11.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 27.35,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-140-en-acier": {
+  "nom": "Poutrelle HEB 140 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 140.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 140.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 34.52,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-160-en-acier": {
+  "nom": "Poutrelle HEB 160 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 13.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 43.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-180-en-acier": {
+  "nom": "Poutrelle HEB 180 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 180.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 180.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 14.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 52.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-200-en-acier": {
+  "nom": "Poutrelle HEB 200 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 62.78,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-220-en-acier": {
+  "nom": "Poutrelle HEB 220 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 220.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 220.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 9.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 16.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 73.23,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-240-en-acier": {
+  "nom": "Poutrelle HEB 240 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 240.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 240.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 17.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 21.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 85.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-260-en-acier": {
+  "nom": "Poutrelle HEB 260 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 260.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 260.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 17.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 24.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 95.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-280-en-acier": {
+  "nom": "Poutrelle HEB 280 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 280.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 280.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 24.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 105.49,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-heb-300-en-acier": {
+  "nom": "Poutrelle HEB 300 en acier",
+  "categorie": "/acier/poutrelles/heb",
+  "famille": "poutrelle-heb",
+  "valeurs": {
+   "serie": {
+    "valeur": "HEB",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 300.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 300.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 11.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 19.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 27.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEB.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 119.83,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275 / S355",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-100-en-acier": {
+  "nom": "Poutrelle IPE 100 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 55.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 4.1,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 5.7,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.3,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-120-en-acier": {
+  "nom": "Poutrelle IPE 120 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 64.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 4.4,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 6.3,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 10.65,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-140-en-acier": {
+  "nom": "Poutrelle IPE 140 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 140.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 73.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 4.7,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 6.9,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 13.14,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-160-en-acier": {
+  "nom": "Poutrelle IPE 160 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 82.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 7.4,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.18,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-180-en-acier": {
+  "nom": "Poutrelle IPE 180 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 180.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 91.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.3,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 19.26,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-200-en-acier": {
+  "nom": "Poutrelle IPE 200 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.6,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 22.94,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-220-en-acier": {
+  "nom": "Poutrelle IPE 220 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 220.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 110.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 5.9,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 9.2,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 26.83,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-240-en-acier": {
+  "nom": "Poutrelle IPE 240 en acier",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 240.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.2,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 9.8,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 31.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-270": {
+  "nom": "Poutrelle IPE 270",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 270.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 135.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.6,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.2,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 36.97,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-300": {
+  "nom": "Poutrelle IPE 300",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 300.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 150.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.1,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.7,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 43.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-ipe-330": {
+  "nom": "Poutrelle IPE 330",
+  "categorie": "/acier/poutrelles/ipe",
+  "famille": "poutrelle-ipe",
+  "valeurs": {
+   "serie": {
+    "valeur": "IPE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 330.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 11.5,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 18.0,
+    "source": "fiche fournisseur VM 2013 — POUTRELLE IPE ACIERS GROSJEAN 4(1).pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.29,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "GPP",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "norme": {
+    "valeur": "EN 10025",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-100-en-acier": {
+  "nom": "Poutrelle UPN 100 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 4.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 10.86,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-120-en-acier": {
+  "nom": "Poutrelle UPN 120 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 55.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 4.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 13.62,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-140-en-acier": {
+  "nom": "Poutrelle UPN 140 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 140.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.39,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-160-en-acier": {
+  "nom": "Poutrelle UPN 160 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 160.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 65.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 10.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 5.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 19.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-180-en-acier": {
+  "nom": "Poutrelle UPN 180 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 180.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 70.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 11.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 11.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 5.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 22.53,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-200-en-acier": {
+  "nom": "Poutrelle UPN 200 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 75.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 8.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 11.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 11.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 25.91,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-220-en-acier": {
+  "nom": "Poutrelle UPN 220 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 220.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 80.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 12.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 12.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 6.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 30.11,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-240-en-acier": {
+  "nom": "Poutrelle UPN 240 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 240.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 85.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 9.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 13.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 13.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 6.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 34.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-260-en-acier": {
+  "nom": "Poutrelle UPN 260 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 260.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 90.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 14.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 14.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 38.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-280-en-acier": {
+  "nom": "Poutrelle UPN 280 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 280.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 95.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 42.91,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-300-en-acier": {
+  "nom": "Poutrelle UPN 300 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 300.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 16.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 16.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 47.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ },
+ "poutrelle-upn-80-en-acier": {
+  "nom": "Poutrelle UPN 80 en acier",
+  "categorie": "/acier/poutrelles/upn",
+  "famille": "poutrelle-upn",
+  "valeurs": {
+   "serie": {
+    "valeur": "UPN",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 45.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tw": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "tf": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.86,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "site actuel — option de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
+   },
+   "nuance": {
+    "valeur": "S235 / S275",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "pente_aile": {
+    "valeur": 8,
+    "source": "norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée)",
+    "unite": "%"
+   }
+  },
+  "alertes": []
+ }
+}
