@@ -58,6 +58,11 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
 - **Commande de lancement** (boucle à rythme libre) :
   `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/lecons.md puis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets à jour l'avancement et, si tu as appris quelque chose, le carnet de leçons. Quand les 477 fiches sont intégrées, vérifiées et poussées, arrête la boucle.`
 - Pendant la journée, si le propriétaire doit utiliser le PC : limiter Blender à 4 cœurs (`-t 4`).
+- **Quand les 477 fiches sont intégrées**, proposer au propriétaire l'étape vidéo, sans la lancer d'office :
+  - rotation 360° ou apparition des cotes dans Blender pour quelques produits phares des fiches (fidèle, gratuit) ; mesurer d'abord le temps de rendu d'une rotation courte ;
+  - vidéo de présentation avec Motion (connecteur claude.ai, crédits payants) à partir des photos studio et en situation, pour les réseaux sociaux et l'accueil ;
+  - animation par IA (Higgsfield) seulement sur les photos studio et en situation, **jamais** sur les visuels à chiffres, que l'IA déforme ;
+  - sur le site : boucles courtes et légères, chargées seulement à l'affichage.
 
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.
