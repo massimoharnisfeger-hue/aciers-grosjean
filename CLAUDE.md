@@ -31,6 +31,19 @@ Dépôt : `_DEPOT/images/<lot>/`, lots décrits dans `_DOCS/BESOINS-IMAGES.md`.
 Intégration : WebP qualité ~80, 2400 px de large au maximum, moins de 200 Ko, nom `slug-en-minuscules.webp`, rangé dans `public/images/<lot>/`, affiché avec `next/image` et un `alt` descriptif.
 Déplacer ensuite l'original dans `_DEPOT/deja-integre/<lot>/` et le noter dans le journal.
 
+## Visuels 3D des fiches produits
+Brief : `_DOCS/BRIEF-RENDUS-3D.md`. Une famille à la fois : rendu test → **attendre l'accord du propriétaire** → série → planche contact → accord. Jamais de nouvelle famille sans accord.
+
+Claude ne peut ni changer de modèle ni fermer des programmes : c'est au propriétaire de le faire. **Le lui rappeler au bon moment, sans attendre qu'il y pense :**
+- **Avant de lancer une série** (plusieurs heures de rendu), lui demander de :
+  1. fermer navigateurs et autres fenêtres Claude Code (15 Go de RAM, souvent presque pleine) ;
+  2. brancher le PC et désactiver la mise en veille ;
+  3. taper `/model` et choisir **Sonnet 5** (la surveillance n'a pas besoin de plus) ;
+  4. lancer la surveillance :
+     `/loop 45m Surveille la série de rendus Blender en cours (scripts/rendu-3d, dossier %LOCALAPPDATA%\SiteAciersGrosjean\rendu3d) : nombre d'images faites et restantes, durée moyenne, erreurs. Relance les rendus plantés. Contrôle chaque nouvelle image (forme, cotes lisibles sans chevauchement, textes conformes aux données sourcées) et mets de côté celles qui posent problème, avec la raison. Ne commence jamais une nouvelle famille sans mon accord. Quand la série est terminée : planche contact de la famille, envoie-la-moi, puis arrête la boucle.`
+- **Quand la planche contact est validée**, avant la famille suivante : lui demander de repasser sur **Fable** (`/model`, version la plus récente) pour la modélisation et les rendus test.
+- Pendant la journée, s'il doit utiliser le PC : proposer de limiter Blender à 4 cœurs (`-t 4`).
+
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.
 2. `_CONVERSATIONS/AAAA-MM-JJ_sujet-court.md` : demande, constats, décisions, fait, reste à faire, lien de session.
