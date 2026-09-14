@@ -1,0 +1,10 @@
+# Fichiers binaires : jamais de conversion des fins de ligne (core.autocrlf=true sur le PC Windows).
+# Sans cette règle, Git a pris un PDF pour du texte et l'aurait abîmé à l'extraction (14/09/2026).
+*.pdf binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.woff binary
+*.woff2 binary
