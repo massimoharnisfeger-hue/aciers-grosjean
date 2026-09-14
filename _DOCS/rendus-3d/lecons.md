@@ -41,6 +41,7 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - Tronçon proportionné à la section : visuel caractéristiques 6,25 × plus grande cote (plafond 500 mm), studio 7 × plus grande cote de la plus grosse pièce (plafond 900 mm) ; les poutrelles gardent 500 et 900 mm. `[cornières, 14/09] (autocontrôle)`
 - Titre de la fiche : nom sans « en acier / Acier LAC / laminé à chaud » (`titre_image`), sur deux lignes si besoin ; surtitre avec les noms du catalogue (« PROFILÉS » accentué, `surtitre_image`). `[cornières, 14/09] (autocontrôle)`
 - Sections creuses (tubes) : anneau de quadrilatères entre contour extérieur et intérieur de même nombre de points, puis extrusion (`extruder`). Plat posé sur chant : cote verticale = largeur, pince = épaisseur. `[vague 1, 14/09] (autocontrôle)`
+- Tôle : plaque à plat, caméra élévation 48° / azimut 10°, largeur l devant, longueur L le long du bord droit, colonne de gauche libre (cadrage 0,25–0,62) pour une loupe ronde sur le chant avant (2e rendu 700 × 700, champ 10 × e, 30 mm au moins) avec l'épaisseur e pincée dedans ; point du chant relié choisi pour que le trait ne traverse ni la pièce ni une étiquette. `[tôles, 14/09] (autocontrôle)`
 
 ## Erreurs rencontrées et correction
 - Pièce surexposée, l'acier paraissait de l'aluminium : baisser l'exposition de la scène, pas la couleur de base. Le fond blanc et l'ombre ne bougent pas, puisqu'ils sont composés après. `[IPE, 14/09]`
@@ -57,11 +58,16 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - Données contradictoires dans le site actuel lui-même : poids UPN de la description (tableau fournisseur) ≠ poids de la fiche (+0,1 à +0,8 %). Toujours comparer description et fiche avant d'afficher. `[poutrelles, 14/09]`
 - Petites cornières : la flèche d'épaisseur, à mi-hauteur, touchait l'étiquette de la cote verticale (même hauteur). Pince remontée à 70 % de la hauteur pour toutes les sections sauf I, U et tube rond ; contrôle automatique « flèche sous l'étiquette » créé. `[cornières, 14/09]`
 - Tableaux fournisseurs avec colonnes vides (fers T) : `tableau_vm2013(..., sauter_vides=True)`. Nom « 17,2(18)x2mm » : la désignation courante entre parenthèses casse les motifs de cotes. `[vague 1, 14/09]`
+- Loupe de tôle vide ou décalée : la caméra rapprochée (quelques cm) était sous la distance de découpe proche de Blender (10 cm par défaut). `cam.data.clip_start = 0.001` pour tout gros plan. `[tôles, 14/09]`
+- 2e occurrence du conflit flèche d'épaisseur / étiquette de cote verticale (UPN 80, déjà vu sur les cornières) : l'étiquette verticale descend automatiquement à 28 % de la cote quand une flèche passe à sa hauteur (`habiller.py`), sans nouveau rendu. `[poutrelles, 14/09]`
+- Photos studio : l'ombre douce touchait les bords (marges non blanches, détecté par `controler_rendus.py` sur les 4 studios poutrelles). `rendu_sur_blanc` estompe l'ombre sur 90 px et l'annule sur les 24 derniers : marges d'un blanc pur sur toutes les images. `[poutrelles, 14/09]`
+- Arrêt volontaire de Blender après les visuels d'une série (pour sauter des rendus devenus inutiles) : code de sortie 255 attendu, pas une erreur. `[poutrelles, 14/09]`
 - Fiches fournisseurs publiées sur le site : « Nuance d'acier : S235 » (IPE, HEA, HEB, tubes), en contradiction avec les descriptions (IPE S275, HEB S275/S355) : ne pas en déduire une nuance, question en attente. `[vague 1, 14/09]`
 
 ## Temps et ressources mesurés
 - 800 × 600, 32 échantillons : 30 à 60 s. 1600 × 1200, 64 échantillons : 4 min 15 s en rendu isolé (Ryzen 5 4500U, processeur seul). `[IPE, 14/09]`
 - 1600 × 1200, 32 échantillons, seuil 0,03, 9 rendus dans une seule instance Blender (données persistantes) : 107 à 172 s par image, le premier étant le plus long ; 64 échantillons dans la même instance : 225 s. `[poutrelles, 14/09]`
+- Série réelle (`-t 4`, essais en parallèle sur 2 cœurs, PC utilisé) : 45 poutrelles en 2 h 35, soit 3 min 25 par image ; 4 studios trois tailles en 13 min. Essai 1600 px à 8 échantillons sur 2 cœurs : 2 min 10 à 3 min. `[poutrelles, 14/09]`
 - Habillage PIL : 1 à 2 s par image ; WebP caractéristiques 34–37 Ko, studio 14–25 Ko. `[poutrelles, 14/09]`
 - Pic mémoire de Blender pour une IPE : 371 Mo. La RAM du PC est souvent presque pleine à cause des navigateurs et des fenêtres Claude Code ouvertes. `[IPE, 14/09]`
 

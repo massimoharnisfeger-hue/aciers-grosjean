@@ -6011,6 +6011,1567 @@
   },
   "alertes": []
  },
+ "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2000x1000x10mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 160.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x12mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2000x1000x12mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 12.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 192.96,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x20mm-en-acier-quarto": {
+  "nom": "Tôle de 2000x1000x20mm en acier Quarto",
+  "categorie": "/acier/toles/tole-quarto",
+  "famille": "tole-quarto",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 321.6,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2000x1000x2mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 32.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2000x1000x3mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 48.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2000x1000x5mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2000x1000x5mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 80.4,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2500x1250x10mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 251.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2500x1250x2mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2500x1250x3mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 75.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-2500x1250x5mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 2500x1250x5mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 125.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 3000x1500x10mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 361.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 3000x1500x3mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 108.54,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-de-3000x1500x8mm-en-acier-laminee-a-chaud": {
+  "nom": "Tôle de 3000x1500x8mm en acier laminée à chaud",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 289.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x10mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x10mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 160.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x15mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x15mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 15.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 240.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x2mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x2mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 32.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x3mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x3mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 48.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x4mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x4mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 64.32,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x5mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x5mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 80.4,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x6mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x6mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 96.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2000x1000x8mm-laserpressplus": {
+  "nom": "Tôle plane de 2000x1000x8mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 128.64,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x10mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x10mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 251.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x15mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x15mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 15.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 375.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x2mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x2mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 50.25,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x3mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x3mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 75.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x4mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x4mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 100.5,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x5mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x5mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 125.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x6mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x6mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 150.75,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-2500x1250x8mm-laserpressplus": {
+  "nom": "Tôle plane de 2500x1250x8mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 201.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x10mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x10mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 361.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x15mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x15mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 15.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 540.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x2mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x2mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 72.36,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x3mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x3mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 108.54,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x4mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x4mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 144.72,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x6mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x6mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 217.08,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-de-3000x1500x8mm-laserpressplus": {
+  "nom": "Tôle plane de 3000x1500x8mm LaserpressPlus®",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 289.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-plane-laserpressplus-240-skinpass-de-3000x1500x5mm": {
+  "nom": "Tôle plane LaserpressPlus® 240 skinpass de 3000x1500x5mm",
+  "categorie": "/acier/toles/tole-laminee-a-chaud",
+  "famille": "tole-laminee-a-chaud",
+  "valeurs": {
+   "serie": {
+    "valeur": "TOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 180.9,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/plaque"
+   },
+   "marque": {
+    "valeur": "LaserpressPlus® 240 skinpass",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tube-carre-100x100x10mm-en-acier": {
   "nom": "Tube carré 100x100x10mm en acier",
   "categorie": "/acier/tubes/tube-carre",

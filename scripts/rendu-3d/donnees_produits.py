@@ -401,8 +401,42 @@ def tubes(cat, reel, desc):
     return produits
 
 
+def toles(cat, reel, desc):
+    """Tôles vendues à la plaque (laminées à chaud, quarto) : format et épaisseur du nom, recoupés avec les cotes
+    A/B/C du site ; poids de la plaque comparé au poids théorique (7,85 kg/dm³)."""
+    familles = {"/acier/toles/tole-laminee-a-chaud": "tole-laminee-a-chaud", "/acier/toles/tole-quarto": "tole-quarto"}
+    produits = {}
+    for slug, c in cat.items():
+        famille = familles.get(c["categorie"])
+        d_nom = re.search(r"(\d+)\s*x\s*(\d+)\s*x\s*(\d+(?:,\d+)?)\s*mm", c["nom"], re.I)
+        if not famille or not d_nom:
+            continue
+        L, l, e = int(d_nom.group(1)), int(d_nom.group(2)), nombre(d_nom.group(3))
+        v, alertes = {"serie": valeur("TOLE", "", SRC_NOM), "L": valeur(L, "mm", SRC_NOM), "l": valeur(l, "mm", SRC_NOM),
+                      "e": valeur(e, "mm", SRC_NOM)}, []
+        r = reel.get(slug, {})
+        if r.get("kg") is not None:
+            theorique = L * l * e * 7.85e-6
+            v["poids"] = valeur(r["kg"], "kg/plaque", SRC_SITE)
+            if abs(theorique - r["kg"]) / theorique > 0.03:
+                alertes.append(f"poids site {r['kg']} kg ≠ théorique {theorique:.1f} kg (écart > 3 %) : non affiché")
+                v["poids"]["supposee"] = True
+        texte = texte_description(desc, slug)
+        nuance, _ = nuance_et_norme(texte)
+        if nuance:
+            v["nuance"] = valeur(nuance, "", SRC_DESC)
+        if "laserpress" in slug:
+            v["marque"] = valeur("LaserpressPlus® 240 skinpass", "", SRC_DESC)
+        if procede(texte) or famille == "tole-laminee-a-chaud" and re.search(r"lamin\w+ à chaud", c["nom"], re.I):
+            v["procede"] = valeur("Laminé à chaud", "", SRC_DESC if procede(texte) else SRC_NOM)
+        v["finition"] = valeur("BRUT", "", "tôle laminée à chaud (vraie photo LaserpressPlus, groupe G036) — non affichée", supposee=True)
+        controle_cotes_site(v, alertes, desc.get(slug, {}), {"A": "L", "B": "l", "C": "e"})
+        produits[slug] = {"nom": c["nom"], "categorie": c["categorie"], "famille": famille, "valeurs": v, "alertes": alertes}
+    return produits
+
+
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
-            "pleins": pleins, "tubes": tubes}
+            "pleins": pleins, "tubes": tubes, "toles": toles}
 
 
 def main():

@@ -207,6 +207,8 @@ def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
 
 def section_de(piece):
     t = piece["type"]
+    if t == "TOLE":  # plaque posée à plat : section largeur × épaisseur, extrudée sur la longueur
+        return section_rectangle(piece["h"], piece["b"])
     if t == "T":
         return section_t(piece["h"], piece["b"], piece["t"], piece["r"], piece["r1"], piece["r2"])
     if t in ("PLAT", "CARRE"):
@@ -468,8 +470,16 @@ def rendre(p):
     # cote horizontale : sous la pièce, au-dessus pour le T (largeur de l'aile), aucune pour plat, rond et tube rond
     cote_b = None if typ in ("PLAT", "ROND", "TUBE-ROND") else ("haut" if typ == "T" else "bas")
     z_cote_b = h + off if cote_b == "haut" else -off
+    if typ == "TOLE":  # tôle posée à plat : cotes au sol, largeur devant, longueur à gauche, épaisseur en loupe
+        off = b * 0.12
+        cible = Vector((0, L0 * MM * 0.5, 0))
     points_cadrage = list(boite_pts)
-    if mode == "caracteristiques":
+    if mode == "caracteristiques" and typ == "TOLE":
+        points_cadrage += [((b / 2 + off * 1.6) * MM, 0, 0), ((b / 2 + off * 1.6) * MM, L0 * MM, 0),
+                           (-b / 2 * MM, -off * 1.6 * MM, 0), (b / 2 * MM, -off * 1.6 * MM, 0)]
+        # colonne de gauche laissée libre pour la loupe de l'épaisseur
+        boite = tuple(p.get("boite", (0.25, 0.08, 0.62, 0.92)))
+    elif mode == "caracteristiques":
         points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM)]
         if cote_b:
             z = (h + off * 1.6) if cote_b == "haut" else -off * 1.6
@@ -517,7 +527,48 @@ def rendre(p):
     scene.render.filepath = os.path.join(sortie, p["slug"] + ".png")
     bpy.ops.render.render(write_still=True)
 
-    if mode == "caracteristiques":
+    if mode == "caracteristiques" and typ == "TOLE":
+        W, H = scene.render.resolution_x, scene.render.resolution_y
+
+        def ecran(x, y, z, taille=(W, H)):
+            q = world_to_camera_view(scene, cam, Vector((x * MM, y * MM, z * MM)))
+            return [round(q.x * taille[0], 2), round((1 - q.y) * taille[1], 2)]
+
+        e, L = h, L0
+        x_loupe = -b * 0.3  # point du chant avant montré dans la loupe, côté gauche où la loupe se place
+        points = {
+            "cote_b_gauche": ecran(-b / 2, -off, 0), "cote_b_droit": ecran(b / 2, -off, 0),
+            "rappel_b_gauche_debut": ecran(-b / 2, -4, 0), "rappel_b_gauche_fin": ecran(-b / 2, -off * 1.2, 0),
+            "rappel_b_droit_debut": ecran(b / 2, -4, 0), "rappel_b_droit_fin": ecran(b / 2, -off * 1.2, 0),
+            # longueur le long du bord droit : le côté gauche reste libre pour la loupe
+            "cote_h_bas": ecran(b / 2 + off, 0, 0), "cote_h_haut": ecran(b / 2 + off, L, 0),
+            "rappel_h_bas_debut": ecran(b / 2 + 4, 0, 0), "rappel_h_bas_fin": ecran(b / 2 + off * 1.2, 0, 0),
+            "rappel_h_haut_debut": ecran(b / 2 + 4, L, 0), "rappel_h_haut_fin": ecran(b / 2 + off * 1.2, L, 0),
+            "loupe_ancre": ecran(x_loupe, 0, e),
+            # points du chant avant candidats pour relier la loupe (le chant est le même partout)
+            "loupe_ancres": [ecran(-b * k, 0, e) for k in (0.47, 0.42, 0.36, 0.3)],
+        }
+        # loupe : gros plan sur le chant avant, même orientation, champ de 10 épaisseurs (30 mm au moins) ;
+        # la caméra passe à quelques centimètres de la pièce : découpe proche abaissée à 1 mm
+        T = p.get("taille_loupe", 700)
+        az_l, el_l = math.radians(20), math.radians(p.get("elevation_loupe", 14))
+        dir_l = Vector((math.sin(az_l) * math.cos(el_l), -math.cos(az_l) * math.cos(el_l), math.sin(el_l)))
+        cible_l = Vector((x_loupe * MM, 0, e / 2 * MM))
+        cam.data.clip_start = 0.001
+        cam.data.shift_x = cam.data.shift_y = 0.0
+        cam.location = cible_l + dir_l * (max(10 * e, 30.0) * MM * cam.data.lens / cam.data.sensor_width)
+        cam.rotation_euler = (-dir_l).to_track_quat("-Z", "Y").to_euler()
+        scene.render.resolution_x = scene.render.resolution_y = T
+        scene.cycles.samples = min(p.get("samples", 64), 24)
+        scene.render.filepath = os.path.join(sortie, p["slug"] + "-loupe.png")
+        bpy.context.view_layer.update()
+        bpy.ops.render.render(write_still=True)
+        points["loupe_haut"] = ecran(x_loupe, 0, e, (T, T))
+        points["loupe_bas"] = ecran(x_loupe, 0, 0, (T, T))
+        with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
+            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": "bas", "loupe": T, "points": points,
+                       "duree_s": round(time.time() - t0, 1)}, f, indent=2)
+    elif mode == "caracteristiques":
         W, H = scene.render.resolution_x, scene.render.resolution_y
 
         def ecran(x, y, z):

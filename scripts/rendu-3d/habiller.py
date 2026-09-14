@@ -18,7 +18,7 @@ import os
 import re
 import sys
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 DONNEES = os.path.join(ICI, "donnees", "produits.json")
@@ -145,13 +145,14 @@ def pastille(d, centre, lettre, valeur):
     return (x0 / S, y0 / S, (x0 + w) / S, (y0 + h) / S)
 
 
-def cote(a, b, rappels, lettre, valeur, cle):
+def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
+    """Trait de cote de a à b, étiquette à `position` (0,5 = milieu) le long du trait."""
     for r0, r1 in rappels:
         ligne(r0, r1, ACIER, 1.6)
     ligne(a, b, ENCRE)
     fleche(a, b, ENCRE)
     fleche(b, a, ENCRE)
-    PASTILLES.append((((a[0] + b[0]) / 2, (a[1] + b[1]) / 2), lettre, valeur, cle))
+    PASTILLES.append(((a[0] + (b[0] - a[0]) * position, a[1] + (b[1] - a[1]) * position), lettre, valeur, cle))
 
 
 # Par type de section (rendu_profil.py) : (lettre, clé des données) des cotes verticale, horizontale, d'épaisseur
@@ -168,7 +169,64 @@ COTES = {
     "TC": (("b", "h"), ("b", "b"), ("t", "t"), None, [("Côté", "b", "b"), ("Épaisseur", "t", "t")]),
     "TR": (("h", "h"), ("b", "b"), ("t", "t"), None, [("Hauteur", "h", "h"), ("Largeur", "b", "b"), ("Épaisseur", "t", "t")]),
     "TUBE-ROND": (("d", "d"), None, ("t", "t"), None, [("Diamètre extérieur", "d", "d"), ("Épaisseur", "t", "t")]),
+    # tôle : cote « verticale » = longueur (bord gauche, au sol), horizontale = largeur (devant) ; épaisseur en loupe
+    "TOLE": (("L", "L"), ("l", "l"), None, None, [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur", "e", "e")]),
 }
+DIAMETRE_LOUPE = 300
+
+
+def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
+    """Loupe ronde sur le chant de la tôle : gros plan rendu par Blender (<slug>-loupe.png), placé là où il couvre
+    le moins la pièce et les étiquettes, relié au point montré, avec la cote d'épaisseur pincée dedans."""
+    D, r = DIAMETRE_LOUPE, DIAMETRE_LOUPE / 2
+    alpha = image_brute.split()[3].point(lambda v: 255 if v >= 250 else 0)
+    zones = [(c[0] - 95, c[1] - 30, c[0] + 95, c[1] + 30) for c, *_ in PASTILLES]
+    # loupe dans la colonne de gauche laissée libre au cadrage, étiquette e dessous
+    candidats = [(r + 30, y) for y in (H * 0.30, H * 0.40, H * 0.50, H * 0.60) if y + r + 80 < H - 60]
+    ancres = P.get("loupe_ancres") or [P["loupe_ancre"]]
+
+    def dans_zone(x, y):
+        return any(a0 - 6 <= x <= a1 + 6 and b0 - 6 <= y <= b1 + 6 for a0, b0, a1, b1 in zones)
+
+    def cout(cx, cy, ancre):
+        masque = Image.new("L", (W, H), 0)
+        ImageDraw.Draw(masque).ellipse([cx - r - 20, cy - r - 20, cx + r + 20, cy + r + 20], fill=255)
+        piece = sum(ImageStat.Stat(Image.composite(alpha, Image.new("L", (W, H), 0), masque)).sum) / 255
+        etiquettes = sum(1 for a0, b0, a1, b1 in zones if a0 < cx + r + 20 and cx - r - 20 < a1 and b0 < cy + r + 20 and cy - r - 20 < b1)
+        # trait de liaison : court, hors des étiquettes et hors de la pièce (le dernier pixel touche le chant)
+        dist = math.hypot(ancre[0] - cx, ancre[1] - cy) - r
+        pts = [(cx + (ancre[0] - cx) * k / 40, cy + (ancre[1] - cy) * k / 40) for k in range(38)]
+        pts = [q for q in pts if math.hypot(q[0] - cx, q[1] - cy) > r]
+        croise = sum(1 for q in pts if dans_zone(*q))
+        sur_piece = sum(1 for q in pts if 0 <= q[0] < W and 0 <= q[1] < H and alpha.getpixel((int(q[0]), int(q[1]))))
+        return piece + (etiquettes + croise) * 1e6 + sur_piece * 400 + dist * 2
+
+    cx, cy, ancre = min(((cx, cy, a) for cx, cy in candidats for a in ancres), key=lambda c: cout(*c))
+    T = geo["loupe"]
+    s = D / T
+    loupe = rendu_sur_blanc(geo["chemin_loupe"]).resize((D, D), Image.LANCZOS)
+    masque = Image.new("L", (D, D), 0)
+    ImageDraw.Draw(masque).ellipse([0, 0, D - 1, D - 1], fill=255)
+    fond = Image.new("RGBA", (D, D), (0, 0, 0, 0))  # transparent hors du disque
+    fond.paste(loupe, (0, 0), masque)
+
+    def dans_loupe(q):
+        return (cx - r + q[0] * s, cy - r + q[1] * s)
+
+    # liaison : du point du chant au bord de la loupe
+    vx, vy = ancre[0] - cx, ancre[1] - cy
+    n = math.hypot(vx, vy) or 1.0
+    ligne(ancre, (cx + vx / n * (r + 4), cy + vy / n * (r + 4)), ACIER, 1.6)
+    # épaisseur pincée dans la loupe (deux flèches verticales), étiquette sous la loupe
+    haut, bas = dans_loupe(P["loupe_haut"]), dans_loupe(P["loupe_bas"])
+    ligne(decale(haut, 0, -34), haut, ENCRE)
+    fleche(haut, decale(haut, 0, -34), ENCRE)
+    ligne(decale(bas, 0, 34), bas, ENCRE)
+    fleche(bas, decale(bas, 0, 34), ENCRE)
+    fleches_pince.append(("e", haut[0] - 7, haut[1] - 34, haut[0] + 7, haut[1]))
+    fleches_pince.append(("e", bas[0] - 7, bas[1], bas[0] + 7, bas[1] + 34))
+    PASTILLES.append(((cx, cy + r + 42), "e", affichable(p, "e"), "e"))
+    return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
 
 
 def cotes_du_type(typ, p):
@@ -184,11 +242,25 @@ def decale(p, dx, dy):
     return (p[0] + dx, p[1] + dy)
 
 
-def rendu_sur_blanc(chemin):
+def rendu_sur_blanc(chemin, fondu=90):
     rendu = Image.open(chemin).convert("RGBA")
     # ombre allégée : la pièce est opaque, l'ombre du sol est semi-transparente
     r_, g_, b_, a_ = rendu.split()
-    a_ = a_.point(lambda v: v if v >= 250 else int(v * 0.55))
+    piece = a_.point(lambda v: 255 if v >= 250 else 0)
+    ombre = a_.point(lambda v: int(v * 0.55))
+    if fondu:  # l'ombre s'efface vers le bord et disparaît sur les 24 derniers px : marges d'un blanc pur
+        w, h = rendu.size
+
+        def rampe(i, n):
+            return min(255, int(255 * max(0, min(i, n - 1 - i) - 24) / (fondu - 24)))
+
+        bord_x = Image.new("L", (w, 1))
+        bord_x.putdata([rampe(x, w) for x in range(w)])
+        bord_y = Image.new("L", (1, h))
+        bord_y.putdata([rampe(y, h) for y in range(h)])
+        masque = ImageChops.darker(bord_x.resize((w, h), Image.NEAREST), bord_y.resize((w, h), Image.NEAREST))
+        ombre = ImageChops.multiply(ombre, masque)
+    a_ = Image.composite(a_, ombre, piece)
     rendu = Image.merge("RGBA", (r_, g_, b_, a_))
     fond = Image.new("RGBA", rendu.size, BLANC + (255,))
     return Image.alpha_composite(fond, rendu)
@@ -227,9 +299,17 @@ def caracteristiques(slug, dossier):
     lignes_cotes = [(libelle, lettre, cle, affichable(p, cle)) for libelle, lettre, cle in c_fiche]
 
     if verticale[1]:
-        cote(P["cote_h_bas"], P["cote_h_haut"],
+        # étiquette au milieu, descendue au tiers si la flèche d'épaisseur passe à sa hauteur (petites sections)
+        bas_v, haut_v = P["cote_h_bas"], P["cote_h_haut"]
+        position = 0.5
+        milieu = ((bas_v[0] + haut_v[0]) / 2, (bas_v[1] + haut_v[1]) / 2)
+        if pince[1]:
+            ag = P["ame_gauche"]
+            if abs(milieu[1] - ag[1]) < 48 and milieu[0] + 80 > ag[0] - 40:
+                position = 0.28
+        cote(bas_v, haut_v,
              [(P["rappel_h_bas_debut"], P["rappel_h_bas_fin"]), (P["rappel_h_haut_debut"], P["rappel_h_haut_fin"])],
-             *verticale)
+             *verticale, position=position)
     if horizontale[1]:
         cote(P["cote_b_gauche"], P["cote_b_droit"],
              [(P["rappel_b_gauche_debut"], P["rappel_b_gauche_fin"]), (P["rappel_b_droit_debut"], P["rappel_b_droit_fin"])],
@@ -253,8 +333,18 @@ def caracteristiques(slug, dossier):
         fleche(inte, decale(inte, 0, 34), ENCRE)
         ligne(decale(ext, 0, -34), decale(ext, 0, -58), ENCRE)
         PASTILLES.append((decale(ext, 0, -80), *aile))
+    loupe = None
+    if geo.get("type") == "TOLE":  # épaisseur en loupe : trop fine à l'échelle de la plaque entière
+        geo["chemin_loupe"] = os.path.join(dossier, slug + "-loupe.png")
+        with Image.open(os.path.join(dossier, slug + ".png")) as brute:
+            fond_loupe, coin, loupe = placer_loupe(d, brute.convert("RGBA"), W, H, P, geo, p, fleches_pince)
+        image.alpha_composite(fond_loupe, dest=coin)
 
     dessiner_traces(d)
+    if loupe:  # anneau blanc et filet gris autour de la loupe
+        cx, cy, r = loupe
+        d.ellipse([(cx - r) * S, (cy - r) * S, (cx + r) * S, (cy + r) * S], outline=BLANC, width=7 * S)
+        d.ellipse([(cx - r - 5) * S, (cy - r - 5) * S, (cx + r + 5) * S, (cy + r + 5) * S], outline=BRUME, width=2 * S)
     boites = [pastille(d, centre, lettre, valeur) for centre, lettre, valeur, _ in PASTILLES]
 
     # ---- fiche technique, colonne de droite
@@ -264,15 +354,17 @@ def caracteristiques(slug, dossier):
     titre = titre_image(p["nom"])
 
     f_sur = police("Questrial-Regular.ttf", 17)
-    # titre sur une ligne, sinon deux lignes coupées au mot le plus proche du milieu, sinon corps réduit
+    # titre : lignes remplies mot à mot dans la largeur de la colonne (3 au plus), corps réduit si besoin
     for taille in (44, 38, 34):
         f_titre = police("Poppins-SemiBold.ttf", taille)
-        lignes_titre = [titre]
-        if d.textlength(titre, font=f_titre) > x1 - x0:
-            mots = titre.split()
-            coupes = sorted(range(1, len(mots)), key=lambda i: abs(len(" ".join(mots[:i])) - len(titre) / 2))
-            lignes_titre = [" ".join(mots[:coupes[0]]), " ".join(mots[coupes[0]:])] if coupes else [titre]
-        if all(d.textlength(t, font=f_titre) <= x1 - x0 for t in lignes_titre):
+        lignes_titre = []
+        for mot in titre.split():
+            essai = f"{lignes_titre[-1]} {mot}" if lignes_titre else mot
+            if lignes_titre and d.textlength(essai, font=f_titre) <= x1 - x0:
+                lignes_titre[-1] = essai
+            else:
+                lignes_titre.append(mot)
+        if len(lignes_titre) <= 3 and all(d.textlength(t, font=f_titre) <= x1 - x0 for t in lignes_titre):
             break
     interligne_titre = round(taille * 1.25) * S
     f_label = police("Questrial-Regular.ttf", 19)
@@ -336,6 +428,13 @@ def caracteristiques(slug, dossier):
         for lettre, f0, g0, f1, g1 in fleches_pince:
             if a0 - 6 < f1 and f0 < a1 + 6 and b0 - 6 < g1 and g0 < b1 + 6:
                 problemes.append(f"flèche {lettre} sous l'étiquette {PASTILLES[i][1]}")
+    if loupe:
+        cx, cy, r = loupe
+        if cx - r < 8 or cy - r < 8 or cy + r > H - 8 or cx + r > W * 0.655 - 12:
+            problemes.append("loupe hors de la zone de dessin")
+        for i, (a0, b0, a1, b1) in enumerate(boites):
+            if a0 < cx + r + 5 and cx - r - 5 < a1 and b0 < cy + r + 5 and cy - r - 5 < b1:
+                problemes.append(f"loupe sous l'étiquette {PASTILLES[i][1]}")
     if x0 / S + largeur_titre > x1 / S:
         problemes.append("titre trop long pour la colonne")
     if y / S > H - 70:

@@ -21,9 +21,9 @@ import re
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 
-from habiller import titre_image
+from habiller import FINITIONS, titre_image
 
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
@@ -36,8 +36,8 @@ COLONNE_FICHE = 0.655  # debut de la fiche technique (habiller.py)
 PAGE = {"Hauteur (h)": ["h"], "Largeur d'aile (b)": ["b"], "Épaisseur d'âme (tw)": ["tw"], "Épaisseur d'aile (tf)": ["tf"],
         "Ailes": ["a", "b"], "Section": ["h", "b"], "Largeur": ["b"], "Épaisseur": ["t"], "Diamètre": ["d"],
         "Diamètre extérieur": ["d"], "Nuance": ["nuance"], "Norme": ["norme"]}
-PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}}
-COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "nuance", "norme"}
+PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"], "Épaisseur": ["e"]}}
+COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "nuance", "norme"}
 
 
 def nombre(texte):
@@ -56,6 +56,7 @@ def specs_page():
     """slug -> {libelle: valeur} tel qu'affiche par la page (specs du catalogue, poids et finition du site actuel)."""
     ts = (PROJET / "lib" / "catalogue.ts").read_text(encoding="utf-8")
     reel = json.loads((PROJET / "lib" / "site-actuel.json").read_text(encoding="utf-8"))
+    desc = json.loads((PROJET / "lib" / "descriptions-site-actuel.json").read_text(encoding="utf-8"))
     pages = {}
     for m in re.finditer(r'^\s*"([^"]+)": \{ slug: .*?specs: \[(.*)\] \},$', ts, re.M):
         specs = dict(re.findall(r'\{ label: "([^"]+)", valeur: "([^"]*)" \}', m.group(2)))
@@ -67,6 +68,9 @@ def specs_page():
             specs["Poids"] = r["kg"]
         if r.get("finition"):
             specs["Finition"] = r["finition"]
+        d = desc.get(m.group(1), {})  # la description est affichée sur la page, sous les spécifications
+        specs["_texte"] = d.get("courte", "") + " " + " ".join(b.get("texte", " ".join(b.get("items", [])))
+                                                             for b in d.get("blocs", []))
         pages[m.group(1)] = specs
     return pages
 
@@ -83,7 +87,11 @@ def marges_blanches(chemin, bande=16):
         rgb = img.convert("RGB")
     w, h = rgb.size
     zones = [(0, 0, w, bande), (0, h - bande, w, h), (0, 0, bande, h), (w - bande, 0, w, h)]
-    return sum(1 for z in zones for px in rgb.crop(z).getdata() if min(px) < 255)
+    total = 0
+    for z in zones:
+        r, g, b = rgb.crop(z).split()
+        total += sum(1 for v in ImageChops.darker(ImageChops.darker(r, g), b).tobytes() if v < 255)
+    return total
 
 
 def planches(famille, images):
@@ -173,7 +181,7 @@ def controler(famille, produits, pages):
             elif d.get("supposee"):
                 ecarts.append(f"{slug} : « {label} » affiche une valeur supposee")
             elif cle == "finition":
-                if not ecrit.startswith(str(d["valeur"])):
+                if ecrit != FINITIONS.get(d["valeur"], d["valeur"]):
                     ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
             elif not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
@@ -204,10 +212,12 @@ def controler(famille, produits, pages):
             if len(nombres) != len(attendus) or any(abs(n - a) > 1e-6 for n, a in zip(nombres, attendus)):
                 ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image {attendus}")
         for cle in sorted(affiche & COTES_AFFICHABLES - couvertes):
+            if cle in ("nuance", "norme") and str(valeurs[cle]["valeur"]) in page["_texte"]:
+                continue  # écrite dans la description de la page
             ecarts.append(f"{slug} : « {cle} » sur l'image, absent de la page")
         if "Poids" in fiche and not meme_valeur(page.get("Poids"), fiche["Poids"]):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
-        if "Finition" in fiche and not fiche["Finition"].startswith(str(page.get("Finition"))):
+        if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
     return ecarts, planches(famille, images) if images else []
 
