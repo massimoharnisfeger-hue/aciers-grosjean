@@ -1,0 +1,450 @@
+[
+ {
+  "fichier": "/documents/rapport-esg.pdf",
+  "titre": "Rapport ESG",
+  "groupe": "entreprise",
+  "tailleKo": 4139,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/fiche-technique-carre-plein.pdf",
+  "titre": "Fiche technique — Carré plein",
+  "groupe": "fiches-produits",
+  "tailleKo": 59,
+  "produits": 7
+ },
+ {
+  "fichier": "/documents/fiche-technique-corniere-inegale-en-acier-lamine-a-chaud.pdf",
+  "titre": "Fiche technique — Cornière inégale en acier laminé à chaud",
+  "groupe": "fiches-produits",
+  "tailleKo": 96,
+  "produits": 5
+ },
+ {
+  "fichier": "/documents/fiche-technique-corniere-egale-en-acier-lamine-a-chaud.pdf",
+  "titre": "Fiche technique — Cornière égale en acier laminé à chaud",
+  "groupe": "fiches-produits",
+  "tailleKo": 99,
+  "produits": 10
+ },
+ {
+  "fichier": "/documents/fiche-technique-dl-chemicals-parabond-600-290ml-gris.pdf",
+  "titre": "Fiche technique — DL CHEMICALS PARABOND 600 – 290ml - gris",
+  "groupe": "fiches-produits",
+  "tailleKo": 368,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-dl-chemicals-parabond-800-290ml.pdf",
+  "titre": "Fiche technique — DL CHEMICALS PARABOND 800 – 290ml",
+  "groupe": "fiches-produits",
+  "tailleKo": 338,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-dl-chemicals-parachim-vinylester-300ml.pdf",
+  "titre": "Fiche technique — DL CHEMICALS PARACHIM VINYLESTER – 300ml",
+  "groupe": "fiches-produits",
+  "tailleKo": 1383,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-dl-chemicals-parasilico-am85-1-300ml-transparent.pdf",
+  "titre": "Fiche technique — DL CHEMICALS PARASILICO AM85-1 - 300ml - transparent",
+  "groupe": "fiches-produits",
+  "tailleKo": 362,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-fer-t.pdf",
+  "titre": "Fiche technique — Fer T",
+  "groupe": "fiches-produits",
+  "tailleKo": 78,
+  "produits": 5
+ },
+ {
+  "fichier": "/documents/fiche-technique-large-plat-en-acier-lamine-a-chaud.pdf",
+  "titre": "Fiche technique — Large plat en acier laminé à chaud",
+  "groupe": "fiches-produits",
+  "tailleKo": 118,
+  "produits": 3
+ },
+ {
+  "fichier": "/documents/fiche-technique-marches-d-escalier-achil-o2.pdf",
+  "titre": "Fiche technique — Marches d'escalier ACHIL O2",
+  "groupe": "fiches-produits",
+  "tailleKo": 102,
+  "produits": 3
+ },
+ {
+  "fichier": "/documents/fiche-technique-meuleuse-d-angle-flex-l-1001-1010w-125-mm.pdf",
+  "titre": "Fiche technique — Meuleuse d'angle FLEX L 1001 – 1010W / 125 mm",
+  "groupe": "fiches-produits",
+  "tailleKo": 329,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-panneau-eurocopre-monolamiera-eco.pdf",
+  "titre": "Fiche technique — Panneau Eurocopre Monolamiera (ECO)",
+  "groupe": "fiches-produits",
+  "tailleKo": 443,
+  "produits": 8
+ },
+ {
+  "fichier": "/documents/fiche-technique-plancher-securit-pcp-o2-1000x1000mm.pdf",
+  "titre": "Fiche technique — Plancher securit PCP O2 - 1000x1000mm",
+  "groupe": "fiches-produits",
+  "tailleKo": 4637,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-plat-en-acier-lamine-a-chaud.pdf",
+  "titre": "Fiche technique — Plat en acier laminé à chaud",
+  "groupe": "fiches-produits",
+  "tailleKo": 90,
+  "produits": 37
+ },
+ {
+  "fichier": "/documents/fiche-technique-poteaux-de-cloture-clogriff-64.pdf",
+  "titre": "Fiche technique — Poteaux de clôture CLOGRIFF 64",
+  "groupe": "fiches-produits",
+  "tailleKo": 440,
+  "produits": 8
+ },
+ {
+  "fichier": "/documents/fiche-technique-poteaux-de-cloture-cloplus-40.pdf",
+  "titre": "Fiche technique — Poteaux de clôture CLOPLUS 40",
+  "groupe": "fiches-produits",
+  "tailleKo": 601,
+  "produits": 11
+ },
+ {
+  "fichier": "/documents/fiche-technique-poutrelle-hea.pdf",
+  "titre": "Fiche technique — Poutrelle HEA",
+  "groupe": "fiches-produits",
+  "tailleKo": 103,
+  "produits": 11
+ },
+ {
+  "fichier": "/documents/fiche-technique-poutrelle-heb.pdf",
+  "titre": "Fiche technique — Poutrelle HEB",
+  "groupe": "fiches-produits",
+  "tailleKo": 120,
+  "produits": 11
+ },
+ {
+  "fichier": "/documents/fiche-technique-poutrelle-ipe.pdf",
+  "titre": "Fiche technique — Poutrelle IPE",
+  "groupe": "fiches-produits",
+  "tailleKo": 103,
+  "produits": 11
+ },
+ {
+  "fichier": "/documents/fiche-technique-poutrelle-upn.pdf",
+  "titre": "Fiche technique — Poutrelle UPN",
+  "groupe": "fiches-produits",
+  "tailleKo": 100,
+  "produits": 12
+ },
+ {
+  "fichier": "/documents/fiche-technique-primaire-vibol-coating.pdf",
+  "titre": "Fiche technique — Primaire VIBOL Coating",
+  "groupe": "fiches-produits",
+  "tailleKo": 194,
+  "produits": 6
+ },
+ {
+  "fichier": "/documents/fiche-technique-profil-30-200-1000.pdf",
+  "titre": "Fiche technique — Profil 30.200.1000",
+  "groupe": "fiches-produits",
+  "tailleKo": 392,
+  "produits": 7
+ },
+ {
+  "fichier": "/documents/fiche-technique-rond-plein-lisse.pdf",
+  "titre": "Fiche technique — Rond plein lisse",
+  "groupe": "fiches-produits",
+  "tailleKo": 53,
+  "produits": 9
+ },
+ {
+  "fichier": "/documents/fiche-technique-tasseau-40-40-maxi-imitation-bois.pdf",
+  "titre": "Fiche technique — Tasseau 40×40 maxi imitation bois",
+  "groupe": "fiches-produits",
+  "tailleKo": 522,
+  "produits": 2
+ },
+ {
+  "fichier": "/documents/fiche-technique-treillis-soude-150x150x10mm-5m-x-2m.pdf",
+  "titre": "Fiche technique — Treillis soudé 150x150x10mm 5m x 2m",
+  "groupe": "fiches-produits",
+  "tailleKo": 139,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-treillis-soude-150x150x5mm-5m-x-2m.pdf",
+  "titre": "Fiche technique — Treillis soudé 150x150x5mm 5m x 2m",
+  "groupe": "fiches-produits",
+  "tailleKo": 128,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-treillis-soude-150x150x6mm-5m-x-2m.pdf",
+  "titre": "Fiche technique — Treillis soudé 150x150x6mm 5m x 2m",
+  "groupe": "fiches-produits",
+  "tailleKo": 128,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-treillis-soude-150x150x8mm-5m-x-2m.pdf",
+  "titre": "Fiche technique — Treillis soudé 150x150x8mm 5m x 2m",
+  "groupe": "fiches-produits",
+  "tailleKo": 139,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-treillis-soudes.pdf",
+  "titre": "Fiche technique — Treillis soudés",
+  "groupe": "fiches-produits",
+  "tailleKo": 180,
+  "produits": 23
+ },
+ {
+  "fichier": "/documents/fiche-technique-tube-rond-acier.pdf",
+  "titre": "Fiche technique — Tube rond acier",
+  "groupe": "fiches-produits",
+  "tailleKo": 102,
+  "produits": 11
+ },
+ {
+  "fichier": "/documents/fiche-technique-tubes-carres-et-rectangulaires-acier.pdf",
+  "titre": "Fiche technique — Tubes carrés et rectangulaires acier",
+  "groupe": "fiches-produits",
+  "tailleKo": 196,
+  "produits": 57
+ },
+ {
+  "fichier": "/documents/fiche-technique-toles-acier.pdf",
+  "titre": "Fiche technique — Tôles acier",
+  "groupe": "fiches-produits",
+  "tailleKo": 352,
+  "produits": 68
+ },
+ {
+  "fichier": "/documents/fiche-technique-vis-autoforantes-pour-acier.pdf",
+  "titre": "Fiche technique — Vis autoforantes pour acier",
+  "groupe": "fiches-produits",
+  "tailleKo": 445,
+  "produits": 2
+ },
+ {
+  "fichier": "/documents/fiche-technique-vis-a-bois-tete-hexagonale.pdf",
+  "titre": "Fiche technique — Vis à bois tête hexagonale",
+  "groupe": "fiches-produits",
+  "tailleKo": 130,
+  "produits": 4
+ },
+ {
+  "fichier": "/documents/fiche-technique-zinga-zingasolv-1l.pdf",
+  "titre": "Fiche technique — ZINGA ZINGASOLV – 1L",
+  "groupe": "fiches-produits",
+  "tailleKo": 23,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-zinga-film-galvanisant.pdf",
+  "titre": "Fiche technique — ZINGA film galvanisant",
+  "groupe": "fiches-produits",
+  "tailleKo": 106,
+  "produits": 2
+ },
+ {
+  "fichier": "/documents/fiche-technique-zingaluspray-500ml.pdf",
+  "titre": "Fiche technique — ZINGALUSPRAY - 500ML",
+  "groupe": "fiches-produits",
+  "tailleKo": 72,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-zingaspray-500ml.pdf",
+  "titre": "Fiche technique — ZINGASPRAY - 500ML",
+  "groupe": "fiches-produits",
+  "tailleKo": 77,
+  "produits": 1
+ },
+ {
+  "fichier": "/documents/fiche-technique-zingatarfree.pdf",
+  "titre": "Fiche technique — ZINGATARFREE",
+  "groupe": "fiches-produits",
+  "tailleKo": 51,
+  "produits": 2
+ },
+ {
+  "fichier": "/documents/notice-de-pose-cloture-clogriff-64.pdf",
+  "titre": "Notice de pose — Clôture CLOGRIFF 64",
+  "groupe": "fiches-produits",
+  "tailleKo": 677,
+  "produits": 4
+ },
+ {
+  "fichier": "/documents/notice-de-pose-cloture-cloplus-40.pdf",
+  "titre": "Notice de pose — Clôture CLOPLUS 40",
+  "groupe": "fiches-produits",
+  "tailleKo": 600,
+  "produits": 20
+ },
+ {
+  "fichier": "/documents/lattonedil-eurocopre-plus-ag.pdf",
+  "titre": "Eurocopre Plus",
+  "groupe": "toiture-bardage",
+  "tailleKo": 579,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-eurofire-ag.pdf",
+  "titre": "Eurofire",
+  "groupe": "toiture-bardage",
+  "tailleKo": 478,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ag-fiche-technique-deweb-nts095rc-ft00249r1-anticondensation.pdf",
+  "titre": "Fiche technique — feutre anti-condensation",
+  "groupe": "toiture-bardage",
+  "tailleKo": 17,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-g9-ag.pdf",
+  "titre": "G9",
+  "groupe": "toiture-bardage",
+  "tailleKo": 650,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-isofactor-eurocopre-plus-ag.pdf",
+  "titre": "Isofactor Eurocopre Plus",
+  "groupe": "toiture-bardage",
+  "tailleKo": 376,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-isopar-elite-ag.pdf",
+  "titre": "Isopar Elite",
+  "groupe": "toiture-bardage",
+  "tailleKo": 362,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/profil-lattonedil-isopar-plus-ag.pdf",
+  "titre": "Isopar Plus Bardage — fixations visibles",
+  "groupe": "toiture-bardage",
+  "tailleKo": 772,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ji-10-100-1000.pdf",
+  "titre": "JI 10-100-1000 Bardage",
+  "groupe": "toiture-bardage",
+  "tailleKo": 149,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ag-lattonedil-ttack-2023-manuel-technique-fr.pdf",
+  "titre": "Manuel technique TTACK® (2023)",
+  "groupe": "toiture-bardage",
+  "tailleKo": 20376,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/nuancier-toiture-bardage.pdf",
+  "titre": "Nuancier Toiture & Bardage",
+  "groupe": "toiture-bardage",
+  "tailleKo": 211,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/agf-panneau-tuiles.pdf",
+  "titre": "Panneau-tuiles",
+  "groupe": "toiture-bardage",
+  "tailleKo": 218,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ji-permapan-1100.pdf",
+  "titre": "Permapan 1100 Toiture isolée — type panneau-tuiles",
+  "groupe": "toiture-bardage",
+  "tailleKo": 328,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/profils-de-finition-standards.pdf",
+  "titre": "Profils de finition standards",
+  "groupe": "toiture-bardage",
+  "tailleKo": 426,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-solarpan-plus-ag.pdf",
+  "titre": "Solarpan Plus",
+  "groupe": "toiture-bardage",
+  "tailleKo": 9786,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ag-tasseau-20x20-imitation-bois.pdf",
+  "titre": "Tasseau 20×20 imitation bois",
+  "groupe": "toiture-bardage",
+  "tailleKo": 597,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/lattonedil-ttack-ag.pdf",
+  "titre": "Ttack",
+  "groupe": "toiture-bardage",
+  "tailleKo": 945,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/agf-tole-ondulee-18-76.pdf",
+  "titre": "Tôle ondulée 18-76",
+  "groupe": "toiture-bardage",
+  "tailleKo": 279,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/agf-tole-profilee-25-267.pdf",
+  "titre": "Tôle profilée 25-267 Bardage",
+  "groupe": "toiture-bardage",
+  "tailleKo": 570,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ag-tole-profilee-30-200.pdf",
+  "titre": "Tôle profilée 30-200",
+  "groupe": "toiture-bardage",
+  "tailleKo": 974,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/agf-tole-profilee-32-207-1035.pdf",
+  "titre": "Tôle profilée 32-207 Bardage",
+  "groupe": "toiture-bardage",
+  "tailleKo": 1569,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/ag-tole-profilee-35-250.pdf",
+  "titre": "Tôle profilée 35-250",
+  "groupe": "toiture-bardage",
+  "tailleKo": 265,
+  "produits": 0
+ },
+ {
+  "fichier": "/documents/agf-tole-profilee-45-333.pdf",
+  "titre": "Tôle profilée 45-333",
+  "groupe": "toiture-bardage",
+  "tailleKo": 261,
+  "produits": 0
+ }
+]

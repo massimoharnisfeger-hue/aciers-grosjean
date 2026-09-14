@@ -13,6 +13,8 @@ Répondre en français, simplement : le propriétaire du projet n'est pas dével
 
 ## Règles de code
 - `lib/catalogue.ts` est **généré** par `scripts/generer-catalogue.py`. Toute modification à la main doit être reportée dans le générateur.
+- Prix, poids, longueurs, finitions, descriptions et PDF sont les **données réelles du site actuel** : `scripts/inventaire/` (explorer → analyser → integrer) produit `lib/site-actuel.json`, `lib/descriptions-site-actuel.json`, `lib/documents.json` et `public/documents/`, fusionnés au chargement en bas de `lib/catalogue.ts`. Ne pas les éditer à la main : relancer `integrer.py`.
+- Prix affichés HTVA (TVAC = TTC du site actuel). Le supplément de découpe n'a pas de montant connu : ne pas en inventer.
 - Un composant `"use client"` n'importe jamais `lib/catalogue.ts` ni `lib/edito.ts` : tout le catalogue partirait dans le JavaScript du navigateur. Calculer les données dans la page serveur et les passer en props (exemples : `lib/menu.ts`, `lib/format.ts`).
 - Le contenu doit être visible sans JavaScript : aucune animation JS qui part de `opacity: 0`. Utiliser `components/fx/Reveal.tsx` (CSS) ou les classes `.apparait` / `.flotte` de `app/globals.css`.
 - Liens d'appel : `lienTel()` de `lib/content.ts`.

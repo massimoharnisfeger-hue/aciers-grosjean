@@ -16,8 +16,20 @@ import {
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
 import { titre, description } from "@/lib/seo";
+import descriptionsBrutes from "@/lib/descriptions-site-actuel.json";
 
 type Params = { slug: string };
+
+/** Description relevée sur le site actuel, en texte brut (scripts/inventaire/integrer.py). */
+type BlocDescription = { t: "p" | "h"; texte: string } | { t: "ul"; items: string[] };
+type DescriptionSiteActuel = {
+  courte: string;
+  blocs: BlocDescription[];
+  supplementCoupe: boolean;
+};
+const descriptions = descriptionsBrutes as unknown as Record<string, DescriptionSiteActuel>;
+
+const metres = (v: number) => `${v.toLocaleString("fr-BE")} m`;
 
 export const dynamicParams = false;
 
@@ -31,7 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!p) return { title: "Produit introuvable | Aciers Grosjean" };
 
   const prixTxt = p.prix !== null ? ` — ${formatPrix(p.prix)}` : "";
-  const poids = p.kg !== null ? ` ${p.kg.toString().replace(".", ",")} ${p.unitePoids}.` : "";
+  const poids = p.kg !== null ? ` ${p.kg.toString().replace(".", ",")} ${p.unitePoids || "kg"}.` : "";
 
   return {
     title: titre(`${p.nom}${prixTxt}`),
@@ -52,6 +64,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
   const cat = noeuds[p.categorie];
   const u = universBySlug(p.univers)!;
   const Art = productArt[artPour(p.categorie, u.art)] ?? ArtPoutrelle;
+  const desc = descriptions[p.slug];
 
   const chaine = ancetres(p.categorie);
   const miettes = [
@@ -66,6 +79,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
     .filter(Boolean)
     .slice(0, 4);
 
+  const prixPublic = p.prixTtc ?? p.prix;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -73,25 +87,29 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
     category: cat?.nom ?? u.nom,
     material: u.nom,
     brand: { "@type": "Brand", name: "Aciers Grosjean" },
+    ...(desc?.courte && { description: desc.courte }),
     ...(p.kg !== null && {
-      weight: { "@type": "QuantitativeValue", value: p.kg, unitText: p.unitePoids },
+      weight: { "@type": "QuantitativeValue", value: p.kg, unitText: p.unitePoids || "kg" },
     }),
-    ...(p.prix !== null && {
+    ...(prixPublic != null && {
       offers: {
         "@type": "Offer",
-        price: p.prix.toFixed(2),
+        price: prixPublic.toFixed(2),
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
         availableDeliveryMethod: "https://schema.org/InStorePickup",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: p.prix.toFixed(2),
+          price: prixPublic.toFixed(2),
           priceCurrency: "EUR",
+          valueAddedTaxIncluded: p.prixTtc != null,
           unitText: p.unite,
         },
       },
     }),
   };
+
+  const options = (p.longueurs?.length ?? 0) > 0 || Boolean(p.finition);
 
   return (
     <main>
@@ -164,15 +182,49 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
 
               <h1 className="h-display mt-3 text-3xl leading-[1.1] md:text-4xl">{p.nom}</h1>
 
-              <div className="mt-7 flex flex-wrap items-end gap-x-4 gap-y-1 border-y border-brume py-6">
-                <span className="h-title text-4xl font-bold tabular-nums text-encre md:text-5xl">
-                  {formatPrix(p.prix)}
-                </span>
-                <span className="pb-1 font-body text-sm text-soft">{p.unite}</span>
-                {p.prix !== null && (
-                  <span className="pb-1 font-body text-xs text-soft">· HTVA · dégressif dès 100 kg</span>
+              <div className="mt-7 border-y border-brume py-6">
+                <div className="flex flex-wrap items-end gap-x-4 gap-y-1">
+                  <span className="h-title text-4xl font-bold tabular-nums text-encre md:text-5xl">
+                    {formatPrix(p.prix)}
+                  </span>
+                  <span className="pb-1 font-body text-sm text-soft">{p.unite}</span>
+                  {p.prix !== null && <span className="pb-1 font-body text-xs text-soft">· HTVA</span>}
+                </div>
+                {p.prixTtc != null && (
+                  <p className="mt-2 font-body text-sm text-soft">
+                    soit <strong className="font-semibold tabular-nums text-encre">{formatPrix(p.prixTtc)}</strong>{" "}
+                    TVAC (TVA 21&nbsp;%)
+                  </p>
                 )}
               </div>
+
+              {options && (
+                <dl className="mt-6 grid gap-4 sm:grid-cols-2">
+                  {p.longueurs && p.longueurs.length > 0 && (
+                    <div>
+                      <dt className="font-body text-xs uppercase tracking-[0.14em] text-soft">Longueurs standard</dt>
+                      <dd className="mt-2 flex flex-wrap gap-1.5">
+                        {p.longueurs.map((l) => (
+                          <span key={l} className="rounded-md border border-brume px-2 py-1 font-mono text-xs tabular-nums text-encre">
+                            {metres(l)}
+                          </span>
+                        ))}
+                      </dd>
+                    </div>
+                  )}
+                  {p.finition && (
+                    <div>
+                      <dt className="font-body text-xs uppercase tracking-[0.14em] text-soft">Finition</dt>
+                      <dd className="mt-2 font-mono text-sm text-encre">{p.finition}</dd>
+                    </div>
+                  )}
+                </dl>
+              )}
+              {desc?.supplementCoupe && (
+                <p className="mt-4 font-body text-xs leading-relaxed text-soft">
+                  Découpe aux cotes possible&nbsp;: un supplément de coupe s&apos;ajoute au prix affiché.
+                </p>
+              )}
 
               <div className="mt-7">
                 <Calculateur p={p} />
@@ -191,6 +243,34 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
                       </div>
                     ))}
                   </dl>
+                </div>
+              )}
+
+              {p.pdfs && p.pdfs.length > 0 && (
+                <div className="mt-10">
+                  <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
+                    Documents
+                  </h2>
+                  <ul className="mt-4 space-y-2">
+                    {p.pdfs.map((d) => (
+                      <li key={d.fichier}>
+                        <a
+                          href={d.fichier}
+                          target="_blank"
+                          rel="noopener"
+                          className="group flex items-center gap-3 rounded-xl border border-brume bg-white px-4 py-3 transition-colors hover:border-encre/30 hover:bg-nuage"
+                        >
+                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-encre">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="on-encre-jaune" aria-hidden="true">
+                              <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                          <span className="min-w-0 flex-1 font-body text-sm text-encre">{d.titre}</span>
+                          <span className="font-mono text-[11px] uppercase text-soft">PDF</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
 
@@ -222,6 +302,30 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
           </Reveal>
         </div>
       </section>
+
+      {desc && (desc.courte || desc.blocs.length > 0) && (
+        <section className="border-t border-brume bg-white py-14 md:py-16">
+          <div className="container-g grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-16">
+            <h2 className="h-display text-2xl md:text-3xl">Description</h2>
+            <div className="max-w-3xl space-y-4 font-body leading-relaxed text-encre">
+              {desc.courte && <p className="text-lg">{desc.courte}</p>}
+              {desc.blocs.map((b, i) =>
+                b.t === "ul" ? (
+                  <ul key={i} className="list-disc space-y-1.5 pl-5 marker:text-jaune">
+                    {b.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
+                ) : b.t === "h" ? (
+                  <h3 key={i} className="h-title pt-2 text-lg font-semibold text-encre">{b.texte}</h3>
+                ) : (
+                  <p key={i} className="text-soft">{b.texte}</p>
+                )
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {voisins.length > 0 && (
         <section className="border-t border-brume bg-nuage py-16 md:py-20">

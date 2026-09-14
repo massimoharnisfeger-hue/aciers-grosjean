@@ -24,16 +24,18 @@ export default function Calculateur({ p }: { p: Produit }) {
 
   const quantite = Number.isFinite(qte) && qte > 0 ? qte : 0;
   const poids = p.kg !== null ? quantite * p.kg : null;
-  const matiere = p.prix !== null ? quantite * p.prix : null;
-  const decoupe = c.coupable ? coupes * 2.5 : 0;
-  const total = matiere !== null ? matiere + decoupe : null;
+  // Prix du catalogue du site actuel ; la découpe est un supplément dont le montant dépend du profil.
+  const total = p.prix !== null ? quantite * p.prix : null;
+  const totalTtc = p.prixTtc != null ? quantite * p.prixTtc : null;
 
   const corps = [
     `Produit : ${p.nom}`,
     `${c.label} : ${quantite} ${c.suffixe}`,
     c.coupable ? `Découpes : ${coupes}` : "",
     poids !== null ? `Poids estimé : ${kgf(poids)} kg` : "",
-    total !== null ? `Estimation en ligne : ${eur(total)} HTVA` : "Prix : sur devis",
+    total !== null
+      ? `Estimation en ligne : ${eur(total)} HTVA${totalTtc !== null ? ` (${eur(totalTtc)} TVAC)` : ""}, hors découpe`
+      : "Prix : sur devis",
     "",
     "Merci de me confirmer le prix exact, la disponibilité et le dépôt de retrait.",
   ]
@@ -87,19 +89,13 @@ export default function Calculateur({ p }: { p: Produit }) {
             <dd className="font-mono text-sm tabular-nums text-encre">{kgf(poids)} kg</dd>
           </div>
         )}
-        <div className="flex items-baseline justify-between gap-4 py-2.5">
-          <dt className="font-body text-sm text-soft">Matière</dt>
-          <dd className="font-mono text-sm tabular-nums text-encre">
-            {matiere !== null ? eur(matiere) : "sur devis"}
-          </dd>
-        </div>
         {c.coupable && (
           <div className="flex items-baseline justify-between gap-4 py-2.5">
             <dt className="font-body text-sm text-soft">
-              Découpe <span className="text-xs">· 2,50 € / coupe</span>
+              Découpe <span className="text-xs">· supplément selon le profil</span>
             </dt>
             <dd className="font-mono text-sm tabular-nums text-encre">
-              {decoupe > 0 ? eur(decoupe) : "—"}
+              {coupes > 0 ? "sur devis" : "—"}
             </dd>
           </div>
         )}
@@ -109,6 +105,12 @@ export default function Calculateur({ p }: { p: Produit }) {
             {total !== null ? eur(total) : "Sur devis"}
           </dd>
         </div>
+        {totalTtc !== null && (
+          <div className="flex items-baseline justify-between gap-4 py-2.5">
+            <dt className="font-body text-sm text-soft">Soit TVAC (21&nbsp;%)</dt>
+            <dd className="font-mono text-sm tabular-nums text-encre">{eur(totalTtc)}</dd>
+          </div>
+        )}
       </dl>
 
       <a href={mailto} className="btn-cta mt-6 w-full justify-center">
@@ -119,8 +121,8 @@ export default function Calculateur({ p }: { p: Produit }) {
       </a>
 
       <p className="mt-3 font-body text-xs leading-relaxed text-soft">
-        Estimation indicative hors TVA, calculée sur le tarif catalogue. L'acier cote à la
-        semaine et le tarif est dégressif dès 100&nbsp;kg&nbsp;: le devis fait foi.
+        Estimation calculée sur le prix du catalogue, hors supplément de découpe. L&apos;acier
+        cote à la semaine&nbsp;: le devis fait foi.
       </p>
     </div>
   );

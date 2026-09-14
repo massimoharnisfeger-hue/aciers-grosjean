@@ -124,7 +124,7 @@ export default function TableauProduits({
         <>
           <div className="hidden overflow-x-auto rounded-2xl border border-brume md:block">
             <table className="w-full border-collapse text-left">
-              <caption className="sr-only">Produits disponibles avec poids et prix indicatif</caption>
+              <caption className="sr-only">Produits disponibles avec poids et prix hors TVA</caption>
               <thead>
                 <tr className="border-b border-brume bg-nuage">
                   <th scope="col" className="px-5 py-3 font-body text-xs font-semibold uppercase tracking-[0.12em] text-soft">Produit</th>

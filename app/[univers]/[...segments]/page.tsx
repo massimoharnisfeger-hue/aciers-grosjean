@@ -116,8 +116,8 @@ export default async function NoeudPage({ params }: { params: Promise<Params> })
               </dl>
 
               <p className="mt-7 max-w-lg font-body text-soft">
-                Tout se débite aux cotes exactes&nbsp;: vous ne payez que la longueur utile. Les prix
-                sont indicatifs, hors TVA, et dégressifs dès 100&nbsp;kg.
+                Tout se débite aux cotes exactes&nbsp;: vous ne payez que la longueur utile. Prix du
+                catalogue hors TVA (TVAC sur chaque fiche), découpe en supplément.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/devis" className="btn-cta">Demander un devis</Link>

@@ -544,8 +544,8 @@ w("""/**
  * du crawl : ce sont les URLs propres définies par le blueprint (section 46),
  * pas une invention. Les noms de produits sont ceux du site réel.
  *
- * Poids : formules normalisées (EN 10025/10056/10219), densité par matière.
- * Prix : indicatifs, dérivés du poids, calibrés sur les tarifs publics connus.
+ * Poids et prix : ceux du site actuel aciersgrosjean.be (lib/site-actuel.json, fusionné en
+ * bas de fichier). Les valeurs calculées ci-dessous ne servent que si le site n'en donne pas.
  */
 
 export type Spec = { label: string; valeur: string };
@@ -561,7 +561,17 @@ export type Produit = {
   uniteCourte: string;
   prix: number | null;
   specs: Spec[];
+  /** Relevé sur le site actuel (lib/site-actuel.json). */
+  prixTtc?: number | null;
+  /** Longueurs standard proposées, en mètres. */
+  longueurs?: number[];
+  finition?: string | null;
+  pdfs?: DocumentPdf[];
+  idSiteActuel?: number;
+  urlSiteActuel?: string;
 };
+
+export type DocumentPdf = { fichier: string; titre: string };
 
 export type Noeud = {
   chemin: string;
@@ -689,6 +699,48 @@ export function prixMini(chemin: string) {
   const p = produitsSous(chemin).map((x) => x.prix).filter((x): x is number => x !== null);
   if (!p.length) return null;
   return Math.min(...p);
+}
+
+// ---------------------------------------------------------------------------
+// Données réelles du site actuel (scripts/inventaire/integrer.py) : prix HTVA et TVAC,
+// poids, unité de vente, longueurs, finition et fiches techniques.
+import siteActuel from "./site-actuel.json";
+
+type DonneesSiteActuel = {
+  id: number;
+  url: string;
+  prixTtc: number | null;
+  prixHtva: number | null;
+  kg: number | null;
+  remplacerPoids: boolean;
+  unite: string;
+  uniteCourte: string;
+  unitePoids: string;
+  longueurs: number[];
+  finition: string | null;
+  pdfs: DocumentPdf[];
+  specsRetirees: string[];
+};
+
+for (const [slug, r] of Object.entries(siteActuel as unknown as Record<string, DonneesSiteActuel>)) {
+  const p = produits[slug];
+  if (!p) continue;
+  p.prix = r.prixHtva;
+  p.prixTtc = r.prixTtc;
+  p.unite = r.unite;
+  p.uniteCourte = r.uniteCourte;
+  p.unitePoids = r.unitePoids;
+  if (r.remplacerPoids) p.kg = r.kg;
+  p.longueurs = r.longueurs;
+  p.finition = r.finition;
+  p.pdfs = r.pdfs;
+  p.idSiteActuel = r.id;
+  p.urlSiteActuel = r.url;
+  p.specs = p.specs.filter((s) => s.label !== "Poids" && !r.specsRetirees.includes(s.label));
+  if (p.kg !== null) {
+    const valeur = p.kg.toLocaleString("fr-BE", { maximumFractionDigits: 2 });
+    p.specs.push({ label: "Poids", valeur: `${valeur} ${p.unitePoids || "kg"}` });
+  }
 }
 """)
 
