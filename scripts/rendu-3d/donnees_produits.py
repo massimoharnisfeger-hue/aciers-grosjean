@@ -946,6 +946,14 @@ def main():
                 val = " / ".join(f"{x:g}" for x in val) if isinstance(val, list) else (f"{val:g}" if isinstance(val, float) else val)
                 w.writerow([slug, p["nom"], p["famille"], k, str(val).replace(".", ","), d.get("unite", ""),
                             d["source"], "oui" if d.get("supposee") else "", " | ".join(p["alertes"])])
+    # liste de travail des questions en attente, produit par produit (_DOCS/rendus-3d/questions-en-attente.md) :
+    # chaque alerte = une valeur contradictoire ou manquante, non affichée tant que l'entreprise n'a pas répondu
+    with open(SORTIE_CSV.parent / "alertes-produits.csv", "w", encoding="utf-8-sig", newline="") as f:
+        w = csv.writer(f, delimiter=";")
+        w.writerow(["famille", "slug", "nom", "alerte"])
+        for slug, p in sorted(tous.items(), key=lambda x: (x[1]["famille"], x[0])):
+            for a in p["alertes"]:
+                w.writerow([p["famille"], slug, p["nom"], a])
 
 
 if __name__ == "__main__":

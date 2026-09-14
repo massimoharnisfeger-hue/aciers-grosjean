@@ -1,0 +1,93 @@
+﻿famille;slug;nom;alerte
+aluminium-plat;plat-de-20x3mm-en-aluminium;Plat de 20x3mm en aluminium;poids site 0.17 kg/m ≠ théorique 0.16 kg/m (écart > 3 %) : non affiché
+aluminium-plat;plat-de-25x3mm-en-aluminium;Plat de 25x3mm en aluminium;poids site 0.21 kg/m ≠ théorique 0.20 kg/m (écart > 3 %) : non affiché
+aluminium-profil-t;profil-en-t-25x25x2mm-en-aluminium;Profil en T 25x25x2mm en aluminium;poids site 0.27 kg/m ≠ théorique 0.26 kg/m (écart > 3 %) : non affiché
+aluminium-tube-carre;tube-carre-de-15x15x2mm-en-aluminium;Tube carré de 15x15x2mm en aluminium;poids site 0.31 kg/m ≠ théorique 0.28 kg/m (écart > 3 %) : non affiché
+corniere-egale;corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4)
+corniere-egale;corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-20x20x2mm-en-inox-304;Tube carré 20x20x2mm en Inox 304;poids site 1.22 kg/m ≠ théorique 1.14 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-25x25x2mm-en-inox-304;Tube carré 25x25x2mm en Inox 304;poids site 1.54 kg/m ≠ théorique 1.46 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-30x30x2mm-en-inox-304;Tube carré 30x30x2mm en Inox 304;poids site 1.86 kg/m ≠ théorique 1.78 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-35x35x2mm-en-inox-304;Tube carré 35x35x2mm en Inox 304;poids site 2.18 kg/m ≠ théorique 2.09 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-40x40x2mm-en-inox-304;Tube carré 40x40x2mm en Inox 304;poids site 2.5 kg/m ≠ théorique 2.41 kg/m (écart > 3 %) : non affiché
+inox-tube-carre;tube-carre-50x50x2mm-en-inox-304;Tube carré 50x50x2mm en Inox 304;poids site 3.14 kg/m ≠ théorique 3.05 kg/m (écart > 3 %) : non affiché
+inox-tube-rectangulaire;tube-rectangle-40x20x2mm-en-inox-304;Tube rectangle 40x20x2mm en Inox 304;poids site 1.86 kg/m ≠ théorique 1.78 kg/m (écart > 3 %) : non affiché
+inox-tube-rond;tube-rond-26-9x2mm-en-inox-304;Tube rond 26,9x2mm en Inox 304;poids site 1.2 kg/m ≠ théorique 1.24 kg/m (écart > 3 %) : non affiché
+inox-tube-rond;tube-rond-33-7x2mm-en-inox-304;Tube rond 33,7x2mm en Inox 304;poids site 1.5 kg/m ≠ théorique 1.58 kg/m (écart > 3 %) : non affiché
+inox-tube-rond;tube-rond-42-4x2mm-en-inox-304;Tube rond 42,4x2mm en Inox 304;poids site 1.95 kg/m ≠ théorique 2.01 kg/m (écart > 3 %) : non affiché
+inox-tube-rond;tube-rond-48-3x2mm-en-inox-304;Tube rond 48,3x2mm en Inox 304;poids site 2.2 kg/m ≠ théorique 2.31 kg/m (écart > 3 %) : non affiché
+inox-tube-rond;tube-rond-60-3x2mm-en-inox-304;Tube rond 60,3x2mm en Inox 304;poids site 2.76 kg/m ≠ théorique 2.90 kg/m (écart > 3 %) : non affiché
+marche-caillebotis;marche-d-escalier-caillebotis-1000x230mm;Marche d'escalier caillebotis 1000x230mm;maille et barreaux de la marche absents de la page : non affichés (question en attente)
+marche-caillebotis;marche-d-escalier-caillebotis-600x200mm;Marche d'escalier caillebotis 600x200mm;maille et barreaux de la marche absents de la page : non affichés (question en attente)
+marche-caillebotis;marche-d-escalier-caillebotis-700x230mm;Marche d'escalier caillebotis 700x230mm;maille et barreaux de la marche absents de la page : non affichés (question en attente)
+marche-caillebotis;marche-d-escalier-caillebotis-800x230mm;Marche d'escalier caillebotis 800x230mm;maille et barreaux de la marche absents de la page : non affichés (question en attente)
+marche-caillebotis;marche-d-escalier-caillebotis-900x230mm;Marche d'escalier caillebotis 900x230mm;maille et barreaux de la marche absents de la page : non affichés (question en attente)
+marche-o2;marche-securit-pcp-o2-achil-1000x250mm;Marche securit PCP O2 ACHIL 1000x250mm;hauteur de la marche absente des documents : non affichée (question en attente)
+marche-o2;marche-securit-pcp-o2-achil-800-x-250mm;Marche securit PCP O2 ACHIL 800 x 250mm;hauteur de la marche absente des documents : non affichée (question en attente)
+marche-o2;marche-securit-pcp-o2-achil-900x250mm;Marche securit PCP O2 ACHIL 900x250mm;hauteur de la marche absente des documents : non affichée (question en attente)
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m53-gris-ral-7016;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – GRIS RAL 7016;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m53-noir-ral-9005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – NOIR RAL 9005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m53-vert-ral-6005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – VERT RAL 6005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m73-gris-ral-7016;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – GRIS RAL 7016;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m73-noir-ral-9005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – NOIR RAL 9005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m73-vert-ral-6005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – VERT RAL 6005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m93-gris-ral-7016;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – GRIS RAL 7016;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m93-noir-ral-9005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – NOIR RAL 9005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-cloture-medium-3d;panneaux-medium-3d-fils-5-4-h-1m93-vert-ral-6005;PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – VERT RAL 6005;largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée
+panneau-isole-eco;panneau-isole-eco-30mm-260x105cm-ral-7016;Panneau isolé ECO 30mm – 260x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-310x105cm-ral-7016;Panneau isolé ECO 30mm – 310x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-360x105cm-ral-7016;Panneau isolé ECO 30mm – 360x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-410x105cm-ral-7016;Panneau isolé ECO 30mm – 410x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-460x105cm-ral-7016;Panneau isolé ECO 30mm – 460x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-510x105cm-ral-7016;Panneau isolé ECO 30mm – 510x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-560x105cm-ral-7016;Panneau isolé ECO 30mm – 560x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+panneau-isole-eco;panneau-isole-eco-30mm-610x105cm-ral-7016;Panneau isolé ECO 30mm – 610x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
+plat;plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat;plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 10mm de diamètre en acier laminé à chaud;poids site 0.65 kg/m ≠ théorique 0.62 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 12mm de diamètre en acier laminé à chaud;poids site 0.95 kg/m ≠ théorique 0.89 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 14mm de diamètre en acier laminé à chaud;poids site 1.27 kg/m ≠ théorique 1.21 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 16mm de diamètre en acier laminé à chaud;poids site 1.68 kg/m ≠ théorique 1.58 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 20mm de diamètre en acier laminé à chaud;poids site 2.61 kg/m ≠ théorique 2.47 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 8mm de diamètre en acier laminé à chaud;poids site 0.41 kg/m ≠ théorique 0.39 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-froid;rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid;Rond à béton crénelé de 6mm de diamètre en acier laminé à froid;poids site 0.24 kg/m ≠ théorique 0.22 kg/m (écart > 3 %) : non affiché
+tole-galvanisee;tole-de-2000x1000x3mm-en-acier-galvanisee;Tôle de 2000x1000x3mm en acier galvanisée;poids site 49.16 kg ≠ théorique 47.1 kg (écart > 3 %) : non affiché
+tole-galvanisee;tole-de-2500x1250x3mm-en-acier-galvanisee;Tôle de 2500x1250x3mm en acier galvanisée;poids site 76.82 kg ≠ théorique 73.6 kg (écart > 3 %) : non affiché
+tole-galvanisee;tole-de-3000x1500x3mm-en-acier-galvanisee;Tôle de 3000x1500x3mm en acier galvanisée;poids site 110.61 kg ≠ théorique 106.0 kg (écart > 3 %) : non affiché
+tole-inox-brossee;tole-2000x1000x1mm-plane-en-inox-304-gr320;Tôle 2000x1000x1mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-2000x1000x2mm-plane-en-inox-304-gr320;Tôle 2000x1000x2mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-2000x1000x3mm-plane-en-inox-304-gr320;Tôle 2000x1000x3mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-2500x1250x1mm-plane-en-inox-304-gr320;Tôle 2500x1250x1mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-2500x1250x2mm-plane-en-inox-304-gr320;Tôle 2500x1250x2mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-2500x1250x3mm-plane-en-inox-304-gr320;Tôle 2500x1250x3mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-3000x1500x1mm-plane-en-inox-304-gr320;Tôle 3000x1500x1mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-3000x1500x2mm-plane-en-inox-304-gr320;Tôle 3000x1500x2mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-3000x1500x3mm-plane-en-inox-304-gr320;Tôle 3000x1500x3mm plane en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+tole-inox-brossee;tole-plane-2000x1000x0-8mm-en-inox-304-gr320;Tôle plane 2000x1000x0,8mm en Inox 304 GR320;nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)
+treillis-soude-depassants;treillis-soude-avec-depassants-150x150x10mm-5-95m-x-2-35m;Treillis soudé avec dépassants 150x150x10mm 5,95m x 2,35m;cote E du site (12mm) ≠ d (10.0 mm)
+tube-carre;tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre;tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre;tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre;tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre;tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangulaire;tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rond;tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond;tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond;tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
