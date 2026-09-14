@@ -35,7 +35,7 @@ Déplacer ensuite l'original dans `_DEPOT/deja-integre/<lot>/` et le noter dans 
 Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiches).
 **Mode automatique**, à la demande du propriétaire (14/09/2026) : enchaîner les familles sans attendre son accord.
 
-- **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → intégration sur le site → vérification → commit et push → famille suivante.
+- **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → **vérification indépendante** → intégration sur le site → vérification du build → commit et push → famille suivante.
 - **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
 - **Seul motif d'arrêt :** une donnée à afficher manque ou se contredit. Demander, ne jamais inventer.
 - **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` ; chaque itération reprend là où la précédente s'est arrêtée. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
@@ -43,6 +43,10 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
   - Un réglage validé (matière, lumière, cadrage, échantillons) devient un préréglage réutilisable dans le code : ne pas le re-régler pour la famille suivante.
   - Un défaut vu deux fois devient un contrôle automatique qui tourne sur toutes les images, sans inspection manuelle.
   - Avant de lancer une série, estimer sa durée d'après les temps réellement mesurés dans le carnet.
+- **Vérification indépendante (obligatoire) :** à la fin de chaque série, **avant** l'intégration, lancer l'agent `verificateur-rendus` (`.claude/agents/`, modèle Opus) avec le nom de la famille. Pas pendant les rendus : il ne tourne qu'à ce moment-là.
+  - Si l'agent n'apparaît pas dans la séance (fichier créé après son lancement), lancer un agent général avec le contenu de `.claude/agents/verificateur-rendus.md` comme consigne.
+  - Verdict « À CORRIGER » : corriger chaque défaut bloquant, puis relancer la vérification sur les images refaites jusqu'au verdict « CONFORME ». Les défauts mineurs sont corrigés si c'est rapide, sinon notés dans l'avancement.
+  - Défaut récurrent : l'ajouter au carnet de leçons et en faire un contrôle automatique. Envoyer au propriétaire le verdict avec la planche contact.
 - **Modèle et limites d'usage :** Claude ne peut pas changer de modèle lui-même. À la limite d'usage, Claude Code (≥ 2.1.234) attend la réinitialisation et reprend seul : la production ralentit mais ne s'arrête pas. Au premier lancement, rappeler une seule fois au propriétaire :
   1. fermer navigateurs et autres fenêtres Claude Code (15 Go de RAM, souvent presque pleine) ;
   2. brancher le PC et désactiver la mise en veille ;
