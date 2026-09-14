@@ -1,0 +1,103 @@
+﻿type;chemin;niveau;nom_page;nb_produits_listes;pages_pagination;sous_categories;url
+categorie;Acier;1;Acier;293;49;;https://www.aciersgrosjean.be/acier
+categorie;Acier > Armature béton;2;Armature béton — ronds, treillis & façonnage sur mesure;28;5;;https://www.aciersgrosjean.be/armature-béton-2
+categorie;Acier > Armature béton > Coupé plié;3;Façonnage d'Acier : Coupé-Plié et Assemblage sur Mesure;0;1;;https://www.aciersgrosjean.be/coupé-plié-2
+categorie;Acier > Armature béton > Rond à béton crénélé à chaud;3;Rond à béton crénelé à chaud – Fer à béton armature;6;1;;https://www.aciersgrosjean.be/rond-à-béton-crénélé-à-chaud
+categorie;Acier > Armature béton > Rond à béton crénélé à froid;3;Rond à béton crénelé à froid – Acier haute adhérence;1;1;;https://www.aciersgrosjean.be/rond-à-béton-crénélé-à-froid
+categorie;Acier > Armature béton > Treillis soudés;3;Treillis soudé pour béton armé – Panneaux bruts et galvanisés;17;3;;https://www.aciersgrosjean.be/treillis-soudés-2
+categorie;Acier > Armature béton > Treillis soudés avec dépassants;3;Treillis soudé avec dépassants Armature béton prête à l’emploi;4;1;;https://www.aciersgrosjean.be/treillis-soudés-avec-dépassants
+categorie;Acier > Poutrelle;2;Poutrelle acier – Solidité et polyvalence pour toutes vos constructions;45;8;;https://www.aciersgrosjean.be/poutrelle-4
+categorie;Acier > Poutrelle > Poutrelle HEA;3;Poutrelle HEA en acier : robustesse et polyvalence pour vos constructions;11;2;;https://www.aciersgrosjean.be/poutrelle-hea
+categorie;Acier > Poutrelle > Poutrelle HEB;3;Poutrelle HEB en acier : performance et endurance pour charges lourdes;11;2;;https://www.aciersgrosjean.be/poutrelle-heb
+categorie;Acier > Poutrelle > Poutrelle HEM;3;Poutrelle HEM en acier : performance maximale pour vos structures lourdes;0;1;;https://www.aciersgrosjean.be/poutrelle-hem
+categorie;Acier > Poutrelle > Poutrelle IPE;3;Poutrelle en acier pour la construction IPE;11;2;;https://www.aciersgrosjean.be/poutrelle-ipe-2
+categorie;Acier > Poutrelle > Poutrelle UPN;3;Poutrelle UPN en acier : robustesse et polyvalence pour vos structures métalliques;12;2;;https://www.aciersgrosjean.be/poutrelle-upn
+categorie;Acier > Produit long;2;Produits longs : cornières, fers U et T, plats & ronds;76;13;;https://www.aciersgrosjean.be/produit-long-3
+categorie;Acier > Produit long > Carré plein;3;Carré plein;7;2;;https://www.aciersgrosjean.be/carré-plein
+categorie;Acier > Produit long > Cornière inégale en acier laminé à chaud;3;Cornière inégale en acier laminé à chaud;5;1;;https://www.aciersgrosjean.be/cornière-inégale-en-acier-laminé-à-chaud
+categorie;Acier > Produit long > Cornière égale en acier laminé à chaud;3;Cornière égale en acier laminé à chaud – S235JR;10;2;;https://www.aciersgrosjean.be/cornière-égale-en-acier-laminé-à-chaud
+categorie;Acier > Produit long > Fer T;3;Fer T;5;1;;https://www.aciersgrosjean.be/fer-t-ok-2
+categorie;Acier > Produit long > Fer en U;3;Fer en U;0;1;;https://www.aciersgrosjean.be/fer-en-u
+categorie;Acier > Produit long > Large plat en acier laminé à chaud;3;Large plat en acier laminé à chaud;3;1;;https://www.aciersgrosjean.be/large-plat-en-acier-laminé-à-chaud
+categorie;Acier > Produit long > Plat en acier laminé à chaud;3;Plat en acier laminé à chaud;37;7;;https://www.aciersgrosjean.be/plat-en-acier-laminé-à-chaud
+categorie;Acier > Produit long > Rond plein lisse;3;Rond plein lisse;9;2;;https://www.aciersgrosjean.be/rond-plein-lisse
+categorie;Acier > Tube;2;Tubes acier ronds, carrés et rectangulaires;68;12;;https://www.aciersgrosjean.be/tube-3
+categorie;Acier > Tube > Tube carré acier;3;Tube carré acier;36;6;;https://www.aciersgrosjean.be/tube-carré-acier-3
+categorie;Acier > Tube > Tube rectangle acier;3;Tube rectangulaire acier – Robustesse et performance pour vos constructions;21;4;;https://www.aciersgrosjean.be/tube-rectangle-acier
+categorie;Acier > Tube > Tube rond acier;3;Tube rond en acier – Résistant, polyvalent et prêt à l’emploi;11;2;;https://www.aciersgrosjean.be/tube-rond-acier
+categorie;Acier > Tôle;2;Tôles et Plaques en Acier – Vente en ligne et sur mesure;76;13;;https://www.aciersgrosjean.be/tôle-3
+categorie;Acier > Tôle > Tôle Corten;3;Tôle Corten - L'acier qui rouille... naturellement !;5;1;;https://www.aciersgrosjean.be/tôle-corten
+categorie;Acier > Tôle > Tôle décapée;3;Tôle décapée - Meilleure usinabilité;0;1;;https://www.aciersgrosjean.be/tôle-décapée
+categorie;Acier > Tôle > Tôle galvanisée;3;Tôle galvanisée - Protection contre la corrosion et la rouille;12;2;;https://www.aciersgrosjean.be/tôle-galvanisée
+categorie;Acier > Tôle > Tôle laminé à chaud;3;Tôle laminée à chaud S235JR – Acier de construction polyvalent;36;6;;https://www.aciersgrosjean.be/tôle-laminé-à-chaud
+categorie;Acier > Tôle > Tôle laminé à froid;3;Tôle laminée à froid S235JR - Acier de précision;8;2;;https://www.aciersgrosjean.be/tôle-laminé-à-froid-6
+categorie;Acier > Tôle > Tôle larmée en acier;3;Tôle larmée en acier – Antidérapante et robuste;6;1;;https://www.aciersgrosjean.be/tôle-larmée-en-acier
+categorie;Acier > Tôle > Tôle perforée;3;Tôles Perforées en Acier et Acier Galvanisé : Trous Ronds, Carrés et Aléatoires;8;2;;https://www.aciersgrosjean.be/tôle-perforée
+categorie;Acier > Tôle > Tôle quarto;3;Tôle quarto - Grande résistance mécanique;1;1;;https://www.aciersgrosjean.be/tôle-quarto
+categorie;Acier > Tôle > Tôle électrozinguée;3;Tôle électrozinguée;0;1;;https://www.aciersgrosjean.be/tôle-électrozinguée
+categorie;Aluminium;1;Aluminium;62;11;;https://www.aciersgrosjean.be/aluminium
+categorie;Aluminium > Produit long en Aluminium;2;Profilés aluminium : cornières, U, T, ronds, carrés & plats;26;5;;https://www.aciersgrosjean.be/produit-long-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Carré plein en aluminium;3;Profil carré plein en aluminium – robuste, polyvalent et résistant;0;1;;https://www.aciersgrosjean.be/carré-plein-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Cornière inégale en aluminium;3;Cornière inégale en aluminium;0;1;;https://www.aciersgrosjean.be/cornière-inégale-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Cornière égale en aluminium;3;Cornière égale en aluminium;8;2;;https://www.aciersgrosjean.be/cornière-égale-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Plat en aluminium;3;Profil plat en aluminium – léger, robuste et polyvalent.;11;2;;https://www.aciersgrosjean.be/plat-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Profil en T en aluminium;3;Profil en T en aluminium - Léger, résistant & polyvalent;3;1;;https://www.aciersgrosjean.be/profil-en-t-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Profil en U en Aluminium;3;Profil en U en Aluminium;4;1;;https://www.aciersgrosjean.be/profil-en-u-en-aluminium
+categorie;Aluminium > Produit long en Aluminium > Profil rond lisse en aluminium;3;Profil rond lisse en aluminium;0;1;;https://www.aciersgrosjean.be/profil-rond-lisse-en-aluminium
+categorie;Aluminium > Tole Alu;2;Tole Alu;18;3;;https://www.aciersgrosjean.be/tole-alu-2
+categorie;Aluminium > Tole Alu > Tôle bouchonnée en aluminium;3;Tôle bouchonnée en aluminium;0;1;;https://www.aciersgrosjean.be/tôle-bouchonnée-en-aluminium
+categorie;Aluminium > Tole Alu > Tôle plane en Aluminium;3;Tôle plane en Aluminium;9;2;;https://www.aciersgrosjean.be/tôle-plane-en-aluminium-2
+categorie;Aluminium > Tole Alu > Tôle striée en aluminium;3;Tôle striée en aluminium;9;2;;https://www.aciersgrosjean.be/tôle-striée-en-aluminium
+categorie;Aluminium > Tube Alu;2;Tubes aluminium : rond, carré, rectangulaire;18;3;;https://www.aciersgrosjean.be/tube-alu
+categorie;Aluminium > Tube Alu > Tube carré en aluminium;3;Tube carré en aluminium - Robuste, léger et polyvalent;8;2;;https://www.aciersgrosjean.be/tube-carré-en-aluminium
+categorie;Aluminium > Tube Alu > Tube rectangle en aluminium;3;Tube rectangle en aluminium - Robuste, léger et polyvalent;5;1;;https://www.aciersgrosjean.be/tube-rectangle-en-aluminium
+categorie;Aluminium > Tube Alu > Tube rond en aluminium;3;Tube rond en aluminium - légèreté, résistance à la corrosion et durabilité;5;1;;https://www.aciersgrosjean.be/tube-rond-en-aluminium
+categorie;Clôture & jardin;1;Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean;37;7;;https://www.aciersgrosjean.be/clôture-jardin-2
+categorie;Clôture & jardin > Aménagement;2;Aménagement Extérieur & Design de Jardin | L'Acier au Service de vos Espaces Verts;2;1;;https://www.aciersgrosjean.be/aménagement
+categorie;Clôture & jardin > Aménagement > Bordure Corten et Galva;3;Bordures de jardins | Le choix de l'acier Corten ou galvanisé pour la longévité;2;1;;https://www.aciersgrosjean.be/bordure-corten-et-galva
+categorie;Clôture & jardin > Clôture;2;Ensembles Clôtures, Poteaux et Fixations : La Solution Complète Aciers Grosjean;35;6;;https://www.aciersgrosjean.be/clôture
+categorie;Clôture & jardin > Clôture > Fixation clôture;3;Fixations et Accessoires de Clôture : Quincaillerie de Pose Professionnelle;5;1;;https://www.aciersgrosjean.be/fixation-clôture
+categorie;Clôture & jardin > Clôture > Panneaux clôture;3;Clôtures Rigides : Sécurité et Qualité chez Aciers Grosjean;13;3;;https://www.aciersgrosjean.be/panneaux-clôture
+categorie;Clôture & jardin > Clôture > Poteaux clôture;3;Poteaux de Clôture en Acier : Robustesse et Systèmes de Fixation Professionnels;17;3;;https://www.aciersgrosjean.be/poteaux-clôture
+categorie;Inox;1;Inox;43;8;;https://www.aciersgrosjean.be/inox
+categorie;Inox > Produit long Inox;2;Produits longs inox : rond, cornières & plat;18;3;;https://www.aciersgrosjean.be/produit-long-inox
+categorie;Inox > Produit long Inox > Cornière égale en Inox;3;Cornière égale en Inox 304 – Rigidité et Protection Durable;5;1;;https://www.aciersgrosjean.be/cornière-égale-en-inox
+categorie;Inox > Produit long Inox > Plat en Inox;3;Plat en Inox 304 – La référence pour vos finitions et structures;10;2;;https://www.aciersgrosjean.be/plat-en-inox
+categorie;Inox > Produit long Inox > Rond plein lisse en Inox;3;Rond plein lisse en Inox 304 | Haute Qualité;3;1;;https://www.aciersgrosjean.be/rond-plein-lisse-en-inox
+categorie;Inox > Tube Inox;2;Tubes inox ronds, carrés et rectangulaires;15;3;;https://www.aciersgrosjean.be/tube-inox
+categorie;Inox > Tube Inox > Tube carré en Inox;3;Tube inox carré – précision et solidité pour vos projets;6;1;;https://www.aciersgrosjean.be/tube-carré-en-inox
+categorie;Inox > Tube Inox > Tube rectangle en Inox;3;Tube inox rectangulaire – la solution solide et polyvalente;1;1;;https://www.aciersgrosjean.be/tube-rectangle-en-inox
+categorie;Inox > Tube Inox > Tube rond en Inox;3;Tube inox rond – performance et longévité au service des professionnels;8;2;;https://www.aciersgrosjean.be/tube-rond-en-inox
+categorie;Inox > Tôle Inox;2;Tôles inox — planes & grain 320 brossé;10;2;;https://www.aciersgrosjean.be/tôle-inox
+categorie;Inox > Tôle Inox > Tôle plane en Inox 304 GR320;3;Tôle Inox 304L – Finition Brossée Grain 320;10;2;;https://www.aciersgrosjean.be/tôle-plane-en-inox-304-gr320
+categorie;Quincaillerie & ferronnerie;1;Quincaillerie & ferronnerie;43;8;;https://www.aciersgrosjean.be/quincaillerie-ferronnerie-2
+categorie;Quincaillerie & ferronnerie > Quincaillerie;2;Quincaillerie | Solutions de Montage, Finition et Protection pour l'Acier;43;8;;https://www.aciersgrosjean.be/quincaillerie
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Chimie du bâtiment;3;Chimie du Bâtiment : Protection, Finition et Étanchéité des Métaux;17;3;;https://www.aciersgrosjean.be/chimie-du-bâtiment
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Chimie du bâtiment > Couleur;4;Couleur et Finition : Primaires et Peintures Techniques;6;1;;https://www.aciersgrosjean.be/couleur
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Chimie du bâtiment > Zinc;4;Zinc et Galvanisation à Froid : Système Anti-Corrosion Zinga;7;2;;https://www.aciersgrosjean.be/zinc
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Chimie du bâtiment > colle / étanchéité;4;Colle et Étanchéité : Solutions Professionnelles DL Chemicals;4;1;;https://www.aciersgrosjean.be/colle-étanchéité
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Escalier et caillebotis;3;Marches d'Escaliers et planchers en Caillebotis et Securit;19;4;;https://www.aciersgrosjean.be/escalier-et-caillebotis
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Outillage;3;Outillage;1;1;;https://www.aciersgrosjean.be/outillage
+categorie;Quincaillerie & ferronnerie > Quincaillerie > Visserie;3;Visserie et Fixations pour Toiture : La performance au service de vos travaux;6;1;;https://www.aciersgrosjean.be/visserie-2
+categorie;Toiture & Bardage;1;Toiture & Bardage;17;3;;https://www.aciersgrosjean.be/toiture-bardage-2
+categorie;Toiture & Bardage > Catalogue toiture bardage;2;Catalogue Toiture & Bardage : tôles, panneaux isolés & fiches techniques;0;1;;https://www.aciersgrosjean.be/catalogue-toiture-et-bardage
+categorie;Toiture & Bardage > Panneau isolé;2;"Tôles Isolées : Le confort thermique ""Tout-en-Un""";8;2;;https://www.aciersgrosjean.be/panneau-isolé
+categorie;Toiture & Bardage > Panneau isolé > Toiture isolée;3;Toiture Isolée : Alliez Étanchéité et Confort Thermique;8;2;;https://www.aciersgrosjean.be/toiture-isolée
+categorie;Toiture & Bardage > Panneau isolé > Toiture isolée > Panneau ECO;4;Panneau ECO Toiture Lattonedil Eurocopre® Monolamiera;8;2;;https://www.aciersgrosjean.be/panneau-eco
+categorie;Toiture & Bardage > Panneau isolé > Toiture isolée > TTack – toiture plate;4;Lattonedil TTack® : L’Innovation Ultime pour Toitures Plates sans Membrane;0;1;;https://www.aciersgrosjean.be/ttack-toiture-plate
+categorie;Toiture & Bardage > Panneau-tuile;2;Panneau-tuile;0;1;;https://www.aciersgrosjean.be/panneau-tuile-2
+categorie;Toiture & Bardage > Panneau-tuile > Isolé;3;Isolé;0;1;;https://www.aciersgrosjean.be/isolé
+categorie;Toiture & Bardage > Panneau-tuile > Non-isolé tuile;3;Non-isolé tuile;0;1;;https://www.aciersgrosjean.be/non-isolé-tuile
+categorie;Toiture & Bardage > Tôle profilée non isolée;2;Tôle profilée non isolée : L'efficacité au meilleur prix;9;2;;https://www.aciersgrosjean.be/tôle-profilée-non-isolée
+categorie;Toiture & Bardage > Tôle profilée non isolée > Bardage;3;Bardage acier — habillage de façade durable;2;1;;https://www.aciersgrosjean.be/bardage
+categorie;Toiture & Bardage > Tôle profilée non isolée > Bardage > Imitation bois;4;Parement imitation bois | Chaleur du Bois - Durabilité de l'Acier;2;1;;https://www.aciersgrosjean.be/imitation-bois
+categorie;Toiture & Bardage > Tôle profilée non isolée > Bardage > Isolée;4;Isolée;0;1;;https://www.aciersgrosjean.be/isolée
+categorie;Toiture & Bardage > Tôle profilée non isolée > Bardage > Non-isolée;4;Non-isolée;0;1;;https://www.aciersgrosjean.be/non-isolée
+categorie;Toiture & Bardage > Tôle profilée non isolée > Toiture;3;Tôles profilées non isolées pour toiture;7;2;;https://www.aciersgrosjean.be/toiture
+categorie;Toiture & Bardage > Tôle profilée non isolée > Toiture > Anti-condensation;4;Anti-condensation;0;1;;https://www.aciersgrosjean.be/anti-condensation
+categorie;Toiture & Bardage > Tôle profilée non isolée > Toiture > Non isolé;4;Non isolé;0;1;;https://www.aciersgrosjean.be/non-isolé
+categorie;Toiture & Bardage > Tôle profilée non isolée > Toiture > Panneau tuile;4;Panneau-tuiles acier — l'aspect tuile, la légèreté de l'acier;0;1;;https://www.aciersgrosjean.be/panneau-tuile
+categorie;Toiture & Bardage > Tôle profilée non isolée > Toiture > Profil 30.200.1000;4;Tôle profilée 30.200.1000 : Toiture et Bardage sur mesure;7;2;;https://www.aciersgrosjean.be/profil-302001000
+categorie;Toiture & Bardage > Tôle profilée non isolée avec feutre régulateur de condensation;2;Tôle profilée — feutre régulateur de condensation;0;1;;https://www.aciersgrosjean.be/tôle-profilée-non-isolée-avec-feutre-régulateur-de-condensation
+categorie;Toiture & Bardage > Tôle profilée tuile;2;Tôle profilée tuile;0;1;;https://www.aciersgrosjean.be/tôle-profilée-tuile
+categorie;temp;1;temp;0;1;;https://www.aciersgrosjean.be/temp

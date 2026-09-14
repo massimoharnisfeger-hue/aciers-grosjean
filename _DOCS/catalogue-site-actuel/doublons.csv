@@ -1,0 +1,10 @@
+﻿groupe;raison;id;nom;categorie;prix_affiche;url;autres_urls
+1;meme produit accessible par plusieurs adresses;1332;Tôle 30.200.1000 - RAL 7016 - 200X105cm;Toiture & Bardage > Tôle profilée non isolée > Toiture > Profil 30.200.1000;30,90 € TTC / PC;https://www.aciersgrosjean.be/tole-302001000-ral-7016-200x105cm;https://www.aciersgrosjean.be/tole-302001000-ral-7016-200x105cm
+2;meme produit accessible par plusieurs adresses;1333;Tôle 30.200.1000 - RAL 7016 - 250X105cm;Toiture & Bardage > Tôle profilée non isolée > Toiture > Profil 30.200.1000;38,62 € TTC / PC;https://www.aciersgrosjean.be/tole-302001000-ral-7016-250x105cm;https://www.aciersgrosjean.be/tole-302001000-ral-7016-250x105cm
+3;doublon probable : produit hors categorie, meme cotes qu'un produit du catalogue;1098;Tube acier rond diam 42,4X2,5 mm;(aucune);5,71 € TTC / PC;https://www.aciersgrosjean.be/tube-acier-rond-diam-424x25-mm-2;
+3;doublon probable : produit hors categorie, meme cotes qu'un produit du catalogue;707;Tube rond 42,4x2,5mm en acier brut série légère;Acier > Tube > Tube rond acier;6,98 € TTC / PC;https://www.aciersgrosjean.be/tube-en-acier-rond-brut-série-légère-de-diamètre-424x25mm;
+4;produit hors categorie (invisible dans la navigation);1391;Vasque Corten;(aucune);580,80 € TTC / PC;https://www.aciersgrosjean.be/vasque-corten-2;
+5;produit hors categorie (invisible dans la navigation);1392;Vasque 2;(aucune);605,00 € TTC / PC;https://www.aciersgrosjean.be/vasque-2-2;
+6;produit hors categorie (invisible dans la navigation);1585;COUPE TR SUP;(aucune);6,41 € TTC / PC;https://www.aciersgrosjean.be/coupe-ipe-140-à-220-8;
+7;produit hors categorie (invisible dans la navigation);1594;COUPE PLAT 220 à 300;(aucune);6,05 € TTC / PC;https://www.aciersgrosjean.be/coupe-ipe-140-à-220-17;
+8;produit hors categorie (invisible dans la navigation);1595;COUPE PLAT 350 à 400;(aucune);7,26 € TTC / PC;https://www.aciersgrosjean.be/coupe-ipe-140-à-220-18;
