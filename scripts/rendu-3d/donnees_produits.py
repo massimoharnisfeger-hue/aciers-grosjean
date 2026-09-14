@@ -672,7 +672,7 @@ def vague3(cat, reel, desc):
                      l_utile=valeur(int(m.group(1)) * 10, "mm", SRC_NOM + " et " + SRC_FT_TASSEAU + " (largeur utile 710)"),
                      tasseau=valeur("40 × 40 mm", "", SRC_NOM), h=valeur(37, "mm", SRC_FT_TASSEAU + " (hauteur d'onde 37)"),
                      sommet=valeur(39, "mm", SRC_FT_TASSEAU + " — forme du rendu", supposee=True),
-                     plat=valeur(90, "mm", SRC_FT_TASSEAU + " — forme du rendu", supposee=True),
+                     pas=valeur(90, "mm", SRC_FT_TASSEAU + " (cote 90 d'axe en axe) — forme du rendu", supposee=True),
                      e=valeur(0.5, "mm", SRC_FT_TASSEAU + " et " + SRC_DESC), masse=valeur(6.75, "kg/m²", SRC_FT_TASSEAU + " et " + SRC_DESC),
                      nuance=valeur("S280GD", "", SRC_FT_TASSEAU), revetement=valeur("Polyester 35 µm", "", SRC_FT_TASSEAU),
                      teinte=valeur("Chêne clair", "", SRC_NOM + " et " + SRC_FT_TASSEAU))

@@ -226,13 +226,16 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
     vx, vy = ancre[0] - cx, ancre[1] - cy
     n = math.hypot(vx, vy) or 1.0
     ligne(ancre, (cx + vx / n * (r + 4), cy + vy / n * (r + 4)), ACIER, 1.6)
-    # épaisseur pincée dans la loupe (deux flèches verticales), étiquette sous la loupe
+    # épaisseur pincée dans la loupe (deux flèches verticales), étiquette sous la loupe ; valeur supposée (hauteur
+    # inconnue d'une marche) : la loupe montre le détail sans rien coter
+    cle = geo.get("cle_loupe", "e")  # épaisseur e d'une tôle, hauteur h d'une nervure (tôle profilée, tasseau)
+    if affichable(p, cle) is None and not relief:
+        return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
     haut, bas = dans_loupe(P["loupe_haut"]), dans_loupe(P["loupe_bas"])
     ligne(decale(haut, 0, -34), haut, ENCRE)
     fleche(haut, decale(haut, 0, -34), ENCRE)
     ligne(decale(bas, 0, 34), bas, ENCRE)
     fleche(bas, decale(bas, 0, 34), ENCRE)
-    cle = geo.get("cle_loupe", "e")  # épaisseur e d'une tôle, hauteur h d'une nervure (tôle profilée, tasseau)
     fleches_pince.append((cle, haut[0] - 7, haut[1] - 34, haut[0] + 7, haut[1]))
     fleches_pince.append((cle, bas[0] - 7, bas[1], bas[0] + 7, bas[1] + 34))
     if not relief:
@@ -320,14 +323,25 @@ def decale(p, dx, dy):
     return (p[0] + dx, p[1] + dy)
 
 
-def rendu_sur_blanc(chemin, fondu=90, fiche=False):
+def attenuation_ombre(chemin_json):
+    """Facteur d'opacité de l'ombre : 0,55 d'ordinaire ; 1,0 pour les pièces à fils fins (panneaux de clôture : fils
+    de 1 à 2 px entièrement semi-transparents, que l'atténuation délavait)."""
+    with open(chemin_json, encoding="utf-8") as f:
+        geo = json.load(f)
+    types = [geo.get("type")] + [q.get("type") for q in geo.get("pieces", [])]
+    return 1.0 if "PANNEAU-CLOTURE" in types else 0.55
+
+
+def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55):
     """Rendu sur fond blanc. `fiche` : l'ombre s'efface aussi avant la colonne de la fiche technique (x ≥ 0,655 W),
-    pour que le texte reste sur un fond clair (grandes sections HEA/HEB, vérification du 14/09)."""
+    pour que le texte reste sur un fond clair (grandes sections HEA/HEB, vérification du 14/09). `ombre` : opacité
+    de l'ombre portée (voir `attenuation_ombre`)."""
     rendu = Image.open(chemin).convert("RGBA")
     # ombre allégée : la pièce est opaque, l'ombre du sol est semi-transparente
     r_, g_, b_, a_ = rendu.split()
     piece = a_.point(lambda v: 255 if v >= 250 else 0)
-    ombre = a_.point(lambda v: int(v * 0.55))
+    facteur = ombre
+    ombre = a_.point(lambda v: int(v * facteur))
     if fondu:  # l'ombre s'efface vers le bord et disparaît sur les 24 derniers px : marges d'un blanc pur
         w, h = rendu.size
 
@@ -361,11 +375,13 @@ def enregistrer(image, base):
 # ---------------------------------------------------------------- compositions
 
 def studio(nom, dossier):
-    enregistrer(rendu_sur_blanc(os.path.join(dossier, nom + ".png")), os.path.join(dossier, nom + "-studio"))
+    ombre = attenuation_ombre(os.path.join(dossier, nom + ".json"))
+    enregistrer(rendu_sur_blanc(os.path.join(dossier, nom + ".png"), ombre=ombre), os.path.join(dossier, nom + "-studio"))
 
 
 def caracteristiques(slug, dossier):
-    image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"), fiche=True)
+    image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"), fiche=True,
+                            ombre=attenuation_ombre(os.path.join(dossier, slug + ".json")))
     # fond de la colonne de la fiche, mesuré avant le texte : il doit rester clair
     fond_fiche = ImageStat.Stat(image.convert("L").crop((int(image.width * 0.655), 60, image.width - 40, image.height - 60))).extrema[0][0]
     with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:

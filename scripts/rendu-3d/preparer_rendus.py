@@ -53,9 +53,11 @@ def piece(p, longueur, ratio):
                 v.get("finition", "BRUT"))
     elif serie == "TASSEAU":  # bardage à caissons ; loupe sur le 2e tasseau (hauteur d'onde h pincée)
         base = v["sommet"] + 6.0
-        x_tasseau = -v["l_utile"] / 2 + 22.0 + base / 2 + (base + v["plat"])
+        n = int((v["l_utile"] - base) / v["pas"]) + 1
+        marge = (v["l_utile"] - (n - 1) * v["pas"] - base) / 2
+        x_tasseau = -v["l_utile"] / 2 + marge + base / 2 + v["pas"]
         return ({"type": "TOLE", "h": v["e"], "b": v["l_utile"], "longueur": v["L"],
-                 "profil": {"motif": "TASSEAU", "h": v["h"], "sommet": v["sommet"], "plat": v["plat"]},
+                 "profil": {"motif": "TASSEAU", "h": v["h"], "sommet": v["sommet"], "pas": v["pas"]},
                  "loupe": {"x": x_tasseau, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
                 v.get("finition", "BRUT"))
     elif serie == "PANNEAU-ISOLE":  # sandwich : âme × épaisseur e, tôle nervurée dessus ; loupe sur le chant de l'âme

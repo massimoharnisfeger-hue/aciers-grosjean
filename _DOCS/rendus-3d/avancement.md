@@ -11,6 +11,8 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - **Fers T, plats, larges plats, ronds, carrés, tubes** : série `serie-profils-tubes.json` (129 + 8 studio) en cours dans Blender (~15 images faites à 19 h ; ~3 min 30 par image).
 - **Tôles laminées à chaud et quarto** : série `serie-toles.json` (37 + 2) en file derrière (surveillance en arrière-plan).
 - **Armatures** : série `serie-armatures.json` (28 + 4) en file derrière les tôles. Avant intégration : retirer des pages les nuances B500B / B500A non sourcées (questions 10 et 11).
+- **File Blender (une seule instance à la fois, `-t 4`)** : profils et tubes (137, en cours) → tôles (39) → armatures (32) → vague 2 (139) → vague 2b relief et perforées (26) → vague 3 (80 : 68 visuels + 12 studios). Environ 3 min 30 par image : la file dure jusqu'au 15/09 au soir. À chaque fin de série : habiller, contrôler, vérification indépendante, intégrer, build, commit.
+- **Vague 3** : essais conformes pour tôle profilée, panneau isolé, tasseau, caillebotis, marches, planchers O2, panneaux et poteaux de clôture (fils fins : ombre sans atténuation), bordures (épaisseur corrigée) ; reprises tasseau (entraxe 90) et O2 (bords pliés devant) en cours. Série `serie-vague3.json` (80) déjà en file derrière la vague 2b.
 - **Vague 2** : données faites pour les tôles planes (froid, galva, Corten, alu, inox), profilés/tubes alu et inox (77), tôles larmées et striées (15), tôles perforées (8) ; pages inox corrigées (nuance sourcée) ; « Masse surfacique » contredite retirée de 36 pages (`integrer.py`). Essais conformes : matières, profilés alu/inox, tôles à relief (loupe e / E). Série `serie-vague2.json` (121 + 18 studios) en file derrière les armatures. Essai perforées en cours ; ensuite série `serie-vague2b.json` (relief + perforées).
 
 ## À la toute fin (demande du propriétaire, 14/09 au soir)
@@ -39,8 +41,9 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 | Vague 2 : tôles à froid, galvanisées, corten, alu, inox (planes) | 44 | données faites, essai matières corrigé |
 | Vague 2 : profilés et tubes alu (44) et inox (33) | 77 | données faites, essai en cours |
 | Vague 2 : tôles larmées (6), striées alu (9), perforées (8) | 23 | références et motifs relevés, géométrie à faire |
-| Vague 3 : clôtures, bordures, caillebotis, tôles profilées, panneaux isolés, tasseaux | 73 | — |
-| Visserie | 6 | — |
+| Vague 3 : clôtures (30), bordures (2), caillebotis et marches (19), tôles profilées (7), panneaux isolés (8), tasseaux (2) | 68 | données faites, pages corrigées, géométrie écrite, essais en cours |
+| Vague 3 : fixations de clôture | 5 | pas de plan : pas de rendu (question 27) |
+| Visserie | 6 | vague 4 du brief (pas de 3D) ; à trancher (question 28) |
 
 ## Reprendre le rendu
 Atelier hors OneDrive : `%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\` — `final\` (production), `essais\`, `controle\` (planches), journaux `serie-*.log`.

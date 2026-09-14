@@ -12201,9 +12201,9 @@
     "unite": "mm",
     "supposee": true
    },
-   "plat": {
+   "pas": {
     "valeur": 90,
-    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » (cote 90 d'axe en axe) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
@@ -12271,9 +12271,9 @@
     "unite": "mm",
     "supposee": true
    },
-   "plat": {
+   "pas": {
     "valeur": 90,
-    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » (cote 90 d'axe en axe) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },

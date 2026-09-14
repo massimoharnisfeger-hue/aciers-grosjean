@@ -247,12 +247,13 @@ def ligne_bordure(h, pli, angle, e):
     return [(0.0, 0.0), (0.0, h), (-pli * math.sin(a), h - pli * math.cos(a))]
 
 
-def ligne_tasseau(largeur, h, sommet, plat, e):
-    """Bardage « tasseau » : nervures en caisson de hauteur h (sommet `sommet`, flancs presque droits) séparées par
-    des plats de `plat` mm ; commence par un plat court (forme du rendu, d'après le dessin du fabricant)."""
+def ligne_tasseau(largeur, h, sommet, pas, e):
+    """Bardage « tasseau » : caissons de hauteur h (sommet `sommet`, flancs presque droits) à l'entraxe `pas`
+    (dessin du fabricant : 39 de sommet, 90 d'axe en axe, soit 8 tasseaux sur 710) ; marges égales aux deux bords."""
     base = sommet + 6.0
-    pas = base + plat
-    return profil_nervures(largeur, pas, h, sommet, base, 22.0 + base / 2)
+    n = int((largeur - base) / pas) + 1
+    marge = (largeur - (n - 1) * pas - base) / 2
+    return profil_nervures(largeur, pas, h, sommet, base, marge + base / 2)
 
 
 def plaque_pleine(nom, largeur, longueur, epaisseur, decalage_x=0.0, z0=0.0):
@@ -280,7 +281,7 @@ def profil_de_tole(piece):
     """Fibre moyenne (x de 0 à la largeur) d'une tôle profilée ou d'un tasseau, d'après `piece['profil']`."""
     r = piece["profil"]
     if r["motif"] == "TASSEAU":
-        return ligne_tasseau(piece["b"], r["h"], r["sommet"], r["plat"], piece["h"])
+        return ligne_tasseau(piece["b"], r["h"], r["sommet"], r["pas"], piece["h"])
     return profil_nervures(piece["b"], r["pas"], r["h"], r["sommet"], r["base"], r["base"] / 2 + 5.0)
 
 
@@ -734,13 +735,20 @@ def plaque_perforee(piece, dx, nom):
 # ---------------------------------------------------------------- caillebotis, marches, planchers perforés
 
 def boite(nom, x0, x1, y0, y1, z0, z1, materiau_coupe_y=True):
-    """Parallélépipède plein (mm) : barreau, plat de rive, joue. Faces d'about (normales ± y) en matière de coupe."""
+    """Parallélépipède plein (mm) : barreau, plat de rive, joue. Faces d'about (normales ± y) en matière de coupe,
+    sauf `materiau_coupe_y=False` (pièce entière, rien n'est scié)."""
     obj = extruder([(x0, z0), (x1, z0), (x1, z1), (x0, z1)], y1 - y0, nom)
     obj.location.y = y0 * MM
     obj.modifiers["chanfrein"].width = 0.3 * MM
     if not materiau_coupe_y:
-        for poly in obj.data.polygons:
-            poly.material_index = 0
+        sans_coupe(obj)
+    return obj
+
+
+def sans_coupe(obj):
+    """Toutes les faces en matière de surface : pièce livrée entière (caillebotis, marche), pas un tronçon scié."""
+    for poly in obj.data.polygons:
+        poly.material_index = 0
     return obj
 
 
@@ -772,33 +780,34 @@ def caillebotis(piece, dx, nom):
     h, t, b, L = piece["h"], g["t"], piece["b"], piece["longueur"]
     ma, mb, marche = g["maille_a"], g["maille_b"], g.get("marche", False)
     x0, x1 = dx - b / 2, dx + b / 2
-    objs = [boite(f"{nom}-rive-av", x0, x1, 0, t, 0, h), boite(f"{nom}-rive-ar", x0, x1, L - t, L, 0, h),
-            boite(f"{nom}-rive-g", x0, x0 + t, t, L - t, 0, h), boite(f"{nom}-rive-d", x1 - t, x1, t, L - t, 0, h)]
+    entier = dict(materiau_coupe_y=False)  # pièce livrée entière : aucune face sciée
+    objs = [boite(f"{nom}-rive-av", x0, x1, 0, t, 0, h, **entier), boite(f"{nom}-rive-ar", x0, x1, L - t, L, 0, h, **entier),
+            boite(f"{nom}-rive-g", x0, x0 + t, t, L - t, 0, h, **entier), boite(f"{nom}-rive-d", x1 - t, x1, t, L - t, 0, h, **entier)]
     c = 5.0  # barre transversale carrée (forme usuelle)
     if not marche:  # porteurs le long de y, transversales le long de x
         n = int((b - 2 * t) / mb)
         for k in range(1, n + 1):
             x = x0 + k * mb
             if x < x1 - t - mb * 0.3:
-                objs.append(boite(f"{nom}-porteur-{k}", x - t / 2, x + t / 2, t, L - t, 0, h))
+                objs.append(boite(f"{nom}-porteur-{k}", x - t / 2, x + t / 2, t, L - t, 0, h, **entier))
         for k in range(1, int((L - 2 * t) / ma) + 1):
             y = k * ma
             if y < L - t - ma * 0.3:
                 bar = extruder(cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4), b - 2 * t, f"{nom}-trans-{k}")
                 bar.rotation_euler = (0, 0, math.radians(-90))
                 bar.location = (x0 * MM + t * MM, y * MM, 0)
-                objs.append(bar)
+                objs.append(sans_coupe(bar))
     else:  # porteurs le long de x (entre limons), transversales le long de y
         n = int((L - 2 * t) / mb)
         for k in range(1, n + 1):
             y = t + k * mb
             if y < L - t - mb * 0.3:
-                objs.append(boite(f"{nom}-porteur-{k}", x0 + t, x1 - t, y - t / 2, y + t / 2, 0, h))
+                objs.append(boite(f"{nom}-porteur-{k}", x0 + t, x1 - t, y - t / 2, y + t / 2, 0, h, **entier))
         for k in range(1, int((b - 2 * t) / ma) + 1):
             x = x0 + k * ma
             if x < x1 - t - ma * 0.3:
-                objs.append(extruder([(xx + x, zz) for xx, zz in cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4)],
-                                     L - 2 * t, f"{nom}-trans-{k}"))
+                objs.append(sans_coupe(extruder([(xx + x, zz) for xx, zz in cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4)],
+                                                L - 2 * t, f"{nom}-trans-{k}")))
                 objs[-1].location.y = t * MM
         # nez antidérapant perforé (trous Ø 8 au pas de 25) devant, joues percées de 2 trous Ø 11 aux bouts
         trous = [cercle_xy(u, 0.0, 8.0, 12) for u in range(int(-b / 2 + 40), int(b / 2 - 30), 25)]
@@ -846,13 +855,14 @@ def plancher_o2(piece, dx, nom):
     nuage.show_instancer_for_render = False
     collerette.parent = nuage
     objs.append(collerette)
-    # bords pliés : le long des grands côtés (x = ± b/2), hauteur h
-    for cote, x in (("g", dx - b / 2), ("d", dx + b / 2 - t)):
-        objs.append(boite(f"{nom}-bord-{cote}", x, x + t, 0, L, 0, h - t))
-    if o.get("marche"):  # joues percées aux bouts (photo du site : 2 trous), nez arrondi non modélisé
-        for cote, y in (("av", 0.0), ("ar", L - t)):
-            trous = [cercle_xy(-b / 2 + 40, 0.0, 11.0, 14), cercle_xy(b / 2 - 40, 0.0, 11.0, 14)]
-            objs.append(plaque_percee(f"{nom}-joue-{cote}", b, h, t, trous, lambda u, v, w, y=y: (dx + u, y + w, v + h / 2)))
+    # bords pliés vers le bas devant et derrière (y = 0 et y = L), hauteur h : le chant avant, plein, porte la loupe ;
+    # pièce entière, rien n'est scié
+    for cote, y in (("av", 0.0), ("ar", L - t)):
+        objs.append(boite(f"{nom}-bord-{cote}", dx - b / 2, dx + b / 2, y, y + t, 0, h - t, materiau_coupe_y=False))
+    if o.get("marche"):  # joues percées aux deux bouts (photo du site : 2 trous), nez arrondi non modélisé
+        for cote, x in (("g", dx - b / 2), ("d", dx + b / 2 - t)):
+            trous = [cercle_xy(-L / 2 + 40, 0.0, 11.0, 14), cercle_xy(L / 2 - 40, 0.0, 11.0, 14)]
+            objs.append(plaque_percee(f"{nom}-joue-{cote}", L, h, t, trous, lambda u, v, w, x=x: (x + w, u + L / 2, v + h / 2)))
     return objs
 
 
@@ -1368,6 +1378,8 @@ def rendre(p):
     h, b = piece["h"], piece["b"]
     typ = piece["type"]
     off = max(h, b) * 0.28  # écart des lignes de cote, en mm
+    if typ == "PANNEAU-CLOTURE":  # panneau de 2,5 m : 28 % de la largeur rejetait la cote à 70 cm et vidait le bas du cadre
+        off = min(h, b) * 0.12
     # cote horizontale : sous la pièce, au-dessus pour le T (largeur de l'aile), aucune pour plat, rond, tube rond
     # et bordure (l'épaisseur est pincée)
     cote_b = None if typ in ("PLAT", "ROND", "TUBE-ROND", "BORDURE") else ("haut" if typ == "T" else "bas")
