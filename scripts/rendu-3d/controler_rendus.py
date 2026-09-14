@@ -83,6 +83,19 @@ def cadre_piece(chemin):
     return alpha.point(lambda v: 255 if v >= 250 else 0).getbbox()
 
 
+def part_noire(chemin, creux=False):
+    """Part des pixels quasi noirs dans la silhouette de la pièce (rendu brut). Une géométrie cassée (faces
+    retournées, arrondi plus grand que l'épaisseur) donne de grandes zones noires ; l'intérieur d'un tube est
+    sombre à bon droit, d'où un seuil plus haut pour les sections creuses."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    r, g, b, a = rgba.split()
+    clair = ImageChops.lighter(ImageChops.lighter(r, g), b)
+    dans_piece = sum(1 for v in a.tobytes() if v >= 250)
+    noirs = sum(1 for v, al in zip(clair.tobytes(), a.tobytes()) if al >= 250 and v <= 6)
+    return noirs / max(dans_piece, 1)
+
+
 def marges_blanches(chemin, bande=16):
     with Image.open(chemin) as img:
         rgb = img.convert("RGB")
@@ -165,6 +178,10 @@ def controler(famille, produits, pages):
                 ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
             if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
                 ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
+            creux = p["valeurs"].get("serie", {}).get("valeur") in ("TC", "TR", "TUBE-ROND")
+            noir = part_noire(brut, creux)
+            if noir > (0.35 if creux else 0.02):
+                ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
         ctrl = fichier(nom + ".controles.json")
         if not ctrl:
             continue

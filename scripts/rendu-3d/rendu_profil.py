@@ -101,6 +101,28 @@ def coin_arrondi(p0, p1, p2, r, n=10):
     return [(c.x + r * math.cos(a1 + da * i / n), c.y + r * math.sin(a1 + da * i / n)) for i in range(n + 1)]
 
 
+def contour_arrondi(coins, rayons, n=10):
+    """Contour fermé aux sommets arrondis. Chaque arrondi est borné à la place disponible sur ses deux côtés
+    (98 % du côté si le sommet voisin est vif, 49 % s'il est arrondi aussi) : sans cela, un arrondi égal à
+    l'épaisseur (cornière 40x40x3, r2 = 3 mm) mangeait toute la face et cassait la géométrie."""
+    p = []
+    k = len(coins)
+    for i, c in enumerate(coins):
+        prec, suiv = coins[i - 1], coins[(i + 1) % k]
+        r = rayons[i]
+        if r > 0:
+            v1 = Vector((prec[0] - c[0], prec[1] - c[1]))
+            v2 = Vector((suiv[0] - c[0], suiv[1] - c[1]))
+            ang = math.acos(max(-1.0, min(1.0, v1.normalized().dot(v2.normalized()))))
+            part_prec = 0.49 if rayons[i - 1] > 0 else 0.98
+            part_suiv = 0.49 if rayons[(i + 1) % k] > 0 else 0.98
+            d_max = min(v1.length * part_prec, v2.length * part_suiv)
+            if 1e-3 < ang < math.pi - 1e-3:
+                r = min(r, d_max * math.tan(ang / 2))
+        p += coin_arrondi(prec, c, suiv, r, n)
+    return p
+
+
 def section_u(h, b, tw, tf, r1, r2, pente=8.0, n=10):
     """Section en U à ailes inclinées (UPN, DIN 1026-1) : épaisseur d'aile tf mesurée à b/2,
     faces intérieures inclinées de `pente` %, congé r1 à la racine, arrondi r2 au bout d'aile.
@@ -110,10 +132,7 @@ def section_u(h, b, tw, tf, r1, r2, pente=8.0, n=10):
     t_racine = tf + (b / 2 - tw) * k   # épaisseur contre l'âme (x = tw)
     coins = [(0, 0), (b, 0), (b, t_bout), (tw, t_racine), (tw, h - t_racine), (b, h - t_bout), (b, h), (0, h)]
     rayons = [0, 0, r2, r1, r1, r2, 0, 0]
-    p = []
-    for i, c in enumerate(coins):
-        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
-    return dedoublonner([(x - b / 2, z) for x, z in p])
+    return dedoublonner([(x - b / 2, z) for x, z in contour_arrondi(coins, rayons, n)])
 
 
 def section_l(h, b, t, r1, r2, n=10):
@@ -121,10 +140,7 @@ def section_l(h, b, t, r1, r2, n=10):
     épaisseur t, congé r1 à la racine intérieure, arrondi r2 au bout intérieur de chaque aile ; talon vif. Centrée en x."""
     coins = [(0, 0), (b, 0), (b, t), (t, t), (t, h), (0, h)]
     rayons = [0, 0, r2, r1, r2, 0]
-    p = []
-    for i, c in enumerate(coins):
-        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
-    return dedoublonner([(x - b / 2, z) for x, z in p])
+    return dedoublonner([(x - b / 2, z) for x, z in contour_arrondi(coins, rayons, n)])
 
 
 def section_t(h, b, t, r, r1, r2, n=10):
@@ -132,10 +148,7 @@ def section_t(h, b, t, r, r1, r2, n=10):
     arrondis r1 au bout des ailes et r2 au bout de l'âme ; faces parallèles. Centrée en x, bout de l'âme en z = 0."""
     coins = [(-t / 2, 0), (t / 2, 0), (t / 2, h - t), (b / 2, h - t), (b / 2, h), (-b / 2, h), (-b / 2, h - t), (-t / 2, h - t)]
     rayons = [r2, r2, r, r1, 0, 0, r1, r]
-    p = []
-    for i, c in enumerate(coins):
-        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
-    return dedoublonner(p)
+    return dedoublonner(contour_arrondi(coins, rayons, n))
 
 
 def section_rectangle(h, b):
@@ -389,7 +402,76 @@ def materiau_coupe():
     return m
 
 
-MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp}
+def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0.0, stries_y=0.0, anisotropie=0.0):
+    """Métal nu générique : `cellules` = échelle de fleurage (galvanisé, cellules de Voronoï par mètre),
+    `stries_y` = échelle de stries le long de la barre (filage alu, brossage inox), `anisotropie` = reflet étiré."""
+    m = bpy.data.materials.new(nom)
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    coord = nt.nodes.new("ShaderNodeTexCoord")
+    r, g, b = base
+    if cellules:
+        motif = noeud(nt, "ShaderNodeTexVoronoi", (-900, 200), Scale=cellules)
+        sortie = motif.outputs["Color"]
+    else:
+        motif = noeud(nt, "ShaderNodeTexNoise", (-900, 200), Scale=4.0, Detail=5.0)
+        sortie = motif.outputs["Fac"]
+    nt.links.new(coord.outputs["Object"], motif.inputs["Vector"])
+    gris = nt.nodes.new("ShaderNodeRGBToBW") if cellules else None
+    if gris:
+        gris.location = (-700, 200)
+        nt.links.new(sortie, gris.inputs["Color"])
+        sortie = gris.outputs["Val"]
+    rampe = nt.nodes.new("ShaderNodeValToRGB")
+    rampe.location = (-500, 300)
+    rampe.color_ramp.elements[0].color = (r * (1 - variation), g * (1 - variation), b * (1 - variation), 1)
+    rampe.color_ramp.elements[1].color = (r * (1 + variation), g * (1 + variation), b * (1 + variation), 1)
+    nt.links.new(sortie, rampe.inputs["Fac"])
+    nt.links.new(rampe.outputs["Color"], bsdf.inputs["Base Color"])
+    rug = nt.nodes.new("ShaderNodeMapRange")
+    rug.location = (-500, 0)
+    rug.inputs["To Min"].default_value = rugosite * 0.8
+    rug.inputs["To Max"].default_value = rugosite * 1.25
+    nt.links.new(sortie, rug.inputs["Value"])
+    nt.links.new(rug.outputs["Result"], bsdf.inputs["Roughness"])
+    if stries_y:  # stries fines le long de y : bruit très étiré
+        etirement = noeud(nt, "ShaderNodeMapping", (-1100, -250))
+        etirement.inputs["Scale"].default_value = (stries_y, stries_y * 0.004, stries_y)
+        nt.links.new(coord.outputs["Object"], etirement.inputs["Vector"])
+        stries = noeud(nt, "ShaderNodeTexNoise", (-900, -250), Scale=1.0, Detail=2.0)
+        nt.links.new(etirement.outputs["Vector"], stries.inputs["Vector"])
+        relief = noeud(nt, "ShaderNodeBump", (-400, -250), Strength=0.06, Distance=0.0002)
+        nt.links.new(stries.outputs["Fac"], relief.inputs["Height"])
+        nt.links.new(relief.outputs["Normal"], bsdf.inputs["Normal"])
+    bsdf.inputs["Metallic"].default_value = metallic
+    if anisotropie:
+        bsdf.inputs["Anisotropic"].default_value = anisotropie
+    return m
+
+
+def materiau_galva():
+    """Galvanisé à chaud : zinc gris clair, fleurage (cristaux de quelques millimètres), reflets variables."""
+    return materiau_metal("galva", (0.42, 0.44, 0.45), 0.34, variation=0.10, cellules=220.0)
+
+
+def materiau_alu():
+    """Aluminium brut de filage ou de laminage : gris clair satiné, stries fines dans le sens de la barre."""
+    return materiau_metal("alu", (0.62, 0.63, 0.64), 0.30, variation=0.04, stries_y=900.0)
+
+
+def materiau_inox():
+    """Inox 304 brossé (grain 320) : gris acier, brossage fin dans le sens de la barre, reflet étiré."""
+    return materiau_metal("inox", (0.50, 0.50, 0.50), 0.20, variation=0.03, stries_y=2500.0, anisotropie=0.55)
+
+
+def materiau_froid():
+    """Acier laminé à froid : gris foncé lisse et satiné, sans calamine."""
+    return materiau_metal("froid", (0.22, 0.23, 0.24), 0.28, variation=0.05, metallic=0.9)
+
+
+MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp, "GALVA": materiau_galva, "ALU": materiau_alu,
+            "INOX": materiau_inox, "FROID": materiau_froid}
 
 
 # ---------------------------------------------------------------- scène
