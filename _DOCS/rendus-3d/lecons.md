@@ -89,6 +89,7 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - Jamais `npm install` dans OneDrive : `_OUTILS/site-local.ps1 -Mode verifier`. `[CLAUDE.md]`
 - Plusieurs séances Claude travaillent dans ce dépôt : ne commiter que ses propres fichiers, jamais `git add -A`. `[préparation, 14/09]`
 - Dépôt GitHub public : aucun chemin personnel (`C:\Users\…`) dans les scripts. Passer par `%LOCALAPPDATA%` ou des chemins relatifs. `[préparation, 14/09]`
+- Mémoire du PC (15 Go, souvent 4 Go libres) : lancer `site-local.ps1 -Mode verifier` (Node, plusieurs Go) pendant une série Blender a fait tuer par le système tous les processus d'arrière-plan, Blender compris (15/09, 0 h 54, série profils arrêtée à 61/137). Pas de build pendant un rendu ; une seule chaîne d'arrière-plan pour enchaîner les séries ; à la reprise, `reste_serie.py` (scratchpad) ne relance que les rendus manquants. `[vague 1, 15/09]`
 - Un hook (GateGuard) exige un rappel des faits avant la première modification de chaque fichier : le prévoir, sans le contourner. `[préparation, 14/09]`
 - JSON écrit par PowerShell `Set-Content` : BOM UTF-8 refusé par Blender (« Unexpected UTF-8 BOM ») ; `rendu_profil.py` lit en `utf-8-sig`. `[poutrelles, 14/09]`
 - PowerShell 5.1 : `python -c` avec du code sur plusieurs lignes et des guillemets casse vite ; écrire un script dans le scratchpad. `[poutrelles, 14/09]`
