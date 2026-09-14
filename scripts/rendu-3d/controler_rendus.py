@@ -40,8 +40,17 @@ PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"
                   "TREILLIS": {"Maille": ["maille"], "Fil": ["d"], "Panneau": ["format"]},
                   "U-ALU": {"Section": ["b", "h", "b"], "Épaisseur": ["tw"]},
                   "TOLE-RELIEF": {"Format": ["L", "l"], "Épaisseur": ["e", "e_total"]},
-                  "TOLE-PERFOREE": {"Format": ["L", "l"], "Épaisseur": ["e"]}}
-COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "e_total", "nuance", "norme"}
+                  "TOLE-PERFOREE": {"Format": ["L", "l"], "Épaisseur": ["e"]},
+                  "BORDURE": {"Hauteur": ["h"], "Pli": ["pli"], "Longueur": ["L"]},
+                  "TOLE-PROFILEE": {"Longueur": ["L"], "Largeur": ["l"], "Couleur": ["couleur"]},
+                  "PANNEAU-ISOLE": {"Longueur": ["L"], "Largeur": ["l"], "Épaisseur": ["e"], "Couleur": ["couleur"]},
+                  "TASSEAU": {"Longueur": ["L"], "Largeur": ["l_utile"], "Tasseau": ["tasseau"], "Teinte": ["teinte"]},
+                  "PANNEAU-CLOTURE": {"Modèle": ["modele"], "Hauteur": ["H"], "Fils": ["fil_h", "fil_v"], "Couleur": ["couleur"]},
+                  "POTEAU": {"Modèle": ["modele"], "Longueur": ["L"], "Couleur": ["couleur"]},
+                  "CAILLEBOTIS": {"Dimensions": ["L", "l"], "Maille": ["maille"], "Barreaux porteurs": ["barreau"]},
+                  "MARCHE-CAILLEBOTIS": {"Dimensions": ["L", "l"]}, "MARCHE-O2": {"Dimensions": ["L", "l"]},
+                  "PLANCHER-O2": {"Dimensions": ["L", "l"]}}
+COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "e_total", "nuance", "norme", "H", "pli"}
 
 
 def nombre(texte):
@@ -263,7 +272,9 @@ def controler(famille, produits, pages):
             if libelle not in page:
                 continue
             couvertes.update(cles)
-            if cles in (["nuance"], ["norme"], ["surface"]):  # textes : égalité stricte
+            texte_sans_chiffre = (len(cles) == 1 and isinstance(valeurs.get(cles[0], {}).get("valeur"), str)
+                                  and not re.search(r"\d", valeurs[cles[0]]["valeur"]))
+            if cles in (["nuance"], ["norme"], ["surface"]) or texte_sans_chiffre:  # textes : égalité stricte
                 if cles[0] not in affiche:
                     ecarts.append(f"{slug} : {libelle} « {page[libelle]} » sur la page, absente de l'image")
                 elif valeurs[cles[0]]["valeur"] != page[libelle]:

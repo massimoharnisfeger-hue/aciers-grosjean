@@ -573,6 +573,225 @@ def texte_nombre(x):
     return f"{x:g}".replace(".", ",")
 
 
+SRC_FT_PROFIL = "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+SRC_FT_ECO = "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+SRC_FT_TASSEAU = "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+SRC_FT_CLOPLUS = "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)"
+SRC_FT_CLOGRIFF = "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205)"
+SRC_FT_PCP = "fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+
+
+def cm_vers_mm(texte):
+    """« 200X105cm » -> (2000, 1050) ; None sinon."""
+    m = re.search(r"(\d+(?:,\d+)?)\s*x\s*(\d+(?:,\d+)?)\s*cm", texte, re.I)
+    return (round(nombre(m.group(1)) * 10), round(nombre(m.group(2)) * 10)) if m else None
+
+
+def metres_vers_mm(texte):
+    """« H.1m53 », « 2M00 » -> 1530, 2000."""
+    m = re.search(r"(\d)\s*m\s*(\d{2})", texte, re.I)
+    return int(m.group(1)) * 1000 + int(m.group(2)) * 10 if m else None
+
+
+def vague3(cat, reel, desc):
+    """Clôtures, bordures, caillebotis et marches, tôles profilées, panneaux isolés, tasseaux : cotes du nom,
+    complétées par les fiches fournisseurs publiées sur le site (lues le 14/09/2026) et les descriptions.
+    Le site actuel ne donne aucun poids réel pour ces familles (1 kg, 0 kg ou 2 100 kg factices) : rien d'affiché.
+    Les fixations de clôture n'ont ni cote ni plan : pas de rendu."""
+    produits = {}
+    for slug, c in cat.items():
+        cat_ = c["categorie"]
+        nom = c["nom"]
+        texte = texte_description(desc, slug)
+        v, alertes = {}, []
+        ral = re.search(r"RAL\s*(\d{4})", nom, re.I) or re.search(r"\b(?:GRIS|NOIR|VERT)\s+(\d{4})\b", nom, re.I)
+        if ral:
+            v["couleur"] = valeur(f"RAL {ral.group(1)}", "", SRC_NOM)
+        if cat_ == "/jardin-cloture/amenagement/bordures":
+            m = re.search(r"(\d+)\s*/\s*(\d+)\s*x\s*(\d+)\s*mm", nom, re.I)
+            if not m:
+                continue
+            corten = "corten" in slug
+            v.update(serie=valeur("BORDURE", "", SRC_NOM), h=valeur(int(m.group(1)), "mm", SRC_NOM + " et description"),
+                     pli=valeur(int(m.group(2)), "mm", SRC_NOM + " et description (« pli rentrant 25 mm à 45° »)"),
+                     angle=valeur(45, "°", SRC_DESC), L=valeur(int(m.group(3)), "mm", SRC_NOM))
+            e = re.search(r"Épaisseur\s*:\s*(\d+(?:,\d+)?)\s*mm", texte)
+            if e:
+                v["e"] = valeur(nombre(e.group(1)), "mm", SRC_DESC)
+            else:  # bordure Corten : épaisseur absente de la page, celle de la galvanisée pour la forme seulement
+                v["e"] = valeur(2.0, "mm", "épaisseur de la bordure galvanisée — forme du rendu, non affichée", supposee=True)
+                alertes.append("épaisseur absente de la page : non affichée (question en attente)")
+            if corten and re.search(r"S355J0WP", texte):
+                v["nuance"] = valeur("S355J0WP", "", SRC_DESC + " (« Alliage auto-patinable (S355J0WP) »)")
+            v["finition"] = valeur("CORTEN" if corten else "GALVA", "", SRC_NOM + " — matière du rendu, non affichée", supposee=True)
+            famille = "bordure"
+        elif cat_.startswith("/toiture-bardage/toles-profilees/profil-30-200-1000"):
+            fmt = cm_vers_mm(nom)
+            if not fmt:
+                continue
+            v.update(serie=valeur("TOLE-PROFILEE", "", SRC_NOM), L=valeur(fmt[0], "mm", SRC_NOM), l=valeur(fmt[1], "mm", SRC_NOM),
+                     l_utile=valeur(1000, "mm", SRC_DESC + " (« largeur utile 1000mm ») et " + SRC_FT_PROFIL),
+                     h=valeur(30, "mm", SRC_NOM + " (profil 30.200.1000) et " + SRC_FT_PROFIL),
+                     pas=valeur(200, "mm", SRC_NOM + " (profil 30.200.1000) et " + SRC_FT_PROFIL),
+                     sommet=valeur(25, "mm", SRC_FT_PROFIL + " — forme du rendu", supposee=True),
+                     base=valeur(60, "mm", SRC_FT_PROFIL + " — forme du rendu", supposee=True))
+            e = re.search(r"épaisseur\s*(\d+(?:,\d+)?)\s*mm", texte, re.I)
+            if e:
+                v["e"] = valeur(nombre(e.group(1)), "mm", SRC_DESC)
+                if abs(nombre(e.group(1)) - 0.6) < 1e-6:
+                    v["masse"] = valeur(5.86, "kg/m²", SRC_FT_PROFIL + " (tôle de 0,60 mm)")
+            v["nuance"] = valeur("S280GD / S320GD", "", SRC_FT_PROFIL)
+            v["revetement"] = valeur("Galvanisé, polyester 25/35 µ", "", SRC_FT_PROFIL + " et " + SRC_DESC)
+            v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
+            famille = "tole-profilee-30-200-1000"
+        elif cat_.startswith("/toiture-bardage/panneaux-isoles/"):
+            fmt = cm_vers_mm(nom)
+            ep = re.search(r"(\d+)\s*mm", nom)
+            if not fmt or not ep:
+                continue
+            v.update(serie=valeur("PANNEAU-ISOLE", "", SRC_NOM), L=valeur(fmt[0], "mm", SRC_NOM), l=valeur(fmt[1], "mm", SRC_NOM),
+                     e=valeur(int(ep.group(1)), "mm", SRC_NOM), l_utile=valeur(1000, "mm", SRC_FT_ECO),
+                     nervures=valeur(4, "", SRC_DESC + " (« Nervures 4 nervures »)"),
+                     pas=valeur(333, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
+                     h_nervure=valeur(38, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
+                     sommet=valeur(24, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
+                     base=valeur(73, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
+                     # description « 0.4mm standard », étiquette du stock photographiée « 0.5 » : non affichée
+                     e_tole=valeur(0.5, "mm", "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée", supposee=True),
+                     face_externe=valeur("Acier prélaqué", "", SRC_DESC + " et " + SRC_FT_ECO),
+                     face_interne=valeur("Feuille d'aluminium", "", SRC_DESC + " et " + SRC_FT_ECO),
+                     ame=valeur("Mousse de polyuréthane (PU)", "", SRC_DESC))
+            alertes.append("épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés")
+            v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
+            famille = "panneau-isole-eco"
+        elif cat_ == "/toiture-bardage/bardage/imitation-bois":
+            m = re.search(r"(\d+)\s*x\s*(\d+)\s*cm", nom, re.I)
+            if not m:
+                continue
+            v.update(serie=valeur("TASSEAU", "", SRC_NOM), L=valeur(int(m.group(2)) * 10, "mm", SRC_NOM),
+                     l_utile=valeur(int(m.group(1)) * 10, "mm", SRC_NOM + " et " + SRC_FT_TASSEAU + " (largeur utile 710)"),
+                     tasseau=valeur("40 × 40 mm", "", SRC_NOM), h=valeur(37, "mm", SRC_FT_TASSEAU + " (hauteur d'onde 37)"),
+                     sommet=valeur(39, "mm", SRC_FT_TASSEAU + " — forme du rendu", supposee=True),
+                     plat=valeur(90, "mm", SRC_FT_TASSEAU + " — forme du rendu", supposee=True),
+                     e=valeur(0.5, "mm", SRC_FT_TASSEAU + " et " + SRC_DESC), masse=valeur(6.75, "kg/m²", SRC_FT_TASSEAU + " et " + SRC_DESC),
+                     nuance=valeur("S280GD", "", SRC_FT_TASSEAU), revetement=valeur("Polyester 35 µm", "", SRC_FT_TASSEAU),
+                     teinte=valeur("Chêne clair", "", SRC_NOM + " et " + SRC_FT_TASSEAU))
+            v["finition"] = valeur("BOIS", "", "chêne clair à bandes noires — matière du rendu, non affichée", supposee=True)
+            famille = "tasseau-imitation-bois"
+        elif cat_ == "/jardin-cloture/clotures/panneaux-rigides":
+            H = metres_vers_mm(nom)
+            fils = re.search(r"Fils?\s+(\d)\s*/\s*(\d)", nom, re.I)
+            modele = re.search(r"(MEDIUM 3D|PLIS 205)", nom, re.I)
+            if not (H and fils and modele):
+                continue
+            modele = modele.group(1).upper()
+            ft = SRC_FT_CLOPLUS
+            v.update(serie=valeur("PANNEAU-CLOTURE", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM),
+                     H=valeur(H / 1000, "m", SRC_NOM + " (écrite en mètres comme la page)"),
+                     fil_h=valeur(int(fils.group(1)), "mm", SRC_NOM + " et " + SRC_DESC),
+                     fil_v=valeur(int(fils.group(2)), "mm", SRC_NOM + " et " + SRC_DESC),
+                     abouts=valeur(25, "mm", ft + " (« abouts de 25 mm ») — forme du rendu", supposee=True))
+            maille = re.search(r"Maille\s*(\d+)\s*x\s*(\d+)\s*mm", texte, re.I)
+            if maille:
+                v["maille_a"], v["maille_b"] = valeur(int(maille.group(1)), "mm", SRC_DESC), valeur(int(maille.group(2)), "mm", SRC_DESC)
+                v["maille"] = valeur(f"{maille.group(1)} × {maille.group(2)} mm", "", SRC_DESC)
+            largeur = re.search(r"Largeur\s*(\d)m(\d{3})", texte)
+            if largeur:
+                l_desc = int(largeur.group(1)) * 1000 + int(largeur.group(2))
+                l_ft = 2504 if modele == "MEDIUM 3D" else 2505  # fils 5/4 : 2m504 ; fils 5/5 : 2m505
+                if l_desc == l_ft:
+                    v["l"] = valeur(l_desc, "mm", SRC_DESC + " et " + ft)
+                else:
+                    v["l"] = valeur(l_desc, "mm", f"{SRC_DESC} ({l_desc}) ≠ {ft} ({l_ft}) — non affichée", supposee=True)
+                    alertes.append(f"largeur {l_desc} (description) ≠ {l_ft} (fiche fournisseur) : non affichée")
+            # nombre de plis (nervures pliées) non publié : 3 jusqu'à 1,73 m, 4 au-delà (usage des panneaux 3D)
+            v["plis"] = valeur(4 if H > 1800 else 3, "", "usage des panneaux 3D — forme du rendu, non affichée", supposee=True)
+            if re.search(r"galvanis\w+ avec thermolaquage", texte, re.I):
+                v["revetement"] = valeur("Galvanisé, thermolaqué polyester", "", SRC_DESC)
+            v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
+            famille = "panneau-cloture-" + ("medium-3d" if modele == "MEDIUM 3D" else "plis-205")
+        elif cat_ == "/jardin-cloture/clotures/poteaux":
+            L = metres_vers_mm(nom)
+            modele = re.search(r"(CLOPLUS 40|CLOGRIFF 64)", nom, re.I)
+            if not (L and modele):
+                continue
+            modele = modele.group(1).upper()
+            L_m = valeur(L / 1000, "m", SRC_NOM + " (écrite en mètres comme la page)")
+            if modele == "CLOPLUS 40":
+                v.update(serie=valeur("POTEAU", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM), L=L_m,
+                         b=valeur(40, "mm", SRC_FT_CLOPLUS + " (dessin coté 40 × 76)"), h=valeur(76, "mm", SRC_FT_CLOPLUS + " (dessin coté 40 × 76)"),
+                         feuillure=valeur(46, "mm", SRC_FT_CLOPLUS + " — forme du rendu", supposee=True),
+                         matiere=valeur("Aluminium", "", SRC_FT_CLOPLUS + " (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"))
+                v["finition"] = valeur("LAQUE-ALU", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
+            else:
+                v.update(serie=valeur("POTEAU", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM), L=L_m,
+                         b=valeur(50, "mm", SRC_FT_CLOGRIFF + " (dessin coté 50 × 64)"), h=valeur(64, "mm", SRC_FT_CLOGRIFF + " (dessin coté 50 × 64)"),
+                         encoche=valeur(30, "mm", SRC_FT_CLOGRIFF + " — forme du rendu", supposee=True),
+                         pas_encoches=valeur(100, "mm", SRC_FT_CLOGRIFF + " — forme du rendu", supposee=True),
+                         matiere=valeur("Acier galvanisé", "", SRC_FT_CLOGRIFF + " (« poteau en acier … galvanisé suivant norme EN 10242 »)"))
+                v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
+            v["revetement"] = valeur("Thermolaqué polyester", "", (SRC_FT_CLOPLUS if modele == "CLOPLUS 40" else SRC_FT_CLOGRIFF) + " (« thermolaquage épaisseur mini 80 microns »)")
+            v["section"] = valeur(f"{v['b']['valeur']} × {v['h']['valeur']} mm", "", v["b"]["source"])
+            famille = "poteau-" + modele.lower().replace(" ", "-")
+        elif cat_ == "/quincaillerie/caillebotis-marches":
+            m = re.search(r"(\d+)\s*x\s*(\d+)\s*mm\s*-\s*(\d+)\s*/\s*(\d+)\s*-\s*(\d+)\s*/\s*(\d+)", nom)
+            if m:  # caillebotis « 1000x 1000mm - 33/33-30/2 »
+                maille = 33.3 if m.group(3) == "33" else int(m.group(3))
+                v.update(serie=valeur("CAILLEBOTIS", "", SRC_NOM), L=valeur(int(m.group(1)), "mm", SRC_NOM), l=valeur(int(m.group(2)), "mm", SRC_NOM),
+                         maille=valeur(f"{m.group(3)} × {m.group(4)} mm", "", SRC_NOM),
+                         maille_a=valeur(maille, "mm", SRC_NOM + (" (« mailles standards … 33,3mm »)" if maille == 33.3 else "")),
+                         maille_b=valeur(33.3 if m.group(4) == "33" else int(m.group(4)), "mm", SRC_NOM),
+                         barreau=valeur(f"{m.group(5)} × {m.group(6)} mm", "", SRC_NOM + " et " + SRC_DESC),
+                         h=valeur(int(m.group(5)), "mm", SRC_NOM), t=valeur(int(m.group(6)), "mm", SRC_NOM),
+                         revetement=valeur("Galvanisé", "", SRC_NOM))
+                v["finition"] = valeur("GALVA", "", SRC_NOM + " — matière du rendu, non affichée", supposee=True)
+                famille = "caillebotis"
+            elif re.search(r"PCP O2", nom, re.I):
+                m = re.search(r"(\d+)\s*x\s*(\d+)\s*mm", nom)
+                if not m:
+                    continue
+                marche = "marche" in slug
+                v.update(serie=valeur("MARCHE-O2" if marche else "PLANCHER-O2", "", SRC_NOM),
+                         L=valeur(int(m.group(1)), "mm", SRC_NOM), l=valeur(int(m.group(2)), "mm", SRC_NOM),
+                         trous=valeur(9, "mm", SRC_DESC + " et " + SRC_FT_PCP + " (trous emboutis)"),
+                         drainage=valeur(5, "mm", SRC_DESC + " et " + SRC_FT_PCP + " (trous de drainage)"),
+                         entraxe=valeur("25 × 25 mm", "", SRC_DESC + " et " + SRC_FT_PCP),
+                         revetement=valeur("Galvanisé à chaud", "", SRC_FT_PCP + " (dimensions standard)"))
+                if marche:  # hauteur des marches ACHIL absente des documents : celle du plancher O2, non affichée
+                    v["h"] = valeur(33, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
+                    v["t"] = valeur(2, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
+                    alertes.append("hauteur de la marche absente des documents : non affichée (question en attente)")
+                else:
+                    v["h"] = valeur(33, "mm", SRC_FT_PCP + " (dimensions standard : hauteur 33)")
+                    v["t"] = valeur(2, "mm", SRC_FT_PCP + " (dimensions standard : épaisseur 2)")
+                v["finition"] = valeur("GALVA", "", "matière du rendu, non affichée", supposee=True)
+                famille = "marche-o2" if marche else "plancher-o2"
+            elif re.search(r"marche d'escalier caillebotis", nom, re.I):
+                m = re.search(r"(\d+)\s*x\s*(\d+)\s*mm", nom)
+                if not m:
+                    continue
+                v.update(serie=valeur("MARCHE-CAILLEBOTIS", "", SRC_NOM), L=valeur(int(m.group(1)), "mm", SRC_NOM),
+                         l=valeur(int(m.group(2)), "mm", SRC_NOM),
+                         # maille et barreaux non publiés : ceux des caillebotis du catalogue, forme seulement
+                         maille_a=valeur(33.3, "mm", "caillebotis 33/33 du catalogue — forme du rendu, non affichée", supposee=True),
+                         maille_b=valeur(33.3, "mm", "caillebotis 33/33 du catalogue — forme du rendu, non affichée", supposee=True),
+                         h=valeur(30, "mm", "barreau 30/2 des caillebotis — forme du rendu, non affichée", supposee=True),
+                         t=valeur(2, "mm", "barreau 30/2 des caillebotis — forme du rendu, non affichée", supposee=True))
+                alertes.append("maille et barreaux de la marche absents de la page : non affichés (question en attente)")
+                if re.search(r"S235JR", texte):
+                    v["nuance"] = valeur("S235JR", "", SRC_DESC)
+                if re.search(r"galvanisation à chaud", texte, re.I):
+                    v["revetement"] = valeur("Galvanisé à chaud (ISO 1461)", "", SRC_DESC)
+                v["finition"] = valeur("GALVA", "", "matière du rendu, non affichée", supposee=True)
+                famille = "marche-caillebotis"
+            else:
+                continue
+        else:
+            continue
+        produits[slug] = {"nom": nom, "categorie": cat_, "famille": famille, "valeurs": v, "alertes": alertes}
+    return produits
+
+
 def armatures(cat, reel, desc):
     """Ronds à béton crénelés et treillis soudés : cotes du nom (et cotes A–E du site pour les dépassants),
     poids comparé au poids nominal des aciers pour béton (0,00617 × d² kg/m, EN 10080 publié sur le site).
@@ -702,7 +921,7 @@ def profils_alu_inox(cat, reel, desc):
 
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
             "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox,
-            "toles-relief": toles_relief, "toles-perforees": toles_perforees}
+            "toles-relief": toles_relief, "toles-perforees": toles_perforees, "vague3": vague3}
 
 
 def main():

@@ -1,4 +1,682 @@
 {
+ "bordure-en-acier-corten-150-25-x-2500mm": {
+  "nom": "Bordure en acier Corten® 150/25 x 2500mm",
+  "categorie": "/jardin-cloture/amenagement/bordures",
+  "famille": "bordure",
+  "valeurs": {
+   "serie": {
+    "valeur": "BORDURE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 150,
+    "source": "nom du produit et description",
+    "unite": "mm"
+   },
+   "pli": {
+    "valeur": 25,
+    "source": "nom du produit et description (« pli rentrant 25 mm à 45° »)",
+    "unite": "mm"
+   },
+   "angle": {
+    "valeur": 45,
+    "source": "site actuel — description de la fiche",
+    "unite": "°"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "nuance": {
+    "valeur": "S355J0WP",
+    "source": "site actuel — description de la fiche (« Alliage auto-patinable (S355J0WP) »)"
+   },
+   "finition": {
+    "valeur": "CORTEN",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "bordure-en-acier-galvanise-150-25-x-2500mm": {
+  "nom": "Bordure en acier galvanisé 150/25 x 2500mm",
+  "categorie": "/jardin-cloture/amenagement/bordures",
+  "famille": "bordure",
+  "valeurs": {
+   "serie": {
+    "valeur": "BORDURE",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 150,
+    "source": "nom du produit et description",
+    "unite": "mm"
+   },
+   "pli": {
+    "valeur": 25,
+    "source": "nom du produit et description (« pli rentrant 25 mm à 45° »)",
+    "unite": "mm"
+   },
+   "angle": {
+    "valeur": 45,
+    "source": "site actuel — description de la fiche",
+    "unite": "°"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 2.0,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-1000x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 1000x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-1010x1190mm-70-70-25-2": {
+  "nom": "Caillebotis Galvanisé 1010x1190mm - 70/70 - 25/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1010,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1190,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "70 × 70 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "25 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-1200x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 1200x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1200,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-400x1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 400x1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 400,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-500x1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 500x1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-600x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 600x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-700x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 700x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 700,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-800x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 800x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 800,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanise-900x-1000mm-33-33-30-2": {
+  "nom": "Caillebotis Galvanisé 900x 1000mm - 33/33-30/2",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 900,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 2 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "caillebotis-galvanises-1200x-1000mm-33-33-30-3": {
+  "nom": "Caillebotis Galvanisés 1200x 1000mm - 33/33-30/3",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1200,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "33 × 33 mm",
+    "source": "nom du produit"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "nom du produit (« mailles standards … 33,3mm »)",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "barreau": {
+    "valeur": "30 × 3 mm",
+    "source": "nom du produit et site actuel — description de la fiche"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "revetement": {
+    "valeur": "Galvanisé",
+    "source": "nom du produit"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "nom du produit — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "carre-plein-de-10x10mm-en-acier": {
   "nom": "Carré plein de 10x10mm en acier",
   "categorie": "/acier/profiles/carre-plein",
@@ -1999,6 +2677,2244 @@
    "finition": {
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "marche-d-escalier-caillebotis-1000x230mm": {
+  "nom": "Marche d'escalier caillebotis 1000x230mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 230,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h": {
+    "valeur": 30,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud (ISO 1461)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "maille et barreaux de la marche absents de la page : non affichés (question en attente)"
+  ]
+ },
+ "marche-d-escalier-caillebotis-600x200mm": {
+  "nom": "Marche d'escalier caillebotis 600x200mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 200,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h": {
+    "valeur": 30,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud (ISO 1461)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "maille et barreaux de la marche absents de la page : non affichés (question en attente)"
+  ]
+ },
+ "marche-d-escalier-caillebotis-700x230mm": {
+  "nom": "Marche d'escalier caillebotis 700x230mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 700,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 230,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h": {
+    "valeur": 30,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud (ISO 1461)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "maille et barreaux de la marche absents de la page : non affichés (question en attente)"
+  ]
+ },
+ "marche-d-escalier-caillebotis-800x230mm": {
+  "nom": "Marche d'escalier caillebotis 800x230mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 800,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 230,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h": {
+    "valeur": 30,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud (ISO 1461)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "maille et barreaux de la marche absents de la page : non affichés (question en attente)"
+  ]
+ },
+ "marche-d-escalier-caillebotis-900x230mm": {
+  "nom": "Marche d'escalier caillebotis 900x230mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-caillebotis",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-CAILLEBOTIS",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 900,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 230,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "maille_a": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_b": {
+    "valeur": 33.3,
+    "source": "caillebotis 33/33 du catalogue — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h": {
+    "valeur": 30,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "nuance": {
+    "valeur": "S235JR",
+    "source": "site actuel — description de la fiche"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud (ISO 1461)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "maille et barreaux de la marche absents de la page : non affichés (question en attente)"
+  ]
+ },
+ "marche-securit-pcp-o2-achil-1000x250mm": {
+  "nom": "Marche securit PCP O2 ACHIL 1000x250mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-o2",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-O2",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "trous": {
+    "valeur": 9,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous emboutis)",
+    "unite": "mm"
+   },
+   "drainage": {
+    "valeur": 5,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous de drainage)",
+    "unite": "mm"
+   },
+   "entraxe": {
+    "valeur": "25 × 25 mm",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud",
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+   },
+   "h": {
+    "valeur": 33,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "hauteur de la marche absente des documents : non affichée (question en attente)"
+  ]
+ },
+ "marche-securit-pcp-o2-achil-800-x-250mm": {
+  "nom": "Marche securit PCP O2 ACHIL 800 x 250mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-o2",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-O2",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 800,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "trous": {
+    "valeur": 9,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous emboutis)",
+    "unite": "mm"
+   },
+   "drainage": {
+    "valeur": 5,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous de drainage)",
+    "unite": "mm"
+   },
+   "entraxe": {
+    "valeur": "25 × 25 mm",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud",
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+   },
+   "h": {
+    "valeur": 33,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "hauteur de la marche absente des documents : non affichée (question en attente)"
+  ]
+ },
+ "marche-securit-pcp-o2-achil-900x250mm": {
+  "nom": "Marche securit PCP O2 ACHIL 900x250mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "marche-o2",
+  "valeurs": {
+   "serie": {
+    "valeur": "MARCHE-O2",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 900,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "trous": {
+    "valeur": 9,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous emboutis)",
+    "unite": "mm"
+   },
+   "drainage": {
+    "valeur": 5,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous de drainage)",
+    "unite": "mm"
+   },
+   "entraxe": {
+    "valeur": "25 × 25 mm",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud",
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+   },
+   "h": {
+    "valeur": 33,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t": {
+    "valeur": 2,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "hauteur de la marche absente des documents : non affichée (question en attente)"
+  ]
+ },
+ "panneau-isole-eco-30mm-260x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 260x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-310x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 310x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-360x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 360x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-410x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 410x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 4100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-460x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 460x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 4600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-510x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 510x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 5100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-560x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 560x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 5600,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneau-isole-eco-30mm-610x105cm-ral-7016": {
+  "nom": "Panneau isolé ECO 30mm – 610x105cm - RAL 7016",
+  "categorie": "/toiture-bardage/panneaux-isoles/eurocopre-monolamiera-eco",
+  "famille": "panneau-isole-eco",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-ISOLE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 6100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "e": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »",
+    "unite": "mm"
+   },
+   "nervures": {
+    "valeur": 4,
+    "source": "site actuel — description de la fiche (« Nervures 4 nervures »)"
+   },
+   "pas": {
+    "valeur": 333,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nervure": {
+    "valeur": 38,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "sommet": {
+    "valeur": 24,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 73,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_tole": {
+    "valeur": 0.5,
+    "source": "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "face_externe": {
+    "valeur": "Acier prélaqué",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "face_interne": {
+    "valeur": "Feuille d'aluminium",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+   },
+   "ame": {
+    "valeur": "Mousse de polyuréthane (PU)",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m53-gris-ral-7016": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.53,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m53-noir-ral-9005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.53,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m53-vert-ral-6005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m53 – VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.53,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m73-gris-ral-7016": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.73,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m73-noir-ral-9005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.73,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m73-vert-ral-6005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m73 – VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.73,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m93-gris-ral-7016": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.93,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 4,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m93-noir-ral-9005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.93,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 4,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-medium-3d-fils-5-4-h-1m93-vert-ral-6005": {
+  "nom": "PANNEAUX MEDIUM 3D Fils 5/4 – H.1m93 – VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-medium-3d",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "MEDIUM 3D",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.93,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 4,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 55,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 55 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2508,
+    "source": "site actuel — description de la fiche (2508) ≠ fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (2504) — non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plis": {
+    "valeur": 4,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "largeur 2508 (description) ≠ 2504 (fiche fournisseur) : non affichée"
+  ]
+ },
+ "panneaux-plis-205-fils-5-5-3d-h-1m73-gris-7016": {
+  "nom": "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m73 – GRIS 7016",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-plis-205",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "PLIS 205",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.73,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 50,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 50 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2505,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)",
+    "unite": "mm"
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "panneaux-plis-205-fils-5-5-3d-h-1m73-noir-ral-9005": {
+  "nom": "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m73 – NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-plis-205",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "PLIS 205",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.73,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 50,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 50 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2505,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)",
+    "unite": "mm"
+   },
+   "plis": {
+    "valeur": 3,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "panneaux-plis-205-fils-5-5-3d-h-1m93-gris-7016": {
+  "nom": "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m93 – GRIS 7016",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-plis-205",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "PLIS 205",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.93,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 50,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 50 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2505,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)",
+    "unite": "mm"
+   },
+   "plis": {
+    "valeur": 4,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "panneaux-plis-205-fils-5-5-3d-h-1m93-noir-ral-9005": {
+  "nom": "PANNEAUX PLIS 205 Fils 5/5 – 3D - H. 1m93 – NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/panneaux-rigides",
+  "famille": "panneau-cloture-plis-205",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "PANNEAU-CLOTURE",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "PLIS 205",
+    "source": "nom du produit"
+   },
+   "H": {
+    "valeur": 1.93,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "fil_h": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "fil_v": {
+    "valeur": 5,
+    "source": "nom du produit et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "abouts": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "maille_a": {
+    "valeur": 200,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille_b": {
+    "valeur": 50,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "maille": {
+    "valeur": "200 × 50 mm",
+    "source": "site actuel — description de la fiche"
+   },
+   "l": {
+    "valeur": 2505,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)",
+    "unite": "mm"
+   },
+   "plis": {
+    "valeur": 4,
+    "source": "usage des panneaux 3D — forme du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Galvanisé, thermolaqué polyester",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plancher-securit-pcp-o2-1000x1000mm": {
+  "nom": "Plancher securit PCP O2 - 1000x1000mm",
+  "categorie": "/quincaillerie/caillebotis-marches",
+  "famille": "plancher-o2",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLANCHER-O2",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "trous": {
+    "valeur": 9,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous emboutis)",
+    "unite": "mm"
+   },
+   "drainage": {
+    "valeur": 5,
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP) (trous de drainage)",
+    "unite": "mm"
+   },
+   "entraxe": {
+    "valeur": "25 × 25 mm",
+    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé à chaud",
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+   },
+   "h": {
+    "valeur": 33,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard : hauteur 33)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2,
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard : épaisseur 2)",
+    "unite": "mm"
+   },
+   "finition": {
+    "valeur": "GALVA",
+    "source": "matière du rendu, non affichée",
     "supposee": true
    }
   },
@@ -4056,6 +6972,1040 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m00-gris-ral-7016": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 -GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m00-noir-ral-9005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m00-vert-ral-6005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M00 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m30-noir-ral-9005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M30 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.3,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m30-vert-ral-6005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M30 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.3,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m50-noir-ral-9005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m50-vert-ral-6005": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-clogriff-64-2m50-vert-ral-7016": {
+  "nom": "POTEAU DE CLÔTURE CLOGRIFF 64 – 2M50 - GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-clogriff-64",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOGRIFF 64",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 64,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
+    "unite": "mm"
+   },
+   "encoche": {
+    "valeur": 30,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "pas_encoches": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Acier galvanisé",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« poteau en acier … galvanisé suivant norme EN 10242 »)"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "50 × 64 mm",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m00-gris-ral-7016": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m00-noir-ral-9005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m00-vert-ral-6005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.0,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m30-gris-ral-7016": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.3,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m30-noir-ral-9005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.3,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m30-vert-ral-6005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.3,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m50-gris-ral-7016": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - GRIS RAL 7016",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m50-noir-ral-9005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - NOIR RAL 9005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 9005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
+   }
+  },
+  "alertes": []
+ },
+ "poteau-de-cloture-cloplus-40-2m50-vert-ral-6005": {
+  "nom": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - VERT RAL 6005",
+  "categorie": "/jardin-cloture/clotures/poteaux",
+  "famille": "poteau-cloplus-40",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 6005",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "POTEAU",
+    "source": "nom du produit"
+   },
+   "modele": {
+    "valeur": "CLOPLUS 40",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2.5,
+    "source": "nom du produit (écrite en mètres comme la page)",
+    "unite": "m"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 76,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)",
+    "unite": "mm"
+   },
+   "feuillure": {
+    "valeur": 46,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "matiere": {
+    "valeur": "Aluminium",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "finition": {
+    "valeur": "LAQUE-ALU",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   },
+   "revetement": {
+    "valeur": "Thermolaqué polyester",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« thermolaquage épaisseur mini 80 microns »)"
+   },
+   "section": {
+    "valeur": "40 × 76 mm",
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 40 × 76)"
    }
   },
   "alertes": []
@@ -8217,6 +12167,146 @@
   },
   "alertes": []
  },
+ "tasseau-40x40-71x250cm-parement-chene-clair": {
+  "nom": "Tasseau 40x40 71x250cm - Parement | Chêne clair",
+  "categorie": "/toiture-bardage/bardage/imitation-bois",
+  "famille": "tasseau-imitation-bois",
+  "valeurs": {
+   "serie": {
+    "valeur": "TASSEAU",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 710,
+    "source": "nom du produit et fiche fournisseur publiée « Tasseau 40x40 (maxi) » (largeur utile 710)",
+    "unite": "mm"
+   },
+   "tasseau": {
+    "valeur": "40 × 40 mm",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 37,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » (hauteur d'onde 37)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 39,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plat": {
+    "valeur": 90,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.5,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 6.75,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » et site actuel — description de la fiche",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "revetement": {
+    "valeur": "Polyester 35 µm",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "teinte": {
+    "valeur": "Chêne clair",
+    "source": "nom du produit et fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "finition": {
+    "valeur": "BOIS",
+    "source": "chêne clair à bandes noires — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tasseau-40x40-71x300cm-parement-chene-clair": {
+  "nom": "Tasseau 40x40 71x300cm - Parement | Chêne clair",
+  "categorie": "/toiture-bardage/bardage/imitation-bois",
+  "famille": "tasseau-imitation-bois",
+  "valeurs": {
+   "serie": {
+    "valeur": "TASSEAU",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 710,
+    "source": "nom du produit et fiche fournisseur publiée « Tasseau 40x40 (maxi) » (largeur utile 710)",
+    "unite": "mm"
+   },
+   "tasseau": {
+    "valeur": "40 × 40 mm",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 37,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » (hauteur d'onde 37)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 39,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "plat": {
+    "valeur": 90,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.5,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » et site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 6.75,
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) » et site actuel — description de la fiche",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "revetement": {
+    "valeur": "Polyester 35 µm",
+    "source": "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "teinte": {
+    "valeur": "Chêne clair",
+    "source": "nom du produit et fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
+   },
+   "finition": {
+    "valeur": "BOIS",
+    "source": "chêne clair à bandes noires — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
  "tole-2000x1000x1mm-plane-en-inox-304-gr320": {
   "nom": "Tôle 2000x1000x1mm plane en Inox 304 GR320",
   "categorie": "/inox/toles/tole-plane-304-brossee",
@@ -8474,6 +12564,538 @@
   "alertes": [
    "nom ou description : 304 et 304L sur la même page : nuance non affichée (question en attente)"
   ]
+ },
+ "tole-30-200-1000-ral-7016-200x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 200X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-250x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 250X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 2500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-300x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 300X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-350x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 350X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 3500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-400x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 400X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 4000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-450x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 450X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 4500,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tole-30-200-1000-ral-7016-500x105cm": {
+  "nom": "Tôle 30.200.1000 - RAL 7016 - 500X105cm",
+  "categorie": "/toiture-bardage/toles-profilees/profil-30-200-1000",
+  "famille": "tole-profilee-30-200-1000",
+  "valeurs": {
+   "couleur": {
+    "valeur": "RAL 7016",
+    "source": "nom du produit"
+   },
+   "serie": {
+    "valeur": "TOLE-PROFILEE",
+    "source": "nom du produit"
+   },
+   "L": {
+    "valeur": 5000,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l": {
+    "valeur": 1050,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "l_utile": {
+    "valeur": 1000,
+    "source": "site actuel — description de la fiche (« largeur utile 1000mm ») et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "pas": {
+    "valeur": 200,
+    "source": "nom du produit (profil 30.200.1000) et fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)",
+    "unite": "mm"
+   },
+   "sommet": {
+    "valeur": 25,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "base": {
+    "valeur": 60,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e": {
+    "valeur": 0.6,
+    "source": "site actuel — description de la fiche",
+    "unite": "mm"
+   },
+   "masse": {
+    "valeur": 5.86,
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (tôle de 0,60 mm)",
+    "unite": "kg/m²"
+   },
+   "nuance": {
+    "valeur": "S280GD / S320GD",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf)"
+   },
+   "revetement": {
+    "valeur": "Galvanisé, polyester 25/35 µ",
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) et site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "LAQUE",
+    "source": "RAL du nom — matière du rendu, non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
  },
  "tole-3000x1500x1mm-plane-en-inox-304-gr320": {
   "nom": "Tôle 3000x1500x1mm plane en Inox 304 GR320",

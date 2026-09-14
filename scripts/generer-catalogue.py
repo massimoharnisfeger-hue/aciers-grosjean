@@ -387,7 +387,67 @@ def poids_et_specs(cat_path, nom, densite):
             return round(kgm2 * L * l, 1), "kg/panneau", "au panneau", "€/pce", specs
         return round(kgm2, 2), "kg/m²", "au m²", "€/m²", specs
 
+    specs = specs_vague3(cat_path, nom)
+    if specs is not None:
+        return None, "", "à l'unité", "€/pce", specs
     return None, "", "à l'unité", "€/pce", ([("Dimensions", " × ".join(f"{x:g}" for x in d) + " mm")] if d else [])
+
+
+def mm(x):
+    return f"{f(x):g} mm".replace(".", ",")
+
+
+def metres(texte):
+    """« 1m53 », « 2M00 » -> « 1,53 m »."""
+    m = re.search(r"(\d)\s*[mM]\s*(\d{2})", texte)
+    return f"{m.group(1)},{m.group(2)} m" if m else None
+
+
+def specs_vague3(cat_path, nom):
+    """Spécifications lues dans le nom des produits de la vague 3 (clôtures, bordures, caillebotis, toiture-bardage).
+    Avant le 14/09/2026, « 200X105cm » sortait « Dimensions 200 × 105 mm » et « 150/25 x 2500mm » « 25 × 2500 mm ».
+    Rien d'autre que le nom : les données des fiches fournisseurs vont sur les visuels 3D, pas ici."""
+    seg = cat_path.split("/")[-1]
+    ral = re.search(r"RAL\s*(\d{4})", nom, re.I) or re.search(r"\b(?:GRIS|NOIR|VERT)\s+(\d{4})\b", nom, re.I)
+    couleur = [("Couleur", f"RAL {ral.group(1)}")] if ral else []
+    cm = re.search(NUM + r"\s*[x×]\s*" + NUM + r"\s*cm", nom, re.I)  # « 200X105cm », « 71x250cm »
+    if cat_path.startswith("/toiture-bardage/toles-profilees/") and cm:
+        profil = re.search(r"\b(\d{2}\.\d{3}\.\d{4})\b", nom)
+        return ([("Longueur", mm(f(cm.group(1)) * 10)), ("Largeur", mm(f(cm.group(2)) * 10))]
+                + ([("Profil", profil.group(1))] if profil else []) + couleur)
+    if cat_path.startswith("/toiture-bardage/panneaux-isoles/") and cm:
+        ep = re.search(NUM + r"\s*mm", nom)
+        return ([("Longueur", mm(f(cm.group(1)) * 10)), ("Largeur", mm(f(cm.group(2)) * 10))]
+                + ([("Épaisseur", mm(ep.group(1)))] if ep else []) + couleur)
+    if seg == "imitation-bois" and cm:  # « Tasseau 40x40 71x250cm » : largeur × longueur
+        tasseau = re.search(r"tasseau\s+" + NUM + r"\s*[x×]\s*" + NUM, nom, re.I)
+        teinte = re.search(r"\|\s*([^|]+?)\s*$", nom)
+        return ([("Longueur", mm(f(cm.group(2)) * 10)), ("Largeur", mm(f(cm.group(1)) * 10))]
+                + ([("Tasseau", f"{f(tasseau.group(1)):g} × {f(tasseau.group(2)):g} mm")] if tasseau else [])
+                + ([("Teinte", teinte.group(1))] if teinte else []))
+    if seg == "bordures":
+        m = re.search(NUM + r"\s*/\s*" + NUM + r"\s*[x×]\s*" + NUM + r"\s*mm", nom)
+        if m:
+            return [("Hauteur", mm(m.group(1))), ("Pli", mm(m.group(2))), ("Longueur", mm(m.group(3)))]
+    if seg == "panneaux-rigides":
+        modele = re.search(r"PANNEAUX?\s+(MEDIUM 3D|PLIS 205)", nom, re.I)
+        fils = re.search(r"Fils?\s+(\d)\s*/\s*(\d)", nom, re.I)
+        hauteur = metres(nom)
+        return (([("Modèle", modele.group(1).upper())] if modele else [])
+                + ([("Hauteur", hauteur)] if hauteur else [])
+                + ([("Fils", f"{fils.group(1)}/{fils.group(2)} mm")] if fils else []) + couleur)
+    if seg == "poteaux":
+        modele = re.search(r"(CLOPLUS 40|CLOGRIFF 64)", nom, re.I)
+        longueur = metres(nom)
+        return (([("Modèle", modele.group(1).upper())] if modele else [])
+                + ([("Longueur", longueur)] if longueur else []) + couleur)
+    if seg == "caillebotis-marches":
+        m = re.search(NUM + r"\s*[x×]\s*" + NUM + r"\s*mm\s*-\s*(\d+)\s*/\s*(\d+)\s*-\s*(\d+)\s*/\s*(\d+)", nom)
+        if m:  # « 1000x 1000mm - 33/33-30/2 » : format, maille, barreau porteur
+            return [("Dimensions", f"{f(m.group(1)):g} × {f(m.group(2)):g} mm"),
+                    ("Maille", f"{m.group(3)} × {m.group(4)} mm"),
+                    ("Barreaux porteurs", f"{m.group(5)} × {m.group(6)} mm")]
+    return None
 
 
 # Tarif au kilo et prix plancher, par préfixe de chemin (le plus long gagne).

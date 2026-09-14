@@ -44,3 +44,4 @@ Règle : aucune valeur supposée affichée ; en cas de doute, demander.
 - Reste : séries profils/tubes, tôles et armatures en cours dans Blender ; vague 2 (larmées, striées, perforées, alu, inox) ; vague 3 ; visserie.
 - Tôles larmées, striées et perforées : géométrie (relief en instances, cellules percées, tuile aléatoire périodique), loupe e / E, essais conformes ; séries en file (139 puis 26 visuels).
 - Pages : masse surfacique contredite retirée de 36 fiches (`integrer.py`) ; incident OneDrive sur `public/documents/` (51 PDF supprimés puis restaurés) et script corrigé.
+- Vague 3 : données de 68 fiches (fiches fournisseurs publiées), pages corrigées (cotes en cm, poids factices), géométrie de 12 familles écrite, essais en cours. Le propriétaire demande qu'à la fin les deux formats de visuels soient rangés dans `_DEPOT/images/2-categories/` par catégorie.

@@ -82,7 +82,8 @@ def affichable(p, cle):
         return None
     v, unite = d["valeur"], d.get("unite", "")
     if isinstance(v, (int, float)):
-        texte = f"{v:.2f}" if unite.startswith("kg") else f"{v:g}"  # poids : deux décimales, comme la page
+        # poids et longueurs en mètres : deux décimales, comme la page (« 8,30 kg/m », « 1,53 m »)
+        texte = f"{v:.2f}" if unite.startswith("kg") or unite == "m" else f"{v:g}"
         return f"{texte.replace('.', ',')} {unite}".strip()
     return str(v)
 
@@ -231,10 +232,11 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
     fleche(haut, decale(haut, 0, -34), ENCRE)
     ligne(decale(bas, 0, 34), bas, ENCRE)
     fleche(bas, decale(bas, 0, 34), ENCRE)
-    fleches_pince.append(("e", haut[0] - 7, haut[1] - 34, haut[0] + 7, haut[1]))
-    fleches_pince.append(("e", bas[0] - 7, bas[1], bas[0] + 7, bas[1] + 34))
+    cle = geo.get("cle_loupe", "e")  # épaisseur e d'une tôle, hauteur h d'une nervure (tôle profilée, tasseau)
+    fleches_pince.append((cle, haut[0] - 7, haut[1] - 34, haut[0] + 7, haut[1]))
+    fleches_pince.append((cle, bas[0] - 7, bas[1], bas[0] + 7, bas[1] + 34))
     if not relief:
-        PASTILLES.append(((cx, cy + r + 42), "e", affichable(p, "e"), "e"))
+        PASTILLES.append(((cx, cy + r + 42), cle, affichable(p, cle), cle))
         return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
     # tôle à relief : épaisseur totale pincée sur le relief coupé, à droite ; étiquettes sous chaque pince
     haut_r, bas_r = dans_loupe(P["loupe_relief_haut"]), dans_loupe(P["loupe_relief_bas"])
@@ -249,8 +251,52 @@ def placer_loupe(d, image_brute, W, H, P, geo, p, fleches_pince):
     return fond, (int(cx - r), int(cy - r)), (cx, cy, r)
 
 
+COTES_PAR_SERIE = {
+    # bordure de jardin : hauteur cotée, épaisseur pincée (galvanisée seulement : celle de la Corten est inconnue)
+    "BORDURE": (("h", "h"), None, ("e", "e"), None,
+                [("Hauteur", "h", "h"), ("Pli rentrant", "", "pli"), ("Longueur", "L", "L"), ("Épaisseur", "e", "e")]),
+    "TOLE-PROFILEE": (("L", "L"), ("l", "l"), None, None,
+                      [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Largeur utile", "", "l_utile"),
+                       ("Hauteur de nervure", "h", "h"), ("Pas des nervures", "", "pas"), ("Épaisseur", "", "e"),
+                       ("Masse surfacique", "", "masse"), ("Revêtement", "", "revetement"), ("Couleur", "", "couleur")]),
+    "TASSEAU": (("L", "L"), ("l", "l_utile"), None, None,
+                [("Longueur", "L", "L"), ("Largeur utile", "l", "l_utile"), ("Tasseau", "", "tasseau"),
+                 ("Hauteur d'onde", "h", "h"), ("Épaisseur", "", "e"), ("Masse surfacique", "", "masse"),
+                 ("Revêtement", "", "revetement"), ("Teinte", "", "teinte")]),
+    "PANNEAU-ISOLE": (("L", "L"), ("l", "l"), None, None,
+                      [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Largeur utile", "", "l_utile"),
+                       ("Épaisseur", "e", "e"), ("Nervures", "", "nervures"), ("Face externe", "", "face_externe"),
+                       ("Face interne", "", "face_interne"), ("Âme", "", "ame"), ("Couleur", "", "couleur")]),
+    # caillebotis à plat : longueur L (portée) le long du bord droit, largeur l devant ; hauteur h du plat de rive en loupe
+    "CAILLEBOTIS": (("L", "L"), ("l", "l"), None, None,
+                    [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Maille", "", "maille"),
+                     ("Barreaux porteurs", "h", "barreau"), ("Revêtement", "", "revetement")]),
+    # marche : grand côté devant (L), profondeur l le long du bord droit
+    "MARCHE-CAILLEBOTIS": (("l", "l"), ("L", "L"), None, None,
+                           [("Longueur", "L", "L"), ("Profondeur", "l", "l"), ("Revêtement", "", "revetement")]),
+    "PLANCHER-O2": (("L", "L"), ("l", "l"), None, None,
+                    [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Hauteur", "h", "h"), ("Épaisseur", "", "t"),
+                     ("Trous emboutis", "", "trous"), ("Trous de drainage", "", "drainage"), ("Entraxe", "", "entraxe"),
+                     ("Revêtement", "", "revetement")]),
+    "MARCHE-O2": (("l", "l"), ("L", "L"), None, None,
+                  [("Longueur", "L", "L"), ("Profondeur", "l", "l"), ("Trous emboutis", "", "trous"),
+                   ("Trous de drainage", "", "drainage"), ("Entraxe", "", "entraxe"), ("Revêtement", "", "revetement")]),
+    # panneau de clôture debout : hauteur H à gauche, largeur l en bas (MEDIUM 3D : largeur contradictoire, non affichée)
+    "PANNEAU-CLOTURE": (("H", "H"), ("l", "l"), None, None,
+                        [("Modèle", "", "modele"), ("Hauteur", "H", "H"), ("Largeur", "l", "l"), ("Maille", "", "maille"),
+                         ("Fil horizontal", "", "fil_h"), ("Fil vertical", "", "fil_v"), ("Revêtement", "", "revetement"),
+                         ("Couleur", "", "couleur")]),
+    "POTEAU": (("h", "h"), ("b", "b"), None, None,
+               [("Modèle", "", "modele"), ("Section", "", "section"), ("Longueur", "", "L"), ("Matière", "", "matiere"),
+                ("Revêtement", "", "revetement"), ("Couleur", "", "couleur")]),
+}
+
+
 def cotes_du_type(typ, p):
-    if p["valeurs"].get("serie", {}).get("valeur") == "TOLE-PERFOREE":  # perforation écrite dans la fiche, sans lettre
+    serie = p["valeurs"].get("serie", {}).get("valeur")
+    if serie in COTES_PAR_SERIE:
+        return COTES_PAR_SERIE[serie]
+    if serie == "TOLE-PERFOREE":  # perforation écrite dans la fiche, sans lettre
         ronde = p["valeurs"]["perforation"]["valeur"].get("forme") == "RONDE"
         return (("L", "L"), ("l", "l"), None, None,
                 [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur", "e", "e"), ("Trous", "", "trous"),

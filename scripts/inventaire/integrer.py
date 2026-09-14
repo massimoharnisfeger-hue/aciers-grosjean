@@ -71,6 +71,11 @@ def produits_refonte():
     return out
 
 
+def unite_refonte_hors_metre(r):
+    """Produit vendu a la piece, a la plaque ou au panneau (pas au metre) : un poids de plus d'une tonne est factice."""
+    return r["unite"] != "au mètre"
+
+
 def masse_surfacique_contredite(r, kg):
     """« Masse surfacique » calculée par la refonte (épaisseur × densité) : fausse pour une tôle perforée (trous) et
     contredite par le poids réel de la plaque ou du panneau au-delà de 3 % (tôles larmées et striées : relief)."""
@@ -233,8 +238,12 @@ def main():
         m = re.search(r"([\d.,]+)\s*kg", p["specifications"].get("Poids", ""), re.I)
         if m:
             kg = float(m.group(1).replace(",", "."))
-        # Le site actuel met 1,0 kg par defaut sur certaines fiches (toles perforees...) : poids inconnu.
-        poids_factice = kg == 1.0 and r["kg"] is not None and r["kg"] > 3
+        # Le site actuel met 1,0 kg par defaut sur certaines fiches (toles perforees, clotures, marches...), 0 kg
+        # sur les caillebotis et des milliers de kg sur les toles profilees (2 100 kg pour une tole de 2 m) :
+        # poids inconnu, jamais affiche. Un vrai kilo (« ZINGA 1KG ») reste un kilo.
+        # (un plat 25x5 vendu au metre pese vraiment 1,00 kg/m : la regle du kilo ne vaut qu'a la piece ou a la plaque)
+        poids_factice = kg is not None and (kg <= 0 or (unite_refonte_hors_metre(r) and (kg >= 1000 or (
+            kg == 1.0 and not re.search(r"\b1\s*KG\b", p["nom"], re.I)))))
         if poids_factice:
             kg = None
             poids_factices.append(r["nom"])
@@ -419,7 +428,7 @@ def main():
     print(f"avec longueurs : {sum(1 for d in donnees.values() if d['longueurs'])} | finition : {sum(1 for d in donnees.values() if d['finition'])} "
           f"| poids reel : {sum(1 for d in donnees.values() if d['kg'] is not None)} | avec PDF : {sum(1 for d in donnees.values() if d['pdfs'])}")
     print("changements d'unite :", dict(changements_unite))
-    print(f"poids factices ecartes ({len(poids_factices)}) :", poids_factices[:6])
+    print(f"poids factices ecartes ({len(poids_factices)}) :", poids_factices)
     print("specifications non confirmees retirees :", dict(Counter(s for d in donnees.values() for s in d["specsRetirees"])))
     if ecarts:
         n = len(ecarts)

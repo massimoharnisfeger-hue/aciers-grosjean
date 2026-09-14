@@ -13,6 +13,10 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - **Armatures** : série `serie-armatures.json` (28 + 4) en file derrière les tôles. Avant intégration : retirer des pages les nuances B500B / B500A non sourcées (questions 10 et 11).
 - **Vague 2** : données faites pour les tôles planes (froid, galva, Corten, alu, inox), profilés/tubes alu et inox (77), tôles larmées et striées (15), tôles perforées (8) ; pages inox corrigées (nuance sourcée) ; « Masse surfacique » contredite retirée de 36 pages (`integrer.py`). Essais conformes : matières, profilés alu/inox, tôles à relief (loupe e / E). Série `serie-vague2.json` (121 + 18 studios) en file derrière les armatures. Essai perforées en cours ; ensuite série `serie-vague2b.json` (relief + perforées).
 
+## À la toute fin (demande du propriétaire, 14/09 au soir)
+- Quand tout est terminé (pas avant) : ranger les deux formats de chaque visuel — photo studio fond blanc et visuel avec fiche technique — dans `_DEPOT/images/2-categories/`, classés par catégorie (structure à calquer sur celle du dossier s'il en a déjà une).
+- Puis proposer l'étape vidéo (CLAUDE.md), sans la lancer.
+
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.
 - [x] 1. Références visuelles du site actuel : `references.csv`, `references-groupes.csv`, `references-recap.md`.

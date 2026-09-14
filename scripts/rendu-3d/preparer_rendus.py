@@ -41,6 +41,50 @@ def piece(p, longueur, ratio):
         out = {"type": "TUBE-ROND", "h": v["d"], "b": v["d"], "t": v["t"]}
     elif serie == "TOLE":  # plaque à plat : largeur × épaisseur, extrudée sur toute la longueur du format
         return {"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"]}, v.get("finition", "BRUT")
+    elif serie == "BORDURE":  # bande pliée debout : face de hauteur h, pli en tête ; largeur = profondeur du pli + tôle
+        import math
+        prof = round(v["pli"] * math.sin(math.radians(v["angle"])) + v["e"], 2)
+        out = {"type": "BORDURE", "h": v["h"], "b": prof, "t": v["e"], "pli": v["pli"], "angle": v["angle"]}
+    elif serie == "TOLE-PROFILEE":  # tôle nervurée à plat ; loupe sur la 2e nervure (hauteur h pincée)
+        x_nervure = -v["l"] / 2 + v["base"] / 2 + 5.0 + v["pas"]
+        return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"],
+                 "profil": {"motif": "NERVURES", "pas": v["pas"], "h": v["h"], "sommet": v["sommet"], "base": v["base"]},
+                 "loupe": {"x": x_nervure, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
+                v.get("finition", "BRUT"))
+    elif serie == "TASSEAU":  # bardage à caissons ; loupe sur le 2e tasseau (hauteur d'onde h pincée)
+        base = v["sommet"] + 6.0
+        x_tasseau = -v["l_utile"] / 2 + 22.0 + base / 2 + (base + v["plat"])
+        return ({"type": "TOLE", "h": v["e"], "b": v["l_utile"], "longueur": v["L"],
+                 "profil": {"motif": "TASSEAU", "h": v["h"], "sommet": v["sommet"], "plat": v["plat"]},
+                 "loupe": {"x": x_tasseau, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
+                v.get("finition", "BRUT"))
+    elif serie == "PANNEAU-ISOLE":  # sandwich : âme × épaisseur e, tôle nervurée dessus ; loupe sur le chant de l'âme
+        return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"],
+                 "sandwich": {"l_utile": v["l_utile"], "pas": v["pas"], "h_nervure": v["h_nervure"], "sommet": v["sommet"],
+                              "base": v["base"], "e_tole": v["e_tole"]},
+                 "loupe": {"x": -v["l"] / 2 + v["pas"] / 2, "z_haut": v["e"], "z_bas": 0.0, "champ": max(6 * v["e"], 30.0), "cle": "e"}},
+                v.get("finition", "BRUT"))
+    elif serie in ("CAILLEBOTIS", "MARCHE-CAILLEBOTIS"):  # à plat comme une tôle ; loupe : hauteur h du plat de rive
+        marche = serie == "MARCHE-CAILLEBOTIS"
+        largeur, longueur = (v["L"], v["l"]) if marche else (v["l"], v["L"])  # marche : le grand côté devant
+        return ({"type": "TOLE", "h": v["h"], "b": largeur, "longueur": longueur,
+                 "caillebotis": {"t": v["t"], "maille_a": v["maille_a"], "maille_b": v["maille_b"], "marche": marche},
+                 "loupe": {"x": -largeur * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
+                v.get("finition", "GALVA"))
+    elif serie in ("PLANCHER-O2", "MARCHE-O2"):  # tôle perforée emboutie à bords pliés ; loupe : hauteur h du bord
+        marche = serie == "MARCHE-O2"
+        largeur, longueur = (v["L"], v["l"]) if marche else (v["l"], v["L"])
+        return ({"type": "TOLE", "h": v["h"], "b": largeur, "longueur": longueur,
+                 "o2": {"t": v["t"], "trous": v["trous"], "drainage": v["drainage"], "entraxe": 25.0, "marche": marche},
+                 "loupe": {"x": -largeur * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
+                v.get("finition", "GALVA"))
+    elif serie == "PANNEAU-CLOTURE":  # panneau debout : hauteur H (m → mm), largeur l ; profondeur = plis en V de 25 mm
+        return ({"type": "PANNEAU-CLOTURE", "h": round(v["H"] * 1000), "b": v["l"], "longueur": 25.0,
+                 "cloture": {"fil_h": v["fil_h"], "fil_v": v["fil_v"], "maille_a": v["maille_a"], "maille_b": v["maille_b"],
+                             "plis": v["plis"], "abouts": v["abouts"]}}, v.get("finition", "LAQUE"))
+    elif serie == "POTEAU":  # couché comme un profilé : section b × h, parois de 2 mm et angles r 3 (forme du rendu)
+        out = {"type": "POTEAU", "h": v["h"], "b": v["b"], "t": 2.0, "r1": 3.0,
+               "poteau": {"modele": v["modele"], "encoche": v.get("encoche"), "pas": v.get("pas_encoches")}}
     elif serie == "TOLE-PERFOREE":  # perforation : forme, cote et pas du code du nom (R/T, C/U) ou motif aléatoire
         return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"], "perforation": v["perforation"]},
                 v.get("finition", "BRUT"))
@@ -66,6 +110,12 @@ def piece(p, longueur, ratio):
     return out, v.get("finition", "BRUT")
 
 
+def teinte(p):
+    """Couleur RAL des produits laqués (clôtures, tôles profilées, panneaux) : matière du rendu."""
+    couleur = p["valeurs"].get("couleur", {}).get("valeur", "")
+    return {"ral": couleur.replace("RAL", "").strip()} if couleur else {}
+
+
 def main():
     args = sys.argv[1:]
     # 32 echantillons a seuil 0,03 : identique a l'oeil a 64 / 0,02 (test poutrelles), ~2 min 15 au lieu de 3 min 45
@@ -87,7 +137,8 @@ def main():
             # tôle vue de plus haut : dessus lisible et plaque plus grande dans le cadre (l'épaisseur est en loupe)
             vue = ({"elevation": 48, "azimut": 10} if pc["type"] == "TOLE" else
                    {"elevation": 35} if pc["type"] == "TREILLIS" else {})
-            liste.append({**commun, **vue, "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
+            liste.append({**commun, **vue, **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques",
+                          "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
         pieces, finitions = [], set()
@@ -97,12 +148,14 @@ def main():
             finitions.add(finition)
         # même longueur pour toutes les pièces de la photo, proportionnée à la plus grande section (sauf tôle entière)
         for pc in pieces:
-            if pc["type"] not in ("TOLE", "TREILLIS"):
+            if pc["type"] not in ("TOLE", "TREILLIS", "PANNEAU-CLOTURE"):
                 pc["longueur"] = min(900, round(7 * max(max(q["h"], q["b"]) for q in pieces)))
         if len(finitions) > 1:
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
-        liste.append({**commun, "slug": nom, "mode": "studio", "pieces": pieces, "finition": finitions.pop(),
-                      "azimut": 24, "elevation": 30 if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20})
+        # panneaux de clôture debout : écart de 15 % de la hauteur (0,9 h les mettrait à plus d'un mètre)
+        ecart = {"ecart_studio": 0.15} if pieces[0]["type"] == "PANNEAU-CLOTURE" else {}
+        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, "slug": nom, "mode": "studio", "pieces": pieces,
+                      "finition": finitions.pop(), "azimut": 24, "elevation": 30 if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")
 
