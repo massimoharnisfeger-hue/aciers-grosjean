@@ -25,6 +25,7 @@ Règles d'écriture :
 - Deux poids sur une même page du site actuel : afficher celui de la **fiche**, l'image doit dire la même chose que la page ; noter l'écart en attente. `[poutrelles, 14/09] (validé propriétaire)`
 - Poids de la fiche à plus de 3 % du tableau fournisseur publié (ou du poids théorique) : sources contradictoires, **poids non affiché** sur l'image et question en attente (plats 80x10/80x8 +23 %, 23 tubes +3 à 8 %). Seuil appliqué dans `poids_et_controle()` (`donnees_produits.py`). `[vague 1, 14/09] (autocontrôle, à confirmer par le propriétaire)`
 - Clogriff 64 2M50 « VERT RAL 7016 » : c'est un **gris anthracite RAL 7016** (pastille de la photo du site ; le vert de la série est le RAL 6005) → nom corrigé en « GRIS RAL 7016 ». `[clôture, 14/09] (validé propriétaire)`
+- Rangement final des visuels pour le propriétaire : les deux formats (photo studio fond blanc + visuel avec fiche technique) dans `_DEPOT/images/2-categories/`, classés par catégorie, **une fois toute la production terminée, pas avant**. Ce dossier remplacera alors `_DEPOT/images/visuels-3d/` (déplacement, pas de doublon ; mettre à jour `integrer_visuels.py`, `_DEPOT/LISEZ-MOI.txt` et la ligne de CLAUDE.md). `[fin de production, 14–15/09] (demande du propriétaire)`
 - Poteaux Cloplus 40 : **aluminium** (fiche fabricant `GAG - FT-CP40-Plis205.pdf` : « poteau en aluminium », « alliage d'aluminium à très haute limite élastique »). `[clôture, 14/09] (validé propriétaire)`
 
 ## Réglages validés
