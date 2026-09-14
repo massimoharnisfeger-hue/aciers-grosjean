@@ -32,17 +32,20 @@ Intégration : WebP qualité ~80, 2400 px de large au maximum, moins de 200 Ko, 
 Déplacer ensuite l'original dans `_DEPOT/deja-integre/<lot>/` et le noter dans le journal.
 
 ## Visuels 3D des fiches produits
-Brief : `_DOCS/BRIEF-RENDUS-3D.md`. Une famille à la fois : rendu test → **attendre l'accord du propriétaire** → série → planche contact → accord. Jamais de nouvelle famille sans accord.
+Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiches).
+**Mode automatique**, à la demande du propriétaire (14/09/2026) : enchaîner les familles sans attendre son accord.
 
-Claude ne peut ni changer de modèle ni fermer des programmes : c'est au propriétaire de le faire. **Le lui rappeler au bon moment, sans attendre qu'il y pense :**
-- **Avant de lancer une série** (plusieurs heures de rendu), lui demander de :
+- **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → intégration sur le site → vérification → commit et push → famille suivante.
+- **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
+- **Seul motif d'arrêt :** une donnée à afficher manque ou se contredit. Demander, ne jamais inventer.
+- **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` ; chaque itération reprend là où la précédente s'est arrêtée. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
+- **Modèle et limites d'usage :** Claude ne peut pas changer de modèle lui-même. À la limite d'usage, Claude Code (≥ 2.1.234) attend la réinitialisation et reprend seul : la production ralentit mais ne s'arrête pas. Au premier lancement, rappeler une seule fois au propriétaire :
   1. fermer navigateurs et autres fenêtres Claude Code (15 Go de RAM, souvent presque pleine) ;
   2. brancher le PC et désactiver la mise en veille ;
-  3. taper `/model` et choisir **Sonnet 5** (la surveillance n'a pas besoin de plus) ;
-  4. lancer la surveillance :
-     `/loop 45m Surveille la série de rendus Blender en cours (scripts/rendu-3d, dossier %LOCALAPPDATA%\SiteAciersGrosjean\rendu3d) : nombre d'images faites et restantes, durée moyenne, erreurs. Relance les rendus plantés. Contrôle chaque nouvelle image (forme, cotes lisibles sans chevauchement, textes conformes aux données sourcées) et mets de côté celles qui posent problème, avec la raison. Ne commence jamais une nouvelle famille sans mon accord. Quand la série est terminée : planche contact de la famille, envoie-la-moi, puis arrête la boucle.`
-- **Quand la planche contact est validée**, avant la famille suivante : lui demander de repasser sur **Fable** (`/model`, version la plus récente) pour la modélisation et les rendus test.
-- Pendant la journée, s'il doit utiliser le PC : proposer de limiter Blender à 4 cœurs (`-t 4`).
+  3. pour éviter les attentes : activer les crédits d'usage (`/usage-credits`, avec un plafond) ; ou, au message « limite atteinte » de Fable, taper `/model` et choisir **Opus 5**, le plus puissant après Fable.
+- **Commande de lancement** (boucle à rythme libre) :
+  `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets l'avancement à jour. Quand les 477 fiches sont intégrées, vérifiées et poussées, arrête la boucle.`
+- Pendant la journée, si le propriétaire doit utiliser le PC : limiter Blender à 4 cœurs (`-t 4`).
 
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.
