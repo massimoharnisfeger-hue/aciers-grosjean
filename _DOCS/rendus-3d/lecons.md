@@ -23,6 +23,7 @@ Règles d'écriture :
 - Nuance affichée = celle du site actuel telle quelle (S275 IPE, S275/S355 HEB, S235 ou S275 UPN) ; aucune nuance quand le site n'en donne pas (HEA → questions en attente). « EN 10025-2 » seulement si une source le mentionne. `[poutrelles, 14/09] (validé propriétaire)`
 - Longueurs affichées = celles du site actuel (1 à 6 m) + « longueurs supérieures sur demande » sans chiffre (les textes disent « jusqu'à 15 m » et « 3 à 12 m » : écart en attente). `[poutrelles, 14/09] (validé propriétaire)`
 - Deux poids sur une même page du site actuel : afficher celui de la **fiche**, l'image doit dire la même chose que la page ; noter l'écart en attente. `[poutrelles, 14/09] (validé propriétaire)`
+- Poids de la fiche à plus de 3 % du tableau fournisseur publié (ou du poids théorique) : sources contradictoires, **poids non affiché** sur l'image et question en attente (plats 80x10/80x8 +23 %, 23 tubes +3 à 8 %). Seuil appliqué dans `poids_et_controle()` (`donnees_produits.py`). `[vague 1, 14/09] (autocontrôle, à confirmer par le propriétaire)`
 - Clogriff 64 2M50 « VERT RAL 7016 » : c'est un **gris anthracite RAL 7016** (pastille de la photo du site ; le vert de la série est le RAL 6005) → nom corrigé en « GRIS RAL 7016 ». `[clôture, 14/09] (validé propriétaire)`
 - Poteaux Cloplus 40 : **aluminium** (fiche fabricant `GAG - FT-CP40-Plis205.pdf` : « poteau en aluminium », « alliage d'aluminium à très haute limite élastique »). `[clôture, 14/09] (validé propriétaire)`
 
@@ -36,6 +37,10 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - UPN : ailes à pente intérieure 8 % (DIN 1026-1, citée par la fiche VM 2013), tf mesuré à b/2, congés r1 en racine et r2 en bout d'aile : `section_u()`. `[poutrelles, 14/09] (autocontrôle)`
 - Cadrage studio : tronçon 900 mm, azimut 24°, élévation 20°, boîte (0,12 ; 0,14 ; 0,88 ; 0,86). Caractéristiques : 500 mm, boîte (0,07 ; 0,10 ; 0,62 ; 0,90). `[poutrelles, 14/09] (autocontrôle)`
 - 32 échantillons, seuil adaptatif 0,03, débruitage OIDN = 64 échantillons à seuil 0,02 à l'œil (écart moyen 0,4/255 sur la pièce, recadrage à 100 %) : préréglage par défaut de `preparer_rendus.py`. `[poutrelles, 14/09] (autocontrôle)`
+- Studio multi-tailles : la plus haute à gauche, extrémités alignées, écart = 0,9 × hauteur de la voisine de droite (`ecart_studio`) : plus aucune pièce masquée. `[poutrelles, 14/09] (autocontrôle)`
+- Tronçon proportionné à la section : visuel caractéristiques 6,25 × plus grande cote (plafond 500 mm), studio 7 × plus grande cote de la plus grosse pièce (plafond 900 mm) ; les poutrelles gardent 500 et 900 mm. `[cornières, 14/09] (autocontrôle)`
+- Titre de la fiche : nom sans « en acier / Acier LAC / laminé à chaud » (`titre_image`), sur deux lignes si besoin ; surtitre avec les noms du catalogue (« PROFILÉS » accentué, `surtitre_image`). `[cornières, 14/09] (autocontrôle)`
+- Sections creuses (tubes) : anneau de quadrilatères entre contour extérieur et intérieur de même nombre de points, puis extrusion (`extruder`). Plat posé sur chant : cote verticale = largeur, pince = épaisseur. `[vague 1, 14/09] (autocontrôle)`
 
 ## Erreurs rencontrées et correction
 - Pièce surexposée, l'acier paraissait de l'aluminium : baisser l'exposition de la scène, pas la couleur de base. Le fond blanc et l'ombre ne bougent pas, puisqu'ils sont composés après. `[IPE, 14/09]`
@@ -50,6 +55,9 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - Nuance : seule la première était lue dans « S275/S355 » ; `nuance_et_norme()` les collecte toutes. `[poutrelles, 14/09]`
 - Studio « 3 tailles » : barres décalées en profondeur qui se masquent en partie ; écarter davantage si cette variante est retenue. `[poutrelles, 14/09] (autocontrôle)`
 - Données contradictoires dans le site actuel lui-même : poids UPN de la description (tableau fournisseur) ≠ poids de la fiche (+0,1 à +0,8 %). Toujours comparer description et fiche avant d'afficher. `[poutrelles, 14/09]`
+- Petites cornières : la flèche d'épaisseur, à mi-hauteur, touchait l'étiquette de la cote verticale (même hauteur). Pince remontée à 70 % de la hauteur pour toutes les sections sauf I, U et tube rond ; contrôle automatique « flèche sous l'étiquette » créé. `[cornières, 14/09]`
+- Tableaux fournisseurs avec colonnes vides (fers T) : `tableau_vm2013(..., sauter_vides=True)`. Nom « 17,2(18)x2mm » : la désignation courante entre parenthèses casse les motifs de cotes. `[vague 1, 14/09]`
+- Fiches fournisseurs publiées sur le site : « Nuance d'acier : S235 » (IPE, HEA, HEB, tubes), en contradiction avec les descriptions (IPE S275, HEB S275/S355) : ne pas en déduire une nuance, question en attente. `[vague 1, 14/09]`
 
 ## Temps et ressources mesurés
 - 800 × 600, 32 échantillons : 30 à 60 s. 1600 × 1200, 64 échantillons : 4 min 15 s en rendu isolé (Ryzen 5 4500U, processeur seul). `[IPE, 14/09]`
@@ -72,3 +80,6 @@ Test IPE 200 de la séance de préparation. Certaines valeurs ont pu évoluer de
 - Contrôles d'habillage (`habiller.py`, ligne `CONTROLES :`) : étiquette hors cadre, étiquette sur la fiche, étiquettes qui se chevauchent, titre trop long. `[poutrelles, 14/09]`
 - Alertes de données (`donnees_produits.py`) : cotes A/B/C/D du site ≠ fournisseur, poids site ≠ fournisseur de plus de 3 %, hauteur du nom ≠ hauteur fournisseur (sauf HEA). `[poutrelles, 14/09]`
 - `preparer_rendus.py` refuse une photo studio qui mélange deux finitions. `[poutrelles, 14/09]`
+- `controler_rendus.py <famille…>` : fichiers, 1600 × 1200, WebP < 200 Ko, pièce dans le cadre et à gauche de la fiche, marges blanches du studio, textes de l'image = données sourcées non supposées = fiche du site, planches contact (`rendu3d/controle/`). `integrer_visuels.py` refuse une famille qui a encore un écart. `[poutrelles, 14/09]`
+- Contrôles `habiller.py` ajoutés : « flèche sous l'étiquette », « fiche technique trop haute ». `[cornières, 14/09]`
+- `poids_et_controle()` : poids non affiché au-delà de 3 % d'écart avec le fournisseur ou le théorique. `[vague 1, 14/09]`

@@ -4,7 +4,8 @@ Integre sur le site les visuels 3D d'une famille verifiee « CONFORME » (CLAUDE
   python scripts/rendu-3d/integrer_visuels.py --verdict CONFORME poutrelle-ipe [poutrelle-hea ...]
 
 - copie rendu3d/final/<slug>-caracteristiques.webp -> public/images/produits/<categorie>/<slug>-caracteristiques.webp
-  et rendu3d/final/studio-<famille>-studio.webp  -> public/images/produits/<categorie>/studio-<famille>.webp ;
+  et rendu3d/final/studio-<famille>-studio.webp  -> public/images/produits/<categorie>/studio-<famille>.webp,
+  avec la meme copie dans _DEPOT/images/visuels-3d/<categorie>/ pour le proprietaire (CLAUDE.md) ;
 - met a jour lib/visuels-produits.json, lu par la page produit : chemin, dimensions, texte alternatif ;
 - met a jour _DOCS/rendus-3d/inventaire-visuels.csv (slug, categorie, fichier, type, verdict, date).
 Refuse la famille si controler_rendus.py y trouve encore un ecart.
@@ -24,6 +25,8 @@ import controler_rendus as controle
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
 PUBLIC = PROJET / "public"
+# copie consultée par le propriétaire, mêmes noms et même arborescence (hors Git, jamais d'essais)
+DEPOT = PROJET / "_DEPOT" / "images" / "visuels-3d"
 MANIFESTE = PROJET / "lib" / "visuels-produits.json"
 INVENTAIRE = PROJET / "_DOCS" / "rendus-3d" / "inventaire-visuels.csv"
 NOMBRES = {2: "deux", 3: "trois", 4: "quatre"}
@@ -36,8 +39,11 @@ def noms_categories():
 
 
 def copier(source, cible):
-    cible.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(source, cible)
+    """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/visuels-3d/…)."""
+    copie = DEPOT / cible.relative_to(PUBLIC / "images" / "produits")
+    for chemin in (cible, copie):
+        chemin.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, chemin)
     with Image.open(cible) as img:
         largeur, hauteur = img.size
     return {"src": "/" + cible.relative_to(PUBLIC).as_posix(), "largeur": largeur, "hauteur": hauteur}
@@ -71,7 +77,7 @@ def main():
 
         for slug in slugs:
             c = json.loads((controle.FINAL / f"{slug}-caracteristiques.controles.json").read_text(encoding="utf-8"))
-            cotes = ", ".join(f"{lettre} {valeur}" for lettre, valeur in c["pastilles"])
+            cotes = ", ".join(dict.fromkeys(f"{lettre} {valeur}" for lettre, _, valeur in c["pastilles"]))
             image = copier(controle.FINAL / f"{slug}-caracteristiques.webp", dossier / f"{slug}-caracteristiques.webp")
             image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes}) et fiche technique"
             manifeste["produits"][slug] = image

@@ -116,12 +116,67 @@ def section_u(h, b, tw, tf, r1, r2, pente=8.0, n=10):
     return dedoublonner([(x - b / 2, z) for x, z in p])
 
 
+def section_l(h, b, t, r1, r2, n=10):
+    """Cornière (EN 10056) : aile verticale de hauteur h à gauche, aile horizontale de largeur b en bas,
+    épaisseur t, congé r1 à la racine intérieure, arrondi r2 au bout intérieur de chaque aile ; talon vif. Centrée en x."""
+    coins = [(0, 0), (b, 0), (b, t), (t, t), (t, h), (0, h)]
+    rayons = [0, 0, r2, r1, r2, 0]
+    p = []
+    for i, c in enumerate(coins):
+        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
+    return dedoublonner([(x - b / 2, z) for x, z in p])
+
+
+def section_t(h, b, t, r, r1, r2, n=10):
+    """Fer T (EN 10055) : aile en haut (largeur b), âme en bas, même épaisseur t ; congés r à la racine,
+    arrondis r1 au bout des ailes et r2 au bout de l'âme ; faces parallèles. Centrée en x, bout de l'âme en z = 0."""
+    coins = [(-t / 2, 0), (t / 2, 0), (t / 2, h - t), (b / 2, h - t), (b / 2, h), (-b / 2, h), (-b / 2, h - t), (-t / 2, h - t)]
+    rayons = [r2, r2, r, r1, 0, 0, r1, r]
+    p = []
+    for i, c in enumerate(coins):
+        p += coin_arrondi(coins[i - 1], c, coins[(i + 1) % len(coins)], rayons[i], n)
+    return dedoublonner(p)
+
+
+def section_rectangle(h, b):
+    """Plat posé sur chant (hauteur h = largeur du plat, épaisseur b) ou carré plein ; arêtes vives (chanfrein du modèle)."""
+    return [(-b / 2, 0), (b / 2, 0), (b / 2, h), (-b / 2, h)]
+
+
+def cercle(r, cz, n=96):
+    return [(r * math.cos(2 * math.pi * i / n), cz + r * math.sin(2 * math.pi * i / n)) for i in range(n)]
+
+
+def rectangle_arrondi(h, b, r, n=10):
+    """Contour d'un rectangle à coins arrondis, centré en x, base en z = 0 ; 4 × (n + 1) points."""
+    r = max(0.0, min(r, h / 2, b / 2))
+    p = []
+    for cx, cz, a0 in ((b / 2 - r, r, 270), (b / 2 - r, h - r, 0), (-b / 2 + r, h - r, 90), (-b / 2 + r, r, 180)):
+        p += arc(cx, cz, r, a0, a0 + 90, n)
+    return p
+
+
+def section_tube_rect(h, b, t, r_ext, n=10):
+    """Tube carré ou rectangulaire (EN 10219) : rayon extérieur r_ext, intérieur r_ext − t. (extérieur, intérieur)."""
+    ext = rectangle_arrondi(h, b, r_ext, n)
+    inte = [(x, z + t) for x, z in rectangle_arrondi(h - 2 * t, b - 2 * t, max(r_ext - t, 0.2), n)]
+    return ext, inte
+
+
+def section_tube_rond(d, t, n=96):
+    return cercle(d / 2, d / 2, n), cercle(d / 2 - t, d / 2, n)
+
+
 def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
+    """Section pleine (liste de points) ou creuse (tuple extérieur, intérieur de même nombre de points)."""
     me = bpy.data.meshes.new(nom)
     bm = bmesh.new()
-    verts = [bm.verts.new(((x + decalage_x) * MM, 0.0, z * MM)) for x, z in section_mm]
-    face = bm.faces.new(verts)
-    res = bmesh.ops.extrude_face_region(bm, geom=[face])
+    if isinstance(section_mm, tuple):
+        ext, inte = ([bm.verts.new(((x + decalage_x) * MM, 0.0, z * MM)) for x, z in boucle] for boucle in section_mm)
+        faces = [bm.faces.new((ext[i], ext[(i + 1) % len(ext)], inte[(i + 1) % len(ext)], inte[i])) for i in range(len(ext))]
+    else:
+        faces = [bm.faces.new([bm.verts.new(((x + decalage_x) * MM, 0.0, z * MM)) for x, z in section_mm])]
+    res = bmesh.ops.extrude_face_region(bm, geom=faces)
     nouveaux = [e for e in res["geom"] if isinstance(e, bmesh.types.BMVert)]
     bmesh.ops.translate(bm, verts=nouveaux, vec=(0.0, longueur_mm * MM, 0.0))
     bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
@@ -151,6 +206,19 @@ def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
 
 
 def section_de(piece):
+    t = piece["type"]
+    if t == "T":
+        return section_t(piece["h"], piece["b"], piece["t"], piece["r"], piece["r1"], piece["r2"])
+    if t in ("PLAT", "CARRE"):
+        return section_rectangle(piece["h"], piece["b"])
+    if t == "ROND":
+        return cercle(piece["h"] / 2, piece["h"] / 2)
+    if t in ("TC", "TR"):
+        return section_tube_rect(piece["h"], piece["b"], piece["t"], piece["r1"])
+    if t == "TUBE-ROND":
+        return section_tube_rond(piece["h"], piece["t"])
+    if t == "L":
+        return section_l(piece["h"], piece["b"], piece["t"], piece["r1"], piece["r2"])
     if piece["type"] == "U":
         return section_u(piece["h"], piece["b"], piece["tw"], piece["tf"], piece["r1"], piece["r2"], piece.get("pente", 8.0))
     return section_i(piece["h"], piece["b"], piece["tw"], piece["tf"], piece["r"])
@@ -395,13 +463,17 @@ def rendre(p):
 
     piece = pieces[0]
     h, b = piece["h"], piece["b"]
+    typ = piece["type"]
     off = max(h, b) * 0.28  # écart des lignes de cote, en mm
+    # cote horizontale : sous la pièce, au-dessus pour le T (largeur de l'aile), aucune pour plat, rond et tube rond
+    cote_b = None if typ in ("PLAT", "ROND", "TUBE-ROND") else ("haut" if typ == "T" else "bas")
+    z_cote_b = h + off if cote_b == "haut" else -off
     points_cadrage = list(boite_pts)
     if mode == "caracteristiques":
-        points_cadrage += [
-            ((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM),
-            (-b / 2 * MM, 0, -off * 1.6 * MM), (b / 2 * MM, 0, -off * 1.6 * MM),
-        ]
+        points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM)]
+        if cote_b:
+            z = (h + off * 1.6) if cote_b == "haut" else -off * 1.6
+            points_cadrage += [(-b / 2 * MM, 0, z * MM), (b / 2 * MM, 0, z * MM)]
         boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
     else:
         boite = tuple(p.get("boite", (0.12, 0.14, 0.88, 0.86)))
@@ -452,30 +524,40 @@ def rendre(p):
             q = world_to_camera_view(scene, cam, Vector((x * MM, y * MM, z * MM)))
             return [round(q.x * W, 2), round((1 - q.y) * H, 2)]
 
-        tw, tf = piece["tw"], piece["tf"]
-        # âme : au centre pour un I, contre le bord gauche pour un U ; épaisseur d'aile relevée à b/2 (norme)
-        x_ame = 0.0 if piece["type"] == "I" else -b / 2 + tw / 2
-        x_aile = -b * 0.3 if piece["type"] == "I" else 0.0
+        # épaisseur pincée : âme du I et du T (au centre), paroi gauche du U, de la cornière et des tubes carrés,
+        # plat entier (sur chant), paroi droite du tube rond (seul endroit où elle est verticale, à mi-hauteur)
+        tw = piece.get("tw") if typ in ("I", "U") else (b if typ == "PLAT" else piece.get("t", 0.0))
+        tf = piece.get("tf", 0.0)  # seuls I et U ont une cote d'aile tf
+        x_ame = {"I": 0.0, "T": 0.0, "PLAT": 0.0, "TUBE-ROND": b / 2 - tw / 2}.get(typ, -b / 2 + tw / 2)
+        # mi-hauteur pour I, U et tube rond ; plus haut ailleurs, où l'étiquette de la cote verticale
+        # (au milieu) cacherait la flèche sur les petites sections ; milieu de l'âme pour le T
+        z_pince = {"I": h / 2, "U": h / 2, "TUBE-ROND": h / 2, "T": (h - piece.get("t", 0.0)) / 2}.get(typ, h * 0.7)
+        # épaisseur d'aile relevée à b/2 (norme)
+        x_aile = -b * 0.3 if typ == "I" else 0.0
+        # lignes de rappel de la cote verticale : depuis le bord gauche, ou depuis le haut et le bas du cercle
+        x_rappel = 0.0 if typ in ("ROND", "TUBE-ROND") else -b / 2
+        sens = 1 if cote_b == "haut" else -1
+        z_bord_b = h if cote_b == "haut" else 0.0
         points = {
             "cote_h_bas": ecran(-b / 2 - off, 0, 0),
             "cote_h_haut": ecran(-b / 2 - off, 0, h),
-            "cote_b_gauche": ecran(-b / 2, 0, -off),
-            "cote_b_droit": ecran(b / 2, 0, -off),
-            "rappel_h_bas_debut": ecran(-b / 2 - 4, 0, 0),
+            "cote_b_gauche": ecran(-b / 2, 0, z_cote_b),
+            "cote_b_droit": ecran(b / 2, 0, z_cote_b),
+            "rappel_h_bas_debut": ecran(x_rappel - 4, 0, 0),
             "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, 0, 0),
-            "rappel_h_haut_debut": ecran(-b / 2 - 4, 0, h),
+            "rappel_h_haut_debut": ecran(x_rappel - 4, 0, h),
             "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, 0, h),
-            "rappel_b_gauche_debut": ecran(-b / 2, 0, -4),
-            "rappel_b_gauche_fin": ecran(-b / 2, 0, -off * 1.2),
-            "rappel_b_droit_debut": ecran(b / 2, 0, -4),
-            "rappel_b_droit_fin": ecran(b / 2, 0, -off * 1.2),
-            "ame_gauche": ecran(x_ame - tw / 2, 0, h * 0.5),
-            "ame_droite": ecran(x_ame + tw / 2, 0, h * 0.5),
+            "rappel_b_gauche_debut": ecran(-b / 2, 0, z_bord_b + sens * 4),
+            "rappel_b_gauche_fin": ecran(-b / 2, 0, z_bord_b + sens * off * 1.2),
+            "rappel_b_droit_debut": ecran(b / 2, 0, z_bord_b + sens * 4),
+            "rappel_b_droit_fin": ecran(b / 2, 0, z_bord_b + sens * off * 1.2),
+            "ame_gauche": ecran(x_ame - tw / 2, 0, z_pince),
+            "ame_droite": ecran(x_ame + tw / 2, 0, z_pince),
             "aile_haut_ext": ecran(x_aile, 0, h),
             "aile_haut_int": ecran(x_aile, 0, h - tf),
         }
         with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:
-            json.dump({"largeur": W, "hauteur": H, "type": piece["type"], "points": points,
+            json.dump({"largeur": W, "hauteur": H, "type": typ, "cote_b": cote_b, "points": points,
                        "duree_s": round(time.time() - t0, 1)}, f, indent=2)
     else:  # composition de la photo studio, reprise dans le texte alternatif sur le site
         with open(os.path.join(sortie, p["slug"] + ".json"), "w", encoding="utf-8") as f:

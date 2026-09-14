@@ -31,5 +31,8 @@ Règle : aucune valeur supposée affichée ; en cas de doute, demander.
 - Fait : décisions notées au carnet ; catalogue et générateur corrigés ; `questions-en-attente.md` ; composition studio multi-tailles validée à l'essai ; contrôle automatique (`controler_rendus.py`) et intégration (`integrer_visuels.py`, galerie de la fiche produit) prêts ; build OK.
 - En cours : série poutrelles (45 visuels puis 4 photos studio trois tailles), puis contrôle, vérification indépendante, intégration.
 
+- Vague 1 (suite) : données sourcées, sections et rendus test des cornières, fers T, plats, ronds, carrés et tubes ; règle « poids non affiché au-delà de 3 % d'écart » (à confirmer par le propriétaire) ; séries enchaînées derrière les poutrelles.
+
 ## Reste à faire
-- Finir la famille poutrelles (contrôle, vérificateur, intégration, build, commit), puis cornières et la suite de la vague 1 (avancement.md).
+- Poutrelles puis cornières, profils et tubes : habillage, contrôle, vérificateur indépendant, intégration, build, commit.
+- Tôles laminées à chaud et armatures (fin de la vague 1), puis vagues 2 et 3 (avancement.md).

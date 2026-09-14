@@ -1,4 +1,2690 @@
 {
+ "carre-plein-de-10x10mm-en-acier": {
+  "nom": "Carré plein de 10x10mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 10,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-12x12mm-en-acier": {
+  "nom": "Carré plein de 12x12mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 12,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-14x14mm-en-acier": {
+  "nom": "Carré plein de 14x14mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 14,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.58,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-16x16mm-en-acier": {
+  "nom": "Carré plein de 16x16mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 16,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.06,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-20x20mm-en-acier": {
+  "nom": "Carré plein de 20x20mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-6x6mm-en-acier": {
+  "nom": "Carré plein de 6x6mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 6,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.29,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "carre-plein-de-8x8mm-en-acier": {
+  "nom": "Carré plein de 8x8mm en acier",
+  "categorie": "/acier/profiles/carre-plein",
+  "famille": "carre-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "CARRE",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 8,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.51,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-100x100x10mm-acier-lac": {
+  "nom": "Cornière égale 100x100x10mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 15.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-20x20x3mm-acier-lac": {
+  "nom": "Cornière égale 20x20x3mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 20.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.5,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.9,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-25x25x3mm-acier-lac": {
+  "nom": "Cornière égale 25x25x3mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 25.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.5,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.15,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-30x30x3mm-acier-lac": {
+  "nom": "Cornière égale 30x30x3mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 30.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 2.5,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.39,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-40x40x3mm-acier-lac": {
+  "nom": "Cornière égale 40x40x3mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.88,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-40x40x4mm-acier-lac": {
+  "nom": "Cornière égale 40x40x4mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-50x50x3mm-acier-lac": {
+  "nom": "Cornière égale 50x50x3mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 7.0,
+    "source": "format voisin 50x50x4 de CE EGALE LAC.pdf (forme du modèle, non affiché)",
+    "unite": "mm",
+    "supposee": true
+   },
+   "r2": {
+    "valeur": 3.5,
+    "source": "format voisin 50x50x4 de CE EGALE LAC.pdf (forme du modèle, non affiché)",
+    "unite": "mm",
+    "supposee": true
+   },
+   "poids": {
+    "valeur": 2.53,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.33 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": [
+   "50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4)",
+   "poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "corniere-egale-50x50x5mm-acier-lac": {
+  "nom": "Cornière égale 50x50x5mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 3.5,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.86,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-60x60x6mm-acier-lac": {
+  "nom": "Cornière égale 60x60x6mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.55,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-egale-80x80x8mm-acier-lac": {
+  "nom": "Cornière égale 80x80x8mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-egale",
+  "famille": "corniere-egale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 80.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 80.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.89,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-inegale-100x50x6mm-acier-lac": {
+  "nom": "Cornière inégale 100x50x6mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-inegale",
+  "famille": "corniere-inegale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 9.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 4.5,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 7.02,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-inegale-150x100x10mm-acier-lac": {
+  "nom": "Cornière inégale 150x100x10mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-inegale",
+  "famille": "corniere-inegale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 150.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 13.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 6.5,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 19.26,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-inegale-200x100x10mm-acier-lac": {
+  "nom": "Cornière inégale 200x100x10mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-inegale",
+  "famille": "corniere-inegale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 200.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 15.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 7.5,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 23.51,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-inegale-60x40x5mm-acier-lac": {
+  "nom": "Cornière inégale 60x40x5mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-inegale",
+  "famille": "corniere-inegale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.89,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "corniere-inegale-70x50x6mm-acier-lac": {
+  "nom": "Cornière inégale 70x50x6mm Acier LAC",
+  "categorie": "/acier/profiles/corniere-inegale",
+  "famille": "corniere-inegale",
+  "valeurs": {
+   "serie": {
+    "valeur": "L",
+    "source": "nom du produit"
+   },
+   "a": {
+    "valeur": 70.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.53,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   }
+  },
+  "alertes": []
+ },
+ "fer-en-t-20x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Fer en T 20x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/fer-t",
+  "famille": "fer-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.92,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "fer-en-t-30x4mm-en-acier-lamine-a-chaud": {
+  "nom": "Fer en T 30x4mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/fer-t",
+  "famille": "fer-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.81,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "fer-en-t-40x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Fer en T 40x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/fer-t",
+  "famille": "fer-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 5.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 2.5,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "fer-en-t-50x6mm-en-acier-lamine-a-chaud": {
+  "nom": "Fer en T 50x6mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/fer-t",
+  "famille": "fer-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.55,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "fer-en-t-60x7mm-en-acier-lamine-a-chaud": {
+  "nom": "Fer en T 60x7mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/fer-t",
+  "famille": "fer-t",
+  "valeurs": {
+   "serie": {
+    "valeur": "T",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r": {
+    "valeur": 7.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 3.5,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "r2": {
+    "valeur": 2.0,
+    "source": "fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055)",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "large-plat-180x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Large plat 180x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/large-plat",
+  "famille": "large-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 180,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 14.47,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "large-plat-200x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Large plat 200x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/large-plat",
+  "famille": "large-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 200,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 16.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "large-plat-en-acier-lamine-a-chaud-160x10mm": {
+  "nom": "Large plat en acier laminé à chaud 160x10mm",
+  "categorie": "/acier/profiles/large-plat",
+  "famille": "large-plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 160,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 12.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-100x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 100x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.04,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-100x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 100x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-100x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 100x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.43,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-10x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 10x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 10,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-120x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 120x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.65,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-120x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 120x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-140x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 140x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 140,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 11.26,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-150x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 150x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 150,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 12.07,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-150x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 150x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 150,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-20x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 20x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.61,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-20x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 20x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.48,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-20x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 20x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-25x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 25x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.02,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-25x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 25x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.6,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-25x4mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 25x4mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-25x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 25x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.42,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x20mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x20mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.71,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x6mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x6mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.45,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-30x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 30x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.94,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 40x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 40x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.96,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x4mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 40x4mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.29,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 40x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.61,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-40x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 40x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.58,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-50x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 50x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.03,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-50x3mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 50x3mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-50x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 50x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.02,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-50x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 50x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-60x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 60x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.82,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-60x5mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 60x5mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.42,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-60x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 60x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.86,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-70x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 70x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "plat-80x10mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 80x10mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 7.72,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 6.28 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "plat-80x8mm-en-acier-lamine-a-chaud": {
+  "nom": "Plat 80x8mm en acier laminé à chaud",
+  "categorie": "/acier/profiles/plat",
+  "famille": "plat",
+  "valeurs": {
+   "serie": {
+    "valeur": "PLAT",
+    "source": "nom du produit"
+   },
+   "b": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.43,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 5.02 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
  "poutrelle-hea-100-en-acier": {
   "nom": "Poutrelle HEA 100 en acier",
   "categorie": "/acier/poutrelles/hea",
@@ -3000,5 +5686,3380 @@
    }
   },
   "alertes": []
+ },
+ "rond-lisse-10mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 10mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.63,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-12mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 12mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 12.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.91,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-14mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 14mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 14.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-16mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 16mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 16.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.62,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-18mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 18mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 18.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.05,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-20mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 20mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 20.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.53,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-22mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 22mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 22.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.05,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-6mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 6mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.23,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "rond-lisse-8mm-en-acier-laminee-a-chaud": {
+  "nom": "Rond lisse 8mm en acier laminée à chaud",
+  "categorie": "/acier/profiles/rond-plein",
+  "famille": "rond-plein",
+  "valeurs": {
+   "serie": {
+    "valeur": "ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 8.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.4,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "nuance": {
+    "valeur": "S235 ou S275",
+    "source": "site actuel — description de la fiche (« comme la qualité… » : formulation vague)",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Laminé à chaud",
+    "source": "site actuel — description de la fiche"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-100x100x10mm-en-acier": {
+  "nom": "Tube carré 100x100x10mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 10.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 25.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 26.22,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-100x100x3mm-en-acier": {
+  "nom": "Tube carré 100x100x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.18,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-100x100x4mm-en-acier": {
+  "nom": "Tube carré 100x100x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 11.98,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-100x100x5mm-en-acier": {
+  "nom": "Tube carré 100x100x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 14.75,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-120x120x4mm-en-acier": {
+  "nom": "Tube carré 120x120x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 14.54,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-120x120x5mm-en-acier": {
+  "nom": "Tube carré 120x120x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 17.92,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-140x140x5mm-en-acier": {
+  "nom": "Tube carré 140x140x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 140,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 140,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 21.2,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-150x150x5mm-en-acier": {
+  "nom": "Tube carré 150x150x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 150,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 150,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 22.84,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-15x15x2mm-en-acier": {
+  "nom": "Tube carré 15x15x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 15,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 15,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.83,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 0.75 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-20x20x2mm-en-acier": {
+  "nom": "Tube carré 20x20x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.15,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.07 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-250x250x6mm-en-acier": {
+  "nom": "Tube carré 250x250x6mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 250,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 6.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 12.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 46.29,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-25x25x2mm-en-acier": {
+  "nom": "Tube carré 25x25x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.39,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-25x25x3mm-en-acier": {
+  "nom": "Tube carré 25x25x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.94,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-30x30x2mm-en-acier": {
+  "nom": "Tube carré 30x30x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.72,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-30x30x3mm-en-acier": {
+  "nom": "Tube carré 30x30x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.42,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-35x35x2mm-en-acier": {
+  "nom": "Tube carré 35x35x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 35,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 35,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.12,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-40x40x2mm-en-acier": {
+  "nom": "Tube carré 40x40x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.37,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-40x40x3mm-en-acier": {
+  "nom": "Tube carré 40x40x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.38,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-40x40x4mm-en-acier": {
+  "nom": "Tube carré 40x40x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.3,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-45x45x2mm-en-acier": {
+  "nom": "Tube carré 45x45x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 45,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 45,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.76,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.67 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-45x45x3mm-en-acier": {
+  "nom": "Tube carré 45x45x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 45,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 45,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.97,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.85 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-carre-50x50x2mm-en-acier": {
+  "nom": "Tube carré 50x50x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.0,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-50x50x3mm-en-acier": {
+  "nom": "Tube carré 50x50x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.35,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-50x50x4mm-en-acier": {
+  "nom": "Tube carré 50x50x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.58,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-50x50x5mm-en-acier": {
+  "nom": "Tube carré 50x50x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.72,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-60x60x2mm-en-acier": {
+  "nom": "Tube carré 60x60x2mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.65,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-60x60x3mm-en-acier": {
+  "nom": "Tube carré 60x60x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.32,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-60x60x4mm-en-acier": {
+  "nom": "Tube carré 60x60x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.87,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-60x60x5mm-en-acier": {
+  "nom": "Tube carré 60x60x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.33,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-70x70x3mm-en-acier": {
+  "nom": "Tube carré 70x70x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.28,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-70x70x4mm-en-acier": {
+  "nom": "Tube carré 70x70x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.16,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-70x70x5mm-en-acier": {
+  "nom": "Tube carré 70x70x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 70,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.93,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-80x80x3mm-en-acier": {
+  "nom": "Tube carré 80x80x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 7.24,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-80x80x4mm-en-acier": {
+  "nom": "Tube carré 80x80x4mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.44,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-80x80x5mm-en-acier": {
+  "nom": "Tube carré 80x80x5mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 11.57,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-carre-90x90x3mm-en-acier": {
+  "nom": "Tube carré 90x90x3mm en acier",
+  "categorie": "/acier/tubes/tube-carre",
+  "famille": "tube-carre",
+  "valeurs": {
+   "serie": {
+    "valeur": "TC",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 90,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 90,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.2,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-100x50x3mm-en-acier": {
+  "nom": "Tube rectangle 100x50x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 7.05,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 6.73 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-100x50x4mm-en-acier": {
+  "nom": "Tube rectangle 100x50x4mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.99,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-120x60x3mm-en-acier": {
+  "nom": "Tube rectangle 120x60x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.52,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 8.17 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-120x60x4mm-en-acier": {
+  "nom": "Tube rectangle 120x60x4mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 120,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 10.96,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-200x100x5mm-en-acier": {
+  "nom": "Tube rectangle 200x100x5mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 200,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 100,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 5.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 10.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 23.45,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 22.68 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-30x15x2mm-en-acier": {
+  "nom": "Tube rectangle 30x15x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 15,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.31,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.23 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-30x20x2mm-en-acier": {
+  "nom": "Tube rectangle 30x20x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.47,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.39 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-40x20x2mm-en-acier": {
+  "nom": "Tube rectangle 40x20x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.79,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.71 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-40x20x3mm-en-acier": {
+  "nom": "Tube rectangle 40x20x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.59,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.41 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-40x30x2mm-en-acier": {
+  "nom": "Tube rectangle 40x30x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.12,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-50x20x2mm-en-acier": {
+  "nom": "Tube rectangle 50x20x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 20,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.12,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-50x25x2mm-en-acier": {
+  "nom": "Tube rectangle 50x25x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.3,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.19 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-50x30x2mm-en-acier": {
+  "nom": "Tube rectangle 50x30x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.44,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.35 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-50x30x3mm-en-acier": {
+  "nom": "Tube rectangle 50x30x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 50,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.61,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.37 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-60x30x2mm-en-acier": {
+  "nom": "Tube rectangle 60x30x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.76,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.67 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-60x30x3mm-en-acier": {
+  "nom": "Tube rectangle 60x30x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 30,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.03,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.85 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-60x40x2mm-en-acier": {
+  "nom": "Tube rectangle 60x40x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.08,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.99 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-60x40x3mm-en-acier": {
+  "nom": "Tube rectangle 60x40x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 60,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.59,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 4.33 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-80x40x2mm-en-acier": {
+  "nom": "Tube rectangle 80x40x2mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 4.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.73,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rectangle-80x40x3mm-en-acier": {
+  "nom": "Tube rectangle 80x40x3mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 6.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.57,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 5.29 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rectangle-80x40x4mm-en-acier": {
+  "nom": "Tube rectangle 80x40x4mm en acier",
+  "categorie": "/acier/tubes/tube-rectangulaire",
+  "famille": "tube-rectangulaire",
+  "valeurs": {
+   "serie": {
+    "valeur": "TR",
+    "source": "nom du produit"
+   },
+   "h": {
+    "valeur": 80,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "b": {
+    "valeur": 40,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 4.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "r1": {
+    "valeur": 8.0,
+    "source": "fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 7.07,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 6.84 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "procede": {
+    "valeur": "Formé à froid",
+    "source": "site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »)"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rond-101-6x3-65mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 101,6x3,65mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 101.6,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.65,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 8.7,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-114-3x3-65mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 114,3x3,65mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 114.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.65,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 9.9,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "cote A du site (114,40 mm) ≠ d (114.3 mm)"
+  ]
+ },
+ "tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 17,2(18)x2mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 17.2,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.77,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-21-3x2mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 21,3x2mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 21.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 0.98,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 26,9x2,5mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 26.9,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.41,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.50 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché"
+  ]
+ },
+ "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 33,7x2,5mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 33.7,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 1.97,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 42,4x2,5mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 42.4,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 2.5,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 2.52,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-48-3x3mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 48,3x3mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 48.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 3.33,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-60-3x3mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 60,3x3mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 60.3,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 4.21,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-76-1x3-25mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 76,1x3,25mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 76.1,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.25,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 5.8,
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": []
+ },
+ "tube-rond-88-9x3-00mm-en-acier-brut-serie-legere": {
+  "nom": "Tube rond 88,9x3,00mm en acier brut série légère",
+  "categorie": "/acier/tubes/tube-rond",
+  "famille": "tube-rond",
+  "valeurs": {
+   "serie": {
+    "valeur": "TUBE-ROND",
+    "source": "nom du produit"
+   },
+   "d": {
+    "valeur": 88.9,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "t": {
+    "valeur": 3.0,
+    "source": "nom du produit",
+    "unite": "mm"
+   },
+   "poids": {
+    "valeur": 6.81,
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 6.36 kg/m, non affiché (questions en attente)",
+    "unite": "kg/m",
+    "supposee": true
+   },
+   "finition": {
+    "valeur": "BRUT",
+    "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
+    "supposee": true
+   }
+  },
+  "alertes": [
+   "poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché"
+  ]
  }
 }

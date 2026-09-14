@@ -23,6 +23,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
+from habiller import titre_image
+
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
 TRAVAIL = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "SiteAciersGrosjean" / "rendu3d"
@@ -30,12 +32,12 @@ FINAL, CONTROLE = TRAVAIL / "final", TRAVAIL / "controle"
 LARGEUR, HAUTEUR, WEBP_MAX_KO = 1600, 1200, 200
 COLONNE_FICHE = 0.655  # debut de la fiche technique (habiller.py)
 
-# libelles de la fiche de l'image -> cle des donnees
-FICHE = {"Hauteur": "h", "Largeur d'aile": "b", "Épaisseur d'âme": "tw", "Épaisseur d'aile": "tf", "Poids": "poids",
-         "Nuance": "nuance", "Norme": "norme", "Procédé": "procede", "Finition": "finition"}
-# libelles des specifications de la page produit -> cle des donnees
-PAGE = {"Hauteur (h)": "h", "Largeur d'aile (b)": "b", "Épaisseur d'âme (tw)": "tw", "Épaisseur d'aile (tf)": "tf",
-        "Nuance": "nuance", "Norme": "norme"}
+# libelles des specifications de la page produit -> cles des donnees (plusieurs cles : « 100 × 50 mm »)
+PAGE = {"Hauteur (h)": ["h"], "Largeur d'aile (b)": ["b"], "Épaisseur d'âme (tw)": ["tw"], "Épaisseur d'aile (tf)": ["tf"],
+        "Ailes": ["a", "b"], "Section": ["h", "b"], "Largeur": ["b"], "Épaisseur": ["t"], "Diamètre": ["d"],
+        "Diamètre extérieur": ["d"], "Nuance": ["nuance"], "Norme": ["norme"]}
+PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}}
+COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "nuance", "norme"}
 
 
 def nombre(texte):
@@ -159,42 +161,54 @@ def controler(famille, produits, pages):
             continue
         c = json.loads(ctrl.read_text(encoding="utf-8"))
         ecarts += [f"{slug} : {pb}" for pb in c["problemes"]]
-        titre = re.sub(r"\s+en acier$", "", p["nom"].strip())
+        titre = titre_image(p["nom"])
         if c["titre"] != titre:
             ecarts.append(f"{slug} : titre « {c['titre']} » au lieu de « {titre} »")
         valeurs = p["valeurs"]
-        for label, ecrit in c["fiche"].items():
-            d = valeurs.get(FICHE.get(label, ""))
+        fiche = {label: ecrit for label, _, _, ecrit in c["fiche"]}
+        for label, lettre, cle, ecrit in c["fiche"]:
+            d = valeurs.get(cle)
             if not d:
                 ecarts.append(f"{slug} : « {label} {ecrit} » ecrit sans donnee sourcee")
             elif d.get("supposee"):
                 ecarts.append(f"{slug} : « {label} » affiche une valeur supposee")
-            elif label == "Finition":
+            elif cle == "finition":
                 if not ecrit.startswith(str(d["valeur"])):
                     ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
             elif not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
-        for lettre, ecrit in c["pastilles"]:
-            d = valeurs.get(lettre)
-            if not d or not meme_valeur(d["valeur"], ecrit):
+        for lettre, cle, ecrit in c["pastilles"]:
+            d = valeurs.get(cle)
+            if not d or d.get("supposee") or not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : pastille {lettre} « {ecrit} » ≠ donnee {d and d['valeur']}")
         # l'image dit la meme chose que la page
         page = pages.get(slug)
         if page is None:
             ecarts.append(f"{slug} : fiche absente de lib/catalogue.ts")
             continue
-        for libelle, cle in PAGE.items():
-            sur_image = cle in valeurs and not valeurs[cle].get("supposee")
-            if libelle in page and sur_image and not meme_valeur(valeurs[cle]["valeur"], page[libelle]):
-                ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image « {valeurs[cle]['valeur']} »")
-            elif libelle in page and cle in ("nuance", "norme") and not sur_image:
-                ecarts.append(f"{slug} : {libelle} « {page[libelle]} » sur la page, absente de l'image")
-            elif sur_image and libelle not in page:
-                ecarts.append(f"{slug} : {libelle} sur l'image, absente de la page")
-        if "Poids" in c["fiche"] and not meme_valeur(page.get("Poids"), c["fiche"]["Poids"]):
-            ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {c['fiche']['Poids']}")
-        if "Finition" in c["fiche"] and not c["fiche"]["Finition"].startswith(str(page.get("Finition"))):
-            ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {c['fiche']['Finition']}")
+        affiche = {cle for _, _, cle, _ in c["fiche"]} | {cle for _, cle, _ in c["pastilles"]}
+        couvertes = set()
+        serie = valeurs.get("serie", {}).get("valeur")
+        for libelle, cles in {**PAGE, **PAGE_PAR_SERIE.get(serie, {})}.items():
+            if libelle not in page:
+                continue
+            couvertes.update(cles)
+            if cles in (["nuance"], ["norme"]):
+                if cles[0] not in affiche:
+                    ecarts.append(f"{slug} : {libelle} « {page[libelle]} » sur la page, absente de l'image")
+                elif valeurs[cles[0]]["valeur"] != page[libelle]:
+                    ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image « {valeurs[cles[0]]['valeur']} »")
+                continue
+            nombres = [float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", str(page[libelle]))]
+            attendus = [valeurs[k]["valeur"] for k in cles if k in valeurs]
+            if len(nombres) != len(attendus) or any(abs(n - a) > 1e-6 for n, a in zip(nombres, attendus)):
+                ecarts.append(f"{slug} : {libelle} page « {page[libelle]} » ≠ image {attendus}")
+        for cle in sorted(affiche & COTES_AFFICHABLES - couvertes):
+            ecarts.append(f"{slug} : « {cle} » sur l'image, absent de la page")
+        if "Poids" in fiche and not meme_valeur(page.get("Poids"), fiche["Poids"]):
+            ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
+        if "Finition" in fiche and not fiche["Finition"].startswith(str(page.get("Finition"))):
+            ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
     return ecarts, planches(famille, images) if images else []
 
 

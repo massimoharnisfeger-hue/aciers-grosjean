@@ -19,14 +19,33 @@ ICI = Path(__file__).resolve().parent
 TEINTE_GPP = [135, 66, 50]
 
 
-def piece(p, longueur):
+def piece(p, longueur, ratio):
+    """Pièce pour rendu_profil.py. Tronçon proportionné à la section (ratio × plus grande cote, plafonné à
+    `longueur`) : une petite cornière reste lisible ; les poutrelles (cote ≥ 80 mm) gardent 500 mm."""
     v = {k: d["valeur"] for k, d in p["valeurs"].items()}
-    type_ = "U" if v.get("serie") == "UPN" else "I"
-    out = {"type": type_, "h": v["h"], "b": v["b"], "tw": v["tw"], "tf": v["tf"], "longueur": longueur}
-    if type_ == "U":
-        out.update({"r1": v["r1"], "r2": v["r2"], "pente": v.get("pente_aile", 8)})
+    serie = v.get("serie")
+    if serie == "L":
+        out = {"type": "L", "h": v["a"], "b": v["b"], "t": v["t"], "r1": v["r1"], "r2": v["r2"]}
+    elif serie == "T":
+        out = {"type": "T", "h": v["h"], "b": v["b"], "t": v["t"], "r": v["r"], "r1": v["r1"], "r2": v["r2"]}
+    elif serie == "PLAT":  # posé sur chant : la largeur du plat est la hauteur de la section
+        out = {"type": "PLAT", "h": v["b"], "b": v["t"]}
+    elif serie == "ROND":
+        out = {"type": "ROND", "h": v["d"], "b": v["d"]}
+    elif serie == "CARRE":
+        out = {"type": "CARRE", "h": v["a"], "b": v["a"]}
+    elif serie in ("TC", "TR"):
+        out = {"type": serie, "h": v["h"], "b": v["b"], "t": v["t"], "r1": v["r1"]}
+    elif serie == "TUBE-ROND":
+        out = {"type": "TUBE-ROND", "h": v["d"], "b": v["d"], "t": v["t"]}
     else:
-        out["r"] = v["r"]
+        type_ = "U" if v.get("serie") == "UPN" else "I"
+        out = {"type": type_, "h": v["h"], "b": v["b"], "tw": v["tw"], "tf": v["tf"]}
+        if type_ == "U":
+            out.update({"r1": v["r1"], "r2": v["r2"], "pente": v.get("pente_aile", 8)})
+        else:
+            out["r"] = v["r"]
+    out["longueur"] = min(longueur, round(ratio * max(out["h"], out["b"])))
     return out, v.get("finition", "BRUT")
 
 
@@ -46,15 +65,18 @@ def main():
               "largeur": largeur, "hauteur": largeur * 3 // 4, "teinte_gpp": TEINTE_GPP}
     if commande == "car":
         for slug in reste:
-            pc, finition = piece(produits[slug], 500)
+            pc, finition = piece(produits[slug], 500, 6.25)
             liste.append({**commun, "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
         pieces, finitions = [], set()
         for slug in slugs:
-            pc, finition = piece(produits[slug], 900)
+            pc, finition = piece(produits[slug], 900, 1000)
             pieces.append(pc)
             finitions.add(finition)
+        # même longueur pour toutes les pièces de la photo, proportionnée à la plus grande section
+        for pc in pieces:
+            pc["longueur"] = min(900, round(7 * max(max(q["h"], q["b"]) for q in pieces)))
         if len(finitions) > 1:
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
         liste.append({**commun, "slug": nom, "mode": "studio", "pieces": pieces, "finition": finitions.pop(),

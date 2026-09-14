@@ -1,42 +1,46 @@
 # Avancement — visuels 3D des fiches produits
 
-Mis à jour le 14/09/2026 (séance https://claude.ai/code/session_011Va2LRc8Chevt4WRj964Em).
+Mis à jour le 14/09/2026 vers 17 h (séance https://claude.ai/code/session_011Va2LRc8Chevt4WRj964Em).
 Règles : `CLAUDE.md` (section Visuels 3D) et `_DOCS/rendus-3d/lecons.md`. Brief : `_DOCS/BRIEF-RENDUS-3D.md`.
+Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : valeur non affichée, question notée).
 
 ## Où on en est
-- **Mode automatique (CLAUDE.md)** : les familles s'enchaînent, le propriétaire est informé sans attente ; s'il répond, appliquer ses corrections avant d'aller plus loin.
-- **Poutrelles : série lancée le 14/09** (`serie-poutrelles.json`, 45 caractéristiques + 4 studio une barre, 32 échantillons, `-t 4`, ~2 h à 3 h). Rendu test et questions envoyés au propriétaire. Ensuite : habillage, contrôle de chaque image, vérification indépendante (`verificateur-rendus`), intégration `public/images/produits/acier/poutrelles/<serie>/`, inventaire, build, commit.
-- Les questions 1 à 4 ne bloquent pas les visuels (aucune valeur litigieuse n'y est affichée) : la 1 choisit la photo studio à intégrer (une barre par défaut, re-rendu 4 × 2 min si « 3 tailles »), les 2 à 4 portent sur les fiches du catalogue.
-- Questions 5 et 6 : bloquent seulement les poteaux de clôture (vague 3).
-- Famille suivante : cornières (vague 1) — données à sourcer pendant que la série tourne.
+- **Mode automatique (CLAUDE.md).** Décisions du propriétaire du 14/09 appliquées (carnet de leçons).
+- **Poutrelles** : série en cours dans Blender (`serie-poutrelles.json`, 45 visuels) ; les 4 photos studio « trois tailles » (`serie-poutrelles-studio.json`) partent automatiquement ensuite. Puis : `habiller.py` sur tout, `controler_rendus.py poutrelle-ipe poutrelle-hea poutrelle-heb poutrelle-upn`, vérificateur indépendant, `integrer_visuels.py --verdict CONFORME …`, build, commit.
+- **Cornières** : test conforme (pince d'épaisseur remontée à 70 % après défaut). Série `serie-cornieres.json` (15 + 2 studio) en file d'attente derrière les poutrelles.
+- **Fers T, plats, larges plats, ronds, carrés, tubes** : données sourcées faites ; sections ajoutées au rendu ; essai en cours (`essais/essai-sections.json`).
+- Ensuite : tôles laminées à chaud, armatures (ronds à béton, treillis) → fin de la vague 1.
 
 ## Étapes communes
-- [x] 0. Générateur corrigé : profils U alu (épaisseur 2 mm, poids recalculé), tôles alu et inox sans oxycoupage.
+- [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.
 - [x] 1. Références visuelles du site actuel : `references.csv`, `references-groupes.csv`, `references-recap.md`.
-- [ ] 2. Données sourcées : poutrelles faites (`scripts/rendu-3d/donnees/produits.json`, 45 fiches, 0 alerte) ; autres familles à ajouter dans `donnees_produits.py`.
+- [ ] 2. Données sourcées (`donnees_produits.py`) : poutrelles, cornières, fers T, plats, pleins, tubes faits (189 fiches) ; tôles et armatures à faire.
 
-## Familles
-| Famille | Fiches | Données | Test | Validation | Série | Contrôle | Site |
+## Familles (vague 1)
+| Famille | Fiches | Données | Test | Série | Contrôle | Vérif. | Site |
 |---|---|---|---|---|---|---|---|
-| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | informé 14/09 | en cours | — | — |
-| Cornières, fers T, plats, ronds, carrés, tubes, tôles laminées à chaud, armatures (fin de vague 1) | 208 | — | — | — | — | — | — |
-| Vague 2 : tôles à froid, galvanisées, corten, larmées, perforées ; alu ; inox | 145 | — | — | — | — | — | — |
-| Vague 3 : clôtures, bordures, caillebotis, tôles profilées, panneaux isolés, tasseaux | 73 | — | — | — | — | — | — |
-| Visserie | 6 | — | — | — | — | — | — |
+| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | en cours | — | — | — |
+| Cornières égales, inégales | 15 | fait | fait | en attente | — | — | — |
+| Fers T | 5 | fait | en cours | — | — | — | — |
+| Plats, larges plats | 40 | fait | en cours | — | — | — | — |
+| Ronds lisses, carrés pleins | 16 | fait | en cours | — | — | — | — |
+| Tubes carrés, rectangulaires, ronds | 68 | fait | en cours | — | — | — | — |
+| Tôles laminées à chaud (+ quarto) | 37 | — | — | — | — | — | — |
+| Armatures : ronds à béton, treillis | 28 | — | — | — | — | — | — |
 
-## Questions ouvertes (posées au propriétaire le 14/09)
-1. Photo studio : une barre ou trois tailles côte à côte ? (Variante trois tailles : écarter davantage les barres, elles se masquent un peu.)
-2. Fiches poutrelles : le générateur affiche « Nuance S235JR — EN 10025-2 » et « Longueur standard 6 m ou 12 m » sur les 45 fiches ; le site actuel dit S275 (IPE), S275/S355 (HEB), S235 ou S275 (UPN), rien (HEA), longueurs proposées 1 à 6 m, « jusqu'à 15 m suivant la section », et « 3 à 12 mètres » dans le texte UPN.
-3. Site actuel, « norme 10025 » : afficher « EN 10025 » ?
-4. UPN : la description donne le poids du tableau fournisseur (25,76 kg/m pour l'UPN 200), la fiche un poids plus élevé de 0,1 à 0,8 % (25,91). Les deux apparaissent sur la même page.
-5. Poteau « CLOGRIFF 64 – 2M50 – VERT RAL 7016 » : vert RAL 6005 ou gris RAL 7016 ?
-6. Poteaux Cloplus 40 : l'image du fabricant porte « (ALU) » : aluminium ou acier ?
+| Autres vagues | Fiches | État |
+|---|---|---|
+| Vague 2 : tôles à froid, galvanisées, corten, larmées, perforées ; alu ; inox | 145 | — |
+| Vague 3 : clôtures, bordures, caillebotis, tôles profilées, panneaux isolés, tasseaux | 73 | — |
+| Visserie | 6 | — |
 
 ## Reprendre le rendu
-Dossier de travail hors OneDrive : `%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\` (paramètres `test-poutrelles.json`, journal `test-poutrelles.log`, images `final\`).
-1. `python scripts/rendu-3d/donnees_produits.py` (données sourcées)
-2. `python scripts/rendu-3d/preparer_rendus.py <params.json> car <slug...>` puis `--ajouter <params.json> studio <nom> <slug...>`
-3. `blender -b --factory-startup -P scripts/rendu-3d/rendu_profil.py -- <params.json>` (en arrière-plan ; `-t 4` si le PC sert en journée)
-4. `python scripts/rendu-3d/habiller.py <slug>` et `python scripts/rendu-3d/habiller.py --studio <nom>`
+Atelier hors OneDrive : `%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\` — `final\` (production), `essais\`, `controle\` (planches), journaux `serie-*.log`.
+1. `python scripts/rendu-3d/donnees_produits.py [famille…]` (données sourcées ; familles : poutrelles, cornieres, fers-t, plats, pleins, tubes)
+2. `python scripts/rendu-3d/preparer_rendus.py <params.json> car <slug…>` puis `--ajouter <params.json> studio studio-<famille> <3 slugs>` (`--essai 1600` pour un test)
+3. `blender -b --factory-startup -t 4 -P scripts/rendu-3d/rendu_profil.py -- <params.json>` en arrière-plan
+4. `python scripts/rendu-3d/habiller.py <slug>` et `--studio studio-<famille>` (`--essai` pour les tests)
+5. `python scripts/rendu-3d/controler_rendus.py <famille…>` → planches dans `controle\`
+6. Vérificateur indépendant (`.claude/agents/verificateur-rendus.md`), puis `python scripts/rendu-3d/integrer_visuels.py --verdict CONFORME <famille…>`
 
-Durée mesurée (1600 × 1200, 32 échantillons) : 1 min 50 à 2 min 50 par image. Série poutrelles (45 visuels + 4 studio) : environ 2 h.
+Durée mesurée (1600 × 1200, 32 échantillons, `-t 4`, PC utilisé en parallèle) : 2 min 50 à 3 min 30 par image.

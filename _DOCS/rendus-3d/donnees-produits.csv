@@ -1,4 +1,457 @@
 ﻿slug;nom;famille;donnee;valeur;unite;source;supposee;alertes
+carre-plein-de-10x10mm-en-acier;Carré plein de 10x10mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-10x10mm-en-acier;Carré plein de 10x10mm en acier;carre-plein;a;10;mm;nom du produit;;
+carre-plein-de-10x10mm-en-acier;Carré plein de 10x10mm en acier;carre-plein;poids;0,8;kg/m;site actuel — fiche produit;;
+carre-plein-de-10x10mm-en-acier;Carré plein de 10x10mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-12x12mm-en-acier;Carré plein de 12x12mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-12x12mm-en-acier;Carré plein de 12x12mm en acier;carre-plein;a;12;mm;nom du produit;;
+carre-plein-de-12x12mm-en-acier;Carré plein de 12x12mm en acier;carre-plein;poids;1,16;kg/m;site actuel — fiche produit;;
+carre-plein-de-12x12mm-en-acier;Carré plein de 12x12mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-14x14mm-en-acier;Carré plein de 14x14mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-14x14mm-en-acier;Carré plein de 14x14mm en acier;carre-plein;a;14;mm;nom du produit;;
+carre-plein-de-14x14mm-en-acier;Carré plein de 14x14mm en acier;carre-plein;poids;1,58;kg/m;site actuel — fiche produit;;
+carre-plein-de-14x14mm-en-acier;Carré plein de 14x14mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-16x16mm-en-acier;Carré plein de 16x16mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-16x16mm-en-acier;Carré plein de 16x16mm en acier;carre-plein;a;16;mm;nom du produit;;
+carre-plein-de-16x16mm-en-acier;Carré plein de 16x16mm en acier;carre-plein;poids;2,06;kg/m;site actuel — fiche produit;;
+carre-plein-de-16x16mm-en-acier;Carré plein de 16x16mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-20x20mm-en-acier;Carré plein de 20x20mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-20x20mm-en-acier;Carré plein de 20x20mm en acier;carre-plein;a;20;mm;nom du produit;;
+carre-plein-de-20x20mm-en-acier;Carré plein de 20x20mm en acier;carre-plein;poids;3,22;kg/m;site actuel — fiche produit;;
+carre-plein-de-20x20mm-en-acier;Carré plein de 20x20mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-6x6mm-en-acier;Carré plein de 6x6mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-6x6mm-en-acier;Carré plein de 6x6mm en acier;carre-plein;a;6;mm;nom du produit;;
+carre-plein-de-6x6mm-en-acier;Carré plein de 6x6mm en acier;carre-plein;poids;0,29;kg/m;site actuel — fiche produit;;
+carre-plein-de-6x6mm-en-acier;Carré plein de 6x6mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+carre-plein-de-8x8mm-en-acier;Carré plein de 8x8mm en acier;carre-plein;serie;CARRE;;nom du produit;;
+carre-plein-de-8x8mm-en-acier;Carré plein de 8x8mm en acier;carre-plein;a;8;mm;nom du produit;;
+carre-plein-de-8x8mm-en-acier;Carré plein de 8x8mm en acier;carre-plein;poids;0,51;kg/m;site actuel — fiche produit;;
+carre-plein-de-8x8mm-en-acier;Carré plein de 8x8mm en acier;carre-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;a;100;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;b;100;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;t;10;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;r1;12;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;r2;6;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;poids;15,38;kg/m;site actuel — fiche produit;;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-100x100x10mm-acier-lac;Cornière égale 100x100x10mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;a;20;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;b;20;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;t;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;r1;3,5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;r2;1,8;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;poids;0,9;kg/m;site actuel — fiche produit;;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-20x20x3mm-acier-lac;Cornière égale 20x20x3mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;a;25;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;b;25;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;t;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;r1;3,5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;r2;1,8;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;poids;1,15;kg/m;site actuel — fiche produit;;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-25x25x3mm-acier-lac;Cornière égale 25x25x3mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;a;30;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;b;30;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;t;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;r1;5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;r2;2,5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;poids;1,39;kg/m;site actuel — fiche produit;;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-30x30x3mm-acier-lac;Cornière égale 30x30x3mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;a;40;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;b;40;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;t;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;r1;6;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;r2;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;poids;1,88;kg/m;site actuel — fiche produit;;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-40x40x3mm-acier-lac;Cornière égale 40x40x3mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;a;40;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;b;40;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;t;4;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;r1;6;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;r2;3;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;poids;2,48;kg/m;site actuel — fiche produit;;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-40x40x4mm-acier-lac;Cornière égale 40x40x4mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;serie;L;;nom du produit;;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;a;50;mm;nom du produit;;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;b;50;mm;nom du produit;;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;t;3;mm;nom du produit;;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;r1;7;mm;format voisin 50x50x4 de CE EGALE LAC.pdf (forme du modèle, non affiché);oui;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;r2;3,5;mm;format voisin 50x50x4 de CE EGALE LAC.pdf (forme du modèle, non affiché);oui;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;poids;2,53;kg/m;site actuel — fiche produit — écart > 3 % avec le poids théorique 2.33 kg/m, non affiché (questions en attente);oui;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x3mm-acier-lac;Cornière égale 50x50x3mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;50x50x3 absent du tableau fournisseur : rayons supposés (50x50x4) | poids site 2.53 kg/m ≠ théorique 2.33 kg/m (écart > 3 %) : non affiché
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;a;50;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;b;50;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;t;5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;r1;7;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;r2;3,5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;poids;3,86;kg/m;site actuel — fiche produit;;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-50x50x5mm-acier-lac;Cornière égale 50x50x5mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;a;60;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;b;60;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;t;6;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;r1;8;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;r2;4;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;poids;5,55;kg/m;site actuel — fiche produit;;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-60x60x6mm-acier-lac;Cornière égale 60x60x6mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;serie;L;;nom du produit;;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;a;80;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;b;80;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;t;8;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;r1;10;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;r2;5;mm;fiche fournisseur publiée sur le site — CE EGALE LAC.pdf (EN 10056);;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;poids;9,89;kg/m;site actuel — fiche produit;;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-egale-80x80x8mm-acier-lac;Cornière égale 80x80x8mm Acier LAC;corniere-egale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;serie;L;;nom du produit;;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;a;100;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;b;50;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;t;6;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;r1;9;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;r2;4,5;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;poids;7,02;kg/m;site actuel — fiche produit;;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-inegale-100x50x6mm-acier-lac;Cornière inégale 100x50x6mm Acier LAC;corniere-inegale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;serie;L;;nom du produit;;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;a;150;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;b;100;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;t;10;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;r1;13;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;r2;6,5;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;poids;19,26;kg/m;site actuel — fiche produit;;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-inegale-150x100x10mm-acier-lac;Cornière inégale 150x100x10mm Acier LAC;corniere-inegale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;serie;L;;nom du produit;;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;a;200;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;b;100;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;t;10;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;r1;15;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;r2;7,5;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;poids;23,51;kg/m;site actuel — fiche produit;;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-inegale-200x100x10mm-acier-lac;Cornière inégale 200x100x10mm Acier LAC;corniere-inegale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;serie;L;;nom du produit;;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;a;60;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;b;40;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;t;5;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;r1;6;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;r2;3;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;poids;3,89;kg/m;site actuel — fiche produit;;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-inegale-60x40x5mm-acier-lac;Cornière inégale 60x40x5mm Acier LAC;corniere-inegale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;serie;L;;nom du produit;;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;a;70;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;b;50;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;t;6;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;r1;6;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;r2;3;mm;fiche fournisseur publiée sur le site — CI-3.pdf (EN 10056);;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;poids;5,53;kg/m;site actuel — fiche produit;;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;finition;BRUT;;vraie photo du site actuel (cornière inégale, groupe G020) — non affichée : la fiche du site ne précise pas la finition;oui;
+corniere-inegale-70x50x6mm-acier-lac;Cornière inégale 70x50x6mm Acier LAC;corniere-inegale;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;serie;T;;nom du produit;;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;h;20;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;b;20;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;t;3;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;r;3;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;r1;1,5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;r2;1;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;poids;0,92;kg/m;site actuel — fiche produit;;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-20x3mm-en-acier-lamine-a-chaud;Fer en T 20x3mm en acier laminé à chaud;fer-t;finition;BRUT;;vraie photo du site actuel (fer T, groupe G023) — non affichée;oui;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;serie;T;;nom du produit;;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;h;30;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;b;30;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;t;4;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;r;4;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;r1;2;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;r2;1;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;poids;1,81;kg/m;site actuel — fiche produit;;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-30x4mm-en-acier-lamine-a-chaud;Fer en T 30x4mm en acier laminé à chaud;fer-t;finition;BRUT;;vraie photo du site actuel (fer T, groupe G023) — non affichée;oui;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;serie;T;;nom du produit;;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;h;40;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;b;40;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;t;5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;r;5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;r1;2,5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;r2;1;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;poids;3,03;kg/m;site actuel — fiche produit;;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-40x5mm-en-acier-lamine-a-chaud;Fer en T 40x5mm en acier laminé à chaud;fer-t;finition;BRUT;;vraie photo du site actuel (fer T, groupe G023) — non affichée;oui;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;serie;T;;nom du produit;;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;h;50;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;b;50;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;t;6;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;r;6;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;r1;3;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;r2;1,5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;poids;4,55;kg/m;site actuel — fiche produit;;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-50x6mm-en-acier-lamine-a-chaud;Fer en T 50x6mm en acier laminé à chaud;fer-t;finition;BRUT;;vraie photo du site actuel (fer T, groupe G023) — non affichée;oui;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;serie;T;;nom du produit;;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;h;60;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;b;60;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;t;7;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;r;7;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;r1;3,5;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;r2;2;mm;fiche fournisseur publiée sur le site — FER-T ACIERS GROSJEAN 4(1).pdf (EN 10055);;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;poids;6,38;kg/m;site actuel — fiche produit;;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;procede;Laminé à chaud;;site actuel — description de la fiche;;
+fer-en-t-60x7mm-en-acier-lamine-a-chaud;Fer en T 60x7mm en acier laminé à chaud;fer-t;finition;BRUT;;vraie photo du site actuel (fer T, groupe G023) — non affichée;oui;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;serie;PLAT;;nom du produit;;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;b;180;mm;nom du produit;;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;t;10;mm;nom du produit;;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;poids;14,47;kg/m;site actuel — fiche produit;;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+large-plat-180x10mm-en-acier-lamine-a-chaud;Large plat 180x10mm en acier laminé à chaud;large-plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;serie;PLAT;;nom du produit;;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;b;200;mm;nom du produit;;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;t;10;mm;nom du produit;;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;poids;16;kg/m;site actuel — fiche produit;;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+large-plat-200x10mm-en-acier-lamine-a-chaud;Large plat 200x10mm en acier laminé à chaud;large-plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;serie;PLAT;;nom du produit;;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;b;160;mm;nom du produit;;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;t;10;mm;nom du produit;;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;poids;12,8;kg/m;site actuel — fiche produit;;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+large-plat-en-acier-lamine-a-chaud-160x10mm;Large plat en acier laminé à chaud 160x10mm;large-plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;b;100;mm;nom du produit;;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;poids;8,04;kg/m;site actuel — fiche produit;;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-100x10mm-en-acier-lamine-a-chaud;Plat 100x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;b;100;mm;nom du produit;;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;poids;4,03;kg/m;site actuel — fiche produit;;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-100x5mm-en-acier-lamine-a-chaud;Plat 100x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;b;100;mm;nom du produit;;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;poids;6,43;kg/m;site actuel — fiche produit;;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-100x8mm-en-acier-lamine-a-chaud;Plat 100x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;b;10;mm;nom du produit;;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;poids;0,24;kg/m;site actuel — fiche produit;;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-10x3mm-en-acier-lamine-a-chaud;Plat 10x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;b;120;mm;nom du produit;;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;poids;9,65;kg/m;site actuel — fiche produit;;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-120x10mm-en-acier-lamine-a-chaud;Plat 120x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;b;120;mm;nom du produit;;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;poids;4,82;kg/m;site actuel — fiche produit;;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-120x5mm-en-acier-lamine-a-chaud;Plat 120x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;b;140;mm;nom du produit;;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;poids;11,26;kg/m;site actuel — fiche produit;;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-140x10mm-en-acier-lamine-a-chaud;Plat 140x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;b;150;mm;nom du produit;;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;poids;12,07;kg/m;site actuel — fiche produit;;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-150x10mm-en-acier-lamine-a-chaud;Plat 150x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;b;150;mm;nom du produit;;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;poids;6,03;kg/m;site actuel — fiche produit;;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-150x5mm-en-acier-lamine-a-chaud;Plat 150x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;b;20;mm;nom du produit;;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;poids;1,61;kg/m;site actuel — fiche produit;;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-20x10mm-en-acier-lamine-a-chaud;Plat 20x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;b;20;mm;nom du produit;;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;poids;0,48;kg/m;site actuel — fiche produit;;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-20x3mm-en-acier-lamine-a-chaud;Plat 20x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;b;20;mm;nom du produit;;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;poids;0,8;kg/m;site actuel — fiche produit;;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-20x5mm-en-acier-lamine-a-chaud;Plat 20x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;b;25;mm;nom du produit;;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;poids;2,02;kg/m;site actuel — fiche produit;;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-25x10mm-en-acier-lamine-a-chaud;Plat 25x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;b;25;mm;nom du produit;;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;poids;0,6;kg/m;site actuel — fiche produit;;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-25x3mm-en-acier-lamine-a-chaud;Plat 25x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;b;25;mm;nom du produit;;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;t;4;mm;nom du produit;;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;poids;0,8;kg/m;site actuel — fiche produit;;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-25x4mm-en-acier-lamine-a-chaud;Plat 25x4mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;b;25;mm;nom du produit;;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;poids;1;kg/m;site actuel — fiche produit;;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-25x5mm-en-acier-lamine-a-chaud;Plat 25x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;poids;2,42;kg/m;site actuel — fiche produit;;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x10mm-en-acier-lamine-a-chaud;Plat 30x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;t;20;mm;nom du produit;;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;poids;4,82;kg/m;site actuel — fiche produit;;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x20mm-en-acier-lamine-a-chaud;Plat 30x20mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;poids;0,71;kg/m;site actuel — fiche produit;;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x3mm-en-acier-lamine-a-chaud;Plat 30x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;poids;1,21;kg/m;site actuel — fiche produit;;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x5mm-en-acier-lamine-a-chaud;Plat 30x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;t;6;mm;nom du produit;;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;poids;1,45;kg/m;site actuel — fiche produit;;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x6mm-en-acier-lamine-a-chaud;Plat 30x6mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;b;30;mm;nom du produit;;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;poids;1,94;kg/m;site actuel — fiche produit;;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-30x8mm-en-acier-lamine-a-chaud;Plat 30x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;b;40;mm;nom du produit;;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;poids;3,22;kg/m;site actuel — fiche produit;;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-40x10mm-en-acier-lamine-a-chaud;Plat 40x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;b;40;mm;nom du produit;;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;poids;0,96;kg/m;site actuel — fiche produit;;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-40x3mm-en-acier-lamine-a-chaud;Plat 40x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;b;40;mm;nom du produit;;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;t;4;mm;nom du produit;;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;poids;1,29;kg/m;site actuel — fiche produit;;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-40x4mm-en-acier-lamine-a-chaud;Plat 40x4mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;b;40;mm;nom du produit;;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;poids;1,61;kg/m;site actuel — fiche produit;;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-40x5mm-en-acier-lamine-a-chaud;Plat 40x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;b;40;mm;nom du produit;;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;poids;2,58;kg/m;site actuel — fiche produit;;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-40x8mm-en-acier-lamine-a-chaud;Plat 40x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;b;50;mm;nom du produit;;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;poids;4,03;kg/m;site actuel — fiche produit;;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-50x10mm-en-acier-lamine-a-chaud;Plat 50x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;b;50;mm;nom du produit;;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;t;3;mm;nom du produit;;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;poids;1,21;kg/m;site actuel — fiche produit;;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-50x3mm-en-acier-lamine-a-chaud;Plat 50x3mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;b;50;mm;nom du produit;;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;poids;2,02;kg/m;site actuel — fiche produit;;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-50x5mm-en-acier-lamine-a-chaud;Plat 50x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;b;50;mm;nom du produit;;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;poids;3,22;kg/m;site actuel — fiche produit;;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-50x8mm-en-acier-lamine-a-chaud;Plat 50x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;b;60;mm;nom du produit;;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;poids;4,82;kg/m;site actuel — fiche produit;;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-60x10mm-en-acier-lamine-a-chaud;Plat 60x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;b;60;mm;nom du produit;;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;t;5;mm;nom du produit;;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;poids;2,42;kg/m;site actuel — fiche produit;;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-60x5mm-en-acier-lamine-a-chaud;Plat 60x5mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;b;60;mm;nom du produit;;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;poids;3,86;kg/m;site actuel — fiche produit;;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-60x8mm-en-acier-lamine-a-chaud;Plat 60x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;b;70;mm;nom du produit;;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;poids;5,63;kg/m;site actuel — fiche produit;;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;
+plat-70x10mm-en-acier-lamine-a-chaud;Plat 70x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;b;80;mm;nom du produit;;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;t;10;mm;nom du produit;;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;poids;7,72;kg/m;site actuel — fiche produit — écart > 3 % avec le poids théorique 6.28 kg/m, non affiché (questions en attente);oui;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;serie;PLAT;;nom du produit;;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;b;80;mm;nom du produit;;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;t;8;mm;nom du produit;;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;poids;6,43;kg/m;site actuel — fiche produit — écart > 3 % avec le poids théorique 5.02 kg/m, non affiché (questions en attente);oui;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;procede;Laminé à chaud;;site actuel — description de la fiche;;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
+plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;plat;finition;BRUT;;vraie photo du site actuel (plats, groupes G026 et G028) — non affichée;oui;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
 poutrelle-hea-100-en-acier;Poutrelle HEA 100 en acier;poutrelle-hea;serie;HEA;;nom du produit;;
 poutrelle-hea-100-en-acier;Poutrelle HEA 100 en acier;poutrelle-hea;h;96;mm;fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf;;
 poutrelle-hea-100-en-acier;Poutrelle HEA 100 en acier;poutrelle-hea;b;100;mm;fiche fournisseur VM 2013 — INFOSTEEL - GRYMAFER - VM2013 - HEA.pdf;;
@@ -496,3 +949,568 @@ poutrelle-upn-80-en-acier;Poutrelle UPN 80 en acier;poutrelle-upn;longueurs;1 / 
 poutrelle-upn-80-en-acier;Poutrelle UPN 80 en acier;poutrelle-upn;nuance;S235 ou S275;;site actuel — description de la fiche;;
 poutrelle-upn-80-en-acier;Poutrelle UPN 80 en acier;poutrelle-upn;procede;Laminé à chaud;;site actuel — description de la fiche;;
 poutrelle-upn-80-en-acier;Poutrelle UPN 80 en acier;poutrelle-upn;pente_aile;8;%;norme DIN 1026-1 citée par INFOSTEEL - GRYMAFER - VM2013 - UPN.pdf (forme du modèle, non affichée);;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;d;10;mm;nom du produit;;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;poids;0,63;kg/m;site actuel — fiche produit;;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-10mm-en-acier-laminee-a-chaud;Rond lisse 10mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;d;12;mm;nom du produit;;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;poids;0,91;kg/m;site actuel — fiche produit;;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-12mm-en-acier-laminee-a-chaud;Rond lisse 12mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;d;14;mm;nom du produit;;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;poids;1,24;kg/m;site actuel — fiche produit;;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-14mm-en-acier-laminee-a-chaud;Rond lisse 14mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;d;16;mm;nom du produit;;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;poids;1,62;kg/m;site actuel — fiche produit;;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-16mm-en-acier-laminee-a-chaud;Rond lisse 16mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;d;18;mm;nom du produit;;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;poids;2,05;kg/m;site actuel — fiche produit;;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-18mm-en-acier-laminee-a-chaud;Rond lisse 18mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;d;20;mm;nom du produit;;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;poids;2,53;kg/m;site actuel — fiche produit;;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-20mm-en-acier-laminee-a-chaud;Rond lisse 20mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;d;22;mm;nom du produit;;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;poids;3,05;kg/m;site actuel — fiche produit;;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-22mm-en-acier-laminee-a-chaud;Rond lisse 22mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;d;6;mm;nom du produit;;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;poids;0,23;kg/m;site actuel — fiche produit;;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-6mm-en-acier-laminee-a-chaud;Rond lisse 6mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;serie;ROND;;nom du produit;;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;d;8;mm;nom du produit;;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;poids;0,4;kg/m;site actuel — fiche produit;;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;nuance;S235 ou S275;;site actuel — description de la fiche (« comme la qualité… » : formulation vague);oui;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;procede;Laminé à chaud;;site actuel — description de la fiche;;
+rond-lisse-8mm-en-acier-laminee-a-chaud;Rond lisse 8mm en acier laminée à chaud;rond-plein;finition;BRUT;;aucune photo du site actuel : finition des barres laminées à chaud — non affichée;oui;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;h;100;mm;nom du produit;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;b;100;mm;nom du produit;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;t;10;mm;nom du produit;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;r1;25;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;poids;26,22;kg/m;site actuel — fiche produit;;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-100x100x10mm-en-acier;Tube carré 100x100x10mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;h;100;mm;nom du produit;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;b;100;mm;nom du produit;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;poids;9,18;kg/m;site actuel — fiche produit;;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-100x100x3mm-en-acier;Tube carré 100x100x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;h;100;mm;nom du produit;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;b;100;mm;nom du produit;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;poids;11,98;kg/m;site actuel — fiche produit;;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-100x100x4mm-en-acier;Tube carré 100x100x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;h;100;mm;nom du produit;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;b;100;mm;nom du produit;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;poids;14,75;kg/m;site actuel — fiche produit;;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-100x100x5mm-en-acier;Tube carré 100x100x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;h;120;mm;nom du produit;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;b;120;mm;nom du produit;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;poids;14,54;kg/m;site actuel — fiche produit;;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-120x120x4mm-en-acier;Tube carré 120x120x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;h;120;mm;nom du produit;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;b;120;mm;nom du produit;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;poids;17,92;kg/m;site actuel — fiche produit;;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-120x120x5mm-en-acier;Tube carré 120x120x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;h;140;mm;nom du produit;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;b;140;mm;nom du produit;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;poids;21,2;kg/m;site actuel — fiche produit;;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-140x140x5mm-en-acier;Tube carré 140x140x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;h;150;mm;nom du produit;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;b;150;mm;nom du produit;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;poids;22,84;kg/m;site actuel — fiche produit;;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-150x150x5mm-en-acier;Tube carré 150x150x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;serie;TC;;nom du produit;;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;h;15;mm;nom du produit;;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;b;15;mm;nom du produit;;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;t;2;mm;nom du produit;;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;poids;0,83;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 0.75 kg/m, non affiché (questions en attente);oui;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-15x15x2mm-en-acier;Tube carré 15x15x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 0.83 kg/m ≠ fournisseur 0.75 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;serie;TC;;nom du produit;;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;h;20;mm;nom du produit;;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;b;20;mm;nom du produit;;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;t;2;mm;nom du produit;;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;poids;1,15;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.07 kg/m, non affiché (questions en attente);oui;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-20x20x2mm-en-acier;Tube carré 20x20x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 1.15 kg/m ≠ fournisseur 1.07 kg/m (écart > 3 %) : non affiché
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;h;250;mm;nom du produit;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;b;250;mm;nom du produit;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;t;6;mm;nom du produit;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;r1;12;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;poids;46,29;kg/m;site actuel — fiche produit;;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-250x250x6mm-en-acier;Tube carré 250x250x6mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;h;25;mm;nom du produit;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;b;25;mm;nom du produit;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;t;2;mm;nom du produit;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;poids;1,39;kg/m;site actuel — fiche produit;;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-25x25x2mm-en-acier;Tube carré 25x25x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;h;25;mm;nom du produit;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;b;25;mm;nom du produit;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;poids;1,94;kg/m;site actuel — fiche produit;;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-25x25x3mm-en-acier;Tube carré 25x25x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;h;30;mm;nom du produit;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;b;30;mm;nom du produit;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;t;2;mm;nom du produit;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;poids;1,72;kg/m;site actuel — fiche produit;;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-30x30x2mm-en-acier;Tube carré 30x30x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;h;30;mm;nom du produit;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;b;30;mm;nom du produit;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;poids;2,42;kg/m;site actuel — fiche produit;;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-30x30x3mm-en-acier;Tube carré 30x30x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;serie;TC;;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;h;35;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;b;35;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;t;2;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;poids;2,12;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente);oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-35x35x2mm-en-acier;Tube carré 35x35x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;h;40;mm;nom du produit;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;b;40;mm;nom du produit;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;t;2;mm;nom du produit;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;poids;2,37;kg/m;site actuel — fiche produit;;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-40x40x2mm-en-acier;Tube carré 40x40x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;h;40;mm;nom du produit;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;b;40;mm;nom du produit;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;poids;3,38;kg/m;site actuel — fiche produit;;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-40x40x3mm-en-acier;Tube carré 40x40x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;h;40;mm;nom du produit;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;b;40;mm;nom du produit;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;poids;4,3;kg/m;site actuel — fiche produit;;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-40x40x4mm-en-acier;Tube carré 40x40x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;serie;TC;;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;h;45;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;b;45;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;t;2;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;poids;2,76;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.67 kg/m, non affiché (questions en attente);oui;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x2mm-en-acier;Tube carré 45x45x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;serie;TC;;nom du produit;;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;h;45;mm;nom du produit;;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;b;45;mm;nom du produit;;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;t;3;mm;nom du produit;;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;poids;3,97;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.85 kg/m, non affiché (questions en attente);oui;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-45x45x3mm-en-acier;Tube carré 45x45x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 3.97 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;h;50;mm;nom du produit;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;b;50;mm;nom du produit;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;t;2;mm;nom du produit;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;poids;3;kg/m;site actuel — fiche produit;;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-50x50x2mm-en-acier;Tube carré 50x50x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;h;50;mm;nom du produit;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;b;50;mm;nom du produit;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;poids;4,35;kg/m;site actuel — fiche produit;;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-50x50x3mm-en-acier;Tube carré 50x50x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;h;50;mm;nom du produit;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;b;50;mm;nom du produit;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;poids;5,58;kg/m;site actuel — fiche produit;;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-50x50x4mm-en-acier;Tube carré 50x50x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;h;50;mm;nom du produit;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;b;50;mm;nom du produit;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;poids;6,72;kg/m;site actuel — fiche produit;;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-50x50x5mm-en-acier;Tube carré 50x50x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;h;60;mm;nom du produit;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;b;60;mm;nom du produit;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;t;2;mm;nom du produit;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;poids;3,65;kg/m;site actuel — fiche produit;;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-60x60x2mm-en-acier;Tube carré 60x60x2mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;h;60;mm;nom du produit;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;b;60;mm;nom du produit;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;poids;5,32;kg/m;site actuel — fiche produit;;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-60x60x3mm-en-acier;Tube carré 60x60x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;h;60;mm;nom du produit;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;b;60;mm;nom du produit;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;poids;6,87;kg/m;site actuel — fiche produit;;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-60x60x4mm-en-acier;Tube carré 60x60x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;h;60;mm;nom du produit;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;b;60;mm;nom du produit;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;poids;8,33;kg/m;site actuel — fiche produit;;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-60x60x5mm-en-acier;Tube carré 60x60x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;h;70;mm;nom du produit;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;b;70;mm;nom du produit;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;poids;6,28;kg/m;site actuel — fiche produit;;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-70x70x3mm-en-acier;Tube carré 70x70x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;h;70;mm;nom du produit;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;b;70;mm;nom du produit;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;poids;8,16;kg/m;site actuel — fiche produit;;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-70x70x4mm-en-acier;Tube carré 70x70x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;h;70;mm;nom du produit;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;b;70;mm;nom du produit;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;poids;9,93;kg/m;site actuel — fiche produit;;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-70x70x5mm-en-acier;Tube carré 70x70x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;h;80;mm;nom du produit;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;b;80;mm;nom du produit;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;poids;7,24;kg/m;site actuel — fiche produit;;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-80x80x3mm-en-acier;Tube carré 80x80x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;h;80;mm;nom du produit;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;b;80;mm;nom du produit;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;t;4;mm;nom du produit;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;poids;9,44;kg/m;site actuel — fiche produit;;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-80x80x4mm-en-acier;Tube carré 80x80x4mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;h;80;mm;nom du produit;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;b;80;mm;nom du produit;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;t;5;mm;nom du produit;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;poids;11,57;kg/m;site actuel — fiche produit;;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-80x80x5mm-en-acier;Tube carré 80x80x5mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;serie;TC;;nom du produit;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;h;90;mm;nom du produit;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;b;90;mm;nom du produit;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;t;3;mm;nom du produit;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;poids;8,2;kg/m;site actuel — fiche produit;;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-carre-90x90x3mm-en-acier;Tube carré 90x90x3mm en acier;tube-carre;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;h;100;mm;nom du produit;;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;b;50;mm;nom du produit;;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;poids;7,05;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 6.73 kg/m, non affiché (questions en attente);oui;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x3mm-en-acier;Tube rectangle 100x50x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 7.05 kg/m ≠ fournisseur 6.73 kg/m (écart > 3 %) : non affiché
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;h;100;mm;nom du produit;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;b;50;mm;nom du produit;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;t;4;mm;nom du produit;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;poids;8,99;kg/m;site actuel — fiche produit;;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-rectangle-100x50x4mm-en-acier;Tube rectangle 100x50x4mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;h;120;mm;nom du produit;;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;b;60;mm;nom du produit;;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;poids;8,52;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 8.17 kg/m, non affiché (questions en attente);oui;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x3mm-en-acier;Tube rectangle 120x60x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 8.52 kg/m ≠ fournisseur 8.17 kg/m (écart > 3 %) : non affiché
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;h;120;mm;nom du produit;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;b;60;mm;nom du produit;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;t;4;mm;nom du produit;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;poids;10,96;kg/m;site actuel — fiche produit;;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-rectangle-120x60x4mm-en-acier;Tube rectangle 120x60x4mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;h;200;mm;nom du produit;;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;b;100;mm;nom du produit;;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;t;5;mm;nom du produit;;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;r1;10;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;poids;23,45;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 22.68 kg/m, non affiché (questions en attente);oui;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-200x100x5mm-en-acier;Tube rectangle 200x100x5mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 23.45 kg/m ≠ fournisseur 22.68 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;h;30;mm;nom du produit;;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;b;15;mm;nom du produit;;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;poids;1,31;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.23 kg/m, non affiché (questions en attente);oui;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x15x2mm-en-acier;Tube rectangle 30x15x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 1.31 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;h;30;mm;nom du produit;;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;b;20;mm;nom du produit;;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;poids;1,47;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.39 kg/m, non affiché (questions en attente);oui;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-30x20x2mm-en-acier;Tube rectangle 30x20x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 1.47 kg/m ≠ fournisseur 1.39 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;h;40;mm;nom du produit;;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;b;20;mm;nom du produit;;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;poids;1,79;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.71 kg/m, non affiché (questions en attente);oui;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x2mm-en-acier;Tube rectangle 40x20x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 1.79 kg/m ≠ fournisseur 1.71 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;h;40;mm;nom du produit;;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;b;20;mm;nom du produit;;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;poids;2,59;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.41 kg/m, non affiché (questions en attente);oui;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x20x3mm-en-acier;Tube rectangle 40x20x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.59 kg/m ≠ fournisseur 2.41 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;h;40;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;b;30;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;poids;2,12;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente);oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-40x30x2mm-en-acier;Tube rectangle 40x30x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;h;50;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;b;20;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;poids;2,12;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.03 kg/m, non affiché (questions en attente);oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x20x2mm-en-acier;Tube rectangle 50x20x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.12 kg/m ≠ fournisseur 2.03 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;h;50;mm;nom du produit;;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;b;25;mm;nom du produit;;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;poids;2,3;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.19 kg/m, non affiché (questions en attente);oui;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x25x2mm-en-acier;Tube rectangle 50x25x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.3 kg/m ≠ fournisseur 2.19 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;h;50;mm;nom du produit;;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;b;30;mm;nom du produit;;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;poids;2,44;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.35 kg/m, non affiché (questions en attente);oui;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x2mm-en-acier;Tube rectangle 50x30x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.44 kg/m ≠ fournisseur 2.35 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;h;50;mm;nom du produit;;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;b;30;mm;nom du produit;;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;poids;3,61;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.37 kg/m, non affiché (questions en attente);oui;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-50x30x3mm-en-acier;Tube rectangle 50x30x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 3.61 kg/m ≠ fournisseur 3.37 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;h;60;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;b;30;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;poids;2,76;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.67 kg/m, non affiché (questions en attente);oui;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x2mm-en-acier;Tube rectangle 60x30x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 2.76 kg/m ≠ fournisseur 2.67 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;h;60;mm;nom du produit;;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;b;30;mm;nom du produit;;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;poids;4,03;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 3.85 kg/m, non affiché (questions en attente);oui;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x30x3mm-en-acier;Tube rectangle 60x30x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 4.03 kg/m ≠ fournisseur 3.85 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;h;60;mm;nom du produit;;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;b;40;mm;nom du produit;;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;poids;3,08;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.99 kg/m, non affiché (questions en attente);oui;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x2mm-en-acier;Tube rectangle 60x40x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 3.08 kg/m ≠ fournisseur 2.99 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;h;60;mm;nom du produit;;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;b;40;mm;nom du produit;;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;poids;4,59;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 4.33 kg/m, non affiché (questions en attente);oui;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-60x40x3mm-en-acier;Tube rectangle 60x40x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 4.59 kg/m ≠ fournisseur 4.33 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;h;80;mm;nom du produit;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;b;40;mm;nom du produit;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;t;2;mm;nom du produit;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;r1;4;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;poids;3,73;kg/m;site actuel — fiche produit;;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;
+tube-rectangle-80x40x2mm-en-acier;Tube rectangle 80x40x2mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;h;80;mm;nom du produit;;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;b;40;mm;nom du produit;;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;t;3;mm;nom du produit;;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;r1;6;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;poids;5,57;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 5.29 kg/m, non affiché (questions en attente);oui;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 5.57 kg/m ≠ fournisseur 5.29 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;serie;TR;;nom du produit;;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;h;80;mm;nom du produit;;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;b;40;mm;nom du produit;;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;t;4;mm;nom du produit;;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;r1;8;mm;fiche fournisseur publiée sur le site — TUBE CARRE ACIERS GROSJEAN 4.pdf (EN 10219) — rayon extérieur, non affiché;;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;poids;7,07;kg/m;site actuel — fiche produit — écart > 3 % avec le poids fournisseur 6.84 kg/m, non affiché (questions en attente);oui;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;procede;Formé à froid;;site actuel — description de la fiche (« formage à froid à partir de tôles laminées à chaud »);;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;tube-rectangulaire;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
+tube-rond-101-6x3-65mm-en-acier-brut-serie-legere;Tube rond 101,6x3,65mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-101-6x3-65mm-en-acier-brut-serie-legere;Tube rond 101,6x3,65mm en acier brut série légère;tube-rond;d;101,6;mm;nom du produit;;
+tube-rond-101-6x3-65mm-en-acier-brut-serie-legere;Tube rond 101,6x3,65mm en acier brut série légère;tube-rond;t;3,65;mm;nom du produit;;
+tube-rond-101-6x3-65mm-en-acier-brut-serie-legere;Tube rond 101,6x3,65mm en acier brut série légère;tube-rond;poids;8,7;kg/m;site actuel — fiche produit;;
+tube-rond-101-6x3-65mm-en-acier-brut-serie-legere;Tube rond 101,6x3,65mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;tube-rond;d;114,3;mm;nom du produit;;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;tube-rond;t;3,65;mm;nom du produit;;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;tube-rond;poids;9,9;kg/m;site actuel — fiche produit;;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;cote A du site (114,40 mm) ≠ d (114.3 mm)
+tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere;Tube rond 17,2(18)x2mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere;Tube rond 17,2(18)x2mm en acier brut série légère;tube-rond;d;17,2;mm;nom du produit;;
+tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere;Tube rond 17,2(18)x2mm en acier brut série légère;tube-rond;t;2;mm;nom du produit;;
+tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere;Tube rond 17,2(18)x2mm en acier brut série légère;tube-rond;poids;0,77;kg/m;site actuel — fiche produit;;
+tube-rond-17-2-18-x2mm-en-acier-brut-serie-legere;Tube rond 17,2(18)x2mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-21-3x2mm-en-acier-brut-serie-legere;Tube rond 21,3x2mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-21-3x2mm-en-acier-brut-serie-legere;Tube rond 21,3x2mm en acier brut série légère;tube-rond;d;21,3;mm;nom du produit;;
+tube-rond-21-3x2mm-en-acier-brut-serie-legere;Tube rond 21,3x2mm en acier brut série légère;tube-rond;t;2;mm;nom du produit;;
+tube-rond-21-3x2mm-en-acier-brut-serie-legere;Tube rond 21,3x2mm en acier brut série légère;tube-rond;poids;0,98;kg/m;site actuel — fiche produit;;
+tube-rond-21-3x2mm-en-acier-brut-serie-legere;Tube rond 21,3x2mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;tube-rond;d;26,9;mm;nom du produit;;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;tube-rond;t;2,5;mm;nom du produit;;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;tube-rond;poids;1,41;kg/m;site actuel — fiche produit — écart > 3 % avec le poids théorique 1.50 kg/m, non affiché (questions en attente);oui;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond-33-7x2-5mm-en-acier-brut-serie-legere;Tube rond 33,7x2,5mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-33-7x2-5mm-en-acier-brut-serie-legere;Tube rond 33,7x2,5mm en acier brut série légère;tube-rond;d;33,7;mm;nom du produit;;
+tube-rond-33-7x2-5mm-en-acier-brut-serie-legere;Tube rond 33,7x2,5mm en acier brut série légère;tube-rond;t;2,5;mm;nom du produit;;
+tube-rond-33-7x2-5mm-en-acier-brut-serie-legere;Tube rond 33,7x2,5mm en acier brut série légère;tube-rond;poids;1,97;kg/m;site actuel — fiche produit;;
+tube-rond-33-7x2-5mm-en-acier-brut-serie-legere;Tube rond 33,7x2,5mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-42-4x2-5mm-en-acier-brut-serie-legere;Tube rond 42,4x2,5mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-42-4x2-5mm-en-acier-brut-serie-legere;Tube rond 42,4x2,5mm en acier brut série légère;tube-rond;d;42,4;mm;nom du produit;;
+tube-rond-42-4x2-5mm-en-acier-brut-serie-legere;Tube rond 42,4x2,5mm en acier brut série légère;tube-rond;t;2,5;mm;nom du produit;;
+tube-rond-42-4x2-5mm-en-acier-brut-serie-legere;Tube rond 42,4x2,5mm en acier brut série légère;tube-rond;poids;2,52;kg/m;site actuel — fiche produit;;
+tube-rond-42-4x2-5mm-en-acier-brut-serie-legere;Tube rond 42,4x2,5mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-48-3x3mm-en-acier-brut-serie-legere;Tube rond 48,3x3mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-48-3x3mm-en-acier-brut-serie-legere;Tube rond 48,3x3mm en acier brut série légère;tube-rond;d;48,3;mm;nom du produit;;
+tube-rond-48-3x3mm-en-acier-brut-serie-legere;Tube rond 48,3x3mm en acier brut série légère;tube-rond;t;3;mm;nom du produit;;
+tube-rond-48-3x3mm-en-acier-brut-serie-legere;Tube rond 48,3x3mm en acier brut série légère;tube-rond;poids;3,33;kg/m;site actuel — fiche produit;;
+tube-rond-48-3x3mm-en-acier-brut-serie-legere;Tube rond 48,3x3mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-60-3x3mm-en-acier-brut-serie-legere;Tube rond 60,3x3mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-60-3x3mm-en-acier-brut-serie-legere;Tube rond 60,3x3mm en acier brut série légère;tube-rond;d;60,3;mm;nom du produit;;
+tube-rond-60-3x3mm-en-acier-brut-serie-legere;Tube rond 60,3x3mm en acier brut série légère;tube-rond;t;3;mm;nom du produit;;
+tube-rond-60-3x3mm-en-acier-brut-serie-legere;Tube rond 60,3x3mm en acier brut série légère;tube-rond;poids;4,21;kg/m;site actuel — fiche produit;;
+tube-rond-60-3x3mm-en-acier-brut-serie-legere;Tube rond 60,3x3mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-76-1x3-25mm-en-acier-brut-serie-legere;Tube rond 76,1x3,25mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;
+tube-rond-76-1x3-25mm-en-acier-brut-serie-legere;Tube rond 76,1x3,25mm en acier brut série légère;tube-rond;d;76,1;mm;nom du produit;;
+tube-rond-76-1x3-25mm-en-acier-brut-serie-legere;Tube rond 76,1x3,25mm en acier brut série légère;tube-rond;t;3,25;mm;nom du produit;;
+tube-rond-76-1x3-25mm-en-acier-brut-serie-legere;Tube rond 76,1x3,25mm en acier brut série légère;tube-rond;poids;5,8;kg/m;site actuel — fiche produit;;
+tube-rond-76-1x3-25mm-en-acier-brut-serie-legere;Tube rond 76,1x3,25mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;
+tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;tube-rond;serie;TUBE-ROND;;nom du produit;;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
+tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;tube-rond;d;88,9;mm;nom du produit;;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
+tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;tube-rond;t;3;mm;nom du produit;;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
+tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;tube-rond;poids;6,81;kg/m;site actuel — fiche produit — écart > 3 % avec le poids théorique 6.36 kg/m, non affiché (questions en attente);oui;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
+tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;tube-rond;finition;BRUT;;vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée;oui;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
