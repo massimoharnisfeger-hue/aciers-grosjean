@@ -7,6 +7,7 @@ import { ArtStock } from "@/components/art/ProductArt";
 import { depotsDetail, depotBySlug, servicesDetail } from "@/lib/edito";
 import { univers } from "@/lib/catalogue";
 import { titre, description } from "@/lib/seo";
+import { lienTel } from "@/lib/content";
 
 type Params = { slug: string };
 
@@ -151,7 +152,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
                 <div className="py-3">
                   <dt className="font-body text-xs uppercase tracking-[0.1em] text-soft">Téléphone</dt>
                   <dd className="mt-0.5">
-                    <a href={`tel:${d.tel.replace(/[^+\d]/g, "")}`} className="font-mono text-sm text-encre hover:text-jaune">
+                    <a href={lienTel(d.tel)} className="font-mono text-sm text-encre hover:text-jaune">
                       {d.tel}
                     </a>
                   </dd>

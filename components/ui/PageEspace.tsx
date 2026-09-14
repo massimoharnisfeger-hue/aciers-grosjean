@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/sections/CtaBand";
-import { site } from "@/lib/content";
+import { site, lienTel } from "@/lib/content";
 
 /**
  * Gabarit des pages d'espace client et de commande.
@@ -37,7 +37,7 @@ export default function PageEspace({
             <p className="mt-2 font-body leading-relaxed text-soft">{maintenant}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/devis" className="btn-cta">Demander un devis</Link>
-              <a href={`tel:${site.tel.replace(/[^+\d]/g, "")}`} className="btn-ghost">
+              <a href={lienTel(site.tel)} className="btn-ghost">
                 {site.tel}
               </a>
             </div>

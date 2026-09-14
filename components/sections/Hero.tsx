@@ -1,9 +1,13 @@
-"use client";
-
-import { motion } from "framer-motion";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { trust } from "@/lib/content";
 import { ArtStock, ArtPoutrelle, ArtTube, ArtDecoupe } from "@/components/art/ProductArt";
+
+// Animations en CSS (globals.css : .apparait, .flotte) : le titre s'affiche dès
+// le premier rendu, sans attendre le JavaScript.
+const delai = (s: number) => ({ "--delai": `${s}s` }) as CSSProperties;
+const flotte = (duree: number, amplitude: number, decalage = 0) =>
+  ({ "--duree": `${duree}s`, "--amplitude": `${amplitude}px`, "--delai": `${decalage}s` }) as CSSProperties;
 
 export default function Hero() {
   return (
@@ -13,71 +17,47 @@ export default function Hero() {
 
       <div className="container-g relative grid items-center gap-12 pb-16 md:grid-cols-2 md:pb-24">
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-brume bg-white px-4 py-1.5"
+          <div
+            className="apparait mb-6 inline-flex items-center gap-2 rounded-full border border-brume bg-white px-4 py-1.5"
+            style={delai(0)}
           >
             <span className="h-2 w-2 rounded-full bg-jaune" />
             <span className="font-body text-xs uppercase tracking-[0.15em] text-soft">
               Négoce &amp; transformation d'acier · depuis 40 ans
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.05 }}
-            className="h-display text-[9vw] leading-[1.02] md:text-6xl lg:text-7xl"
+          <h1
+            className="apparait h-display text-[9vw] leading-[1.02] md:text-6xl lg:text-7xl"
+            style={delai(0.05)}
           >
             L'acier de pro,
             <br />
             <span className="mark-jaune">accessible à tous.</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="mt-6 max-w-md font-body text-lg text-soft"
-          >
+          <p className="apparait mt-6 max-w-md font-body text-lg text-soft" style={delai(0.15)}>
             Poutrelles, tôles, tubes, cornières, corten… Découpe sur mesure, devis en 24h et
             retrait le jour même dans l'un de nos 4 dépôts.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25 }}
-            className="mt-8 flex flex-col gap-3 sm:flex-row"
-          >
+          <div className="apparait mt-8 flex flex-col gap-3 sm:flex-row" style={delai(0.25)}>
             <Link href="/devis" className="btn-cta justify-center">
               Demander un devis
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </Link>
             <Link href="/produits" className="btn-ghost justify-center">Voir les produits</Link>
-          </motion.div>
+          </div>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-6 font-body text-sm text-soft"
-          >
+          <p className="apparait mt-6 font-body text-sm text-soft" style={delai(0.4)}>
             ✓ Sans engagement&nbsp;&nbsp;·&nbsp;&nbsp;✓ Particuliers &amp; pros&nbsp;&nbsp;·&nbsp;&nbsp;✓ Certifié EN1090-Exc2
-          </motion.p>
+          </p>
         </div>
 
         {/* Composition visuelle */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="group relative mx-auto w-full max-w-lg"
-        >
+        <div className="apparait group relative mx-auto w-full max-w-lg" style={delai(0.2)}>
           {/* carte principale : le dépôt */}
           <div className="shine relative aspect-[4/3] overflow-hidden rounded-2xl border border-brume bg-nuage shadow-[0_40px_90px_-50px_rgba(51,54,66,.6)]">
             <ArtStock className="h-full w-full transition-transform duration-700 group-hover:scale-[1.04]" />
@@ -85,33 +65,30 @@ export default function Hero() {
           </div>
 
           {/* vignettes flottantes */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-6 -bottom-10 w-40 overflow-hidden rounded-xl border border-brume bg-white shadow-xl md:-left-10"
+          <div
+            className="flotte absolute -left-6 -bottom-10 w-40 overflow-hidden rounded-xl border border-brume bg-white shadow-xl md:-left-10"
+            style={flotte(5, -10)}
           >
             <ArtPoutrelle className="h-24 w-full" />
             <p className="px-3 pb-2 font-body text-[11px] text-soft">Poutrelles IPE</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-            className="absolute -right-4 -top-8 w-36 overflow-hidden rounded-xl border border-brume bg-white shadow-xl md:-right-8"
+          <div
+            className="flotte absolute -right-4 -top-8 w-36 overflow-hidden rounded-xl border border-brume bg-white shadow-xl md:-right-8"
+            style={flotte(6, 10, 0.6)}
           >
             <ArtTube className="h-24 w-full" />
             <p className="px-3 pb-2 font-body text-[11px] text-soft">Tubes &amp; profilés</p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-            className="absolute -right-2 bottom-6 hidden w-32 overflow-hidden rounded-xl border border-encre/20 shadow-xl lg:block"
+          <div
+            className="flotte absolute -right-2 bottom-6 hidden w-32 overflow-hidden rounded-xl border border-encre/20 shadow-xl lg:block"
+            style={flotte(7, -8, 1.2)}
           >
             <ArtDecoupe className="h-20 w-full" />
             <p className="bg-encre px-3 py-1.5 font-body text-[11px] text-white">Découpe sur mesure</p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* barre de confiance */}

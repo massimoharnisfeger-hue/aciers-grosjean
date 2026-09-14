@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/ui/Logo";
-import { univers, noeuds, produitsSous } from "@/lib/catalogue";
+import type { MenuUnivers } from "@/lib/menu";
 
 const secondaires = [
   { label: "Services", href: "/services" },
@@ -13,7 +13,7 @@ const secondaires = [
   { label: "Entreprise", href: "/entreprise" },
 ];
 
-export default function Nav() {
+export default function Nav({ menu }: { menu: MenuUnivers[] }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ export default function Nav() {
 
   const catalogueActif =
     pathname === "/produits" ||
-    univers.some((u) => pathname === `/${u.slug}` || pathname.startsWith(`/${u.slug}/`)) ||
+    menu.some((u) => pathname === `/${u.slug}` || pathname.startsWith(`/${u.slug}/`)) ||
     pathname.startsWith("/p/");
 
   return (
@@ -120,7 +120,7 @@ export default function Nav() {
       {mega && (
         <div className="absolute inset-x-0 top-full hidden border-t border-brume bg-white shadow-[0_24px_48px_-24px_rgba(51,54,66,.3)] lg:block">
           <div className="container-g grid grid-cols-6 gap-6 py-8">
-            {univers.map((u) => (
+            {menu.map((u) => (
               <div key={u.slug}>
                 <Link
                   href={`/${u.slug}`}
@@ -129,20 +129,16 @@ export default function Nav() {
                   {u.nom}
                 </Link>
                 <span className="mt-0.5 block font-mono text-[11px] text-soft">
-                  {produitsSous(`/${u.slug}`).length} produits
+                  {u.total} produits
                 </span>
                 <ul className="mt-3 space-y-1.5">
-                  {u.enfants.map((c) => {
-                    const f = noeuds[c];
-                    if (!f) return null;
-                    return (
-                      <li key={c}>
-                        <Link href={f.chemin} className="font-body text-sm text-soft hover:text-encre">
-                          {f.nom}
-                        </Link>
-                      </li>
-                    );
-                  })}
+                  {u.familles.map((f) => (
+                    <li key={f.chemin}>
+                      <Link href={f.chemin} className="font-body text-sm text-soft hover:text-encre">
+                        {f.nom}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             ))}
@@ -168,14 +164,14 @@ export default function Nav() {
       >
         <div className="rounded-xl border border-brume bg-white p-3">
           <p className="px-4 pb-1 pt-2 font-body text-xs uppercase tracking-[0.14em] text-soft">Catalogue</p>
-          {univers.map((u) => (
+          {menu.map((u) => (
             <Link
               key={u.slug}
               href={`/${u.slug}`}
               className="flex items-center justify-between rounded-lg px-4 py-2.5 text-left font-body text-encre hover:bg-nuage"
             >
               {u.nom}
-              <span className="font-mono text-xs text-soft">{produitsSous(`/${u.slug}`).length}</span>
+              <span className="font-mono text-xs text-soft">{u.total}</span>
             </Link>
           ))}
           <Link href="/produits" className="block rounded-lg px-4 py-2.5 font-body text-sm text-soft hover:bg-nuage">

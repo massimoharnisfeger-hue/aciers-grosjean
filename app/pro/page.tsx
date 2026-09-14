@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
-import { site } from "@/lib/content";
+import { site, lienTel } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Espace pro — tarifs négociés et paiement différé",
@@ -92,7 +92,7 @@ export default function ProPage() {
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/pro/connexion" className="btn-ghost">Accès au compte</Link>
-                <a href={`tel:${site.tel.replace(/[^+\d]/g, "")}`} className="btn-ghost">
+                <a href={lienTel(site.tel)} className="btn-ghost">
                   {site.tel}
                 </a>
               </div>

@@ -1,10 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Comfortaa, Questrial, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
-import SmoothScroll from "@/components/fx/SmoothScroll";
 import Nav from "@/components/ui/Nav";
 import Footer from "@/components/sections/Footer";
 import ScrollProgress from "@/components/fx/ScrollProgress";
+import { menuCatalogue } from "@/lib/menu";
+
+// Le site de préproduction (vercel.app) ne doit pas être indexé : il ferait
+// doublon avec aciersgrosjean.be. Mettre SITE_INDEXABLE=oui sur Vercel le jour
+// où ce site remplace l'actuel.
+const indexable = process.env.SITE_INDEXABLE === "oui";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,6 +43,7 @@ export const metadata: Metadata = {
   description:
     "Poutrelles, tôles, tubes, cornières, corten. Découpe sur mesure, devis en 24 h, retrait le jour même dans nos 4 dépôts en Wallonie et en France.",
   alternates: { canonical: "/" },
+  robots: indexable ? undefined : { index: false, follow: false },
   keywords: [
     "acier",
     "poutrelles",
@@ -77,11 +83,9 @@ export default function RootLayout({
     >
       <body className="grain">
         <ScrollProgress />
-        <SmoothScroll>
-          <Nav />
-          {children}
-          <Footer />
-        </SmoothScroll>
+        <Nav menu={menuCatalogue()} />
+        {children}
+        <Footer />
       </body>
     </html>
   );

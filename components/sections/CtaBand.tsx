@@ -1,8 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { site } from "@/lib/content";
+import Reveal from "@/components/fx/Reveal";
+import { site, lienTel } from "@/lib/content";
 
 export default function CtaBand() {
   return (
@@ -12,15 +10,11 @@ export default function CtaBand() {
           <div className="grid-industrie-dark pointer-events-none absolute inset-0" />
           <div className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 rounded-full bg-jaune/20 blur-[100px]" />
           <div className="relative mx-auto max-w-2xl text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="h-display text-4xl text-white md:text-5xl"
-            >
-              Un projet ? Votre devis en <span className="on-encre-jaune">24 heures.</span>
-            </motion.h2>
+            <Reveal y={20}>
+              <h2 className="h-display text-4xl text-white md:text-5xl">
+                Un projet ? Votre devis en <span className="on-encre-jaune">24 heures.</span>
+              </h2>
+            </Reveal>
             <p className="mt-4 font-body text-lg text-soft-light">
               Décrivez votre besoin (dimensions, quantités, usage). On revient vers vous sous 24h, sans engagement.
             </p>
@@ -31,7 +25,7 @@ export default function CtaBand() {
                   <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
-              <a href={`tel:${site.tel.replace(/\s/g, "")}`} className="inline-flex items-center gap-2 rounded-md border border-white/25 px-6 py-3 font-title font-semibold text-white transition-colors hover:bg-white/10">
+              <a href={lienTel(site.tel)} className="inline-flex items-center gap-2 rounded-md border border-white/25 px-6 py-3 font-title font-semibold text-white transition-colors hover:bg-white/10">
                 {site.tel}
               </a>
             </div>

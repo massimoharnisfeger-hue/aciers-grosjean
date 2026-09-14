@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
-import { site } from "@/lib/content";
+import { site, lienTel } from "@/lib/content";
 import { depotsDetail } from "@/lib/edito";
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function ContactPage() {
             {
               t: "Par téléphone",
               s: site.tel,
-              h: `tel:${site.tel.replace(/[^+\d]/g, "")}`,
+              h: lienTel(site.tel),
               d: "Du lundi au vendredi, 7 h – 17 h. C'est le plus rapide pour une question technique.",
               icon: "M4 5c0-1 1-2 2-2h2l2 5-2 1a12 12 0 006 6l1-2 5 2v2c0 1-1 2-2 2A17 17 0 014 5z",
             },

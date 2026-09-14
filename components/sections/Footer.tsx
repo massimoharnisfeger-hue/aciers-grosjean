@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
-import { site } from "@/lib/content";
+import { site, lienTel } from "@/lib/content";
 import { univers, noeuds, totalProduits } from "@/lib/catalogue";
 import { servicesDetail, depotsDetail, articles } from "@/lib/edito";
 
@@ -50,7 +50,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2 font-body text-sm text-soft-light">
                 <li>
-                  <a href={`tel:${site.tel.replace(/[^+\d]/g, "")}`} className="transition-colors hover:text-jaune">
+                  <a href={lienTel(site.tel)} className="transition-colors hover:text-jaune">
                     {site.tel}
                   </a>
                 </li>

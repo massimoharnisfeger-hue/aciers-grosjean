@@ -4,6 +4,9 @@ import { redirections } from "./lib/redirections.mjs";
 const nextConfig = {
   reactStrictMode: true,
 
+  // Photos à venir (public/images) : servies en AVIF/WebP, redimensionnées par next/image.
+  images: { formats: ["image/avif", "image/webp"] },
+
   // Les 652 anciennes URLs du site sont redirigées en 301 vers leur URL propre.
   // Sans cela, la refonte perdrait les 2 103 backlinks et les positions acquises.
   async redirects() {

@@ -8,6 +8,12 @@ export const site = {
   email: "info@aciersgrosjean.be",
 };
 
+/**
+ * Lien d'appel au format international : « +32 (0)71 00 00 00 » → « tel:+3271000000 ».
+ * Le (0) ne se compose pas depuis l'étranger ni depuis un mobile en itinérance.
+ */
+export const lienTel = (tel: string) => "tel:" + tel.replace(/\(0\)/g, "").replace(/[^+\d]/g, "");
+
 export const trust = [
   { valeur: "40 ans", label: "d'expertise acier" },
   { valeur: "4 dépôts", label: "Wallonie + France" },
@@ -34,100 +40,6 @@ export const chiffres = [
   { valeur: 4, suffixe: "", label: "dépôts" },
   { valeur: 495, suffixe: "", label: "produits en stock" },
   { valeur: 24, suffixe: "h", label: "pour votre devis" },
-];
-
-export type Produit = {
-  nom: string;
-  desc: string;
-  prix: string;
-  usages: string;
-  stock: boolean;
-};
-
-export const produits: Produit[] = [
-  { nom: "Poutrelles IPE · HEA · HEB", desc: "Profilés normalisés pour structures et charpentes métalliques.", prix: "Sur devis", usages: "Structure, charpente, mezzanine", stock: true },
-  { nom: "Tôles", desc: "Tôles laminées, profilées et nervurées, plusieurs épaisseurs.", prix: "dès 14,71 €/m²", usages: "Bardage, toiture, habillage", stock: true },
-  { nom: "Tubes ronds & carrés", desc: "Tubes acier pour ossatures, garde-corps et mobilier.", prix: "dès 3,20 €/m", usages: "Garde-corps, ossature, portail", stock: true },
-  { nom: "Cornières", desc: "Cornières égales à ailes, idéales pour renforts et assemblages.", prix: "dès 2,85 €/m", usages: "Renfort, cadre, support", stock: true },
-  { nom: "Acier corten", desc: "L'acier à la patine rouille, pour l'aménagement extérieur.", prix: "Sur devis", usages: "Terrasse, déco jardin, bardage", stock: true },
-  { nom: "Plats & treillis", desc: "Plats laminés et treillis soudés pour le bâtiment.", prix: "dès 1,95 €/m", usages: "Béton armé, renfort, ferronnerie", stock: true },
-];
-
-// Catalogue détaillé (page Produits) — catégories avec références
-export type Categorie = {
-  slug: string;
-  titre: string;
-  intro: string;
-  refs: { nom: string; dim: string; prix: string }[];
-};
-
-export const categories: Categorie[] = [
-  {
-    slug: "poutrelles",
-    titre: "Poutrelles & profilés",
-    intro: "Profilés normalisés pour la structure : charpentes, mezzanines, planchers.",
-    refs: [
-      { nom: "IPE 80", dim: "80 × 46 mm", prix: "Sur devis" },
-      { nom: "IPE 120", dim: "120 × 64 mm", prix: "Sur devis" },
-      { nom: "HEA 100", dim: "96 × 100 mm", prix: "Sur devis" },
-      { nom: "HEB 120", dim: "120 × 120 mm", prix: "Sur devis" },
-    ],
-  },
-  {
-    slug: "tubes",
-    titre: "Tubes ronds & carrés",
-    intro: "Pour ossatures, garde-corps, portails et mobilier métallique.",
-    refs: [
-      { nom: "Tube carré 40×40×2", dim: "2 mm", prix: "3,20 €/m" },
-      { nom: "Tube carré 50×50×3", dim: "3 mm", prix: "5,90 €/m" },
-      { nom: "Tube rond Ø33,7×2", dim: "2 mm", prix: "sur devis" },
-      { nom: "Tube rond Ø48,3×3", dim: "3 mm", prix: "sur devis" },
-    ],
-  },
-  {
-    slug: "toles",
-    titre: "Tôles",
-    intro: "Laminées, profilées, nervurées — bardage, toiture, habillage.",
-    refs: [
-      { nom: "Tôle lisse 2 mm", dim: "au m²", prix: "18,50 €/m²" },
-      { nom: "Tôle nervurée", dim: "au m²", prix: "dès 14,71 €/m²" },
-      { nom: "Tôle larmée 3 mm", dim: "au m²", prix: "sur devis" },
-      { nom: "Tôle galvanisée", dim: "plusieurs ép.", prix: "sur devis" },
-    ],
-  },
-  {
-    slug: "cornieres-plats",
-    titre: "Cornières & plats",
-    intro: "Renforts, cadres, supports et ferronnerie.",
-    refs: [
-      { nom: "Cornière 40×40×4", dim: "4 mm", prix: "2,85 €/m" },
-      { nom: "Cornière 50×50×5", dim: "5 mm", prix: "sur devis" },
-      { nom: "Plat 30×3", dim: "3 mm", prix: "1,95 €/m" },
-      { nom: "Plat 50×5", dim: "5 mm", prix: "sur devis" },
-    ],
-  },
-  {
-    slug: "corten",
-    titre: "Acier corten",
-    intro: "La patine rouille pour l'aménagement extérieur : terrasses, déco, bardage.",
-    refs: [
-      { nom: "Tôle corten 2 mm", dim: "au m²", prix: "Sur devis" },
-      { nom: "Bac corten déco", dim: "sur mesure", prix: "Sur devis" },
-      { nom: "Bardage corten", dim: "sur mesure", prix: "Sur devis" },
-      { nom: "Bordure jardin", dim: "sur mesure", prix: "Sur devis" },
-    ],
-  },
-  {
-    slug: "treillis",
-    titre: "Treillis & armatures",
-    intro: "Treillis soudés et aciers pour béton armé.",
-    refs: [
-      { nom: "Treillis soudé", dim: "panneaux std", prix: "Sur devis" },
-      { nom: "Rond à béton", dim: "Ø6 à Ø16", prix: "Sur devis" },
-      { nom: "Fil recuit", dim: "bobine", prix: "Sur devis" },
-      { nom: "Écarteurs", dim: "sachet", prix: "Sur devis" },
-    ],
-  },
 ];
 
 export type Service = { nom: string; desc: string; detail?: string };

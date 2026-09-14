@@ -681,10 +681,8 @@ export function ancetres(chemin: string): Noeud[] {
   return out;
 }
 
-export function formatPrix(v: number | null) {
-  if (v === null) return "Sur devis";
-  return v.toLocaleString("fr-BE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
-}
+import { formatPrix } from "./format";
+export { formatPrix };
 
 /** Prix d'entrée sous un chemin. */
 export function prixMini(chemin: string) {

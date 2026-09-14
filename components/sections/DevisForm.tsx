@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { site, depots } from "@/lib/content";
-import { univers } from "@/lib/catalogue";
 
 const champStyle =
   "mt-2 w-full rounded-xl border border-brume bg-white px-4 py-3 font-body text-encre placeholder:text-soft focus:border-encre focus:outline-none";
 
-export default function DevisForm() {
+/** `produits` : noms des univers du catalogue, passés par la page (serveur). */
+export default function DevisForm({ produits }: { produits: string[] }) {
   const [profil, setProfil] = useState("Particulier");
   const [nom, setNom] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
-  const [produit, setProduit] = useState(univers[0].nom);
+  const [produit, setProduit] = useState(produits[0] ?? "Autre / je ne sais pas");
   const [depot, setDepot] = useState(depots[0].ville);
   const [details, setDetails] = useState("");
   const [sent, setSent] = useState(false);
@@ -95,7 +95,7 @@ export default function DevisForm() {
 
       <label className="mt-4 block font-body text-sm text-encre">Type de produit
         <select value={produit} onChange={(e) => setProduit(e.target.value)} className={champStyle}>
-          {univers.map((u) => <option key={u.slug}>{u.nom}</option>)}
+          {produits.map((p) => <option key={p}>{p}</option>)}
           <option>Autre / je ne sais pas</option>
         </select>
       </label>

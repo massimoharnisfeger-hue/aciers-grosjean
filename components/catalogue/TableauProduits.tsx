@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Produit } from "@/lib/catalogue";
-import { formatPrix } from "@/lib/catalogue";
+import { formatPrix } from "@/lib/format";
 
 const norm = (s: string) =>
   s

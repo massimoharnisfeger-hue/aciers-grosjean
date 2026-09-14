@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import PageHeader from "@/components/ui/PageHeader";
 import DevisForm from "@/components/sections/DevisForm";
 import { trust } from "@/lib/content";
+import { univers } from "@/lib/catalogue";
 
 export const metadata: Metadata = {
   title: "Demander un devis en 24h | Aciers Grosjean",
@@ -37,7 +38,7 @@ export default function DevisPage() {
               </p>
             </div>
           </div>
-          <DevisForm />
+          <DevisForm produits={univers.map((u) => u.nom)} />
         </div>
       </section>
     </main>

@@ -1,7 +1,10 @@
-"use client";
+import type { CSSProperties } from "react";
 
-import { motion } from "framer-motion";
-
+/**
+ * Apparition douce au défilement, sans JavaScript (classe .reveal, globals.css).
+ * Le contenu est rendu visible par défaut : l'effet est un bonus, jamais une
+ * condition pour voir la page. `delay` décale l'effet (en secondes, comme avant).
+ */
 export default function Reveal({
   children,
   className = "",
@@ -13,15 +16,14 @@ export default function Reveal({
   delay?: number;
   y?: number;
 }) {
+  const style = {
+    "--reveal-y": `${y}px`,
+    "--reveal-decalage": `${Math.round(delay * 400)}px`,
+  } as CSSProperties;
+
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay }}
-    >
+    <div className={`reveal ${className}`} style={style}>
       {children}
-    </motion.div>
+    </div>
   );
 }

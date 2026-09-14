@@ -13,10 +13,6 @@ body{
   overflow-x:hidden;
 }
 
-/* Lenis */
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto!important}
-
 ::selection{background:#FFD500;color:#333642}
 ::-webkit-scrollbar{width:0}
 
@@ -153,15 +149,55 @@ a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
 .glow-jaune{box-shadow:0 0 0 0 rgba(255,213,0,0);transition:box-shadow .4s ease}
 .group:hover .glow-jaune{box-shadow:0 0 0 4px rgba(255,213,0,.22)}
 
-/* Grain cinématographique très léger */
+/* Grain cinématographique très léger.
+   Tuile de 256 px (et non un bruit calculé à la taille de l'écran) et pas de
+   mix-blend-mode : sinon le navigateur recompose toute la page à chaque image. */
 .grain::before{
   content:"";position:fixed;inset:0;z-index:9990;pointer-events:none;opacity:.028;
-  mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:256px 256px;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' width='256' height='256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Barre de progression de lecture */
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:#FFD500;z-index:9500;transform-origin:0 50%}
+/* ---------- ANIMATIONS SANS JAVASCRIPT ----------
+   Tout le contenu est visible même si le JS n'est pas encore chargé.
+   Les navigateurs qui ne gèrent pas une propriété affichent simplement
+   la page sans l'effet. */
+
+/* Apparition au chargement (hero) : --delai pour décaler les éléments. */
+.apparait{animation:apparait .7s cubic-bezier(.22,1,.36,1) var(--delai,0s) both}
+@keyframes apparait{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:none}
+}
+
+/* Vignettes flottantes du hero. */
+.flotte{animation:flotte var(--duree,6s) ease-in-out var(--delai,0s) infinite}
+@keyframes flotte{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(var(--amplitude,-10px))}
+}
+
+/* Apparition au défilement (composant Reveal), pilotée par le navigateur. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{
+      animation:reveal linear both;
+      animation-timeline:view();
+      animation-range:entry var(--reveal-decalage,0px) entry calc(var(--reveal-decalage,0px) + 140px);
+    }
+  }
+}
+@keyframes reveal{
+  from{opacity:0;transform:translateY(var(--reveal-y,28px))}
+  to{opacity:1;transform:none}
+}
+
+/* Barre de progression de lecture, liée au défilement de la page. */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:#FFD500;z-index:9500;transform-origin:0 50%;transform:scaleX(0);display:none}
+@supports (animation-timeline: scroll()){
+  .progress-bar{display:block;animation:progression linear both;animation-timeline:scroll(root)}
+}
+@keyframes progression{to{transform:scaleX(1)}}
 
 @media (prefers-reduced-motion: reduce){
   .shine::after{display:none}

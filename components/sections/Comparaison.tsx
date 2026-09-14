@@ -1,5 +1,3 @@
-"use client";
-
 import Reveal from "@/components/fx/Reveal";
 import { comparaison } from "@/lib/content";
 
