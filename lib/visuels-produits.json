@@ -696,6 +696,60 @@
    "hauteur": 1200,
    "alt": "Plat de 80x5mm en aluminium : rendu 3D aux cotes (b 80 mm, t 5 mm) et fiche technique"
   },
+  "poteau-de-cloture-cloplus-40-2m00-gris-ral-7016": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m00-gris-ral-7016-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - GRIS RAL 7016 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m00-noir-ral-9005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m00-noir-ral-9005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - NOIR RAL 9005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m00-vert-ral-6005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m00-vert-ral-6005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M00 - VERT RAL 6005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m30-gris-ral-7016": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m30-gris-ral-7016-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - GRIS RAL 7016 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m30-noir-ral-9005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m30-noir-ral-9005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - NOIR RAL 9005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m30-vert-ral-6005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m30-vert-ral-6005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M30 - VERT RAL 6005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m50-gris-ral-7016": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m50-gris-ral-7016-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - GRIS RAL 7016 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m50-noir-ral-9005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m50-noir-ral-9005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - NOIR RAL 9005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
+  "poteau-de-cloture-cloplus-40-2m50-vert-ral-6005": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/poteau-de-cloture-cloplus-40-2m50-vert-ral-6005-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "POTEAU DE CLOTURE CLOPLUS 40 – 2M50 - VERT RAL 6005 : rendu 3D aux cotes (h 76 mm, b 40 mm) et fiche technique"
+  },
   "poutrelle-hea-100-en-acier": {
    "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-100-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -2737,6 +2791,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Panneaux rigides en acier : deux tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/jardin-cloture/clotures/poteaux": {
+   "src": "/images/produits/jardin-cloture/clotures/poteaux/studio-poteau-cloplus-40.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Poteaux en acier, photo studio sur fond blanc"
   },
   "/toiture-bardage/bardage/imitation-bois": {
    "src": "/images/produits/toiture-bardage/bardage/imitation-bois/studio-tasseau-imitation-bois.webp",
