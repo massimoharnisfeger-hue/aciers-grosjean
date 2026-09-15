@@ -1484,7 +1484,15 @@ def rendre(p):
     sortie = os.path.expandvars(p["sortie"])
     os.makedirs(sortie, exist_ok=True)
     scene.render.filepath = os.path.join(sortie, p["slug"] + ".png")
+    # motif plus fin que 4 px à l'écran (tôle perforée R5 T8 vue entière : pas de 2 à 3 px) : rendu à `surechantillonnage`
+    # fois la taille puis réduction, sinon moiré et plaque « en grain de papier » (vérification du 15/09). Les points
+    # des cotes restent calculés dans la taille finale (resolution_x / y).
+    sur = int(p.get("surechantillonnage", 1))
+    scene.render.resolution_percentage = 100 * sur
     calculer_image(p)
+    scene.render.resolution_percentage = 100
+    if sur > 1 and not p.get("points_seuls"):
+        reduire_image(scene.render.filepath, scene.render.resolution_x, scene.render.resolution_y)
 
     if mode == "caracteristiques" and typ == "TOLE":
         W, H = scene.render.resolution_x, scene.render.resolution_y
@@ -1608,6 +1616,16 @@ def rendre(p):
         ecrire_json(p, sortie, t0, {"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y,
                                     "mode": "studio", "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"]} for q in pieces]})
     print(f"{'POINTS' if p.get('points_seuls') else 'RENDU'} OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
+
+
+def reduire_image(chemin, largeur, hauteur):
+    """Réduit le PNG rendu à `largeur` × `hauteur` (moyenne des pixels : le moiré d'un motif fin disparaît)."""
+    img = bpy.data.images.load(chemin)
+    img.scale(largeur, hauteur)
+    img.filepath_raw = chemin
+    img.file_format = "PNG"
+    img.save()
+    bpy.data.images.remove(img)
 
 
 def calculer_image(p):

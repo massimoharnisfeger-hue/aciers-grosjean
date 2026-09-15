@@ -143,6 +143,10 @@ def main():
             # tôle vue de plus haut : dessus lisible et plaque plus grande dans le cadre (l'épaisseur est en loupe)
             vue = ({"elevation": 48, "azimut": 10} if pc["type"] == "TOLE" else
                    {"elevation": 35} if pc["type"] == "TREILLIS" else {})
+            # perforation au pas < 12 mm : moins de 4 px à l'écran sur une plaque entière -> rendu à 2x puis réduit
+            # (moiré sur les R5 T8, vérification du 15/09)
+            if pc.get("perforation", {}).get("pas", 99) < 12:
+                vue["surechantillonnage"] = 2
             liste.append({**commun, **vue, **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques",
                           "pieces": [pc], "finition": finition})
     elif commande == "studio":

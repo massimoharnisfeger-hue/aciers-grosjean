@@ -430,8 +430,13 @@ def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55):
 def enregistrer(image, base):
     image = image.convert("RGB")
     image.save(base + ".png", optimize=True)
-    image.save(base + ".webp", quality=82, method=6)
-    print("OK", base + ".webp", round(os.path.getsize(base + ".webp") / 1024), "Ko")
+    # WebP sous 200 Ko (CLAUDE.md) : qualité 82, abaissée par paliers pour les images très détaillées (studio des tôles
+    # perforées à 220 Ko le 15/09)
+    for qualite in (82, 76, 70, 64, 58):
+        image.save(base + ".webp", quality=qualite, method=6)
+        if os.path.getsize(base + ".webp") <= 195 * 1024:
+            break
+    print("OK", base + ".webp", round(os.path.getsize(base + ".webp") / 1024), "Ko" + (f" (qualite {qualite})" if qualite != 82 else ""))
 
 
 # ---------------------------------------------------------------- compositions
