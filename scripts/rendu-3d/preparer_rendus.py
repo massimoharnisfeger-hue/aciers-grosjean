@@ -109,6 +109,9 @@ def piece(p, longueur, ratio):
         else:
             out["r"] = v["r"]
     out["longueur"] = min(longueur, round(ratio * max(out["h"], out["b"])))
+    if out["type"] in ("TC", "TR", "TUBE-ROND"):  # section creuse : au moins 3 × la plus grande cote, sinon on voit
+        # le fond à travers le tube (tube carré 250x250x6 à 500 mm, vérification indépendante du 15/09)
+        out["longueur"] = max(out["longueur"], round(3 * max(out["h"], out["b"])))
     return out, v.get("finition", "BRUT")
 
 

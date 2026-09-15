@@ -109,6 +109,12 @@ def pres_de_la_piece(x, y, rayon):
     return MASQUE.crop(boite).getbbox() is not None
 
 
+def sur_la_piece(x, y):
+    """Le pixel (x, y) appartient-il à la pièce (rendu brut opaque) ?"""
+    xi, yi = int(round(x)), int(round(y))
+    return 0 <= xi < MASQUE.width and 0 <= yi < MASQUE.height and MASQUE.getpixel((xi, yi)) > 0
+
+
 def distance_piece(x, y, rayon):
     """Distance (px, euclidienne) au pixel de pièce le plus proche, ou None au-delà de `rayon` : le carré seul comptait
     comme « près » un rond à béton à 83 px (coin du carré), mesure du contrôle du 15/09."""
@@ -133,11 +139,19 @@ def coller_rappel(debut, fin, garde=60, cible=14, allonge_max=220):
     (rappel au niveau du bord de l'aile, pièce réduite à l'âme : 140 px de vide, contrôle du 15/09). Seuil haut : à
     22 px, les rappels des petites sections et des angles arrondis s'allongeaient aussi et se croisaient à l'angle ;
     leur jour de 25 à 50 px (chanfrein, arrondi du tube) est celui d'un dessin technique."""
-    if MASQUE is None or distance_piece(*debut, garde) is not None:
+    if MASQUE is None:
         return debut
     dx, dy = debut[0] - fin[0], debut[1] - fin[1]
     n = math.hypot(dx, dy) or 1.0
     ux, uy = dx / n, dy / n
+    if sur_la_piece(*debut):  # début déjà dans la silhouette (haut des ronds et tubes ronds, vérification du 15/09) :
+        for k in range(1, int(n)):  # reculer le long du trait jusqu'à sortir de la pièce, plus 6 px
+            x, y = debut[0] - ux * k, debut[1] - uy * k
+            if not sur_la_piece(x, y):
+                return (x - ux * 6, y - uy * 6)
+        return debut
+    if distance_piece(*debut, garde) is not None:
+        return debut
     for k in range(2, allonge_max, 2):
         x, y = debut[0] + ux * k, debut[1] + uy * k
         if pres_de_la_piece(x, y, cible):

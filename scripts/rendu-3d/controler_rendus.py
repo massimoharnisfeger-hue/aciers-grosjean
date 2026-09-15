@@ -139,6 +139,33 @@ def jours_rappel(chemin, points):
     return jours
 
 
+def fond_enclos(chemin):
+    """Part du fond enfermé par la pièce (zones transparentes non reliées au bord), rapportée à la pièce : fond visible à
+    travers un tube trop court (tube carré 250x250x6, 4,3 %, vérification indépendante du 15/09). Calcul sur l'image
+    réduite de moitié."""
+    with Image.open(chemin) as img:
+        alpha = img.convert("RGBA").split()[3]
+    petite = alpha.resize((alpha.width // 2, alpha.height // 2), Image.NEAREST).point(lambda v: 255 if v >= 250 else 0)
+    piece = sum(1 for v in petite.tobytes() if v)
+    if not piece:
+        return 0.0
+    remplie = petite.convert("L")
+    w, h = remplie.size
+    for x, y in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1)):
+        if remplie.getpixel((x, y)) == 0:
+            ImageDraw.floodfill(remplie, (x, y), 128)
+    enclos = sum(1 for v in remplie.tobytes() if v == 0)
+    return enclos / piece
+
+
+# types dont la silhouette ne doit enfermer aucun fond (grilles, perforations, caillebotis : trous voulus)
+SANS_FOND_ENCLOS = {"I", "U", "L", "T", "PLAT", "ROND", "CARRE", "TC", "TR", "TUBE-ROND", "ROND-BETON", "UPN", "IPE", "HEA", "HEB",
+                    "U-ALU"}
+# familles rendues avant l'empreinte du code (14/09 soir), vérifiées à l'œil par la vérification indépendante
+EMPREINTE_ABSENTE_VERIFIEE = {"poutrelle-ipe", "poutrelle-hea", "poutrelle-heb", "poutrelle-upn",
+                              "fer-t", "plat", "large-plat", "rond-plein", "carre-plein"}
+
+
 def marges_blanches(chemin, bande=16):
     with Image.open(chemin) as img:
         rgb = img.convert("RGB")
@@ -239,6 +266,23 @@ def controler(famille, produits, pages):
                         points[f"rappel_{i + 1}_debut"], points[f"rappel_{i + 1}_fin"] = d_, f_
                 else:
                     points = infos["points"]
+                with Image.open(brut) as img_brut:
+                    alpha_brut = img_brut.convert("RGBA").split()[3]
+                def opaque(pt_):
+                    xi, yi = int(round(pt_[0])), int(round(pt_[1]))
+                    return 0 <= xi < alpha_brut.width and 0 <= yi < alpha_brut.height and alpha_brut.getpixel((xi, yi)) >= 250
+
+                for cle, pt_ in points.items():
+                    fin_ = points.get(cle[:-len("_debut")] + "_fin") if cle.endswith("_debut") else None
+                    # trait qui entre dans la pièce (début dessus, fin dehors) ; un trait entièrement posé sur le corps de
+                    # la pièce (rappel de b au-dessus de l'aile du fer T) reste lisible grâce au halo (vérification du 15/09)
+                    if fin_ and opaque(pt_) and not opaque(fin_):
+                        ecarts.append(f"{slug} : {cle} commence sur la piece")
+                serie_ = p["valeurs"].get("serie", {}).get("valeur")
+                if serie_ in SANS_FOND_ENCLOS or infos.get("type") in SANS_FOND_ENCLOS:
+                    part = fond_enclos(brut)
+                    if part > 0.005:
+                        ecarts.append(f"{slug} : fond visible a travers la piece ({part:.1%} de la piece)")
                 for cle, (jour, longueur) in sorted(jours_rappel(brut, points).items()):
                     if jour is None:
                         ecarts.append(f"{slug} : {cle} loin de toute piece (fenetre de recherche depassee)")
@@ -309,6 +353,8 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
+    if None in versions and famille not in EMPREINTE_ABSENTE_VERIFIEE:
+        ecarts.append(f"{famille} : visuels sans empreinte du code de rendu (version inconnue) : refaire ou verifier a l'oeil")
     if len(versions) > 1:  # reprise partielle : refaire la famille, ou au moins recalculer ses points (--points-seuls)
         ecarts.append(f"{famille} : visuels issus de {len(versions)} versions du code de rendu ({', '.join(sorted(str(v) for v in versions))})")
     return ecarts, planches(famille, images) if images else []
