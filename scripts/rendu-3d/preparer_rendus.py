@@ -18,6 +18,11 @@ ICI = Path(__file__).resolve().parent
 # mesuree sur la vraie photo du stock IPE GPP (site actuel, image 0003805 : mediane 130/83/78, moyenne 144/85/66),
 # assombrie apres un premier essai qui sortait plus orange que la photo
 TEINTE_GPP = [135, 66, 50]
+# panneau de clôture debout : les lumières « contre » (derrière) et « dessus » (un peu derrière) éclairent sans ombre ;
+# leurs ombres, portées devant le plan du panneau pendant que les autres la portent derrière, laissaient une traînée claire
+# dans le prolongement du pied (vérification du 15/09 ; essai : alpha du sol 25 → 5 → 18 à travers la traînée, 28 → 3 → 0
+# sans ces deux ombres)
+SANS_TRAINEE = {"lumieres_sans_ombre": ["contre", "dessus"]}
 
 
 def piece(p, longueur, ratio):
@@ -80,13 +85,26 @@ def piece(p, longueur, ratio):
                  "o2": {"t": v["t"], "trous": v["trous"], "drainage": v["drainage"], "entraxe": 25.0, "marche": marche},
                  "loupe": {"x": -largeur * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
                 v.get("finition", "GALVA"))
-    elif serie == "PANNEAU-CLOTURE":  # panneau debout : hauteur H (m → mm), largeur l ; profondeur = plis en V de 25 mm
-        return ({"type": "PANNEAU-CLOTURE", "h": round(v["H"] * 1000), "b": v["l"], "longueur": 25.0,
-                 "cloture": {"fil_h": v["fil_h"], "fil_v": v["fil_v"], "maille_a": v["maille_a"], "maille_b": v["maille_b"],
-                             "plis": v["plis"], "abouts": v["abouts"]}}, v.get("finition", "LAQUE"))
-    elif serie == "POTEAU":  # couché comme un profilé : section b × h, parois de 2 mm et angles r 3 (forme du rendu)
-        out = {"type": "POTEAU", "h": v["h"], "b": v["b"], "t": 2.0, "r1": 3.0,
-               "poteau": {"modele": v["modele"], "encoche": v.get("encoche"), "pas": v.get("pas_encoches")}}
+    elif serie == "PANNEAU-CLOTURE":  # panneau debout : hauteur H (m → mm), largeur l ; profondeur = V du pli + fil du sommet
+        # maille verticale « type 205 » : l'ancien modèle lisait la maille tournée de 90° (vérification du 15/09)
+        if not v["axe_v"] < v["axe_h"]:
+            raise SystemExit(f"panneau : fils verticaux ({v['axe_v']}) moins serrés que les horizontaux ({v['axe_h']})")
+        if len(v["travees"]) + 1 != v["plis"]:
+            raise SystemExit(f"panneau : {v['plis']} plis mais {len(v['travees']) + 1} dans les travées {v['travees']}")
+        return ({"type": "PANNEAU-CLOTURE", "h": round(v["H"] * 1000), "b": v["l"],
+                 "longueur": v["prof_pli"] + (v["fil_h"] + v["fil_v"]) / 2 + v["fil_h"] / 2,
+                 "cloture": {k: v[k] for k in ("fil_h", "fil_v", "axe_v", "axe_h", "h_pli", "prof_pli", "droit_pli",
+                                               "travees", "abouts", "n_fils_v")}},
+                v.get("finition", "LAQUE"))
+    elif serie == "POTEAU":  # couché comme un profilé : section b × h
+        q = {"modele": v["modele"], "encoche": v.get("encoche"), "pas": v.get("pas_encoches")}
+        t = 2.0  # CLOGRIFF 64 : parois de 2 mm (forme du rendu)
+        if v.get("feuillure"):  # CLOPLUS 40 : profilé alu en H à deux tubes, lèvres et feuillures, âme percée (FTCP40PLIS205)
+            t = v["paroi"]
+            q.update(feuillure=v["feuillure"], tube=v["profondeur_tube"], levre=v["levre"], paroi=v["paroi"], ame=v["ame"],
+                     conge=v["conge_ame"], trou=[v["trou_l"], v["trou_h"]], premier_trou=v["premier_trou"],
+                     pas_trous=v["pas_trous"], capuchon=v.get("capuchon_e"))
+        out = {"type": "POTEAU", "h": v["h"], "b": v["b"], "t": t, "r1": 3.0, "poteau": q}
     elif serie == "TOLE-PERFOREE":  # perforation : forme, cote et pas du code du nom (R/T, C/U) ou motif aléatoire
         return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"], "perforation": v["perforation"]},
                 v.get("finition", "BRUT"))
@@ -110,10 +128,19 @@ def piece(p, longueur, ratio):
         else:
             out["r"] = v["r"]
     out["longueur"] = min(longueur, round(ratio * max(out["h"], out["b"])))
+    arrondir_au_pas_des_trous(out)
     if out["type"] in ("TC", "TR", "TUBE-ROND"):  # section creuse : au moins 3 × la plus grande cote, sinon on voit
         # le fond à travers le tube (tube carré 250x250x6 à 500 mm, vérification indépendante du 15/09)
         out["longueur"] = max(out["longueur"], round(3 * max(out["h"], out["b"])))
     return out, v.get("finition", "BRUT")
+
+
+def arrondir_au_pas_des_trous(pc):
+    """Poteau à âme percée (CLOPLUS 40) : tronçon multiple du pas des trous, trous à `premier_trou` des deux bouts comme
+    sur un poteau entier (2 000, 2 300, 2 500 mm) ; 475 et 532 mm deviennent 500."""
+    pas = pc.get("poteau", {}).get("pas_trous")
+    if pc["type"] == "POTEAU" and pas:
+        pc["longueur"] = max(pas, round(pc["longueur"] / pas) * pas)
 
 
 def teinte(p):
@@ -141,8 +168,11 @@ def main():
         for slug in reste:
             pc, finition = piece(produits[slug], 500, 6.25)
             # tôle vue de plus haut : dessus lisible et plaque plus grande dans le cadre (l'épaisseur est en loupe)
+            # panneau de clôture : azimut 35 (au lieu de 20) pour lire la cassure en V des fils verticaux dans les plis
+            # (essai du 15/09 : décalage du V de 3 à 5 px à l'écran)
             vue = ({"elevation": 48, "azimut": 10} if pc["type"] == "TOLE" else
-                   {"elevation": 35} if pc["type"] == "TREILLIS" else {})
+                   {"elevation": 35} if pc["type"] == "TREILLIS" else
+                   {"azimut": 35, **SANS_TRAINEE} if pc["type"] == "PANNEAU-CLOTURE" else {})
             # perforation au pas < 12 mm : moins de 4 px à l'écran sur une plaque entière -> rendu à 2x puis réduit
             # (moiré sur les R5 T8, vérification du 15/09)
             if pc.get("perforation", {}).get("pas", 99) < 12:
@@ -160,10 +190,11 @@ def main():
         for pc in pieces:
             if pc["type"] not in ("TOLE", "TREILLIS", "PANNEAU-CLOTURE"):
                 pc["longueur"] = min(900, round(7 * max(max(q["h"], q["b"]) for q in pieces)))
+                arrondir_au_pas_des_trous(pc)
         if len(finitions) > 1:
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
         # panneaux de clôture debout : écart de 15 % de la hauteur (0,9 h les mettrait à plus d'un mètre)
-        ecart = {"ecart_studio": 0.15} if pieces[0]["type"] == "PANNEAU-CLOTURE" else {}
+        ecart = {"ecart_studio": 0.15, **SANS_TRAINEE} if pieces[0]["type"] == "PANNEAU-CLOTURE" else {}
         finition = finitions.pop()
         # tôles en métal lisse : vue plus plongeante, proche des visuels (48°) ; à 30°, elles reflétaient le studio
         # sombre, photo 60 niveaux sous les visuels (vérification du 15/09 ; essai : −68 → −15 pour l'inox)

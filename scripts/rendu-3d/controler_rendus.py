@@ -330,7 +330,8 @@ def controler(famille, produits, pages):
                 ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
             if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
                 ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
-            # poteaux de clôture : tubes (parois de 2 mm), intérieur sombre à bon droit, laque noire (diagnostic du 15/09)
+            # poteaux de clôture : tubes creux (CLOGRIFF) ou feuillures ombrées et capuchon noir (CLOPLUS), laque noire
+            # (diagnostic du 15/09)
             creux = p["valeurs"].get("serie", {}).get("valeur") in ("TC", "TR", "TUBE-ROND", "POTEAU")
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):

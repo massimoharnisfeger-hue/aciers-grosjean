@@ -579,6 +579,10 @@ SRC_FT_TASSEAU = "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
 SRC_FT_CLOPLUS = "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)"
 SRC_FT_CLOGRIFF = "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205)"
 SRC_FT_PCP = "fiche fournisseur publiée « Caillebotis O2 » (PcP)"
+# panneaux « type 205 » : entraxes de 200 entre plis, de bas en haut, par hauteur (mm) ; comptés sur le dessin des hauteurs
+# de FTCP40PLIS205 (1430 et 2030 : FTCP50PLIS205 ind 10, clonor.com), recoupés par H = 30 + 100 × plis + 200 × Σ
+TRAVEES_205 = {430: (1,), 630: (2,), 830: (3,), 1030: (4,), 1230: (5,), 1430: (6,), 1530: (3, 3), 1730: (4, 3),
+               1930: (4, 4), 2030: (3, 2, 3), 2130: (5, 4), 2430: (3, 4, 3)}
 
 
 def cm_vers_mm(texte):
@@ -693,7 +697,8 @@ def vague3(cat, reel, desc):
                      H=valeur(H / 1000, "m", SRC_NOM + " (écrite en mètres comme la page)"),
                      fil_h=valeur(int(fils.group(1)), "mm", SRC_NOM + " et " + SRC_DESC),
                      fil_v=valeur(int(fils.group(2)), "mm", SRC_NOM + " et " + SRC_DESC),
-                     abouts=valeur(25, "mm", ft + " (« abouts de 25 mm ») — forme du rendu", supposee=True))
+                     abouts=valeur(25, "mm", ft + " (« Abouts de 25 mm », cote 25)"
+                                   + (" et " + SRC_DESC + " (« abouts de 25 mm »)" if modele == "PLIS 205" else "")))
             maille = re.search(r"Maille\s*(\d+)\s*x\s*(\d+)\s*mm", texte, re.I)
             if maille:
                 v["maille_a"], v["maille_b"] = valeur(int(maille.group(1)), "mm", SRC_DESC), valeur(int(maille.group(2)), "mm", SRC_DESC)
@@ -709,9 +714,34 @@ def vague3(cat, reel, desc):
                     alertes.append(f"largeur {l_desc} (description) ≠ {l_ft} (fiche fournisseur) : non affichée")
             # nombre de plis : « (3 plis – 4 fixations par côté) » dans la description, à toutes les hauteurs (la règle
             # « 4 plis au-delà de 1,80 m » était supposée et fausse : vérification indépendante du 15/09)
+            # maille verticale « type 205 » (fiches FTCP40PLIS205 / FTCG64PLIS205) : fils verticaux à l'axe 55, horizontaux
+            # à l'axe 200, plis de 100 à 3 fils ; entraxes de 200 entre plis, de bas en haut, comptés sur le dessin des
+            # hauteurs des fiches (pli en pied et en tête ; H = 25 + 5 + 100 × plis + 200 × entraxes). L'ancien modèle avait
+            # la maille tournée de 90° (vérification indépendante du 15/09).
+            tr = TRAVEES_205.get(H)
+            src_dessin = f"{SRC_FT_CLOPLUS} et {SRC_FT_CLOGRIFF} (dessin des hauteurs)"
             plis = re.search(r"\((\d)\s*plis", texte, re.I)
-            v["plis"] = (valeur(int(plis.group(1)), "", SRC_DESC + " — forme du rendu") if plis else
-                         valeur(3, "", "usage des panneaux 3D — forme du rendu, non affichée", supposee=True))
+            if plis:
+                v["plis"] = valeur(int(plis.group(1)), "", SRC_DESC + " — forme du rendu")
+            elif tr:
+                v["plis"] = valeur(len(tr) + 1, "", src_dessin + " — forme du rendu")
+            if tr:
+                assert 30 + 100 * (len(tr) + 1) + 200 * sum(tr) == H, (slug, tr, H)
+                v["travees"] = valeur(list(tr), "", src_dessin + " — forme du rendu, non affichée")
+                if "plis" in v and v["plis"]["valeur"] != len(tr) + 1:
+                    alertes.append(f"plis {v['plis']['valeur']} (description) ≠ {len(tr) + 1} (dessin des hauteurs)")
+            else:
+                alertes.append(f"hauteur {H} absente du dessin des hauteurs des fiches : position des plis inconnue")
+            v["axe_h"] = valeur(200, "mm", SRC_FT_CLOPLUS + " (« Axe fils 200 »)")
+            v["axe_v"] = valeur(55, "mm", SRC_FT_CLOPLUS + " (« Axe fils: 55 », « Vide maille: 50 »)"
+                                + (" et " + SRC_DESC + " (« Maille 200 x 55 mm »)" if modele == "MEDIUM 3D" else ""))
+            v["h_pli"] = valeur(100, "mm", SRC_FT_CLOPLUS + " (cote 100 du pli de tête)")
+            v["prof_pli"] = valeur(25, "mm", "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, "
+                                   "non affichée", supposee=True)
+            v["droit_pli"] = valeur(15, "mm", "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+                                    supposee=True)
+            v["n_fils_v"] = valeur(46, "", "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) "
+                                   "— forme du rendu, non affichée", supposee=True)
             if re.search(r"galvanis\w+ avec thermolaquage", texte, re.I):
                 v["revetement"] = valeur("Galvanisé, thermolaqué polyester", "", SRC_DESC)
             v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
@@ -726,8 +756,23 @@ def vague3(cat, reel, desc):
             if modele == "CLOPLUS 40":
                 v.update(serie=valeur("POTEAU", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM), L=L_m,
                          b=valeur(40, "mm", SRC_FT_CLOPLUS + " (dessin coté 40 × 76)"), h=valeur(76, "mm", SRC_FT_CLOPLUS + " (dessin coté 40 × 76)"),
-                         feuillure=valeur(46, "mm", SRC_FT_CLOPLUS + " — forme du rendu", supposee=True),
+                         feuillure=valeur(46, "mm", SRC_FT_CLOPLUS + " (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)"),
                          matiere=valeur("Aluminium", "", SRC_FT_CLOPLUS + " (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"))
+                # profilé en H à deux tubes creux, lèvres, feuillures et âme percée (vérification indépendante du 15/09 : le
+                # rendu montrait un tube fermé). Trous : cotes du dessin ; épaisseurs et rayons non publiés, mesurés sur le
+                # dessin de section à l'échelle (1,538 px/mm) ou supposés : forme du rendu, jamais affichés
+                ft_sec = SRC_FT_CLOPLUS + ", dessin de section mesuré à l'échelle 76"
+                v.update(premier_trou=valeur(50, "mm", SRC_FT_CLOPLUS + " (dessin coté 50 : bout du poteau → axe du 1er trou)"),
+                         pas_trous=valeur(100, "mm", SRC_FT_CLOPLUS + " (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088"),
+                         profondeur_tube=valeur(13.5, "mm", ft_sec + " (13,4 et 13,5) — forme du rendu", supposee=True),
+                         levre=valeur(1.5, "mm", ft_sec + " (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu", supposee=True),
+                         paroi=valeur(1.8, "mm", "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu", supposee=True),
+                         ame=valeur(1.8, "mm", ft_sec + " (trait de 1,6 à 1,7) — forme du rendu", supposee=True),
+                         conge_ame=valeur(3.0, "mm", ft_sec + " — forme du rendu", supposee=True),
+                         trou_l=valeur(8.5, "mm", "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu", supposee=True),
+                         trou_h=valeur(6.5, "mm", "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu", supposee=True),
+                         capuchon_e=valeur(6, "mm", "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, "
+                                                    "épaisseur lue en proportion — forme du rendu", supposee=True))
                 v["finition"] = valeur("LAQUE-ALU", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
             else:
                 v.update(serie=valeur("POTEAU", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM), L=L_m,

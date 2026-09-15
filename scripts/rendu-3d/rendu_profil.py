@@ -759,10 +759,11 @@ def sans_coupe(obj):
     return obj
 
 
-def plaque_percee(nom, largeur, hauteur, e, trous, repere, lisse=False):
+def plaque_percee(nom, largeur, hauteur, e, trous, repere, lisse=False, contour=None):
     """Plaque percée (dalle_percee dans son plan u-v, épaisseur w) placée par `repere` : fonction (u, v, w) -> (x, y, z)
-    en mm. `trous` : contours fermés (u, v). Faces d'épaisseur en matière de coupe."""
-    contour = [(-largeur / 2, -hauteur / 2), (largeur / 2, -hauteur / 2), (largeur / 2, hauteur / 2), (-largeur / 2, hauteur / 2)]
+    en mm. `trous` : contours fermés (u, v). `contour` : contour extérieur (u, v) quelconque au lieu du rectangle
+    largeur × hauteur (tubes du poteau CLOPLUS 40)."""
+    contour = contour or [(-largeur / 2, -hauteur / 2), (largeur / 2, -hauteur / 2), (largeur / 2, hauteur / 2), (-largeur / 2, hauteur / 2)]
     verts, faces = dalle_percee(contour, trous, e)
     me = bpy.data.meshes.new(nom)
     me.from_pydata([tuple(c * MM for c in repere(u, v, w)) for u, v, w in verts], [], faces)
@@ -875,33 +876,59 @@ def plancher_o2(piece, dx, nom):
 
 # ---------------------------------------------------------------- clôtures
 
+def plan_panneau_205(H, fh, h_pli, axe_h, travees, abouts):
+    """Axes z des fils horizontaux dans le plan du panneau et z0 (axe du fil bas) de chaque pli : pli en pied, plis
+    séparés par `travees` entraxes de `axe_h` (de bas en haut, dessin des hauteurs des fiches FTCP40PLIS205 et
+    FTCG64PLIS205), pli en tête sous les abouts. -> (z du plan, z0 des plis) ; erreur si les travées ne bouclent pas H."""
+    z = fh / 2
+    plis, plan = [z], [z, z + h_pli]
+    z += h_pli
+    for n in travees:
+        for _ in range(n):
+            z += axe_h
+            plan.append(z)
+        plis.append(z)
+        z += h_pli
+        plan.append(z)
+    if abs(z + fh / 2 + abouts - H) > 1:  # 1530 = 2,5 + 100 + 600 + 100 + 600 + 100 + 2,5 + 25
+        raise ValueError(f"travées {travees} incompatibles avec H {H}")
+    return plan, plis
+
+
 def panneau_cloture(piece, dx, nom):
-    """Panneau de clôture rigide « 3D » debout dans le plan x-z : fils horizontaux Ø fil_h le long de x au pas maille_b,
-    fils verticaux Ø fil_v au pas maille_a (débord de 50 mm des horizontaux à chaque bout, abouts en tête), plis en V
-    (profondeur 25 mm sur 100 mm de haut, forme usuelle) répartis sur la hauteur. -> objets"""
+    """Panneau rigide « type 205 » à maille verticale debout dans le plan x-z (z = 0 sous le fil inférieur) : fils
+    VERTICAUX Ø fil_v à l'axe axe_v (55), fils HORIZONTAUX Ø fil_h à l'axe axe_h (200) sur toute la largeur l, soudés
+    côté +y ; plis en V vers +y de h_pli (100) portant 3 fils (bas, sommet, haut), un en pied, un en tête sous les
+    abouts, les autres séparés par `travees` entraxes (FTCP40PLIS205). Abouts de 25 mm en tête, bord lisse en pied.
+    Vérification indépendante du 15/09 : l'ancien modèle avait la maille tournée de 90° et des plis mal placés. -> objets"""
     c = piece["cloture"]
     H, l = piece["h"], piece["b"]
-    fh, fv, ma, mb, plis, abouts = c["fil_h"], c["fil_v"], c["maille_a"], c["maille_b"], c["plis"], c["abouts"]
-    prof, demi = piece["longueur"], 50.0
-    zs_plis = [H * (k + 1) / (plis + 1) for k in range(plis)]
-
-    def y_de(z):
-        return max([0.0] + [prof * (1 - abs(z - zk) / demi) for zk in zs_plis if abs(z - zk) < demi])
-
+    fh, fv = c["fil_h"], c["fil_v"]
+    axe_v, axe_h, h_pli = c["axe_v"], c["axe_h"], c["h_pli"]
+    prof, droit, abouts = c["prof_pli"], c["droit_pli"], c["abouts"]
+    plan, plis = plan_panneau_205(H, fh, h_pli, axe_h, c["travees"], abouts)
+    ecart = (fh + fv) / 2  # axe du fil horizontal derrière l'axe du vertical (fils tangents)
     objs = []
-    n_h = int((H - abouts - fh) / mb) + 1
-    for i in range(n_h):
-        z = fh / 2 + i * mb
-        fil = extruder(cercle(fh / 2, z, 20), l, f"{nom}-h{i}")
-        fil.rotation_euler = (0, 0, math.radians(-90))
-        fil.location = ((dx - l / 2) * MM, (y_de(z) + fv) * MM, 0)  # devant les fils verticaux, soudé dessus
-        objs.append(fil)
-    n_v = int((l - 100) / ma) + 1
-    debord = (l - (n_v - 1) * ma) / 2
-    ruptures = sorted({0.0, H} | {zk + d for zk in zs_plis for d in (-demi, 0.0, demi)})
+
+    def fil_h(i, zh, y):
+        fil = extruder(cercle(fh / 2, zh, 20), l, f"{nom}-h{i}")
+        fil.rotation_euler = (0, 0, math.radians(-90))  # y local -> x monde, x local -> -y monde
+        fil.location = ((dx - l / 2) * MM, (y + ecart) * MM, 0)
+        return sans_coupe(fil)  # panneau laqué après soudage : bouts des fils dans la laque, pas en acier nu
+
+    for i, zh in enumerate(plan):
+        objs.append(fil_h(i, zh, 0.0))
+    for k, z0 in enumerate(plis):  # fil du sommet du V
+        objs.append(fil_h(len(plan) + k, z0 + h_pli / 2, prof))
+    profil = [(0.0, 0.0)]
+    for z0 in plis:
+        profil += [(0.0, z0 + droit), (prof, z0 + h_pli / 2), (0.0, z0 + h_pli - droit)]
+    profil.append((0.0, H))  # abouts : jusqu'en tête
+    n_v = c["n_fils_v"]
+    x0 = dx - (n_v - 1) * axe_v / 2
     for j in range(n_v):
-        x = dx - l / 2 + debord + j * ma
-        objs.append(courbe_tube(f"{nom}-v{j}", [(x, y_de(z), z) for z in ruptures if 0 <= z <= H], fv / 2, resolution=6))
+        x = x0 + j * axe_v
+        objs.append(courbe_tube(f"{nom}-v{j}", [(x, y, zz) for y, zz in profil], fv / 2, resolution=6))
     return objs
 
 
@@ -922,10 +949,108 @@ def poteau_clogriff(piece, dx, nom):
     return objs
 
 
+def contour_cloplus(q, b, h):
+    """Section du poteau CLOPLUS 40 (dessin de section de FTCP40PLIS205, tourné de 90° : h = 76 le long de z) : deux
+    tubes creux b × `tube` (40 × 13,5) en z = 0 et z = h, lèvres de `levre` (1,5) aux deux bouts de chaque tube côté
+    feuillure (ouverture 76 − 2 × 15 = 46), âme centrée en x = 0 raccordée par des congés `conge` (R 3). Parois et âme
+    de `paroi` / `ame` (1,8, supposées), petits rayons supposés. -> (contour extérieur, [cavité basse, cavité haute])."""
+    D, lv, t, tw, rf = q["tube"], q["levre"], q["paroi"], q["ame"], q["conge"]
+    xl, xt, zl = b / 2 - t, tw / 2, D + lv
+    droite = [((b / 2, 0), 1.0), ((b / 2, zl), 0.6), ((xl, zl), 0.6), ((xl, D), 0.5), ((xt, D), rf),
+              ((xt, h - D), rf), ((xl, h - D), 0.5), ((xl, h - zl), 0.6), ((b / 2, h - zl), 0.6), ((b / 2, h), 1.0)]
+    gauche = [((-x, z), r) for (x, z), r in reversed(droite)]  # symétrique par rapport à x = 0, sens trigonométrique
+    coins = [c for c, _ in droite + gauche]
+    rayons = [r for _, r in droite + gauche]
+    contour = dedoublonner(contour_arrondi(coins, rayons, 6))
+    bas = dedoublonner(contour_arrondi([(-xl, t), (xl, t), (xl, D - t), (-xl, D - t)], [0.5] * 4, 3))
+    haut = [(x, h - z) for x, z in reversed(bas)]
+    return contour, [bas, haut]
+
+
+def faces_bout_en_coupe(obj, L):
+    """Faces d'about (tous leurs sommets en y = 0, ou tous en y = L) en matière de coupe, les autres en surface."""
+    for poly in obj.data.polygons:
+        ys = [obj.data.vertices[k].co.y for k in poly.vertices]
+        bout = all(abs(y) < 1e-7 for y in ys) or all(abs(y - L * MM) < 1e-7 for y in ys)
+        poly.material_index = 1 if bout else 0
+    return obj
+
+
+def poteau_cloplus(piece, dx, nom):
+    """Poteau CLOPLUS 40 couché comme un profilé (FTCP40PLIS205) : profilé alu en H à deux tubes creux (tube bas en
+    z 0 → 13,5, tube haut en z 62,5 → 76), lèvres et feuillures de 46 ouvertes vers ± x, âme mince dans le plan x = 0
+    percée dans son axe (1er trou à `premier_trou` du bout y = 0, puis au pas `pas_trous` : cotes 50 et 100 de la fiche),
+    capuchon noir en H en tête (bout y = L). Un seul objet laqué (profil d'un tenant, trous percés par un booléen) +
+    capuchon. Premier essai en trois objets (tubes + plaque d'âme qui recouvrait leurs amorces) : faces d'about coplanaires,
+    taches noires aux raccords âme/tubes (essai du 15/09). -> [(objet, matière)]"""
+    q = piece["poteau"]
+    b, h, L = piece["b"], piece["h"], piece["longueur"]
+    contour, cavites = contour_cloplus(q, b, h)
+    profil = plaque_percee(f"{nom}-profil", 0, 0, L, cavites, lambda u, v, w: (dx + u, w, v), contour=contour)
+    # abouts retriangulés : la triangulation reliait des points colinéaires de part et d'autre de l'âme (z = 62,5), triangle
+    # d'aire nulle que le booléen exact changeait en fente d'about (contrôle géométrique du 15/09)
+    bm = bmesh.new()
+    bm.from_mesh(profil.data)
+    bouts = [f for f in bm.faces if all(abs(v.co.y) < 1e-7 for v in f.verts) or all(abs(v.co.y - L * MM) < 1e-7 for v in f.verts)]
+    dans_bouts = set(bouts)
+    internes = [e for e in bm.edges if len(e.link_faces) == 2 and all(f in dans_bouts for f in e.link_faces)]
+    bmesh.ops.beautify_fill(bm, faces=bouts, edges=internes)
+    aretes_par_angle(bm)
+    bm.to_mesh(profil.data)
+    bm.free()
+    faces_bout_en_coupe(profil, L)
+    # trous oblongs de l'âme : prismes traversant l'âme (x de −2 à 2), retirés par un booléen exact ; leurs parois
+    # prennent la matière d'index 0 (laque : percés avant thermolaquage). Coupeur masqué, hors de la liste des objets.
+    lt, ht = q["trou"]  # lt le long du poteau (y), ht en travers (z)
+    r = ht / 2
+    verts, faces, y = [], [], q["premier_trou"]
+    while y + lt / 2 <= L - 1:
+        oblong = arc(y + lt / 2 - r, h / 2, r, -90, 90, 8) + arc(y - lt / 2 + r, h / 2, r, 90, 270, 8)
+        vs, fs = dalle_percee(oblong, [], 4.0)
+        n0 = len(verts)
+        verts += [((dx - 2.0 + w) * MM, u * MM, v * MM) for u, v, w in vs]
+        faces += [tuple(k + n0 for k in f) for f in fs]
+        y += q["pas_trous"]
+    if faces:
+        me = bpy.data.meshes.new(f"{nom}-percage")
+        me.from_pydata(verts, [], faces)
+        bm = bmesh.new()
+        bm.from_mesh(me)
+        bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+        aretes_par_angle(bm)
+        bm.to_mesh(me)
+        bm.free()
+        coupeur = bpy.data.objects.new(f"{nom}-percage", me)
+        bpy.context.collection.objects.link(coupeur)
+        coupeur.hide_render = True
+        bool_ = profil.modifiers.new("trous", "BOOLEAN")
+        bool_.operation = "DIFFERENCE"
+        bool_.solver = "EXACT"
+        bool_.object = coupeur
+    bev = profil.modifiers.new("chanfrein", "BEVEL")  # après le perçage : bords des trous chanfreinés aussi
+    bev.width = 0.3 * MM
+    bev.segments = 3
+    bev.limit_method = "ANGLE"
+    bev.angle_limit = math.radians(30)
+    objs = [(profil, None)]
+    if q.get("capuchon"):  # en tête (y = L) ; le bout y = 0 est le pied scié, section visible
+        # H noir débordant de 1 autour du profil, bande centrale de 6 sur l'âme (proportions de la vue 3D de la fiche) ;
+        # avec 40 × 76 : x ± 21, z −1 → 77, tubes jusqu'à z 16 et depuis z 60
+        de, xw = 1.0, 3.0
+        xa, zb = b / 2 + de, q["tube"] + q["levre"] + de
+        coins = [(-xa, -de), (xa, -de), (xa, zb), (xw, zb), (xw, h - zb), (xa, h - zb), (xa, h + de), (-xa, h + de),
+                 (-xa, h - zb), (-xw, h - zb), (-xw, zb), (-xa, zb)]
+        rayons = [2, 2, 1, 1.5, 1.5, 1, 2, 2, 1, 1.5, 1.5, 1]
+        cap = extruder(dedoublonner(contour_arrondi(coins, rayons, 4)), q["capuchon"], f"{nom}-capuchon", decalage_x=dx)
+        cap.location.y = L * MM
+        objs.append((sans_coupe(cap), "CAPUCHON"))
+    return objs
+
+
 def section_de(piece):
     t = piece["type"]
-    if t == "POTEAU":  # poteau CLOPLUS 40 : tube rectangulaire à angles arrondis (forme du rendu)
-        return section_tube_rect(piece["h"], piece["b"], piece["t"], piece["r1"])
+    if t == "POTEAU":  # CLOPLUS 40 et CLOGRIFF 64 ont leur géométrie propre : aucun poteau ne retombe sur un tube
+        raise ValueError("POTEAU : poteau_cloplus (feuillure) ou poteau_clogriff (encoche)")
     if t == "TOLE" and piece.get("profil"):  # tôle profilée ou tasseau : tôle pliée, x centré, fond en z = 0
         ligne = profil_de_tole(piece)
         return [(x - piece["b"] / 2, z) for x, z in section_pliee(ligne, piece["h"])]
@@ -1187,12 +1312,29 @@ def materiau_corten():
 
 
 # teintes RAL (sRGB 0-255) des produits laqués du catalogue : nuancier usuel, seulement pour la matière du rendu
-RAL = {"7016": (56, 62, 66), "9005": (14, 14, 16), "6005": (47, 69, 56)}
+# 6005 : Lab RAL Classic 24,4 / −20,6 / 4,7 (e-paint.co.uk), pastille « RAL 6005 » de la photo du site (G083) mesurée
+# (18, 66, 50) ; l'ancienne valeur (47, 69, 56) rendait les panneaux gris-vert (vérification indépendante du 15/09)
+RAL = {"7016": (56, 62, 66), "9005": (14, 14, 16), "6005": (17, 66, 51)}
+# renfort de saturation de la teinte de rendu, par RAL (1 = aucun) : AgX et le reflet satiné du studio grisent un vert
+# sombre. Essai du 15/09 (fils de 4 mm, 1600 px, médiane des pixels opaques en Lab) : k 1,0 → 22,7 / −14,4 / 2,6
+# (chroma 15) ; k 1,4 → chroma 19 ; k 1,7 → 25,0 / −20,0 / 6,5, pastille « RAL 6005 » de la photo du site 24,5 / −20,6 / 5,1.
+# Gris 7016 et noir 9005 rendus justes, inchangés.
+CHROMA_RAL = {"6005": 1.7}
+
+
+def teinte_ral(ral):
+    """Teinte de rendu (sRGB 0-255) d'un RAL : valeur du nuancier, écartée du gris de même luminance par CHROMA_RAL."""
+    r, g, b = RAL.get(ral, RAL["7016"])
+    k = p_mat(f"chroma_{ral}", CHROMA_RAL.get(ral, 1.0))
+    if k == 1.0:
+        return r, g, b
+    y = 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return tuple(min(255.0, max(0.0, y + k * (c - y))) for c in (r, g, b))
 
 
 def materiau_laque(ral=None):
     """Acier ou aluminium thermolaqué / prélaqué polyester : couleur RAL unie, satinée, non métallique."""
-    r, g, b = (lineaire(c) for c in RAL.get(str(ral or PARAMS.get("ral", "7016")), RAL["7016"]))
+    r, g, b = (lineaire(c) for c in teinte_ral(str(ral or PARAMS.get("ral", "7016"))))
     m = materiau_metal(f"laque-{ral}", (r, g, b), 0.42, variation=0.02, metallic=0.0, ecart_rugosite=0.05)
     m.node_tree.nodes["Principled BSDF"].inputs["Specular IOR Level"].default_value = 0.4
     return m
@@ -1239,10 +1381,18 @@ def materiau_noir():
     return materiau_metal("noir", (0.012, 0.012, 0.013), 0.6, variation=0.02, metallic=0.0, ecart_rugosite=0.05)
 
 
+def materiau_capuchon():
+    """Capuchon plastique noir du poteau CLOPLUS 40 (vue 3D de FTCP40PLIS205, photo du site G088) : noir satiné non
+    métallique, un peu moins sombre que les bandes du tasseau pour garder son relief."""
+    b = p_mat("base_capuchon", 0.03)
+    return materiau_metal("capuchon", (b, b, b * 1.05), p_mat("rugosite_capuchon", 0.45), variation=0.02, metallic=0.0,
+                          ecart_rugosite=0.05)
+
+
 MATIERES = {"BRUT": materiau_calamine, "GPP": materiau_gpp, "GALVA": materiau_galva, "ALU": materiau_alu,
             "INOX": materiau_inox, "FROID": materiau_froid, "CORTEN": materiau_corten,
             "LAQUE": materiau_laque, "LAQUE-ALU": materiau_laque, "BOIS": materiau_bois,
-            "MOUSSE": materiau_mousse, "ALU-FEUILLE": materiau_alu_feuille}
+            "MOUSSE": materiau_mousse, "ALU-FEUILLE": materiau_alu_feuille, "CAPUCHON": materiau_capuchon}
 
 
 # ---------------------------------------------------------------- scène
@@ -1363,6 +1513,15 @@ def rendre(p):
             objs = panneau_cloture(piece, dx, f"{p['slug']}-{i}")
         elif piece.get("poteau", {}).get("encoche"):
             objs = poteau_clogriff(piece, dx, f"{p['slug']}-{i}")
+        elif piece.get("poteau", {}).get("feuillure"):  # CLOPLUS 40 : profilé en H à feuillures, âme percée, capuchon
+            objs = []
+            for obj, matiere in poteau_cloplus(piece, dx, f"{p['slug']}-{i}"):
+                objs.append(obj)
+                if matiere:
+                    matieres_propres[obj.name] = MATIERES[matiere]()
+            if piece["poteau"].get("capuchon"):  # capuchon (débord de 1, épaisseur en y) dans le cadre, symétrique en x
+                boite_pts += [((dx + sx * (piece["b"] / 2 + 1)) * MM, (L + piece["poteau"]["capuchon"]) * MM, z * MM)
+                              for sx in (-1, 1) for z in (0, piece["h"] + 1)]
         else:
             objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)]
             if piece["type"] == "ROND-BETON":
@@ -1460,6 +1619,11 @@ def rendre(p):
     lumiere_zone("debouchage", t + Vector((1.6, -1.4, 0.7)), t, 2.0, p.get("e_debouchage", 35))
     lumiere_zone("contre", t + Vector((0.5, 1.8, 1.3)), t, 1.2, p.get("e_contre", 70))
     lumiere_zone("dessus", t + Vector((0.0, 0.3, 2.5)), t, 2.5, p.get("e_dessus", 45))
+    # lumières qui éclairent sans porter d'ombre (`lumieres_sans_ombre`, panneaux de clôture) : un panneau debout reçoit
+    # la lumière « contre » par derrière et les autres par devant ; leurs ombres partaient de part et d'autre de son plan
+    # et laissaient une traînée claire dans le prolongement du pied (vérification indépendante du 15/09)
+    for nom_lumiere in p.get("lumieres_sans_ombre", []):
+        bpy.data.objects[nom_lumiere].data.use_shadow = False
     monde_studio()
 
     scene.render.engine = "CYCLES"

@@ -3921,9 +3921,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -3948,6 +3947,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     3,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -3997,9 +4035,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4024,6 +4061,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     3,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4073,9 +4149,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4100,6 +4175,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     3,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4149,9 +4263,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4176,6 +4289,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4225,9 +4377,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4252,6 +4403,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4301,9 +4491,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4328,6 +4517,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4377,9 +4605,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4404,6 +4631,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     4
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4453,9 +4719,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4480,6 +4745,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     4
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4529,9 +4833,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4556,6 +4859,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     4
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 ») et site actuel — description de la fiche (« Maille 200 x 55 mm »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4605,9 +4947,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25) et site actuel — description de la fiche (« abouts de 25 mm »)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4631,6 +4972,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4678,9 +5058,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25) et site actuel — description de la fiche (« abouts de 25 mm »)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4704,6 +5083,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     3
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4751,9 +5169,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25) et site actuel — description de la fiche (« abouts de 25 mm »)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4777,6 +5194,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     4
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4824,9 +5280,8 @@
    },
    "abouts": {
     "valeur": 25,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« abouts de 25 mm ») — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Abouts de 25 mm », cote 25) et site actuel — description de la fiche (« abouts de 25 mm »)",
+    "unite": "mm"
    },
    "maille_a": {
     "valeur": 200,
@@ -4850,6 +5305,45 @@
    "plis": {
     "valeur": 3,
     "source": "site actuel — description de la fiche — forme du rendu"
+   },
+   "travees": {
+    "valeur": [
+     4,
+     4
+    ],
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) et fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin des hauteurs) — forme du rendu, non affichée"
+   },
+   "axe_h": {
+    "valeur": 200,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils 200 »)",
+    "unite": "mm"
+   },
+   "axe_v": {
+    "valeur": 55,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« Axe fils: 55 », « Vide maille: 50 »)",
+    "unite": "mm"
+   },
+   "h_pli": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (cote 100 du pli de tête)",
+    "unite": "mm"
+   },
+   "prof_pli": {
+    "valeur": 25,
+    "source": "dessin en perspective de la fiche, 19 à 30 mm selon la projection — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "droit_pli": {
+    "valeur": 15,
+    "source": "dessin en perspective de la fiche (11 à 18 mm) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "n_fils_v": {
+    "valeur": 46,
+    "source": "non publié ; panneau équivalent 200 × 55 de 2,50 m (Majois 3D : 46 fils verticaux) — forme du rendu, non affichée",
+    "supposee": true
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -7520,13 +8014,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7578,13 +8129,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7636,13 +8244,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7694,13 +8359,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7752,13 +8474,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7810,13 +8589,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7868,13 +8704,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7926,13 +8819,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
@@ -7984,13 +8934,70 @@
    },
    "feuillure": {
     "valeur": 46,
-    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) — forme du rendu",
-    "unite": "mm",
-    "supposee": true
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin « Largeur feuillure : 46 », entre les lèvres des tubes)",
+    "unite": "mm"
    },
    "matiere": {
     "valeur": "Aluminium",
     "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (« alliage d'aluminium à très haute limite élastique »), confirmé par le propriétaire le 14/09"
+   },
+   "premier_trou": {
+    "valeur": 50,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 50 : bout du poteau → axe du 1er trou)",
+    "unite": "mm"
+   },
+   "pas_trous": {
+    "valeur": 100,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205) (dessin coté 100 entre trous) ; trous répétés sur toute la longueur : photo du site G088",
+    "unite": "mm"
+   },
+   "profondeur_tube": {
+    "valeur": 13.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (13,4 et 13,5) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre": {
+    "valeur": 1.5,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (1,4) ; 76 − 2 × (13,5 + 1,5) = 46 coté — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "paroi": {
+    "valeur": 1.8,
+    "source": "non publiée ; dessin 1,3 à 1,9 ; 1,8 donne I/V 10,2 cm³, fiche « I/V > 10 cm3 » — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "ame": {
+    "valeur": 1.8,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 (trait de 1,6 à 1,7) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "conge_ame": {
+    "valeur": 3.0,
+    "source": "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205), dessin de section mesuré à l'échelle 76 — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_l": {
+    "valeur": 8.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "trou_h": {
+    "valeur": 6.5,
+    "source": "trou oblong mesuré sur la vue 3D de FTCP40PLIS205 et une photo revendeur (±1) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "capuchon_e": {
+    "valeur": 6,
+    "source": "capuchon noir de la vue 3D de FTCP40PLIS205, de la notice CLOPLUS 40 et de la photo du site G088, épaisseur lue en proportion — forme du rendu",
+    "unite": "mm",
+    "supposee": true
    },
    "finition": {
     "valeur": "LAQUE-ALU",
