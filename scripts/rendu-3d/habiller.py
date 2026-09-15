@@ -238,7 +238,7 @@ COTES = {
     "ROND-BETON": (("d", "d"), None, None, None, [("Diamètre nominal", "d", "d")]),
     # treillis : mailles a (le long) et b (en travers) entre axes des fils, diamètre des fils pincé
     "TREILLIS": (("a", "maille_a"), ("b", "maille_b"), ("d", "d"), None,
-                 [("Maille", "", "maille"), ("Diamètre des fils", "d", "d"), ("Panneau", "", "format")]),
+                 [("Maille", "a × b", "maille"), ("Diamètre des fils", "d", "d"), ("Panneau", "", "format")]),
     # tôle : cote « verticale » = longueur (bord gauche, au sol), horizontale = largeur (devant) ; épaisseur en loupe
     "TOLE": (("L", "L"), ("l", "l"), None, None, [("Longueur", "L", "L"), ("Largeur", "l", "l"), ("Épaisseur", "e", "e")]),
 }

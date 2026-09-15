@@ -386,16 +386,20 @@ def nervures_barre(d, L, dx, nom):
 
 def fils_treillis(piece, dx, nom):
     """Portion de treillis soudé : fils longitudinaux (le long de y) posés au sol, fils transversaux soudés dessus.
-    Débord d'une demi-maille autour des fils extérieurs. Fils lisses (crénelure invisible à cette échelle)."""
+    Débord d'une demi-maille autour des fils extérieurs. Fils lisses (crénelure invisible à cette échelle).
+    Treillis à dépassants : fils longitudinaux prolongés d'une maille au-delà du dernier fil transversal (au fond)
+    et fils transversaux d'une maille au-delà du dernier fil longitudinal (à droite) ; la longueur réelle des
+    dépassants n'est pas publiée (question 32) : forme du rendu seulement, aucune cote."""
     d, ma, mb, nx, ny = piece["t"], piece["maille_a"], piece["maille_b"], piece["nx"], piece["ny"]
-    Ly, Lx = ny * ma, nx * mb
+    dep_y, dep_x = (ma, mb) if piece.get("depassants") else (0, 0)
+    Ly, Lx = ny * ma + dep_y, nx * mb
     objs = []
     for i in range(nx):
         x = dx + (i - (nx - 1) / 2) * mb
         objs.append(extruder([(xx + x, zz) for xx, zz in cercle(d / 2, d / 2, 24)], Ly, f"{nom}-long-{i}"))
     for j in range(ny):
         y = ma / 2 + j * ma
-        obj = extruder(cercle(d / 2, 0, 24), Lx, f"{nom}-trans-{j}")
+        obj = extruder(cercle(d / 2, 0, 24), Lx + dep_x, f"{nom}-trans-{j}")
         # extrudé le long de y puis tourné de 90° autour de z : fil le long de x, centré, posé sur les fils longitudinaux
         obj.rotation_euler = (0, 0, math.radians(-90))
         obj.location = ((dx - Lx / 2) * MM, y * MM, 1.45 * d * MM)
@@ -1347,6 +1351,10 @@ def rendre(p):
                     poly.material_index = 2
         boite_pts += [((dx + sx * piece["b"] / 2) * MM, y * MM, z * MM)
                       for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
+        if piece.get("depassants"):  # dépassants (fond et droite) dans le cadre, et la pièce suivante décalée d'autant
+            boite_pts += [((dx + piece["b"] / 2 + piece["maille_b"]) * MM, y * MM, 0) for y in (0, L)]
+            boite_pts += [((dx + sx * piece["b"] / 2) * MM, (L + piece["maille_a"]) * MM, 0) for sx in (-1, 1)]
+            x += piece["maille_b"]
         x += piece["b"]
     centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
     for obj in [o for o in bpy.data.objects if o.type in ("MESH", "CURVE") and o.parent is None]:

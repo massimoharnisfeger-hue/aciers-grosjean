@@ -99,7 +99,8 @@ def piece(p, longueur, ratio):
     elif serie == "TREILLIS":  # portion de 3 × 4 mailles, débord d'une demi-maille (le panneau entier : dans la fiche)
         nx, ny = 4, 5
         return ({"type": "TREILLIS", "h": 2.45 * v["d"], "b": nx * v["maille_b"], "t": v["d"], "maille_a": v["maille_a"],
-                 "maille_b": v["maille_b"], "nx": nx, "ny": ny, "longueur": ny * v["maille_a"]},
+                 "maille_b": v["maille_b"], "nx": nx, "ny": ny, "longueur": ny * v["maille_a"],
+                 "depassants": bool(v.get("depassants"))},
                 v.get("finition", "BRUT"))
     else:
         type_ = "U" if serie in ("UPN", "U-ALU") else "I"
