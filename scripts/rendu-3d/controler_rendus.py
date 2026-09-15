@@ -227,13 +227,25 @@ def controler(famille, produits, pages):
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
             geo = FINAL / (slug + ".json")
+            sidecar = FINAL / (nom + ".controles.json")
             if geo.exists():
                 infos = json.loads(geo.read_text(encoding="utf-8"))
                 versions.add(infos.get("code"))
-                for cle, (jour, longueur) in sorted(jours_rappel(brut, infos["points"]).items()):
+                # lignes réellement tracées par habiller.py (collées à la pièce, cotes absentes exclues) ; à défaut, les points
+                traces = json.loads(sidecar.read_text(encoding="utf-8")).get("rappels") if sidecar.exists() else None
+                if traces is not None:
+                    points = {}
+                    for i, (d_, f_) in enumerate(traces):
+                        points[f"rappel_{i + 1}_debut"], points[f"rappel_{i + 1}_fin"] = d_, f_
+                else:
+                    points = infos["points"]
+                for cle, (jour, longueur) in sorted(jours_rappel(brut, points).items()):
                     if jour is None:
                         ecarts.append(f"{slug} : {cle} loin de toute piece (fenetre de recherche depassee)")
-                    elif jour > 25 or jour > longueur / 2:
+                    # décollée : vide plus long que le trait, ou plus de 60 px et plus de 60 % du trait (15/09 : à « 25 px ou
+                    # moitié du trait », 224 alertes sur des angles arrondis et chanfreinés corrects ; le mélange de
+                    # versions du code, cause des rappels décollés des cornières, a son propre contrôle)
+                    elif jour > longueur or (jour > 60 and jour > 0.6 * longueur):
                         ecarts.append(f"{slug} : {cle} decollee de la piece ({jour} px pour un trait de {longueur:.0f} px)")
         ctrl = fichier(nom + ".controles.json")
         if not ctrl:

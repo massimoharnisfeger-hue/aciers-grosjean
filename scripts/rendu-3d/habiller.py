@@ -97,6 +97,52 @@ def pt(p):
 TRACES = []  # tracés en deux passes, halo blanc puis trait
 PASTILLES = []
 TRAITS_COTES = []  # extrémités du trait de chaque étiquette de cote (même rang que PASTILLES), None pour les pinces
+RAPPELS = []  # lignes de rappel réellement tracées (début côté pièce, fin), relues par controler_rendus.py
+MASQUE = None  # pixels opaques du rendu brut (la pièce), pour coller les lignes de rappel
+
+
+def pres_de_la_piece(x, y, rayon):
+    """Un pixel de la pièce dans le carré de demi-côté `rayon` autour de (x, y) ?"""
+    if MASQUE is None:
+        return True
+    boite = (int(x - rayon), int(y - rayon), int(x + rayon) + 1, int(y + rayon) + 1)
+    return MASQUE.crop(boite).getbbox() is not None
+
+
+def distance_piece(x, y, rayon):
+    """Distance (px, euclidienne) au pixel de pièce le plus proche, ou None au-delà de `rayon` : le carré seul comptait
+    comme « près » un rond à béton à 83 px (coin du carré), mesure du contrôle du 15/09."""
+    x0, y0 = int(x - rayon), int(y - rayon)
+    fenetre = MASQUE.crop((x0, y0, int(x + rayon) + 1, int(y + rayon) + 1))
+    if fenetre.getbbox() is None:
+        return None
+    largeur = fenetre.width
+    meilleur = None
+    for i, v in enumerate(fenetre.tobytes()):
+        if v:
+            yy, xx = divmod(i, largeur)
+            d2 = (x0 + xx - x) ** 2 + (y0 + yy - y) ** 2
+            if meilleur is None or d2 < meilleur:
+                meilleur = d2
+    return meilleur ** 0.5 if meilleur is not None and meilleur <= rayon * rayon else None
+
+
+def coller_rappel(debut, fin, garde=60, cible=14, allonge_max=220):
+    """Début de ligne de rappel rapproché de la pièce : si aucun pixel de la pièce n'est à moins de `garde` px, la ligne
+    est prolongée vers la pièce jusqu'à `cible` px (au plus `allonge_max` px). Corrige sans nouveau rendu le bas du fer T
+    (rappel au niveau du bord de l'aile, pièce réduite à l'âme : 140 px de vide, contrôle du 15/09). Seuil haut : à
+    22 px, les rappels des petites sections et des angles arrondis s'allongeaient aussi et se croisaient à l'angle ;
+    leur jour de 25 à 50 px (chanfrein, arrondi du tube) est celui d'un dessin technique."""
+    if MASQUE is None or distance_piece(*debut, garde) is not None:
+        return debut
+    dx, dy = debut[0] - fin[0], debut[1] - fin[1]
+    n = math.hypot(dx, dy) or 1.0
+    ux, uy = dx / n, dy / n
+    for k in range(2, allonge_max, 2):
+        x, y = debut[0] + ux * k, debut[1] + uy * k
+        if pres_de_la_piece(x, y, cible):
+            return (x, y)
+    return debut
 
 
 def fleche(pointe, depuis, couleur, long_=13, larg=5.5):
@@ -150,6 +196,8 @@ def pastille(d, centre, lettre, valeur):
 def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
     """Trait de cote de a à b, étiquette à `position` (0,5 = milieu) le long du trait."""
     for r0, r1 in rappels:
+        r0 = coller_rappel(r0, r1)
+        RAPPELS.append((r0, r1))
         ligne(r0, r1, ACIER, 1.6)
     ligne(a, b, ENCRE)
     fleche(a, b, ENCRE)
@@ -388,6 +436,9 @@ def caracteristiques(slug, dossier):
         geo = json.load(f)
     P, W, H = geo["points"], geo["largeur"], geo["hauteur"]
     p = fiche(slug)
+    global MASQUE
+    with Image.open(os.path.join(dossier, slug + ".png")) as brut:
+        MASQUE = brut.convert("RGBA").split()[3].point(lambda v: 255 if v >= 250 else 0)
 
     calque = Image.new("RGBA", (W * S, H * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(calque)
@@ -562,7 +613,8 @@ def caracteristiques(slug, dossier):
     with open(os.path.join(dossier, slug + "-caracteristiques.controles.json"), "w", encoding="utf-8") as f:
         json.dump({"surtitre": surtitre, "titre": titre,
                    "fiche": [[label, lettre, cle, valeur] for label, lettre, cle, valeur in lignes],
-                   "pastilles": [[lettre, cle, valeur] for _, lettre, valeur, cle in PASTILLES], "problemes": problemes},
+                   "pastilles": [[lettre, cle, valeur] for _, lettre, valeur, cle in PASTILLES],
+                   "rappels": [[list(a), list(b)] for a, b in RAPPELS], "problemes": problemes},
                   f, ensure_ascii=False, indent=1)
     print("CONTROLES :", "; ".join(problemes) if problemes else "aucun problème")
 
