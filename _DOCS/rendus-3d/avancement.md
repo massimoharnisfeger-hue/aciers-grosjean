@@ -13,14 +13,14 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - **Fers T, plats, larges plats, ronds, carrés, tubes** : série `serie-profils-tubes.json` (129 + 8 studio) en cours dans Blender (~15 images faites à 19 h ; ~3 min 30 par image).
 - **Tôles laminées à chaud et quarto** : série `serie-toles.json` (37 + 2) en file derrière (surveillance en arrière-plan).
 - **Armatures** : série `serie-armatures.json` (28 + 4) en file derrière les tôles. Avant intégration : retirer des pages les nuances B500B / B500A non sourcées (questions 10 et 11).
-- **File Blender (une seule instance à la fois, `-t 4`)** : profils et tubes (137 ; arrêtée à 61 le 15/09 à 0 h 54 par un manque de mémoire, relancée sur les 76 manquants) → tôles (39) → armatures (32) → vague 2 (139) → vague 2b relief et perforées (26) → vague 3 (80 : 68 visuels + 12 studios). Chaîne détachée de la séance (`chaine.ps1` du scratchpad, Blender lancé par `Start-Process`) ; fin écrite dans `rendu3d\chaine-terminee.txt`. Environ 3 min 30 par image : la file dure jusqu'au 16/09. **Pas de build Node pendant les rendus** (mémoire).
+- **File Blender (une seule instance de production, 6 cœurs jusqu'à la fin des rendus — propriétaire, 15/09 10 h 44)** : profils et tubes (137) → tôles (39) → armatures (32) → vague 2 (139) → vague 2b relief et perforées (26) → vague 3 (146 : 68 visuels + 12 studios, puis 4 treillis à dépassants + studio, puis 61 reprises de matière inox et acier à froid). Chaîne détachée de la séance (`chaine6.ps1` du scratchpad, paquets de 12, Blender lancé par `Start-Process`) ; fin écrite dans `rendu3d\chaine-terminee.txt`. Un essai peut tourner en parallèle sur 2 cœurs (`-t 2`) si la mémoire libre dépasse 2 Go. **Build Node pendant les rendus : seulement `verifier-leger.ps1`** (1 worker), jamais `site-local.ps1`.
 - **15/09, 8 h** : vérification indépendante tôles et armatures → CONFORMES : tole-laminee-a-chaud, tole-quarto, rond-a-beton-lamine-a-chaud, treillis-soude. **À CORRIGER** : treillis-soude-depassants (bloquant : dépassants non modélisés, la clé `depassants` n'est pas lue par la géométrie → 4 rendus + studio à refaire, sans cote) ; rond-a-beton-lamine-a-froid (motif de nervures du laminé à froid non sourcé → question en attente). Mineurs à faire au prochain passage : liaison de loupe à ~12 px du rappel de l (37 tôles), lettre « l » en Poppins lue « I », « Maille a × b » sans lettres (treillis), nervures transverses des ronds à béton non inclinées et `x_rappel` de ROND-BETON (au prochain rendu). Contrôles proposés : distance liaison/rappels, clé de données ignorée par la géométrie, valeur supposée visible dans le titre, `procede`/`surface` comparés à la page. Rendus : 270 / 453 à 8 h.
 - **15/09, 7 h 35** : revérification ciblée → **les 8 familles profils et tubes sont CONFORMES** (129 visuels + 8 studios), prêtes à intégrer. Intégration + build + push en attente d'une fenêtre mémoire (build Node impossible avec 2 Go libres et Blender actif). Vérification indépendante tôles et armatures lancée.
 - **15/09, 7 h 15** : vérification indépendante profils et tubes → 7 familles CONFORMES, tube-carre À CORRIGER (tube 250x250x6 : fond visible). Corrigé : tronçon des tubes ≥ 3 × la plus grande cote (250x250x6 et 200x100x5 refaits), rappels hauts des ronds et tubes ronds, nouveaux contrôles (fond enclos, rappel qui entre dans la pièce, empreinte absente). Les 14 familles des 3 séries de la nuit : 0 écart. Revérification ciblée en cours. Mineur non corrigé (demande un nouveau rendu) : relief de la face sciée trop marqué sur les tubes ronds 17,2x2 et 21,3x2. Tôles et armatures : vérification indépendante à lancer. Poids : 5 poids affichés dépassent 3 % du poids théorique mais respectent le tableau fournisseur, qui prime (tubes rect. 100x50x4, 120x60x4, 80x40x2 ; fer T 20x3 ; rond 6) — à signaler au propriétaire.
 - **15/09, 5 h 47** : séries profils et tubes (137), tôles (39) et armatures (32) **rendues et habillées** ; vague 2 en cours. Contrôles : seuls écarts, les lignes de rappel (contrôle recalibré, vrai défaut des fers T corrigé à l'habillage) ; rhabillage des 14 familles fait à 6 h 05 (`rhabiller_nuit.ps1`), puis vérification indépendante. RAM libre 2 Go : ni build ni intégration tant que Blender tourne.
-- **6 cœurs dès 2 h 07 (15/09)** : à la demande du propriétaire, relais pris tout de suite (Blender à 4 cœurs arrêté après 88 profils, 49 repris à 6 cœurs) ; `threads.txt` = 6 et PC maintenu allumé jusqu'à 13 h (`eveil.ps1`, qui retire `threads.txt` à 13 h).
+- **6 cœurs dès 2 h 07 (15/09)** : à la demande du propriétaire, relais pris tout de suite (Blender à 4 cœurs arrêté après 88 profils, 49 repris à 6 cœurs) ; `threads.txt` = 6 et PC maintenu allumé jusqu'à 13 h (`eveil.ps1`). Le 15/09 à 10 h 44, le propriétaire demande de garder 6 cœurs jusqu'au bout : `eveil.ps1` ne retire plus `threads.txt`.
 - **Relais 6 cœurs (15/09, 1 h 20)** : `chaine6.ps1` (scratchpad) attend la fin du Blender des profils et tubes, arrête `chaine.ps1` et rend les séries suivantes par paquets de 12, avec 6 cœurs de 22 h à 8 h et 4 le jour (ou le nombre écrit dans `rendu3d\threads.txt`) ; journal `rendu3d\chaine6.log`. État lisible par le propriétaire, mis à jour toutes les 5 minutes par `etat.ps1` : `_DEPOT\rendus-3d\etat-production.txt`.
-- **Suivi automatique, hors séance** (`post_series.ps1` du scratchpad, lancé par `Start-Process`, 15/09 matin) : à la fin de chaque série, `habiller_famille.py` habille ses familles et lance les contrôles ; résultat dans `rendu3d\post-<serie>.log`, planches dans `rendu3d\controle\`. Les alertes internes à la séance Claude sont tuées par le manque de mémoire : **pour reprendre**, lire les `post-*.log`, corriger les écarts, puis vérification indépendante, `integrer_visuels.py`, build (quand Blender est à l'arrêt ou entre deux séries), commit.
+- **Suivi automatique, hors séance** (`post_series.ps1` du scratchpad jusqu'à la vague 2, puis `post_series2.ps1` pour les vagues 2b et 3 avec les familles reprises ; lancés par `Start-Process`) : à la fin de chaque série, `habiller_famille.py` habille ses familles et lance les contrôles ; résultat dans `rendu3d\post-<serie>.log`, planches dans `rendu3d\controle\`. Les alertes internes à la séance Claude sont tuées par le manque de mémoire : **pour reprendre**, lire les `post-*.log`, corriger les écarts, puis vérification indépendante, `integrer_visuels.py`, build (quand Blender est à l'arrêt ou entre deux séries), commit.
 - **Vague 3** : les 12 familles validées en essai (15/09, 1 h) ; série `serie-vague3.json` (80) en file derrière la vague 2b.
 - **Armatures** : nuances B500B / B500A retirées des pages (générateur + catalogue, 15/09) : l'intégration ne sera plus bloquée par le contrôle « nuance sur la page, absente de l'image ».
 - **Vague 2** : données faites pour les tôles planes (froid, galva, Corten, alu, inox), profilés/tubes alu et inox (77), tôles larmées et striées (15), tôles perforées (8) ; pages inox corrigées (nuance sourcée) ; « Masse surfacique » contredite retirée de 36 pages (`integrer.py`). Essais conformes : matières, profilés alu/inox, tôles à relief (loupe e / E). Série `serie-vague2.json` (121 + 18 studios) en file derrière les armatures. Essai perforées en cours ; ensuite série `serie-vague2b.json` (relief + perforées).
@@ -29,31 +29,38 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - Fait au fil des intégrations par `integrer_visuels.py` : `_DEPOT/images/2-categories/<univers>/<catégorie>/fond-blanc/` (photo studio) et `fiche-technique/` (visuel coté). Le 15/09 à 10 h 30, les 267 visuels déjà vérifiés y ont été déplacés (l'ancien `visuels-3d/` est supprimé) ; chaque famille vérifiée ensuite y arrive en même temps que sur le site.
 - À la toute fin : proposer l'étape vidéo (CLAUDE.md), sans la lancer.
 
+## Contrôles proposés par les vérificateurs, pas encore créés (15/09)
+- Pastille d'épaisseur qui recouvre la paroi opposée d'un tube étroit (pixels clairs du rendu brut sous la pastille t ; tubes rect. alu 60x30x3 : 55 %).
+- Titre hérité du site avec la matière en majuscule (« en Aluminium ») ou après les cotes (« en 30x30x30x2mm Aluminium ») ; à corriger d'abord dans `generer-catalogue.py`.
+- Poids écrit dans la description de la page ≠ poids de l'image (tube rond inox 76,1x2 : 3,83 vs 3,73, question 34).
+- Valeur de la page absente de l'image = écart, sauf si une question en attente la couvre (54 fiches au poids écarté par la règle des 3 %).
+- Surface « brossée » : rapport d'énergie de gradient le long / en travers (brossage absent) ; matières d'une même série indiscernables (écart de pixels < 15).
+- Distance liaison de loupe / lignes de rappel ; valeur supposée visible dans le titre ; `procede` / `surface` comparés à la page.
+
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.
 - [x] 1. Références visuelles du site actuel : `references.csv`, `references-groupes.csv`, `references-recap.md`.
-- [ ] 2. Données sourcées (`donnees_produits.py`) : poutrelles, cornières, fers T, plats, pleins, tubes faits (189 fiches) ; tôles et armatures à faire.
+- [x] 2. Données sourcées (`donnees_produits.py`) pour les 477 fiches (alertes dans `alertes-produits.csv`, questions dans `questions-en-attente.md`).
 
-## Familles (vague 1)
-| Famille | Fiches | Données | Test | Série | Contrôle | Vérif. | Site |
-|---|---|---|---|---|---|---|---|
-| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | fait | fait | 0 écart | CONFORME | intégré |
-| Cornières égales, inégales | 15 | fait | fait | fait | 0 écart | CONFORME | intégré |
-| Fers T | 5 | fait | fait | en cours | — | — | — |
-| Plats, larges plats | 40 | fait | fait | en cours | — | — | — |
-| Ronds lisses, carrés pleins | 16 | fait | fait | en cours | — | — | — |
-| Tubes carrés, rectangulaires, ronds | 68 | fait | fait | en cours | — | — | — |
-| Tôles laminées à chaud (+ quarto) | 37 | fait | fait | en file | — | — | — |
-| Armatures : ronds à béton, treillis | 28 | fait | fait | en file | — | — | — |
-
-| Autres vagues | Fiches | État |
-|---|---|---|
-| Vague 2 : tôles à froid, galvanisées, corten, alu, inox (planes) | 44 | données faites, essai matières corrigé |
-| Vague 2 : profilés et tubes alu (44) et inox (33) | 77 | données faites, essai en cours |
-| Vague 2 : tôles larmées (6), striées alu (9), perforées (8) | 23 | références et motifs relevés, géométrie à faire |
-| Vague 3 : clôtures (30), bordures (2), caillebotis et marches (19), tôles profilées (7), panneaux isolés (8), tasseaux (2) | 68 | données faites, pages corrigées, géométrie écrite, essais en cours |
-| Vague 3 : fixations de clôture | 5 | pas de plan : pas de rendu (question 27) |
-| Visserie | 6 | vague 4 du brief (pas de 3D) ; à trancher (question 28) |
+## Familles — état au 15/09, 11 h 45
+| Famille | Fiches | Rendu | Contrôle | Vérif. | Site et 2-categories |
+|---|---|---|---|---|---|
+| Poutrelles IPE, HEA, HEB, UPN | 45 | fait | 0 écart | CONFORME | intégré |
+| Cornières égales, inégales | 15 | fait | 0 écart | CONFORME | intégré |
+| Fers T, plats, larges plats, ronds, carrés | 61 | fait | 0 écart | CONFORME | intégré |
+| Tubes carrés, rectangulaires, ronds | 68 | fait | 0 écart | CONFORME | intégré |
+| Tôles laminées à chaud (+ quarto) | 37 | fait | 0 écart | CONFORME | intégré |
+| Ronds à béton à chaud, treillis soudés | 23 | fait | 0 écart | CONFORME | intégré |
+| Treillis à dépassants | 4 | reprise en fin de vague 3 | — | À CORRIGER (dépassants absents) | — |
+| Rond à béton à froid | 1 | fait | 0 écart | question 31 | non intégré |
+| Alu : cornières, plats, T, U, tubes | 44 | fait | 0 écart | CONFORME | intégré |
+| Tôles galvanisées, Corten, aluminium | 26 | fait | 0 écart | CONFORME (studios galva/alu refaits en fin de vague 3) | intégré |
+| Inox : cornières, plats, ronds pleins, tubes ronds | 26 | fait (refaits en fin de vague 3 pour la cohérence) | 0 écart | CONFORME | intégré |
+| Inox : tubes carrés et rectangulaires ; tôles inox ; tôles à froid | 25 | reprise en fin de vague 3 | — | À CORRIGER (matière) | — |
+| Tôles larmées (6), striées alu (9), perforées (8) | 23 | vague 2b en cours | — | — | — |
+| Vague 3 : clôtures (30), bordures (2), caillebotis et marches (19), tôles profilées (7), panneaux isolés (8), tasseaux (2) | 68 | en file | — | — | — |
+| Fixations de clôture | 5 | pas de plan : pas de rendu (question 27) | | | |
+| Visserie | 6 | vague 4 du brief (pas de 3D) ; à trancher (question 28) | | | |
 
 ## Reprendre le rendu
 Atelier hors OneDrive : `%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\` — `final\` (production), `essais\`, `controle\` (planches), journaux `serie-*.log`.
