@@ -2725,6 +2725,30 @@
     "unite": "mm",
     "supposee": true
    },
+   "h_joue": {
+    "valeur": 55,
+    "source": "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_joue": {
+    "valeur": 3,
+    "source": "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nez": {
+    "valeur": 35,
+    "source": "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_entretoise": {
+    "valeur": 10,
+    "source": "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
    "nuance": {
     "valeur": "S235JR",
     "source": "site actuel — description de la fiche"
@@ -2783,6 +2807,30 @@
    "t": {
     "valeur": 2,
     "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_joue": {
+    "valeur": 55,
+    "source": "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_joue": {
+    "valeur": 3,
+    "source": "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nez": {
+    "valeur": 35,
+    "source": "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_entretoise": {
+    "valeur": 10,
+    "source": "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -2847,6 +2895,30 @@
     "unite": "mm",
     "supposee": true
    },
+   "h_joue": {
+    "valeur": 55,
+    "source": "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_joue": {
+    "valeur": 3,
+    "source": "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nez": {
+    "valeur": 35,
+    "source": "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_entretoise": {
+    "valeur": 10,
+    "source": "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
    "nuance": {
     "valeur": "S235JR",
     "source": "site actuel — description de la fiche"
@@ -2905,6 +2977,30 @@
    "t": {
     "valeur": 2,
     "source": "barreau 30/2 des caillebotis — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_joue": {
+    "valeur": 55,
+    "source": "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_joue": {
+    "valeur": 3,
+    "source": "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nez": {
+    "valeur": 35,
+    "source": "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_entretoise": {
+    "valeur": 10,
+    "source": "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -2969,6 +3065,30 @@
     "unite": "mm",
     "supposee": true
    },
+   "h_joue": {
+    "valeur": 55,
+    "source": "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_joue": {
+    "valeur": 3,
+    "source": "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_nez": {
+    "valeur": 35,
+    "source": "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "h_entretoise": {
+    "valeur": 10,
+    "source": "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
    "nuance": {
     "valeur": "S235JR",
     "source": "site actuel — description de la fiche"
@@ -3026,14 +3146,20 @@
     "supposee": true
    },
    "h": {
-    "valeur": 33,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "valeur": 45,
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne (F100340101/F100350101/F100360101 : 800/900/1000 × 250 × 45 × 2), non publiée sur le site — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "t": {
     "valeur": 2,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "d_roule": {
+    "valeur": 20,
+    "source": "dessin PcP « OPTIMO Tread ACHIL O2 » (coupe, mesuré) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3044,7 +3170,7 @@
    }
   },
   "alertes": [
-   "hauteur de la marche absente des documents : non affichée (question en attente)"
+   "hauteur 45 lue sur la fiche PcP en ligne, absente des documents du site : non affichée (question en attente)"
   ]
  },
  "marche-securit-pcp-o2-achil-800-x-250mm": {
@@ -3086,14 +3212,20 @@
     "supposee": true
    },
    "h": {
-    "valeur": 33,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "valeur": 45,
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne (F100340101/F100350101/F100360101 : 800/900/1000 × 250 × 45 × 2), non publiée sur le site — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "t": {
     "valeur": 2,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "d_roule": {
+    "valeur": 20,
+    "source": "dessin PcP « OPTIMO Tread ACHIL O2 » (coupe, mesuré) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3104,7 +3236,7 @@
    }
   },
   "alertes": [
-   "hauteur de la marche absente des documents : non affichée (question en attente)"
+   "hauteur 45 lue sur la fiche PcP en ligne, absente des documents du site : non affichée (question en attente)"
   ]
  },
  "marche-securit-pcp-o2-achil-900x250mm": {
@@ -3146,14 +3278,20 @@
     "supposee": true
    },
    "h": {
-    "valeur": 33,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "valeur": 45,
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne (F100340101/F100350101/F100360101 : 800/900/1000 × 250 × 45 × 2), non publiée sur le site — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "t": {
     "valeur": 2,
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher) — forme du rendu, non affichée",
+    "source": "fiche fabricant PcP « Tread ACHIL O2 » en ligne — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "d_roule": {
+    "valeur": 20,
+    "source": "dessin PcP « OPTIMO Tread ACHIL O2 » (coupe, mesuré) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3164,7 +3302,7 @@
    }
   },
   "alertes": [
-   "hauteur de la marche absente des documents : non affichée (question en attente)"
+   "hauteur 45 lue sur la fiche PcP en ligne, absente des documents du site : non affichée (question en attente)"
   ]
  },
  "panneau-isole-eco-30mm-260x105cm-ral-7016": {
@@ -5404,6 +5542,12 @@
     "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard : épaisseur 2)",
     "unite": "mm"
    },
+   "largeur_planche": {
+    "valeur": 100,
+    "source": "photo de la fiche PDF du site ≈ 100 (7 lignes de trous) ; photo du site ≈ 75 ; largeurs PcP h = 33 : 50…200 — 10 planches, forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
    "finition": {
     "valeur": "GALVA",
     "source": "matière du rendu, non affichée",
@@ -7500,15 +7644,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7564,15 +7725,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7628,15 +7806,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7692,15 +7887,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7756,15 +7968,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7820,15 +8049,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7884,15 +8130,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -7948,15 +8211,32 @@
     "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 50 × 64)",
     "unite": "mm"
    },
-   "encoche": {
+   "premiere_encoche": {
     "valeur": 30,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 30 : haut du poteau -> première encoche, lecture du dessin) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
    "pas_encoches": {
     "valeur": 100,
-    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) — forme du rendu",
+    "source": "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205) (dessin coté 100, pas des encoches ; même cote sur FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée",
+    "unite": "mm"
+   },
+   "fente": {
+    "valeur": 12,
+    "source": "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau posé (10) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "creneau": {
+    "valeur": 26,
+    "source": "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 (photo) — forme du rendu, non affichée",
+    "unite": "mm",
+    "supposee": true
+   },
+   "t_tole": {
+    "valeur": 1.25,
+    "source": "non publiée : section du pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com), I/V calculé 5,3 cm³ pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },

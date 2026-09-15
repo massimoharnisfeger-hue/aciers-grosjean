@@ -17,6 +17,7 @@ import json
 import re
 import shutil
 import sys
+import time
 from pathlib import Path
 
 from PIL import Image
@@ -46,7 +47,14 @@ def copier(source, cible):
     copie = DEPOT / relatif.parent / ("fond-blanc" if cible.name.startswith("studio-") else "fiche-technique") / cible.name
     for chemin in (cible, copie):
         chemin.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, chemin)
+        for essai in range(6):  # OneDrive verrouille un instant les fichiers qu'il synchronise (Errno 22, 16/09)
+            try:
+                shutil.copyfile(source, chemin)
+                break
+            except OSError:
+                if essai == 5:
+                    raise
+                time.sleep(5)
     with Image.open(cible) as img:
         largeur, hauteur = img.size
     return {"src": "/" + cible.relative_to(PUBLIC).as_posix(), "largeur": largeur, "hauteur": hauteur}

@@ -779,98 +779,235 @@ def plaque_percee(nom, largeur, hauteur, e, trous, repere, lisse=False, contour=
     return obj
 
 
+def oblong_xy(cu, cv, entraxe, d, n=8):
+    """Trou oblong horizontal (le long de u) : centre (cu, cv), entraxe des demi-cercles, largeur d ; sens trigonométrique."""
+    r = d / 2
+    pts = [(cu + entraxe / 2 + r * math.cos(math.radians(-90 + 180 * k / n)), cv + r * math.sin(math.radians(-90 + 180 * k / n)))
+           for k in range(n + 1)]
+    pts += [(cu - entraxe / 2 + r * math.cos(math.radians(90 + 180 * k / n)), cv + r * math.sin(math.radians(90 + 180 * k / n)))
+            for k in range(n + 1)]
+    return pts
+
+
+def tole_pliee_x(nom, ligne_yz, e, x0, x1):
+    """Tôle pliée d'épaisseur e extrudée le long de x, de x0 à x1 (mm) : `ligne_yz` = fibre moyenne (y, z) dans la
+    section. Pièce livrée entière (aucune face sciée), sans chanfrein (plis d'onglet de 2-3 mm)."""
+    contour = section_pliee(dedoublonner([(-y, z) for y, z in ligne_yz]), e)
+    obj = extruder(contour, x1 - x0, nom)
+    obj.modifiers.remove(obj.modifiers["chanfrein"])
+    obj.rotation_euler = (0.0, 0.0, math.radians(-90))  # (x_l, y_l) -> (y_l, -x_l) : extrusion vers +x, y = -x_l
+    obj.location.x = x0 * MM
+    return sans_coupe(obj)
+
+
+def collerettes(nom, centres, d, z, haut, larg, e, n=24):
+    """Collerettes des trous emboutis, en instances : bourrelet arrondi de largeur `larg` et de hauteur `haut` autour
+    d'un trou de diamètre d (bord posé sur le dessus en z), prolongé par une paroi qui descend dans le trou jusque sous
+    la tôle d'épaisseur e : l'ouverture reste sombre et lisible en gros plan (vérification du 15/09 : cônes à 16 facettes
+    lus comme des plots pleins). `centres` : (x, y) en mm. -> objet gabarit (parenté au nuage de points)."""
+    r_int, r_ext = d / 2, d / 2 + larg
+    r_paroi = r_int * math.cos(math.pi / 20) - 0.08  # dans le polygone à 20 côtés du trou de la tôle
+    profil = [(r_ext, 0.0), (r_int + 0.62 * larg, 0.62 * haut), (r_int + 0.25 * larg, haut), (r_paroi + 0.05, 0.7 * haut),
+              (r_paroi, 0.2 * haut), (r_paroi, -e - 0.05)]
+    m = len(profil)
+    verts, faces = [], []
+    for k in range(n):
+        a = 2 * math.pi * k / n
+        verts += [(r * math.cos(a), r * math.sin(a), zz) for r, zz in profil]
+    for k in range(n):
+        k2 = (k + 1) % n
+        faces += [(k * m + i, k2 * m + i, k2 * m + i + 1, k * m + i + 1) for i in range(m - 1)]
+    gabarit = maillage(f"{nom}-collerette", verts, faces)
+    me = bpy.data.meshes.new(f"{nom}-collerettes")
+    me.from_pydata([(x * MM, y * MM, z * MM) for x, y in centres], [], [])
+    nuage = bpy.data.objects.new(f"{nom}-collerettes", me)
+    bpy.context.collection.objects.link(nuage)
+    nuage.instance_type = "VERTS"
+    nuage.show_instancer_for_render = False
+    gabarit.parent = nuage
+    return gabarit
+
+
+def marche_caillebotis(piece, dx, nom):
+    """Marche d'escalier en caillebotis pressé (photo du dépôt G093, packshot G091, principe de la DIN 24531-1) :
+    - flasques de e mm dans la longueur, dessus affleurant la grille, qui PENDENT sous elle jusqu'au sol (h = hauteur
+      totale), coin arrière-bas chanfreiné, trou rond près du nez et fente oblongue vers l'arrière, près du bas ;
+    - nez en cornière : bande horizontale au niveau du dessus, percée de deux rangs de trous emboutis en quinconce
+      (collerettes montantes), pli arrondi, face verticale PLEINE ;
+    - porteurs h_barreau × t le long de x derrière le nez, entretoises plates affleurantes le long de y.
+    Vérification indépendante du 15/09 : joues dressées au-dessus de la marche, nez percé sur la face verticale,
+    barres transversales en carrés sur pointe. Toutes les cotes de forme sont supposées (non affichées). -> objets"""
+    g = piece["caillebotis"]
+    H, b, l = piece["h"], piece["b"], piece["longueur"]
+    hb, t, J, N = g["h_barreau"], g["t"], g["joue"], g["nez"]
+    ej = J["e"]
+    x0, x1 = dx - b / 2, dx + b / 2
+    xi0, xi1 = x0 + ej, x1 - ej
+    entier = dict(materiau_coupe_y=False)
+    objs = []
+    # flasques : contour (u = y, v = z), coin arrière-bas chanfreiné
+    c = J["chanfrein"]
+    contour = [(0.0, 0.0), (l - c, 0.0), (l, c), (l, H), (0.0, H)]
+    trous = [cercle_xy(J["u_trou"], J["v_trous"], J["d_trou"], 20),
+             oblong_xy(l - J["recul_fente"], J["v_trous"], J["entraxe_fente"], J["d_trou"])]
+    for cote, x in (("g", x0), ("d", xi1)):
+        objs.append(plaque_percee(f"{nom}-joue-{cote}", 0.0, 0.0, ej, trous, lambda u, v, w, x=x: (x + w, u, v), contour=contour))
+    # nez, partie pliée pleine : bout de bande, pli arrondi, face verticale descendant de `hauteur` sous le dessus
+    en = N["e"]
+    rn, zc, y_plein = N["r"] - en / 2, H - en / 2, 6.0
+    ligne = [(y_plein + 0.2, zc), (N["r"], zc)] + arc(N["r"], zc - rn, rn, 90, 180, 6)[1:] + [(en / 2, H - N["hauteur"])]
+    objs.append(tole_pliee_x(f"{nom}-nez-pli", ligne, en, xi0, xi1))
+    # nez, bande horizontale percée : deux rangs en quinconce, trous à collerette montante
+    lb = N["largeur"] - y_plein
+    yb = y_plein + lb / 2
+    pas = N["pas"]
+    n = int((xi1 - xi0 - 40) / pas) + 1
+    xa0 = dx - (n - 1) * pas / 2
+    centres = ([(xa0 + k * pas, N["rangs"][0]) for k in range(n)] +
+               [(xa0 + pas / 2 + k * pas, N["rangs"][1]) for k in range(n - 1)])
+    trous = [cercle_xy(x - dx, y - yb, N["d_trou"], 20) for x, y in centres]
+    objs.append(plaque_percee(f"{nom}-nez-bande", xi1 - xi0, lb, en, trous, lambda u, v, w: (dx + u, yb + v, H - en + w)))
+    objs.append(collerettes(f"{nom}-nez", centres, N["d_trou"], H, N["h_col"], N["larg_col"], en))
+    # porteurs le long de x, du bord arrière de la bande à la rive arrière (dernier porteur)
+    y_premier = N["largeur"]
+    np_ = max(1, round((l - t - y_premier) / g["maille_b"]))
+    pas_p = (l - t - y_premier) / np_
+    for k in range(np_ + 1):
+        y = y_premier + k * pas_p
+        objs.append(boite(f"{nom}-porteur-{k}", xi0, xi1, y, y + t, H - hb, H, **entier))
+    # entretoises : plats insérés sur chant, arête haute affleurante (0,1 mm sous le dessus : pas de faces confondues)
+    ne = max(1, round((xi1 - xi0) / g["maille_a"]))
+    pe = (xi1 - xi0) / ne
+    for k in range(1, ne):
+        x = xi0 + k * pe
+        objs.append(boite(f"{nom}-entretoise-{k}", x - t / 2, x + t / 2, y_premier, l, H - g["h_entretoise"], H - 0.1, **entier))
+    return objs
+
+
 def caillebotis(piece, dx, nom):
     """Caillebotis pressé : cadre de plats de rive (h × t), barreaux porteurs h × t au pas `maille_b` le long de y
     (la portée L), barres transversales carrées tournées de 45° (5 mm, forme usuelle) au pas `maille_a`, affleurant
-    le dessus. Marche d'escalier : barreaux porteurs le long de x (entre limons), nez perforé devant et joues percées
-    aux deux bouts (forme du rendu). -> objets"""
+    le dessus. Marche d'escalier : `marche_caillebotis`. -> objets"""
     g = piece["caillebotis"]
+    if g.get("marche"):
+        return marche_caillebotis(piece, dx, nom)
     h, t, b, L = piece["h"], g["t"], piece["b"], piece["longueur"]
-    ma, mb, marche = g["maille_a"], g["maille_b"], g.get("marche", False)
+    ma, mb = g["maille_a"], g["maille_b"]
     x0, x1 = dx - b / 2, dx + b / 2
     entier = dict(materiau_coupe_y=False)  # pièce livrée entière : aucune face sciée
     objs = [boite(f"{nom}-rive-av", x0, x1, 0, t, 0, h, **entier), boite(f"{nom}-rive-ar", x0, x1, L - t, L, 0, h, **entier),
             boite(f"{nom}-rive-g", x0, x0 + t, t, L - t, 0, h, **entier), boite(f"{nom}-rive-d", x1 - t, x1, t, L - t, 0, h, **entier)]
     c = 5.0  # barre transversale carrée (forme usuelle)
-    if not marche:  # porteurs le long de y, transversales le long de x
-        n = int((b - 2 * t) / mb)
-        for k in range(1, n + 1):
-            x = x0 + k * mb
-            if x < x1 - t - mb * 0.3:
-                objs.append(boite(f"{nom}-porteur-{k}", x - t / 2, x + t / 2, t, L - t, 0, h, **entier))
-        for k in range(1, int((L - 2 * t) / ma) + 1):
-            y = k * ma
-            if y < L - t - ma * 0.3:
-                bar = extruder(cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4), b - 2 * t, f"{nom}-trans-{k}")
-                bar.rotation_euler = (0, 0, math.radians(-90))
-                bar.location = (x0 * MM + t * MM, y * MM, 0)
-                objs.append(sans_coupe(bar))
-    else:  # porteurs le long de x (entre limons), transversales le long de y
-        n = int((L - 2 * t) / mb)
-        for k in range(1, n + 1):
-            y = t + k * mb
-            if y < L - t - mb * 0.3:
-                objs.append(boite(f"{nom}-porteur-{k}", x0 + t, x1 - t, y - t / 2, y + t / 2, 0, h, **entier))
-        for k in range(1, int((b - 2 * t) / ma) + 1):
-            x = x0 + k * ma
-            if x < x1 - t - ma * 0.3:
-                objs.append(sans_coupe(extruder([(xx + x, zz) for xx, zz in cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4)],
-                                                L - 2 * t, f"{nom}-trans-{k}")))
-                objs[-1].location.y = t * MM
-        # nez antidérapant perforé (trous Ø 8 au pas de 25) devant, joues percées de 2 trous Ø 11 aux bouts
-        trous = [cercle_xy(u, 0.0, 8.0, 12) for u in range(int(-b / 2 + 40), int(b / 2 - 30), 25)]
-        objs.append(plaque_percee(f"{nom}-nez", b, h + 8, 2.0, trous, lambda u, v, w: (dx + u, -w, v + (h + 8) / 2 - 8)))
-        for cote, x in (("g", x0 - 3.0), ("d", x1)):
-            trous = [cercle_xy(-L / 2 + 40, 0.0, 11.0, 14), cercle_xy(L / 2 - 40, 0.0, 11.0, 14)]
-            objs.append(plaque_percee(f"{nom}-joue-{cote}", L, h + 20, 3.0, trous, lambda u, v, w, x=x: (x + w, u + L / 2, v + (h + 20) / 2)))
+    # porteurs le long de y, transversales le long de x
+    n = int((b - 2 * t) / mb)
+    for k in range(1, n + 1):
+        x = x0 + k * mb
+        if x < x1 - t - mb * 0.3:
+            objs.append(boite(f"{nom}-porteur-{k}", x - t / 2, x + t / 2, t, L - t, 0, h, **entier))
+    for k in range(1, int((L - 2 * t) / ma) + 1):
+        y = k * ma
+        if y < L - t - ma * 0.3:
+            bar = extruder(cercle(c / 2 * math.sqrt(2), h - c / 2 * math.sqrt(2), 4), b - 2 * t, f"{nom}-trans-{k}")
+            bar.rotation_euler = (0, 0, math.radians(-90))
+            bar.location = (x0 * MM + t * MM, y * MM, 0)
+            objs.append(sans_coupe(bar))
+    return objs
+
+
+def marche_o2(piece, dx, nom):
+    """Marche de sécurité O2 ACHIL (PcP) : une tôle de t mm pliée (dessin PcP « OPTIMO Tread ACHIL O2 », description du
+    site « extrémités recourbées et bordures avant et arrière enroulées », photos G090/G094) :
+    - dessus percé en damier au pas de 12,5 (Ø 9 emboutis à collerette montante et Ø 5 de drainage alternés), rangées
+      jusqu'à 12,5 mm des faces avant et arrière, bandes pleines aux deux bouts ;
+    - bords avant et arrière : pli de nez arrondi, face verticale, rouleau fermé vers l'intérieur en bas ;
+    - extrémités repliées en joues pleines : encoche carrée aux coins bas (bout du rouleau visible), trou rond et fente.
+    Vérification du 15/09 : bords à angle vif, joues à deux trous. Cotes de forme supposées, non affichées. -> objets"""
+    o = piece["o2"]
+    H, e, L, W = piece["h"], o["t"], piece["b"], piece["longueur"]
+    xa, xb = dx - L / 2, dx + L / 2
+    p = o["entraxe"] / 2
+    Rn, Dr, rb = o["r_nez"], o["d_roule"], o["r_bout"]
+    rn, rc, zc = Rn - e / 2, Dr / 2 - e / 2, H - e / 2
+    objs = []
+    # bords avant et arrière : fibre moyenne (y, z), rouleau de 300° (pointe à ~2,5 mm de la face intérieure)
+    ligne = ([(Rn + 1.2, zc), (Rn, zc)] + arc(Rn, zc - rn, rn, 90, 180, 8)[1:] + [(e / 2, Dr / 2)] +
+             arc(Dr / 2, Dr / 2, rc, 180, 480, 40)[1:])
+    objs.append(tole_pliee_x(f"{nom}-bord-av", ligne, e, xa + e, xb - e))
+    objs.append(tole_pliee_x(f"{nom}-bord-ar", [(W - y, z) for y, z in ligne], e, xa + e, xb - e))
+    # dessus percé en damier : gros trou si (i + j) impair, coin = petit trou
+    xs = [xa + o["marge_bout"] + k * p for k in range(int(round((L - 2 * o["marge_bout"]) / p)) + 1)]
+    ys = [p + j * p for j in range(int(round((W - 2 * p) / p)) + 1)]
+    trous, gros = [], []
+    for i, x in enumerate(xs):
+        for j, y in enumerate(ys):
+            if (i + j) % 2:
+                trous.append(cercle_xy(x - dx, y - W / 2, o["trous"], 20))
+                gros.append((x, y))
+            else:
+                trous.append(cercle_xy(x - dx, y - W / 2, o["drainage"], 10))
+    y_dessus = Rn + 1.0
+    objs.append(plaque_percee(f"{nom}-dessus", L - 2 * rb, W - 2 * y_dessus, e, trous,
+                              lambda u, v, w: (dx + u, W / 2 + v, H - e + w)))
+    objs.append(collerettes(nom, gros, o["trous"], H, 2.5, 2.0, e))
+    # plis d'extrémité (dessus -> joue) : quart d'anneau le long de y, coins avant et arrière dégagés sur 5 mm
+    for cote, s, a0, a1 in (("d", 1, 0, 90), ("g", -1, 90, 180)):
+        cx, cz = dx + s * (L / 2 - rb), H - rb
+        obj = extruder(arc(cx, cz, rb, a0, a1, 6) + arc(cx, cz, rb - e, a1, a0, 6), W - 10, f"{nom}-pli-{cote}")
+        obj.modifiers.remove(obj.modifiers["chanfrein"])
+        obj.location.y = 5 * MM
+        objs.append(sans_coupe(obj))
+    # joues : contour (u = y, v = z) à encoches carrées aux coins bas ; trou rond à l'avant, fente vers l'arrière
+    q, jo = o["encoche"], o["joue"]
+    contour = [(0.0, q), (q, q), (q, 0.0), (W - q, 0.0), (W - q, q), (W, q), (W, H - rb), (0.0, H - rb)]
+    trous = [cercle_xy(jo["u_trou"], jo["v_trous"], jo["d_trou"], 20),
+             oblong_xy(jo["u_trou"] + jo["ecart_fente"], jo["v_trous"], jo["entraxe_fente"], jo["largeur_fente"])]
+    for cote, x in (("g", xa), ("d", xb - e)):
+        objs.append(plaque_percee(f"{nom}-joue-{cote}", 0.0, 0.0, e, trous, lambda u, v, w, x=x: (x + w, u, v), contour=contour))
     return objs
 
 
 def plancher_o2(piece, dx, nom):
-    """Plancher / marche de sécurité O2 (PcP) : tôle percée de trous emboutis Ø 9 au pas de 25 × 25 (collerettes en
-    relief) et de trous de drainage Ø 5 entre eux, bords longs pliés vers le bas sur la hauteur h ; marche : joues
-    percées aux bouts. Forme du rendu d'après la fiche fournisseur et la photo du site. -> objets"""
+    """Plancher de sécurité O2 (PcP, dessin p. 4 de la fiche PDF du site « OPTIMO Plank Grating O2 ») : planches
+    jointives de `largeur_planche` le long de la longueur (y), dessus percé en damier au pas de 12,5 (Ø 9 emboutis à
+    collerette, Ø 5 de drainage), bords pliés vers le bas en âmes pleines hauteur h, dos à dos au joint (rainure en V),
+    barres d'about pleines devant et derrière (le chant avant porte la loupe et la hauteur h). Marche O2 : `marche_o2`.
+    Vérification du 15/09 : tôle unique sans joints de planches. Largeur de planche supposée, non affichée. -> objets"""
     o = piece["o2"]
-    h, t, b, L = piece["h"], o["t"], piece["b"], piece["longueur"]
-    d9, d5, pas = o["trous"], o["drainage"], o["entraxe"]
-    nx, ny = int((b - 30) / pas), int((L - 30) / pas)
-    u0, v0 = -(nx - 1) * pas / 2, -(ny - 1) * pas / 2
-    trous, centres = [], []
-    for i in range(nx):
-        for j in range(ny):
-            u, v = u0 + i * pas, v0 + j * pas
-            trous.append(cercle_xy(u, v, d9, 16))
-            centres.append((u, v))
-            if i < nx - 1 and j < ny - 1:
-                trous.append(cercle_xy(u + pas / 2, v + pas / 2, d5, 10))
-    dessus = plaque_percee(f"{nom}-dessus", b, L, t, trous, lambda u, v, w: (dx + u, v + L / 2, h - t + w))
-    objs = [dessus]
-    # collerettes des trous emboutis : anneaux tronconiques en instances
-    r_ext, r_int, haut = d9 / 2 + 2.0, d9 / 2, 2.5
-    verts, faces, n = [], [], 16
+    if o.get("marche"):
+        return marche_o2(piece, dx, nom)
+    H, e, b, L = piece["h"], o["t"], piece["b"], piece["longueur"]
+    p = o["entraxe"] / 2
+    n = max(1, int(round(b / o["largeur_planche"])))
+    lp, ea, rp, zc = b / n, o["e_about"], 3.0, H - e / 2
+    x_gauche = dx - b / 2
+    objs, gros = [], []
     for k in range(n):
-        a = 2 * math.pi * k / n
-        verts += [(r_ext * math.cos(a), r_ext * math.sin(a), 0.0), (r_int * math.cos(a), r_int * math.sin(a), haut)]
-    for k in range(n):
-        k2 = (k + 1) % n
-        faces.append((2 * k, 2 * k2, 2 * k2 + 1, 2 * k + 1))
-    collerette = maillage(f"{nom}-collerette", verts, faces)
-    me = bpy.data.meshes.new(f"{nom}-collerettes")
-    me.from_pydata([((dx + u) * MM, (v + L / 2) * MM, h * MM) for u, v in centres], [], [])
-    nuage = bpy.data.objects.new(f"{nom}-collerettes", me)
-    bpy.context.collection.objects.link(nuage)
-    nuage.instance_type = "VERTS"
-    nuage.show_instancer_for_render = False
-    collerette.parent = nuage
-    objs.append(collerette)
-    # bords pliés vers le bas devant et derrière (y = 0 et y = L), hauteur h : le chant avant, plein, porte la loupe ;
-    # pièce entière, rien n'est scié
-    for cote, y in (("av", 0.0), ("ar", L - t)):
-        objs.append(boite(f"{nom}-bord-{cote}", dx - b / 2, dx + b / 2, y, y + t, 0, h - t, materiau_coupe_y=False))
-    if o.get("marche"):  # joues percées aux deux bouts (photo du site : 2 trous), nez arrondi non modélisé
-        for cote, x in (("g", dx - b / 2), ("d", dx + b / 2 - t)):
-            trous = [cercle_xy(-L / 2 + 40, 0.0, 11.0, 14), cercle_xy(L / 2 - 40, 0.0, 11.0, 14)]
-            objs.append(plaque_percee(f"{nom}-joue-{cote}", L, h, t, trous, lambda u, v, w, x=x: (x + w, u + L / 2, v + h / 2)))
+        xa = x_gauche + k * lp
+        xb = xa + lp
+        ame_g = [(xa + rp + 0.2, zc), (xa + rp, zc)] + arc(xa + rp, zc - (rp - e / 2), rp - e / 2, 90, 180, 6)[1:] + [(xa + e / 2, 0.0)]
+        ame_d = [(xb - rp - 0.2, zc), (xb - rp, zc)] + arc(xb - rp, zc - (rp - e / 2), rp - e / 2, 90, 0, 6)[1:] + [(xb - e / 2, 0.0)]
+        for cote, ligne in (("g", ame_g), ("d", ame_d)):
+            obj = extruder(section_pliee(ligne, e), L - 2 * ea, f"{nom}-ame-{k}{cote}")
+            obj.modifiers.remove(obj.modifiers["chanfrein"])
+            obj.location.y = ea * MM
+            objs.append(sans_coupe(obj))
+        xs = [xa + p + i * p for i in range(int(round((lp - 2 * p) / p)) + 1)]
+        ys = [p + j * p for j in range(int(round((L - 2 * p) / p)) + 1)]
+        xm = xa + lp / 2
+        trous = []
+        for x in xs:
+            i = int(round((x - x_gauche) / p))  # parité globale : le damier continue d'une planche à l'autre
+            for j, y in enumerate(ys):
+                if (i + j) % 2:
+                    trous.append(cercle_xy(x - xm, y - L / 2, o["trous"], 20))
+                    gros.append((x, y))
+                else:
+                    trous.append(cercle_xy(x - xm, y - L / 2, o["drainage"], 10))
+        objs.append(plaque_percee(f"{nom}-dessus-{k}", lp - 2 * rp, L - 2 * ea, e, trous,
+                                  lambda u, v, w, xm=xm: (xm + u, L / 2 + v, H - e + w)))
+    objs.append(collerettes(nom, gros, o["trous"], H, 2.5, 2.0, e))
+    for cote, y0 in (("av", 0.0), ("ar", L - ea)):
+        objs.append(boite(f"{nom}-about-{cote}", dx - b / 2, dx + b / 2, y0, y0 + ea, 0, H, materiau_coupe_y=False))
     return objs
 
 
@@ -932,20 +1069,150 @@ def panneau_cloture(piece, dx, nom):
     return objs
 
 
+def fibres_clogriff(t, B=50.0, H=64.0):
+    """Fibres moyennes de la section du poteau CLOGRIFF 64, repère fabricant (u, v) en mm : u = profondeur (0 au dos de
+    la traverse, H sur la face arrondie), v = largeur (± B/2), symétrique en v. Proportions mesurées sur le pictogramme de
+    section du catalogue Clonor Industries 26, p. 9 (superposition à moins de 1,3 mm) ; cotes 50 × 64 de FTCG64PLIS205.
+    Trois parties : traverse arrière en arc (R 37,7) dont les bouts s'enroulent en crochets (R 3) terminés par une lèvre
+    droite ; âme double (demi-écart 3,25) ; lentille creuse (évasement R 15, pointes arrondies tangentes, face avant
+    u = (H − t/2) − 8e-5·|v|^3,5). Vérification indépendante du 15/09 : l'ancien modèle était un caisson percé.
+    -> (boucle fermée de l'âme et de la lentille, {"intact", "creneau", "fente"} : fibres ouvertes de la traverse,
+    u du centre de l'arrondi des pointes de lentille)"""
+    ht = t / 2
+    r_dos, r_crochet, a_levre, v_levre = 37.7, 3.0, -13.4, 12.8
+    c_dos, v_haut = ht + r_dos, B / 2 - ht
+    phi = math.degrees(math.asin((v_haut - r_crochet) / (r_dos - r_crochet)))
+    cu_h = c_dos - (r_dos - r_crochet) * math.cos(math.radians(phi))
+    cv_h = (r_dos - r_crochet) * math.sin(math.radians(phi))
+    dos = arc(c_dos, 0.0, r_dos, 180.0, 180.0 - phi, 24)
+    retour = arc(cu_h, cv_h, r_crochet, 180.0 - phi, a_levre, 16)
+    du, dv = math.sin(math.radians(a_levre)), -math.cos(math.radians(a_levre))
+    lg = (retour[-1][1] - v_levre) / -dv
+    bout = (retour[-1][0] + du * lg, retour[-1][1] + dv * lg)
+
+    def symetrique(demi):  # demi v ≥ 0 partant de v = 0 -> fibre complète, sans doubler le point v = 0
+        return [(u, -v) for u, v in reversed(demi)] + demi[1:]
+
+    u_fente = 6.0  # fente : arc de dos coupé à u = 6 (supposé : traverse tout le crochet sans toucher l'âme)
+    a_f = math.degrees(math.acos((u_fente - c_dos) / r_dos))
+    variantes = {"intact": symetrique(dedoublonner(dos + retour + [bout])),
+                 "creneau": symetrique(dedoublonner(dos + retour)),
+                 "fente": symetrique([q for q in dos if q[0] < u_fente - 1e-6] + [(u_fente, r_dos * math.sin(math.radians(a_f)))])}
+
+    # âme double et lentille, demi v ≥ 0 du dos vers la face avant
+    u_av, k_av, p_av = H - ht, 8.0e-5, 3.5
+    cap = arc(2 * t, 0.0, t, 180.0, 90.0, 6)
+    evas = arc(38.0, 3.25 + 15.0, 15.0, 270.0, 350.0, 16)
+    fu, fv = evas[-1]
+    d_u, d_v = -math.sin(math.radians(350.0)), math.cos(math.radians(350.0))
+    n_u, n_v = d_v, -d_u
+
+    def centre_pointe(r):
+        cv = v_haut - r
+        s_ = (cv - fv - n_v * r) / d_v
+        return fu + d_u * s_ + n_u * r, cv
+
+    def ecart_face(r):  # distance mini du centre à la face avant − r, et point le plus proche
+        cu, cv = centre_pointe(r)
+        meilleur = None
+        for i in range(4000):
+            v = v_haut * i / 3999
+            u = u_av - k_av * v ** p_av
+            d2 = (u - cu) ** 2 + (v - cv) ** 2
+            if meilleur is None or d2 < meilleur[0]:
+                meilleur = (d2, u, v)
+        return math.sqrt(meilleur[0]) - r, meilleur[1], meilleur[2]
+
+    bas, haut = 0.8, 6.0
+    for _ in range(60):  # rayon de la pointe tangent à l'évasement et à la face avant
+        milieu = (bas + haut) / 2
+        if ecart_face(milieu)[0] > 0:
+            bas = milieu
+        else:
+            haut = milieu
+    r_t = (bas + haut) / 2
+    cu_t, cv_t = centre_pointe(r_t)
+    a_depart = math.degrees(math.atan2(-n_v, -n_u))
+    _, u_j, v_j = ecart_face(r_t)
+    a_fin = math.degrees(math.atan2(v_j - cv_t, u_j - cu_t))
+    if a_fin > a_depart:
+        a_fin -= 360
+    pointe = arc(cu_t, cv_t, r_t, a_depart, a_fin, 14)
+    face = [(u_av - k_av * abs(v) ** p_av, v) for v in (v_j * (21 - i) / 21 for i in range(22))]
+    demi = dedoublonner(cap + [(11.0, 3.25), (38.0, 3.25)] + evas + pointe + face)
+    boucle = demi + [(u, -v) for u, v in reversed(demi[1:-1])]
+    return boucle, variantes, cu_t
+
+
+def anneau_plie(boucle, e):
+    """Tôle d'épaisseur e dont `boucle` (fermée) est la fibre moyenne : décalage de ± e/2 à la bissectrice (même onglet que
+    section_pliee), indices modulo n. -> (extérieur, intérieur) de même nombre de points, pour extruder(tuple)."""
+    n = len(boucle)
+    a_, b_ = [], []
+    for i in range(n):
+        (pu, pv), (qu, qv), (su, sv) = boucle[i - 1], boucle[i], boucle[(i + 1) % n]
+        l1 = math.hypot(qu - pu, qv - pv) or 1.0
+        l2 = math.hypot(su - qu, sv - qv) or 1.0
+        n1 = (-(qv - pv) / l1, (qu - pu) / l1)
+        n2 = (-(sv - qv) / l2, (su - qu) / l2)
+        sx, sy = n1[0] + n2[0], n1[1] + n2[1]
+        ls = math.hypot(sx, sy)
+        if ls < 1e-9:
+            nx, ny = n1
+        else:
+            cos_demi = max(0.33, (n1[0] * sx + n1[1] * sy) / ls)
+            nx, ny = sx / ls / cos_demi, sy / ls / cos_demi
+        a_.append((qu + nx * e / 2, qv + ny * e / 2))
+        b_.append((qu - nx * e / 2, qv - ny * e / 2))
+
+    def aire(p):
+        return abs(sum(p[i][0] * p[(i + 1) % len(p)][1] - p[(i + 1) % len(p)][0] * p[i][1] for i in range(len(p)))) / 2
+
+    return (a_, b_) if aire(a_) > aire(b_) else (b_, a_)
+
+
+def zones_clogriff(q, L):
+    """Tronçons de la traverse le long du poteau (y de 0 à L) : 1re fente à `premiere` du bout y = 0 (tête du poteau), puis
+    au pas `pas` : fente traversante de `fente` qui enlève tout le crochet, créneau de `creneau` sans la lèvre juste après,
+    rebord intact ensuite. Seules les encoches entières (fente et créneau) sont posées : au studio (448 mm), une 5e fente
+    à 6 mm du bout laissait un créneau tronqué et le fond visible (vérification du 15/09). -> [(y0, y1, variante)]"""
+    zones, y, k = [], 0.0, 0
+    while q["premiere"] + k * q["pas"] + q["fente"] + q["creneau"] <= L - 5:
+        yf = q["premiere"] + k * q["pas"]
+        yc = min(yf + q["fente"] + q["creneau"], L)
+        zones += [(y, yf, "intact"), (yf, yf + q["fente"], "fente"), (yf + q["fente"], yc, "creneau")]
+        y, k = yc, k + 1
+    if y < L:
+        zones.append((y, L, "intact"))
+    return [z for z in zones if z[1] - z[0] > 1e-6]
+
+
 def poteau_clogriff(piece, dx, nom):
-    """Poteau CLOGRIFF 64 couché comme un profilé : tube b × h à parois t (forme), parois hautes (h) percées d'encoches
-    de `encoche` mm au pas `pas` (dessin de la fiche fournisseur : 30 et 100) où s'accrochent les fils du panneau."""
+    """Poteau CLOGRIFF 64 couché comme un profilé (FTCG64PLIS205, pictogramme de section Clonor) : traverse à crochets EN
+    HAUT, face arrondie de la lentille au sol (repère du modèle x = v, z = H − u). Âme + lentille d'un seul objet (anneau
+    extrudé) ; traverse en tronçons (intact, fente, créneau : `zones_clogriff`) aux profils de la même fibre, dont les
+    parois d'encoche restent en laque (poinçonnées avant thermolaquage) ; seuls les bouts y = 0 et y = L du tronçon sont
+    en matière de coupe. -> objets"""
     q = piece["poteau"]
-    b, h, t, L = piece["b"], piece["h"], piece["t"], piece["longueur"]
-    enc, pas = q["encoche"], q["pas"]
-    objs = [boite(f"{nom}-bas", dx - b / 2, dx + b / 2, 0, L, 0, t), boite(f"{nom}-haut", dx - b / 2, dx + b / 2, 0, L, h - t, h)]
-    trous = []
-    y = pas / 2
-    while y + enc / 2 < L:
-        trous.append([(y - enc / 2 - L / 2, -4.0), (y + enc / 2 - L / 2, -4.0), (y + enc / 2 - L / 2, 4.0), (y - enc / 2 - L / 2, 4.0)])
-        y += pas
-    for cote, x in (("g", dx - b / 2), ("d", dx + b / 2 - t)):
-        objs.append(plaque_percee(f"{nom}-paroi-{cote}", L, h - 2 * t, t, trous, lambda u, v, w, x=x: (x + w, u + L / 2, v + h / 2)))
+    t, L, H = piece["t"], piece["longueur"], piece["h"]
+    boucle, variantes, _ = fibres_clogriff(t, piece["b"], H)
+
+    def xz(p):
+        return [(v, H - u) for u, v in p]
+
+    ext, inte = anneau_plie(boucle, t)
+    ame = extruder((xz(ext), xz(inte)), L, f"{nom}-ame", decalage_x=dx)
+    ame.modifiers["chanfrein"].width = 0.25 * MM  # 0,6 mm mangerait la tôle de 1,25
+    objs = [ame]
+    for i, (y0, y1, var) in enumerate(zones_clogriff(q, L)):
+        seg = extruder(xz(section_pliee(variantes[var], t)), y1 - y0, f"{nom}-traverse-{i}", decalage_x=dx)
+        seg.location.y = y0 * MM
+        seg.modifiers.remove(seg.modifiers["chanfrein"])  # sinon une rainure biseautée à chaque jonction de tronçons
+        for poly in seg.data.polygons:  # extruder() met en coupe toutes les faces ±y, parois d'encoche comprises
+            if poly.material_index == 1:
+                bout = (y0 == 0 and poly.normal.y < 0) or (abs(y1 - L) < 1e-6 and poly.normal.y > 0)
+                poly.material_index = 1 if bout else 0
+        objs.append(seg)
     return objs
 
 
@@ -1258,7 +1525,8 @@ def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0
 
 def materiau_galva():
     """Galvanisé à chaud : zinc gris clair, fleurage (cristaux de quelques millimètres), reflets variables."""
-    return materiau_metal("galva", (0.42, 0.44, 0.45), 0.34, variation=0.10, cellules=220.0)
+    # `rugosite_galva` : réglage par famille (preparer_rendus.py, marches et plancher O2) ; 0,34 pour toutes les autres
+    return materiau_metal("galva", (0.42, 0.44, 0.45), p_mat("rugosite_galva", 0.34), variation=0.10, cellules=220.0)
 
 
 def materiau_alu():
@@ -1335,8 +1603,9 @@ def teinte_ral(ral):
 def materiau_laque(ral=None):
     """Acier ou aluminium thermolaqué / prélaqué polyester : couleur RAL unie, satinée, non métallique."""
     r, g, b = (lineaire(c) for c in teinte_ral(str(ral or PARAMS.get("ral", "7016"))))
-    m = materiau_metal(f"laque-{ral}", (r, g, b), 0.42, variation=0.02, metallic=0.0, ecart_rugosite=0.05)
-    m.node_tree.nodes["Principled BSDF"].inputs["Specular IOR Level"].default_value = 0.4
+    m = materiau_metal(f"laque-{ral}", (r, g, b), p_mat("rugosite_laque", 0.42), variation=0.02, metallic=0.0,
+                       ecart_rugosite=0.05)
+    m.node_tree.nodes["Principled BSDF"].inputs["Specular IOR Level"].default_value = p_mat("speculaire_laque", 0.4)
     return m
 
 
@@ -1511,7 +1780,7 @@ def rendre(p):
             objs = plancher_o2(piece, dx, f"{p['slug']}-{i}")
         elif piece.get("cloture"):
             objs = panneau_cloture(piece, dx, f"{p['slug']}-{i}")
-        elif piece.get("poteau", {}).get("encoche"):
+        elif piece.get("poteau", {}).get("modele") == "CLOGRIFF 64":  # traverse à crochets encochés, âme et lentille
             objs = poteau_clogriff(piece, dx, f"{p['slug']}-{i}")
         elif piece.get("poteau", {}).get("feuillure"):  # CLOPLUS 40 : profilé en H à feuillures, âme percée, capuchon
             objs = []
@@ -1675,6 +1944,9 @@ def rendre(p):
         lp = piece.get("loupe") or {}
         x_loupe = lp.get("x", piece.get("x_loupe", -b * 0.3))
         z_loupe_haut = lp.get("z_haut", e)
+        # point du chant relié à la loupe : en haut du chant d'ordinaire ; `z_ancre` (marches, plancher O2) le descend au
+        # pied du chant, pour que le trait parte vers la loupe sans recouvrir la face avant (vérification du 15/09)
+        z_ancre = lp.get("z_ancre", z_loupe_haut)
         points = {
             "cote_b_gauche": ecran(-b / 2, -off, 0), "cote_b_droit": ecran(b / 2, -off, 0),
             "rappel_b_gauche_debut": ecran(-b / 2, -4, 0), "rappel_b_gauche_fin": ecran(-b / 2, -off * 1.2, 0),
@@ -1683,10 +1955,10 @@ def rendre(p):
             "cote_h_bas": ecran(b / 2 + off, 0, 0), "cote_h_haut": ecran(b / 2 + off, L, 0),
             "rappel_h_bas_debut": ecran(b / 2 + 4, 0, 0), "rappel_h_bas_fin": ecran(b / 2 + off * 1.2, 0, 0),
             "rappel_h_haut_debut": ecran(b / 2 + 4, L, 0), "rappel_h_haut_fin": ecran(b / 2 + off * 1.2, L, 0),
-            "loupe_ancre": ecran(x_loupe, 0, z_loupe_haut),
+            "loupe_ancre": ecran(x_loupe, 0, z_ancre),
             # points du chant avant candidats pour relier la loupe (le chant est le même partout, sauf si la loupe
             # vise un point précis : nervure, chant de l'âme)
-            "loupe_ancres": ([ecran(x_loupe, 0, z_loupe_haut)] if lp else
+            "loupe_ancres": ([ecran(x_loupe, 0, z_ancre)] if lp else
                              [ecran(-b * k, 0, e) for k in (0.47, 0.42, 0.36, 0.3)]),
         }
         # loupe : gros plan sur le chant avant, même orientation, champ de 10 épaisseurs (30 mm au moins) ;
@@ -1694,10 +1966,13 @@ def rendre(p):
         # Tôle à relief : champ sur l'épaisseur au sommet du relief, centré entre l'épaisseur de base et le relief coupé
         T = p.get("taille_loupe", 700)
         relief = piece.get("relief")
-        az_l, el_l = math.radians(20), math.radians(p.get("elevation_loupe", 14))
+        # vue de la loupe : azimut 20 d'ordinaire ; `azimut` négatif (marches) : coin avant gauche vu de l'extérieur,
+        # pour montrer la joue et le profil du bord ; `y` avance la cible dans la profondeur
+        az_l = math.radians(lp.get("azimut", 20))
+        el_l = math.radians(lp.get("elevation", p.get("elevation_loupe", 14)))
         dir_l = Vector((math.sin(az_l) * math.cos(el_l), -math.cos(az_l) * math.cos(el_l), math.sin(el_l)))
         x_centre = (x_loupe + x_relief_coupe(piece)) / 2 if relief else x_loupe
-        cible_l = Vector((x_centre * MM, 0, (relief["e_total"] if relief else z_loupe_haut) / 2 * MM))
+        cible_l = Vector((x_centre * MM, lp.get("y", 0.0) * MM, (relief["e_total"] if relief else z_loupe_haut) / 2 * MM))
         cam.data.clip_start = 0.001
         cam.data.shift_x = cam.data.shift_y = 0.0
         champ = lp.get("champ", champ_loupe(piece))
@@ -1780,6 +2055,15 @@ def rendre(p):
             "aile_haut_ext": ecran(x_aile, 0, h),
             "aile_haut_int": ecran(x_aile, 0, h - tf),
         }
+        if piece.get("poteau", {}).get("modele") == "CLOGRIFF 64":
+            # section en I à ancre : h va du sol (face arrondie, plate sur ± 11) au sommet de l'arc de dos (x = 0), b d'une
+            # pointe de lentille à l'autre (x = ± b/2, z = H − u du centre de leur arrondi). Rappels tirés de ces points :
+            # depuis les bords de la boîte b × h, ils partaient à 8-11 mm de la pièce. Le rappel haut, posé sur le sommet,
+            # est reculé par habiller.py jusqu'à la silhouette du dessus de l'arc.
+            z_pointe = h - fibres_clogriff(piece["t"], b, h)[2]
+            points.update({"rappel_h_bas_debut": ecran(-11.0 - g, 0, 0), "rappel_h_haut_debut": ecran(-g, 0, h),
+                           "rappel_b_gauche_debut": ecran(-b / 2, 0, z_pointe - g),
+                           "rappel_b_droit_debut": ecran(b / 2, 0, z_pointe - g)})
         ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": cote_b, "points": points})
     else:  # composition de la photo studio, reprise dans le texte alternatif sur le site
         ecrire_json(p, sortie, t0, {"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y,

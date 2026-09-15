@@ -71,18 +71,46 @@ def piece(p, longueur, ratio):
                               "base": v["base"], "e_tole": v["e_tole"]},
                  "loupe": {"x": -v["l"] / 2 + v["pas"] / 2, "z_haut": v["e"], "z_bas": 0.0, "champ": max(6 * v["e"], 30.0), "cle": "e"}},
                 v.get("finition", "BRUT"))
+    elif serie == "MARCHE-CAILLEBOTIS":  # marche pressée : flasques qui pendent sous la grille, nez en cornière percée
+        # (vérification indépendante du 15/09 : joues dressées au-dessus de la marche, nez percé sur la face verticale).
+        # h = hauteur totale (dessus de grille -> bas des flasques) : cadrage ; barreau porteur dans `h_barreau`.
+        # Loupe sur le coin avant gauche, vue de l'extérieur : flasque (trou, fente), nez ; rien n'est coté (h supposée)
+        H = v["h_joue"]
+        return ({"type": "TOLE", "h": H, "b": v["L"], "longueur": v["l"],
+                 "caillebotis": {"marche": True, "t": v["t"], "h_barreau": v["h"], "maille_a": v["maille_a"],
+                                 "maille_b": v["maille_b"], "h_entretoise": v["h_entretoise"],
+                                 "joue": {"e": v["e_joue"], "chanfrein": 35.0, "d_trou": 13.0, "u_trou": 30.0,
+                                          "entraxe_fente": 40.0, "recul_fente": 80.0, "v_trous": 15.0},
+                                 "nez": {"largeur": 33.0, "hauteur": v["h_nez"], "e": 3.0, "r": 4.0, "d_trou": 8.0,
+                                         "larg_col": 3.0, "h_col": 2.0, "pas": 42.0, "rangs": [15.0, 22.0]}},
+                 "loupe": {"x": -v["L"] / 2, "z_haut": H, "z_bas": 0.0, "champ": 4.5 * H, "cle": "h",
+                           "azimut": -35.0, "elevation": 24.0, "y": 0.2 * v["l"], "z_ancre": 0.0}},
+                v.get("finition", "GALVA"))
+    elif serie == "MARCHE-O2":  # tôle pliée : dessus percé en damier, bords avant/arrière enroulés, joues percées
+        # (vérification du 15/09 : bords à angle vif, joues à deux trous). Loupe sur le coin avant gauche vu de
+        # l'extérieur : nez arrondi, rouleau dans l'encoche, joue ; h supposée, rien n'est coté
+        return ({"type": "TOLE", "h": v["h"], "b": v["L"], "longueur": v["l"],
+                 "o2": {"marche": True, "t": v["t"], "trous": v["trous"], "drainage": v["drainage"], "entraxe": 25.0,
+                        "r_nez": 5.0, "d_roule": v["d_roule"], "encoche": 12.0, "marge_bout": 37.5, "r_bout": 3.0,
+                        "joue": {"d_trou": 13.0, "u_trou": 50.0, "v_trous": 15.0, "largeur_fente": 13.0,
+                                 "entraxe_fente": 17.0, "ecart_fente": 142.0}},
+                 "loupe": {"x": -v["L"] / 2, "z_haut": v["h"], "z_bas": 0.0, "champ": 4.5 * v["h"], "cle": "h",
+                           "azimut": -35.0, "elevation": 24.0, "y": 0.2 * v["l"], "z_ancre": 0.0}},
+                v.get("finition", "GALVA"))
+    elif serie == "PLANCHER-O2":  # planches jointives percées, âmes pliées dos à dos, barres d'about pleines
+        # loupe : hauteur h pincée sur la barre d'about avant ; trait de liaison tiré du bas du chant (hors de la pièce) ;
+        # vue à 24° au lieu de 14 : les trous emboutis se lisaient comme des plots pleins (vérification du 15/09)
+        return ({"type": "TOLE", "h": v["h"], "b": v["l"], "longueur": v["L"],
+                 "o2": {"marche": False, "t": v["t"], "trous": v["trous"], "drainage": v["drainage"], "entraxe": 25.0,
+                        "largeur_planche": v["largeur_planche"], "e_about": 3.0},
+                 "loupe": {"x": -v["l"] * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h",
+                           "elevation": 24.0, "z_ancre": 0.0}},
+                v.get("finition", "GALVA"))
     elif serie in ("CAILLEBOTIS", "MARCHE-CAILLEBOTIS"):  # à plat comme une tôle ; loupe : hauteur h du plat de rive
         marche = serie == "MARCHE-CAILLEBOTIS"
         largeur, longueur = (v["L"], v["l"]) if marche else (v["l"], v["L"])  # marche : le grand côté devant
         return ({"type": "TOLE", "h": v["h"], "b": largeur, "longueur": longueur,
                  "caillebotis": {"t": v["t"], "maille_a": v["maille_a"], "maille_b": v["maille_b"], "marche": marche},
-                 "loupe": {"x": -largeur * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
-                v.get("finition", "GALVA"))
-    elif serie in ("PLANCHER-O2", "MARCHE-O2"):  # tôle perforée emboutie à bords pliés ; loupe : hauteur h du bord
-        marche = serie == "MARCHE-O2"
-        largeur, longueur = (v["L"], v["l"]) if marche else (v["l"], v["L"])
-        return ({"type": "TOLE", "h": v["h"], "b": largeur, "longueur": longueur,
-                 "o2": {"t": v["t"], "trous": v["trous"], "drainage": v["drainage"], "entraxe": 25.0, "marche": marche},
                  "loupe": {"x": -largeur * 0.3, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
                 v.get("finition", "GALVA"))
     elif serie == "PANNEAU-CLOTURE":  # panneau debout : hauteur H (m → mm), largeur l ; profondeur = V du pli + fil du sommet
@@ -96,9 +124,14 @@ def piece(p, longueur, ratio):
                  "cloture": {k: v[k] for k in ("fil_h", "fil_v", "axe_v", "axe_h", "h_pli", "prof_pli", "droit_pli",
                                                "travees", "abouts", "n_fils_v")}},
                 v.get("finition", "LAQUE"))
+    elif serie == "POTEAU" and v["modele"] == "CLOGRIFF 64":  # traverse à crochets encochés, âme double, lentille
+        # (vérification indépendante du 15/09 : l'ancien modèle était un caisson rectangulaire à fenêtres)
+        out = {"type": "POTEAU", "h": v["h"], "b": v["b"], "t": v["t_tole"],
+               "poteau": {"modele": v["modele"], "pas": v["pas_encoches"], "premiere": v["premiere_encoche"],
+                          "fente": v["fente"], "creneau": v["creneau"]}}
     elif serie == "POTEAU":  # couché comme un profilé : section b × h
         q = {"modele": v["modele"], "encoche": v.get("encoche"), "pas": v.get("pas_encoches")}
-        t = 2.0  # CLOGRIFF 64 : parois de 2 mm (forme du rendu)
+        t = 2.0
         if v.get("feuillure"):  # CLOPLUS 40 : profilé alu en H à deux tubes, lèvres et feuillures, âme percée (FTCP40PLIS205)
             t = v["paroi"]
             q.update(feuillure=v["feuillure"], tube=v["profondeur_tube"], levre=v["levre"], paroi=v["paroi"], ame=v["ame"],
@@ -135,6 +168,29 @@ def piece(p, longueur, ratio):
     return out, v.get("finition", "BRUT")
 
 
+def reglages_matiere(pc):
+    """Réglages de matière propres à une famille. Marches (caillebotis, O2) et plancher O2 : galvanisé moins lisse (rugosité
+    0,57 au lieu de 0,34). Vérification du 15/09 : photo studio des marches O2 aux trois pièces noire, grise et blanche
+    (luminance médiane 48 / 99 / 216), plancher 60 niveaux sous son visuel. Essais à 46° (800 px) : 0,34 -> 90 / 146 / 158,
+    0,46 -> 109 / 151 / 160, 0,57 -> 125 / 151 / 158 ; ni la vue (56°, azimut 16) ni les lumières ne réduisaient l'écart de la
+    pièce de gauche (position dans la rangée, pas la pièce : même écart dans l'ordre inverse)."""
+    if pc.get("o2") or pc.get("caillebotis", {}).get("marche"):
+        return {"rugosite_galva": 0.57}
+    return {}
+
+
+def reglages_studio(pc):
+    """Photo studio des marches et du plancher O2 : lumière « dessus » renforcée (45 par défaut). La pièce de gauche de la
+    rangée, loin de la lumière « contre », restait plus sombre (essais 800 px, marches O2, rugosité 0,57 : dessus 45 ->
+    125 / 151 / 158, 100 -> 141 / 165 / 168, 160 -> 154 / 176 / 177 ; plancher 120 -> 177 contre 166 sur son visuel,
+    marches caillebotis 120 -> 122 / 132 / 128 contre 123)."""
+    if pc.get("o2", {}).get("marche"):
+        return {"e_dessus": 150}
+    if pc.get("o2") or pc.get("caillebotis", {}).get("marche"):
+        return {"e_dessus": 120}
+    return {}
+
+
 def arrondir_au_pas_des_trous(pc):
     """Poteau à âme percée (CLOPLUS 40) : tronçon multiple du pas des trous, trous à `premier_trou` des deux bouts comme
     sur un poteau entier (2 000, 2 300, 2 500 mm) ; 475 et 532 mm deviennent 500."""
@@ -144,9 +200,17 @@ def arrondir_au_pas_des_trous(pc):
 
 
 def teinte(p):
-    """Couleur RAL des produits laqués (clôtures, tôles profilées, panneaux) : matière du rendu."""
+    """Couleur RAL des produits laqués (clôtures, tôles profilées, panneaux) : matière du rendu. Poteaux verts RAL 6005 :
+    laque plus mate et plus saturée, sinon leurs grandes faces planes reflètent le studio gris (vérification du 15/09 :
+    chroma médiane Lab 11,5 Clogriff et 13,5 Cloplus contre 20,7 pour les panneaux 6005 validés ; essai Clogriff 800 px :
+    chroma ×2,0, reflet 0,15, rugosité 0,6 -> 27,5 / −18,6 / 7,4, C 20,0 ; ×2,4 -> C 22,8 mais trop jaune)."""
     couleur = p["valeurs"].get("couleur", {}).get("valeur", "")
-    return {"ral": couleur.replace("RAL", "").strip()} if couleur else {}
+    if not couleur:
+        return {}
+    ral = couleur.replace("RAL", "").strip()
+    if ral == "6005" and p["valeurs"].get("serie", {}).get("valeur") == "POTEAU":
+        return {"ral": ral, "chroma_6005": 2.0, "speculaire_laque": 0.15, "rugosite_laque": 0.6}
+    return {"ral": ral}
 
 
 def main():
@@ -177,7 +241,7 @@ def main():
             # (moiré sur les R5 T8, vérification du 15/09)
             if pc.get("perforation", {}).get("pas", 99) < 12:
                 vue["surechantillonnage"] = 2
-            liste.append({**commun, **vue, **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques",
+            liste.append({**commun, **vue, **reglages_matiere(pc), **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques",
                           "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
@@ -199,7 +263,7 @@ def main():
         # tôles en métal lisse : vue plus plongeante, proche des visuels (48°) ; à 30°, elles reflétaient le studio
         # sombre, photo 60 niveaux sous les visuels (vérification du 15/09 ; essai : −68 → −15 pour l'inox)
         elevation = (46 if finition in ("INOX", "FROID", "GALVA", "ALU") else 30) if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20
-        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, "slug": nom, "mode": "studio", "pieces": pieces,
+        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **reglages_matiere(pieces[0]), **reglages_studio(pieces[0]), "slug": nom, "mode": "studio", "pieces": pieces,
                       "finition": finition, "azimut": 24, "elevation": elevation})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")

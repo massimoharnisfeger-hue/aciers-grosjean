@@ -578,6 +578,7 @@ SRC_FT_ECO = "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
 SRC_FT_TASSEAU = "fiche fournisseur publiée « Tasseau 40x40 (maxi) »"
 SRC_FT_CLOPLUS = "fiche fournisseur publiée « CLOPLUS 40 – Panneau PLIS 205 » (FTCP40PLIS205)"
 SRC_FT_CLOGRIFF = "fiche fournisseur publiée « CLOGRIFF 64 – Panneau plis 205 » (FTCG64PLIS205)"
+SRC_SECTION_CLONOR = "pictogramme de section, catalogue Clonor Industries 26, p. 9 (clonor.com)"
 SRC_FT_PCP = "fiche fournisseur publiée « Caillebotis O2 » (PcP)"
 # panneaux « type 205 » : entraxes de 200 entre plis, de bas en haut, par hauteur (mm) ; comptés sur le dessin des hauteurs
 # de FTCP40PLIS205 (1430 et 2030 : FTCP50PLIS205 ind 10, clonor.com), recoupés par H = 30 + 100 × plis + 200 × Σ
@@ -777,8 +778,20 @@ def vague3(cat, reel, desc):
             else:
                 v.update(serie=valeur("POTEAU", "", SRC_NOM), modele=valeur(modele, "", SRC_NOM), L=L_m,
                          b=valeur(50, "mm", SRC_FT_CLOGRIFF + " (dessin coté 50 × 64)"), h=valeur(64, "mm", SRC_FT_CLOGRIFF + " (dessin coté 50 × 64)"),
-                         encoche=valeur(30, "mm", SRC_FT_CLOGRIFF + " — forme du rendu", supposee=True),
-                         pas_encoches=valeur(100, "mm", SRC_FT_CLOGRIFF + " — forme du rendu", supposee=True),
+                         # profil réel (vérification indépendante du 15/09 : le rendu montrait un caisson percé) : traverse
+                         # à crochets encochés, âme double et lentille, section de SRC_SECTION_CLONOR ; encoches = fente
+                         # traversante puis créneau sans lèvre, au pas coté. Formes du rendu, jamais affichées.
+                         premiere_encoche=valeur(30, "mm", SRC_FT_CLOGRIFF + " (dessin coté 30 : haut du poteau -> première "
+                                                 "encoche, lecture du dessin) — forme du rendu, non affichée", supposee=True),
+                         pas_encoches=valeur(100, "mm", SRC_FT_CLOGRIFF + " (dessin coté 100, pas des encoches ; même cote sur "
+                                             "FTCG64/10 et au catalogue Clonor) — forme du rendu, non affichée"),
+                         fente=valeur(12, "mm", "proportion mesurée sur les dessins Clonor (13 ; 11,5) et une photo de poteau "
+                                      "posé (10) — forme du rendu, non affichée", supposee=True),
+                         creneau=valeur(26, "mm", "proportion mesurée : 24 (dessin de la fiche), 31 (notice de pose), 24 "
+                                        "(photo) — forme du rendu, non affichée", supposee=True),
+                         t_tole=valeur(1.25, "mm", "non publiée : section du " + SRC_SECTION_CLONOR + ", I/V calculé 5,3 cm³ "
+                                       "pour « I/V > 4,15 cm³ » publié (1,0 mm -> 4,3 ; 1,5 -> 6,3) — forme du rendu, "
+                                       "non affichée", supposee=True),
                          matiere=valeur("Acier galvanisé", "", SRC_FT_CLOGRIFF + " (« poteau en acier … galvanisé suivant norme EN 10242 »)"))
                 v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
             v["revetement"] = valeur("Thermolaqué polyester", "", (SRC_FT_CLOPLUS if modele == "CLOPLUS 40" else SRC_FT_CLOGRIFF) + " (« thermolaquage épaisseur mini 80 microns »)")
@@ -808,16 +821,27 @@ def vague3(cat, reel, desc):
                          drainage=valeur(5, "mm", SRC_DESC + " et " + SRC_FT_PCP + " (trous de drainage)"),
                          entraxe=valeur("25 × 25 mm", "", SRC_DESC + " et " + SRC_FT_PCP),
                          revetement=valeur("Galvanisé à chaud", "", SRC_FT_PCP + " (dimensions standard)"))
-                if marche:  # hauteur des marches ACHIL absente des documents : celle du plancher O2, non affichée
+                if marche:  # hauteur des marches ACHIL absente des documents du site : fiche PcP en ligne, non affichée
                     # revêtement : la fiche PcP citée est celle du plancher, aucun document attaché aux marches ne l'écrit
                     # (leur déclaration CE dit « Durabilité : ISO 1461 ») : non affiché (audit du 15/09)
                     v["revetement"] = valeur("Galvanisé à chaud", "", SRC_FT_PCP + " (plancher, autre produit) — non affiché", supposee=True)
-                    v["h"] = valeur(33, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
-                    v["t"] = valeur(2, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
-                    alertes.append("hauteur de la marche absente des documents : non affichée (question en attente)")
+                    # 33 (hauteur du plancher) jusqu'au 15/09 ; la fiche fabricant des marches donne 45 (spécification des formes)
+                    v["h"] = valeur(45, "mm", "fiche fabricant PcP « Tread ACHIL O2 » en ligne (F100340101/F100350101/"
+                                    "F100360101 : 800/900/1000 × 250 × 45 × 2), non publiée sur le site — forme du rendu, "
+                                    "non affichée", supposee=True)
+                    v["t"] = valeur(2, "mm", "fiche fabricant PcP « Tread ACHIL O2 » en ligne — forme du rendu, non affichée", supposee=True)
+                    # bords avant et arrière enroulés (description : « bordures avant et arrière enroulées »)
+                    v["d_roule"] = valeur(20, "mm", "dessin PcP « OPTIMO Tread ACHIL O2 » (coupe, mesuré) — forme du rendu, "
+                                          "non affichée", supposee=True)
+                    alertes.append("hauteur 45 lue sur la fiche PcP en ligne, absente des documents du site : non affichée (question en attente)")
                 else:
                     v["h"] = valeur(33, "mm", SRC_FT_PCP + " (dimensions standard : hauteur 33)")
                     v["t"] = valeur(2, "mm", SRC_FT_PCP + " (dimensions standard : épaisseur 2)")
+                    # plancher fait de planches jointives (dessin p. 4 de la fiche PDF « OPTIMO Plank Grating O2 ») ;
+                    # largeur non publiée
+                    v["largeur_planche"] = valeur(100, "mm", "photo de la fiche PDF du site ≈ 100 (7 lignes de trous) ; photo du "
+                                                  "site ≈ 75 ; largeurs PcP h = 33 : 50…200 — 10 planches, forme du rendu, "
+                                                  "non affichée", supposee=True)
                 v["finition"] = valeur("GALVA", "", "matière du rendu, non affichée", supposee=True)
                 famille = "marche-o2" if marche else "plancher-o2"
             elif re.search(r"marche d'escalier caillebotis", nom, re.I):
@@ -830,7 +854,14 @@ def vague3(cat, reel, desc):
                          maille_a=valeur(33.3, "mm", "caillebotis 33/33 du catalogue — forme du rendu, non affichée", supposee=True),
                          maille_b=valeur(33.3, "mm", "caillebotis 33/33 du catalogue — forme du rendu, non affichée", supposee=True),
                          h=valeur(30, "mm", "barreau 30/2 des caillebotis — forme du rendu, non affichée", supposee=True),
-                         t=valeur(2, "mm", "barreau 30/2 des caillebotis — forme du rendu, non affichée", supposee=True))
+                         t=valeur(2, "mm", "barreau 30/2 des caillebotis — forme du rendu, non affichée", supposee=True),
+                         # flasques d'extrémité qui pendent sous la grille, nez en cornière, entretoises plates (15/09)
+                         h_joue=valeur(55, "mm", "photo du site G093 (0005058) : trous ≈ 40 sous le dessus + 15 (DIN 24531-1) "
+                                       "— forme du rendu, non affichée", supposee=True),
+                         e_joue=valeur(3, "mm", "DIN 24531-1 Bild 1/2 (Befestigungsplatte) — forme du rendu, non affichée", supposee=True),
+                         h_nez=valeur(35, "mm", "photo G093 + DIN 24531-1 (Antrittsprofil) — forme du rendu, non affichée", supposee=True),
+                         h_entretoise=valeur(10, "mm", "photos G093/G095 : plats insérés ≈ 1/3 de la hauteur des porteurs — forme "
+                                             "du rendu, non affichée", supposee=True))
                 alertes.append("maille et barreaux de la marche absents de la page : non affichés (question en attente)")
                 if re.search(r"S235JR", texte):
                     v["nuance"] = valeur("S235JR", "", SRC_DESC)
