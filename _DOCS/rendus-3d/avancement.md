@@ -24,9 +24,9 @@ Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : val
 - **Armatures** : nuances B500B / B500A retirées des pages (générateur + catalogue, 15/09) : l'intégration ne sera plus bloquée par le contrôle « nuance sur la page, absente de l'image ».
 - **Vague 2** : données faites pour les tôles planes (froid, galva, Corten, alu, inox), profilés/tubes alu et inox (77), tôles larmées et striées (15), tôles perforées (8) ; pages inox corrigées (nuance sourcée) ; « Masse surfacique » contredite retirée de 36 pages (`integrer.py`). Essais conformes : matières, profilés alu/inox, tôles à relief (loupe e / E). Série `serie-vague2.json` (121 + 18 studios) en file derrière les armatures. Essai perforées en cours ; ensuite série `serie-vague2b.json` (relief + perforées).
 
-## À la toute fin (demande du propriétaire, 14/09 au soir)
-- Quand tout est terminé (pas avant) : ranger les deux formats de chaque visuel — photo studio fond blanc et visuel avec fiche technique — dans `_DEPOT/images/2-categories/`, classés par catégorie (structure à calquer sur celle du dossier s'il en a déjà une).
-- Puis proposer l'étape vidéo (CLAUDE.md), sans la lancer.
+## Rangement pour le propriétaire (demande du 14/09, avancée le 15/09 à 10 h 30 : « dès maintenant, un maximum »)
+- Fait au fil des intégrations par `integrer_visuels.py` : `_DEPOT/images/2-categories/<univers>/<catégorie>/fond-blanc/` (photo studio) et `fiche-technique/` (visuel coté). Le 15/09 à 10 h 30, les 267 visuels déjà vérifiés y ont été déplacés (l'ancien `visuels-3d/` est supprimé) ; chaque famille vérifiée ensuite y arrive en même temps que sur le site.
+- À la toute fin : proposer l'étape vidéo (CLAUDE.md), sans la lancer.
 
 ## Étapes communes
 - [x] 0. Générateur corrigé : profils U alu, tôles alu et inox sans oxycoupage ; nuances et longueurs des poutrelles ; nom du Clogriff 2M50 gris.

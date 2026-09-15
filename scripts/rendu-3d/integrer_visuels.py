@@ -5,7 +5,8 @@ Integre sur le site les visuels 3D d'une famille verifiee « CONFORME » (CLAUDE
 
 - copie rendu3d/final/<slug>-caracteristiques.webp -> public/images/produits/<categorie>/<slug>-caracteristiques.webp
   et rendu3d/final/studio-<famille>-studio.webp  -> public/images/produits/<categorie>/studio-<famille>.webp,
-  avec la meme copie dans _DEPOT/images/visuels-3d/<categorie>/ pour le proprietaire (CLAUDE.md) ;
+  avec une copie pour le proprietaire dans _DEPOT/images/2-categories/<categorie>/fond-blanc/ (studio)
+  et /fiche-technique/ (caracteristiques), demande du 15/09 (CLAUDE.md) ;
 - met a jour lib/visuels-produits.json, lu par la page produit : chemin, dimensions, texte alternatif ;
 - met a jour _DOCS/rendus-3d/inventaire-visuels.csv (slug, categorie, fichier, type, verdict, date).
 Refuse la famille si controler_rendus.py y trouve encore un ecart.
@@ -25,8 +26,9 @@ import controler_rendus as controle
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
 PUBLIC = PROJET / "public"
-# copie consultée par le propriétaire, mêmes noms et même arborescence (hors Git, jamais d'essais)
-DEPOT = PROJET / "_DEPOT" / "images" / "visuels-3d"
+# copie consultée par le propriétaire (hors Git, jamais d'essais) : même arborescence que le site, les deux formats
+# séparés dans fond-blanc/ (photo studio) et fiche-technique/ (visuel coté)
+DEPOT = PROJET / "_DEPOT" / "images" / "2-categories"
 MANIFESTE = PROJET / "lib" / "visuels-produits.json"
 INVENTAIRE = PROJET / "_DOCS" / "rendus-3d" / "inventaire-visuels.csv"
 NOMBRES = {2: "deux", 3: "trois", 4: "quatre"}
@@ -39,8 +41,9 @@ def noms_categories():
 
 
 def copier(source, cible):
-    """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/visuels-3d/…)."""
-    copie = DEPOT / cible.relative_to(PUBLIC / "images" / "produits")
+    """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/2-categories/…)."""
+    relatif = cible.relative_to(PUBLIC / "images" / "produits")
+    copie = DEPOT / relatif.parent / ("fond-blanc" if cible.name.startswith("studio-") else "fiche-technique") / cible.name
     for chemin in (cible, copie):
         chemin.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, chemin)
