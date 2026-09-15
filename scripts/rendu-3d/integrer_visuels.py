@@ -80,7 +80,7 @@ def main():
 
         for slug in slugs:
             c = json.loads((controle.FINAL / f"{slug}-caracteristiques.controles.json").read_text(encoding="utf-8"))
-            cotes = ", ".join(dict.fromkeys(f"{lettre} {valeur}" for lettre, _, valeur in c["pastilles"]))
+            cotes = ", ".join(dict.fromkeys(f"{lettre} {valeur}" for lettre, _, valeur, *_ in c["pastilles"]))
             image = copier(controle.FINAL / f"{slug}-caracteristiques.webp", dossier / f"{slug}-caracteristiques.webp")
             image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes}) et fiche technique"
             manifeste["produits"][slug] = image

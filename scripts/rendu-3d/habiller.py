@@ -99,6 +99,16 @@ PASTILLES = []
 TRAITS_COTES = []  # extrémités du trait de chaque étiquette de cote (même rang que PASTILLES), None pour les pinces
 RAPPELS = []  # lignes de rappel réellement tracées (début côté pièce, fin), relues par controler_rendus.py
 MASQUE = None  # pixels opaques du rendu brut (la pièce), pour coller les lignes de rappel
+CLAIR = None  # luminance du rendu brut sur la pièce (0 ailleurs) : une étiquette ne doit pas cacher une paroi claire
+
+
+def paroi_sous(x0, y0, x1, y1, seuil=90):
+    """Part des pixels de pièce plus clairs que `seuil` dans le rectangle : l'étiquette t posée dans la cavité d'un
+    tube rectangulaire étroit recouvrait la paroi opposée (60x30x3 alu : 52 px, vérification du 15/09)."""
+    if CLAIR is None:
+        return 0.0
+    zone = CLAIR.crop((int(x0), int(y0), int(x1) + 1, int(y1) + 1))
+    return sum(1 for v in zone.getdata() if v > seuil) / max(zone.width * zone.height, 1)
 
 
 def pres_de_la_piece(x, y, rayon):
@@ -455,9 +465,11 @@ def caracteristiques(slug, dossier):
         geo = json.load(f)
     P, W, H = geo["points"], geo["largeur"], geo["hauteur"]
     p = fiche(slug)
-    global MASQUE
+    global MASQUE, CLAIR
     with Image.open(os.path.join(dossier, slug + ".png")) as brut:
-        MASQUE = brut.convert("RGBA").split()[3].point(lambda v: 255 if v >= 250 else 0)
+        rgba = brut.convert("RGBA")
+        MASQUE = rgba.split()[3].point(lambda v: 255 if v >= 250 else 0)
+        CLAIR = Image.composite(rgba.convert("L"), Image.new("L", rgba.size, 0), MASQUE)
 
     calque = Image.new("RGBA", (W * S, H * S), (0, 0, 0, 0))
     d = ImageDraw.Draw(calque)
@@ -496,7 +508,18 @@ def caracteristiques(slug, dossier):
         ligne(decale(ad, 34, 0), ad, ENCRE)
         fleche(ad, decale(ad, 34, 0), ENCRE)
         ligne(decale(ad, 34, 0), decale(ad, 64, 0), ENCRE)
-        PASTILLES.append((decale(ad, 150, 0), *pince))
+        centre_t = decale(ad, 150, 0)
+        # tube dont la cavité est trop étroite pour l'étiquette (elle couvrirait la paroi opposée) : le trait descend
+        # à travers la pièce et l'étiquette se pose dessous
+        demi_l = (30 * S + d.textlength(pince[0], font=police("Poppins-SemiBold.ttf", 21)) + 9 * S
+                  + d.textlength(pince[1], font=police("IBMPlexMono-SemiBold.ttf", 21))) / S / 2
+        if geo.get("type") in ("TC", "TR") and paroi_sous(centre_t[0] - demi_l, centre_t[1] - 20, centre_t[0] + demi_l, centre_t[1] + 20) > 0.02:
+            x_t, y_bas = ad[0] + 64, ad[1]
+            while y_bas < H - 100 and (sur_la_piece(x_t, y_bas) or sur_la_piece(x_t, y_bas + 6)):
+                y_bas += 1
+            ligne(decale(ad, 64, 0), (x_t, y_bas + 22), ENCRE)
+            centre_t = (x_t + 56, y_bas + 48)
+        PASTILLES.append((centre_t, *pince))
     if aile[1]:  # deux flèches qui pincent l'aile supérieure, étiquette au-dessus
         ext, inte = P["aile_haut_ext"], P["aile_haut_int"]
         fleches_pince.append((aile[0], inte[0] - 7, inte[1], inte[0] + 7, inte[1] + 34))
@@ -632,7 +655,7 @@ def caracteristiques(slug, dossier):
     with open(os.path.join(dossier, slug + "-caracteristiques.controles.json"), "w", encoding="utf-8") as f:
         json.dump({"surtitre": surtitre, "titre": titre,
                    "fiche": [[label, lettre, cle, valeur] for label, lettre, cle, valeur in lignes],
-                   "pastilles": [[lettre, cle, valeur] for _, lettre, valeur, cle in PASTILLES],
+                   "pastilles": [[lettre, cle, valeur, round(c[0]), round(c[1])] for c, lettre, valeur, cle in PASTILLES],
                    "rappels": [[list(a), list(b)] for a, b in RAPPELS], "problemes": problemes},
                   f, ensure_ascii=False, indent=1)
     print("CONTROLES :", "; ".join(problemes) if problemes else "aucun problème")

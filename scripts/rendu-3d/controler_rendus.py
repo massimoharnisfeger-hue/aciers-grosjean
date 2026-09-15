@@ -108,6 +108,15 @@ def part_noire(chemin, creux=False):
     return noirs / max(dans_piece, 1)
 
 
+def part_claire(chemin, x0, y0, x1, y1, seuil=90):
+    """Part des pixels de pièce (rendu brut, opaques) plus clairs que `seuil` dans un rectangle de l'image."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA").crop((int(x0), int(y0), int(x1) + 1, int(y1) + 1))
+    gris, alpha = rgba.convert("L"), rgba.split()[3]
+    n = rgba.width * rgba.height
+    return sum(1 for v, a in zip(gris.getdata(), alpha.getdata()) if a >= 250 and v > seuil) / max(n, 1)
+
+
 def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80):
     """(luminance moyenne, part des pixels sous `seuil_sombre`) de la silhouette de la pièce (rendu brut) ; avec
     `moitie_arriere`, seulement la moitié droite de sa boîte (le corps de la barre, sans la face coupée).
@@ -343,16 +352,21 @@ def controler(famille, produits, pages):
                     ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
             elif not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
-        for lettre, cle, ecrit in c["pastilles"]:
+        for lettre, cle, ecrit, *centre in c["pastilles"]:
             d = valeurs.get(cle)
             if not d or d.get("supposee") or not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : pastille {lettre} « {ecrit} » ≠ donnee {d and d['valeur']}")
+            # étiquette t d'un tube posée sur une paroi claire de la pièce (tubes rectangulaires étroits, 15/09)
+            if cle == "t" and centre and brut and valeurs.get("serie", {}).get("valeur") in ("TC", "TR"):
+                part = part_claire(brut, centre[0] - 50, centre[1] - 20, centre[0] + 50, centre[1] + 20)
+                if part > 0.02:
+                    ecarts.append(f"{slug} : etiquette t sur une paroi de la piece ({part:.0%} de sa surface)")
         # l'image dit la meme chose que la page
         page = pages.get(slug)
         if page is None:
             ecarts.append(f"{slug} : fiche absente de lib/catalogue.ts")
             continue
-        affiche = {cle for _, _, cle, _ in c["fiche"]} | {cle for _, cle, _ in c["pastilles"]}
+        affiche = {cle for _, _, cle, _ in c["fiche"]} | {q[1] for q in c["pastilles"]}
         couvertes = set()
         serie = valeurs.get("serie", {}).get("valeur")
         for libelle, cles in {**PAGE, **PAGE_PAR_SERIE.get(serie, {})}.items():
@@ -382,6 +396,11 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : « {cle} » sur l'image, absent de la page")
         if "Poids" in fiche and not meme_valeur(page.get("Poids"), fiche["Poids"]):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
+        # poids écrit dans la description de la page (texte du site actuel) : la fiche prime (règle du propriétaire),
+        # l'écart va en question en attente — note, pas écart bloquant
+        m = re.search(r"[Pp]oids\s*:?\s*([\d]+(?:[.,]\d+)?)\s*kg", page.get("_texte", ""))
+        if m and "Poids" in fiche and nombre(fiche["Poids"]) is not None and abs(nombre(m.group(1)) - nombre(fiche["Poids"])) > 0.005:
+            print(f"   note : {slug} : poids de la description « {m.group(1)} kg » ≠ image {fiche['Poids']} (question en attente)")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
     if lum_studio is not None and lum_fiches:
