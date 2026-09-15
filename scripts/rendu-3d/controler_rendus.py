@@ -21,7 +21,7 @@ import re
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageChops, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
 
 from habiller import FINITIONS, titre_image
 
@@ -108,6 +108,28 @@ def part_noire(chemin, creux=False):
     return noirs / max(dans_piece, 1)
 
 
+def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80):
+    """(luminance moyenne, part des pixels sous `seuil_sombre`) de la silhouette de la pièce (rendu brut) ; avec
+    `moitie_arriere`, seulement la moitié droite de sa boîte (le corps de la barre, sans la face coupée).
+    Vérification indépendante du 15/09 : métal trop lisse = reflet du studio sombre (dessus des tubes carrés inox à
+    61/255, tôle à froid en miroir noir), invisible aux autres contrôles."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    boite = rgba.split()[3].point(lambda v: 255 if v >= 250 else 0).getbbox()
+    if not boite:
+        return 0.0, 0.0
+    if moitie_arriere:
+        boite = ((boite[0] + boite[2]) // 2, boite[1], boite[2], boite[3])
+    zone = rgba.crop(boite)
+    masque = zone.split()[3].point(lambda v: 255 if v >= 250 else 0)
+    gris = zone.convert("L")
+    n = ImageStat.Stat(masque).sum[0] / 255
+    if not n:
+        return 0.0, 0.0
+    sombres = ImageStat.Stat(ImageChops.multiply(gris.point(lambda v: 255 if v < seuil_sombre else 0), masque)).sum[0] / 255
+    return ImageStat.Stat(gris, mask=masque).mean[0], sombres / n
+
+
 def jours_rappel(chemin, points):
     """Écart en pixels entre le début de chaque ligne de rappel et le pixel de pièce le plus proche (transparence du
     rendu brut). Vérification indépendante des cornières : rappels à 67 px de la pièce sur les images rendues avant
@@ -162,6 +184,7 @@ def fond_enclos(chemin):
 SANS_FOND_ENCLOS = {"I", "U", "L", "T", "PLAT", "ROND", "CARRE", "TC", "TR", "TUBE-ROND", "ROND-BETON", "UPN", "IPE", "HEA", "HEB",
                     "U-ALU"}
 # familles rendues avant l'empreinte du code (14/09 soir), vérifiées à l'œil par la vérification indépendante
+FINITIONS_CLAIRES = {"INOX", "ALU"}  # contrôle des faces assombries par le reflet du studio
 EMPREINTE_ABSENTE_VERIFIEE = {"poutrelle-ipe", "poutrelle-hea", "poutrelle-heb", "poutrelle-upn",
                               "fer-t", "plat", "large-plat", "rond-plein", "carre-plein"}
 
@@ -235,6 +258,8 @@ def controler(famille, produits, pages):
         n = marges_blanches(png)
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
+    lum_studio = luminance_piece(brut)[0] if brut else None
+    lum_fiches = []
 
     versions = set()  # empreintes du code de rendu (rendu_profil.py) des images de la famille
     for slug in slugs:
@@ -253,6 +278,12 @@ def controler(famille, produits, pages):
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
+            lum_fiches.append(luminance_piece(brut)[0])
+            if p["valeurs"].get("finition", {}).get("valeur") in FINITIONS_CLAIRES:
+                _, sombre = luminance_piece(brut, moitie_arriere=True)
+                if sombre > 0.10:  # calibré le 15/09 : 22 % et 13 % sur les tubes inox refusés, 8 % au plus ailleurs
+                    ecarts.append(f"{slug} : {sombre:.0%} du corps de la piece sous 80/255 (reflet du studio sombre "
+                                  f"sur une matiere claire)")
             geo = FINAL / (slug + ".json")
             sidecar = FINAL / (nom + ".controles.json")
             if geo.exists():
@@ -353,6 +384,13 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
+    if lum_studio is not None and lum_fiches:
+        # calibré le 15/09 sur 39 familles : ±26 au plus sur les familles validées, −60 à −68 sur les tôles galvanisées,
+        # inox et à froid (métal lisse : la photo studio reflète le studio sombre)
+        ecart_lum = lum_studio - sum(lum_fiches) / len(lum_fiches)
+        if abs(ecart_lum) > 30:
+            ecarts.append(f"{famille} : photo studio {ecart_lum:+.0f} niveaux de luminance par rapport aux visuels "
+                          f"caracteristiques (matiere qui change avec la vue)")
     if None in versions and famille not in EMPREINTE_ABSENTE_VERIFIEE:
         ecarts.append(f"{famille} : visuels sans empreinte du code de rendu (version inconnue) : refaire ou verifier a l'oeil")
     if len(versions) > 1:  # reprise partielle : refaire la famille, ou au moins recalculer ses points (--points-seuls)

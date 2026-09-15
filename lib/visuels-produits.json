@@ -48,11 +48,29 @@
    "hauteur": 1200,
    "alt": "Cornière égale 100x100x10mm Acier LAC : rendu 3D aux cotes (a 100 mm, t 10 mm) et fiche technique"
   },
+  "corniere-egale-20x20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-20x20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 20x20x2mm en aluminium : rendu 3D aux cotes (a 20 mm, t 2 mm) et fiche technique"
+  },
   "corniere-egale-20x20x3mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-20x20x3mm-acier-lac-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Cornière égale 20x20x3mm Acier LAC : rendu 3D aux cotes (a 20 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-20x20x3mm-en-inox": {
+   "src": "/images/produits/inox/profiles/corniere-egale/corniere-egale-20x20x3mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 20x20x3mm en Inox : rendu 3D aux cotes (a 20 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-25x25x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-25x25x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 25x25x2mm en aluminium : rendu 3D aux cotes (a 25 mm, t 2 mm) et fiche technique"
   },
   "corniere-egale-25x25x3mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-25x25x3mm-acier-lac-caracteristiques.webp",
@@ -60,11 +78,41 @@
    "hauteur": 1200,
    "alt": "Cornière égale 25x25x3mm Acier LAC : rendu 3D aux cotes (a 25 mm, t 3 mm) et fiche technique"
   },
+  "corniere-egale-25x25x3mm-en-inox": {
+   "src": "/images/produits/inox/profiles/corniere-egale/corniere-egale-25x25x3mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 25x25x3mm en Inox : rendu 3D aux cotes (a 25 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-30x30x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-30x30x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 30x30x2mm en aluminium : rendu 3D aux cotes (a 30 mm, t 2 mm) et fiche technique"
+  },
   "corniere-egale-30x30x3mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-30x30x3mm-acier-lac-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Cornière égale 30x30x3mm Acier LAC : rendu 3D aux cotes (a 30 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-30x30x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-30x30x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 30x30x3mm en aluminium : rendu 3D aux cotes (a 30 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-30x30x3mm-en-inox": {
+   "src": "/images/produits/inox/profiles/corniere-egale/corniere-egale-30x30x3mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 30x30x3mm en Inox : rendu 3D aux cotes (a 30 mm, t 3 mm) et fiche technique"
+  },
+  "corniere-egale-40x40x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-40x40x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 40x40x2mm en aluminium : rendu 3D aux cotes (a 40 mm, t 2 mm) et fiche technique"
   },
   "corniere-egale-40x40x3mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-40x40x3mm-acier-lac-caracteristiques.webp",
@@ -72,11 +120,23 @@
    "hauteur": 1200,
    "alt": "Cornière égale 40x40x3mm Acier LAC : rendu 3D aux cotes (a 40 mm, t 3 mm) et fiche technique"
   },
+  "corniere-egale-40x40x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-40x40x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 40x40x3mm en aluminium : rendu 3D aux cotes (a 40 mm, t 3 mm) et fiche technique"
+  },
   "corniere-egale-40x40x4mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-40x40x4mm-acier-lac-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Cornière égale 40x40x4mm Acier LAC : rendu 3D aux cotes (a 40 mm, t 4 mm) et fiche technique"
+  },
+  "corniere-egale-40x40x4mm-en-inox": {
+   "src": "/images/produits/inox/profiles/corniere-egale/corniere-egale-40x40x4mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 40x40x4mm en Inox : rendu 3D aux cotes (a 40 mm, t 4 mm) et fiche technique"
   },
   "corniere-egale-50x50x3mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-50x50x3mm-acier-lac-caracteristiques.webp",
@@ -84,11 +144,29 @@
    "hauteur": 1200,
    "alt": "Cornière égale 50x50x3mm Acier LAC : rendu 3D aux cotes (a 50 mm, t 3 mm) et fiche technique"
   },
+  "corniere-egale-50x50x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-50x50x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 50x50x3mm en aluminium : rendu 3D aux cotes (a 50 mm, t 3 mm) et fiche technique"
+  },
   "corniere-egale-50x50x5mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-50x50x5mm-acier-lac-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Cornière égale 50x50x5mm Acier LAC : rendu 3D aux cotes (a 50 mm, t 5 mm) et fiche technique"
+  },
+  "corniere-egale-50x50x5mm-en-inox": {
+   "src": "/images/produits/inox/profiles/corniere-egale/corniere-egale-50x50x5mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 50x50x5mm en Inox : rendu 3D aux cotes (a 50 mm, t 5 mm) et fiche technique"
+  },
+  "corniere-egale-60x60x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/corniere-egale-60x60x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale 60x60x3mm en aluminium : rendu 3D aux cotes (a 60 mm, t 3 mm) et fiche technique"
   },
   "corniere-egale-60x60x6mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-60x60x6mm-acier-lac-caracteristiques.webp",
@@ -246,11 +324,23 @@
    "hauteur": 1200,
    "alt": "Plat 20x3mm en acier laminé à chaud : rendu 3D aux cotes (b 20 mm, t 3 mm) et fiche technique"
   },
+  "plat-20x3mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-20x3mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 20x3mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 3 mm) et fiche technique"
+  },
   "plat-20x5mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-20x5mm-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 20x5mm en acier laminé à chaud : rendu 3D aux cotes (b 20 mm, t 5 mm) et fiche technique"
+  },
+  "plat-20x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-20x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 20x5mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 5 mm) et fiche technique"
   },
   "plat-25x10mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-25x10mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -264,6 +354,12 @@
    "hauteur": 1200,
    "alt": "Plat 25x3mm en acier laminé à chaud : rendu 3D aux cotes (b 25 mm, t 3 mm) et fiche technique"
   },
+  "plat-25x3mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-25x3mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 25x3mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 3 mm) et fiche technique"
+  },
   "plat-25x4mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-25x4mm-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -275,6 +371,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 25x5mm en acier laminé à chaud : rendu 3D aux cotes (b 25 mm, t 5 mm) et fiche technique"
+  },
+  "plat-25x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-25x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 25x5mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 5 mm) et fiche technique"
   },
   "plat-30x10mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-30x10mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -294,11 +396,23 @@
    "hauteur": 1200,
    "alt": "Plat 30x3mm en acier laminé à chaud : rendu 3D aux cotes (b 30 mm, t 3 mm) et fiche technique"
   },
+  "plat-30x3mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-30x3mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 30x3mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 3 mm) et fiche technique"
+  },
   "plat-30x5mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-30x5mm-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 30x5mm en acier laminé à chaud : rendu 3D aux cotes (b 30 mm, t 5 mm) et fiche technique"
+  },
+  "plat-30x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-30x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 30x5mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 5 mm) et fiche technique"
   },
   "plat-30x6mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-30x6mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -324,6 +438,12 @@
    "hauteur": 1200,
    "alt": "Plat 40x3mm en acier laminé à chaud : rendu 3D aux cotes (b 40 mm, t 3 mm) et fiche technique"
   },
+  "plat-40x3mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-40x3mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 40x3mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 3 mm) et fiche technique"
+  },
   "plat-40x4mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-40x4mm-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -335,6 +455,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 40x5mm en acier laminé à chaud : rendu 3D aux cotes (b 40 mm, t 5 mm) et fiche technique"
+  },
+  "plat-40x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-40x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 40x5mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 5 mm) et fiche technique"
   },
   "plat-40x8mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-40x8mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -360,6 +486,12 @@
    "hauteur": 1200,
    "alt": "Plat 50x5mm en acier laminé à chaud : rendu 3D aux cotes (b 50 mm, t 5 mm) et fiche technique"
   },
+  "plat-50x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-50x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 50x5mm en Inox 304 : rendu 3D aux cotes (b 50 mm, t 5 mm) et fiche technique"
+  },
   "plat-50x8mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-50x8mm-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -377,6 +509,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 60x5mm en acier laminé à chaud : rendu 3D aux cotes (b 60 mm, t 5 mm) et fiche technique"
+  },
+  "plat-60x5mm-en-inox-304": {
+   "src": "/images/produits/inox/profiles/plat/plat-60x5mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat 60x5mm en Inox 304 : rendu 3D aux cotes (b 60 mm, t 5 mm) et fiche technique"
   },
   "plat-60x8mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/plat/plat-60x8mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -401,6 +539,72 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Plat 80x8mm en acier laminé à chaud : rendu 3D aux cotes (b 80 mm, t 8 mm) et fiche technique"
+  },
+  "plat-de-100x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-100x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 100x5mm en aluminium : rendu 3D aux cotes (b 100 mm, t 5 mm) et fiche technique"
+  },
+  "plat-de-20x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-20x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 20x3mm en aluminium : rendu 3D aux cotes (b 20 mm, t 3 mm) et fiche technique"
+  },
+  "plat-de-25x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-25x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 25x3mm en aluminium : rendu 3D aux cotes (b 25 mm, t 3 mm) et fiche technique"
+  },
+  "plat-de-30x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-30x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 30x3mm en aluminium : rendu 3D aux cotes (b 30 mm, t 3 mm) et fiche technique"
+  },
+  "plat-de-30x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-30x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 30x5mm en aluminium : rendu 3D aux cotes (b 30 mm, t 5 mm) et fiche technique"
+  },
+  "plat-de-40x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-40x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 40x3mm en aluminium : rendu 3D aux cotes (b 40 mm, t 3 mm) et fiche technique"
+  },
+  "plat-de-40x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-40x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 40x5mm en aluminium : rendu 3D aux cotes (b 40 mm, t 5 mm) et fiche technique"
+  },
+  "plat-de-50x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-50x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 50x3mm en aluminium : rendu 3D aux cotes (b 50 mm, t 3 mm) et fiche technique"
+  },
+  "plat-de-50x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-50x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 50x5mm en aluminium : rendu 3D aux cotes (b 50 mm, t 5 mm) et fiche technique"
+  },
+  "plat-de-60x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-60x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 60x5mm en aluminium : rendu 3D aux cotes (b 60 mm, t 5 mm) et fiche technique"
+  },
+  "plat-de-80x5mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/plat/plat-de-80x5mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat de 80x5mm en aluminium : rendu 3D aux cotes (b 80 mm, t 5 mm) et fiche technique"
   },
   "poutrelle-hea-100-en-acier": {
    "src": "/images/produits/acier/poutrelles/hea/poutrelle-hea-100-en-acier-caracteristiques.webp",
@@ -672,6 +876,48 @@
    "hauteur": 1200,
    "alt": "Poutrelle UPN 80 en acier : rendu 3D aux cotes (h 80 mm, b 45 mm, tw 6 mm, tf 8 mm) et fiche technique"
   },
+  "profil-en-t-20x20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-t/profil-en-t-20x20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en T 20x20x2mm en aluminium : rendu 3D aux cotes (h 20 mm, b 20 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-t-25x25x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-t/profil-en-t-25x25x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en T 25x25x2mm en aluminium : rendu 3D aux cotes (h 25 mm, b 25 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-t-30x30x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-t/profil-en-t-30x30x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en T 30x30x2mm en aluminium : rendu 3D aux cotes (h 30 mm, b 30 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-u-20x20x20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-u/profil-en-u-20x20x20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en U 20x20x20x2mm en Aluminium : rendu 3D aux cotes (h 20 mm, b 20 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-u-25x25x25x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-u/profil-en-u-25x25x25x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en U 25x25x25x2mm en Aluminium : rendu 3D aux cotes (h 25 mm, b 25 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-u-40x40x40x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-u/profil-en-u-40x40x40x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en U 40x40x40x2mm en Aluminium : rendu 3D aux cotes (h 40 mm, b 40 mm, t 2 mm) et fiche technique"
+  },
+  "profil-en-u-en-30x30x30x2mm-aluminium": {
+   "src": "/images/produits/aluminium/profiles/profil-u/profil-en-u-en-30x30x30x2mm-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil en U en 30x30x30x2mm Aluminium : rendu 3D aux cotes (h 30 mm, b 30 mm, t 2 mm) et fiche technique"
+  },
   "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/armatures-beton/rond-a-beton-lamine-a-chaud/rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -762,6 +1008,30 @@
    "hauteur": 1200,
    "alt": "Rond lisse 8mm en acier laminée à chaud : rendu 3D aux cotes (d 8 mm) et fiche technique"
   },
+  "rond-plein-lisse-diametre-10mm-en-inox": {
+   "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-10mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Rond plein lisse diamètre 10mm en Inox : rendu 3D aux cotes (d 10 mm) et fiche technique"
+  },
+  "rond-plein-lisse-diametre-12mm-en-inox": {
+   "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-12mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Rond plein lisse diamètre 12mm en Inox : rendu 3D aux cotes (d 12 mm) et fiche technique"
+  },
+  "rond-plein-lisse-diametre-8mm-en-inox": {
+   "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-8mm-en-inox-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Rond plein lisse diamètre 8mm en Inox : rendu 3D aux cotes (d 8 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x1-5mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2000x1000x1-5mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x1,5mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1,5 mm) et fiche technique"
+  },
   "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -774,11 +1044,29 @@
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x12mm en acier laminée à chaud : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 12 mm) et fiche technique"
   },
+  "tole-de-2000x1000x1mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2000x1000x1mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x1mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x1mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2000x1000x1mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x1mm en aluminium : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1 mm) et fiche technique"
+  },
   "tole-de-2000x1000x20mm-en-acier-quarto": {
    "src": "/images/produits/acier/toles/tole-quarto/tole-de-2000x1000x20mm-en-acier-quarto-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x20mm en acier Quarto : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 20 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x2mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2000x1000x2mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x2mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
   },
   "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x2mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -786,11 +1074,35 @@
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x2mm en acier laminée à chaud : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
   },
+  "tole-de-2000x1000x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2000x1000x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x2mm en aluminium : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x3mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2000x1000x3mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x3mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 3 mm) et fiche technique"
+  },
   "tole-de-2000x1000x3mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x3mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x3mm en acier laminée à chaud : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2000x1000x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x3mm en aluminium : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x3mm-plane-en-acier-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/tole-de-2000x1000x3mm-plane-en-acier-corten-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x3mm plane en acier Corten : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 3 mm) et fiche technique"
   },
   "tole-de-2000x1000x5mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x5mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -798,11 +1110,35 @@
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x5mm en acier laminée à chaud : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 5 mm) et fiche technique"
   },
+  "tole-de-2500x1250x1-5mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2500x1250x1-5mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x1,5mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1,5 mm) et fiche technique"
+  },
   "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x10mm en acier laminée à chaud : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 10 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x1mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2500x1250x1mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x1mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x1mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2500x1250x1mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x1mm en aluminium : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x2mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2500x1250x2mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x2mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
   },
   "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x2mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -810,11 +1146,41 @@
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x2mm en acier laminée à chaud : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
   },
+  "tole-de-2500x1250x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2500x1250x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x2mm en aluminium : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x2mm-plane-en-acier-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/tole-de-2500x1250x2mm-plane-en-acier-corten-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x2mm plane en acier Corten : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x3mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2500x1250x3mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x3mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 3 mm) et fiche technique"
+  },
   "tole-de-2500x1250x3mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x3mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x3mm en acier laminée à chaud : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2500x1250x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x3mm en aluminium : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x3mm-plane-en-acier-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/tole-de-2500x1250x3mm-plane-en-acier-corten-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x3mm plane en acier Corten : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 3 mm) et fiche technique"
   },
   "tole-de-2500x1250x5mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x5mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -822,17 +1188,71 @@
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x5mm en acier laminée à chaud : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 5 mm) et fiche technique"
   },
+  "tole-de-3000x1500x1-5mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-3000x1500x1-5mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x1,5mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1,5 mm) et fiche technique"
+  },
   "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-3000x1500x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 3000x1500x10mm en acier laminée à chaud : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 10 mm) et fiche technique"
   },
+  "tole-de-3000x1500x1mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-3000x1500x1mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x1mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x1mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-3000x1500x1mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x1mm en aluminium : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x2mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-3000x1500x2mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x2mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-3000x1500x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x2mm en aluminium : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x2mm-plane-en-acier-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/tole-de-3000x1500x2mm-plane-en-acier-corten-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x2mm plane en acier Corten : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x3mm-en-acier-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-3000x1500x3mm-en-acier-galvanisee-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x3mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 3 mm) et fiche technique"
+  },
   "tole-de-3000x1500x3mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-3000x1500x3mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 3000x1500x3mm en acier laminée à chaud : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/toles/tole-plane/tole-de-3000x1500x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x3mm en aluminium : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 3 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x3mm-plane-en-acier-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/tole-de-3000x1500x3mm-plane-en-acier-corten-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x3mm plane en acier Corten : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 3 mm) et fiche technique"
   },
   "tole-de-3000x1500x8mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-3000x1500x8mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -1302,6 +1722,54 @@
    "hauteur": 1200,
    "alt": "Tube carré 90x90x3mm en acier : rendu 3D aux cotes (b 90 mm, t 3 mm) et fiche technique"
   },
+  "tube-carre-de-15x15x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-15x15x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 15x15x2mm en aluminium : rendu 3D aux cotes (b 15 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-20x20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-20x20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 20x20x2mm en aluminium : rendu 3D aux cotes (b 20 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-25x25x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-25x25x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 25x25x2mm en aluminium : rendu 3D aux cotes (b 25 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-35x35x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-35x35x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 35x35x2mm en aluminium : rendu 3D aux cotes (b 35 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-40x40x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-40x40x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 40x40x2mm en aluminium : rendu 3D aux cotes (b 40 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-40x40x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-40x40x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 40x40x3mm en aluminium : rendu 3D aux cotes (b 40 mm, t 3 mm) et fiche technique"
+  },
+  "tube-carre-de-50x50x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-50x50x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 50x50x2mm en aluminium : rendu 3D aux cotes (b 50 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-de-60x60x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/tube-carre-de-60x60x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré de 60x60x3mm en aluminium : rendu 3D aux cotes (b 60 mm, t 3 mm) et fiche technique"
+  },
   "tube-rectangle-100x50x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-rectangulaire/tube-rectangle-100x50x3mm-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -1428,6 +1896,36 @@
    "hauteur": 1200,
    "alt": "Tube rectangle 80x40x4mm en acier : rendu 3D aux cotes (h 80 mm, b 40 mm, t 4 mm) et fiche technique"
   },
+  "tube-rectangle-de-30x20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/tube-rectangle-de-30x20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle de 30x20x2mm en aluminium : rendu 3D aux cotes (h 30 mm, b 20 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rectangle-de-50x30x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/tube-rectangle-de-50x30x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle de 50x30x2mm en aluminium : rendu 3D aux cotes (h 50 mm, b 30 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rectangle-de-60x30x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/tube-rectangle-de-60x30x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle de 60x30x3mm en aluminium : rendu 3D aux cotes (h 60 mm, b 30 mm, t 3 mm) et fiche technique"
+  },
+  "tube-rectangle-de-60x40x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/tube-rectangle-de-60x40x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle de 60x40x2mm en aluminium : rendu 3D aux cotes (h 60 mm, b 40 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rectangle-de-60x40x3mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/tube-rectangle-de-60x40x3mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle de 60x40x3mm en aluminium : rendu 3D aux cotes (h 60 mm, b 40 mm, t 3 mm) et fiche technique"
+  },
   "tube-rond-101-6x3-65mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-101-6x3-65mm-en-acier-brut-serie-legere-caracteristiques.webp",
    "largeur": 1600,
@@ -1446,11 +1944,23 @@
    "hauteur": 1200,
    "alt": "Tube rond 17,2(18)x2mm en acier brut série légère : rendu 3D aux cotes (d 17,2 mm, t 2 mm) et fiche technique"
   },
+  "tube-rond-17-2x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-17-2x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 17,2x2mm en Inox 304 : rendu 3D aux cotes (d 17,2 mm, t 2 mm) et fiche technique"
+  },
   "tube-rond-21-3x2mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-21-3x2mm-en-acier-brut-serie-legere-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond 21,3x2mm en acier brut série légère : rendu 3D aux cotes (d 21,3 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-21-3x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-21-3x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 21,3x2mm en Inox 304 : rendu 3D aux cotes (d 21,3 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-26-9x2-5mm-en-acier-brut-serie-legere-caracteristiques.webp",
@@ -1458,11 +1968,23 @@
    "hauteur": 1200,
    "alt": "Tube rond 26,9x2,5mm en acier brut série légère : rendu 3D aux cotes (d 26,9 mm, t 2,5 mm) et fiche technique"
   },
+  "tube-rond-26-9x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-26-9x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 26,9x2mm en Inox 304 : rendu 3D aux cotes (d 26,9 mm, t 2 mm) et fiche technique"
+  },
   "tube-rond-33-7x2-5mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-33-7x2-5mm-en-acier-brut-serie-legere-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond 33,7x2,5mm en acier brut série légère : rendu 3D aux cotes (d 33,7 mm, t 2,5 mm) et fiche technique"
+  },
+  "tube-rond-33-7x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-33-7x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 33,7x2mm en Inox 304 : rendu 3D aux cotes (d 33,7 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-42-4x2-5mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-42-4x2-5mm-en-acier-brut-serie-legere-caracteristiques.webp",
@@ -1470,17 +1992,41 @@
    "hauteur": 1200,
    "alt": "Tube rond 42,4x2,5mm en acier brut série légère : rendu 3D aux cotes (d 42,4 mm, t 2,5 mm) et fiche technique"
   },
+  "tube-rond-42-4x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-42-4x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 42,4x2mm en Inox 304 : rendu 3D aux cotes (d 42,4 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-48-3x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-48-3x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 48,3x2mm en Inox 304 : rendu 3D aux cotes (d 48,3 mm, t 2 mm) et fiche technique"
+  },
   "tube-rond-48-3x3mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-48-3x3mm-en-acier-brut-serie-legere-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond 48,3x3mm en acier brut série légère : rendu 3D aux cotes (d 48,3 mm, t 3 mm) et fiche technique"
   },
+  "tube-rond-60-3x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-60-3x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 60,3x2mm en Inox 304 : rendu 3D aux cotes (d 60,3 mm, t 2 mm) et fiche technique"
+  },
   "tube-rond-60-3x3mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-60-3x3mm-en-acier-brut-serie-legere-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond 60,3x3mm en acier brut série légère : rendu 3D aux cotes (d 60,3 mm, t 3 mm) et fiche technique"
+  },
+  "tube-rond-76-1x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rond/tube-rond-76-1x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond 76,1x2mm en Inox 304 : rendu 3D aux cotes (d 76,1 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-76-1x3-25mm-en-acier-brut-serie-legere": {
    "src": "/images/produits/acier/tubes/tube-rond/tube-rond-76-1x3-25mm-en-acier-brut-serie-legere-caracteristiques.webp",
@@ -1493,6 +2039,36 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond 88,9x3,00mm en acier brut série légère : rendu 3D aux cotes (d 88,9 mm, t 3 mm) et fiche technique"
+  },
+  "tube-rond-de-20x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-20x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond de 20x2mm en aluminium : rendu 3D aux cotes (d 20 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-de-25x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-25x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond de 25x2mm en aluminium : rendu 3D aux cotes (d 25 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-de-30x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-30x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond de 30x2mm en aluminium : rendu 3D aux cotes (d 30 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-de-35x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-35x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond de 35x2mm en aluminium : rendu 3D aux cotes (d 35 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rond-de-40x2mm-en-aluminium": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-40x2mm-en-aluminium-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond de 40x2mm en aluminium : rendu 3D aux cotes (d 40 mm, t 2 mm) et fiche technique"
   }
  },
  "categories": {
@@ -1574,6 +2150,18 @@
    "hauteur": 1200,
    "alt": "Rond plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
+  "/acier/toles/tole-corten": {
+   "src": "/images/produits/acier/toles/tole-corten/studio-tole-corten.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle corten en acier, photo studio sur fond blanc"
+  },
+  "/acier/toles/tole-galvanisee": {
+   "src": "/images/produits/acier/toles/tole-galvanisee/studio-tole-galvanisee.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle galvanisée en acier, photo studio sur fond blanc"
+  },
   "/acier/toles/tole-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/studio-tole-laminee-a-chaud.webp",
    "largeur": 1600,
@@ -1600,6 +2188,78 @@
   },
   "/acier/tubes/tube-rond": {
    "src": "/images/produits/acier/tubes/tube-rond/studio-tube-rond.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/profiles/corniere-egale": {
+   "src": "/images/produits/aluminium/profiles/corniere-egale/studio-aluminium-corniere-egale.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/profiles/plat": {
+   "src": "/images/produits/aluminium/profiles/plat/studio-aluminium-plat.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/profiles/profil-t": {
+   "src": "/images/produits/aluminium/profiles/profil-t/studio-aluminium-profil-t.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil T en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/profiles/profil-u": {
+   "src": "/images/produits/aluminium/profiles/profil-u/studio-aluminium-profil-u.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Profil U en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/toles/tole-plane": {
+   "src": "/images/produits/aluminium/toles/tole-plane/studio-tole-aluminium.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle plane en acier, photo studio sur fond blanc"
+  },
+  "/aluminium/tubes/tube-carre": {
+   "src": "/images/produits/aluminium/tubes/tube-carre/studio-aluminium-tube-carre.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/tubes/tube-rectangulaire": {
+   "src": "/images/produits/aluminium/tubes/tube-rectangulaire/studio-aluminium-tube-rectangulaire.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangulaire en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/aluminium/tubes/tube-rond": {
+   "src": "/images/produits/aluminium/tubes/tube-rond/studio-aluminium-tube-rond.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rond en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/inox/profiles/corniere-egale": {
+   "src": "/images/produits/inox/profiles/corniere-egale/studio-inox-corniere-egale.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Cornière égale en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/inox/profiles/plat": {
+   "src": "/images/produits/inox/profiles/plat/studio-inox-plat.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Plat en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/inox/profiles/rond-plein": {
+   "src": "/images/produits/inox/profiles/rond-plein/studio-inox-rond-plein.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Rond plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/inox/tubes/tube-rond": {
+   "src": "/images/produits/inox/tubes/tube-rond/studio-inox-tube-rond.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond en acier : trois tailles côte à côte, photo studio sur fond blanc"

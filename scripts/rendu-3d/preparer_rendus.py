@@ -160,8 +160,12 @@ def main():
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
         # panneaux de clôture debout : écart de 15 % de la hauteur (0,9 h les mettrait à plus d'un mètre)
         ecart = {"ecart_studio": 0.15} if pieces[0]["type"] == "PANNEAU-CLOTURE" else {}
+        finition = finitions.pop()
+        # tôles en métal lisse : vue plus plongeante, proche des visuels (48°) ; à 30°, elles reflétaient le studio
+        # sombre, photo 60 niveaux sous les visuels (vérification du 15/09 ; essai : −68 → −15 pour l'inox)
+        elevation = (46 if finition in ("INOX", "FROID", "GALVA", "ALU") else 30) if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20
         liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, "slug": nom, "mode": "studio", "pieces": pieces,
-                      "finition": finitions.pop(), "azimut": 24, "elevation": 30 if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20})
+                      "finition": finition, "azimut": 24, "elevation": elevation})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")
 

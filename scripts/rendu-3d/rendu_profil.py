@@ -42,6 +42,9 @@ except (NameError, OSError):
 TEINTE_GPP = PARAMS.get("teinte_gpp", (122, 52, 40))
 
 
+ECHELLE = {"taille_m": 0.5}  # plus grande dimension des pièces de l'image, en mètres (échelle du brossage)
+
+
 def p_mat(cle, defaut):
     """Réglage matière surchargeable depuis params.json."""
     return PARAMS.get(cle, defaut)
@@ -1057,7 +1060,7 @@ def materiau_coupe():
 
 
 def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0.0, stries_y=0.0, anisotropie=0.0,
-                   ecart_rugosite=0.2):
+                   ecart_rugosite=0.2, brossage=0.0):
     """Métal nu générique : `cellules` = échelle de fleurage (galvanisé, cellules de Voronoï par mètre),
     `stries_y` = échelle de stries le long de la barre (filage alu, brossage inox), `anisotropie` = reflet étiré
     (sans carte UV, Cycles étire le reflet en cercles autour de l'axe Z : croix sombre sur une tôle, à éviter),
@@ -1101,6 +1104,27 @@ def materiau_metal(nom, base, rugosite, variation=0.06, metallic=1.0, cellules=0
         relief = noeud(nt, "ShaderNodeBump", (-400, -250), Strength=0.06, Distance=0.0002)
         nt.links.new(stries.outputs["Fac"], relief.inputs["Height"])
         nt.links.new(relief.outputs["Normal"], bsdf.inputs["Normal"])
+    if brossage:
+        # brossage visible : `brossage` stries sur la taille de la plus grande pièce (~3 px de large quelle que soit
+        # la pièce), longues le long de y ; il module la rugosité et le relief. Les stries de 0,4 mm de `stries_y`
+        # tombaient sous le pixel : tôle inox « brossée » rendue en miroir lisse (vérification du 15/09).
+        f = brossage / max(ECHELLE["taille_m"], 0.05)
+        etirement_b = noeud(nt, "ShaderNodeMapping", (-1100, -500))
+        etirement_b.inputs["Scale"].default_value = (f, f * p_mat("etirement_brossage", 0.0015), f)
+        nt.links.new(coord.outputs["Object"], etirement_b.inputs["Vector"])
+        stries_b = noeud(nt, "ShaderNodeTexNoise", (-900, -500), Scale=1.0, Detail=4.0, Roughness=0.7)
+        nt.links.new(etirement_b.outputs["Vector"], stries_b.inputs["Vector"])
+        rug_b = noeud(nt, "ShaderNodeMapRange", (-500, -500))
+        rug_b.inputs["From Min"].default_value = 0.35
+        rug_b.inputs["From Max"].default_value = 0.65
+        contraste = p_mat("contraste_brossage", 0.2)
+        rug_b.inputs["To Min"].default_value = rugosite * (1 - contraste)
+        rug_b.inputs["To Max"].default_value = rugosite * (1 + contraste)
+        nt.links.new(stries_b.outputs["Fac"], rug_b.inputs["Value"])
+        nt.links.new(rug_b.outputs["Result"], bsdf.inputs["Roughness"])
+        relief_b = noeud(nt, "ShaderNodeBump", (-400, -500), Strength=p_mat("relief_brossage", 0.06), Distance=0.0002)
+        nt.links.new(stries_b.outputs["Fac"], relief_b.inputs["Height"])
+        nt.links.new(relief_b.outputs["Normal"], bsdf.inputs["Normal"])
     bsdf.inputs["Metallic"].default_value = metallic
     if anisotropie:
         bsdf.inputs["Anisotropic"].default_value = anisotropie
@@ -1119,13 +1143,20 @@ def materiau_alu():
 
 
 def materiau_inox():
-    """Inox 304 satiné : gris acier, brossage fin dans le sens de la barre (relief), reflet adouci, sans anisotropie."""
-    return materiau_metal("inox", (0.56, 0.56, 0.55), 0.30, variation=0.02, stries_y=2500.0, ecart_rugosite=0.06)
+    """Inox 304 satiné : gris acier clair, brossage visible dans le sens de la barre, sans anisotropie. À 0,30 de
+    rugosité, les faces tournées vers le haut reflétaient le studio sombre : dessus des tubes carrés à 61/255 et tôle
+    en miroir noir (vérification du 15/09)."""
+    b = p_mat("base_inox", 0.62)
+    return materiau_metal("inox", (b, b, b * 0.985), p_mat("rugosite_inox", 0.46), variation=0.02,
+                          ecart_rugosite=0.06, brossage=p_mat("brossage_inox", 600.0))
 
 
 def materiau_froid():
-    """Acier laminé à froid : gris moyen lisse et satiné, sans calamine ni taches (essai du 14/09)."""
-    return materiau_metal("froid", (0.30, 0.31, 0.32), 0.32, variation=0.02, metallic=1.0, ecart_rugosite=0.06)
+    """Acier laminé à froid : gris moyen lisse et satiné, sans calamine ni taches. À 0,32 de rugosité, la photo
+    studio était un miroir noir, 60 niveaux sous les visuels caractéristiques (vérification du 15/09)."""
+    b = p_mat("base_froid", 0.36)
+    return materiau_metal("froid", (b, b * 1.03, b * 1.06), p_mat("rugosite_froid", 0.50), variation=0.02,
+                          metallic=1.0, ecart_rugosite=0.06)
 
 
 def materiau_corten():
@@ -1298,6 +1329,7 @@ def rendre(p):
         piece.setdefault("type", "I")
 
     finition = p.get("finition", "BRUT")
+    ECHELLE["taille_m"] = max(max(q.get("longueur", p.get("longueur", 500)), q["b"], q["h"]) for q in pieces) * MM
     mat_surface = MATIERES.get(finition, materiau_calamine)()
     mat_coupe = materiau_coupe()
 
