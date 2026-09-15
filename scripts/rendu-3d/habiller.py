@@ -228,7 +228,27 @@ def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
     fleche(b, a, ENCRE)
     TRAITS_COTES.extend([None] * (len(PASTILLES) - len(TRAITS_COTES)))  # étiquettes sans trait (pinces)
     TRAITS_COTES.append((a, b))
-    PASTILLES.append(((a[0] + (b[0] - a[0]) * position, a[1] + (b[1] - a[1]) * position), lettre, valeur, cle))
+    centre = (a[0] + (b[0] - a[0]) * position, a[1] + (b[1] - a[1]) * position)
+    # cote plus courte que son étiquette et ses deux pointes (maille b des treillis à dépassants, 15/09) : étiquette posée
+    # à côté du trait, du côté opposé à la pièce, au lieu de cacher les pointes
+    longueur = math.hypot(b[0] - a[0], b[1] - a[1])
+    mesure = ImageDraw.Draw(Image.new("L", (1, 1)))
+    largeur = (30 * S + mesure.textlength(lettre, font=police("Poppins-SemiBold.ttf", 21)) + 9 * S
+               + mesure.textlength(valeur, font=police("IBMPlexMono-SemiBold.ttf", 21))) / S
+    if longueur < largeur + 40 and MASQUE is not None and MASQUE.getbbox():
+        x0, y0, x1, y1 = MASQUE.getbbox()
+        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+        nx_, ny_ = -(b[1] - a[1]) / (longueur or 1), (b[0] - a[0]) / (longueur or 1)
+        if (centre[0] + nx_ - cx) ** 2 + (centre[1] + ny_ - cy) ** 2 < (centre[0] - cx) ** 2 + (centre[1] - cy) ** 2:
+            nx_, ny_ = -nx_, -ny_
+        decalage = 22 + abs(nx_) * largeur / 2 + abs(ny_) * 20  # demi-largeur ou demi-hauteur selon l'orientation
+        limite = MASQUE.width * 0.645 - 12  # colonne de la fiche technique
+        for signe in (1, -1):  # côté opposé à la pièce, sinon l'autre côté, sinon sur le trait
+            essai = (centre[0] + signe * nx_ * decalage, centre[1] + signe * ny_ * decalage)
+            if 12 < essai[0] - largeur / 2 and essai[0] + largeur / 2 < limite and 30 < essai[1] < MASQUE.height - 30:
+                centre = essai
+                break
+    PASTILLES.append((centre, lettre, valeur, cle))
 
 
 # Par type de section (rendu_profil.py) : (lettre, clé des données) des cotes verticale, horizontale, d'épaisseur
@@ -395,13 +415,21 @@ def decale(p, dx, dy):
     return (p[0] + dx, p[1] + dy)
 
 
+FAMILLES_SANS_ATTENUATION = {"tole-perforee"}
+
+
 def attenuation_ombre(chemin_json):
     """Facteur d'opacité de l'ombre : 0,55 d'ordinaire ; 1,0 pour les pièces à fils fins (panneaux de clôture : fils
-    de 1 à 2 px entièrement semi-transparents, que l'atténuation délavait)."""
+    de 1 à 2 px entièrement semi-transparents, que l'atténuation délavait) et pour les tôles perforées (chaque pixel de
+    la plaque contient une fraction de trou : le seuil alpha ≥ 250 de `rendu_sur_blanc` binarisait la trame et
+    fabriquait le moiré des R5 T8, alors que le rendu brut est propre ; 15/09)."""
     with open(chemin_json, encoding="utf-8") as f:
         geo = json.load(f)
     types = [geo.get("type")] + [q.get("type") for q in geo.get("pieces", [])]
-    return 1.0 if "PANNEAU-CLOTURE" in types else 0.55
+    nom = os.path.basename(chemin_json)[:-len(".json")]
+    with open(DONNEES, encoding="utf-8") as f:
+        famille = nom[len("studio-"):] if nom.startswith("studio-") else json.load(f).get(nom, {}).get("famille")
+    return 1.0 if "PANNEAU-CLOTURE" in types or famille in FAMILLES_SANS_ATTENUATION else 0.55
 
 
 def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55):

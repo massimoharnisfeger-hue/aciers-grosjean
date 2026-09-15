@@ -41,15 +41,29 @@ PAGE_PAR_SERIE = {"CARRE": {"Section": ["a", "a"]}, "TOLE": {"Format": ["L", "l"
                   "U-ALU": {"Section": ["b", "h", "b"], "Épaisseur": ["tw"]},
                   "TOLE-RELIEF": {"Format": ["L", "l"], "Épaisseur": ["e", "e_total"]},
                   "TOLE-PERFOREE": {"Format": ["L", "l"], "Épaisseur": ["e"]},
-                  "BORDURE": {"Hauteur": ["h"], "Pli": ["pli"], "Longueur": ["L"]},
-                  "TOLE-PROFILEE": {"Longueur": ["L"], "Largeur": ["l"], "Couleur": ["couleur"]},
-                  "PANNEAU-ISOLE": {"Longueur": ["L"], "Largeur": ["l"], "Épaisseur": ["e"], "Couleur": ["couleur"]},
-                  "TASSEAU": {"Longueur": ["L"], "Largeur": ["l_utile"], "Tasseau": ["tasseau"], "Teinte": ["teinte"]},
-                  "PANNEAU-CLOTURE": {"Modèle": ["modele"], "Hauteur": ["H"], "Fils": ["fil_h", "fil_v"], "Couleur": ["couleur"]},
-                  "POTEAU": {"Modèle": ["modele"], "Longueur": ["L"], "Couleur": ["couleur"]},
-                  "CAILLEBOTIS": {"Dimensions": ["L", "l"], "Maille": ["maille"], "Barreaux porteurs": ["barreau"]},
-                  "MARCHE-CAILLEBOTIS": {"Dimensions": ["L", "l"]}, "MARCHE-O2": {"Dimensions": ["L", "l"]},
-                  "PLANCHER-O2": {"Dimensions": ["L", "l"]}}
+                  # libellés ajoutés par specs_sourcees() du générateur (15/09) : la page reprend les valeurs sourcées de l'image
+                  "BORDURE": {"Hauteur": ["h"], "Pli": ["pli"], "Longueur": ["L"], "Épaisseur": ["e"]},
+                  "TOLE-PROFILEE": {"Longueur": ["L"], "Largeur": ["l"], "Couleur": ["couleur"], "Largeur utile": ["l_utile"],
+                                    "Hauteur de nervure": ["h"], "Pas des nervures": ["pas"], "Épaisseur": ["e"],
+                                    "Masse surfacique": ["masse"], "Revêtement": ["revetement"]},
+                  "PANNEAU-ISOLE": {"Longueur": ["L"], "Largeur": ["l"], "Épaisseur": ["e"], "Couleur": ["couleur"],
+                                    "Largeur utile": ["l_utile"], "Nervures": ["nervures"], "Face externe": ["face_externe"],
+                                    "Face interne": ["face_interne"], "Âme": ["ame"]},
+                  "TASSEAU": {"Longueur": ["L"], "Largeur": ["l_utile"], "Tasseau": ["tasseau"], "Teinte": ["teinte"],
+                              "Hauteur d'onde": ["h"], "Épaisseur": ["e"], "Masse surfacique": ["masse"],
+                              "Revêtement": ["revetement"]},
+                  "PANNEAU-CLOTURE": {"Modèle": ["modele"], "Hauteur": ["H"], "Fils": ["fil_h", "fil_v"], "Couleur": ["couleur"],
+                                      "Largeur": ["l"], "Maille": ["maille"], "Revêtement": ["revetement"]},
+                  "POTEAU": {"Modèle": ["modele"], "Longueur": ["L"], "Couleur": ["couleur"], "Section": ["b", "h"],
+                             "Matière": ["matiere"], "Revêtement": ["revetement"]},
+                  # « Barreaux porteurs 30 × 2 mm » = hauteur h × épaisseur t du barreau (la pastille h est donc sur la page)
+                  "CAILLEBOTIS": {"Dimensions": ["L", "l"], "Maille": ["maille"], "Barreaux porteurs": ["h", "t"],
+                                  "Revêtement": ["revetement"]},
+                  "MARCHE-CAILLEBOTIS": {"Dimensions": ["L", "l"], "Revêtement": ["revetement"]},
+                  "MARCHE-O2": {"Dimensions": ["L", "l"], "Trous emboutis": ["trous"], "Trous de drainage": ["drainage"],
+                                "Entraxe": ["entraxe"]},
+                  "PLANCHER-O2": {"Dimensions": ["L", "l"], "Hauteur": ["h"], "Épaisseur": ["t"], "Trous emboutis": ["trous"],
+                                  "Trous de drainage": ["drainage"], "Entraxe": ["entraxe"], "Revêtement": ["revetement"]}}
 COTES_AFFICHABLES = {"h", "b", "tw", "tf", "a", "t", "d", "L", "l", "e", "e_total", "nuance", "norme", "H", "pli"}
 
 
@@ -88,11 +102,19 @@ def specs_page():
     return pages
 
 
+def seuil_opaque(alpha):
+    """Seuil d'alpha de la pièce : 250 d'ordinaire ; 128 pour les pièces en fils fins, dont presque aucun pixel n'est
+    entièrement opaque (studio des panneaux MEDIUM 3D : alpha maximal 240 ; les ombres restent sous 50). 15/09."""
+    histo = alpha.histogram()
+    return 250 if sum(histo[250:]) >= 2000 else 128
+
+
 def cadre_piece(chemin):
-    """Boite des pixels opaques du rendu brut (la piece, sans l'ombre)."""
+    """Boite des pixels opaques du rendu brut (la piece, sans l'ombre) ; None si aucun."""
     with Image.open(chemin) as img:
         alpha = img.convert("RGBA").split()[3]
-    return alpha.point(lambda v: 255 if v >= 250 else 0).getbbox()
+    s = seuil_opaque(alpha)
+    return alpha.point(lambda v: 255 if v >= s else 0).getbbox()
 
 
 def part_noire(chemin, creux=False):
@@ -124,19 +146,35 @@ def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80):
     61/255, tôle à froid en miroir noir), invisible aux autres contrôles."""
     with Image.open(chemin) as img:
         rgba = img.convert("RGBA")
-    boite = rgba.split()[3].point(lambda v: 255 if v >= 250 else 0).getbbox()
+    s = seuil_opaque(rgba.split()[3])
+    boite = rgba.split()[3].point(lambda v: 255 if v >= s else 0).getbbox()
     if not boite:
-        return 0.0, 0.0
+        return None, None  # mesure impossible (plus de « 0 » pris pour une luminance)
     if moitie_arriere:
         boite = ((boite[0] + boite[2]) // 2, boite[1], boite[2], boite[3])
     zone = rgba.crop(boite)
-    masque = zone.split()[3].point(lambda v: 255 if v >= 250 else 0)
+    masque = zone.split()[3].point(lambda v: 255 if v >= s else 0)
     gris = zone.convert("L")
     n = ImageStat.Stat(masque).sum[0] / 255
     if not n:
-        return 0.0, 0.0
+        return None, None
     sombres = ImageStat.Stat(ImageChops.multiply(gris.point(lambda v: 255 if v < seuil_sombre else 0), masque)).sum[0] / 255
     return ImageStat.Stat(gris, mask=masque).mean[0], sombres / n
+
+
+def teinte_piece(chemin):
+    """Couleur moyenne normalisée (r, g, b) / (r + g + b) de la pièce : distingue une Corten d'une galvanisée ou deux RAL
+    dans une même famille, pour comparer la photo studio aux seules fiches de sa teinte (15/09)."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    a = rgba.split()[3]
+    s = seuil_opaque(a)
+    masque = a.point(lambda v: 255 if v >= s else 0)
+    if not masque.getbbox():
+        return None
+    r, g, b = ImageStat.Stat(rgba.convert("RGB"), mask=masque).mean
+    somme = (r + g + b) or 1
+    return (r / somme, g / somme, b / somme)
 
 
 def jours_rappel(chemin, points):
@@ -259,16 +297,21 @@ def controler(famille, produits, pages):
     brut = fichier(studio + ".png")
     png = image_finale(studio + "-studio")
     if brut:
-        x0, y0, x1, y1 = cadre_piece(brut) or (0, 0, LARGEUR, HAUTEUR)
-        if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or x1 > LARGEUR * 0.98 or y1 > HAUTEUR * 0.98:
-            ecarts.append(f"{brut.name} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+        cadre = cadre_piece(brut)
+        if cadre is None:
+            ecarts.append(f"{brut.name} : aucun pixel de piece")
+        else:
+            x0, y0, x1, y1 = cadre
+            if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or x1 > LARGEUR * 0.98 or y1 > HAUTEUR * 0.98:
+                ecarts.append(f"{brut.name} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
     if png:
         images.append(png)
         n = marges_blanches(png)
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
     lum_studio = luminance_piece(brut)[0] if brut else None
-    lum_fiches = []
+    teinte_studio = teinte_piece(brut) if brut else None
+    lum_fiches = []  # (luminance, teinte normalisée) des fiches
 
     versions = set()  # empreintes du code de rendu (rendu_profil.py) des images de la famille
     for slug in slugs:
@@ -278,19 +321,26 @@ def controler(famille, produits, pages):
         if png:
             images.append(png)
         if brut:
-            x0, y0, x1, y1 = cadre_piece(brut) or (0, 0, LARGEUR, HAUTEUR)
+            cadre = cadre_piece(brut)
+            if cadre is None:
+                ecarts.append(f"{slug} : aucun pixel de piece dans le rendu brut")
+                cadre = (0, 0, LARGEUR, HAUTEUR)
+            x0, y0, x1, y1 = cadre
             if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or y1 > HAUTEUR * 0.98:
                 ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
             if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
                 ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
-            creux = p["valeurs"].get("serie", {}).get("valeur") in ("TC", "TR", "TUBE-ROND")
+            # poteaux de clôture : tubes (parois de 2 mm), intérieur sombre à bon droit, laque noire (diagnostic du 15/09)
+            creux = p["valeurs"].get("serie", {}).get("valeur") in ("TC", "TR", "TUBE-ROND", "POTEAU")
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
-            lum_fiches.append(luminance_piece(brut)[0])
+            lum = luminance_piece(brut)[0]
+            if lum is not None:
+                lum_fiches.append((lum, teinte_piece(brut)))
             if p["valeurs"].get("finition", {}).get("valeur") in FINITIONS_CLAIRES:
                 _, sombre = luminance_piece(brut, moitie_arriere=True)
-                if sombre > 0.10:  # calibré le 15/09 : 22 % et 13 % sur les tubes inox refusés, 8 % au plus ailleurs
+                if sombre is not None and sombre > 0.10:  # calibré le 15/09 : 22 % et 13 % sur les tubes inox refusés, 8 % au plus ailleurs
                     ecarts.append(f"{slug} : {sombre:.0%} du corps de la piece sous 80/255 (reflet du studio sombre "
                                   f"sur une matiere claire)")
             geo = FINAL / (slug + ".json")
@@ -403,10 +453,20 @@ def controler(famille, produits, pages):
             print(f"   note : {slug} : poids de la description « {m.group(1)} kg » ≠ image {fiche['Poids']} (question en attente)")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
+    if brut and lum_studio is None:
+        ecarts.append(f"{famille} : luminance de la photo studio non mesurable")
     if lum_studio is not None and lum_fiches:
         # calibré le 15/09 sur 39 familles : ±26 au plus sur les familles validées, −60 à −68 sur les tôles galvanisées,
-        # inox et à froid (métal lisse : la photo studio reflète le studio sombre)
-        ecart_lum = lum_studio - sum(lum_fiches) / len(lum_fiches)
+        # inox et à froid (métal lisse : la photo studio reflète le studio sombre). Comparée aux seules fiches de la
+        # teinte de la photo (une seule finition ou couleur par studio : bordure Corten seule, panneaux d'un RAL).
+        if teinte_studio and all(t for _, t in lum_fiches):
+            def distance(t):
+                return sum((u - v) ** 2 for u, v in zip(t, teinte_studio))
+            proche = min(distance(t) for _, t in lum_fiches)
+            retenues = [l for l, t in lum_fiches if distance(t) <= proche + 0.0004]
+        else:
+            retenues = [l for l, _ in lum_fiches]
+        ecart_lum = lum_studio - sum(retenues) / len(retenues)
         if abs(ecart_lum) > 30:
             ecarts.append(f"{famille} : photo studio {ecart_lum:+.0f} niveaux de luminance par rapport aux visuels "
                           f"caracteristiques (matiere qui change avec la vue)")

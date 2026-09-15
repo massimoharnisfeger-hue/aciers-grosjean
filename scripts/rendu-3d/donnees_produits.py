@@ -659,7 +659,10 @@ def vague3(cat, reel, desc):
                      # description « 0.4mm standard », étiquette du stock photographiée « 0.5 » : non affichée
                      e_tole=valeur(0.5, "mm", "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée", supposee=True),
                      face_externe=valeur("Acier prélaqué", "", SRC_DESC + " et " + SRC_FT_ECO),
-                     face_interne=valeur("Feuille d'aluminium", "", SRC_DESC + " et " + SRC_FT_ECO),
+                     # la description se contredit (feuille d'aluminium au bloc 3, « acier prélaqué 0.4mm » au tableau du
+                     # bloc 14) : non affichée, question en attente (audit du 15/09) ; la forme garde la feuille (PDF)
+                     face_interne=valeur("Feuille d'aluminium", "", SRC_DESC + " (bloc 3) ≠ tableau de la description "
+                                         "(acier prélaqué) — forme du rendu, non affichée", supposee=True),
                      ame=valeur("Mousse de polyuréthane (PU)", "", SRC_DESC))
             alertes.append("épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés")
             v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
@@ -704,8 +707,11 @@ def vague3(cat, reel, desc):
                 else:
                     v["l"] = valeur(l_desc, "mm", f"{SRC_DESC} ({l_desc}) ≠ {ft} ({l_ft}) — non affichée", supposee=True)
                     alertes.append(f"largeur {l_desc} (description) ≠ {l_ft} (fiche fournisseur) : non affichée")
-            # nombre de plis (nervures pliées) non publié : 3 jusqu'à 1,73 m, 4 au-delà (usage des panneaux 3D)
-            v["plis"] = valeur(4 if H > 1800 else 3, "", "usage des panneaux 3D — forme du rendu, non affichée", supposee=True)
+            # nombre de plis : « (3 plis – 4 fixations par côté) » dans la description, à toutes les hauteurs (la règle
+            # « 4 plis au-delà de 1,80 m » était supposée et fausse : vérification indépendante du 15/09)
+            plis = re.search(r"\((\d)\s*plis", texte, re.I)
+            v["plis"] = (valeur(int(plis.group(1)), "", SRC_DESC + " — forme du rendu") if plis else
+                         valeur(3, "", "usage des panneaux 3D — forme du rendu, non affichée", supposee=True))
             if re.search(r"galvanis\w+ avec thermolaquage", texte, re.I):
                 v["revetement"] = valeur("Galvanisé, thermolaqué polyester", "", SRC_DESC)
             v["finition"] = valeur("LAQUE", "", "RAL du nom — matière du rendu, non affichée", supposee=True)
@@ -758,6 +764,9 @@ def vague3(cat, reel, desc):
                          entraxe=valeur("25 × 25 mm", "", SRC_DESC + " et " + SRC_FT_PCP),
                          revetement=valeur("Galvanisé à chaud", "", SRC_FT_PCP + " (dimensions standard)"))
                 if marche:  # hauteur des marches ACHIL absente des documents : celle du plancher O2, non affichée
+                    # revêtement : la fiche PcP citée est celle du plancher, aucun document attaché aux marches ne l'écrit
+                    # (leur déclaration CE dit « Durabilité : ISO 1461 ») : non affiché (audit du 15/09)
+                    v["revetement"] = valeur("Galvanisé à chaud", "", SRC_FT_PCP + " (plancher, autre produit) — non affiché", supposee=True)
                     v["h"] = valeur(33, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
                     v["t"] = valeur(2, "mm", SRC_FT_PCP + " (plancher) — forme du rendu, non affichée", supposee=True)
                     alertes.append("hauteur de la marche absente des documents : non affichée (question en attente)")

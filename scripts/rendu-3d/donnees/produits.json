@@ -3022,7 +3022,8 @@
    },
    "revetement": {
     "valeur": "Galvanisé à chaud",
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher, autre produit) — non affiché",
+    "supposee": true
    },
    "h": {
     "valeur": 33,
@@ -3081,7 +3082,8 @@
    },
    "revetement": {
     "valeur": "Galvanisé à chaud",
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher, autre produit) — non affiché",
+    "supposee": true
    },
    "h": {
     "valeur": 33,
@@ -3140,7 +3142,8 @@
    },
    "revetement": {
     "valeur": "Galvanisé à chaud",
-    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (dimensions standard)"
+    "source": "fiche fournisseur publiée « Caillebotis O2 » (PcP) (plancher, autre produit) — non affiché",
+    "supposee": true
    },
    "h": {
     "valeur": 33,
@@ -3237,7 +3240,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3326,7 +3330,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3415,7 +3420,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3504,7 +3510,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3593,7 +3600,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3682,7 +3690,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3771,7 +3780,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3860,7 +3870,8 @@
    },
    "face_interne": {
     "valeur": "Feuille d'aluminium",
-    "source": "site actuel — description de la fiche et fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) »"
+    "source": "site actuel — description de la fiche (bloc 3) ≠ tableau de la description (acier prélaqué) — forme du rendu, non affichée",
+    "supposee": true
    },
    "ame": {
     "valeur": "Mousse de polyuréthane (PU)",
@@ -3936,8 +3947,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4013,8 +4023,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4090,8 +4099,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4167,8 +4175,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4244,8 +4251,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4321,8 +4327,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4397,9 +4402,8 @@
     "supposee": true
    },
    "plis": {
-    "valeur": 4,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "valeur": 3,
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4474,9 +4478,8 @@
     "supposee": true
    },
    "plis": {
-    "valeur": 4,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "valeur": 3,
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4551,9 +4554,8 @@
     "supposee": true
    },
    "plis": {
-    "valeur": 4,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "valeur": 3,
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4628,8 +4630,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4702,8 +4703,7 @@
    },
    "plis": {
     "valeur": 3,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4775,9 +4775,8 @@
     "unite": "mm"
    },
    "plis": {
-    "valeur": 4,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "valeur": 3,
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",
@@ -4849,9 +4848,8 @@
     "unite": "mm"
    },
    "plis": {
-    "valeur": 4,
-    "source": "usage des panneaux 3D — forme du rendu, non affichée",
-    "supposee": true
+    "valeur": 3,
+    "source": "site actuel — description de la fiche — forme du rendu"
    },
    "revetement": {
     "valeur": "Galvanisé, thermolaqué polyester",

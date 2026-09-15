@@ -1,5 +1,17 @@
 {
  "produits": {
+  "bordure-en-acier-corten-150-25-x-2500mm": {
+   "src": "/images/produits/jardin-cloture/amenagement/bordures/bordure-en-acier-corten-150-25-x-2500mm-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Bordure en acier Corten® 150/25 x 2500mm : rendu 3D aux cotes (h 150 mm, e 2 mm) et fiche technique"
+  },
+  "bordure-en-acier-galvanise-150-25-x-2500mm": {
+   "src": "/images/produits/jardin-cloture/amenagement/bordures/bordure-en-acier-galvanise-150-25-x-2500mm-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Bordure en acier galvanisé 150/25 x 2500mm : rendu 3D aux cotes (h 150 mm, e 2 mm) et fiche technique"
+  },
   "carre-plein-de-10x10mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-10x10mm-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -1026,11 +1038,83 @@
    "hauteur": 1200,
    "alt": "Rond plein lisse diamètre 8mm en Inox : rendu 3D aux cotes (d 8 mm) et fiche technique"
   },
+  "tasseau-40x40-71x250cm-parement-chene-clair": {
+   "src": "/images/produits/toiture-bardage/bardage/imitation-bois/tasseau-40x40-71x250cm-parement-chene-clair-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tasseau 40x40 71x250cm - Parement | Chêne clair : rendu 3D aux cotes (L 2500 mm, l 710 mm, h 37 mm) et fiche technique"
+  },
+  "tasseau-40x40-71x300cm-parement-chene-clair": {
+   "src": "/images/produits/toiture-bardage/bardage/imitation-bois/tasseau-40x40-71x300cm-parement-chene-clair-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tasseau 40x40 71x300cm - Parement | Chêne clair : rendu 3D aux cotes (L 3000 mm, l 710 mm, h 37 mm) et fiche technique"
+  },
+  "tole-2000x1000x1mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2000x1000x1mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2000x1000x1mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1 mm) et fiche technique"
+  },
+  "tole-2000x1000x2mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2000x1000x2mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2000x1000x2mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
+  },
+  "tole-2000x1000x3mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2000x1000x3mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2000x1000x3mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 3 mm) et fiche technique"
+  },
+  "tole-2500x1250x1mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2500x1250x1mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2500x1250x1mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1 mm) et fiche technique"
+  },
+  "tole-2500x1250x2mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2500x1250x2mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2500x1250x2mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
+  },
+  "tole-2500x1250x3mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-2500x1250x3mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 2500x1250x3mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 3 mm) et fiche technique"
+  },
+  "tole-3000x1500x1mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-3000x1500x1mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 3000x1500x1mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1 mm) et fiche technique"
+  },
+  "tole-3000x1500x2mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-3000x1500x2mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 3000x1500x2mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 2 mm) et fiche technique"
+  },
+  "tole-3000x1500x3mm-plane-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-3000x1500x3mm-plane-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle 3000x1500x3mm plane en Inox 304 GR320 : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 3 mm) et fiche technique"
+  },
   "tole-de-2000x1000x1-5mm-en-acier-galvanisee": {
    "src": "/images/produits/acier/toles/tole-galvanisee/tole-de-2000x1000x1-5mm-en-acier-galvanisee-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x1,5mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1,5 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2000x1000x1-5mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x1,5mm en acier laminé à froid : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1,5 mm) et fiche technique"
   },
   "tole-de-2000x1000x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -1050,6 +1134,12 @@
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x1mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1 mm) et fiche technique"
   },
+  "tole-de-2000x1000x1mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2000x1000x1mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x1mm en acier laminé à froid : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 1 mm) et fiche technique"
+  },
   "tole-de-2000x1000x1mm-en-aluminium": {
    "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2000x1000x1mm-en-aluminium-caracteristiques.webp",
    "largeur": 1600,
@@ -1067,6 +1157,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2000x1000x2mm en acier galvanisée : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-2000x1000x2mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2000x1000x2mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2000x1000x2mm en acier laminé à froid : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 2 mm) et fiche technique"
   },
   "tole-de-2000x1000x2mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2000x1000x2mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -1128,6 +1224,12 @@
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x1,5mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1,5 mm) et fiche technique"
   },
+  "tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2500x1250x1-5mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x1,5mm en acier laminé à froid : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1,5 mm) et fiche technique"
+  },
   "tole-de-2500x1250x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -1140,6 +1242,12 @@
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x1mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1 mm) et fiche technique"
   },
+  "tole-de-2500x1250x1mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2500x1250x1mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x1mm en acier laminé à froid : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 1 mm) et fiche technique"
+  },
   "tole-de-2500x1250x1mm-en-aluminium": {
    "src": "/images/produits/aluminium/toles/tole-plane/tole-de-2500x1250x1mm-en-aluminium-caracteristiques.webp",
    "largeur": 1600,
@@ -1151,6 +1259,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 2500x1250x2mm en acier galvanisée : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
+  },
+  "tole-de-2500x1250x2mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-2500x1250x2mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 2500x1250x2mm en acier laminé à froid : rendu 3D aux cotes (L 2500 mm, l 1250 mm, e 2 mm) et fiche technique"
   },
   "tole-de-2500x1250x2mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-2500x1250x2mm-en-acier-laminee-a-chaud-caracteristiques.webp",
@@ -1218,6 +1332,12 @@
    "hauteur": 1200,
    "alt": "Tôle de 3000x1500x1,5mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1,5 mm) et fiche technique"
   },
+  "tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-3000x1500x1-5mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x1,5mm en acier laminé à froid : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1,5 mm) et fiche technique"
+  },
   "tole-de-3000x1500x10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-de-3000x1500x10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
    "largeur": 1600,
@@ -1229,6 +1349,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 3000x1500x1mm en acier galvanisée : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1 mm) et fiche technique"
+  },
+  "tole-de-3000x1500x1mm-en-acier-lamine-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/tole-de-3000x1500x1mm-en-acier-lamine-a-froid-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle de 3000x1500x1mm en acier laminé à froid : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 1 mm) et fiche technique"
   },
   "tole-de-3000x1500x1mm-en-aluminium": {
    "src": "/images/produits/aluminium/toles/tole-plane/tole-de-3000x1500x1mm-en-aluminium-caracteristiques.webp",
@@ -1295,6 +1421,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tôle de 3000x1500x8mm en acier laminée à chaud : rendu 3D aux cotes (L 3000 mm, l 1500 mm, e 8 mm) et fiche technique"
+  },
+  "tole-plane-2000x1000x0-8mm-en-inox-304-gr320": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/tole-plane-2000x1000x0-8mm-en-inox-304-gr320-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle plane 2000x1000x0,8mm en Inox 304 GR320 : rendu 3D aux cotes (L 2000 mm, l 1000 mm, e 0,8 mm) et fiche technique"
   },
   "tole-plane-de-2000x1000x10mm-laserpressplus": {
    "src": "/images/produits/acier/toles/tole-laminee-a-chaud/tole-plane-de-2000x1000x10mm-laserpressplus-caracteristiques.webp",
@@ -1656,6 +1788,12 @@
    "hauteur": 1200,
    "alt": "Tube carré 20x20x2mm en acier : rendu 3D aux cotes (b 20 mm, t 2 mm) et fiche technique"
   },
+  "tube-carre-20x20x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-20x20x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 20x20x2mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 2 mm) et fiche technique"
+  },
   "tube-carre-250x250x6mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-250x250x6mm-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -1667,6 +1805,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube carré 25x25x2mm en acier : rendu 3D aux cotes (b 25 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-25x25x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-25x25x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 25x25x2mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-25x25x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-25x25x3mm-en-acier-caracteristiques.webp",
@@ -1680,6 +1824,12 @@
    "hauteur": 1200,
    "alt": "Tube carré 30x30x2mm en acier : rendu 3D aux cotes (b 30 mm, t 2 mm) et fiche technique"
   },
+  "tube-carre-30x30x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-30x30x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 30x30x2mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 2 mm) et fiche technique"
+  },
   "tube-carre-30x30x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-30x30x3mm-en-acier-caracteristiques.webp",
    "largeur": 1600,
@@ -1692,11 +1842,23 @@
    "hauteur": 1200,
    "alt": "Tube carré 35x35x2mm en acier : rendu 3D aux cotes (b 35 mm, t 2 mm) et fiche technique"
   },
+  "tube-carre-35x35x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-35x35x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 35x35x2mm en Inox 304 : rendu 3D aux cotes (b 35 mm, t 2 mm) et fiche technique"
+  },
   "tube-carre-40x40x2mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-40x40x2mm-en-acier-caracteristiques.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube carré 40x40x2mm en acier : rendu 3D aux cotes (b 40 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-40x40x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-40x40x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 40x40x2mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-40x40x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-40x40x3mm-en-acier-caracteristiques.webp",
@@ -1727,6 +1889,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube carré 50x50x2mm en acier : rendu 3D aux cotes (b 50 mm, t 2 mm) et fiche technique"
+  },
+  "tube-carre-50x50x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-carre/tube-carre-50x50x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré 50x50x2mm en Inox 304 : rendu 3D aux cotes (b 50 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-50x50x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-carre/tube-carre-50x50x3mm-en-acier-caracteristiques.webp",
@@ -1907,6 +2075,12 @@
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rectangle 40x20x2mm en acier : rendu 3D aux cotes (h 40 mm, b 20 mm, t 2 mm) et fiche technique"
+  },
+  "tube-rectangle-40x20x2mm-en-inox-304": {
+   "src": "/images/produits/inox/tubes/tube-rectangulaire/tube-rectangle-40x20x2mm-en-inox-304-caracteristiques.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangle 40x20x2mm en Inox 304 : rendu 3D aux cotes (h 40 mm, b 20 mm, t 2 mm) et fiche technique"
   },
   "tube-rectangle-40x20x3mm-en-acier": {
    "src": "/images/produits/acier/tubes/tube-rectangulaire/tube-rectangle-40x20x3mm-en-acier-caracteristiques.webp",
@@ -2258,6 +2432,12 @@
    "hauteur": 1200,
    "alt": "Tôle laminée à chaud en acier, photo studio sur fond blanc"
   },
+  "/acier/toles/tole-laminee-a-froid": {
+   "src": "/images/produits/acier/toles/tole-laminee-a-froid/studio-tole-laminee-a-froid.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle laminée à froid en acier, photo studio sur fond blanc"
+  },
   "/acier/toles/tole-larmee": {
    "src": "/images/produits/acier/toles/tole-larmee/studio-tole-larmee.webp",
    "largeur": 1600,
@@ -2360,11 +2540,41 @@
    "hauteur": 1200,
    "alt": "Rond plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
+  "/inox/toles/tole-plane-304-brossee": {
+   "src": "/images/produits/inox/toles/tole-plane-304-brossee/studio-tole-inox-brossee.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tôle plane 304 brossée en acier, photo studio sur fond blanc"
+  },
+  "/inox/tubes/tube-carre": {
+   "src": "/images/produits/inox/tubes/tube-carre/studio-inox-tube-carre.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube carré en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/inox/tubes/tube-rectangulaire": {
+   "src": "/images/produits/inox/tubes/tube-rectangulaire/studio-inox-tube-rectangulaire.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Tube rectangulaire en acier, photo studio sur fond blanc"
+  },
   "/inox/tubes/tube-rond": {
    "src": "/images/produits/inox/tubes/tube-rond/studio-inox-tube-rond.webp",
    "largeur": 1600,
    "hauteur": 1200,
    "alt": "Tube rond en acier : trois tailles côte à côte, photo studio sur fond blanc"
+  },
+  "/jardin-cloture/amenagement/bordures": {
+   "src": "/images/produits/jardin-cloture/amenagement/bordures/studio-bordure.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Bordures en acier, photo studio sur fond blanc"
+  },
+  "/toiture-bardage/bardage/imitation-bois": {
+   "src": "/images/produits/toiture-bardage/bardage/imitation-bois/studio-tasseau-imitation-bois.webp",
+   "largeur": 1600,
+   "hauteur": 1200,
+   "alt": "Imitation bois en acier, photo studio sur fond blanc"
   }
  }
 }

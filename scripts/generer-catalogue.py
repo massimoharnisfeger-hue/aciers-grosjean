@@ -402,10 +402,52 @@ def metres(texte):
     return f"{m.group(1)},{m.group(2)} m" if m else None
 
 
+DONNEES_3D = Path(__file__).resolve().parent / "rendu-3d" / "donnees" / "produits.json"
+# lignes ajoutées aux spécifications de la vague 3, lues dans les données sourcées des visuels 3D (non supposées) :
+# la page dit ce que dit l'image. Toutes ces valeurs viennent de la description ou du PDF publié sur la fiche du produit
+# (audit des sources du 15/09/2026) ; libellé de page -> clé de donnée.
+LIGNES_SOURCEES = {
+    "BORDURE": [("Épaisseur", "e"), ("Nuance", "nuance")],
+    "TOLE-PROFILEE": [("Largeur utile", "l_utile"), ("Hauteur de nervure", "h"), ("Pas des nervures", "pas"),
+                      ("Épaisseur", "e"), ("Masse surfacique", "masse"), ("Revêtement", "revetement"), ("Nuance", "nuance")],
+    "TASSEAU": [("Hauteur d'onde", "h"), ("Épaisseur", "e"), ("Masse surfacique", "masse"),
+                ("Revêtement", "revetement"), ("Nuance", "nuance")],
+    "PANNEAU-ISOLE": [("Largeur utile", "l_utile"), ("Nervures", "nervures"), ("Face externe", "face_externe"),
+                      ("Face interne", "face_interne"), ("Âme", "ame")],
+    "CAILLEBOTIS": [("Revêtement", "revetement")],
+    "MARCHE-CAILLEBOTIS": [("Nuance", "nuance"), ("Revêtement", "revetement")],
+    "PLANCHER-O2": [("Hauteur", "h"), ("Épaisseur", "t"), ("Trous emboutis", "trous"), ("Trous de drainage", "drainage"),
+                    ("Entraxe", "entraxe"), ("Revêtement", "revetement")],
+    "MARCHE-O2": [("Hauteur", "h"), ("Épaisseur", "t"), ("Trous emboutis", "trous"), ("Trous de drainage", "drainage"),
+                  ("Entraxe", "entraxe"), ("Revêtement", "revetement")],
+    "PANNEAU-CLOTURE": [("Largeur", "l"), ("Maille", "maille"), ("Revêtement", "revetement")],
+    "POTEAU": [("Section", "section"), ("Matière", "matiere"), ("Revêtement", "revetement")],
+}
+_DONNEES_3D = None
+
+
+def specs_sourcees(slug, deja):
+    """Lignes de LIGNES_SOURCEES dont la donnée existe et n'est pas supposée, sauf libellé déjà présent."""
+    global _DONNEES_3D
+    if _DONNEES_3D is None:
+        _DONNEES_3D = json.loads(DONNEES_3D.read_text(encoding="utf-8")) if DONNEES_3D.exists() else {}
+    valeurs = _DONNEES_3D.get(slug, {}).get("valeurs", {})
+    presents = {k for k, _ in deja}
+    lignes = []
+    for libelle, cle in LIGNES_SOURCEES.get(valeurs.get("serie", {}).get("valeur"), []):
+        d = valeurs.get(cle)
+        if not d or d.get("supposee") or libelle in presents:
+            continue
+        v = d["valeur"]
+        texte = v if isinstance(v, str) else f"{v:g}".replace(".", ",") + (f" {d['unite']}" if d.get("unite") else "")
+        lignes.append((libelle, texte))
+    return lignes
+
+
 def specs_vague3(cat_path, nom):
     """Spécifications lues dans le nom des produits de la vague 3 (clôtures, bordures, caillebotis, toiture-bardage).
     Avant le 14/09/2026, « 200X105cm » sortait « Dimensions 200 × 105 mm » et « 150/25 x 2500mm » « 25 × 2500 mm ».
-    Rien d'autre que le nom : les données des fiches fournisseurs vont sur les visuels 3D, pas ici."""
+    Les données sourcées des fiches fournisseurs et des descriptions s'y ajoutent par specs_sourcees() (15/09)."""
     seg = cat_path.split("/")[-1]
     ral = re.search(r"RAL\s*(\d{4})", nom, re.I) or re.search(r"\b(?:GRIS|NOIR|VERT)\s+(\d{4})\b", nom, re.I)
     couleur = [("Couleur", f"RAL {ral.group(1)}")] if ral else []
@@ -729,6 +771,7 @@ for chemin, lst in sorted(groupes.items()):
             sp += specs_inox(slug, nom)
         if univers == "aluminium" and not any(k == "Alliage" for k, _ in sp):
             sp.append(("Alliage", "6060 T66"))
+        sp += specs_sourcees(slug, sp)
         if kg is not None:
             sp.append(("Poids", f"{kg:.2f} {up}".replace(".", ",")))
         w(f'  {js(slug)}: {{ slug: {js(slug)}, nom: {js(nom)}, categorie: {js(chemin)}, '

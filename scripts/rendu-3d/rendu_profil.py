@@ -1389,6 +1389,9 @@ def rendre(p):
             x += piece["maille_b"]
         x += piece["b"]
     centre_x = sum(q[0] for q in boite_pts) / len(boite_pts)
+    # centre de la première pièce après recentrage : 0 pour une pièce symétrique ; −75 mm pour un treillis à dépassants
+    # (points de dépassants à droite dans boite_pts), dont les points de cotes doivent suivre (vérification du 15/09)
+    x0_piece = pieces[0]["b"] / 2 * MM - centre_x
     for obj in [o for o in bpy.data.objects if o.type in ("MESH", "CURVE") and o.parent is None]:
         obj.location.x -= centre_x  # les gabarits du relief suivent leur nuage de points
     boite_pts = [(q[0] - centre_x, q[1], q[2]) for q in boite_pts]
@@ -1556,7 +1559,9 @@ def rendre(p):
             return [round(q.x * W, 2), round((1 - q.y) * H, 2)]
 
         d, ma, mb, nx = piece["t"], piece["maille_a"], piece["maille_b"], piece["nx"]
-        xs = [(i - (nx - 1) / 2) * mb for i in range(nx)]
+        x0 = x0_piece / MM  # décalage du recentrage (dépassants), en mm
+        xs = [x0 + (i - (nx - 1) / 2) * mb for i in range(nx)]
+        b_gauche = x0 - b / 2
         z_t = 1.45 * d  # axe des fils transversaux
         points = {
             # maille b entre les deux premiers fils longitudinaux, au sol devant la portion
@@ -1564,9 +1569,9 @@ def rendre(p):
             "rappel_b_gauche_debut": ecran(xs[0], -4, 0), "rappel_b_gauche_fin": ecran(xs[0], -off * 1.2, 0),
             "rappel_b_droit_debut": ecran(xs[1], -4, 0), "rappel_b_droit_fin": ecran(xs[1], -off * 1.2, 0),
             # maille a entre les deux premiers fils transversaux, à gauche
-            "cote_h_bas": ecran(-b / 2 - off, ma / 2, z_t), "cote_h_haut": ecran(-b / 2 - off, ma * 1.5, z_t),
-            "rappel_h_bas_debut": ecran(-b / 2 - 4, ma / 2, z_t), "rappel_h_bas_fin": ecran(-b / 2 - off * 1.2, ma / 2, z_t),
-            "rappel_h_haut_debut": ecran(-b / 2 - 4, ma * 1.5, z_t), "rappel_h_haut_fin": ecran(-b / 2 - off * 1.2, ma * 1.5, z_t),
+            "cote_h_bas": ecran(b_gauche - off, ma / 2, z_t), "cote_h_haut": ecran(b_gauche - off, ma * 1.5, z_t),
+            "rappel_h_bas_debut": ecran(b_gauche - 4, ma / 2, z_t), "rappel_h_bas_fin": ecran(b_gauche - off * 1.2, ma / 2, z_t),
+            "rappel_h_haut_debut": ecran(b_gauche - 4, ma * 1.5, z_t), "rappel_h_haut_fin": ecran(b_gauche - off * 1.2, ma * 1.5, z_t),
             # diamètre du fil pincé au bout du fil longitudinal de droite
             "ame_gauche": ecran(xs[-1] - d / 2, 0, d / 2), "ame_droite": ecran(xs[-1] + d / 2, 0, d / 2),
         }
@@ -1619,13 +1624,26 @@ def rendre(p):
 
 
 def reduire_image(chemin, largeur, hauteur):
-    """Réduit le PNG rendu à `largeur` × `hauteur` (moyenne des pixels : le moiré d'un motif fin disparaît)."""
+    """Réduit le PNG rendu à `largeur` × `hauteur` par moyenne de blocs entiers de pixels (filtre boîte). `Image.scale`
+    de Blender ne moyenne pas assez : le moiré des tôles perforées R5 T8 restait visible à 100 % (15/09)."""
+    import numpy as np
     img = bpy.data.images.load(chemin)
-    img.scale(largeur, hauteur)
-    img.filepath_raw = chemin
-    img.file_format = "PNG"
-    img.save()
+    w, h = img.size
+    k = w // largeur
+    px = np.empty(w * h * 4, dtype=np.float32)
+    img.pixels.foreach_get(px)
+    px = px.reshape(h, w, 4)[:hauteur * k, :largeur * k]
+    a = px[..., 3:4]
+    couleur = (px[..., :3] * a).reshape(hauteur, k, largeur, k, 3).mean(axis=(1, 3))  # couleur prémultipliée
+    alpha = a.reshape(hauteur, k, largeur, k, 1).mean(axis=(1, 3))
+    couleur = np.where(alpha > 1e-6, couleur / np.maximum(alpha, 1e-6), 0.0)
+    sortie = bpy.data.images.new("reduite", largeur, hauteur, alpha=True)
+    sortie.pixels.foreach_set(np.concatenate([couleur, alpha], axis=2).astype(np.float32).ravel())
+    sortie.filepath_raw = chemin
+    sortie.file_format = "PNG"
+    sortie.save()
     bpy.data.images.remove(img)
+    bpy.data.images.remove(sortie)
 
 
 def calculer_image(p):
