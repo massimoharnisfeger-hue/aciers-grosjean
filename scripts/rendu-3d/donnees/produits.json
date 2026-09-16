@@ -3350,19 +3350,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3440,19 +3464,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3530,19 +3578,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3620,19 +3692,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3710,19 +3806,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3800,19 +3920,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3890,19 +4034,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -3980,19 +4148,43 @@
    },
    "h_nervure": {
     "valeur": 38,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "sommet": {
     "valeur": 24,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
    "base": {
     "valeur": 73,
-    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » — forme du rendu",
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (cote du dessin) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 100,
+     "base": 44,
+     "sommet": 30,
+     "h": 3.5
+    },
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin non coté : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "levre_h": {
+    "valeur": 16,
+    "source": "fiche fournisseur publiée « Eurocopre Plus Monolamiera (ECO) » (dessin : flanc de la nervure de recouvrement arrêté à 16 mm de la plage, mesuré) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "e_alu": {
+    "valeur": 2.0,
+    "source": "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant — forme du rendu, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -13900,6 +14092,18 @@
     "unite": "mm",
     "supposee": true
    },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
    "e": {
     "valeur": 0.6,
     "source": "site actuel — description de la fiche",
@@ -13973,6 +14177,18 @@
    "base": {
     "valeur": 60,
     "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
@@ -14052,6 +14268,18 @@
     "unite": "mm",
     "supposee": true
    },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
    "e": {
     "valeur": 0.6,
     "source": "site actuel — description de la fiche",
@@ -14125,6 +14353,18 @@
    "base": {
     "valeur": 60,
     "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },
@@ -14204,6 +14444,18 @@
     "unite": "mm",
     "supposee": true
    },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
    "e": {
     "valeur": 0.6,
     "source": "site actuel — description de la fiche",
@@ -14280,6 +14532,18 @@
     "unite": "mm",
     "supposee": true
    },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
    "e": {
     "valeur": 0.6,
     "source": "site actuel — description de la fiche",
@@ -14353,6 +14617,18 @@
    "base": {
     "valeur": 60,
     "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) — forme du rendu",
+    "unite": "mm",
+    "supposee": true
+   },
+   "raidisseurs": {
+    "valeur": {
+     "n": 2,
+     "entraxe": 48,
+     "base": 13,
+     "sommet": 11,
+     "h": 1.0
+    },
+    "source": "fiche fournisseur publiée « Profil 30.200.1000 » (ag-tole-profilee-30-200.pdf) (section non cotée : 2 petites nervures par plage, mesurées à l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu",
     "unite": "mm",
     "supposee": true
    },

@@ -51,9 +51,13 @@ def piece(p, longueur, ratio):
         prof = round(v["pli"] * math.sin(math.radians(v["angle"])) + v["e"], 2)
         out = {"type": "BORDURE", "h": v["h"], "b": prof, "t": v["e"], "pli": v["pli"], "angle": v["angle"]}
     elif serie == "TOLE-PROFILEE":  # tôle nervurée à plat ; loupe sur la 2e nervure (hauteur h pincée)
-        x_nervure = -v["l"] / 2 + v["base"] / 2 + 5.0 + v["pas"]
+        # axes des nervures extrêmes à l_utile, bords coupés à mi-flanc (cotes 1000 / 1050 de la fiche) ; l'ancien modèle
+        # partait d'un plat de 5 mm et coupait la dernière nervure (dissymétrique, spécification des formes du 16/09)
+        marge = (v["l"] - v["l_utile"]) / 2
+        x_nervure = -v["l"] / 2 + marge + v["pas"]
         return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"],
-                 "profil": {"motif": "NERVURES", "pas": v["pas"], "h": v["h"], "sommet": v["sommet"], "base": v["base"]},
+                 "profil": {"motif": "NERVURES", "pas": v["pas"], "h": v["h"], "sommet": v["sommet"], "base": v["base"],
+                            "l_utile": v["l_utile"], "raidisseurs": v.get("raidisseurs")},
                  "loupe": {"x": x_nervure, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
                 v.get("finition", "BRUT"))
     elif serie == "TASSEAU":  # bardage à caissons ; loupe sur le 2e tasseau (hauteur d'onde h pincée)
@@ -65,11 +69,20 @@ def piece(p, longueur, ratio):
                  "profil": {"motif": "TASSEAU", "h": v["h"], "sommet": v["sommet"], "pas": v["pas"]},
                  "loupe": {"x": x_tasseau, "z_haut": v["h"], "z_bas": 0.0, "champ": max(6 * v["h"], 30.0), "cle": "h"}},
                 v.get("finition", "BRUT"))
-    elif serie == "PANNEAU-ISOLE":  # sandwich : âme × épaisseur e, tôle nervurée dessus ; loupe sur le chant de l'âme
+    elif serie == "PANNEAU-ISOLE":  # sandwich : mousse dans le panneau et les nervures 1 à 3, feuille d'alu dessous
+        # repère u de la section : u = 0 sur l'axe de la nervure 1 ; la forme va du pied gauche de la nervure 1 au bout de
+        # la lèvre (rendu_profil.panneau_isole), centrée sur son milieu u_m. Loupe : épaisseur e pincée sur la plage à
+        # u = 275, champ centré à u = 300 et à la hauteur de la plage (nervure 2 pleine de mousse, petite nervure,
+        # feuille d'aluminium) ; l'ancienne loupe ne montrait qu'une plaque de mousse plate
+        B, S, H, lu = v["base"], v["sommet"], v["h_nervure"], v["l_utile"]
+        pas_u = lu / (v["nervures"] - 1)
+        u_m = (-B / 2 + (v["nervures"] - 1) * pas_u + S / 2 + (H - v["levre_h"]) / H * (B - S) / 2) / 2
         return ({"type": "TOLE", "h": v["e"], "b": v["l"], "longueur": v["L"],
-                 "sandwich": {"l_utile": v["l_utile"], "pas": v["pas"], "h_nervure": v["h_nervure"], "sommet": v["sommet"],
-                              "base": v["base"], "e_tole": v["e_tole"]},
-                 "loupe": {"x": -v["l"] / 2 + v["pas"] / 2, "z_haut": v["e"], "z_bas": 0.0, "champ": max(6 * v["e"], 30.0), "cle": "e"}},
+                 "sandwich": {"l_utile": lu, "nervures": v["nervures"], "h_nervure": H, "sommet": S, "base": B,
+                              "e_tole": v["e_tole"], "raidisseurs": v["raidisseurs"], "levre_h": v["levre_h"],
+                              "e_alu": v["e_alu"]},
+                 "loupe": {"x": round(pas_u - B / 2 - 21.8 - u_m, 2), "x_centre": round(pas_u - 33.3 - u_m, 2),
+                           "z_centre": v["e"], "z_haut": v["e"], "z_bas": 0.0, "champ": max(6 * v["e"], 30.0), "cle": "e"}},
                 v.get("finition", "BRUT"))
     elif serie == "MARCHE-CAILLEBOTIS":  # marche pressée : flasques qui pendent sous la grille, nez en cornière percée
         # (vérification indépendante du 15/09 : joues dressées au-dessus de la marche, nez percé sur la face verticale).
@@ -191,6 +204,22 @@ def reglages_studio(pc):
     return {}
 
 
+def reglages_nervures(pc, mode):
+    """Tôles nervurées et panneaux isolés (vérification indépendante du 15/09) : lumières ancrées au chant avant et au
+    bout arrière (`lumieres_ancrees`, sinon la mousse et le chant s'assombrissaient avec la longueur : 175 → 98/255 de
+    2,6 à 6,1 m) ; loupe à 64 échantillons, seuil 0,01 (intérieur de nervure noir et déchiqueté à 24 échantillons) ;
+    tôle nervurée : lumière d'appoint dans la loupe, qui entre sous la nervure. Aucune autre série n'est concernée."""
+    nervures = pc.get("profil", {}).get("motif") == "NERVURES"
+    if not (nervures or pc.get("sandwich")):
+        return {}
+    r = {"lumieres_ancrees": True}
+    if mode == "caracteristiques":
+        r.update(samples_loupe=64, seuil_loupe=0.01)
+        if nervures:
+            r["e_loupe_appoint"] = 8.0
+    return r
+
+
 def arrondir_au_pas_des_trous(pc):
     """Poteau à âme percée (CLOPLUS 40) : tronçon multiple du pas des trous, trous à `premier_trou` des deux bouts comme
     sur un poteau entier (2 000, 2 300, 2 500 mm) ; 475 et 532 mm deviennent 500."""
@@ -241,8 +270,8 @@ def main():
             # (moiré sur les R5 T8, vérification du 15/09)
             if pc.get("perforation", {}).get("pas", 99) < 12:
                 vue["surechantillonnage"] = 2
-            liste.append({**commun, **vue, **reglages_matiere(pc), **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques",
-                          "pieces": [pc], "finition": finition})
+            liste.append({**commun, **vue, **reglages_matiere(pc), **reglages_nervures(pc, "caracteristiques"),
+                          **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
         pieces, finitions = [], set()
@@ -263,7 +292,8 @@ def main():
         # tôles en métal lisse : vue plus plongeante, proche des visuels (48°) ; à 30°, elles reflétaient le studio
         # sombre, photo 60 niveaux sous les visuels (vérification du 15/09 ; essai : −68 → −15 pour l'inox)
         elevation = (46 if finition in ("INOX", "FROID", "GALVA", "ALU") else 30) if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20
-        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **reglages_matiere(pieces[0]), **reglages_studio(pieces[0]), "slug": nom, "mode": "studio", "pieces": pieces,
+        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **reglages_matiere(pieces[0]), **reglages_studio(pieces[0]),
+                      **reglages_nervures(pieces[0], "studio"), "slug": nom, "mode": "studio", "pieces": pieces,
                       "finition": finition, "azimut": 24, "elevation": elevation})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")

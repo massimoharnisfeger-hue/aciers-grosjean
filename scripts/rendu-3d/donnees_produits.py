@@ -639,7 +639,12 @@ def vague3(cat, reel, desc):
                      h=valeur(30, "mm", SRC_NOM + " (profil 30.200.1000) et " + SRC_FT_PROFIL),
                      pas=valeur(200, "mm", SRC_NOM + " (profil 30.200.1000) et " + SRC_FT_PROFIL),
                      sommet=valeur(25, "mm", SRC_FT_PROFIL + " — forme du rendu", supposee=True),
-                     base=valeur(60, "mm", SRC_FT_PROFIL + " — forme du rendu", supposee=True))
+                     base=valeur(60, "mm", SRC_FT_PROFIL + " — forme du rendu", supposee=True),
+                     # vérification indépendante du 15/09 : plages rendues plates ; la section et la vue 3D de la fiche
+                     # montrent 2 petites nervures par plage
+                     raidisseurs=valeur({"n": 2, "entraxe": 48, "base": 13, "sommet": 11, "h": 1.0}, "mm",
+                                        SRC_FT_PROFIL + " (section non cotée : 2 petites nervures par plage, mesurées à "
+                                        "l'échelle de la cote 1000 ; flancs à 45° supposés) — forme du rendu", supposee=True))
             e = re.search(r"épaisseur\s*(\d+(?:,\d+)?)\s*mm", texte, re.I)
             if e:
                 v["e"] = valeur(nombre(e.group(1)), "mm", SRC_DESC)
@@ -658,9 +663,19 @@ def vague3(cat, reel, desc):
                      e=valeur(int(ep.group(1)), "mm", SRC_NOM), l_utile=valeur(1000, "mm", SRC_FT_ECO),
                      nervures=valeur(4, "", SRC_DESC + " (« Nervures 4 nervures »)"),
                      pas=valeur(333, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
-                     h_nervure=valeur(38, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
-                     sommet=valeur(24, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
-                     base=valeur(73, "mm", SRC_FT_ECO + " — forme du rendu", supposee=True),
+                     h_nervure=valeur(38, "mm", SRC_FT_ECO + " (cote du dessin) — forme du rendu", supposee=True),
+                     sommet=valeur(24, "mm", SRC_FT_ECO + " (cote du dessin) — forme du rendu", supposee=True),
+                     base=valeur(73, "mm", SRC_FT_ECO + " (cote du dessin) — forme du rendu", supposee=True),
+                     # vérification indépendante du 15/09 (nervures creuses sur une mousse plate, plages plates, feuille
+                     # invisible) : formes lues sur le dessin de la fiche, jamais affichées
+                     raidisseurs=valeur({"n": 2, "entraxe": 100, "base": 44, "sommet": 30, "h": 3.5}, "mm",
+                                        SRC_FT_ECO + " (dessin non coté : 2 petites nervures par plage, mesurées à "
+                                        "l'échelle de la cote 1000) — forme du rendu", supposee=True),
+                     levre_h=valeur(16, "mm", SRC_FT_ECO + " (dessin : flanc de la nervure de recouvrement arrêté à "
+                                    "16 mm de la plage, mesuré) — forme du rendu", supposee=True),
+                     e_alu=valeur(2.0, "mm", "étiquette du stock « ALU CENTESIMAL » (photo du site) : feuille de quelques "
+                                  "centièmes ; 2 mm pour qu'elle se lise dans la loupe, comme la bande du dessin fabricant "
+                                  "— forme du rendu, non affichée", supposee=True),
                      # description « 0.4mm standard », étiquette du stock photographiée « 0.5 » : non affichée
                      e_tole=valeur(0.5, "mm", "étiquette du stock (photo du site) ≠ description 0,4 — forme du rendu, non affichée", supposee=True),
                      face_externe=valeur("Acier prélaqué", "", SRC_DESC + " et " + SRC_FT_ECO),

@@ -232,12 +232,42 @@ def profil_nervures(largeur, pas, h, sommet, base, centre0, x_fin=None):
     return nets
 
 
-def tole_pliee(nom, ligne, e, longueur, decalage_x=0.0, chanfrein=False):
-    """Tôle pliée extrudée le long de y : la fibre moyenne `ligne` (x, z) est centrée en x sur `decalage_x`."""
+def ligne_trapezes(trapezes, x_debut, x_fin):
+    """Fibre moyenne (x, z) d'une tôle plane (z = 0) portant des trapèzes vers le haut (centre, base, sommet, h),
+    coupée à [x_debut, x_fin] : z(x) linéaire par morceaux, échantillonné à toutes les cassures. Les trapèzes ne
+    doivent pas se chevaucher (grandes nervures et raidisseurs de plage)."""
+    def z_de(x):
+        for c, B, S, H in trapezes:
+            d = abs(x - c)
+            if d <= S / 2 + 1e-9:
+                return H
+            if d < B / 2:
+                return H * (B / 2 - d) / ((B - S) / 2)
+        return 0.0
+
+    xs = sorted({x_debut, x_fin} | {c + s * k for c, B, S, H in trapezes for s in (-1, 1) for k in (B / 2, S / 2)})
+    return dedoublonner([(x, z_de(x)) for x in xs if x_debut - 1e-9 <= x <= x_fin + 1e-9])
+
+
+def trapezes_profil(centres, base, sommet, h, r=None):
+    """Grandes nervures aux `centres` + `r["n"]` petites nervures de raidissement (entraxe, base, sommet, h) centrées
+    dans chaque plage (dessin des fiches ECO et 30.200.1000 : 2 par plage, non cotées)."""
+    t = [(c, base, sommet, h) for c in centres]
+    if r:
+        for c0, c1 in zip(centres, centres[1:]):
+            m = (c0 + c1) / 2
+            t += [(m + (k - (r["n"] - 1) / 2) * r["entraxe"], r["base"], r["sommet"], r["h"]) for k in range(r["n"])]
+    return t
+
+
+def tole_pliee(nom, ligne, e, longueur, decalage_x=0.0, chanfrein=False, lisse=True):
+    """Tôle pliée extrudée le long de y : la fibre moyenne `ligne` (x, z) est centrée en x sur `decalage_x`.
+    `lisse` = False (panneau isolé) : facettes plates, sinon la normale des petites nervures à 26,6° (sous le seuil
+    d'arête vive de 30°) serait moyennée avec toute la plage voisine, avec un dégradé visible sur la laque."""
     xs = [x for x, _ in ligne]
     milieu = (min(xs) + max(xs)) / 2
     contour = section_pliee([(x - milieu, z) for x, z in ligne], e)
-    obj = extruder(contour, longueur, nom, decalage_x=decalage_x)
+    obj = extruder(contour, longueur, nom, decalage_x=decalage_x, lisse=lisse)
     if not chanfrein:  # chanfrein de 0,6 mm plus large qu'une tôle de 0,5 : retiré
         obj.modifiers.remove(obj.modifiers["chanfrein"])
     return obj
@@ -267,16 +297,27 @@ def plaque_pleine(nom, largeur, longueur, epaisseur, decalage_x=0.0, z0=0.0):
 
 
 def panneau_isole(piece, dx, nom):
-    """Panneau sandwich Eurocopre Monolamiera : âme en mousse (largeur utile × épaisseur), feuille d'aluminium plate
-    dessous, tôle d'acier prélaquée dessus à nervures trapézoïdales creuses (au pas de 333, une demi-nervure à chaque
-    bord ; la nervure de droite déborde en lèvre de recouvrement jusqu'à la largeur hors tout). -> (objets, matières)"""
+    """Panneau sandwich Eurocopre Monolamiera ECO (dessin coté de la fiche, photos du dépôt 0004918/0004919) :
+    tôle d'acier prélaquée à 4 nervures trapézoïdales (axes à 0, 333, 667 et 1000 de largeur utile) et 2 petites
+    nervures de raidissement par plage ; la mousse remplit le panneau ET les nervures 1 à 3, la nervure 4 reste creuse
+    (lèvre de recouvrement du panneau voisin) ; feuille d'aluminium plate sous la mousse. -> (objets, matières)"""
     r = piece["sandwich"]
-    e, L, l, lu = piece["h"], piece["longueur"], piece["b"], r["l_utile"]
-    x0 = dx - l / 2  # bord gauche de la tôle hors tout
-    mousse = plaque_pleine(f"{nom}-mousse", lu, L, e - 0.5, decalage_x=x0 + lu / 2, z0=0.5)
-    feuille = plaque_pleine(f"{nom}-feuille", lu, L, 0.5, decalage_x=x0 + lu / 2, z0=0.0)
-    ligne = [(x, e + z) for x, z in profil_nervures(l, r["pas"], r["h_nervure"], r["sommet"], r["base"], 0.0, x_fin=l)]
-    tole = tole_pliee(f"{nom}-tole", ligne, r["e_tole"], L, decalage_x=dx)
+    e, L, lu = piece["h"], piece["longueur"], r["l_utile"]
+    B, S, H, n = r["base"], r["sommet"], r["h_nervure"], r["nervures"]
+    pas = lu / (n - 1)
+    trap = trapezes_profil([k * pas for k in range(n)], B, S, H, r.get("raidisseurs"))
+    u_g = -B / 2                                                            # pied gauche de la nervure 1
+    u_d = (n - 1) * pas + S / 2 + (H - r["levre_h"]) / H * (B - S) / 2      # bout de la lèvre de recouvrement
+    u_m = (u_g + u_d) / 2                                                   # milieu de la forme : x = dx + u - u_m
+    fibre = ligne_trapezes(trap, u_g, u_d)
+    ta, et, u_md = r["e_alu"], r["e_tole"], u_g + lu  # u_md : pied gauche de la nervure 4, fin de la mousse
+    dessous = [(u, z) for u, z in fibre if u <= u_md + 1e-9]
+    # mousse : dessus collé à la sous-face de la tôle (nervures comprises), dessous posé sur la feuille d'aluminium
+    contour = [(u_g, ta), (u_md, ta)] + [(u, e + z - et / 2) for u, z in reversed(dessous)]
+    mousse = extruder([(u - u_m, z) for u, z in contour], L, f"{nom}-mousse", decalage_x=dx, lisse=False)
+    mousse.modifiers.remove(mousse.modifiers["chanfrein"])
+    feuille = plaque_pleine(f"{nom}-feuille", lu, L, ta, decalage_x=dx + u_g + lu / 2 - u_m, z0=0.0)
+    tole = tole_pliee(f"{nom}-tole", [(u, e + z) for u, z in fibre], et, L, decalage_x=dx, lisse=False)
     return [(mousse, "MOUSSE"), (feuille, "ALU-FEUILLE"), (tole, None)]
 
 
@@ -285,6 +326,14 @@ def profil_de_tole(piece):
     r = piece["profil"]
     if r["motif"] == "TASSEAU":
         return ligne_tasseau(piece["b"], r["h"], r["sommet"], r["pas"], piece["h"])
+    if r.get("l_utile"):
+        # 30.200.1000 : axes des nervures extrêmes à `l_utile` l'un de l'autre, bords coupés à mi-flanc, symétriques
+        # (cotes 1000 et 1050 de la fiche) ; 2 petites nervures de raidissement par plage
+        marge = (piece["b"] - r["l_utile"]) / 2
+        n = round(r["l_utile"] / r["pas"]) + 1
+        trap = trapezes_profil([marge + k * r["pas"] for k in range(n)], r["base"], r["sommet"], r["h"],
+                               r.get("raidisseurs"))
+        return ligne_trapezes(trap, 0.0, piece["b"])
     return profil_nervures(piece["b"], r["pas"], r["h"], r["sommet"], r["base"], r["base"] / 2 + 5.0)
 
 
@@ -312,8 +361,10 @@ def section_tube_rond(d, t, n=96):
     return cercle(d / 2, d / 2, n), cercle(d / 2 - t, d / 2, n)
 
 
-def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
-    """Section pleine (liste de points) ou creuse (tuple extérieur, intérieur de même nombre de points)."""
+def extruder(section_mm, longueur_mm, nom, decalage_x=0.0, lisse=True):
+    """Section pleine (liste de points) ou creuse (tuple extérieur, intérieur de même nombre de points).
+    `lisse` = False : facettes plates (petites nervures du panneau isolé, dont les flancs à 26,6° passeraient sous le
+    seuil d'arête vive de 30° et seraient lissées avec la plage voisine)."""
     me = bpy.data.meshes.new(nom)
     bm = bmesh.new()
     if isinstance(section_mm, tuple):
@@ -328,7 +379,7 @@ def extruder(section_mm, longueur_mm, nom, decalage_x=0.0):
 
     # faces lisses, arêtes vives au-delà de 30° : les congés restent ronds
     for f in bm.faces:
-        f.smooth = True
+        f.smooth = lisse
         f.material_index = 1 if abs(f.normal.y) > 0.99 else 0  # 1 = faces de coupe
     for e in bm.edges:
         if len(e.link_faces) == 2:
@@ -1615,8 +1666,11 @@ def materiau_mousse():
 
 
 def materiau_alu_feuille():
-    """Feuille d'aluminium gaufrée sous le panneau : gris clair satiné."""
-    return materiau_metal("alu-feuille", (0.70, 0.71, 0.72), 0.45, variation=0.04, metallic=1.0, ecart_rugosite=0.1)
+    """Feuille d'aluminium « laquée et gaufrée » sous le panneau isolé (PDF de la fiche) : gris mat. En métal poli,
+    la bande de 2 mm de la loupe ne renvoyait que le sol et l'ombre de contact, et disparaissait sous la mousse
+    (vérification indépendante du 15/09 : « feuille d'aluminium visible nulle part »). Couleur non publiée : supposée,
+    jamais affichée."""
+    return materiau_metal("alu-feuille", (0.19, 0.195, 0.205), 0.5, variation=0.04, metallic=0.0, ecart_rugosite=0.1)
 
 
 def materiau_bois():
@@ -1792,7 +1846,9 @@ def rendre(p):
                 boite_pts += [((dx + sx * (piece["b"] / 2 + 1)) * MM, (L + piece["poteau"]["capuchon"]) * MM, z * MM)
                               for sx in (-1, 1) for z in (0, piece["h"] + 1)]
         else:
-            objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx)]
+            # tôle nervurée : facettes plates (petites nervures de raidissement), les autres séries restent lissées
+            objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx,
+                             lisse=piece.get("profil", {}).get("motif") != "NERVURES")]
             if piece["type"] == "ROND-BETON":
                 objs += nervures_barre(piece["h"], L, dx, f"{p['slug']}-{i}")
             if piece.get("relief"):  # tôle larmée ou striée
@@ -1883,11 +1939,28 @@ def rendre(p):
     scene.render.resolution_percentage = 100
     cadrer(cam, scene, points_cadrage, boite, direction, cible)
 
+    # lumières visées sur le milieu de la pièce. `lumieres_ancrees` (tôles nervurées et panneaux isolés seulement) :
+    # la clé et le débouchage restent à 1,3 m du chant avant et le contre-jour à 1,3 m du bout arrière, quelle que soit
+    # la longueur, et une lumière « dessus » par tranche de 2,6 m. Sans cette option, rien ne change pour les autres
+    # séries. Cause : à L/2, ces deux lumières passent derrière le plan du chant dès 2,4 m, et le chant (seule face qui
+    # montre la mousse) s'éteignait avec la longueur — mousse de 175/164/135 à 2,6 m à 98/92/65 à 6,1 m
+    # (vérification indépendante du 15/09)
     t = cible
-    lumiere_zone("cle", t + Vector((-0.3, -1.2, 2.4)), t, 2.0, p.get("e_cle", 110))
-    lumiere_zone("debouchage", t + Vector((1.6, -1.4, 0.7)), t, 2.0, p.get("e_debouchage", 35))
-    lumiere_zone("contre", t + Vector((0.5, 1.8, 1.3)), t, 1.2, p.get("e_contre", 70))
-    lumiere_zone("dessus", t + Vector((0.0, 0.3, 2.5)), t, 2.5, p.get("e_dessus", 45))
+    if p.get("lumieres_ancrees") and typ == "TOLE":
+        Lm = L0 * MM
+        avant = Vector((t.x, min(t.y, 1.3), t.z))
+        arriere = Vector((t.x, max(t.y, Lm - 1.3), t.z))
+        n_dessus = max(1, math.ceil(Lm / 2.6 - 1e-9))
+        dessus = [t] if n_dessus == 1 else [Vector((t.x, Lm * (k + 0.5) / n_dessus, t.z)) for k in range(n_dessus)]
+    else:
+        avant = arriere = t
+        dessus = [t]
+    lumiere_zone("cle", avant + Vector((-0.3, -1.2, 2.4)), avant, 2.0, p.get("e_cle", 110))
+    lumiere_zone("debouchage", avant + Vector((1.6, -1.4, 0.7)), avant, 2.0, p.get("e_debouchage", 35))
+    lumiere_zone("contre", arriere + Vector((0.5, 1.8, 1.3)), arriere, 1.2, p.get("e_contre", 70))
+    for k, cible_k in enumerate(dessus):
+        lumiere_zone("dessus" if len(dessus) == 1 else f"dessus{k}", cible_k + Vector((0.0, 0.3, 2.5)), cible_k, 2.5,
+                     p.get("e_dessus", 45))
     # lumières qui éclairent sans porter d'ombre (`lumieres_sans_ombre`, panneaux de clôture) : un panneau debout reçoit
     # la lumière « contre » par derrière et les autres par devant ; leurs ombres partaient de part et d'autre de son plan
     # et laissaient une traînée claire dans le prolongement du pied (vérification indépendante du 15/09)
@@ -1971,15 +2044,26 @@ def rendre(p):
         az_l = math.radians(lp.get("azimut", 20))
         el_l = math.radians(lp.get("elevation", p.get("elevation_loupe", 14)))
         dir_l = Vector((math.sin(az_l) * math.cos(el_l), -math.cos(az_l) * math.cos(el_l), math.sin(el_l)))
-        x_centre = (x_loupe + x_relief_coupe(piece)) / 2 if relief else x_loupe
-        cible_l = Vector((x_centre * MM, lp.get("y", 0.0) * MM, (relief["e_total"] if relief else z_loupe_haut) / 2 * MM))
+        # `x_centre` et `z_centre` (panneau isolé) : le champ ne se centre pas sur le point pincé mais sur le détail à
+        # montrer (nervure pleine de mousse et petite nervure, feuille d'aluminium sous la mousse)
+        x_centre = lp.get("x_centre", (x_loupe + x_relief_coupe(piece)) / 2 if relief else x_loupe)
+        z_centre = lp.get("z_centre", (relief["e_total"] if relief else z_loupe_haut) / 2)
+        cible_l = Vector((x_centre * MM, lp.get("y", 0.0) * MM, z_centre * MM))
         cam.data.clip_start = 0.001
         cam.data.shift_x = cam.data.shift_y = 0.0
         champ = lp.get("champ", champ_loupe(piece))
         cam.location = cible_l + dir_l * (champ * MM * cam.data.lens / cam.data.sensor_width)
         cam.rotation_euler = (-dir_l).to_track_quat("-Z", "Y").to_euler()
         scene.render.resolution_x = scene.render.resolution_y = T
-        scene.cycles.samples = min(p.get("samples", 64), 24)
+        # l'intérieur d'une nervure est un tunnel fermé par le sol attrape-ombre : aucune lumière directe n'y entre, il
+        # sortait à 4-5/255 avec un bord d'ombre déchiqueté (24 échantillons dans le noir). `e_loupe_appoint` : petite
+        # lumière rasante devant le chant, derrière la caméra de loupe, créée après le rendu principal (elle n'éclaire
+        # que la loupe et `vider_scene` la supprime ensuite). `samples_loupe` / `seuil_loupe` : bruit du tunnel.
+        scene.cycles.samples = p.get("samples_loupe", min(p.get("samples", 64), 24))
+        scene.cycles.adaptive_threshold = p.get("seuil_loupe", scene.cycles.adaptive_threshold)
+        if p.get("e_loupe_appoint"):
+            lumiere_zone("loupe-appoint", cible_l + Vector((0.20, -0.40, 0.005)),
+                         Vector((cible_l.x, 0.10, 0.0)), 0.20, p["e_loupe_appoint"])
         scene.render.filepath = os.path.join(sortie, p["slug"] + "-loupe.png")
         bpy.context.view_layer.update()
         calculer_image(p)

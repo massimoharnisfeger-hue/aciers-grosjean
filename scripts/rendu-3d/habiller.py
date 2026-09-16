@@ -100,6 +100,8 @@ TRAITS_COTES = []  # extrémités du trait de chaque étiquette de cote (même r
 RAPPELS = []  # lignes de rappel réellement tracées (début côté pièce, fin), relues par controler_rendus.py
 MASQUE = None  # pixels opaques du rendu brut (la pièce), pour coller les lignes de rappel
 CLAIR = None  # luminance du rendu brut sur la pièce (0 ailleurs) : une étiquette ne doit pas cacher une paroi claire
+FAMILLE_EN_COURS = None  # famille de la fiche habillée (produits.json)
+FAMILLES_COTE_COURTE_SUR_LE_TRAIT = {"marche-caillebotis", "marche-o2"}
 
 
 def paroi_sous(x0, y0, x1, y1, seuil=90):
@@ -243,7 +245,9 @@ def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
             nx_, ny_ = -nx_, -ny_
         decalage = 22 + abs(nx_) * largeur / 2 + abs(ny_) * 20  # demi-largeur ou demi-hauteur selon l'orientation
         limite = MASQUE.width * 0.645 - 12  # colonne de la fiche technique
-        for signe in (1, -1):  # côté opposé à la pièce, sinon l'autre côté, sinon sur le trait
+        # côté opposé à la pièce, sinon l'autre côté, sinon sur le trait ; familles de `FAMILLES_COTE_COURTE_SUR_LE_TRAIT` :
+        # jamais du côté de la pièce (profondeur l des marches : l'étiquette cachait le nez, 15/09)
+        for signe in ((1,) if FAMILLE_EN_COURS in FAMILLES_COTE_COURTE_SUR_LE_TRAIT else (1, -1)):
             essai = (centre[0] + signe * nx_ * decalage, centre[1] + signe * ny_ * decalage)
             if 12 < essai[0] - largeur / 2 and essai[0] + largeur / 2 < limite and 30 < essai[1] < MASQUE.height - 30:
                 centre = essai
@@ -415,7 +419,9 @@ def decale(p, dx, dy):
     return (p[0] + dx, p[1] + dy)
 
 
-FAMILLES_SANS_ATTENUATION = {"tole-perforee"}
+# pièces ajourées (carnet de leçons, 15/09) ; marches et plancher O2 ajoutés à leur reprise du 15/09 au soir (trous de 2 à
+# 5 px, mailles de la grille) — la famille « caillebotis », rendue avant, reste telle qu'elle a été vérifiée
+FAMILLES_SANS_ATTENUATION = {"tole-perforee", "marche-caillebotis", "marche-o2", "plancher-o2"}
 
 
 def attenuation_ombre(chemin_json):
@@ -493,7 +499,8 @@ def caracteristiques(slug, dossier):
         geo = json.load(f)
     P, W, H = geo["points"], geo["largeur"], geo["hauteur"]
     p = fiche(slug)
-    global MASQUE, CLAIR
+    global MASQUE, CLAIR, FAMILLE_EN_COURS
+    FAMILLE_EN_COURS = p.get("famille")
     with Image.open(os.path.join(dossier, slug + ".png")) as brut:
         rgba = brut.convert("RGBA")
         MASQUE = rgba.split()[3].point(lambda v: 255 if v >= 250 else 0)
