@@ -27,9 +27,12 @@ Période couverte : 15/09 vers 12 h → 16/09 à 0 h 40.
 - `_DEPOT/images/2-categories` : 519 images (468 en ligne + rendues en cours de vérification), `_ETAT.txt`.
 - Questions 36 à 40 ; carnet de leçons (formes publiées, page = image, moiré d'habillage, laque colorée, script de dépôt) ; journal du 16/09 ; avancement avec une section « REPRENDRE ICI ».
 
+## Reprise du 16/09 (PC redémarré à 5 h 33, séance relancée vers 11 h 45)
+- État d'avant la coupure vérifié puis terminé : 2 studios marches rendus avec la version du commit (`git show` via Bash, empreinte `ed72898bd5` identique aux 10 rendus de la nuit), habillage + contrôles 0 écart, vérification indépendante **CONFORME** → 9 fiches + 3 studios intégrés.
+- Panneau isolé ECO et tôle profilée : code de l'agent interrompu vérifié complet, essais mesurés (mousse stable 177→179, loupe tôle 0,04 % de noirs), production de 17 rendus (11 h 54 → 12 h 35) via `rendu_reprises.ps1` relancé, contrôles 0 écart, vérification indépendante **CONFORME** (les 6 défauts du 15/09 corrigés et mesurés) → 15 fiches + 2 studios intégrés.
+- **455 fiches sur 477 en ligne, vague 3 terminée** ; build OK, commit `24f71d3` poussé (déploiement Vercel). 2-categories : 519 images, `_ETAT.txt` 12 h 58.
+- Audit final refait : produits (501 officiels / 495 nouveaux, 6 hors catégorie absents) + pages (0 image cassée, 0 catégorie vide). Questions 41 à 47 consignées.
+
 ## Reste à faire
-- Marches caillebotis, marches et plancher O2 : rendus en cours (0 h 15) → vérification → intégration.
-- Panneau isolé ECO et tôle profilée : remodélisation en cours par agent → production → vérification → intégration.
-- Caillebotis simples (question 37), rond à béton à froid (question 31), fixations et visserie (questions 27, 28).
-- Audit final (produits du site officiel, images de chaque catégorie) et rapport au propriétaire ; publication.
-- Défauts mineurs listés dans l'avancement ; proposer l'étape vidéo quand tout est intégré.
+- Rapport final au propriétaire (fait dans la conversation) ; réponses aux questions 27, 28, 31, 37 pour les 22 dernières fiches (caillebotis 10, rond à froid 1, fixations 5, visserie 6).
+- Défauts mineurs listés dans l'avancement ; proposer l'étape vidéo maintenant que la production est stabilisée.
