@@ -19,6 +19,7 @@ Le dépôt est un site catalogue Next.js. Le backend ERP n'est pas construit. La
 - Arrêter toute opération sensible sans human gate.
 - Hiérarchie : sécurité/STOP > human gate > projet > workflow > spécialisation > tâche.
 - AUTO-SAVE, AUTO-COMMIT, AUTO-PUSH et DEPLOY sont distincts ; aucun push ou deploy automatique.
+- Fait vérifié : `PUSH main → GitHub → Vercel Production Deployment`. Aucun agent ne pousse `main` automatiquement.
 
 ## Tâche active
 

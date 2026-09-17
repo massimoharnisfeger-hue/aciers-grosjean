@@ -2,7 +2,7 @@
 
 Refonte du site d'Aciers Grosjean (négoce d'acier, Wallonie). Next.js 15 (App Router), React 18, Tailwind 3, TypeScript, 638 pages statiques.
 Préproduction : https://aciers-grosjean.vercel.app (protégée par Vercel Authentication). Le site réel reste https://www.aciersgrosjean.be.
-Un push humain approuvé sur `main` peut déclencher le déploiement Vercel configuré à l'extérieur du dépôt. Aucun agent ni workflow local ne doit pousser ou déployer automatiquement.
+Le projet Vercel est connecté à GitHub : un push humain approuvé sur `main` déclenche le déploiement Vercel de production. Aucun agent ni workflow local ne doit pousser sur `main` automatiquement.
 
 Répondre en français, simplement : le propriétaire du projet n'est pas développeur.
 
