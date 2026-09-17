@@ -1,7 +1,7 @@
 # Synchronisation du dossier "Site Aciers Grosjean" avec GitHub.
-#   -Mode auto        : (tache planifiee) recupere les nouveautes et envoie les commits deja faits.
+#   -Mode auto        : (tache planifiee) recupere les nouveautes sans commit ni push automatique.
 #                       Ne cree jamais de commit, ne touche pas a un travail en cours.
-#   -Mode sauvegarder : enregistre tout (commit), recupere les nouveautes, puis envoie sur GitHub.
+#   -Mode sauvegarder : (humain uniquement) enregistre tout (commit), recupere les nouveautes, puis envoie sur GitHub.
 # Fichier volontairement sans accents : PowerShell 5.1 lit mal l'UTF-8 sans BOM.
 param(
   [ValidateSet('auto', 'sauvegarder')][string]$Mode = 'auto',
@@ -68,9 +68,14 @@ if ($enRetard -gt 0) {
 
 $enAvance = [int](git rev-list --count "origin/$branche..HEAD")
 if ($enAvance -gt 0) {
-  git push --quiet origin $branche 2>$null
-  if ($LASTEXITCODE -eq 0) { Note "$enAvance sauvegarde(s) envoyee(s) sur GitHub : le site en ligne se met a jour" }
-  else { Note 'ENVOI IMPOSSIBLE : connexion GitHub a faire une fois (double-clic sur SAUVEGARDER.cmd)' }
+  if ($Mode -eq 'auto') {
+    Note "AUTO-PUSH DESACTIVE : $enAvance commit(s) restent locaux. Validation humaine requise."
+  }
+  else {
+    git push --quiet origin $branche 2>$null
+    if ($LASTEXITCODE -eq 0) { Note "$enAvance sauvegarde(s) envoyee(s) sur GitHub : le site en ligne se met a jour" }
+    else { Note 'ENVOI IMPOSSIBLE : connexion GitHub a faire une fois (double-clic sur SAUVEGARDER.cmd)' }
+  }
 }
 elseif ($enRetard -eq 0) {
   if ($modifsLocales) { Note 'A jour avec GitHub. Des modifications locales attendent une sauvegarde.' }

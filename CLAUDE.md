@@ -2,13 +2,13 @@
 
 Refonte du site d'Aciers Grosjean (négoce d'acier, Wallonie). Next.js 15 (App Router), React 18, Tailwind 3, TypeScript, 638 pages statiques.
 Préproduction : https://aciers-grosjean.vercel.app (protégée par Vercel Authentication). Le site réel reste https://www.aciersgrosjean.be.
-Chaque push sur `main` déclenche un déploiement Vercel (projet `aciers-grosjean`).
+Un push humain approuvé sur `main` peut déclencher le déploiement Vercel configuré à l'extérieur du dépôt. Aucun agent ni workflow local ne doit pousser ou déployer automatiquement.
 
 Répondre en français, simplement : le propriétaire du projet n'est pas développeur.
 
 ## Début de session
 1. Lire `_LISEZ-MOI.md`, le dernier fichier de `_JOURNAL/` et la dernière conversation de `_CONVERSATIONS/`.
-2. Récupérer les nouveautés : `git pull --ff-only` (sur le PC : `powershell -File _OUTILS/synchro.ps1`).
+2. Récupérer les nouveautés : `git pull --ff-only` (sur le PC : `powershell -File _OUTILS/synchro.ps1`), selon `docs/architecture/SYNC_POLICY.md`.
 3. Sur le PC : regarder `_DEPOT/` (nouveaux fichiers à intégrer ?). Ce dossier n'existe pas dans les sessions web.
 
 ## Règles de code
@@ -35,13 +35,13 @@ Déplacer ensuite l'original dans `_DEPOT/deja-integre/<lot>/` et le noter dans 
 Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiches).
 **Mode automatique**, à la demande du propriétaire (14/09/2026) : enchaîner les familles sans attendre son accord.
 
-- **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → **vérification indépendante** → intégration sur le site → vérification du build → commit et push → famille suivante.
+- **Par famille :** rendu test → autocontrôle strict (forme conforme à la famille, cotes lisibles sans chevauchement ni débordement, textes identiques aux données sourcées, fond blanc propre) → corriger jusqu'à ce que le test passe → série → contrôle de **chaque** image → **vérification indépendante** → intégration sur le site → vérification du build → revue et human gate avant commit/push → famille suivante.
 - **Informer sans attendre :** envoyer au propriétaire le rendu test puis la planche contact de chaque famille. S'il répond, appliquer ses corrections avant d'aller plus loin.
-- **Question ou donnée manquante : ne pas s'arrêter.** Dans l'ordre :
+- **Question ou donnée visuelle manquante : ne pas bloquer le travail local.** Dans l'ordre :
   1. chercher sur le site officiel https://www.aciersgrosjean.be (fiche produit, description, PDF), et dans ses copies locales (`lib/site-actuel.json`, `lib/descriptions-site-actuel.json`, `_DEPOT/documents/pdf-site-actuel/`) ;
   2. sinon, chercher sur internet une source fiable (fiche du fabricant, norme, tableau fournisseur) et noter la source ;
   3. si le doute persiste ou si les sources se contredisent : ne pas afficher la valeur, noter la question dans `_DOCS/rendus-3d/questions-en-attente.md` (produit, question, ce qui a été trouvé, sources), puis continuer avec le reste. On y reviendra avec le propriétaire.
-  - Ce qui dépend de l'entreprise (nuance réellement livrée, finition en stock, longueurs disponibles) ne se tranche jamais par internet : si le site officiel ne le dit pas, la question va en attente.
+  - Ce qui dépend de l'entreprise (nuance réellement livrée, finition en stock, longueurs disponibles) ne se tranche jamais par internet : si le site officiel ne le dit pas, la question va en attente. Cette tolérance 3D ne contourne jamais un STOP, un human gate, la sécurité, la protection du dépôt, le commit/push ou la production.
 - **Reprise :** tenir l'avancement dans `_DOCS/rendus-3d/avancement.md` (section « REPRENDRE ICI » en tête) ; chaque itération reprend là où la précédente s'est arrêtée. Outils de production de la séance du 14–16/09 (rendus déposés, build allégé, rangement) : `%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\outils-seance\`. Lancer Blender en processus d'arrière-plan : les rendus continuent même si la séance est en pause.
 - **Rangement et noms des images (obligatoire) :**
   - Atelier (`%LOCALAPPDATA%\SiteAciersGrosjean\rendu3d\`) : essais, comparaisons et brouillons dans `essais/`, jamais dans `final/`. `final/` ne contient que les rendus de production.
@@ -61,7 +61,7 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
   2. brancher le PC et désactiver la mise en veille ;
   3. pour éviter les attentes : activer les crédits d'usage (`/usage-credits`, avec un plafond) ; ou, au message « limite atteinte » de Fable, taper `/model` et choisir **Opus 5**, le plus puissant après Fable.
 - **Commande de lancement** (boucle à rythme libre) :
-  `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/lecons.md puis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets à jour l'avancement et, si tu as appris quelque chose, le carnet de leçons. Quand les 477 fiches sont intégrées, vérifiées et poussées, arrête la boucle.`
+  `/loop Continue la production automatique des visuels 3D selon CLAUDE.md (section Visuels 3D) : lis _DOCS/rendus-3d/lecons.md puis _DOCS/rendus-3d/avancement.md, fais l'étape suivante, mets à jour l'avancement et, si tu as appris quelque chose, le carnet de leçons. Quand les 477 fiches sont intégrées et vérifiées, arrête la boucle.`
 - Pendant la journée, si le propriétaire doit utiliser le PC : limiter Blender à 4 cœurs (`-t 4`).
 - **Quand les 477 fiches sont intégrées**, proposer au propriétaire l'étape vidéo, sans la lancer d'office :
   - rotation 360° ou apparition des cotes dans Blender pour quelques produits phares des fiches (fidèle, gratuit) ; mesurer d'abord le temps de rendu d'une rotation courte ;
@@ -72,6 +72,6 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.
 2. `_CONVERSATIONS/AAAA-MM-JJ_sujet-court.md` : demande, constats, décisions, fait, reste à faire, lien de session.
-3. Vérifier, puis commit en français clair et push (sur le PC : `_OUTILS/synchro.ps1 -Mode sauvegarder -Message "..."`).
+3. Vérifier, puis documenter le handoff. Commit et push uniquement après demande humaine explicite, revue du diff et human gate approuvé (sur le PC : `_OUTILS/synchro.ps1 -Mode sauvegarder -Message "..."`).
 
 Le dépôt GitHub est public : rien de confidentiel dans le code, le journal ou les conversations.
