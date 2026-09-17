@@ -12,3 +12,9 @@ Les permissions déclarées sont des capacités, pas une autorisation générale
 | verificateur-rendus | `Read`, `Glob`, `Grep`, `Bash` | vérification visuelle | Bash limité aux vérifications locales prévues, pas d'écriture projet, push ou deploy |
 
 Le Bash est refusé par défaut aux agents qui n'en ont pas besoin. Pour les agents qui l'utilisent, les commandes doivent être non destructives, explicites et liées à la tâche. Une limitation technique complémentaire par sandbox ou approbation humaine reste nécessaire : le Markdown ne constitue pas à lui seul un contrôle d'accès.
+
+Les modes Engineering Quality héritent strictement des outils de leur agent
+porteur. Un mode ne peut pas élargir les permissions, exécuter une écriture ou
+transformer une revue en publication. Les reviewers restent en lecture et en
+rapport ; seul le périmètre de correction approuvé peut être confié à
+`builder`.

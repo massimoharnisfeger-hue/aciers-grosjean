@@ -32,6 +32,10 @@ REQUIRED = [
     ".claude/rules/agent-permissions.md",
     "docs/architecture/HUMAN_GATE.md",
     "docs/architecture/SYNC_POLICY.md",
+    "docs/architecture/ENGINEERING_QUALITY_FINDINGS.md",
+    "docs/architecture/ENGINEERING_QUALITY_ROUTING.md",
+    ".claude/rules/engineering-quality.md",
+    "scripts/validation/engineering_quality.py",
 ]
 
 
@@ -101,6 +105,7 @@ def main():
     print("- JSON sources: PASS")
     print("- referenced media and PDFs: PASS")
     print("- generated catalogue contract: PASS")
+    print("- engineering quality contract and routing: PASS")
     return 0
 
 

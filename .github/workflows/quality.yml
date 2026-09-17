@@ -35,6 +35,18 @@ jobs:
       - name: Project OS and data checks
         run: python scripts/validation/project_os_check.py
 
+      - name: Engineering Quality contract check
+        run: python scripts/validation/engineering_quality_check.py
+
+      - name: Engineering Quality tests
+        run: python tests/test_engineering_quality.py
+
+      - name: Extension checks
+        run: python scripts/validation/extensions_check.py
+
+      - name: Extension tests
+        run: python tests/test_extensions.py
+
       - name: Secret scan
         run: |
           if git grep -n -E -e '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|gh[pousr]_[A-Za-z0-9_]{20,})' -- . ':(exclude)package-lock.json'; then

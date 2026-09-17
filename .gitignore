@@ -15,6 +15,9 @@ shoot*.js
 capture.js
 shots/
 
+# sorties éphémères Playwright MCP
+/.playwright-mcp/
+
 # python
 __pycache__/
 *.pyc

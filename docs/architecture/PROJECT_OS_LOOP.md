@@ -8,6 +8,20 @@ DISCOVER → ANALYZE → PLAN → IMPLEMENT → TEST → REVIEW → SIMULATE →
 
 Chaque étape reçoit le contexte minimal utile, produit une sortie vérifiable et ne peut passer à l'étape suivante que si sa condition de passage est satisfaite.
 
+## Sous-boucle Engineering Quality
+
+Lorsqu'une tâche est routée vers la qualité du code, la sous-boucle officielle
+est :
+
+```text
+REVIEW → FINDINGS → FIX → RE-REVIEW → TEST → REGRESSION → GATE → VERIFY
+```
+
+`FIX` est séparé et report-only par défaut. Un finding bloquant, un STOP, une
+régression ou une re-review manquante empêche le gate. Les détails du contrat
+et du routing sont dans `ENGINEERING_QUALITY_FINDINGS.md` et
+`ENGINEERING_QUALITY_ROUTING.md`.
+
 ## Étapes
 
 | Étape | Responsable initial | Sortie | Preuve | Échec |

@@ -8,7 +8,9 @@
 
 ## État
 
-Le dépôt est un site catalogue Next.js. Le backend ERP n'est pas construit. La gouvernance Project OS est vérifiée ; aucune verticale métier n'est autorisée.
+Le dépôt est un site catalogue Next.js. Le backend ERP n'est pas construit. La
+gouvernance Project OS et la fondation interne Engineering Quality sont
+vérifiées ; aucune verticale métier ni intégration externe n'est autorisée.
 
 ## Règles de travail
 
@@ -23,4 +25,13 @@ Le dépôt est un site catalogue Next.js. Le backend ERP n'est pas construit. La
 
 ## Tâche active
 
-Construire et vérifier le Minimum Project OS uniquement.
+Socle Engineering Quality interne construit et vérifié. Attendre validation
+humaine avant toute intégration externe ou phase Website.
+
+## Contrat actif
+
+- Findings canoniques et routing : `scripts/validation/engineering_quality.py`.
+- Documentation : `docs/architecture/ENGINEERING_QUALITY_FINDINGS.md` et
+  `docs/architecture/ENGINEERING_QUALITY_ROUTING.md`.
+- Mode `REPORT-ONLY` ; fix séparé, re-review obligatoire.
+- Aucun nouvel agent, skill, MCP ou dépendance ajouté dans cette phase.

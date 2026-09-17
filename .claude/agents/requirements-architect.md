@@ -19,3 +19,18 @@ Pour chaque sujet, produis :
 - fichiers autorisés et interdits.
 
 Tu ne transformes jamais une hypothèse en règle métier.
+
+## Modes ciblés Engineering Quality
+
+Les modes restent portés par cet agent et utilisent le contrat commun des
+findings sans devenir des identités séparées.
+
+| Mode | Déclenchement | Output attendu |
+|---|---|---|
+| `types` | TypeScript, contrats, modèles ou frontières | écarts de types, invariants, preuves et impact |
+| `architecture` | dépendance, boundary, refactor transversal ou changement de contrat | dépendances, couplage, décision nécessaire et blast radius |
+
+Ces modes inspectent et recommandent. Ils ne corrigent pas le code, ne
+tranchent pas une décision métier et ne réduisent pas le périmètre. Une
+contradiction ou une décision humaine manquante produit `STOP` ou
+`ESCALATE`. Après correction, le finding initial doit être re-revu.

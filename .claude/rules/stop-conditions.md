@@ -26,3 +26,9 @@ Human validation required:
 ```
 
 Une boucle ou un délai ne peut jamais contourner un `STOP`.
+
+Dans une revue Engineering Quality, un contrat de finding invalide, une
+contradiction non arbitrée, un finding bloquant non résolu, une correction
+sans re-review, une régression ou une preuve de gate manquante déclenche aussi
+`STOP`. Le STOP suspend la revue, l'agrégation, les retries, la délégation,
+le fix et le parallélisme jusqu'à résolution ou décision humaine tracée.

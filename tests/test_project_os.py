@@ -35,6 +35,10 @@ REQUIRED_FILES = [
     ".claude/rules/agent-permissions.md",
     "docs/architecture/HUMAN_GATE.md",
     "docs/architecture/SYNC_POLICY.md",
+    "docs/architecture/ENGINEERING_QUALITY_FINDINGS.md",
+    "docs/architecture/ENGINEERING_QUALITY_ROUTING.md",
+    ".claude/rules/engineering-quality.md",
+    "scripts/validation/engineering_quality.py",
     "scripts/validation/project_os_check.py",
     ".github/workflows/quality.yml",
 ]
@@ -146,6 +150,14 @@ class ProjectOsTests(unittest.TestCase):
         for path in governance_files:
             content = path.read_text(encoding="utf-8")
             self.assertFalse(forbidden.search(content), path)
+
+    def test_engineering_quality_foundation_is_report_only(self):
+        rule = (ROOT / ".claude/rules/engineering-quality.md").read_text(encoding="utf-8")
+        findings = (ROOT / "docs/architecture/ENGINEERING_QUALITY_FINDINGS.md").read_text(encoding="utf-8")
+        self.assertIn("REPORT-ONLY", rule)
+        self.assertIn("re-review", rule)
+        self.assertIn("FIXED", findings)
+        self.assertIn("VERIFIED", findings)
 
 
 if __name__ == "__main__":
