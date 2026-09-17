@@ -37,7 +37,7 @@ jobs:
 
       - name: Secret scan
         run: |
-          if grep -RInE --exclude-dir=.git --exclude='package-lock.json' '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|gh[pousr]_[A-Za-z0-9_]{20,})' .; then
+          if git grep -n -E -e '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|gh[pousr]_[A-Za-z0-9_]{20,})' -- . ':(exclude)package-lock.json'; then
             echo 'Potential secret detected'
             exit 1
           fi
