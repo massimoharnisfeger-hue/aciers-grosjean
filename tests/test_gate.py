@@ -202,6 +202,35 @@ class GateTests(unittest.TestCase):
             "synchro.ps1 doit enchainer sur la publication apres un push reussi.",
         )
 
+    def test_aucun_script_ne_rend_stderr_fatal(self):
+        """S6 : `$ErrorActionPreference = 'Stop'` + `2>$null` sur une commande native = mort subite.
+
+        PowerShell 5.1 emballe chaque ligne de stderr d'un executable dans une
+        ErrorRecord quand la redirection est explicite ; sous 'Stop', cette
+        ErrorRecord devient terminante. Verifie le 22/09 : une commande native
+        qui ecrit sur stderr et sort en code 0 tue le script sous cette
+        combinaison, et le passe sans elle. `publier.ps1` lisait ses
+        identifiants ainsi — il serait mort sans message utile.
+
+        La parade est de baisser la preference autour de l'appel, pas de
+        supprimer la redirection au hasard.
+        """
+        for script in sorted(RACINE.glob("_OUTILS/*.ps1")) + sorted(RACINE.glob("scripts/**/*.ps1")):
+            texte = script.read_text(encoding="utf-8", errors="replace")
+            if "$ErrorActionPreference = 'Stop'" not in texte:
+                continue
+            fautives = [
+                l.strip()[:80]
+                for l in texte.splitlines()
+                if "2>$null" in l and not l.strip().startswith("#")
+            ]
+            self.assertEqual(
+                fautives, [],
+                f"{script.name} declare ErrorActionPreference 'Stop' et redirige stderr "
+                f"d'une commande native : le script mourra sur le premier avertissement. "
+                f"Ligne(s) : {fautives[:2]}",
+            )
+
     def test_la_ci_lance_le_registre(self):
         texte = CI.read_text(encoding="utf-8")
         self.assertIn(

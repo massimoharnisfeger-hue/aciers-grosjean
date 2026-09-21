@@ -31,7 +31,19 @@ function Jeton {
   # Une ligne par element : git credential fill lit son entree ligne par ligne et
   # exige une ligne vide finale. Une chaine unique avec des `n lui arrive collee,
   # et il repond "refusing to work with credential missing protocol field".
-  $reponse = @('protocol=https', 'host=github.com', '') | git credential fill 2>$null
+  #
+  # Pas de 2>$null ici : sous PowerShell 5.1, rediriger stderr d'une commande
+  # native emballe chaque ligne dans une ErrorRecord, et $ErrorActionPreference
+  # a 'Stop' transforme ca en erreur terminante. Le script mourrait sans message.
+  $prudent = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    $reponse = @('protocol=https', 'host=github.com', '') | git credential fill
+  } catch {
+    $reponse = @()
+  } finally {
+    $ErrorActionPreference = $prudent
+  }
   foreach ($l in $reponse) { if ($l -like 'password=*') { return $l.Substring(9) } }
   return $null
 }
@@ -70,7 +82,8 @@ $conclusion = $null
 Note "Attente du controle 'quality' sur $($sha.Substring(0,7))..."
 while ((Get-Date) -lt $limite) {
   Start-Sleep -Seconds 20
-  try { $checks = AppelGitHub GET "/repos/$depot/commits/$sha/check-runs" } catch { continue }
+  try { $checks = AppelGitHub GET "/repos/$depot/commits/$sha/check-runs" }
+  catch { continue }   # coupure reseau passagere : on retente au tour suivant
   $q = $checks.check_runs | Where-Object { $_.name -eq 'quality' } | Select-Object -First 1
   if ($q -and $q.status -eq 'completed') { $conclusion = $q.conclusion; break }
 }

@@ -204,3 +204,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : `main` protégée + aucune pull request jamais ouverte. La règle « aucun agent ne fusionne » supposait qu'un humain fusionnerait ; personne ne l'a fait, et rien ne signalait que la chaîne s'arrêtait à l'étape 3. Un garde-fou qui dépend d'un geste que personne ne fait n'est pas un garde-fou, c'est un blocage silencieux. Remplacé (ADR-0009) par un garde-fou qui s'exécute vraiment : la fusion est automatique, mais refusée si le check `quality` n'est pas vert. Risque tenable parce que cette production est la préproduction, protégée et non indexée.
 - **Contrôle** : `tests/test_gate.py::GateTests::test_la_chaine_de_publication_va_jusqu_a_vercel`
 - **Date** : 2026-09-22
+
+### L-028 — sous `ErrorActionPreference = 'Stop'`, un avertissement sur stderr tue le script
+- **Symptôme** : `publier.ps1` venait d'être commité sans avoir jamais tourné en entier. Relecture : il déclarait `$ErrorActionPreference = 'Stop'` en tête et lisait ses identifiants par `… | git credential fill 2>$null`. Mesuré le 22/09 avec une commande native inoffensive qui écrit sur stderr et sort en code 0 : sous cette combinaison le script **meurt**, sans elle il passe. Le bouton de publication serait mort sans message utile, au premier avertissement de Git.
+- **Cause** : PowerShell 5.1 emballe chaque ligne de stderr d'un exécutable dans une `ErrorRecord` dès que la redirection est explicite ; sous `Stop`, cette ErrorRecord devient terminante, même si l'exécutable a réussi. Les deux moitiés sont raisonnables séparément — `Stop` pour ne pas continuer sur une erreur, `2>$null` pour ne pas polluer la sortie — et fatales ensemble. Corrigé en baissant la préférence autour de l'appel (`try`/`finally`), pas en supprimant la redirection au hasard.
+- **Contrôle** : `tests/test_gate.py::GateTests::test_aucun_script_ne_rend_stderr_fatal`
+- **Date** : 2026-09-22
