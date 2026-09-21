@@ -1,11 +1,15 @@
 # Synchronisation du dossier "Site Aciers Grosjean" avec GitHub.
 #   -Mode auto        : (tache planifiee) recupere les nouveautes sans commit ni push automatique.
 #                       Ne cree jamais de commit, ne touche pas a un travail en cours.
-#   -Mode sauvegarder : (humain uniquement) enregistre tout (commit), recupere les nouveautes, puis envoie sur GitHub.
+#   -Mode sauvegarder : (humain uniquement) enregistre tout (commit), recupere les nouveautes,
+#                       puis envoie le travail sur une BRANCHE et affiche le lien de la pull request.
+#                       `main` est protegee cote GitHub : push direct refuse, pull request + check
+#                       « quality » obligatoires (voir docs/architecture/SYNC_POLICY.md).
 # Fichier volontairement sans accents : PowerShell 5.1 lit mal l'UTF-8 sans BOM.
 param(
   [ValidateSet('auto', 'sauvegarder')][string]$Mode = 'auto',
-  [string]$Message = ''
+  [string]$Message = '',
+  [string]$Branche = ''
 )
 
 $racine = Split-Path -Parent $PSScriptRoot
@@ -72,9 +76,26 @@ if ($enAvance -gt 0) {
     Note "AUTO-PUSH DESACTIVE : $enAvance commit(s) restent locaux. Validation humaine requise."
   }
   else {
-    git push --quiet origin $branche 2>$null
-    if ($LASTEXITCODE -eq 0) { Note "$enAvance sauvegarde(s) envoyee(s) sur GitHub : le site en ligne se met a jour" }
-    else { Note 'ENVOI IMPOSSIBLE : connexion GitHub a faire une fois (double-clic sur SAUVEGARDER.cmd)' }
+    # `main` est protegee : GitHub refuse le push direct (« Changes must be made
+    # through a pull request »). Le travail part donc sur une branche, et c'est
+    # la pull request qui, une fois le check « quality » vert, met le site a jour.
+    $brancheTravail = $Branche
+    if (-not $brancheTravail) {
+      if ($branche -ne 'main') { $brancheTravail = $branche }
+      else { $brancheTravail = 'travail/' + (Get-Date -Format 'yyyy-MM-dd-HHmm') }
+    }
+    if ($brancheTravail -ne $branche) { git branch -f $brancheTravail HEAD 2>$null }
+
+    git push --quiet -u origin ("{0}:{1}" -f $brancheTravail, $brancheTravail) 2>$null
+    if ($LASTEXITCODE -eq 0) {
+      $depot = (git remote get-url origin).Trim() -replace '\.git$', ''
+      $lien = "$depot/pull/new/$brancheTravail"
+      Note "$enAvance sauvegarde(s) envoyee(s) sur la branche $brancheTravail"
+      Note 'DERNIERE ETAPE : ouvrir la pull request, puis fusionner quand le controle « quality » est vert.'
+      Note $lien
+      Start-Process $lien -ErrorAction SilentlyContinue
+    }
+    else { Note 'ENVOI IMPOSSIBLE : verifier la connexion internet, puis la connexion GitHub (une fenetre peut s ouvrir au premier envoi).' }
   }
 }
 elseif ($enRetard -eq 0) {

@@ -162,3 +162,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le slug avait été inventé dans la page alors que `lib/edito.ts:1090` associe déjà ce libellé à `/services/soudure`. Les 32 hrefs littéraux du code n'étaient confrontés à aucune liste de pages réelles. Corrigé en reprenant la cible de `lib/edito.ts` ; le contrôle confronte désormais chaque href littéral aux pages statiques, aux chemins du catalogue et aux slugs connus.
 - **Contrôle** : `tests/test_responsive.py::LiensInternes::test_r3_chaque_href_litteral_existe`
 - **Date** : 2026-09-21
+
+### L-021 — un bouton qui echoue en annoncant la mauvaise cause envoie chercher au mauvais endroit
+- **Symptôme** : `git push origin main` refuse par GitHub le 21/09 — « Changes must be made through a pull request », « Required status check "quality" is expected ». Le bouton SAUVEGARDER, lui, affichait dans ce cas « ENVOI IMPOSSIBLE : connexion GitHub a faire une fois (double-clic sur SAUVEGARDER.cmd) » : un message qui renvoie vers une authentification qui, elle, fonctionnait parfaitement, et vers le bouton qui venait d'echouer.
+- **Cause** : le script traitait tout `$LASTEXITCODE` non nul comme un probleme d'authentification, seule cause connue a l'ecriture. Une protection de branche activee plus tard produit le meme code de sortie et un message faux. Un diagnostic code en dur vieillit mal ; il vaut mieux decrire ce qu'on ignore (« verifier la connexion internet, puis la connexion GitHub ») que nommer une cause qu'on n'a pas verifiee. Corrige en meme temps que le flux : le mode sauvegarder pousse une branche de travail, affiche et ouvre le lien de la pull request.
+- **Contrôle** : `tests/test_gate.py::GateTests::test_le_bouton_de_sauvegarde_passe_par_une_branche`
+- **Date** : 2026-09-21

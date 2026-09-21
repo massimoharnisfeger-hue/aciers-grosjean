@@ -20,6 +20,8 @@ HOOK = RACINE / "scripts" / "hooks" / "pre-commit"
 INSTALLEUR = RACINE / "scripts" / "installer-hooks.ps1"
 CI = RACINE / ".github" / "workflows" / "quality.yml"
 LANCEUR = RACINE / "tests" / "lancer.py"
+SYNCHRO = RACINE / "_OUTILS" / "synchro.ps1"
+POLITIQUE = RACINE / "docs" / "architecture" / "SYNC_POLICY.md"
 
 CONTROLE_QUI_ECHOUE = """import unittest
 
@@ -72,6 +74,50 @@ class GateTests(unittest.TestCase):
             "_OUTILS/SAUVEGARDER.cmd doit poser les hooks avant de sauvegarder, "
             "sinon le gate reste decoratif sur le poste du proprietaire.",
         )
+
+    def test_le_bouton_de_sauvegarde_passe_par_une_branche(self):
+        """S1 : `main` est protegee cote GitHub, le bouton ne peut plus la pousser.
+
+        Le 21/09, `git push origin main` a ete refuse : « Changes must be made
+        through a pull request » et « Required status check "quality" is
+        expected ». Le bouton poussait `main` en dur et, en cas de refus,
+        affichait « connexion GitHub a faire » : un message faux qui envoie le
+        proprietaire chercher un probleme d'authentification inexistant.
+
+        Le mode `sauvegarder` doit donc pousser une branche de travail et
+        donner le lien de la pull request. Le mode `auto` ne pousse toujours
+        rien (ADR-0003, `test_sync_policy_and_script_forbid_automatic_push`).
+        """
+        script = SYNCHRO.read_text(encoding="utf-8", errors="replace")
+        self.assertNotIn(
+            "git push --quiet origin $branche",
+            script,
+            "synchro.ps1 pousse encore la branche courante : sur `main`, GitHub "
+            "refuse le push et le bouton reste sans effet.",
+        )
+        self.assertIn(
+            "$brancheTravail",
+            script,
+            "Le mode sauvegarder doit pousser une branche de travail nommee, "
+            "pas la branche courante.",
+        )
+        self.assertIn(
+            "/pull/new/",
+            script,
+            "Le bouton doit afficher le lien de creation de la pull request : "
+            "sans lui, le travail dort sur une branche que personne n'ouvre.",
+        )
+
+    def test_la_politique_decrit_le_flux_par_branche(self):
+        """S2 : la politique ecrite dit ce que GitHub impose reellement."""
+        politique = POLITIQUE.read_text(encoding="utf-8", errors="replace")
+        for attendu in ("pull request", "quality"):
+            self.assertIn(
+                attendu,
+                politique,
+                f"SYNC_POLICY.md doit decrire le flux impose par GitHub "
+                f"(branche, pull request, check « quality ») : '{attendu}' absent.",
+            )
 
     def test_la_ci_lance_le_registre(self):
         texte = CI.read_text(encoding="utf-8")
