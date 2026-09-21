@@ -23,7 +23,7 @@ export default function Hero() {
           >
             <span className="h-2 w-2 rounded-full bg-jaune" />
             <span className="font-body text-xs uppercase tracking-[0.15em] text-soft">
-              Négoce &amp; transformation d'acier · depuis 40 ans
+              Négoce &amp; transformation d’acier · depuis 40 ans
             </span>
           </div>
 
@@ -31,14 +31,14 @@ export default function Hero() {
             className="apparait h-display text-[9vw] leading-[1.02] md:text-6xl lg:text-7xl"
             style={delai(0.05)}
           >
-            L'acier de pro,
+            L’acier de pro,
             <br />
             <span className="mark-jaune">accessible à tous.</span>
           </h1>
 
           <p className="apparait mt-6 max-w-md font-body text-lg text-soft" style={delai(0.15)}>
             Poutrelles, tôles, tubes, cornières, corten… Découpe sur mesure, devis en 24h et
-            retrait le jour même dans l'un de nos 4 dépôts.
+            retrait le jour même dans l’un de nos 4 dépôts.
           </p>
 
           <div className="apparait mt-8 flex flex-col gap-3 sm:flex-row" style={delai(0.25)}>

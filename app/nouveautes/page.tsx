@@ -30,7 +30,7 @@ export default function NouveautesPage() {
               <div key={u.slug}>
                 <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
                   <h2 className="h-display text-2xl md:text-3xl">{u.nom}</h2>
-                  <Link href={`/${u.slug}`} className="font-body text-sm text-encre hover:text-jaune">
+                  <Link href={`/${u.slug}`} className="lien-tactile font-body text-sm text-encre hover:text-jaune">
                     Voir tout l&apos;univers →
                   </Link>
                 </div>

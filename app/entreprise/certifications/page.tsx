@@ -30,15 +30,15 @@ export default function CertificationsPage() {
             <Reveal>
               <h2 className="h-display text-2xl md:text-3xl">Ce que couvre la norme</h2>
               <p className="mt-5 font-body text-lg leading-[1.75] text-soft">
-                L'EN 1090 encadre l'exécution des structures en acier et en aluminium destinées à
+                L’EN 1090 encadre l’exécution des structures en acier et en aluminium destinées à
                 la construction. Elle impose un système de contrôle de production en usine, la
                 qualification des soudeurs et des modes opératoires de soudage, et la traçabilité
                 des matériaux employés.
               </p>
               <p className="mt-4 font-body text-lg leading-[1.75] text-soft">
                 La mention <strong className="text-encre">Exc2</strong> désigne la classe
-                d'exécution. C'est celle qui couvre la grande majorité des ouvrages courants de
-                bâtiment, au-dessus de l'Exc1 réservée aux structures les moins sollicitées.
+                d’exécution. C’est celle qui couvre la grande majorité des ouvrages courants de
+                bâtiment, au-dessus de l’Exc1 réservée aux structures les moins sollicitées.
               </p>
             </Reveal>
 
@@ -61,12 +61,12 @@ export default function CertificationsPage() {
 
             <Reveal delay={0.06}>
               <aside className="mt-12 rounded-2xl border-l-4 border-jaune bg-nuage p-6">
-                <p className="h-title font-semibold text-encre">Un point d'honnêteté</p>
+                <p className="h-title font-semibold text-encre">Un point d’honnêteté</p>
                 <p className="mt-2 font-body leading-relaxed text-soft">
                   La certification couvre notre atelier de transformation. Elle ne remplace pas la
-                  note de calcul : dès qu'une pièce reprend une charge de structure, le
-                  dimensionnement relève d'un bureau d'études ou d'un architecte. Nous fournissons
-                  la matière, les cotes et la traçabilité ; le calcul, c'est leur métier.
+                  note de calcul : dès qu’une pièce reprend une charge de structure, le
+                  dimensionnement relève d’un bureau d’études ou d’un architecte. Nous fournissons
+                  la matière, les cotes et la traçabilité ; le calcul, c’est leur métier.
                 </p>
               </aside>
             </Reveal>

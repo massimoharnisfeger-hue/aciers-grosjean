@@ -84,9 +84,14 @@ def main():
         errors.append("generated catalogue contract is incomplete")
 
     ci = (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
-    for forbidden in ("  push:", "git push", "git commit", "vercel", "npm publish"):
+    # `push:` est un DECLENCHEUR, pas une operation de publication : il dit
+    # quand la CI se lance, pas ce qu'elle fait. L'avoir range parmi les
+    # interdits privait le seul chemin qui deploie de toute verification.
+    for forbidden in ("git push", "git commit", "vercel", "npm publish"):
         if forbidden in ci:
             errors.append(f"CI contains forbidden publication operation: {forbidden}")
+    if "push:" not in ci or "branches: [main]" not in ci:
+        errors.append("CI does not run on the production path (push on main)")
 
     precedence = (ROOT / ".claude/rules/precedence.md").read_text(encoding="utf-8")
     if "Sécurité critique et conditions d'arrêt" not in precedence:

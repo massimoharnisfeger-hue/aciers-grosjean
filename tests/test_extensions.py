@@ -15,41 +15,6 @@ from scripts.validation.extensions_check import (  # noqa: E402
 )
 
 
-ALLOWED_CHANGED_PREFIXES = (
-    ".agents/skills/",
-    ".claude/rules/external-capabilities.md",
-    ".claude/rules/engineering-quality.md",
-    ".claude/rules/stop-conditions.md",
-    ".claude/rules/change-policy.md",
-    ".claude/rules/agent-permissions.md",
-    ".claude/agents/orchestrator.md",
-    ".claude/agents/requirements-architect.md",
-    ".claude/agents/builder.md",
-    ".claude/agents/tester-reviewer.md",
-    ".claude/agents/data-guardian.md",
-    ".claude/skills/frontend-design/",
-    ".claude/skills/ui-ux-pro-max/",
-    ".github/workflows/quality.yml",
-    ".gitignore",
-    ".mcp.json",
-    "docs/architecture/EXTENSION_DISCOVERY.md",
-    "docs/architecture/EXTERNAL_CAPABILITIES.md",
-    "docs/architecture/ENGINEERING_QUALITY_",
-    "docs/architecture/PROJECT_OS_LOOP.md",
-    "memory/EXTENSIONS.md",
-    "memory/ACTIVE_CONTEXT.md",
-    "project-state/CURRENT_STATE.md",
-    "project-state/TEST_STATUS.md",
-    "_JOURNAL/2026-09-17.md",
-    "_CONVERSATIONS/2026-09-17_engineering-quality-foundation.md",
-    "scripts/validation/extensions_check.py",
-    "scripts/validation/project_os_check.py",
-    "scripts/validation/engineering_quality.py",
-    "scripts/validation/engineering_quality_check.py",
-    "tests/test_extensions.py",
-    "tests/test_engineering_quality.py",
-    "tests/test_project_os.py",
-)
 
 
 class ExtensionTests(unittest.TestCase):
@@ -115,7 +80,20 @@ class ExtensionTests(unittest.TestCase):
         ):
             self.assertIn(value, content)
 
-    def test_working_tree_changes_are_allowed_and_no_deletion(self):
+    def test_no_tracked_file_is_deleted_in_the_working_tree(self):
+        """Aucun fichier suivi ne doit avoir disparu du working tree.
+
+        Reserve declaree (voir L-005) : ce controle lit le `git status` du
+        poste. En CI, sur un checkout neuf, il n'inspecte rien et passe au vert
+        par vacuite. C'est un garde LOCAL, utile avant un commit, pas une
+        preuve a distance. Mesure du 21/09 : 26 chemins inspectes en local.
+
+        L'ancienne version exigeait en plus que chaque chemin modifie figure
+        dans une liste blanche ecrite le 17/09. Cette liste etait un instantane
+        d'une seance : toute journee de travail normale la rendait rouge, et un
+        controle rouge en permanence finit par etre ignore, y compris quand il
+        a raison (defaut B3, lecon L-011).
+        """
         result = subprocess.run(
             ["git", "status", "--short", "--untracked-files=all"],
             cwd=ROOT,
@@ -123,13 +101,17 @@ class ExtensionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        for line in result.stdout.splitlines():
-            self.assertFalse(line[:2].strip().startswith("D"), line)
-            path = line[3:].strip().strip('"')
-            self.assertTrue(
-                any(path == prefix or path.startswith(prefix) for prefix in ALLOWED_CHANGED_PREFIXES),
-                f"non-allowed working-tree change: {path}",
-            )
+        supprimes = [
+            line[3:].strip().strip('"')
+            for line in result.stdout.splitlines()
+            if line[:2].strip().startswith("D")
+        ]
+        self.assertEqual(
+            supprimes,
+            [],
+            f"Fichiers suivis supprimes du working tree : {supprimes}. "
+            f"Une suppression se decide, elle ne se constate pas.",
+        )
 
 
 if __name__ == "__main__":

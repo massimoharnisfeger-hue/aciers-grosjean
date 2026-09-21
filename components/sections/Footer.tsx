@@ -13,7 +13,7 @@ function Colonne({ titre, liens }: { titre: string; liens: { label: string; href
       <ul className="space-y-2">
         {liens.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="font-body text-sm text-soft-light transition-colors hover:text-jaune">
+            <Link href={l.href} className="lien-tactile font-body text-sm text-soft-light transition-colors hover:text-jaune">
               {l.label}
             </Link>
           </li>
@@ -50,12 +50,12 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2 font-body text-sm text-soft-light">
                 <li>
-                  <a href={lienTel(site.tel)} className="transition-colors hover:text-jaune">
+                  <a href={lienTel(site.tel)} className="lien-tactile transition-colors hover:text-jaune">
                     {site.tel}
                   </a>
                 </li>
                 <li>
-                  <a href={`mailto:${site.email}`} className="transition-colors hover:text-jaune">
+                  <a href={`mailto:${site.email}`} className="lien-tactile transition-colors hover:text-jaune">
                     {site.email}
                   </a>
                 </li>
@@ -66,7 +66,7 @@ export default function Footer() {
               <h3 className="h-title mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white/55">
                 Certification
               </h3>
-              <Link href="/entreprise/certifications" className="tag-stock">EN 1090-Exc2</Link>
+              <Link href="/entreprise/certifications" className="lien-tactile tag-stock">EN 1090-Exc2</Link>
               <p className="mt-3 font-body text-xs leading-relaxed text-white/45">
                 La norme européenne des structures en acier, que nos concurrents directs
                 n&apos;affichent pas.
@@ -119,7 +119,7 @@ export default function Footer() {
               ["Mentions légales", "/mentions-legales"],
             ].map(([l, h]) => (
               <li key={h}>
-                <Link href={h} className="font-body text-xs text-white/45 transition-colors hover:text-jaune">
+                <Link href={h} className="lien-tactile font-body text-xs text-white/45 transition-colors hover:text-jaune">
                   {l}
                 </Link>
               </li>

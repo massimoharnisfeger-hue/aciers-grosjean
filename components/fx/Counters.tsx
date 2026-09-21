@@ -26,7 +26,7 @@ function Counter({ value, suffixe, label, i }: { value: number; suffixe: string;
 
   return (
     <div ref={ref} className="text-center">
-      <div className="h-title text-5xl font-bold text-encre md:text-6xl">
+      <div className="h-title text-4xl font-bold tabular-nums text-encre sm:text-5xl md:text-6xl">
         {n}
         {suffixe}
       </div>

@@ -10,6 +10,7 @@ Répondre en français, simplement : le propriétaire du projet n'est pas dével
 1. Lire `_LISEZ-MOI.md`, le dernier fichier de `_JOURNAL/` et la dernière conversation de `_CONVERSATIONS/`.
 2. Récupérer les nouveautés : `git pull --ff-only` (sur le PC : `powershell -File _OUTILS/synchro.ps1`), selon `docs/architecture/SYNC_POLICY.md`.
 3. Sur le PC : regarder `_DEPOT/` (nouveaux fichiers à intégrer ?). Ce dossier n'existe pas dans les sessions web.
+4. **Avant de poser une question au propriétaire, lire `docs/decisions/`.** Une question qui a un ADR ne se repose jamais : on lit la décision, on l'applique, on continue. Une décision prise pendant la séance s'y écrit au gabarit de `docs/decisions/README.md` ; `tests/test_decisions.py` refuse un ADR mal formé ou une référence `ADR-NNNN` qui ne mène à rien.
 
 ## Règles de code
 - `lib/catalogue.ts` est **généré** par `scripts/generer-catalogue.py`. Toute modification à la main doit être reportée dans le générateur.
@@ -22,9 +23,10 @@ Répondre en français, simplement : le propriétaire du projet n'est pas dével
 - Ne jamais inventer de coordonnées, prix, certifications ou avis clients.
 
 ## Vérifier avant d'envoyer
-- Sur le PC, **ne jamais lancer `npm install` dans ce dossier** : il est synchronisé par OneDrive (des dizaines de milliers de fichiers, verrous pendant l'installation).
-  `powershell -File _OUTILS/site-local.ps1 -Mode verifier` copie le code dans `%LOCALAPPDATA%\SiteAciersGrosjean\build`, installe, puis lance `tsc` et `next build`.
+- Sur le PC, le dépôt vit dans `C:\Users\massi\Projects\aciers-grosjean` depuis le 21/09/2026 (ADR-0005, contrôlé par `tests/test_emplacement.py`). `npm ci`, `npm run build` et `npm test` s'y lancent directement. Seul `_DEPOT/` reste dans OneDrive, monté par une jonction.
+  `powershell -File _OUTILS/site-local.ps1 -Mode verifier` reste disponible (copie dans `%LOCALAPPDATA%\SiteAciersGrosjean\build`).
 - Dans une session web : `npm ci && npm run typecheck && npm run build`.
+- Responsive : `python scripts/qa/balayage-responsive.py --urls <liste> --interactif` sur le site démarré (port 3000) balaie 320 → 1280 px dans Chromium ; par moitiés de largeurs si la mémoire manque. Rapport et matrice : `_DOCS/QA-RESPONSIVE.md`.
 
 ## Images
 Dépôt : `_DEPOT/images/<lot>/`, lots décrits dans `_DOCS/BESOINS-IMAGES.md`.
@@ -68,6 +70,35 @@ Brief : `_DOCS/BRIEF-RENDUS-3D.md` (ordre des familles, périmètre de 477 fiche
   - vidéo de présentation avec Motion (connecteur claude.ai, crédits payants) à partir des photos studio et en situation, pour les réseaux sociaux et l'accueil ;
   - animation par IA (Higgsfield) seulement sur les photos studio et en situation, **jamais** sur les visuels à chiffres, que l'IA déforme ;
   - sur le site : boucles courtes et légères, chargées seulement à l'affichage.
+
+## Quand quelque chose casse (obligatoire)
+
+Toute erreur constatée — par Claude, par un agent ou par le propriétaire — devient un **contrôle
+exécutable**, écrit **avant** la correction, dans la même séance. Un défaut vu **une** fois, pas deux.
+
+1. Écrire le contrôle dans `tests/` et le voir **rouge**.
+2. Corriger. Le voir **vert**.
+3. Inscrire la leçon dans `_DOCS/LECONS.md` avec l'ID du contrôle qui l'attrape.
+4. Vérifier avec `python tests/lancer.py`.
+
+Un contrôle rouge se corrige, il ne se supprime pas et ne se désactive pas : le nombre de contrôles
+ne diminue jamais (`tests/socle.json`). Une correction n'est jamais déclarée faite tant que son
+contrôle n'est pas passé du rouge au vert.
+
+## Publier a chaque modification terminee (obligatoire, demande du 22/09/2026)
+
+Une modification finie ne reste pas sur le PC. Des qu'un lot de travail est termine et vert
+(`python tests/lancer.py`), il part : commit, puis `_OUTILS/SAUVEGARDER.cmd` (ou
+`synchro.ps1 -Mode sauvegarder`), qui pousse la branche et ouvre la pull request.
+
+« Poussé » ne veut pas dire « en ligne ». La chaîne complète est : commit → branche → pull request
+→ check « quality » vert → **fusion humaine dans `main`** → déploiement Vercel de production.
+Seule la fusion déclenche la mise en ligne, et elle appartient au propriétaire : aucun agent ne
+fusionne. Après le push, donner le lien de la PR et celui du déploiement Vercel de la branche
+(chaque push en produit un, consultable avant la fusion).
+
+Garde : `tests/test_gate.py::GateTests::test_la_regle_de_publication_continue_est_ecrite`.
+Chaîne détaillée : `docs/architecture/SYNC_POLICY.md`.
 
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.

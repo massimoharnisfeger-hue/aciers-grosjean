@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import type { Produit } from "@/lib/catalogue";
-import { site } from "@/lib/content";
 
 const eur = (v: number) =>
   v.toLocaleString("fr-BE", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
@@ -42,9 +42,8 @@ export default function Calculateur({ p }: { p: Produit }) {
     .filter(Boolean)
     .join("\n");
 
-  const mailto = `mailto:${site.email}?subject=${encodeURIComponent(
-    `Demande de prix — ${p.nom}`
-  )}&body=${encodeURIComponent(corps)}`;
+  // L'estimation part au formulaire de devis, qui l'envoie par le serveur (ADR-0006) :
+  // ouvrir la messagerie du visiteur perdait la demande sur un telephone sans client mail.
 
   return (
     <div className="rounded-2xl border border-brume bg-nuage p-6">
@@ -113,12 +112,12 @@ export default function Calculateur({ p }: { p: Produit }) {
         )}
       </dl>
 
-      <a href={mailto} className="btn-cta mt-6 w-full justify-center">
+      <Link href={`/devis?details=${encodeURIComponent(corps)}`} className="btn-cta mt-6 w-full justify-center">
         Confirmer ce prix en 24 h
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      </a>
+      </Link>
 
       <p className="mt-3 font-body text-xs leading-relaxed text-soft">
         Estimation calculée sur le prix du catalogue, hors supplément de découpe. L&apos;acier

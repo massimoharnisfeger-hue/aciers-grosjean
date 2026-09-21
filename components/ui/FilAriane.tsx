@@ -20,13 +20,13 @@ export default function FilAriane({ items, sombre = false }: { items: Miette[]; 
       <nav aria-label="Fil d'Ariane" className="overflow-x-auto">
         <ol className={`flex whitespace-nowrap font-body text-xs ${sombre ? "text-white/60" : "text-soft"}`}>
           <li>
-            <Link href="/" className={sombre ? "hover:text-jaune" : "hover:text-encre"}>Accueil</Link>
+            <Link href="/" className={`lien-tactile ${sombre ? "hover:text-jaune" : "hover:text-encre"}`}>Accueil</Link>
           </li>
           {items.map((m, i) => (
-            <li key={i} className="flex">
+            <li key={i} className="flex items-center">
               <span className={`mx-2 ${sombre ? "text-white/25" : "text-brume"}`} aria-hidden="true">/</span>
               {m.href && i < items.length - 1 ? (
-                <Link href={m.href} className={sombre ? "hover:text-jaune" : "hover:text-encre"}>
+                <Link href={m.href} className={`lien-tactile ${sombre ? "hover:text-jaune" : "hover:text-encre"}`}>
                   {m.label}
                 </Link>
               ) : (

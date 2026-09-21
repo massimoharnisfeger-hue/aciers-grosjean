@@ -19,7 +19,7 @@ function Bloc({ titre, liens }: { titre: string; liens: { label: string; href: s
       <ul className="space-y-2">
         {liens.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="font-body text-sm text-encre hover:text-jaune">
+            <Link href={l.href} className="lien-tactile font-body text-sm text-encre hover:text-jaune">
               {l.label}
             </Link>
           </li>
@@ -46,7 +46,7 @@ export default function PlanDuSitePage() {
             {univers.map((u) => (
               <div key={u.slug} className="rounded-2xl border border-brume p-6 md:p-8">
                 <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-brume pb-4">
-                  <Link href={`/${u.slug}`} className="h-title text-xl font-semibold text-encre hover:text-jaune">
+                  <Link href={`/${u.slug}`} className="lien-tactile h-title text-xl font-semibold text-encre hover:text-jaune">
                     {u.nom}
                   </Link>
                   <span className="font-mono text-xs text-soft">
@@ -61,14 +61,14 @@ export default function PlanDuSitePage() {
                     const sous = f.enfants.map((c) => noeuds[c]).filter(Boolean);
                     return (
                       <div key={fc}>
-                        <Link href={f.chemin} className="h-title font-semibold text-encre hover:text-jaune">
+                        <Link href={f.chemin} className="lien-tactile h-title font-semibold text-encre hover:text-jaune">
                           {f.nom}
                         </Link>
                         {sous.length > 0 && (
                           <ul className="mt-2 space-y-1.5 border-l border-brume pl-4">
                             {sous.map((s) => (
                               <li key={s.chemin}>
-                                <Link href={s.chemin} className="font-body text-sm text-soft hover:text-encre">
+                                <Link href={s.chemin} className="lien-tactile font-body text-sm text-soft hover:text-encre">
                                   {s.nom}
                                   <span className="ml-1.5 font-mono text-[11px]">
                                     {produitsSous(s.chemin).length}

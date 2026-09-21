@@ -20,7 +20,7 @@ export default function ContactPage() {
         surtitre="Contact"
         titre={
           <>
-            Quelqu'un <span className="mark-jaune">répond vraiment</span>
+            Quelqu’un <span className="mark-jaune">répond vraiment</span>
           </>
         }
         intro="Pas de formulaire qui disparaît dans le vide. Un téléphone, une adresse e-mail, quatre comptoirs — et des gens qui connaissent la matière."

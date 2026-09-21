@@ -4,9 +4,21 @@
 /build
 next-env.d.ts
 *.tsbuildinfo
-.env*.local
 .DS_Store
 install.log
+
+# secrets : le depot est PUBLIC et SAUVEGARDER.cmd fait `git add -A` puis push
+# sans revue de diff. Une cle oubliee ici part en ligne en un double-clic.
+# Garde par tests/test_depot.py, qui interroge `git check-ignore`.
+.env
+.env.*
+!.env.example
+.vercel/
+.claude/settings.local.json
+*.pem
+*.key
+*.p12
+*.pfx
 
 # fichiers de travail locaux
 dev.log

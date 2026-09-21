@@ -18,7 +18,7 @@ export default function AProposPage() {
     <main>
       <PageHeader
         surtitre="À propos"
-        titre={<>40 ans à rendre l'acier <span className="mark-jaune">accessible</span></>}
+        titre={<>40 ans à rendre l’acier <span className="mark-jaune">accessible</span></>}
       />
 
       <section className="bg-white py-20 md:py-28">

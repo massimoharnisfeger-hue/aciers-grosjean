@@ -21,7 +21,7 @@ export default function ConseilsPage() {
         surtitre="Conseils"
         titre={
           <>
-            Les réponses qu'on donne <span className="mark-jaune">au comptoir</span>
+            Les réponses qu’on donne <span className="mark-jaune">au comptoir</span>
           </>
         }
         intro="Guides d'achat, fiches matière, analyses de marché. Écrits par des gens qui vendent l'acier tous les jours, pas par une agence."
@@ -44,7 +44,7 @@ export default function ConseilsPage() {
                 <h2 className="h-display mt-4 text-3xl leading-tight text-white md:text-4xl">{une.titre}</h2>
                 <p className="mt-4 font-body text-soft-light">{une.chapo}</p>
                 <span className="on-encre-jaune mt-7 inline-flex items-center gap-2 font-body text-sm font-medium">
-                  Lire l'article
+                  Lire l’article
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
                     className="transition-transform group-hover:translate-x-1">
                     <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />

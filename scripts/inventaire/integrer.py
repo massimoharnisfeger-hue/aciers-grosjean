@@ -141,7 +141,83 @@ def blocs_description(html_bloc):
             propres.append({"t": "ul", "items": [x for x in morceaux[1:] if x]})
         else:
             propres.append(b)
-    return propres
+    return structurer(propres)
+
+
+# Le site source met chaque puce dans son propre <p> et ses intertitres en <p> nu
+# (« Points forts », « Caractéristiques Techniques »...). Le 21/09, 4 776 blocs
+# sur 4 776 sortaient en paragraphes. Controle : tests/test_produit.py (D1-D3).
+MARQUEUR_PUCE = re.compile(r"^\s*(?:[•\-–·▪]|\d{1,2}[.)])\s+(.*)$")
+LEXIQUE_TITRE = re.compile(
+    r"caract[ée]ristique|sp[ée]cification|utilisation|application|usage|exemple|domaine"
+    r"|point[s]? fort|avantage|atout|b[ée]n[ée]fice|conseil|service|description|pr[ée]sentation"
+    r"|dimension|finition|norme|composition|mise en [oœ]uvre|entretien|livraison|garantie",
+    re.I,
+)
+
+
+# « Finition Brossée Grain 320 », « Usage Intérieur et extérieur », « Caractéristique Détail » :
+# un libellé au singulier suivi d'une valeur en majuscule est une ligne de tableau aplati, pas un titre.
+LIBELLE_VALEUR = re.compile(
+    r"^(finition|usage|longueurs?|poids|mati[èe]re|mat[ée]riau|[ée]paisseur|largeur|hauteur|diam[èe]tre"
+    r"|section|caract[ée]ristique|dimension|norme|couleur|profil)\s+[A-ZÉÈ0-9]",
+    re.I,
+)
+
+
+def ressemble_a_un_titre(texte, suivant):
+    """Court, sans ponctuation de phrase, pas une donnee ni une ligne « libellé valeur », et suivi de contenu."""
+    t = texte.strip().rstrip(" :")
+    if not (3 <= len(t) <= 60) or t.endswith((".", "!", "?", ";")):
+        return False
+    mots = t.split()
+    if LIBELLE_VALEUR.match(t) and len(mots) >= 3 and not re.match(r"^caract[ée]ristiques", t, re.I):
+        return False
+    if re.search(r"\d", t) and not LEXIQUE_TITRE.search(t):
+        return False
+    if LEXIQUE_TITRE.search(t):
+        return len(mots) <= 8
+    # un intertitre sans mot du lexique : seulement s'il precede une liste, et s'il en a la forme
+    # (pas une phrase d'accroche : « Grâce à ses propriétés, la tôle striée est très polyvalente »)
+    return bool(suivant) and bool(MARQUEUR_PUCE.match(suivant)) and len(mots) <= 6 and "," not in t
+
+
+def structurer(blocs):
+    """Puces par paragraphe -> items d'une meme liste ; <p> courts -> intertitres."""
+    resultat = []
+    i = 0
+    while i < len(blocs):
+        b = blocs[i]
+        if b["t"] != "p":
+            resultat.append(b)
+            i += 1
+            continue
+        # un paragraphe reduit a son marqueur (« • » seul) : une puce vide du site source
+        if re.fullmatch(r"\s*(?:[•\-–·▪]|\d{1,2}[.)])\s*", b["texte"]):
+            i += 1
+            continue
+        m = MARQUEUR_PUCE.match(b["texte"])
+        if m:
+            items = []
+            while i < len(blocs) and blocs[i]["t"] == "p" and MARQUEUR_PUCE.match(blocs[i]["texte"]):
+                items.append(MARQUEUR_PUCE.match(blocs[i]["texte"]).group(1).strip())
+                i += 1
+            if resultat and resultat[-1]["t"] == "ul":
+                resultat[-1]["items"].extend(items)
+            else:
+                resultat.append({"t": "ul", "items": items})
+            continue
+        suivant = blocs[i + 1]["texte"] if i + 1 < len(blocs) and blocs[i + 1]["t"] == "p" else ""
+        if ressemble_a_un_titre(b["texte"], suivant):
+            titre = re.sub(r"^[^\w«\"']+", "", b["texte"].strip()).rstrip(" :")
+            # « Caractéristique Détail » : en-tête d'un tableau a deux colonnes aplati par le site source.
+            if re.fullmatch(r"caract[ée]ristique\s+d[ée]tail", titre, re.I):
+                titre = "Caractéristiques"
+            resultat.append({"t": "h", "texte": titre})
+        else:
+            resultat.append(b)
+        i += 1
+    return resultat
 
 
 def description(cle):

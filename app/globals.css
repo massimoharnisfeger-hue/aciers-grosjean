@@ -98,6 +98,8 @@ body{
 
 }
 
+/* Lien texte avec une boite d'au moins 24 px (WCAG 2.2, 2.5.8) sans changer son rendu. Controle : tests/test_responsive.py (R2). */
+.lien-tactile{display:inline-flex;align-items:center;min-height:24px;min-width:24px}
 .container-g{max-width:80rem;margin-inline:auto;padding-inline:1.25rem}
 @media(min-width:768px){.container-g{padding-inline:2rem}}
 

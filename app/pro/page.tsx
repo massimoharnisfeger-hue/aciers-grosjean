@@ -87,8 +87,8 @@ export default function ProPage() {
             <div className="rounded-2xl border border-brume p-8">
               <h2 className="h-title text-lg font-semibold text-encre">Vous avez déjà un compte</h2>
               <p className="mt-2 font-body text-soft">
-                Les commandes se passent aujourd'hui par téléphone ou par e-mail auprès de votre
-                interlocuteur habituel — c'est souvent plus rapide qu'un formulaire.
+                Les commandes se passent aujourd’hui par téléphone ou par e-mail auprès de votre
+                interlocuteur habituel — c’est souvent plus rapide qu’un formulaire.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/pro/connexion" className="btn-ghost">Accès au compte</Link>
