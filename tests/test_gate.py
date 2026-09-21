@@ -164,10 +164,42 @@ class GateTests(unittest.TestCase):
             claude,
             "CLAUDE.md doit porter la regle de publication continue demandee le 22/09.",
         )
-        script = SYNCHRO.read_text(encoding="utf-8", errors="replace")
+        chaine = SYNCHRO.read_text(encoding="utf-8", errors="replace") + (
+            RACINE / "scripts" / "publier.ps1"
+        ).read_text(encoding="utf-8", errors="replace")
         self.assertIn(
-            "vercel.com", script,
-            "synchro.ps1 doit renvoyer vers le suivi du deploiement : pousser n'est pas publier.",
+            "vercel.com", chaine,
+            "La chaine de publication doit renvoyer vers le suivi du deploiement : "
+            "pousser n'est pas publier.",
+        )
+        self.assertIn(
+            "aciers-grosjean.vercel.app", chaine,
+            "Elle doit donner l'adresse stable a regarder, pas seulement le tableau de bord.",
+        )
+
+    def test_la_chaine_de_publication_va_jusqu_a_vercel(self):
+        """S5 : le bouton publie, il ne depose pas.
+
+        Demande du proprietaire le 22/09 : « a chaque fois qu'il y a une
+        modification, je le vois directement via Vercel ». Or la production
+        Vercel ne bouge qu'a une fusion dans `main` : pousser une branche ne
+        change rien a ce qu'il voit. La chaine doit donc aller jusqu'au bout —
+        pull request, attente du check « quality », fusion — et ne fusionner
+        que sur un check vert (ADR-0009).
+        """
+        publieur = RACINE / "scripts" / "publier.ps1"
+        self.assertTrue(publieur.exists(), "scripts/publier.ps1 manquant : la chaine s'arrete au push.")
+        texte = publieur.read_text(encoding="utf-8", errors="replace")
+        for attendu, pourquoi in (
+            ("/pulls", "creer la pull request"),
+            ("check-runs", "lire l'etat du check « quality »"),
+            ("/merge", "fusionner"),
+            ("success", "ne fusionner que sur un check vert"),
+        ):
+            self.assertIn(attendu, texte, f"publier.ps1 doit {pourquoi} (« {attendu} » absent).")
+        self.assertIn(
+            "publier.ps1", SYNCHRO.read_text(encoding="utf-8", errors="replace"),
+            "synchro.ps1 doit enchainer sur la publication apres un push reussi.",
         )
 
     def test_la_ci_lance_le_registre(self):

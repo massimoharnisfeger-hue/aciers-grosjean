@@ -97,11 +97,15 @@ if ($enAvance -gt 0) {
     if ($LASTEXITCODE -eq 0) {
       $depot = (git remote get-url origin).Trim() -replace '\.git$', ''
       $lien = "$depot/pull/new/$brancheTravail"
-      Note "$enAvance sauvegarde(s) envoyee(s) sur la branche $brancheTravail"
-      Note 'DERNIERE ETAPE : ouvrir la pull request, puis fusionner quand le controle "quality" est vert.'
-      Note $lien
-      Note 'Deploiement de cette branche (avant fusion) : https://vercel.com/massimoharnisfeger-hues-projects/aciers-grosjean'
-      Note 'Le site de production ne change qu a la fusion dans main.'
+      Note "$enAvance sauvegarde(s) sur la branche $brancheTravail"
+      Note "Pull request : $lien"
+      # Pousser ne suffit pas : la production Vercel ne bouge qu a la fusion dans main.
+      # publier.ps1 cree la PR, attend le controle "quality" et ne fusionne que s il est vert.
+      $publieur = Join-Path $racine 'scripts\publier.ps1'
+      if (Test-Path -LiteralPath $publieur) {
+        & powershell -NoProfile -ExecutionPolicy Bypass -File $publieur -Branche $brancheTravail
+      }
+      else { Note 'scripts\publier.ps1 introuvable : fusionner a la main depuis la pull request.' }
       Start-Process $lien -ErrorAction SilentlyContinue
     }
     else {

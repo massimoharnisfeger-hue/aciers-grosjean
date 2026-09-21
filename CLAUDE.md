@@ -91,11 +91,13 @@ Une modification finie ne reste pas sur le PC. Des qu'un lot de travail est term
 (`python tests/lancer.py`), il part : commit, puis `_OUTILS/SAUVEGARDER.cmd` (ou
 `synchro.ps1 -Mode sauvegarder`), qui pousse la branche et ouvre la pull request.
 
-« Poussé » ne veut pas dire « en ligne ». La chaîne complète est : commit → branche → pull request
-→ check « quality » vert → **fusion humaine dans `main`** → déploiement Vercel de production.
-Seule la fusion déclenche la mise en ligne, et elle appartient au propriétaire : aucun agent ne
-fusionne. Après le push, donner le lien de la PR et celui du déploiement Vercel de la branche
-(chaque push en produit un, consultable avant la fusion).
+La chaîne va jusqu'au bout toute seule : commit → branche → pull request → check « quality » →
+**fusion si le check est vert** → déploiement Vercel de production (ADR-0009). Une fusion sur un
+check rouge, ou pendant qu'il tourne, est refusée : c'est le seul garde-fou, il ne se contourne pas.
+
+**L'adresse à donner au propriétaire, toujours la même : https://aciers-grosjean.vercel.app.**
+Elle se met à jour 2 à 3 minutes après la fusion. Le site réel www.aciersgrosjean.be n'est pas
+touché. Après publication, dire ce qui est en ligne et depuis quel commit.
 
 Garde : `tests/test_gate.py::GateTests::test_la_regle_de_publication_continue_est_ecrite`.
 Chaîne détaillée : `docs/architecture/SYNC_POLICY.md`.

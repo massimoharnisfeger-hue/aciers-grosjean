@@ -58,7 +58,11 @@ La CI vérifie le code et les preuves ; elle ne vaut ni merge, ni release, ni de
    sur une branche (`travail/AAAA-MM-JJ-HHMM` par defaut, ou celle passee par `-BrancheCible`) ;
 2. le script affiche et ouvre le lien de creation de la pull request ;
 3. la CI execute le check « quality » (typecheck, lint, build, registre des controles) ;
-4. un humain fusionne : c'est ce merge, et lui seul, qui declenche le deploiement Vercel.
+4. `scripts/publier.ps1` fusionne **si et seulement si** le check est vert — c'est ce merge qui
+   declenche le deploiement Vercel de production (ADR-0009, demande du 22/09).
 
-Aucun agent ne fusionne une pull request. Le mode `auto` ne pousse toujours rien.
-Garde : `tests/test_gate.py::GateTests::test_le_bouton_de_sauvegarde_passe_par_une_branche`.
+Une fusion sur un check rouge, ou pendant qu'il tourne, est refusee. Le mode `auto` ne pousse
+toujours rien et ne fusionne jamais (ADR-0003). L'adresse a regarder est
+https://aciers-grosjean.vercel.app ; le site reel www.aciersgrosjean.be n'est pas touche.
+Gardes : `tests/test_gate.py::GateTests::test_le_bouton_de_sauvegarde_passe_par_une_branche`
+et `::test_la_chaine_de_publication_va_jusqu_a_vercel`.

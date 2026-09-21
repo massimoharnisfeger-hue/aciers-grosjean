@@ -198,3 +198,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : la fin de session exigeait un commit, pas une publication. La chaîne réelle (commit → branche → PR → check vert → **fusion humaine** → Vercel) n'était écrite nulle part, donc personne ne voyait qu'elle s'arrêtait à l'étape 3. Corrigé par une règle explicite dans `CLAUDE.md` et par un `synchro.ps1` qui donne le lien de la PR **et** celui du déploiement de branche, en disant que seule la fusion change la production.
 - **Contrôle** : `tests/test_gate.py::GateTests::test_la_regle_de_publication_continue_est_ecrite`
 - **Date** : 2026-09-22
+
+### L-027 — une revue humaine qui n'a jamais lieu ne protège rien
+- **Symptôme** : cinq jours de travail invisibles pour le propriétaire. La production Vercel était restée à `54d93a2` (17/09) alors que quatorze commits attendaient sur une branche ; ses captures du 22/09 montraient des défauts corrigés la veille, et il croyait voir mon travail.
+- **Cause** : `main` protégée + aucune pull request jamais ouverte. La règle « aucun agent ne fusionne » supposait qu'un humain fusionnerait ; personne ne l'a fait, et rien ne signalait que la chaîne s'arrêtait à l'étape 3. Un garde-fou qui dépend d'un geste que personne ne fait n'est pas un garde-fou, c'est un blocage silencieux. Remplacé (ADR-0009) par un garde-fou qui s'exécute vraiment : la fusion est automatique, mais refusée si le check `quality` n'est pas vert. Risque tenable parce que cette production est la préproduction, protégée et non indexée.
+- **Contrôle** : `tests/test_gate.py::GateTests::test_la_chaine_de_publication_va_jusqu_a_vercel`
+- **Date** : 2026-09-22
