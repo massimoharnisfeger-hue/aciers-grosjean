@@ -150,6 +150,26 @@ class GateTests(unittest.TestCase):
                 f"(branche, pull request, check « quality ») : '{attendu}' absent.",
             )
 
+    def test_la_regle_de_publication_continue_est_ecrite(self):
+        """S4 : « chaque modification finie part sur GitHub et Vercel » (demande du 22/09).
+
+        La regle ne vaut que si elle est ecrite la ou une seance la lit, et si
+        le bouton sait dire ou en est le deploiement. Sans verification, « c'est
+        pousse » ne prouve pas « c'est en ligne » : la branche `main` est
+        protegee, et un build Vercel peut echouer apres un push reussi.
+        """
+        claude = (RACINE / "CLAUDE.md").read_text(encoding="utf-8")
+        self.assertIn(
+            "Publier a chaque modification terminee",
+            claude,
+            "CLAUDE.md doit porter la regle de publication continue demandee le 22/09.",
+        )
+        script = SYNCHRO.read_text(encoding="utf-8", errors="replace")
+        self.assertIn(
+            "vercel.com", script,
+            "synchro.ps1 doit renvoyer vers le suivi du deploiement : pousser n'est pas publier.",
+        )
+
     def test_la_ci_lance_le_registre(self):
         texte = CI.read_text(encoding="utf-8")
         self.assertIn(

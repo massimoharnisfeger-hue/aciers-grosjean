@@ -100,6 +100,8 @@ if ($enAvance -gt 0) {
       Note "$enAvance sauvegarde(s) envoyee(s) sur la branche $brancheTravail"
       Note 'DERNIERE ETAPE : ouvrir la pull request, puis fusionner quand le controle "quality" est vert.'
       Note $lien
+      Note 'Deploiement de cette branche (avant fusion) : https://vercel.com/massimoharnisfeger-hues-projects/aciers-grosjean'
+      Note 'Le site de production ne change qu a la fusion dans main.'
       Start-Process $lien -ErrorAction SilentlyContinue
     }
     else {

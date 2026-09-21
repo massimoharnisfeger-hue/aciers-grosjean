@@ -192,6 +192,10 @@ def structurer(blocs):
             resultat.append(b)
             i += 1
             continue
+        # un paragraphe reduit a son marqueur (« • » seul) : une puce vide du site source
+        if re.fullmatch(r"\s*(?:[•\-–·▪]|\d{1,2}[.)])\s*", b["texte"]):
+            i += 1
+            continue
         m = MARQUEUR_PUCE.match(b["texte"])
         if m:
             items = []

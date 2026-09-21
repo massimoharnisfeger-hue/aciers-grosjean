@@ -186,3 +186,15 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : `Counters.tsx` portait `text-5xl md:text-6xl` — la taille desktop moins un cran s'appliquait dès 320 px, soit 48 px pour deux compteurs dans 280 px utiles. La taille mobile n'était pas écrite, elle était héritée. Corrigé par `text-4xl sm:text-5xl md:text-6xl` et `tabular-nums`.
 - **Contrôle** : `tests/test_responsive.py::CompteursMobiles::test_r4_taille_mobile_explicite`
 - **Date** : 2026-09-22
+
+### L-025 — un enfant de grille ne rétrécit jamais sous son mot le plus long
+- **Symptôme** : balayage d'une fiche par catégorie (54 × 320 px) : deux débordements. « Tôle striée de 2000x1000x2,5/4mm en aluminium » sortait de 14 px, une section « Domaines d'applications » de 78 px. Les 52 autres catégories passaient, ce qui donnait l'illusion d'un défaut de contenu.
+- **Cause** : un enfant de `grid` vaut `min-width: auto`, donc sa largeur minimale est celle de son contenu le plus large — et un nom de produit est plein de cotes insécables (`2000x1000x2,5/4mm`). Ni la largeur du conteneur ni le `container-g` ne peuvent le contraindre. Corrigé par `min-w-0` (lève la contrainte) et `break-words` (coupe le mot) sur le bloc d'identité et sur les modules. La règle vaut pour toute grille du site, pas pour ces deux fiches.
+- **Contrôle** : `tests/test_produit.py::GrillesQuiRetrecissent::test_d8_les_blocs_de_grille_peuvent_retrecir`
+- **Date** : 2026-09-22
+
+### L-026 — « poussé » ne prouve pas « en ligne »
+- **Symptôme** : les captures du propriétaire du 22/09 montraient des défauts déjà corrigés la veille. Le site déployé était à `54d93a2` (17/09) : cinq jours de travail local jamais mis en ligne, parce que `main` est protégée et qu'aucune pull request n'avait été fusionnée.
+- **Cause** : la fin de session exigeait un commit, pas une publication. La chaîne réelle (commit → branche → PR → check vert → **fusion humaine** → Vercel) n'était écrite nulle part, donc personne ne voyait qu'elle s'arrêtait à l'étape 3. Corrigé par une règle explicite dans `CLAUDE.md` et par un `synchro.ps1` qui donne le lien de la PR **et** celui du déploiement de branche, en disant que seule la fusion change la production.
+- **Contrôle** : `tests/test_gate.py::GateTests::test_la_regle_de_publication_continue_est_ecrite`
+- **Date** : 2026-09-22

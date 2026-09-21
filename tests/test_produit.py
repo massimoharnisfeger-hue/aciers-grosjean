@@ -93,6 +93,32 @@ class GabaritFicheProduit(unittest.TestCase):
         )
 
 
+class GrillesQuiRetrecissent(unittest.TestCase):
+    """D8 : un element de grille doit pouvoir devenir plus etroit que son contenu.
+
+    A 320 px, deux fiches debordaient : « Tole striee de 2000x1000x2,5/4mm en
+    aluminium » sortait de 14 px, une section « Domaines d'applications » de
+    78 px. Cause commune : un enfant de grille vaut `min-width: auto`, donc il
+    ne retrecit jamais sous le mot le plus long de son contenu — et les noms de
+    produits sont pleins de cotes insecables. `min-w-0` leve la contrainte,
+    `break-words` coupe le mot. C'est la classe de bug, pas ces deux fiches.
+    """
+
+    def test_d8_les_blocs_de_grille_peuvent_retrecir(self):
+        for chemin, ancre in (
+            (GABARIT, 'lg:col-start-2 lg:row-start-1'),
+            (RACINE / "components" / "catalogue" / "FicheModules.tsx", "<section data-module="),
+        ):
+            src = chemin.read_text(encoding="utf-8")
+            ligne = next((l for l in src.splitlines() if ancre in l), "")
+            self.assertIn(
+                "min-w-0", ligne,
+                f"{chemin.name} : le bloc « {ancre} » est un enfant de grille sans `min-w-0` : "
+                f"un nom de produit avec cotes le fait deborder a 320 px.",
+            )
+            self.assertIn("break-words", ligne, f"{chemin.name} : bloc « {ancre} » sans `break-words`.")
+
+
 class DemandeDePrix(unittest.TestCase):
     """D6/D7 : la demande de prix du calculateur ne part plus par la messagerie du visiteur.
 

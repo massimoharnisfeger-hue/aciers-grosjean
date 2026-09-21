@@ -85,6 +85,21 @@ Un contrôle rouge se corrige, il ne se supprime pas et ne se désactive pas : l
 ne diminue jamais (`tests/socle.json`). Une correction n'est jamais déclarée faite tant que son
 contrôle n'est pas passé du rouge au vert.
 
+## Publier a chaque modification terminee (obligatoire, demande du 22/09/2026)
+
+Une modification finie ne reste pas sur le PC. Des qu'un lot de travail est termine et vert
+(`python tests/lancer.py`), il part : commit, puis `_OUTILS/SAUVEGARDER.cmd` (ou
+`synchro.ps1 -Mode sauvegarder`), qui pousse la branche et ouvre la pull request.
+
+« Poussé » ne veut pas dire « en ligne ». La chaîne complète est : commit → branche → pull request
+→ check « quality » vert → **fusion humaine dans `main`** → déploiement Vercel de production.
+Seule la fusion déclenche la mise en ligne, et elle appartient au propriétaire : aucun agent ne
+fusionne. Après le push, donner le lien de la PR et celui du déploiement Vercel de la branche
+(chaque push en produit un, consultable avant la fusion).
+
+Garde : `tests/test_gate.py::GateTests::test_la_regle_de_publication_continue_est_ecrite`.
+Chaîne détaillée : `docs/architecture/SYNC_POLICY.md`.
+
 ## Fin de session (obligatoire)
 1. `_JOURNAL/AAAA-MM-JJ.md` : ajouter une section (ce qui a changé, pourquoi, fichiers). Créer le fichier du jour s'il n'existe pas.
 2. `_CONVERSATIONS/AAAA-MM-JJ_sujet-court.md` : demande, constats, décisions, fait, reste à faire, lien de session.

@@ -71,7 +71,7 @@ export function ModuleSection({ section, titreParDefaut, niveau = 2 }: { section
   const Titre = niveau === 2 ? "h2" : "h3";
   const tousCourts = section.items.length > 0 && section.items.every(court);
   return (
-    <section data-module={section.type} className="rounded-2xl border border-brume bg-white p-5 md:p-6">
+    <section data-module={section.type} className="min-w-0 break-words rounded-2xl border border-brume bg-white p-5 md:p-6">
       <Titre className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">{titre}</Titre>
       {section.paragraphes.length > 0 && (
         <div className="mt-3 space-y-3 font-body text-sm leading-relaxed text-encre">

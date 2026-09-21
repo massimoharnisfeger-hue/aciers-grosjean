@@ -144,7 +144,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
       <section className="bg-white py-12 md:py-16">
         <div className="container-g grid gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
           {/* identité : d'abord sur mobile, en haut de la colonne droite sur desktop */}
-          <div className="lg:col-start-2 lg:row-start-1">
+          <div className="min-w-0 break-words lg:col-start-2 lg:row-start-1">
             <div className="flex flex-wrap items-center gap-2">
               <Link
                 href={`/${u.slug}`}
