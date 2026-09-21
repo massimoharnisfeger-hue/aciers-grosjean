@@ -101,7 +101,7 @@ export default function RealisationsPage() {
 
                   <Link
                     href={p.href}
-                    className="group mt-6 inline-flex items-center gap-2 font-body text-sm font-medium text-encre"
+                    className="lien-tactile group mt-6 inline-flex items-center gap-2 font-body text-sm font-medium text-encre"
                   >
                     Voir la matière
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="transition-transform group-hover:translate-x-1">

@@ -60,9 +60,9 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
         <div className="grid-industrie pointer-events-none absolute inset-0 opacity-60" />
         <div className="container-g relative pb-14 md:pb-20">
           <nav className="mb-5 font-body text-xs text-soft">
-            <Link href="/" className="hover:text-encre">Accueil</Link>
+            <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
             <span className="mx-2 text-brume">/</span>
-            <Link href="/depots" className="hover:text-encre">Dépôts</Link>
+            <Link href="/depots" className="lien-tactile hover:text-encre">Dépôts</Link>
             <span className="mx-2 text-brume">/</span>
             <span className="text-encre">{d.ville}</span>
           </nav>
@@ -152,7 +152,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
                 <div className="py-3">
                   <dt className="font-body text-xs uppercase tracking-[0.1em] text-soft">Téléphone</dt>
                   <dd className="mt-0.5">
-                    <a href={lienTel(d.tel)} className="font-mono text-sm text-encre hover:text-jaune">
+                    <a href={lienTel(d.tel)} className="lien-tactile font-mono text-sm text-encre hover:text-jaune">
                       {d.tel}
                     </a>
                   </dd>
@@ -187,7 +187,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
                   <li key={s.slug}>
                     <Link
                       href={`/services/${s.slug}`}
-                      className="font-body text-sm text-encre hover:text-jaune"
+                      className="lien-tactile font-body text-sm text-encre hover:text-jaune"
                     >
                       {s.nom}
                     </Link>

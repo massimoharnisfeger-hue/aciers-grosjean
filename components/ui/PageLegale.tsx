@@ -20,7 +20,7 @@ export default function PageLegale({
       <header className="border-b border-brume bg-nuage pt-32 md:pt-40">
         <div className="container-g pb-12 md:pb-16">
           <nav className="mb-5 font-body text-xs text-soft">
-            <Link href="/" className="hover:text-encre">Accueil</Link>
+            <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
             <span className="mx-2 text-brume">/</span>
             <span className="text-encre">{surtitre}</span>
           </nav>
@@ -67,7 +67,7 @@ export default function PageLegale({
 
           <p className="mt-14 border-t border-brume pt-6 font-body text-sm text-soft">
             Une question sur ce document&nbsp;?{" "}
-            <Link href="/contact" className="text-encre underline hover:text-jaune">
+            <Link href="/contact" className="lien-tactile text-encre underline hover:text-jaune">
               Contactez-nous
             </Link>
             .

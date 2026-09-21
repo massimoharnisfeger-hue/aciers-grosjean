@@ -144,3 +144,21 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : la liste noire encodait « pas de backend » comme un fait, alors que c'était une décision révisable. Réécrit : une route sous `app/api` est admise si un ADR la porte (`ALLOWED_API`), tout le reste et toute base de données restent interdits. Le contrôle est resté rouge jusqu'à l'existence de l'ADR-0006, ce qui est l'ordre voulu.
 - **Contrôle** : `tests/test_project_os.py::ProjectOsTests::test_no_business_infrastructure_was_added`
 - **Date** : 2026-09-21
+
+### L-018 — `scrollWidth` ne voit pas un chevauchement masqué par `overflow-hidden`
+- **Symptôme** : balayage Chromium de 30 gabarits × 11 largeurs (320 → 1280 px) : zéro débordement horizontal. Pourtant, à 320 px, la comparaison de l'accueil superposait « épaisseurs », « d'expertise », « Certification » et « Vendeur généraliste » sur les colonnes voisines. Vu seulement sur capture d'élément.
+- **Cause** : `grid-cols-3` et `p-5` sans préfixe s'appliquaient à 320 px (≈ 53 px utiles par cellule, moins encore avec l'icône), et l'enveloppe `overflow-hidden rounded-2xl` avalait le dépassement : la page ne défilait pas, le texte était illisible. Un contrôle de débordement global prouve l'absence de défilement, pas la lisibilité. Corrigé par un gabarit mobile explicite (`grid-cols-[0.95fr_1.25fr_1fr]`, `p-3`, icône au-dessus du texte) que `sm:` remplace par l'existant, plus `break-words hyphens-auto`.
+- **Contrôle** : `tests/test_responsive.py::ComparaisonMobile::test_r1_colonnes_et_remplissage_prefixes`
+- **Date** : 2026-09-21
+
+### L-019 — une cible tactile trop petite n'est pas un défaut « mobile »
+- **Symptôme** : 37 à 46 liens sous 24 px de haut par page (218 occurrences de liens du pied de page à 14 px, fil d'Ariane à 13 px, plan du site : 152 cibles), comptés identiques à 320, 768 et 1280 px.
+- **Cause** : les liens texte n'ont que la hauteur de leur ligne. Aucune règle de mise en page n'était en cause, donc aucun point de rupture ne pouvait le corriger : c'est une propriété des composants partagés, `Footer.tsx`, `FilAriane.tsx`, `plan-du-site`. Corrigé par une classe unique `.lien-tactile` (`inline-flex`, `min-height: 24px`) qui ne change ni la police ni la couleur ; grossir les textes aurait modifié le design.
+- **Contrôle** : `tests/test_responsive.py::CiblesTactiles::test_r2bis_liens_texte_portent_la_classe`
+- **Date** : 2026-09-21
+
+### L-020 — un lien écrit à la main pointe là où personne ne regarde
+- **Symptôme** : la carte « Transformation sur plan » de `/services` menait à `/services/transformation`, qui n'existe pas (404). Vu par le journal réseau du balayage (préchargement Next en 404), pas par un humain : la carte s'affiche parfaitement.
+- **Cause** : le slug avait été inventé dans la page alors que `lib/edito.ts:1090` associe déjà ce libellé à `/services/soudure`. Les 32 hrefs littéraux du code n'étaient confrontés à aucune liste de pages réelles. Corrigé en reprenant la cible de `lib/edito.ts` ; le contrôle confronte désormais chaque href littéral aux pages statiques, aux chemins du catalogue et aux slugs connus.
+- **Contrôle** : `tests/test_responsive.py::LiensInternes::test_r3_chaque_href_litteral_existe`
+- **Date** : 2026-09-21

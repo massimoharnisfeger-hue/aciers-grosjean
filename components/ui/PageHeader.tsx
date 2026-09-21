@@ -15,7 +15,7 @@ export default function PageHeader({
       <div className="pointer-events-none absolute -right-16 top-16 h-64 w-64 rounded-full bg-jaune/10 blur-[110px]" />
       <div className="container-g relative pb-14 md:pb-20">
         <nav className="mb-5 font-body text-xs text-soft">
-          <Link href="/" className="hover:text-encre">Accueil</Link>
+          <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
           <span className="mx-2 text-brume">/</span>
           <span className="text-encre">{surtitre}</span>
         </nav>

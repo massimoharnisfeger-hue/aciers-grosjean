@@ -183,7 +183,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
               <div className="flex flex-wrap items-center gap-2">
                 <Link
                   href={`/${u.slug}`}
-                  className="font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
+                  className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
                 >
                   {u.nom}
                 </Link>
@@ -192,7 +192,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
                     <span className="text-brume" aria-hidden="true">·</span>
                     <Link
                       href={cat.chemin}
-                      className="font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
+                      className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
                     >
                       {cat.nom}
                     </Link>

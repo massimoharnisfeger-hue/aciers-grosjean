@@ -138,7 +138,7 @@ export default function TableauProduits({
                 {liste.map((p) => (
                   <tr key={p.slug} className="group border-b border-brume/70 transition-colors last:border-0 hover:bg-nuage/70">
                     <th scope="row" className="px-5 py-3.5 text-left font-normal">
-                      <Link href={`/p/${p.slug}`} className="h-title font-semibold text-encre hover:underline">
+                      <Link href={`/p/${p.slug}`} className="lien-tactile h-title font-semibold text-encre hover:underline">
                         {p.nom}
                       </Link>
                     </th>

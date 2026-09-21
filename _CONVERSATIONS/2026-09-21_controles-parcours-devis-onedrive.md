@@ -58,3 +58,12 @@ verts dans le nouveau dossier.
 
 Claude Code, session `d08c2e3e-6a02-4de7-a879-fa9d6afbfd21`, modèle Fable 5.1 (Opus 5 en début
 de séance).
+
+
+## Boucle QA responsive (suite de séance, même session)
+
+Demande : « ULTIMATE RESPONSIVE QA LOOP — 320px Mobile → Tablet → Desktop », puis « continue
+jusqu'à ce que tout soit fini ». Détail dans `_JOURNAL/2026-09-21.md` (section Nuit) et
+`_DOCS/QA-RESPONSIVE.md`. Trois défauts corrigés (chevauchement 320 px, cibles < 24 px, lien
+404), trois leçons (L-018 à L-020), un outil de balayage réutilisable. Un balayage a été tué par
+manque de mémoire (15 Go) et relancé en deux moitiés : à retenir pour les prochains.

@@ -26,6 +26,7 @@ Répondre en français, simplement : le propriétaire du projet n'est pas dével
 - Sur le PC, le dépôt vit dans `C:\Users\massi\Projects\aciers-grosjean` depuis le 21/09/2026 (ADR-0005, contrôlé par `tests/test_emplacement.py`). `npm ci`, `npm run build` et `npm test` s'y lancent directement. Seul `_DEPOT/` reste dans OneDrive, monté par une jonction.
   `powershell -File _OUTILS/site-local.ps1 -Mode verifier` reste disponible (copie dans `%LOCALAPPDATA%\SiteAciersGrosjean\build`).
 - Dans une session web : `npm ci && npm run typecheck && npm run build`.
+- Responsive : `python scripts/qa/balayage-responsive.py --urls <liste> --interactif` sur le site démarré (port 3000) balaie 320 → 1280 px dans Chromium ; par moitiés de largeurs si la mémoire manque. Rapport et matrice : `_DOCS/QA-RESPONSIVE.md`.
 
 ## Images
 Dépôt : `_DEPOT/images/<lot>/`, lots décrits dans `_DOCS/BESOINS-IMAGES.md`.

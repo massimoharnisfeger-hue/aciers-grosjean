@@ -80,7 +80,7 @@ export default function ServicesPage() {
           <div className="grid gap-5 md:grid-cols-3">
             {[
               { A: ArtDecoupe, t: "Découpe aux cotes", h: "/services/decoupe" },
-              { A: ArtAtelier, t: "Transformation sur plan", h: "/services/transformation" },
+              { A: ArtAtelier, t: "Transformation sur plan", h: "/services/soudure" },
               { A: ArtStock, t: "Stock permanent", h: "/produits" },
             ].map(({ A, t, h }, i) => (
               <Reveal key={t} delay={i * 0.08}>
