@@ -168,3 +168,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le script traitait tout `$LASTEXITCODE` non nul comme un probleme d'authentification, seule cause connue a l'ecriture. Une protection de branche activee plus tard produit le meme code de sortie et un message faux. Un diagnostic code en dur vieillit mal ; il vaut mieux decrire ce qu'on ignore (« verifier la connexion internet, puis la connexion GitHub ») que nommer une cause qu'on n'a pas verifiee. Corrige en meme temps que le flux : le mode sauvegarder pousse une branche de travail, affiche et ouvre le lien de la pull request.
 - **Contrôle** : `tests/test_gate.py::GateTests::test_le_bouton_de_sauvegarde_passe_par_une_branche`
 - **Date** : 2026-09-21
+
+### L-022 — PowerShell ignore la casse : un parametre et une variable locale de meme nom sont la meme variable
+- **Symptôme** : `synchro.ps1 -Mode sauvegarder` annonçait « Le travail part sur une branche », puis poussait `main` — refusé par GitHub. Le script tournait sans erreur et faisait le contraire de ce qu'il affichait. Deux hypothèses ont été testées et écartées avant de trouver (redirection `2>$null` cassant `$LASTEXITCODE` : fausse, vérifiée ; expression parenthésée en argument natif : fausse, vérifiée).
+- **Cause** : le paramètre `[string]$Branche` et la variable `$branche = (git rev-parse --abbrev-ref HEAD)` sont **une seule variable**, PowerShell ne distinguant pas la casse. La branche courante écrasait silencieusement le paramètre, donc `$brancheTravail` valait `main` et la branche de travail n'était jamais calculée. Ni l'analyseur de syntaxe ni l'exécution ne signalent cette collision : elle ne se voit qu'en lisant le même nom deux fois à deux casses. Trouvée en journalisant le refspec réellement envoyé — la mesure, pas la troisième hypothèse.
+- **Contrôle** : `tests/test_gate.py::GateTests::test_aucun_parametre_powershell_n_est_ecrase_par_une_variable_locale`
+- **Date** : 2026-09-21
