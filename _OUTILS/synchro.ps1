@@ -90,6 +90,7 @@ if ($enAvance -gt 0) {
     # branche, reseau, identifiants). Un message devine envoie chercher au mauvais
     # endroit — c'est la lecon L-021.
     $refspec = "{0}:{1}" -f $brancheTravail, $brancheTravail
+    Note "Envoi de $refspec"
     $sortiePush = (git push --quiet -u origin $refspec 2>&1 | ForEach-Object { $_.ToString().Trim() }) -join ' / '
     if ($LASTEXITCODE -eq 0) {
       $depot = (git remote get-url origin).Trim() -replace '\.git$', ''
