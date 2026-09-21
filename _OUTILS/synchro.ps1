@@ -86,7 +86,11 @@ if ($enAvance -gt 0) {
     }
     if ($brancheTravail -ne $branche) { git branch -f $brancheTravail HEAD 2>$null }
 
-    git push --quiet -u origin ("{0}:{1}" -f $brancheTravail, $brancheTravail) 2>$null
+    # stderr capture, pas jete : un envoi refuse doit dire POURQUOI (protection de
+    # branche, reseau, identifiants). Un message devine envoie chercher au mauvais
+    # endroit — c'est la lecon L-021.
+    $refspec = "{0}:{1}" -f $brancheTravail, $brancheTravail
+    $sortiePush = (git push --quiet -u origin $refspec 2>&1 | ForEach-Object { $_.ToString().Trim() }) -join ' / '
     if ($LASTEXITCODE -eq 0) {
       $depot = (git remote get-url origin).Trim() -replace '\.git$', ''
       $lien = "$depot/pull/new/$brancheTravail"
@@ -95,7 +99,11 @@ if ($enAvance -gt 0) {
       Note $lien
       Start-Process $lien -ErrorAction SilentlyContinue
     }
-    else { Note 'ENVOI IMPOSSIBLE : verifier la connexion internet, puis la connexion GitHub (une fenetre peut s ouvrir au premier envoi).' }
+    else {
+      Note 'ENVOI IMPOSSIBLE. Message de GitHub ci-dessous ; rien n a ete perdu, le travail reste enregistre sur ce PC.'
+      if ($sortiePush) { Note "  git : $sortiePush" }
+      Note '  Si GitHub parle de « pull request » : la branche est protegee, passer par le lien de PR.'
+    }
   }
 }
 elseif ($enRetard -eq 0) {
