@@ -69,9 +69,23 @@ class ProjectOsTests(unittest.TestCase):
         for phrase in ["information nécessaire", "décision humaine", "test critique", "périmètre", "STOP"]:
             self.assertIn(phrase, rules)
 
+    # Routes API admises, chacune portée par une décision de docs/decisions/.
+    # Le site reste statique : une route d'envoi de formulaire n'est pas un
+    # backend. Toute autre route sous app/api, et toute base de données,
+    # restent interdites tant qu'aucun ADR ne les porte.
+    ALLOWED_API = {"app/api/devis": "0006"}
+
     def test_no_business_infrastructure_was_added(self):
-        forbidden = ["app/api", "prisma", "drizzle", "supabase", "database/migrations"]
+        forbidden = ["prisma", "drizzle", "supabase", "database/migrations"]
         present = [path for path in forbidden if (ROOT / path).exists()]
+        api = ROOT / "app/api"
+        if api.exists():
+            for route in sorted(api.rglob("route.ts")):
+                dossier = route.parent.relative_to(ROOT).as_posix()
+                adr = self.ALLOWED_API.get(dossier)
+                porte = adr is not None and any((ROOT / "docs/decisions").glob(f"{adr}-*.md"))
+                if not porte:
+                    present.append(f"{dossier} (aucun ADR ne porte cette route)")
         self.assertEqual([], present, f"Infrastructure métier interdite détectée : {present}")
 
     def test_generated_catalogue_contract_remains_intact(self):

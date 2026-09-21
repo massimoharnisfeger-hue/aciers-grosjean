@@ -24,7 +24,7 @@ from bs4 import BeautifulSoup
 # Donnees de travail (cache HTML, JSON intermediaires) hors OneDrive et hors Git.
 ICI = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "SiteAciersGrosjean" / "crawl"
 ICI.mkdir(parents=True, exist_ok=True)
-PROJET = Path(r"C:\Users\massi\OneDrive\Bureau\Site Aciers Grosjean")
+PROJET = Path(__file__).resolve().parents[2]  # racine du depot, ou qu'il vive (ADR-0005)
 SORTIE = PROJET / "_DOCS" / "catalogue-site-actuel"
 DOSSIER_PDF = PROJET / "_DEPOT" / "documents" / "pdf-site-actuel"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "

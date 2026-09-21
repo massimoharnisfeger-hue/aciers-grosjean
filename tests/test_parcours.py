@@ -21,12 +21,19 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P8 - `/api/devis` existe et se tient : un corps invalide est refuse (400), un
+     GET est refuse (405), un robot qui remplit le champ piege recoit un 200
+     sans qu'aucun envoi ne parte, et sans SMTP configure la route se declare
+     indisponible (503) au lieu de planter (500) — le formulaire bascule alors
+     sur la messagerie du visiteur. Aucun controle n'envoie de vrai message :
+     si `.env.local` configure un SMTP, le cas 503 est ignore.
 
 Ces controles exigent un build : `npm ci` puis `npm run build`. Sans lui, ils
 se declarent ignores avec la commande a lancer, ils n'echouent pas et ils ne
 disparaissent pas du registre.
 """
 
+import json
 import shutil
 import socket
 import subprocess
@@ -53,6 +60,22 @@ REQUETE_TIMEOUT_S = 10.0
 UNIVERS = ("acier", "aluminium", "inox", "toiture-bardage", "jardin-cloture", "quincaillerie")
 CHAMPS_DEVIS = ("nom", "email", "telephone", "produit", "depot", "details")
 PRODUIT_TEMOIN = "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud"
+
+# Demande de devis valide, donnees fictives : rien ici n'est une personne reelle.
+DEMANDE_TEMOIN = {
+    "profil": "Particulier",
+    "nom": "Controle Parcours",
+    "email": "controle@example.invalid",
+    "telephone": "",
+    "produit": "Acier",
+    "depot": "Charleroi",
+    "details": "Demande fictive emise par tests/test_parcours.py, a ignorer.",
+    "site_web": "",
+}
+
+# Si un SMTP est configure en local, un POST valide enverrait un vrai message a
+# chaque lancement du registre. Le controle 503 se retire alors de lui-meme.
+ENV_LOCAL = RACINE / ".env.local"
 
 
 def port_libre() -> int:
@@ -126,6 +149,21 @@ class ServeurSite:
         except urllib.error.HTTPError as erreur:
             return erreur.code, erreur.read().decode("utf-8", errors="replace")
 
+    def envoyer(self, chemin: str, donnees, methode: str = "POST"):
+        """(statut, corps) d'une requete JSON. `donnees=None` envoie un corps vide."""
+        corps = None if donnees is None else json.dumps(donnees).encode("utf-8")
+        requete = urllib.request.Request(
+            self.base + chemin,
+            data=corps,
+            method=methode,
+            headers={"Content-Type": "application/json"},
+        )
+        try:
+            reponse = urllib.request.urlopen(requete, timeout=REQUETE_TIMEOUT_S)
+            return reponse.status, reponse.read().decode("utf-8", errors="replace")
+        except urllib.error.HTTPError as erreur:
+            return erreur.code, erreur.read().decode("utf-8", errors="replace")
+
 
 class ParcoursVisiteur(unittest.TestCase):
     """Ce qu'un visiteur recoit vraiment, sur le site construit."""
@@ -188,6 +226,32 @@ class ParcoursVisiteur(unittest.TestCase):
         casses = [(c, self.serveur.appeler(c or "/")[0]) for c in chemins]
         casses = [c for c in casses if c[1] != 200]
         self.assertEqual(casses, [], "URL declarees au sitemap mais cassees : " + str(casses))
+
+    def test_p8a_devis_api_refuse_un_corps_invalide(self):
+        statut, _ = self.serveur.envoyer("/api/devis", {"nom": "x"})
+        self.assertEqual(statut, 400, "un corps incomplet devrait donner 400, pas " + str(statut))
+
+    def test_p8b_devis_api_refuse_le_get(self):
+        statut, _ = self.serveur.appeler("/api/devis")
+        self.assertEqual(statut, 405, "GET /api/devis devrait donner 405, pas " + str(statut))
+
+    def test_p8c_devis_api_ignore_les_robots_sans_envoyer(self):
+        """Champ piege rempli : 200 muet, avant toute tentative d'envoi.
+
+        Sans SMTP configure, une tentative d'envoi donnerait 503. Le 200 prouve
+        donc que le piege court-circuite l'envoi, pas seulement qu'il repond.
+        """
+        piege = dict(DEMANDE_TEMOIN, site_web="http://spam.example.invalid")
+        statut, corps = self.serveur.envoyer("/api/devis", piege)
+        self.assertEqual(statut, 200, "un robot pris au piege devrait recevoir 200, pas " + str(statut))
+        self.assertIn('"ok":true', corps.replace(" ", ""), "la reponse au robot doit ressembler a un succes")
+
+    def test_p8d_devis_api_sans_smtp_se_declare_indisponible(self):
+        if ENV_LOCAL.exists():
+            self.skipTest("SMTP configure dans .env.local : aucun envoi reel pendant les controles.")
+        statut, corps = self.serveur.envoyer("/api/devis", DEMANDE_TEMOIN)
+        self.assertEqual(statut, 503, "sans SMTP la route devrait repondre 503, pas " + str(statut))
+        self.assertIn("erreur", corps, "la reponse 503 doit porter un champ `erreur` lisible par le formulaire")
 
 
 if __name__ == "__main__":

@@ -45,7 +45,7 @@ ne commence avant validation d'une première verticale.
   `quality.yml` se déclenche sur `push` vers `main`, et un contrôle l'exige désormais.
 - ~~`.gitignore` ne couvre pas `.env` sur un dépôt public~~ → **corrigé le 21/09** (A1), gardé par
   `tests/test_depot.py` qui interroge `git check-ignore`.
-- `.git` est synchronisé par OneDrive. Décision **H1**, toujours ouverte.
+- ~~`.git` est synchronisé par OneDrive~~ → **H1 fermée le 21/09** : dépôt déplacé dans `C:\Users\massi\Projects\aciers-grosjean` (ADR-0005), gardé par `tests/test_emplacement.py`.
 - 22 redirections 301 pointent vers des pages inexistantes. Ligne **D1**.
 - Les données du catalogue ont plusieurs sources et certains conflits restent ouverts.
 - Doubles sources d'état et de questions ouvertes : nommées dans `_DOCS/INDEX.md`.

@@ -126,3 +126,21 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le formulaire pilote tout par `useState` et envoie par `mailto:`, donc rien dans le code applicatif n'avait besoin de ces attributs pour fonctionner. Ils sont invisibles au développeur et décisifs pour le visiteur mobile — une absence qui ne casse rien ne se remarque jamais sans contrôle.
 - **Contrôle** : `tests/test_mobile.py::FormulaireDevisMobile::test_m3_identite_remplissable_automatiquement`
 - **Date** : 2026-09-21
+
+### L-015 — la demande de devis partait par la messagerie du visiteur, ou ne partait pas
+- **Symptôme** : `DevisForm.tsx` construisait un `mailto:` ; aucune requête ne partait vers le site, aucune trace n'existait côté entreprise, et sur un téléphone sans client mail configuré la demande disparaissait. Aucun contrôle n'appelait une route : `GET /api/devis` répondait 404.
+- **Cause** : H4 ouverte depuis le 14/09 sans décision. Du point de vue du code, le formulaire « fonctionnait » : une absence d'envoi ne casse rien de visible, elle ne se remarque qu'en comptant les devis qui n'arrivent pas.
+- **Contrôle** : `tests/test_parcours.py::ParcoursVisiteur::test_p8d_devis_api_sans_smtp_se_declare_indisponible`
+- **Date** : 2026-09-21
+
+### L-016 — une règle écrite ne retient pas un agent, un contrôle oui
+- **Symptôme** : `npm ci`, `npm run build` et deux `npm install` lancés par Claude dans le dossier OneDrive le 21/09, malgré « ne jamais lancer `npm install` dans ce dossier » dans `CLAUDE.md`. Des dizaines de milliers de fichiers en file de synchronisation ; une simple lecture du dossier a dépassé 120 s.
+- **Cause** : la séance avait été ouverte depuis le dossier utilisateur, et le `CLAUDE.md` du projet n'était pas encore chargé quand les commandes sont parties. La règle vivait dans un texte lu parfois, pas dans le dépôt lu toujours. Corrigé par le déplacement du dépôt (ADR-0005) et par un contrôle qui refuse tout chemin OneDrive.
+- **Contrôle** : `tests/test_emplacement.py::EmplacementDuDepot::test_e1_le_depot_n_est_pas_sous_onedrive`
+- **Date** : 2026-09-21
+
+### L-017 — un garde-fou à liste noire ne sait pas porter une décision
+- **Symptôme** : `test_no_business_infrastructure_was_added` interdisait `app/api` en bloc. La route de devis décidée en H4 l'a mis rouge, et rien dans le contrôle ne permettait de distinguer une route décidée d'une route sauvage.
+- **Cause** : la liste noire encodait « pas de backend » comme un fait, alors que c'était une décision révisable. Réécrit : une route sous `app/api` est admise si un ADR la porte (`ALLOWED_API`), tout le reste et toute base de données restent interdits. Le contrôle est resté rouge jusqu'à l'existence de l'ADR-0006, ce qui est l'ordre voulu.
+- **Contrôle** : `tests/test_project_os.py::ProjectOsTests::test_no_business_infrastructure_was_added`
+- **Date** : 2026-09-21

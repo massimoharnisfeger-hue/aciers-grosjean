@@ -23,8 +23,8 @@ Répondre en français, simplement : le propriétaire du projet n'est pas dével
 - Ne jamais inventer de coordonnées, prix, certifications ou avis clients.
 
 ## Vérifier avant d'envoyer
-- Sur le PC, **ne jamais lancer `npm install` dans ce dossier** : il est synchronisé par OneDrive (des dizaines de milliers de fichiers, verrous pendant l'installation).
-  `powershell -File _OUTILS/site-local.ps1 -Mode verifier` copie le code dans `%LOCALAPPDATA%\SiteAciersGrosjean\build`, installe, puis lance `tsc` et `next build`.
+- Sur le PC, le dépôt vit dans `C:\Users\massi\Projects\aciers-grosjean` depuis le 21/09/2026 (ADR-0005, contrôlé par `tests/test_emplacement.py`). `npm ci`, `npm run build` et `npm test` s'y lancent directement. Seul `_DEPOT/` reste dans OneDrive, monté par une jonction.
+  `powershell -File _OUTILS/site-local.ps1 -Mode verifier` reste disponible (copie dans `%LOCALAPPDATA%\SiteAciersGrosjean\build`).
 - Dans une session web : `npm ci && npm run typecheck && npm run build`.
 
 ## Images

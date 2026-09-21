@@ -4,9 +4,9 @@
 qualite JS/TS n'est appliquee sur 40 pages et 32 composants.
 
 Ces controles verifient la DECLARATION (dependance, script, configuration,
-synchronisation du lock, etape CI). Ils ne lancent pas ESLint : `npm install`
-est interdit dans ce dossier synchronise par OneDrive (CLAUDE.md), et un
-controle qui ne peut pas s'executer partout ne doit pas pretendre le faire.
+synchronisation du lock, etape CI). Ils ne lancent pas ESLint : un controle
+qui ne peut pas s'executer partout (sessions web sans node_modules) ne doit
+pas pretendre le faire.
 L'execution reelle appartient a `_OUTILS/site-local.ps1` et a la CI.
 """
 
