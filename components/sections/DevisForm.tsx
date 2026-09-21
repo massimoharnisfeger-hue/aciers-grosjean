@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { site, depots } from "@/lib/content";
 
@@ -33,6 +33,13 @@ export default function DevisForm({ produits }: { produits: string[] }) {
   // Champ piège : invisible pour un humain, rempli par les robots (P8c).
   const [siteWeb, setSiteWeb] = useState("");
   const [etat, setEtat] = useState<Etat>("saisie");
+
+  // Le calculateur d'une fiche produit arrive avec son estimation dans l'URL
+  // (`/devis?details=...`). Lu au montage : la page reste statique.
+  useEffect(() => {
+    const prerempli = new URLSearchParams(window.location.search).get("details");
+    if (prerempli) setDetails((actuel) => actuel || prerempli);
+  }, []);
 
   const valide = nom.trim().length > 1 && /.+@.+\..+/.test(email) && details.trim().length > 3;
 

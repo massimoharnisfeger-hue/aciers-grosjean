@@ -93,5 +93,23 @@ class GabaritFicheProduit(unittest.TestCase):
         )
 
 
+class DemandeDePrix(unittest.TestCase):
+    """D6/D7 : la demande de prix du calculateur ne part plus par la messagerie du visiteur.
+
+    Meme defaut que H4 (ADR-0006) : `mailto:` perd la demande sur un telephone sans
+    client mail. Le calculateur envoie desormais son estimation au formulaire de
+    devis (`/devis?details=...`), qui la pre-remplit et poste vers `/api/devis`.
+    """
+
+    def test_d6_le_calculateur_ne_passe_plus_par_mailto(self):
+        src = (RACINE / "components" / "catalogue" / "Calculateur.tsx").read_text(encoding="utf-8")
+        self.assertNotIn("mailto:", src, "Calculateur.tsx construit encore un mailto:.")
+        self.assertIn('href={`/devis?', src, "Le calculateur doit renvoyer vers /devis avec son estimation.")
+
+    def test_d7_le_formulaire_pre_remplit_depuis_l_url(self):
+        src = (RACINE / "components" / "sections" / "DevisForm.tsx").read_text(encoding="utf-8")
+        self.assertIn("details", src)
+        self.assertRegex(src, r"location\.search|useSearchParams", "DevisForm.tsx doit lire `details` dans l'URL pour pre-remplir la demande.")
+
 if __name__ == "__main__":
     unittest.main()
