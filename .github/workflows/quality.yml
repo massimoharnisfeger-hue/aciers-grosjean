@@ -1,6 +1,12 @@
 name: Project OS quality
 
 on:
+  # Le flux reel de ce depot est le push direct sur `main`, qui declenche le
+  # deploiement Vercel de production. Sans ce declencheur, typecheck, build et
+  # controles ne s'executaient sur aucun commit du chemin de production :
+  # 69 commits, une seule branche, zero pull request.
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -12,10 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 20
           cache: npm
@@ -25,6 +31,12 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      # Une dependance installee que personne n'appelle ne verifie rien :
+      # `next build` saute silencieusement le lint quand eslint est absent.
+      # L'etape est donc explicite. Controle par tests/test_lint.py.
+      - name: Lint
+        run: npm run lint
 
       - name: Build
         run: npm run build
@@ -47,9 +59,13 @@ jobs:
       - name: Extension tests
         run: python tests/test_extensions.py
 
+      # Gate : registre complet + invariant « le nombre de controles ne diminue
+      # jamais ». Meme commande que le hook pre-commit local (scripts/hooks/).
+      - name: Registre des controles
+        run: python tests/lancer.py
+
+      # Meme verificateur que le hook pre-commit local : une seule liste de
+      # motifs pour les deux portes. Deux listes separees divergent toujours,
+      # et c'est la plus permissive qui decide.
       - name: Secret scan
-        run: |
-          if git grep -n -E -e '(BEGIN (RSA|OPENSSH|EC) PRIVATE KEY|AKIA[0-9A-Z]{16}|sk_live_[0-9A-Za-z]+|gh[pousr]_[A-Za-z0-9_]{20,})' -- . ':(exclude)package-lock.json'; then
-            echo 'Potential secret detected'
-            exit 1
-          fi
+        run: git ls-files | python scripts/hooks/verifier-depot.py --secrets-seulement

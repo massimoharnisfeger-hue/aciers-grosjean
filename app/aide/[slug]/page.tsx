@@ -119,7 +119,7 @@ export default async function AidePage({ params }: { params: Promise<Params> }) 
       <section className="border-t border-brume bg-nuage py-14">
         <div className="container-g">
           <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
-            Autres pages d'aide
+            Autres pages d’aide
           </h2>
           <div className="mt-5 flex flex-wrap gap-3">
             {autres.map((a) => (

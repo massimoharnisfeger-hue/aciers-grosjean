@@ -136,7 +136,7 @@ export default async function ArticlePage({ params }: { params: Promise<Params> 
               </h2>
               <p className="mt-2 max-w-lg font-body text-soft">
                 Décrivez votre projet en deux lignes. On répond sous 24&nbsp;h, sans engagement,
-                et on vous dit franchement si ce n'est pas pour nous.
+                et on vous dit franchement si ce n’est pas pour nous.
               </p>
               <Link href="/devis" className="btn-cta mt-5">Poser ma question</Link>
             </div>

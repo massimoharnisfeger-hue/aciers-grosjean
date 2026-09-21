@@ -38,7 +38,7 @@ export default function PageLegale({
               </p>
               <p className="mt-2 font-body text-sm leading-relaxed text-soft">
                 Ce texte est une trame conforme au droit belge, mais il contient des données
-                d'entreprise que nous n'avons pas encore. Elles doivent être renseignées avant
+                d’entreprise que nous n’avons pas encore. Elles doivent être renseignées avant
                 toute publication&nbsp;:
               </p>
               <ul className="mt-3 space-y-1.5">

@@ -21,10 +21,10 @@ export default function Services() {
             Nos services
           </span>
           <h2 className="h-display mt-3 text-4xl md:text-5xl">
-            Bien plus qu'un <span className="mark-jaune">négociant</span>
+            Bien plus qu’un <span className="mark-jaune">négociant</span>
           </h2>
           <p className="mt-4 font-body text-lg text-soft">
-            On ne se contente pas de vendre l'acier : on le prépare pour que
+            On ne se contente pas de vendre l’acier : on le prépare pour que
             votre projet démarre plus vite.
           </p>
         </Reveal>

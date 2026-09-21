@@ -32,7 +32,7 @@ export default function FaqPage() {
         surtitre="FAQ"
         titre={
           <>
-            Les questions <span className="mark-jaune">qu'on nous pose</span>
+            Les questions <span className="mark-jaune">qu’on nous pose</span>
           </>
         }
         intro="Aucune question n'est trop simple. Celles-ci reviennent tellement souvent qu'elles méritaient une page."

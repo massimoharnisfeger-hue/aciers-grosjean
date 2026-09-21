@@ -34,7 +34,7 @@ export default function DevisPage() {
             </ul>
             <div className="mt-8 rounded-2xl bg-nuage p-6">
               <p className="font-body text-sm text-soft">
-                Besoin d'un conseil avant de chiffrer ? Appelez-nous, on vous oriente vers le bon produit sans jargon.
+                Besoin d’un conseil avant de chiffrer ? Appelez-nous, on vous oriente vers le bon produit sans jargon.
               </p>
             </div>
           </div>

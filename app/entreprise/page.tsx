@@ -22,7 +22,7 @@ export default function EntreprisePage() {
         surtitre="L'entreprise"
         titre={
           <>
-            40 ans d'acier, <span className="mark-jaune">une famille</span>
+            40 ans d’acier, <span className="mark-jaune">une famille</span>
           </>
         }
         intro={histoire.intro}
@@ -52,7 +52,7 @@ export default function EntreprisePage() {
           <h2 className="h-display text-2xl md:text-3xl">Quatre dépôts, deux pays</h2>
           <p className="mt-3 max-w-xl font-body text-soft">
             Charleroi est le dépôt historique et le plus profond en stock. Les trois autres
-            couvrent le Centre, l'ouest wallon et le Grand Est.
+            couvrent le Centre, l’ouest wallon et le Grand Est.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {depotsDetail.map((d, i) => (

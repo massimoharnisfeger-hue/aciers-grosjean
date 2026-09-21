@@ -1,0 +1,45 @@
+#!/bin/sh
+# Gate local du depot Site Aciers Grosjean.
+#
+# Rien ne part avec un controle rouge. Ce hook lance le registre complet
+# (tests/lancer.py) avant chaque commit et refuse le commit si un seul controle
+# echoue, ou si le nombre de controles a diminue.
+#
+# Installe par : powershell -File scripts/installer-hooks.ps1
+# Source versionnee : scripts/hooks/pre-commit  (ce fichier)
+#
+# Pour passer outre en cas d'urgence reelle : git commit --no-verify
+# Ce n'est pas une porte de sortie ordinaire : un controle rouge se corrige.
+
+RACINE=$(git rev-parse --show-toplevel) || exit 1
+cd "$RACINE" || exit 1
+
+if command -v python >/dev/null 2>&1; then
+    PY=python
+elif command -v py >/dev/null 2>&1; then
+    PY=py
+else
+    echo "pre-commit : python introuvable, le gate ne peut pas s'executer." >&2
+    echo "Installer Python ou committer avec --no-verify en connaissance de cause." >&2
+    exit 1
+fi
+
+echo "pre-commit : verification des fichiers du commit..."
+FICHIERS=$(git diff --cached --name-only --diff-filter=ACM)
+if [ -n "$FICHIERS" ]; then
+    if ! printf '%s\n' "$FICHIERS" | "$PY" scripts/hooks/verifier-depot.py; then
+        echo "" >&2
+        echo "COMMIT REFUSE : voir ci-dessus." >&2
+        exit 1
+    fi
+fi
+
+echo "pre-commit : lancement du registre des controles..."
+if ! "$PY" tests/lancer.py; then
+    echo "" >&2
+    echo "COMMIT REFUSE : au moins un controle est rouge." >&2
+    echo "Corrige le controle, ne le supprime pas. Detail : python tests/lancer.py -v" >&2
+    exit 1
+fi
+
+exit 0

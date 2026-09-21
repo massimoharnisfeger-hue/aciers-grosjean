@@ -112,13 +112,54 @@ class ProjectOsTests(unittest.TestCase):
         self.assertIn("AUTO-PUSH DESACTIVE", script)
         self.assertIn("git push", script)
 
-    def test_ci_is_check_only(self):
+    def test_ci_runs_on_the_production_path(self):
+        """La CI doit se declencher sur ce qui part reellement en production.
+
+        Le flux reel est le push direct sur `main`, qui declenche Vercel. Tant
+        que la CI ne se declenchait que sur `pull_request` — et que le depot
+        n'a jamais eu la moindre PR en 69 commits — typecheck, build et
+        controles ne gardaient rien.
+        """
         ci = (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
         self.assertIn("pull_request:", ci)
         self.assertIn("workflow_dispatch:", ci)
-        self.assertNotIn("  push:", ci)
+        self.assertIn("push:", ci)
+        self.assertIn("branches: [main]", ci)
+
+    def test_ci_actions_are_pinned_by_commit(self):
+        """Une action epinglee par tag execute le code que son auteur y met.
+
+        `actions/checkout@v4` est mutable : celui qui controle le tag change le
+        code qui tourne dans la CI, laquelle lit tout le depot. Le manifeste
+        `docs/architecture/EXTERNAL_CAPABILITIES.md` epingle deja les skills au
+        commit pres ; la CI doit suivre la meme regle.
+        """
+        ci = (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
+        utilisations = re.findall(r"uses:\s*(\S+)", ci)
+        self.assertTrue(utilisations, "Aucune action trouvee : controle vide.")
+        for utilisation in utilisations:
+            reference = utilisation.split("@", 1)
+            self.assertEqual(len(reference), 2, f"action sans version : {utilisation}")
+            self.assertRegex(
+                reference[1],
+                r"^[0-9a-f]{40}$",
+                f"{utilisation} est epinglee par un tag mutable. "
+                f"Resoudre le SHA : git ls-remote --tags https://github.com/"
+                f"{reference[0]} refs/tags/<tag>",
+            )
+
+    def test_ci_never_publishes(self):
+        """Interdiction reelle : la CI verifie, elle ne publie jamais.
+
+        A ne pas confondre avec le declencheur `push:`, qui dit seulement QUAND
+        la CI se lance. Jusqu'au 21/09 les deux etaient dans la meme liste
+        d'interdits, ce qui privait le chemin de production de toute
+        verification (voir L-010).
+        """
+        ci = (ROOT / ".github/workflows/quality.yml").read_text(encoding="utf-8")
         for forbidden in ["git push", "git commit", "vercel", "npm publish", "rm -rf", "Remove-Item"]:
             self.assertNotIn(forbidden, ci)
+        self.assertIn("contents: read", ci)
 
     def test_agent_tools_match_minimum_permissions(self):
         expected = {

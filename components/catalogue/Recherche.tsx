@@ -96,7 +96,7 @@ export default function Recherche() {
               <p className="h-title text-lg text-encre">Rien trouvé sous ce nom</p>
               <p className="mx-auto mt-2 max-w-sm font-body text-sm text-soft">
                 Le stock va au-delà de ce qui est publié. Décrivez ce que vous cherchez&nbsp;:
-                on vous dit en 24&nbsp;h si on l'a, et à quel prix.
+                on vous dit en 24&nbsp;h si on l’a, et à quel prix.
               </p>
               <Link href="/devis" className="btn-cta mt-6">Décrire mon besoin</Link>
             </div>

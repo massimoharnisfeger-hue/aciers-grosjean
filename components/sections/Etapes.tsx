@@ -10,7 +10,7 @@ export default function Etapes() {
             Comment ça marche
           </span>
           <h2 className="h-display mt-3 text-4xl md:text-5xl">
-            De l'idée au retrait, en <span className="mark-jaune">4 étapes</span>
+            De l’idée au retrait, en <span className="mark-jaune">4 étapes</span>
           </h2>
         </Reveal>
 

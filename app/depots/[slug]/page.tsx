@@ -106,7 +106,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
             <Reveal delay={0.06}>
               <h2 className="h-display mt-14 text-2xl md:text-3xl">Communes desservies</h2>
               <p className="mt-3 max-w-xl font-body text-soft">
-                Les clients de ce dépôt viennent principalement de ces communes. Si la vôtre n'y
+                Les clients de ce dépôt viennent principalement de ces communes. Si la vôtre n’y
                 est pas, appelez : un autre dépôt est peut-être plus proche.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2">
@@ -122,7 +122,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
             </Reveal>
 
             <Reveal delay={0.06}>
-              <h2 className="h-display mt-14 text-2xl md:text-3xl">Ce qu'on y trouve</h2>
+              <h2 className="h-display mt-14 text-2xl md:text-3xl">Ce qu’on y trouve</h2>
               <div className="mt-6 flex flex-wrap gap-3">
                 {univers.map((x) => (
                   <Link
@@ -174,7 +174,7 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
                 Préparer ma commande
               </Link>
               <p className="mt-3 text-center font-body text-xs text-soft">
-                Commandez à l'avance, on prépare — vous ne faites que charger.
+                Commandez à l’avance, on prépare — vous ne faites que charger.
               </p>
             </div>
 

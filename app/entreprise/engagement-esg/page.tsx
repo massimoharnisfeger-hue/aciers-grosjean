@@ -42,7 +42,7 @@ export default function EsgPage() {
         surtitre="Engagement ESG"
         titre={
           <>
-            Ce qu'on mesure, <span className="mark-jaune">et ce qu'on améliore</span>
+            Ce qu’on mesure, <span className="mark-jaune">et ce qu’on améliore</span>
           </>
         }
         intro="Premier exercice de transparence formalisé. Trois piliers, 112 points de contrôle, et une feuille de route datée jusqu'en 2030."
@@ -69,13 +69,13 @@ export default function EsgPage() {
         <div className="container-g max-w-[46rem]">
           <h2 className="h-display text-2xl md:text-3xl">Feuille de route 2022-2030</h2>
           <p className="mt-4 font-body text-lg leading-relaxed text-soft">
-            Des objectifs datés plutôt que des intentions : réduction de l'intensité énergétique
+            Des objectifs datés plutôt que des intentions : réduction de l’intensité énergétique
             des sites, amélioration continue du taux de valorisation des chutes, et extension de
-            la certification à l'ensemble des activités de transformation.
+            la certification à l’ensemble des activités de transformation.
           </p>
           <p className="mt-4 font-body text-lg leading-relaxed text-soft">
-            Le rapport est réévalué chaque exercice. Un engagement qu'on ne peut pas mesurer
-            n'est pas un engagement.
+            Le rapport est réévalué chaque exercice. Un engagement qu’on ne peut pas mesurer
+            n’est pas un engagement.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/conseils/rapport-esg-aciers-grosjean-2023" className="btn-cta">
