@@ -174,3 +174,15 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le paramètre `[string]$Branche` et la variable `$branche = (git rev-parse --abbrev-ref HEAD)` sont **une seule variable**, PowerShell ne distinguant pas la casse. La branche courante écrasait silencieusement le paramètre, donc `$brancheTravail` valait `main` et la branche de travail n'était jamais calculée. Ni l'analyseur de syntaxe ni l'exécution ne signalent cette collision : elle ne se voit qu'en lisant le même nom deux fois à deux casses. Trouvée en journalisant le refspec réellement envoyé — la mesure, pas la troisième hypothèse.
 - **Contrôle** : `tests/test_gate.py::GateTests::test_aucun_parametre_powershell_n_est_ecrase_par_une_variable_locale`
 - **Date** : 2026-09-21
+
+### L-023 — un « mur de texte » à l'écran est d'abord un défaut de données, pas de CSS
+- **Symptôme** : sur les 495 fiches produit, la description s'affichait en paragraphes commençant par « • », sans titre ni liste, sous un intertitre « Description » qui laissait 36 % de la largeur vide à 1280 px. Le gabarit savait pourtant rendre des titres et des listes.
+- **Cause** : `lib/descriptions-site-actuel.json` contenait 4 776 blocs, tous de type `p`. Le générateur (`scripts/inventaire/integrer.py`) ne faisait une liste que si un MÊME paragraphe contenait deux « • », et un titre que si le `<p>` ne contenait qu'un `<strong>` ; le site source met chaque puce dans son propre `<p>` et ses intertitres en `<p>` nu. Aucune des deux heuristiques ne rencontrait jamais le balisage réel. Corrigé dans le générateur (puces par paragraphe fusionnées en listes, intertitres reconnus par lexique et forme, garde contre les lignes « Libellé Valeur » d'un tableau aplati), JSON régénéré hors ligne depuis le cache : 494 titres, 721 listes, zéro puce littérale. Retoucher le CSS aurait décoré le symptôme.
+- **Contrôle** : `tests/test_produit.py::DonneesDeDescription::test_d1_aucun_paragraphe_a_puce`
+- **Date** : 2026-09-22
+
+### L-024 — un chiffre à 48 px dans une colonne de 140 px se casse, et la grille ne le dit pas
+- **Symptôme** : capture d'accueil à 320 px du 22/09 : « 40 ans » sur deux lignes, « 4 » seul sur la sienne, dans une grille restée à deux colonnes ; aucun débordement mesuré, donc invisible au balayage.
+- **Cause** : `Counters.tsx` portait `text-5xl md:text-6xl` — la taille desktop moins un cran s'appliquait dès 320 px, soit 48 px pour deux compteurs dans 280 px utiles. La taille mobile n'était pas écrite, elle était héritée. Corrigé par `text-4xl sm:text-5xl md:text-6xl` et `tabular-nums`.
+- **Contrôle** : `tests/test_responsive.py::CompteursMobiles::test_r4_taille_mobile_explicite`
+- **Date** : 2026-09-22

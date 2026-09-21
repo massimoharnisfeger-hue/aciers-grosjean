@@ -60,6 +60,8 @@ REQUETE_TIMEOUT_S = 10.0
 UNIVERS = ("acier", "aluminium", "inox", "toiture-bardage", "jardin-cloture", "quincaillerie")
 CHAMPS_DEVIS = ("nom", "email", "telephone", "produit", "depot", "details")
 PRODUIT_TEMOIN = "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud"
+# Fiche a description riche (titres, listes, services) : le rond a beton n'a que de la prose.
+PRODUIT_RICHE = "plat-de-20x3mm-en-aluminium"
 
 # Demande de devis valide, donnees fictives : rien ici n'est une personne reelle.
 DEMANDE_TEMOIN = {
@@ -226,6 +228,25 @@ class ParcoursVisiteur(unittest.TestCase):
         casses = [(c, self.serveur.appeler(c or "/")[0]) for c in chemins]
         casses = [c for c in casses if c[1] != 200]
         self.assertEqual(casses, [], "URL declarees au sitemap mais cassees : " + str(casses))
+
+    def test_p9_fiche_produit_structuree(self):
+        """P9 : ce que le visiteur recoit sur une fiche produit est structure.
+
+        Avant le 22/09, la description de chaque fiche etait rendue en
+        paragraphes commencant par « • » : aucun titre, aucune liste, une colonne
+        vide sur 36 % de la largeur. Le module de chiffres cles n'existait pas.
+        """
+        statut, corps = self.serveur.appeler("/p/" + PRODUIT_TEMOIN)
+        self.assertEqual(statut, 200)
+        self.assertIn('data-module="chiffres-cles"', corps, "module de chiffres cles absent du HTML rendu")
+        self.assertNotRegex(corps, r">\s*[•]\s", "une puce litterale « • » subsiste dans le HTML : liste non reconnue")
+        self.assertIn("Le produit en d", corps, "le bloc « Le produit en détail » n'est pas rendu")
+        statut, riche = self.serveur.appeler("/p/" + PRODUIT_RICHE)
+        self.assertEqual(statut, 200)
+        self.assertNotRegex(riche, r">\s*[•]\s", "une puce litterale « • » subsiste dans le HTML : liste non reconnue")
+        self.assertRegex(riche, r"<h3[^>]*>", "les sections du detail doivent etre des <h3> sous le <h2> du bloc")
+        for module in ("atouts", "caracteristiques", "services"):
+            self.assertIn(f'data-module="{module}"', riche, f"module « {module} » absent de la fiche riche")
 
     def test_p8a_devis_api_refuse_un_corps_invalide(self):
         statut, _ = self.serveur.envoyer("/api/devis", {"nom": "x"})

@@ -112,6 +112,23 @@ class CiblesTactiles(unittest.TestCase):
             )
 
 
+class CompteursMobiles(unittest.TestCase):
+    """R4 : un chiffre a 48 px dans une colonne de 140 px se casse en deux lignes.
+
+    Capture du 22/09 a 320 px : « 40 ans » sur deux lignes, « 4 » seul sur la
+    sienne, alors que la grille reste a deux colonnes. La taille de police
+    mobile doit etre explicite et plus petite que celle du desktop.
+    """
+
+    def test_r4_taille_mobile_explicite(self):
+        src = source(COMPOSANTS / "fx" / "Counters.tsx")
+        self.assertFalse(
+            sans_prefixe("text-5xl", src),
+            "Counters.tsx : `text-5xl` sans prefixe s'applique a 320 px ou deux chiffres "
+            "se partagent 280 px. Ecrire la taille mobile, puis sm:/md: pour les autres.",
+        )
+
+
 class LiensInternes(unittest.TestCase):
     """R3 : chaque href litteral vers le site mene a une page qui existe."""
 

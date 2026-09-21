@@ -16,6 +16,8 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
+import { structurerDescription, sectionsDe, type DescriptionSiteActuel, type TypeSection } from "@/lib/description";
+import { ChiffresCles, ModuleSection } from "@/components/catalogue/FicheModules";
 import { titre, description } from "@/lib/seo";
 import descriptionsBrutes from "@/lib/descriptions-site-actuel.json";
 import visuelsBruts from "@/lib/visuels-produits.json";
@@ -28,14 +30,15 @@ const visuels = visuelsBruts as unknown as {
   categories: Record<string, VisuelProduit>;
 };
 
-/** Description relevée sur le site actuel, en texte brut (scripts/inventaire/integrer.py). */
-type BlocDescription = { t: "p" | "h"; texte: string } | { t: "ul"; items: string[] };
-type DescriptionSiteActuel = {
-  courte: string;
-  blocs: BlocDescription[];
-  supplementCoupe: boolean;
-};
+/** Description relevée sur le site actuel (scripts/inventaire/integrer.py), structurée par lib/description.ts. */
 const descriptions = descriptionsBrutes as unknown as Record<string, DescriptionSiteActuel>;
+
+/** Ordre de lecture des modules du détail, du plus décisionnel au plus accessoire. */
+const ORDRE: TypeSection[] = ["presentation", "applications", "atouts", "caracteristiques", "conseils", "services", "autre"];
+const TITRES: Record<TypeSection, string> = {
+  presentation: "Présentation", applications: "Applications", atouts: "Points forts",
+  caracteristiques: "Caractéristiques", conseils: "Conseils", services: "Services", autre: "À savoir",
+};
 
 const metres = (v: number) => `${v.toLocaleString("fr-BE")} m`;
 
@@ -73,6 +76,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
   const u = universBySlug(p.univers)!;
   const Art = productArt[artPour(p.categorie, u.art)] ?? ArtPoutrelle;
   const desc = descriptions[p.slug];
+  const ds = structurerDescription(desc, p);
 
   const chaine = ancetres(p.categorie);
   const miettes = [
@@ -138,9 +142,37 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
       </div>
 
       <section className="bg-white py-12 md:py-16">
-        <div className="container-g grid gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="container-g grid gap-8 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8">
+          {/* identité : d'abord sur mobile, en haut de la colonne droite sur desktop */}
+          <div className="lg:col-start-2 lg:row-start-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <Link
+                href={`/${u.slug}`}
+                className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
+              >
+                {u.nom}
+              </Link>
+              {cat && (
+                <>
+                  <span className="text-brume" aria-hidden="true">·</span>
+                  <Link
+                    href={cat.chemin}
+                    className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
+                  >
+                    {cat.nom}
+                  </Link>
+                </>
+              )}
+            </div>
+            <h1 className="h-display mt-3 text-3xl leading-[1.1] md:text-4xl">{p.nom}</h1>
+            {ds.courte && (
+              <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-soft">{ds.courte}</p>
+            )}
+            <ChiffresCles p={p} matiere={u.nom} />
+          </div>
+
           {/* visuel */}
-          <Reveal>
+          <Reveal className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
             <div className="lg:sticky lg:top-28">
               {vues.length > 0 ? (
                 <GalerieProduit vues={vues} />
@@ -178,31 +210,9 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
           </Reveal>
 
           {/* détails */}
-          <Reveal delay={0.08}>
+          <Reveal delay={0.08} className="lg:col-start-2 lg:row-start-2">
             <div className="flex flex-col">
-              <div className="flex flex-wrap items-center gap-2">
-                <Link
-                  href={`/${u.slug}`}
-                  className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
-                >
-                  {u.nom}
-                </Link>
-                {cat && (
-                  <>
-                    <span className="text-brume" aria-hidden="true">·</span>
-                    <Link
-                      href={cat.chemin}
-                      className="lien-tactile font-body text-xs uppercase tracking-[0.2em] text-soft transition-colors hover:text-encre"
-                    >
-                      {cat.nom}
-                    </Link>
-                  </>
-                )}
-              </div>
-
-              <h1 className="h-display mt-3 text-3xl leading-[1.1] md:text-4xl">{p.nom}</h1>
-
-              <div className="mt-7 border-y border-brume py-6">
+              <div className="border-y border-brume py-6">
                 <div className="flex flex-wrap items-end gap-x-4 gap-y-1">
                   <span className="h-title text-4xl font-bold tabular-nums text-encre md:text-5xl">
                     {formatPrix(p.prix)}
@@ -323,26 +333,22 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
         </div>
       </section>
 
-      {desc && (desc.courte || desc.blocs.length > 0) && (
-        <section className="border-t border-brume bg-white py-14 md:py-16">
-          <div className="container-g grid gap-8 lg:grid-cols-[1fr_2fr] lg:gap-16">
-            <h2 className="h-display text-2xl md:text-3xl">Description</h2>
-            <div className="max-w-3xl space-y-4 font-body leading-relaxed text-encre">
-              {desc.courte && <p className="text-lg">{desc.courte}</p>}
-              {desc.blocs.map((b, i) =>
-                b.t === "ul" ? (
-                  <ul key={i} className="list-disc space-y-1.5 pl-5 marker:text-jaune">
-                    {b.items.map((item, j) => (
-                      <li key={j}>{item}</li>
-                    ))}
-                  </ul>
-                ) : b.t === "h" ? (
-                  <h3 key={i} className="h-title pt-2 text-lg font-semibold text-encre">{b.texte}</h3>
-                ) : (
-                  <p key={i} className="text-soft">{b.texte}</p>
-                )
-              )}
-            </div>
+      {(ds.introduction.length > 0 || ds.sections.length > 0) && (
+        <section className="border-t border-brume bg-nuage py-14 md:py-16">
+          <div className="container-g">
+            <h2 className="h-display text-2xl md:text-3xl">Le produit en détail</h2>
+            {ds.introduction.length > 0 && (
+              <div className="mt-5 max-w-3xl space-y-3 font-body leading-relaxed text-encre">
+                {ds.introduction.map((texte) => <p key={texte}>{texte}</p>)}
+              </div>
+            )}
+            {ds.sections.length > 0 && (
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                {ORDRE.flatMap((type) => sectionsDe(ds, type)).map((s, i) => (
+                  <ModuleSection key={`${s.type}-${i}`} section={s} titreParDefaut={TITRES[s.type]} niveau={3} />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

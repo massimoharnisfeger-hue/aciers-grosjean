@@ -67,3 +67,10 @@ jusqu'à ce que tout soit fini ». Détail dans `_JOURNAL/2026-09-21.md` (sectio
 `_DOCS/QA-RESPONSIVE.md`. Trois défauts corrigés (chevauchement 320 px, cibles < 24 px, lien
 404), trois leçons (L-018 à L-020), un outil de balayage réutilisable. Un balayage a été tué par
 manque de mémoire (15 Go) et relancé en deux moitiés : à retenir pour les prochains.
+
+
+## Fiches produit (22/09, boucle autonome /loop)
+
+Brief « AUTONOMOUS PRODUCT PAGE REDESIGN + QA LOOP » avec captures du site déployé (en retard de
+cinq jours sur le travail local). Cause racine dans les données (générateur), pas dans le CSS ;
+système réutilisable pour les 495 fiches ; détail dans `_JOURNAL/2026-09-22.md` et ADR-0008.
