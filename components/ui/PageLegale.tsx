@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FilAriane from "@/components/ui/FilAriane";
 
 export type BlocLegal = { titre: string; paras: string[] };
 
@@ -19,11 +20,9 @@ export default function PageLegale({
     <main>
       <header className="border-b border-brume bg-nuage pt-32 md:pt-40">
         <div className="container-g pb-12 md:pb-16">
-          <nav className="mb-5 font-body text-xs text-soft">
-            <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
-            <span className="mx-2 text-brume">/</span>
-            <span className="text-encre">{surtitre}</span>
-          </nav>
+          <div className="mb-5">
+            <FilAriane items={[{ label: surtitre }]} />
+          </div>
           <h1 className="h-display max-w-3xl text-3xl md:text-5xl">{titre}</h1>
           <p className="mt-4 max-w-2xl font-body text-lg text-soft">{intro}</p>
         </div>

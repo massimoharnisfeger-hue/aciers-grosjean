@@ -129,6 +129,41 @@ class CompteursMobiles(unittest.TestCase):
         )
 
 
+class FilsDAriane(unittest.TestCase):
+    """R5 : un seul fil d'Ariane, celui qui emet le JSON-LD.
+
+    Quatre gabarits — PageHeader (22 pages), PageLegale, la fiche d'un depot,
+    celle d'un service — dessinaient leur fil d'Ariane a la main : meme rendu
+    que `FilAriane`, mais sans le `BreadcrumbList` schema.org. Google ne voyait
+    donc pas la hierarchie sur la majorite du site. Note comme dette dans
+    `_DOCS/QA-RESPONSIVE.md` le 21/09, corrige le 22.
+
+    Verifie aussi qu'aucune page ne cumule deux fils (deux BreadcrumbList sur
+    une meme page se contredisent aux yeux d'un moteur).
+    """
+
+    def test_r5_aucun_fil_d_ariane_code_a_la_main(self):
+        fautifs = []
+        for fichier in list(APP.rglob("*.tsx")) + list(COMPOSANTS.rglob("*.tsx")):
+            if fichier.name == "FilAriane.tsx":
+                continue
+            src = source(fichier)
+            if re.search(r'<Link href="/"[^>]*>Accueil</Link>', src):
+                fautifs.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(
+            fautifs, [],
+            f"fil(s) d'Ariane dessines a la main, donc sans BreadcrumbList : {fautifs}",
+        )
+
+    def test_r5bis_jamais_deux_fils_sur_une_page(self):
+        cumuls = []
+        for fichier in APP.rglob("page.tsx"):
+            src = source(fichier)
+            if "FilAriane" in src and ("PageHeader" in src or "PageLegale" in src):
+                cumuls.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(cumuls, [], f"deux fils d'Ariane sur la meme page : {cumuls}")
+
+
 class LiensInternes(unittest.TestCase):
     """R3 : chaque href litteral vers le site mene a une page qui existe."""
 

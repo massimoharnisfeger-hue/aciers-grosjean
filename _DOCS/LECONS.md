@@ -210,3 +210,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : PowerShell 5.1 emballe chaque ligne de stderr d'un exécutable dans une `ErrorRecord` dès que la redirection est explicite ; sous `Stop`, cette ErrorRecord devient terminante, même si l'exécutable a réussi. Les deux moitiés sont raisonnables séparément — `Stop` pour ne pas continuer sur une erreur, `2>$null` pour ne pas polluer la sortie — et fatales ensemble. Corrigé en baissant la préférence autour de l'appel (`try`/`finally`), pas en supprimant la redirection au hasard.
 - **Contrôle** : `tests/test_gate.py::GateTests::test_aucun_script_ne_rend_stderr_fatal`
 - **Date** : 2026-09-22
+
+### L-029 — un composant recopié perd ce qui ne se voit pas
+- **Symptôme** : quatre gabarits — `PageHeader` (22 pages), `PageLegale`, la fiche d'un dépôt, celle d'un service — dessinaient leur fil d'Ariane à la main. Rendu identique à `FilAriane` au pixel près, donc invisible à l'œil et au balayage responsive ; mais aucun `BreadcrumbList` schema.org. Google ne voyait la hiérarchie que sur les cinq pages qui utilisaient vraiment le composant.
+- **Cause** : le fil d'Ariane est cinq lignes de JSX faciles à recopier, et sa partie coûteuse — le JSON-LD — est invisible. Ce qu'on recopie d'un composant, c'est ce qu'on voit ; ce qu'on perd, c'est le reste. Corrigé en passant les quatre gabarits sur `FilAriane`, qui accepte désormais des miettes optionnelles. Contrôle générique : aucun `<Link href="/">Accueil</Link>` hors du composant, et jamais deux fils sur une même page.
+- **Contrôle** : `tests/test_responsive.py::FilsDAriane::test_r5_aucun_fil_d_ariane_code_a_la_main`
+- **Date** : 2026-09-22
