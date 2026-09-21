@@ -28,7 +28,10 @@ function Note([string]$texte) {
 # Le jeton est celui que Git utilise deja pour pousser : aucun secret nouveau,
 # rien d'ecrit sur le disque, rien d'affiche.
 function Jeton {
-  $reponse = "protocol=https`nhost=github.com`n`n" | git credential fill 2>$null
+  # Une ligne par element : git credential fill lit son entree ligne par ligne et
+  # exige une ligne vide finale. Une chaine unique avec des `n lui arrive collee,
+  # et il repond "refusing to work with credential missing protocol field".
+  $reponse = @('protocol=https', 'host=github.com', '') | git credential fill 2>$null
   foreach ($l in $reponse) { if ($l -like 'password=*') { return $l.Substring(9) } }
   return $null
 }
