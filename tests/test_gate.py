@@ -9,6 +9,7 @@ produirait un controle rouge chez l'un et vert chez l'autre — le defaut B3.
 Le hook est exerce directement, sans jamais creer de commit.
 """
 
+import re
 import subprocess
 import sys
 import tempfile
@@ -107,6 +108,36 @@ class GateTests(unittest.TestCase):
             "Le bouton doit afficher le lien de creation de la pull request : "
             "sans lui, le travail dort sur une branche que personne n'ouvre.",
         )
+
+    def test_aucun_parametre_powershell_n_est_ecrase_par_une_variable_locale(self):
+        """S3 : PowerShell ignore la casse des variables.
+
+        Le 21/09, `synchro.ps1` declarait le parametre `$Branche` et assignait
+        plus bas `$branche = (git rev-parse --abbrev-ref HEAD)`. Ce sont la
+        MEME variable : la branche courante ecrasait le parametre, et le mode
+        sauvegarder poussait `main` au lieu d'une branche de travail. Le script
+        tournait, journalisait, et faisait le contraire de ce qu'il annoncait.
+
+        Aucun outil ne signale cette collision : ni l'analyseur, ni l'execution.
+        Elle se voit seulement en lisant le nom deux fois, a deux casses.
+        """
+        declaration = re.compile(r"^\s*\[.*?\]?\$(\w+)\s*(?:=|,|\))", re.MULTILINE)
+        affectation = re.compile(r"^\s*\$(\w+)\s*=", re.MULTILINE)
+        for script in sorted(RACINE.glob("_OUTILS/*.ps1")) + sorted(RACINE.glob("scripts/*.ps1")):
+            texte = script.read_text(encoding="utf-8", errors="replace")
+            bloc = re.search(r"param\s*\((.*?)\n\)", texte, re.DOTALL)
+            if not bloc:
+                continue
+            parametres = {n.lower() for n in declaration.findall(bloc.group(1))}
+            corps = texte[bloc.end():]
+            collisions = sorted({n for n in affectation.findall(corps) if n.lower() in parametres})
+            self.assertEqual(
+                collisions,
+                [],
+                f"{script.relative_to(RACINE).as_posix()} : {collisions} est a la fois "
+                f"un parametre et une variable assignee. PowerShell ignore la casse : "
+                f"la valeur passee par l'appelant est silencieusement ecrasee.",
+            )
 
     def test_la_politique_decrit_le_flux_par_branche(self):
         """S2 : la politique ecrite dit ce que GitHub impose reellement."""

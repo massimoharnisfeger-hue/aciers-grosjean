@@ -55,7 +55,7 @@ La CI vérifie le code et les preuves ; elle ne vaut ni merge, ni release, ni de
 « Required status check "quality" is expected ». Le flux reel est donc :
 
 1. `_OUTILS/SAUVEGARDER.cmd` (ou `synchro.ps1 -Mode sauvegarder`) commite, puis pousse le travail
-   sur une branche (`travail/AAAA-MM-JJ-HHMM` par defaut, ou celle passee par `-Branche`) ;
+   sur une branche (`travail/AAAA-MM-JJ-HHMM` par defaut, ou celle passee par `-BrancheCible`) ;
 2. le script affiche et ouvre le lien de creation de la pull request ;
 3. la CI execute le check « quality » (typecheck, lint, build, registre des controles) ;
 4. un humain fusionne : c'est ce merge, et lui seul, qui declenche le deploiement Vercel.
