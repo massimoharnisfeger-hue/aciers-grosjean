@@ -119,6 +119,31 @@ class GrillesQuiRetrecissent(unittest.TestCase):
             self.assertIn("break-words", ligne, f"{chemin.name} : bloc « {ancre} » sans `break-words`.")
 
 
+class CatalogueRegenerable(unittest.TestCase):
+    """D12 : un fichier declare « genere » doit pouvoir etre regenere.
+
+    `lib/catalogue.ts` porte 495 produits et CLAUDE.md dit : « genere par
+    scripts/generer-catalogue.py, toute modification a la main doit etre
+    reportee dans le generateur ». Or le 22/09 le generateur attendait son CSV
+    a `/root/.claude/uploads/...` — un chemin de session web Linux, absent de
+    cette machine et du depot. Le generateur ne pouvait plus tourner : le
+    catalogue etait gele, et la regle de CLAUDE.md interdisait de le modifier
+    a la main. Impossible d'ajouter un produit, de corriger un nom.
+
+    Un chemin d'entree hors du depot n'est pas une source : c'est une piece
+    manquante qui ne se voit qu'au moment ou l'on en a besoin.
+    """
+
+    def test_d12_l_entree_du_generateur_est_dans_le_depot(self):
+        src = (RACINE / "scripts" / "generer-catalogue.py").read_text(encoding="utf-8")
+        defauts = re.findall(r'^\s*"(/(?:root|home|tmp|mnt)/[^"]*)"', src, re.MULTILINE)
+        self.assertEqual(
+            defauts, [],
+            f"generer-catalogue.py designe une entree hors du depot : {defauts}. "
+            f"Le catalogue ne peut pas etre regenere, donc il ne peut plus etre corrige.",
+        )
+
+
 class VisuelDeFamille(unittest.TestCase):
     """D11 : une carte de famille montre la vraie photo quand il n'y en a qu'une.
 

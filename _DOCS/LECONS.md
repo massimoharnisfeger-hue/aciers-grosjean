@@ -234,3 +234,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le repli SVG était conçu pour l'absence de photo, et personne n'avait vérifié qu'il ne masquait pas une photo présente. Un audit qui compte les images *servies* ne voit pas celles qui *devraient* l'être ailleurs. Corrigé par la règle du candidat unique (`studioUniqueDe`) : une famille sous laquelle il n'existe qu'une photo studio la montre ; zéro ou plusieurs, le dessin reste, parce que choisir entre deux photos est un arbitrage visuel. Effet mesuré au-delà du bardage : 7 familles et plusieurs sous-catégories (`/acier/toles` en gagne 7 distinctes).
 - **Contrôle** : `tests/test_produit.py::VisuelDeFamille::test_d11_la_regle_du_candidat_unique`
 - **Date** : 2026-09-22
+
+### L-033 — un chemin d'entrée hors du dépôt n'est pas une source, c'est une pièce qui manquera
+- **Symptôme** : `lib/catalogue.ts` — 495 produits, cœur du site — porte l'en-tête « généré par `scripts/generer-catalogue.py` », et `CLAUDE.md` interdit de le modifier à la main. Or le générateur attendait son CSV à `/root/.claude/uploads/60ae7e8a-…/`, un chemin de session web Linux. Résultat découvert le 22/09 : le catalogue est **gelé** — impossible d'ajouter un produit vu sur le site officiel, impossible de corriger un nom, et la règle du projet interdit de contourner.
+- **Cause** : le générateur a été écrit dans une session web où le fichier téléversé vivait à ce chemin, et le chemin est resté en dur au rapatriement sur le PC. Rien ne l'a signalé pendant huit jours : un générateur qu'on ne relance pas ne dit jamais qu'il est cassé. Corrigé en déplaçant l'entrée par défaut dans le dépôt et en faisant expliquer au script ce qui manque, avec les colonnes attendues et les trois voies de récupération — au lieu d'une trace de lecture sur un chemin Linux.
+- **Contrôle** : `tests/test_produit.py::CatalogueRegenerable::test_d12_l_entree_du_generateur_est_dans_le_depot`
+- **Date** : 2026-09-22
