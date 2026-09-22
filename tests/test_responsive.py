@@ -43,7 +43,19 @@ FICHIERS_LIENS_TEXTE = (
     APP / "depots" / "[slug]" / "page.tsx",
     APP / "services" / "[slug]" / "page.tsx",
     APP / "p" / "[slug]" / "page.tsx",
+    # Ajoutes le 22/09 : le lien « protection des donnees » du formulaire de
+    # devis mesurait 126 x 13 px au balayage. R2bis ne lisait que les composants
+    # partages ; un formulaire est un composant partage par tous ceux qui
+    # veulent un devis.
+    COMPOSANTS / "sections" / "DevisForm.tsx",
+    COMPOSANTS / "sections" / "FormulairePro.tsx",
+    COMPOSANTS / "ui" / "PageEspace.tsx",
 )
+
+BALAYAGE = RACINE / "scripts" / "qa" / "balayage-responsive.py"
+# Signature CSS de `sr-only` (Tailwind) : l'element existe pour les lecteurs
+# d'ecran, pas pour le doigt. Le balayage doit l'exclure des cibles tactiles.
+SIGNATURE_SR_ONLY = "rect(0px, 0px, 0px, 0px)"
 
 # Un lien a une boite suffisante s'il porte la classe tactile, un bouton, ou une
 # hauteur / un remplissage vertical explicites (cartes, pastilles, icones).
@@ -110,6 +122,24 @@ class CiblesTactiles(unittest.TestCase):
                 f"{fichier.relative_to(RACINE).as_posix()} : {len(fautifs)} lien(s) sans "
                 f"`lien-tactile` : {fautifs[:3]}",
             )
+
+
+class BalayageFiable(unittest.TestCase):
+    """R6 : le balayage ne compte pas un element `sr-only` comme cible tactile.
+
+    Le 22/09, la galerie produit a remonte deux cibles de 1 x 1 px sur chaque
+    fiche : les boutons radio `sr-only` dont l'etiquette visible (85 x 65 px en
+    mobile, mesuree) est la vraie cible. Un balayage qui crie a tort sur 495
+    pages finit ignore ; son filtre `visible()` doit reconnaitre la signature
+    `clip: rect(0px, 0px, 0px, 0px)`.
+    """
+
+    def test_r6_le_balayage_exclut_les_elements_sr_only(self):
+        self.assertIn(
+            SIGNATURE_SR_ONLY,
+            source(BALAYAGE),
+            "balayage-responsive.py doit exclure les elements `sr-only` (clip rect(0,0,0,0)) des cibles.",
+        )
 
 
 class CompteursMobiles(unittest.TestCase):

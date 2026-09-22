@@ -266,3 +266,15 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Contrôle** : `tests/test_rgpd.py::ProtectionDesDonnees::test_rg1_le_relais_serveur_est_annonce`
 - **Date** : 2026-09-22
 - **Suite (22/09, contre-audit)** : le même défaut existait en sens inverse. La page Cookies annonçait « Certaines préférences d'affichage peuvent être conservées dans le stockage local de votre navigateur — un filtre sélectionné, un onglet ouvert », alors qu'aucun `localStorage`, `sessionStorage` ni `document.cookie` n'existe dans le code. Sur-déclarer est moins grave que sous-déclarer, mais une page qui promet « voici ce qu'il utilise réellement » doit dire vrai dans les deux sens. Contrôle `tests/test_rgpd.py::ProtectionDesDonnees::test_rg3_aucun_stockage_navigateur_annonce_a_tort`. Vérifié au passage et exact : les polices sont bien servies depuis le domaine du site (`next/font/google` les intègre au build).
+
+### L-038 — un contrôle qui lit une liste fixe de fichiers ne voit jamais le nouveau
+- **Symptôme** : au balayage du 22/09, le lien « protection des données » du formulaire de devis mesurait 126 × 13 px — un lien légal, dans le formulaire qui rapporte, sous le seuil tactile de 24 px. R2bis, écrit la veille précisément pour cela (« un lien texte doit porter `lien-tactile` »), était vert.
+- **Cause** : R2bis parcourait `FICHIERS_LIENS_TEXTE`, une liste fermée de dix composants établie d'après les défauts du 21/09. `DevisForm.tsx` n'y était pas, `PageEspace.tsx` non plus — dont le lien e-mail avait le même défaut, trouvé en étendant la liste. Un contrôle ne vaut que pour le périmètre qu'on lui donne, et une liste fermée périme à la première page ajoutée. Les trois composants de formulaire et d'espace y sont désormais ; la vraie réponse serait un parcours de tous les `.tsx`, ce qui demande d'abord d'inventorier les exceptions légitimes (boutons, cartes) — à faire quand un troisième oubli se présentera. Mesuré après correction, à 320 px : 126 × 24 et 146 × 24.
+- **Contrôle** : `tests/test_responsive.py::CiblesTactiles::test_r2bis_liens_texte_portent_la_classe`
+- **Date** : 2026-09-22
+
+### L-039 — un outil de mesure qui crie à tort finit ignoré
+- **Symptôme** : chaque fiche produit remontait deux « cibles tactiles » de 1 × 1 px au balayage — donc 990 alertes fausses sur les 495 fiches, au milieu des vraies.
+- **Cause** : ce sont les boutons radio `sr-only` de la galerie (présents pour le lecteur d'écran, rognés à 1 px pour l'œil). Leur cible visible est l'étiquette, mesurée à 85 × 65 px en mobile et 184 × 139 en desktop. Le filtre `visible()` du balayage testait `display`, `visibility` et `opacity`, pas `clip` : la signature de `sr-only` est `clip: rect(0px, 0px, 0px, 0px)`. Un outil de QA a les mêmes obligations qu'un contrôle : une alerte fausse coûte plus qu'aucune alerte, parce qu'elle apprend à ne plus lire.
+- **Contrôle** : `tests/test_responsive.py::BalayageFiable::test_r6_le_balayage_exclut_les_elements_sr_only`
+- **Date** : 2026-09-22
