@@ -5,13 +5,29 @@ catalogue officiel ↔ projet. Aucun compteur repris d'un document antérieur.
 
 ## État des visuels
 
-| | Nombre |
-|---|---|
-| Produits au catalogue du projet | 495 |
-| Rendus Blender dans `final/` | 466 |
-| Rendus intégrés et servis | 466 |
-| Rendus dans `essais/` (jamais utilisés) | 64 |
-| Produits sans rendu | 29 |
+Compteurs remesurés le 22/09 à 11 h. Chaque libellé dit **exactement** ce qui est
+compté : les précédents disaient « rendus dans `final/` » pour un sous-ensemble des
+fichiers, et le dossier en contient près de quatre fois plus.
+
+| | Nombre | Compté comment |
+|---|---|---|
+| Produits au catalogue du projet | 495 | clés `slug` avec `categorie` dans `lib/catalogue.ts` |
+| Fiches produit servies (`*-caracteristiques.webp`) | 466 | fichiers sous `public/images/` |
+| Produits sans rendu | 29 | 495 − 466 |
+| Photos studio servies | 53 | `studio-*.webp` sous `public/images/` |
+| Catégories pourvues au manifeste | 48 | clés de `lib/visuels-produits.json` |
+| — | — | — |
+| Fichiers dans l'atelier `final/` | 1 697 | dont 1 178 PNG bruts, 985 JSON, 519 WebP |
+| Dont fiches produit livrables | 466 | les 466 servis y sont tous présents |
+| Dont photos studio livrables | 53 | nommées `studio-<famille>-studio.webp` |
+| Fichiers dans l'atelier `essais/` | 648 | dont 86 WebP |
+| Dont fiches produit d'essai | 64 | **toutes** visent un produit déjà pourvu |
+| Dont photos studio d'essai | 19 + 3 | 3 nommées `essai-studio-*` |
+
+**`essais/` ne comble aucun manque** — vérifié le 22/09 : les 64 fiches d'essai visent
+toutes un produit qui a déjà son rendu servi, et aucune ne vise un des 29 produits
+sans rendu. La règle « ne jamais intégrer automatiquement depuis `essais/` » ne coûte
+donc rien : il n'y a rien à y récupérer.
 
 ## Rendus existants non intégrés
 

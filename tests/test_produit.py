@@ -15,6 +15,15 @@ D3 - Un titre reste court et ne finit pas par un point : garde contre une
      promotion trop large (un paragraphe pris pour un titre perd son sens).
 D4 - Le gabarit ne dispose plus la description sur deux colonnes dont la
      premiere ne contient qu'un mot : 36 % de la largeur vide a 1280 px.
+D13 - Les compteurs de `PRODUCTS-AJOUT-MODELISATION.md` verifiables depuis le
+      depot disent la verite. Ce document est la reference de ce qui reste a
+      produire ; le 22/09 ses libelles d'atelier annoncaient « rendus dans
+      final/ » pour un sous-ensemble, alors que le dossier contient pres de
+      quatre fois plus de fichiers. Les lignes hors depot (atelier) ne sont pas
+      controlables ici et portent leur date de mesure ; celles qui se lisent
+      dans le depot le sont, et le catalogue etant redevenu regenerable, elles
+      deriveront des qu'un produit sera ajoute.
+
 D5 - Le gabarit porte un module de chiffres cles (`data-module="chiffres-cles"`) :
      ce qui definit le produit se lit avant le prix et le calculateur.
 
@@ -271,6 +280,45 @@ class DemandeDePrix(unittest.TestCase):
         src = (RACINE / "components" / "sections" / "DevisForm.tsx").read_text(encoding="utf-8")
         self.assertIn("details", src)
         self.assertRegex(src, r"location\.search|useSearchParams", "DevisForm.tsx doit lire `details` dans l'URL pour pre-remplir la demande.")
+
+
+class CompteursDuDocument(unittest.TestCase):
+    """D13 : le document de suivi des visuels compte juste ce qu'il peut compter."""
+
+    DOCUMENT = RACINE / "_DOCS" / "rendus-3d" / "PRODUCTS-AJOUT-MODELISATION.md"
+
+    def test_d13_les_compteurs_verifiables_disent_la_verite(self):
+        texte = self.DOCUMENT.read_text(encoding="utf-8")
+        catalogue = (RACINE / "lib" / "catalogue.ts").read_text(encoding="utf-8")
+
+        produits = len(re.findall(r'slug: "([^"]+)", nom: .*?, categorie: "', catalogue))
+        fiches = len(list((RACINE / "public" / "images").rglob("*-caracteristiques.webp")))
+        studios = len(list((RACINE / "public" / "images").rglob("studio-*.webp")))
+        manifeste = json.loads(
+            (RACINE / "lib" / "visuels-produits.json").read_text(encoding="utf-8")
+        )
+
+        attendus = {
+            "produits au catalogue": produits,
+            "fiches produit servies": fiches,
+            "produits sans rendu": produits - fiches,
+            "photos studio servies": studios,
+            "categories au manifeste": len(manifeste["categories"]),
+        }
+        # Un nombre peut s'ecrire « 1 697 » : l'espace fine ne doit pas le cacher.
+        nombres = {n.replace(" ", "").replace(" ", "").replace(" ", "")
+                   for n in re.findall(r"\|\s*([\d    ]+?)\s*\|", texte)}
+        absents = {
+            libelle: valeur
+            for libelle, valeur in attendus.items()
+            if str(valeur) not in nombres
+        }
+        self.assertEqual(
+            absents, {},
+            f"{self.DOCUMENT.name} ne porte plus ces nombres mesures : {absents}. "
+            "Remesurer et corriger le tableau.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
