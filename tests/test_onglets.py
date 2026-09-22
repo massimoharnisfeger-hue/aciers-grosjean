@@ -18,9 +18,13 @@ O3 - Le composant declare autant de jeux de classes CSS qu'il peut afficher
      entier : un onglet au-dela du dernier jeu declare s'afficherait sans
      jamais pouvoir etre selectionne. C'est le piege de `GalerieProduit`, qui
      tronque a `CLASSES.length`.
-O4 - La section n'affiche pas ce que la fiche montre deja ailleurs. La colonne
-     de droite rend deja `p.specs` (Specifications) et `p.pdfs` (Documents) :
-     les repeter dans un onglet doublerait la page au lieu de l'enrichir.
+O4 - Les specifications et les documents n'existent qu'a UN seul endroit de la
+     fiche. Le 22/09, le proprietaire a demande que chaque fiche porte les
+     memes rubriques ; ce sont les seules donnees quasi universelles
+     (specifications 472 fiches sur 495, PDF 359), donc elles passent en
+     onglet. Les laisser AUSSI dans la colonne de droite afficherait deux fois
+     la meme chose sur la meme page. Le controle refuse les deux emplacements
+     a la fois, sans imposer lequel : c'est l'exclusivite qui compte.
 O5 - Le rendu 3D dimensionnel accompagne l'onglet des cotes. 355 fiches
      portent des `cotes` (lettres A, B, C et valeurs) qui n'etaient affichees
      nulle part, alors que le rendu de la fiche porte ces memes lettres.
@@ -41,6 +45,28 @@ DESCRIPTIONS = RACINE / "lib" / "descriptions-site-actuel.json"
 
 def source(chemin: Path) -> str:
     return chemin.read_text(encoding="utf-8")
+
+
+def sans_commentaires(texte: str) -> str:
+    """Le code seul : un commentaire qui NOMME une donnee n'est pas un rendu.
+
+    O4 a d'abord echoue sur la phrase « la colonne de droite rend deja
+    `p.specs` », ecrite dans l'en-tete de `lib/onglets.ts` pour expliquer
+    justement qu'il ne les rend pas.
+    """
+    morceaux, reste = [], texte
+    while True:
+        i = reste.find("/*")
+        if i == -1:
+            morceaux.append(reste)
+            break
+        morceaux.append(reste[:i])
+        j = reste.find("*/", i + 2)
+        if j == -1:
+            break
+        reste = reste[j + 2:]
+    lignes = "".join(morceaux).splitlines()
+    return chr(10).join(l for l in lignes if not l.strip().startswith("//"))
 
 
 class ModuleDOnglets(unittest.TestCase):
@@ -83,13 +109,20 @@ class ComposantDOnglets(unittest.TestCase):
             "les derniers s'afficheraient sans pouvoir etre selectionnes.",
         )
 
-    def test_o4_la_section_ne_double_pas_ce_qui_est_deja_affiche(self):
-        texte = source(COMPOSANT)
-        for deja in ("p.specs", "p.pdfs", "produit.specs", "produit.pdfs"):
-            self.assertNotIn(
-                deja, texte,
-                f"`{deja}` est deja rendu dans la colonne de droite de la fiche : "
-                "le repeter en onglet doublerait la page.",
+    def test_o4_les_specifications_ne_sont_qu_a_un_endroit(self):
+        composant = sans_commentaires(source(COMPOSANT) + source(MODULE))
+        fiche = sans_commentaires(source(FICHE))
+        for donnee, nom in (("specs", "specifications"), ("pdfs", "documents")):
+            dans_onglets = ("p." + donnee) in composant or ("produit." + donnee) in composant
+            dans_colonne = ("p." + donnee + ".length") in fiche or ("p." + donnee + " &&") in fiche
+            self.assertFalse(
+                dans_onglets and dans_colonne,
+                f"les {nom} sont rendus a la fois dans les onglets et dans la colonne "
+                "de droite de la fiche : le visiteur lirait deux fois la meme chose.",
+            )
+            self.assertTrue(
+                dans_onglets or dans_colonne,
+                f"les {nom} ne sont rendus nulle part : la donnee existe pourtant.",
             )
 
     def test_o5_les_cotes_ont_leur_onglet_et_leur_visuel(self):

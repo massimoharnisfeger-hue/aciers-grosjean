@@ -128,10 +128,14 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
 
   // Onglets du détail : construits à partir des seules données réelles de cette
   // fiche (lib/onglets.ts). Les cotes n'étaient affichées nulle part.
-  const onglets = ongletsDe(p, ds, desc?.cotes ?? [], Boolean(desc?.supplementCoupe), {
-    fiche: visuels.produits[p.slug],
-    categorie: visuels.categories[p.categorie],
-  });
+  const onglets = ongletsDe(
+    p,
+    ds,
+    desc?.cotes ?? [],
+    Boolean(desc?.supplementCoupe),
+    { fiche: visuels.produits[p.slug], categorie: visuels.categories[p.categorie] },
+    u.nom,
+  );
 
   return (
     <main>
@@ -261,50 +265,6 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
               <div className="mt-7">
                 <Calculateur p={p} />
               </div>
-
-              {p.specs.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
-                    Spécifications
-                  </h2>
-                  <dl className="mt-4 divide-y divide-brume border-y border-brume">
-                    {p.specs.map((s) => (
-                      <div key={s.label} className="flex items-baseline justify-between gap-6 py-3">
-                        <dt className="font-body text-sm text-soft">{s.label}</dt>
-                        <dd className="text-right font-mono text-sm tabular-nums text-encre">{s.valeur}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              )}
-
-              {p.pdfs && p.pdfs.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
-                    Documents
-                  </h2>
-                  <ul className="mt-4 space-y-2">
-                    {p.pdfs.map((d) => (
-                      <li key={d.fichier}>
-                        <a
-                          href={d.fichier}
-                          target="_blank"
-                          rel="noopener"
-                          className="group flex items-center gap-3 rounded-xl border border-brume bg-white px-4 py-3 transition-colors hover:border-encre/30 hover:bg-nuage"
-                        >
-                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-encre">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="on-encre-jaune" aria-hidden="true">
-                              <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </span>
-                          <span className="min-w-0 flex-1 font-body text-sm text-encre">{d.titre}</span>
-                          <span className="font-mono text-[11px] uppercase text-soft">PDF</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
 
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <Link href="/devis" className="btn-cta justify-center">Demander un devis</Link>

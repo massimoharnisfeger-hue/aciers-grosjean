@@ -132,3 +132,23 @@ fiche, sous le calculateur.
 
 **Décision attendue du propriétaire.** Aucune des trois n'est déductible : c'est un arbitrage
 entre uniformité et non-duplication, pas un fait à établir.
+
+## HUMAN_REVIEW — quelles photos produit manquent réellement (22/09)
+
+Le propriétaire a demandé des images générées par IA, puis a corrigé : **« je veux juste des
+photos produit »**, pas de mise en situation. Aucune image n'a été générée à ce stade — aucun
+crédit dépensé, aucun fichier créé.
+
+La question posée en retour, restée sans réponse : le dépôt possède déjà **466 rendus 3D aux
+cotes** et **53 photos studio sur fond blanc**, tous construits à partir des données réelles.
+Une image générée produirait une pièce plausible mais approximative là où le rendu montre la
+bonne, aux bonnes dimensions. Pour de la photo produit, la génération ferait vraisemblablement
+moins bien que l'existant.
+
+Les seules fiches réellement dépourvues de visuel sont les **29 consommables** listés plus haut
+(aérosols, pots de peinture, visserie, fixations) — des objets sans géométrie cotée, pour
+lesquels une photo a du sens et un rendu 3D n'en a pas.
+
+**Décision attendue** : génération limitée à ces 29 consommables, autre angle ou autre fond pour
+des produits déjà pourvus, ou abandon de la génération. Outils installés et audités si besoin :
+HeliosGen (`C:\Users\massi\Projects\HeliosGen`, port 3100). `codex-imagegen` n'est pas installé.

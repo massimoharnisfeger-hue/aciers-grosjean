@@ -42,6 +42,8 @@ const CLASSES = [
   { bouton: "peer/o4", panneau: "peer-checked/o4:block", pastille: "peer-checked/o4:bg-encre peer-checked/o4:text-white peer-checked/o4:shadow-sm peer-focus-visible/o4:ring-2" },
   { bouton: "peer/o5", panneau: "peer-checked/o5:block", pastille: "peer-checked/o5:bg-encre peer-checked/o5:text-white peer-checked/o5:shadow-sm peer-focus-visible/o5:ring-2" },
   { bouton: "peer/o6", panneau: "peer-checked/o6:block", pastille: "peer-checked/o6:bg-encre peer-checked/o6:text-white peer-checked/o6:shadow-sm peer-focus-visible/o6:ring-2" },
+  { bouton: "peer/o7", panneau: "peer-checked/o7:block", pastille: "peer-checked/o7:bg-encre peer-checked/o7:text-white peer-checked/o7:shadow-sm peer-focus-visible/o7:ring-2" },
+  { bouton: "peer/o8", panneau: "peer-checked/o8:block", pastille: "peer-checked/o8:bg-encre peer-checked/o8:text-white peer-checked/o8:shadow-sm peer-focus-visible/o8:ring-2" },
 ];
 
 /** Au-delà, le surplus se replie : le panneau doit s'embrasser d'un regard. */
@@ -51,6 +53,8 @@ const PARAGRAPHES_VISIBLES = 3;
 const TRAITS: Record<string, string> = {
   dimensions: "M4 20V4M4 20h16M8 16V8M12 16v-4M16 16V6",
   caracteristiques: "M4 7h16M4 12h16M4 17h10",
+  specifications: "M9 4h6M9 4a2 2 0 00-2 2v13a2 2 0 002 2h6a2 2 0 002-2V6a2 2 0 00-2-2M10 9h4M10 13h4M10 17h2",
+  documentation: "M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5",
   applications: "M4 12l8-8 8 8-8 8z",
   atouts: "M12 3l2.6 5.6L21 9.6l-4.5 4.3 1.1 6.1L12 17.2 6.4 20l1.1-6.1L3 9.6l6.4-1z",
   "mise-en-oeuvre": "M14.7 6.3a4 4 0 01-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 015.4-5.4z",
@@ -208,6 +212,35 @@ function Contenu({ o }: { o: Onglet }) {
           <Bloc key={`${b.type}-${i}`} b={b} seul={seul} />
         ))}
       </div>
+
+      {o.pdfs && o.pdfs.length > 0 && (
+        <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+          {o.pdfs.map((d) => (
+            <li key={d.fichier}>
+              <a
+                href={d.fichier}
+                target="_blank"
+                rel="noopener"
+                className="group flex items-center gap-3 rounded-xl border border-brume bg-nuage px-4 py-3 transition-colors hover:border-encre/30 hover:bg-white"
+              >
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-encre">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="on-encre-jaune" aria-hidden="true">
+                    <path
+                      d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span className="min-w-0 flex-1 font-body text-sm text-encre">{d.titre}</span>
+                <span className="font-mono text-[11px] uppercase text-soft">PDF</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {o.note && (
         <p className="mt-5 border-l-2 border-jaune pl-4 font-body text-xs leading-relaxed text-soft">{o.note}</p>

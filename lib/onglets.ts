@@ -1,5 +1,6 @@
-import type { Produit } from "@/lib/catalogue";
+import type { DocumentPdf, Produit } from "@/lib/catalogue";
 import type { Cote, DescriptionStructuree, Paire, Section, TypeSection } from "@/lib/description";
+import { usageDe } from "@/lib/usages";
 
 /**
  * Construit les onglets de la section « Le produit en détail » d'une fiche.
@@ -59,6 +60,8 @@ export type Onglet = {
   action?: { libelle: string; href: string };
   /** Mention de la découpe, seulement si la fiche la porte. */
   note?: string;
+  /** Documents PDF de la fiche, rendus en liens de téléchargement. */
+  pdfs?: DocumentPdf[];
 };
 
 /**
@@ -79,13 +82,25 @@ const MAP: Record<TypeSection, string> = {
 };
 
 /** Ordre d'apparition : du plus technique au plus contextuel. */
-const ORDRE = ["presentation", "dimensions", "caracteristiques", "applications", "atouts", "mise-en-oeuvre", "a-savoir"] as const;
+const ORDRE = [
+  "presentation",
+  "specifications",
+  "dimensions",
+  "applications",
+  "caracteristiques",
+  "atouts",
+  "mise-en-oeuvre",
+  "documentation",
+  "a-savoir",
+] as const;
 
 const LIBELLES: Record<string, { libelle: string; badge: string; titre: string }> = {
   presentation: { libelle: "Présentation", badge: "En bref", titre: "Ce qu'il faut retenir" },
+  specifications: { libelle: "Spécifications", badge: "Fiche technique", titre: "Les données techniques" },
+  documentation: { libelle: "Documentation", badge: "À télécharger", titre: "Les documents de ce produit" },
   dimensions: { libelle: "Dimensions", badge: "Cotes relevées", titre: "Les cotes de ce produit" },
   caracteristiques: { libelle: "Caractéristiques", badge: "Fiche technique", titre: "Ce qui définit ce produit" },
-  applications: { libelle: "Applications", badge: "Usages", titre: "À quoi il sert" },
+  applications: { libelle: "Usage", badge: "Usages", titre: "À quoi il sert" },
   atouts: { libelle: "Points forts", badge: "Atouts", titre: "Pourquoi ce produit" },
   "mise-en-oeuvre": { libelle: "Mise en œuvre", badge: "Pose et services", titre: "Avant et après l'achat" },
   "a-savoir": { libelle: "À savoir", badge: "Complément", titre: "Bon à savoir" },
@@ -141,12 +156,81 @@ function ongletDimensions(p: Produit, cotes: Cote[], visuel: Visuel | undefined,
   };
 }
 
+/**
+ * Les spécifications relevées sur le site officiel, plus la matière, le poids
+ * et la finition. Elles étaient dans la colonne de droite de la fiche ; elles
+ * passent ici à la demande du propriétaire (22/09) pour que chaque fiche porte
+ * les mêmes rubriques — 472 fiches sur 495 en ont. Elles ne sont plus rendues
+ * ailleurs : le contrôle O4 refuse les deux emplacements à la fois.
+ */
+function ongletSpecifications(p: Produit, matiere: string): Onglet | null {
+  const paires: Paire[] = [{ label: "Matière", valeur: matiere }];
+  for (const s of p.specs) paires.push({ label: s.label, valeur: s.valeur });
+  if (p.kg !== null) {
+    paires.push({ label: "Poids", valeur: `${p.kg.toString().replace(".", ",")} ${p.unitePoids || "kg"}` });
+  }
+  if (p.finition) paires.push({ label: "Finition", valeur: p.finition });
+  if (paires.length <= 1) return null;
+
+  // Un même libellé peut venir des specs et du calcul : la première valeur gagne.
+  const vus = new Set<string>();
+  const uniques = paires.filter((pa) => (vus.has(pa.label) ? false : (vus.add(pa.label), true)));
+
+  return {
+    cle: "specifications",
+    ...LIBELLES.specifications,
+    blocs: [{ type: "caracteristiques", titre: "", paragraphes: [], items: [], paires: uniques }],
+  };
+}
+
+/** Les documents du produit, s'il en a. Rien n'est fabriqué : la liste vient du site officiel. */
+function ongletDocumentation(p: Produit): Onglet | null {
+  if (!p.pdfs || p.pdfs.length === 0) return null;
+  return {
+    cle: "documentation",
+    ...LIBELLES.documentation,
+    blocs: [],
+    pdfs: p.pdfs,
+  };
+}
+
+/**
+ * L'onglet « Usage » quand le site officiel ne dit rien.
+ *
+ * Le texte relevé sur aciersgrosjean.be prime toujours : cette fabrique n'est
+ * appelée que si la fiche n'a AUCUNE section « Applications ». 141 fiches sur
+ * 495 en ont une ; les 354 autres reçoivent l'usage de leur famille, écrit et
+ * vérifié dans `lib/usages.ts`, et relu par le propriétaire.
+ *
+ * Aucune fiche ne reçoit un usage inventé pour elle : le texte parle de la
+ * famille, jamais de la référence précise.
+ */
+function ongletUsageDeCategorie(categorie: string, visuel: Visuel | undefined): Onglet | null {
+  const usage = usageDe(categorie);
+  if (!usage) return null;
+  return {
+    cle: "applications",
+    ...LIBELLES.applications,
+    blocs: [
+      {
+        type: "applications",
+        titre: "",
+        paragraphes: [usage.texte],
+        items: usage.exemples,
+        paires: [],
+      },
+    ],
+    visuel,
+  };
+}
+
 export function ongletsDe(
   p: Produit,
   ds: DescriptionStructuree,
   cotes: Cote[],
   supplementCoupe: boolean,
   visuels: { fiche?: Visuel; categorie?: Visuel },
+  matiere: string,
 ): Onglet[] {
   const groupes = new Map<string, Section[]>();
   for (const section of ds.sections) {
@@ -169,11 +253,25 @@ export function ongletsDe(
   }
 
   const onglets: Onglet[] = [];
-  const dimensions = ongletDimensions(p, cotes, visuels.fiche, supplementCoupe);
+  // Repli de famille, seulement en l'absence de texte officiel sur cette fiche.
+  const usageDeFamille = groupes.has("applications")
+    ? null
+    : ongletUsageDeCategorie(p.categorie, visuels.categorie);
+
+  const fixes: Record<string, Onglet | null> = {
+    dimensions: ongletDimensions(p, cotes, visuels.fiche, supplementCoupe),
+    specifications: ongletSpecifications(p, matiere),
+    documentation: ongletDocumentation(p),
+  };
 
   for (const cle of ORDRE) {
-    if (cle === "dimensions") {
-      if (dimensions) onglets.push(dimensions);
+    if (cle === "applications" && usageDeFamille) {
+      onglets.push(usageDeFamille);
+      continue;
+    }
+    if (cle in fixes) {
+      const onglet = fixes[cle];
+      if (onglet) onglets.push(onglet);
       continue;
     }
     const sections = groupes.get(cle);
