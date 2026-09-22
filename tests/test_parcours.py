@@ -21,6 +21,14 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P15 - Aucune valeur alignee a droite ne porte une phrase. Mesure du 22/09 sur
+      les 1 727 paires « libelle : valeur » du catalogue : la valeur mediane
+      fait 65 caracteres et 81 % sont des phrases, alors que `GrillePaires` les
+      alignait toutes a droite comme des cotes. Une phrase alignee a droite a
+      un bord GAUCHE en escalier : l'oeil perd le debut de chaque ligne. Le
+      proprietaire l'a vu avant le controle — « je ne trouve pas ca
+      esthetique » — et il avait raison.
+
 P14 - Sur une page de categorie, les produits sont servis dans l'ordre
       numerique de leurs cotes. Mesure du 22/09 sur `/acier/profiles/plat` :
       l'ordre etait alphabetique — 100x10, 100x5, 100x8, 10x3, 120x10, 20x10 —
@@ -64,6 +72,7 @@ disparaissent pas du registre.
 
 import json
 import re
+from html import unescape
 import shutil
 import socket
 import subprocess
@@ -145,6 +154,12 @@ PHRASES_ATTENDUES = (
 # Categorie a forte cardinalite dont les noms portent deux cotes : le cas ou
 # l'ordre alphabetique se voit le plus.
 CATEGORIE_TRIEE = "/acier/profiles/plat"
+
+# Fiche dont la description porte des paires en phrases (« Forme et Geometrie »,
+# « Resistance ») : le cas ou l'alignement a droite se voyait.
+PRODUIT_A_PHRASES = "corniere-egale-25x25x2mm-en-aluminium"
+# Au-dela, une valeur n'est plus une cote : elle se lit alignee a gauche.
+LONGUEUR_MAX_ALIGNEE_A_DROITE = 40
 
 # Plafond d'envois par adresse, declare dans `app/api/devis/route.ts`. Le
 # controle en envoie un de plus et attend un 429.
@@ -394,6 +409,23 @@ class ParcoursVisiteur(unittest.TestCase):
         self.assertEqual(
             absentes, [],
             "texte du site source perdu sur une fiche sans onglet : " + str(absentes),
+        )
+
+    def test_p15_aucune_phrase_n_est_alignee_a_droite(self):
+        statut, corps = self.serveur.appeler("/p/" + PRODUIT_A_PHRASES)
+        self.assertEqual(statut, 200, "la fiche temoin ne repond pas 200")
+
+        trop_longues = []
+        for balise in re.findall("<dd[^>]*>.*?</dd>", corps, re.S):
+            if "text-right" not in balise:
+                continue
+            texte = re.sub("<[^>]+>", "", balise)
+            texte = unescape(texte).strip()
+            if len(texte) > LONGUEUR_MAX_ALIGNEE_A_DROITE:
+                trop_longues.append(texte[:60])
+        self.assertEqual(
+            trop_longues, [],
+            "valeurs alignees a droite trop longues pour l'etre : " + str(trop_longues),
         )
 
     def test_p14_les_produits_sont_servis_en_ordre_numerique(self):

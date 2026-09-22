@@ -257,7 +257,16 @@ function Panneau({ o }: { o: Onglet }) {
     <div className="grid items-start gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
       <Contenu o={o} />
       <figure className="order-first w-full max-w-md lg:order-last lg:w-80 xl:w-96">
-        <div className="overflow-hidden rounded-xl border border-brume bg-nuage">
+        {/* Meme recadrage que la galerie : le rendu cote porte un tableau de
+            specifications incruste sur ses 38 % droits, qui redit la fiche
+            technique juste a cote et vole la moitie de leur taille aux cotes. */}
+        <div
+          className={`overflow-hidden rounded-xl border border-brume bg-nuage ${
+            o.visuel.src.endsWith("-caracteristiques.webp")
+              ? "aspect-[5/6] [&>img]:h-full [&>img]:w-full [&>img]:object-cover [&>img]:object-left"
+              : ""
+          }`}
+        >
           <Image
             src={o.visuel.src}
             alt={o.visuel.alt}
