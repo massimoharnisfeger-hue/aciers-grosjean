@@ -43,7 +43,7 @@ export default function PageEspace({
             </div>
             <p className="mt-4 font-body text-sm text-soft">
               Ou par e-mail à{" "}
-              <a href={`mailto:${site.email}`} className="text-encre underline hover:text-jaune">
+              <a href={`mailto:${site.email}`} className="lien-tactile text-encre underline hover:text-jaune">
                 {site.email}
               </a>{" "}
               — réponse sous 24&nbsp;h ouvrées.

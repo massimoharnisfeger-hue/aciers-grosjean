@@ -170,7 +170,7 @@ export default function DevisForm({ produits }: { produits: string[] }) {
       </button>
       <p className="mt-3 text-center font-body text-xs text-soft">
         Sans engagement · Réponse sous 24h · Vos coordonnées servent uniquement à traiter votre demande
-        (<Link href="/protection-des-donnees" className="underline">protection des données</Link>).
+        (<Link href="/protection-des-donnees" className="lien-tactile underline">protection des données</Link>).
       </p>
     </form>
   );

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FilAriane from "@/components/ui/FilAriane";
 import { notFound } from "next/navigation";
 import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
@@ -59,13 +60,9 @@ export default async function DepotPage({ params }: { params: Promise<Params> })
       <header className="relative overflow-hidden border-b border-brume bg-nuage pt-32 md:pt-40">
         <div className="grid-industrie pointer-events-none absolute inset-0 opacity-60" />
         <div className="container-g relative pb-14 md:pb-20">
-          <nav className="mb-5 font-body text-xs text-soft">
-            <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
-            <span className="mx-2 text-brume">/</span>
-            <Link href="/depots" className="lien-tactile hover:text-encre">Dépôts</Link>
-            <span className="mx-2 text-brume">/</span>
-            <span className="text-encre">{d.ville}</span>
-          </nav>
+          <div className="mb-5">
+            <FilAriane items={[{ label: "Dépôts", href: "/depots" }, { label: d.ville }]} />
+          </div>
           <h1 className="h-display max-w-3xl text-4xl md:text-6xl">
             Votre acier à <span className="mark-jaune">{d.ville}</span>
           </h1>

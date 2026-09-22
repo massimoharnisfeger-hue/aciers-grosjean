@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import FilAriane from "@/components/ui/FilAriane";
 import { notFound } from "next/navigation";
 import CtaBand from "@/components/sections/CtaBand";
 import Reveal from "@/components/fx/Reveal";
@@ -46,13 +47,9 @@ export default async function ServicePage({ params }: { params: Promise<Params> 
       <header className="relative overflow-hidden border-b border-brume bg-nuage pt-32 md:pt-40">
         <div className="grid-industrie pointer-events-none absolute inset-0 opacity-60" />
         <div className="container-g relative pb-14 md:pb-20">
-          <nav className="mb-5 font-body text-xs text-soft">
-            <Link href="/" className="lien-tactile hover:text-encre">Accueil</Link>
-            <span className="mx-2 text-brume">/</span>
-            <Link href="/services" className="lien-tactile hover:text-encre">Services</Link>
-            <span className="mx-2 text-brume">/</span>
-            <span className="text-encre">{s.nom}</span>
-          </nav>
+          <div className="mb-5">
+            <FilAriane items={[{ label: "Services", href: "/services" }, { label: s.nom }]} />
+          </div>
           <h1 className="h-display max-w-3xl text-4xl md:text-6xl">{s.accroche}</h1>
           <p className="mt-5 max-w-2xl font-body text-lg text-soft">{s.intro}</p>
         </div>

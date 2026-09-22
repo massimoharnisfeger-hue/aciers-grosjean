@@ -1,8 +1,10 @@
 @echo off
 title Site Aciers Grosjean - Sauvegarde
 echo Enregistrement des modifications et envoi sur GitHub...
-echo Le travail part sur une branche : une page s'ouvre pour creer la pull request.
-echo Le site en ligne se met a jour une fois la pull request fusionnee (controle qualite vert).
+echo Le travail part sur une branche, la pull request est creee, et la fusion se fait
+echo automatiquement si le controle qualite est vert.
+echo Resultat en ligne 2 a 3 minutes plus tard : https://aciers-grosjean.vercel.app
+echo Cette fenetre reste ouverte le temps du controle (2 a 5 minutes).
 echo (la premiere fois, une fenetre de connexion GitHub peut s'ouvrir)
 echo.
 rem Pose les garde-fous avant toute sauvegarde : .git\hooks n'est pas versionne,

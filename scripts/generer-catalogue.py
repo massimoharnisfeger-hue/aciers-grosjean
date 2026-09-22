@@ -16,10 +16,30 @@ calibré sur les prix publics connus). Tout le reste vient du crawl.
 import csv, io, json, re, sys, unicodedata, collections
 from pathlib import Path
 
-CSV = Path(sys.argv[1] if len(sys.argv) > 1 else
-           "/root/.claude/uploads/60ae7e8a-02ec-55b3-a28b-f1d0fa40a449/"
-           "47111c3e-AG_annexe_inventaire_URLs.csv")
+# Entree : le releve d'URLs du site officiel, avec la colonne editoriale
+# URL_cible_recommandee (officiel -> chemin du nouveau site). Elle vit DANS le
+# depot : un chemin exterieur n'est pas une source, c'est une piece qui manque
+# le jour ou on en a besoin. Controle : tests/test_produit.py (D12).
+DEFAUT = Path(__file__).resolve().parents[1] / "_DOCS" / "catalogue-site-actuel" / "inventaire-urls.csv"
+CSV = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAUT
 OUT = Path(__file__).resolve().parent.parent / "lib" / "catalogue.ts"
+
+if not CSV.is_file():
+    lignes = [
+        f"Entree introuvable : {CSV}",
+        f"",
+        f"Ce fichier est le releve d'URLs du site officiel, avec la colonne",
+        f"URL_cible_recommandee qui associe chaque categorie officielle a son chemin",
+        f"sur le nouveau site. Sans lui, lib/catalogue.ts ne peut pas etre regenere,",
+        f"donc le catalogue ne peut plus etre corrige ni complete.",
+        f"",
+        f"Colonnes attendues : Page ; Parent ; Title ; Type ; URL_cible_recommandee",
+        f"Etat : MANQUANT depuis la migration hors session web. Voir",
+        f"_DOCS/rendus-3d/PRODUCTS-AJOUT-MODELISATION.md, section « Catalogue gele ».",
+        f"",
+        f"Passer un autre fichier : python scripts/generer-catalogue.py <chemin.csv>",
+    ]
+    raise SystemExit(chr(10).join(lignes))
 
 # --------------------------------------------------------------------------
 # Univers : les 6 catégories racines réelles + leur habillage éditorial

@@ -164,11 +164,103 @@ class GateTests(unittest.TestCase):
             claude,
             "CLAUDE.md doit porter la regle de publication continue demandee le 22/09.",
         )
-        script = SYNCHRO.read_text(encoding="utf-8", errors="replace")
+        chaine = SYNCHRO.read_text(encoding="utf-8", errors="replace") + (
+            RACINE / "scripts" / "publier.ps1"
+        ).read_text(encoding="utf-8", errors="replace")
         self.assertIn(
-            "vercel.com", script,
-            "synchro.ps1 doit renvoyer vers le suivi du deploiement : pousser n'est pas publier.",
+            "vercel.com", chaine,
+            "La chaine de publication doit renvoyer vers le suivi du deploiement : "
+            "pousser n'est pas publier.",
         )
+        self.assertIn(
+            "aciers-grosjean.vercel.app", chaine,
+            "Elle doit donner l'adresse stable a regarder, pas seulement le tableau de bord.",
+        )
+
+    def test_la_chaine_de_publication_va_jusqu_a_vercel(self):
+        """S5 : le bouton publie, il ne depose pas.
+
+        Demande du proprietaire le 22/09 : « a chaque fois qu'il y a une
+        modification, je le vois directement via Vercel ». Or la production
+        Vercel ne bouge qu'a une fusion dans `main` : pousser une branche ne
+        change rien a ce qu'il voit. La chaine doit donc aller jusqu'au bout —
+        pull request, attente du check « quality », fusion — et ne fusionner
+        que sur un check vert (ADR-0009).
+        """
+        publieur = RACINE / "scripts" / "publier.ps1"
+        self.assertTrue(publieur.exists(), "scripts/publier.ps1 manquant : la chaine s'arrete au push.")
+        texte = publieur.read_text(encoding="utf-8", errors="replace")
+        for attendu, pourquoi in (
+            ("/pulls", "creer la pull request"),
+            ("check-runs", "lire l'etat du check « quality »"),
+            ("/merge", "fusionner"),
+            ("success", "ne fusionner que sur un check vert"),
+        ):
+            self.assertIn(attendu, texte, f"publier.ps1 doit {pourquoi} (« {attendu} » absent).")
+        self.assertIn(
+            "publier.ps1", SYNCHRO.read_text(encoding="utf-8", errors="replace"),
+            "synchro.ps1 doit enchainer sur la publication apres un push reussi.",
+        )
+
+    def test_aucun_script_ne_rend_stderr_fatal(self):
+        """S6 : `$ErrorActionPreference = 'Stop'` + `2>$null` sur une commande native = mort subite.
+
+        PowerShell 5.1 emballe chaque ligne de stderr d'un executable dans une
+        ErrorRecord quand la redirection est explicite ; sous 'Stop', cette
+        ErrorRecord devient terminante. Verifie le 22/09 : une commande native
+        qui ecrit sur stderr et sort en code 0 tue le script sous cette
+        combinaison, et le passe sans elle. `publier.ps1` lisait ses
+        identifiants ainsi — il serait mort sans message utile.
+
+        La parade est de baisser la preference autour de l'appel, pas de
+        supprimer la redirection au hasard.
+        """
+        for script in sorted(RACINE.glob("_OUTILS/*.ps1")) + sorted(RACINE.glob("scripts/**/*.ps1")):
+            texte = script.read_text(encoding="utf-8", errors="replace")
+            if "$ErrorActionPreference = 'Stop'" not in texte:
+                continue
+            fautives = [
+                l.strip()[:80]
+                for l in texte.splitlines()
+                if "2>$null" in l and not l.strip().startswith("#")
+            ]
+            self.assertEqual(
+                fautives, [],
+                f"{script.name} declare ErrorActionPreference 'Stop' et redirige stderr "
+                f"d'une commande native : le script mourra sur le premier avertissement. "
+                f"Ligne(s) : {fautives[:2]}",
+            )
+
+    def test_aucun_script_n_alimente_une_commande_native_par_un_tuyau(self):
+        """S7 : un tuyau PowerShell n'atteint pas l'entree standard d'un executable ici.
+
+        Mesure du 22/09/2026, sur ce poste : `@('protocol=https','host=github.com','')
+        | git credential fill` repond « refusing to work with credential missing
+        protocol field » — git ne recoit rien du tout et lit EOF. La meme entree,
+        passee par un fichier redirige (`cmd /c "git credential fill < f"`),
+        renvoie les quatre lignes attendues. La forme tableau etait deja la
+        correction d'un defaut precedent : elle reglait la mise en forme de
+        l'entree, pas son acheminement.
+
+        Consequence vecue : la branche partait, la pull request n'etait jamais
+        creee, et le proprietaire regardait un site perime en croyant publier.
+
+        La parade est d'ecrire l'entree dans un fichier temporaire sans secret et
+        de la rediriger. Ce controle refuse le tuyau vers `git credential`, seul
+        cas mesure ; l'etendre demanderait d'avoir mesure les autres.
+        """
+        for script in sorted(RACINE.glob("_OUTILS/*.ps1")) + sorted(RACINE.glob("scripts/**/*.ps1")):
+            texte = script.read_text(encoding="utf-8", errors="replace")
+            fautives = [
+                l.strip()[:90]
+                for l in texte.splitlines()
+                if "| git credential" in l and not l.strip().startswith("#")
+            ]
+            self.assertEqual(
+                fautives, [],
+                f"{script.name} alimente `git credential` par un tuyau : git lit EOF et "
+                f"echoue. Passer par un fichier temporaire redirige. Ligne(s) : {fautives[:2]}",
+            )
 
     def test_la_ci_lance_le_registre(self):
         texte = CI.read_text(encoding="utf-8")

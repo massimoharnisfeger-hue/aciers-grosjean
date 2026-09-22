@@ -46,6 +46,10 @@ MESURE_JS = r"""
     const r = el.getBoundingClientRect();
     if (r.width === 0 || r.height === 0) return false;
     const s = getComputedStyle(el);
+    // `sr-only` : present pour le lecteur d'ecran, rogne a 1 x 1 px pour l'oeil
+    // et le doigt. Sa cible visible est l'etiquette qui le designe (galerie
+    // produit, 22/09 : deux « cibles » de 1 x 1 remontees a tort par fiche).
+    if (s.clip === 'rect(0px, 0px, 0px, 0px)') return false;
     return s.visibility !== 'hidden' && s.display !== 'none' && s.opacity !== '0';
   };
   const decrire = (el) => {

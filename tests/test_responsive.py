@@ -43,7 +43,19 @@ FICHIERS_LIENS_TEXTE = (
     APP / "depots" / "[slug]" / "page.tsx",
     APP / "services" / "[slug]" / "page.tsx",
     APP / "p" / "[slug]" / "page.tsx",
+    # Ajoutes le 22/09 : le lien « protection des donnees » du formulaire de
+    # devis mesurait 126 x 13 px au balayage. R2bis ne lisait que les composants
+    # partages ; un formulaire est un composant partage par tous ceux qui
+    # veulent un devis.
+    COMPOSANTS / "sections" / "DevisForm.tsx",
+    COMPOSANTS / "sections" / "FormulairePro.tsx",
+    COMPOSANTS / "ui" / "PageEspace.tsx",
 )
+
+BALAYAGE = RACINE / "scripts" / "qa" / "balayage-responsive.py"
+# Signature CSS de `sr-only` (Tailwind) : l'element existe pour les lecteurs
+# d'ecran, pas pour le doigt. Le balayage doit l'exclure des cibles tactiles.
+SIGNATURE_SR_ONLY = "rect(0px, 0px, 0px, 0px)"
 
 # Un lien a une boite suffisante s'il porte la classe tactile, un bouton, ou une
 # hauteur / un remplissage vertical explicites (cartes, pastilles, icones).
@@ -112,6 +124,24 @@ class CiblesTactiles(unittest.TestCase):
             )
 
 
+class BalayageFiable(unittest.TestCase):
+    """R6 : le balayage ne compte pas un element `sr-only` comme cible tactile.
+
+    Le 22/09, la galerie produit a remonte deux cibles de 1 x 1 px sur chaque
+    fiche : les boutons radio `sr-only` dont l'etiquette visible (85 x 65 px en
+    mobile, mesuree) est la vraie cible. Un balayage qui crie a tort sur 495
+    pages finit ignore ; son filtre `visible()` doit reconnaitre la signature
+    `clip: rect(0px, 0px, 0px, 0px)`.
+    """
+
+    def test_r6_le_balayage_exclut_les_elements_sr_only(self):
+        self.assertIn(
+            SIGNATURE_SR_ONLY,
+            source(BALAYAGE),
+            "balayage-responsive.py doit exclure les elements `sr-only` (clip rect(0,0,0,0)) des cibles.",
+        )
+
+
 class CompteursMobiles(unittest.TestCase):
     """R4 : un chiffre a 48 px dans une colonne de 140 px se casse en deux lignes.
 
@@ -127,6 +157,41 @@ class CompteursMobiles(unittest.TestCase):
             "Counters.tsx : `text-5xl` sans prefixe s'applique a 320 px ou deux chiffres "
             "se partagent 280 px. Ecrire la taille mobile, puis sm:/md: pour les autres.",
         )
+
+
+class FilsDAriane(unittest.TestCase):
+    """R5 : un seul fil d'Ariane, celui qui emet le JSON-LD.
+
+    Quatre gabarits — PageHeader (22 pages), PageLegale, la fiche d'un depot,
+    celle d'un service — dessinaient leur fil d'Ariane a la main : meme rendu
+    que `FilAriane`, mais sans le `BreadcrumbList` schema.org. Google ne voyait
+    donc pas la hierarchie sur la majorite du site. Note comme dette dans
+    `_DOCS/QA-RESPONSIVE.md` le 21/09, corrige le 22.
+
+    Verifie aussi qu'aucune page ne cumule deux fils (deux BreadcrumbList sur
+    une meme page se contredisent aux yeux d'un moteur).
+    """
+
+    def test_r5_aucun_fil_d_ariane_code_a_la_main(self):
+        fautifs = []
+        for fichier in list(APP.rglob("*.tsx")) + list(COMPOSANTS.rglob("*.tsx")):
+            if fichier.name == "FilAriane.tsx":
+                continue
+            src = source(fichier)
+            if re.search(r'<Link href="/"[^>]*>Accueil</Link>', src):
+                fautifs.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(
+            fautifs, [],
+            f"fil(s) d'Ariane dessines a la main, donc sans BreadcrumbList : {fautifs}",
+        )
+
+    def test_r5bis_jamais_deux_fils_sur_une_page(self):
+        cumuls = []
+        for fichier in APP.rglob("page.tsx"):
+            src = source(fichier)
+            if "FilAriane" in src and ("PageHeader" in src or "PageLegale" in src):
+                cumuls.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(cumuls, [], f"deux fils d'Ariane sur la meme page : {cumuls}")
 
 
 class LiensInternes(unittest.TestCase):

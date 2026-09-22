@@ -21,6 +21,20 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P12 - `/api/devis` refuse un flot de demandes. Sans plafond, l'adresse
+      Microsoft 365 de l'entreprise relaie autant de messages qu'on lui en
+      demande : la boite se remplit, et le compte finit bride ou bloque par
+      Microsoft. Le controle envoie des demandes valides jusqu'au refus.
+
+P10 - Les vignettes 80 px d'une page de categorie passent par l'optimiseur
+      d'images. Constat du 22/09/2026 : `VisuelFamille` portait `unoptimized`
+      et un `sizes` de carte pleine largeur, alors que le meme composant sert
+      une vignette de 80 px. Le navigateur telechargeait la photo studio
+      entiere pour l'afficher dans un carre de 80 px.
+P11 - Les anciennes URLs dont la cible avait ete reparee aboutissent sur une
+      page servie. Avant reparation, 22 d'entre elles repondaient 301 puis
+      404 : le visiteur et le lien entrant etaient perdus deux fois.
+
 P8 - `/api/devis` existe et se tient : un corps invalide est refuse (400), un
      GET est refuse (405), un robot qui remplit le champ piege recoit un 200
      sans qu'aucun envoi ne parte, et sans SMTP configure la route se declare
@@ -34,6 +48,7 @@ disparaissent pas du registre.
 """
 
 import json
+import re
 import shutil
 import socket
 import subprocess
@@ -74,6 +89,45 @@ DEMANDE_TEMOIN = {
     "details": "Demande fictive emise par tests/test_parcours.py, a ignorer.",
     "site_web": "",
 }
+
+# Page de categorie qui affiche des vignettes de 80 px (`h-20 w-20`) pour ses
+# sous-categories : sept enfants, tous avec une vraie photo studio de
+# 1600 x 1200, dont la tole perforee (187 Ko a elle seule).
+CATEGORIE_A_VIGNETTES = "/acier/toles"
+
+# Largeur maximale qu'une vignette de 80 px doit pouvoir demander. Un ecran
+# retina en reclame 160 ; 256 est le palier suivant de `next/image`. Au-dela,
+# le navigateur n'a plus de candidat a sa taille et prend l'image entiere.
+LARGEUR_MAX_VIGNETTE = 256
+
+# Anciennes URLs dont la cible n'existait pas (voir scripts/generer-redirections.py,
+# table REPARATIONS et repli sur l'ancetre servi). Une par cible reparee.
+ANCIENNES_URLS_REPAREES = (
+    "/poutrelle-hem",
+    "/t%C3%B4le-d%C3%A9cap%C3%A9e",
+    "/t%C3%B4le-%C3%A9lectrozingu%C3%A9e",
+    "/carr%C3%A9-plein-en-aluminium",
+    "/panneau-tuile",
+    "/anti-condensation",
+    "/ttack-toiture-plate",
+    "/catalogue-toiture-et-bardage",
+    "/checkout",
+    "/order/history",
+    "/wishlist",
+    "/customer/info",
+    "/recentlyviewedproducts",
+    "/blog/rss/2",
+    "/shippinginfo",
+)
+
+# Plafond d'envois par adresse, declare dans `app/api/devis/route.ts`. Le
+# controle en envoie un de plus et attend un 429.
+ENVOIS_MAX_PAR_IP = 5
+
+# Adresse du seul controle qui sature le plafond. Prise dans TEST-NET-3
+# (RFC 5737), reservee a la documentation : elle ne designe personne. Sans
+# elle, P12 consommerait le quota de P8d, qui tourne apres lui.
+ADRESSE_DU_FLOT = "203.0.113.12"
 
 # Si un SMTP est configure en local, un POST valide enverrait un vrai message a
 # chaque lancement du registre. Le controle 503 se retire alors de lui-meme.
@@ -151,14 +205,22 @@ class ServeurSite:
         except urllib.error.HTTPError as erreur:
             return erreur.code, erreur.read().decode("utf-8", errors="replace")
 
-    def envoyer(self, chemin: str, donnees, methode: str = "POST"):
-        """(statut, corps) d'une requete JSON. `donnees=None` envoie un corps vide."""
+    def envoyer(self, chemin: str, donnees, methode: str = "POST", adresse: str = ""):
+        """(statut, corps) d'une requete JSON. `donnees=None` envoie un corps vide.
+
+        `adresse` remplit `X-Forwarded-For` : le plafond de `/api/devis` compte
+        par adresse, et un controle qui le sature ne doit pas consommer le
+        quota des autres.
+        """
         corps = None if donnees is None else json.dumps(donnees).encode("utf-8")
+        entetes = {"Content-Type": "application/json"}
+        if adresse:
+            entetes["X-Forwarded-For"] = adresse
         requete = urllib.request.Request(
             self.base + chemin,
             data=corps,
             method=methode,
-            headers={"Content-Type": "application/json"},
+            headers=entetes,
         )
         try:
             reponse = urllib.request.urlopen(requete, timeout=REQUETE_TIMEOUT_S)
@@ -273,6 +335,69 @@ class ParcoursVisiteur(unittest.TestCase):
         statut, corps = self.serveur.envoyer("/api/devis", DEMANDE_TEMOIN)
         self.assertEqual(statut, 503, "sans SMTP la route devrait repondre 503, pas " + str(statut))
         self.assertIn("erreur", corps, "la reponse 503 doit porter un champ `erreur` lisible par le formulaire")
+
+
+    def test_p12_devis_api_refuse_un_flot(self):
+        if ENV_LOCAL.exists():
+            self.skipTest("SMTP configure dans .env.local : aucun envoi reel pendant les controles.")
+        statuts = [
+            self.serveur.envoyer("/api/devis", DEMANDE_TEMOIN, adresse=ADRESSE_DU_FLOT)[0]
+            for _ in range(ENVOIS_MAX_PAR_IP + 1)
+        ]
+        self.assertNotIn(
+            429,
+            statuts[:ENVOIS_MAX_PAR_IP],
+            "le plafond se declenche avant " + str(ENVOIS_MAX_PAR_IP) + " demandes : " + str(statuts),
+        )
+        self.assertEqual(
+            statuts[-1],
+            429,
+            "la demande au-dela du plafond devrait etre refusee (429), pas " + str(statuts[-1]),
+        )
+
+    def test_p10_vignettes_categorie_passent_par_optimiseur(self):
+        statut, corps = self.serveur.appeler(CATEGORIE_A_VIGNETTES)
+        self.assertEqual(statut, 200, CATEGORIE_A_VIGNETTES + " ne repond pas 200")
+        html = corps.replace("&amp;", "&")
+
+        brutes = sorted({
+            morceau.split(chr(34), 1)[0]
+            for morceau in html.split("src=" + chr(34) + "/images/produits/")[1:]
+        })
+        self.assertEqual(
+            brutes,
+            [],
+            "photos servies en pleine resolution dans une vignette : " + str(brutes),
+        )
+
+        # Sans candidat assez petit dans le `srcset`, le navigateur prend le
+        # plus grand : l'optimiseur ne sert alors a rien.
+        balises = re.findall("<img" + chr(92) + "b[^>]*>", html, re.I)
+        self.assertTrue(balises, "aucune image sur " + CATEGORIE_A_VIGNETTES)
+        trop_grandes = []
+        for balise in balises:
+            jeu = re.search('srcset="([^"]+)"', balise, re.I)
+            if not jeu:
+                continue
+            largeurs = [int(l) for l in re.findall("&w=(" + chr(92) + "d+)&", jeu.group(1))]
+            if largeurs and min(largeurs) > LARGEUR_MAX_VIGNETTE:
+                source = re.search("url=([^&]+)", jeu.group(1))
+                trop_grandes.append(source.group(1).split("%2F")[-1] if source else "?")
+        self.assertEqual(
+            trop_grandes,
+            [],
+            "vignettes sans candidat sous "
+            + str(LARGEUR_MAX_VIGNETTE)
+            + " px : " + str(trop_grandes),
+        )
+
+    def test_p11_anciennes_urls_reparees_aboutissent(self):
+        casses = []
+        for ancienne in ANCIENNES_URLS_REPAREES:
+            statut, _ = self.serveur.appeler(ancienne)
+            if statut != 200:
+                casses.append((ancienne, statut))
+        self.assertEqual(casses, [], "anciennes URLs qui n'aboutissent pas : " + str(casses))
 
 
 if __name__ == "__main__":

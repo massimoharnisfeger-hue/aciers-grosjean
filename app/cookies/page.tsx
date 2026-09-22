@@ -25,7 +25,8 @@ export default function CookiesPage() {
         {
           titre: "2. Stockage local",
           paras: [
-            "Certaines préférences d'affichage peuvent être conservées dans le stockage local de votre navigateur — un filtre sélectionné, un onglet ouvert. Ces données ne quittent jamais votre appareil et ne nous sont pas transmises.",
+            "À ce jour, le site n'écrit rien dans le stockage de votre navigateur : ni cookie, ni stockage local, ni session. Les filtres et les onglets du catalogue fonctionnent sans rien retenir d'une visite à l'autre.",
+            "Si cela devait changer — pour retenir un filtre ou un onglet, par exemple — ces données resteraient sur votre appareil et ne nous seraient pas transmises.",
             "Vous pouvez les effacer à tout moment en vidant les données de site dans votre navigateur, sans aucune conséquence sur le fonctionnement des pages.",
           ],
         },
