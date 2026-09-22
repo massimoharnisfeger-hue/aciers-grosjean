@@ -101,16 +101,27 @@ class ExtensionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
+        # `git status --short` tient deux colonnes : l'index, puis le working
+        # tree. Une suppression INDEXEE (`D `) vient d'un `git rm` — c'est la
+        # decision. Une suppression NON indexee (` D`) est une disparition que
+        # personne n'a demandee : c'est elle que ce controle attrape.
+        #
+        # Le 22/09, ce controle refusait les deux : il rendait donc toute
+        # suppression deliberee impossible, puisque la seule facon d'effacer la
+        # ligne est de commiter, et que le hook de pre-commit refuse de
+        # commiter tant qu'il est rouge. Une regle qu'on ne peut pas satisfaire
+        # n'est pas une regle, c'est une impasse.
         supprimes = [
             line[3:].strip().strip('"')
             for line in result.stdout.splitlines()
-            if line[:2].strip().startswith("D")
+            if len(line) > 1 and line[1] == "D"
         ]
         self.assertEqual(
             supprimes,
             [],
-            f"Fichiers suivis supprimes du working tree : {supprimes}. "
-            f"Une suppression se decide, elle ne se constate pas.",
+            f"Fichiers suivis disparus du working tree sans avoir ete supprimes "
+            f"volontairement : {supprimes}. Si la suppression est voulue, "
+            f"`git rm <fichier>` l'inscrit comme une decision.",
         )
 
 
