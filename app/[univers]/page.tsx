@@ -102,7 +102,11 @@ export default async function UniversPage({ params }: { params: Promise<Params> 
                     >
                       <div className="shine relative aspect-[4/3] overflow-hidden bg-nuage">
                         <div className="grid-industrie absolute inset-0 opacity-70" />
-                        <VisuelFamille chemin={f.chemin} Art={FArt} />
+                        <VisuelFamille
+                          chemin={f.chemin}
+                          Art={FArt}
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        />
                         <span className="tag-stock absolute left-4 top-4 z-10">En stock</span>
                       </div>
                       <div className="flex flex-1 flex-col p-6" style={{ transform: "translateZ(40px)" }}>

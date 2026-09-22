@@ -154,7 +154,7 @@ export default async function NoeudPage({ params }: { params: Promise<Params> })
                       >
                         <div className="shine relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-nuage">
                           <div className="grid-industrie absolute inset-0 opacity-70" />
-                          <VisuelFamille chemin={e.chemin} Art={EArt} />
+                          <VisuelFamille chemin={e.chemin} Art={EArt} sizes="80px" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <h3 className="h-title font-semibold leading-snug text-encre">{e.nom}</h3>
