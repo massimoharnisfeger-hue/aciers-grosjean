@@ -46,42 +46,25 @@ Laquelle doit représenter la catégorie est un arbitrage visuel, pas une déduc
 | `/jardin-cloture/clotures/panneaux-rigides` | `studio-panneau-cloture-plis-205.webp` | `studio-panneau-cloture-medium-3d.webp` |
 | `/jardin-cloture/clotures/poteaux` | `studio-poteau-cloplus-40.webp` | `studio-poteau-clogriff-64.webp` |
 
-## BLOCAGE — Catalogue gelé
+## Catalogue régénérable — blocage levé le 22/09
 
-**`lib/catalogue.ts` ne peut plus être régénéré.** Son générateur
-(`scripts/generer-catalogue.py`) attendait son relevé d'URLs à
-`/root/.claude/uploads/…`, un chemin de session web Linux. Ce fichier n'existe ni sur
-cette machine, ni dans le dépôt, ni dans `_DEPOT` (cherché le 22/09).
+Le relevé d'URLs manquant a été retrouvé dans les téléchargements
+(`AG_annexe_inventaire_URLs.csv`, 665 lignes) et déposé à
+`_DOCS/catalogue-site-actuel/inventaire-urls.csv`. Aucune donnée sensible (scan de secrets
+du dépôt : PASS). **`python scripts/generer-catalogue.py` tourne à nouveau sans argument.**
 
-Conséquence directe : `CLAUDE.md` interdit de modifier `lib/catalogue.ts` à la main
-(« généré, toute modification doit être reportée dans le générateur »), et le générateur
-ne peut pas tourner. **Aucun produit ne peut donc être ajouté, renommé ou reclassé** —
-y compris la Vasque Corten ci-dessous.
+Vérification faite avant de conclure : régénérer donne un `catalogue.ts` qui ne diffère de la
+version commitée que sur **quatre littéraux `prix`** (les profils U aluminium, mis à 5,00 €).
+Ce n'est pas une corruption : le bas de `catalogue.ts` fusionne `lib/site-actuel.json` et
+**écrase `prix`, `prixTtc`, `kg`, `unite`, `longueurs`, `finition`, `pdfs` et `specs`** pour
+les 495 produits — aucun n'échappe à la fusion. Le prix affiché vient donc toujours du relevé
+du site officiel, jamais du générateur. Contrôlé au navigateur sur
+`/p/profil-en-u-40x40x40x2mm-en-aluminium` : la page sert 5,39 € HTVA / 6,52 € TTC, les valeurs
+officielles, et non le 26,80 € inscrit dans le fichier généré.
 
-Ce qui manque précisément : un CSV avec les colonnes
-`Page ; Parent ; Title ; Type ; URL_cible_recommandee`. La colonne décisive est
-`URL_cible_recommandee` : elle associe chaque catégorie du site officiel au chemin
-correspondant du nouveau site. C'est un arbitrage éditorial, pas une donnée déductible —
-les CSV survivants (`produits.csv`, `categories.csv`) portent l'arborescence **officielle**,
-jamais celle du nouveau site.
-
-Trois issues possibles, par ordre de sûreté :
-
-1. **Retrouver le fichier original.** Il a été téléversé dans une session web
-   (`AG_annexe_inventaire_URLs.csv`). S'il existe encore sur le PC ou dans les
-   téléchargements, le déposer à `_DOCS/catalogue-site-actuel/inventaire-urls.csv` :
-   le générateur repart immédiatement.
-2. **Le reconstruire** en croisant `produits.csv` (catégorie officielle) avec le
-   `categorie` de chaque produit dans `lib/catalogue.ts` (chemin du nouveau site).
-   Vérifiable : régénérer doit redonner un `catalogue.ts` identique. Non tenté le 22/09 —
-   se tromper corromprait silencieusement le catalogue d'un site commercial.
-3. **Assumer que le catalogue est figé** et lever la règle de `CLAUDE.md`, ce qui
-   autorise les corrections à la main. À éviter : la prochaine régénération, si le
-   fichier réapparaît, écraserait toutes les corrections manuelles.
-
-Garde : `tests/test_produit.py::CatalogueRegenerable::test_d12_l_entree_du_generateur_est_dans_le_depot`
-refuse désormais qu'une entrée du générateur pointe hors du dépôt. Le générateur, lui,
-explique ce qui manque au lieu d'échouer sur un chemin Linux.
+À retenir pour une prochaine régénération : un diff sur ces quatre lignes est attendu et sans
+effet. Le `prix` écrit par le générateur est une valeur morte — elle gagnerait à disparaître,
+mais la retirer touche au contrat du type `Produit` et n'a pas été tenté ici.
 
 ## Produits à ajouter au catalogue — décision humaine
 
