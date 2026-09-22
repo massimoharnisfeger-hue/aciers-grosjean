@@ -290,3 +290,15 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le compteur a été écrit par quelqu'un qui savait ce qu'il comptait, et lu ensuite par quelqu'un qui ne le savait plus. Un document de suivi est relu des semaines après, hors du contexte qui l'a produit : le libellé est la seule chose qui survit. Le tableau porte désormais une colonne « Compté comment » qui nomme la source de chaque ligne, et les lignes d'atelier — hors dépôt, donc incontrôlables — sont séparées de celles qui se vérifient dans le dépôt. Trouvaille au passage, obtenue seulement parce qu'il a fallu tout recompter : les 64 rendus d'`essais/` visent **tous** un produit déjà pourvu, donc l'interdiction d'y puiser ne coûte rien.
 - **Contrôle** : `tests/test_produit.py::CompteursDuDocument::test_d13_les_compteurs_verifiables_disent_la_verite`
 - **Date** : 2026-09-22
+
+### L-042 — un `<fieldset>` ne rétrécit pas comme un `<div>`
+- **Symptôme** : à 320 px, la fiche produit débordait de 39 px à l'horizontale — sur cinq largeurs mobiles, seize mesures rouges. Le coupable désigné par le balayage était la barre d'onglets ; la vraie cause était son parent.
+- **Cause** : le navigateur applique `min-inline-size: min-content` à tout `<fieldset>`. Contrairement à un `div`, il **refuse** de descendre sous la largeur de son contenu : le fieldset faisait 319 px dans un conteneur de 280, et l'`overflow-x: auto` posé à l'intérieur n'y pouvait rien puisque le débordement se produisait un niveau au-dessus. `overflow-x: hidden` aurait masqué le symptôme en coupant le contenu ; `min-w-0` retire la contrainte. Le contrôle a trouvé un second fautif que je ne cherchais pas : le `<fieldset>` du formulaire de devis, en place depuis des jours.
+- **Contrôle** : `tests/test_responsive.py::FieldsetsRetrecissables::test_r7_tout_fieldset_porte_min_w_0`
+- **Date** : 2026-09-22
+
+### L-043 — un contrôle qu'on n'a pas vu rouge n'est pas un contrôle
+- **Symptôme** : R7 est passé **vert** du premier coup, alors que deux `<fieldset>` sans `min-w-0` existaient dans le dépôt. Un débogage à côté du test les trouvait tous les deux.
+- **Cause** : le motif écrit était `<fieldset\b[^>]*>`, mais la chaîne a traversé un outil qui réduit les doubles contre-obliques : le `\b` est devenu un **caractère backspace** (0x08) au lieu d'une limite de mot. Le motif ne pouvait plus correspondre à rien, et un contrôle qui ne correspond à rien réussit toujours. `cat -A` l'a révélé en une seconde, là où relire le fichier à l'œil ne montrait rien. Deux règles en sortent : écrire les motifs sans contre-oblique quand c'est possible (`[ >]` au lieu de `\b`), et surtout **ne jamais croire un contrôle neuf qui passe** — la discipline « rouge avant vert » n'est pas une formalité, c'est le seul moment où l'on vérifie que le contrôle sait échouer.
+- **Contrôle** : `tests/test_responsive.py::FieldsetsRetrecissables::test_r7_tout_fieldset_porte_min_w_0`
+- **Date** : 2026-09-22

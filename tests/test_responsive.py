@@ -124,6 +124,22 @@ class CiblesTactiles(unittest.TestCase):
             )
 
 
+class FieldsetsRetrecissables(unittest.TestCase):
+    """R7 : un `<fieldset>` ne retrecit pas tout seul, il faut le lui dire."""
+
+    def test_r7_tout_fieldset_porte_min_w_0(self):
+        fautifs = []
+        for fichier in list(APP.rglob("*.tsx")) + list(COMPOSANTS.rglob("*.tsx")):
+            for balise in re.findall(r'<fieldset[ >][^>]*>', source(fichier), re.DOTALL):
+                if "min-w-0" not in balise:
+                    fautifs.append(f"{fichier.name} : {balise[:70]}")
+        self.assertEqual(
+            fautifs, [],
+            "fieldset sans `min-w-0` : il ne retrecira pas sous la largeur de "
+            "son contenu et fera deborder la page. " + str(fautifs),
+        )
+
+
 class BalayageFiable(unittest.TestCase):
     """R6 : le balayage ne compte pas un element `sr-only` comme cible tactile.
 

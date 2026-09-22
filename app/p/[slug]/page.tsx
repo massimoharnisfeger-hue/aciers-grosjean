@@ -16,8 +16,10 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
-import { structurerDescription, sectionsDe, type DescriptionSiteActuel, type TypeSection } from "@/lib/description";
-import { ChiffresCles, ModuleSection } from "@/components/catalogue/FicheModules";
+import { structurerDescription, type DescriptionSiteActuel } from "@/lib/description";
+import { ChiffresCles } from "@/components/catalogue/FicheModules";
+import DetailProduit from "@/components/catalogue/DetailProduit";
+import { ongletsDe } from "@/lib/onglets";
 import { titre, description } from "@/lib/seo";
 import descriptionsBrutes from "@/lib/descriptions-site-actuel.json";
 import visuelsBruts from "@/lib/visuels-produits.json";
@@ -32,13 +34,6 @@ const visuels = visuelsBruts as unknown as {
 
 /** Description relevée sur le site actuel (scripts/inventaire/integrer.py), structurée par lib/description.ts. */
 const descriptions = descriptionsBrutes as unknown as Record<string, DescriptionSiteActuel>;
-
-/** Ordre de lecture des modules du détail, du plus décisionnel au plus accessoire. */
-const ORDRE: TypeSection[] = ["presentation", "applications", "atouts", "caracteristiques", "conseils", "services", "autre"];
-const TITRES: Record<TypeSection, string> = {
-  presentation: "Présentation", applications: "Applications", atouts: "Points forts",
-  caracteristiques: "Caractéristiques", conseils: "Conseils", services: "Services", autre: "À savoir",
-};
 
 const metres = (v: number) => `${v.toLocaleString("fr-BE")} m`;
 
@@ -130,6 +125,13 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
   if (visuels.categories[p.categorie]) {
     vues.push({ ...visuels.categories[p.categorie], legende: `Photo studio · ${cat?.nom ?? u.nom}` });
   }
+
+  // Onglets du détail : construits à partir des seules données réelles de cette
+  // fiche (lib/onglets.ts). Les cotes n'étaient affichées nulle part.
+  const onglets = ongletsDe(p, ds, desc?.cotes ?? [], Boolean(desc?.supplementCoupe), {
+    fiche: visuels.produits[p.slug],
+    categorie: visuels.categories[p.categorie],
+  });
 
   return (
     <main>
@@ -333,25 +335,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
         </div>
       </section>
 
-      {(ds.introduction.length > 0 || ds.sections.length > 0) && (
-        <section className="border-t border-brume bg-nuage py-14 md:py-16">
-          <div className="container-g">
-            <h2 className="h-display text-2xl md:text-3xl">Le produit en détail</h2>
-            {ds.introduction.length > 0 && (
-              <div className="mt-5 max-w-3xl space-y-3 font-body leading-relaxed text-encre">
-                {ds.introduction.map((texte) => <p key={texte}>{texte}</p>)}
-              </div>
-            )}
-            {ds.sections.length > 0 && (
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                {ORDRE.flatMap((type) => sectionsDe(ds, type)).map((s, i) => (
-                  <ModuleSection key={`${s.type}-${i}`} section={s} titreParDefaut={TITRES[s.type]} niveau={3} />
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+      <DetailProduit onglets={onglets} />
 
       {voisins.length > 0 && (
         <section className="border-t border-brume bg-nuage py-16 md:py-20">

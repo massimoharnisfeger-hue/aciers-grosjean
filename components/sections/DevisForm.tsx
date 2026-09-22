@@ -114,7 +114,7 @@ export default function DevisForm({ produits }: { produits: string[] }) {
 
   return (
     <form onSubmit={envoyer} className="rounded-2xl border border-brume bg-white p-6 md:p-8">
-      <fieldset>
+      <fieldset className="min-w-0">
         <legend className="font-body text-sm font-medium text-encre">Je suis…</legend>
         <div className="mt-3 grid grid-cols-2 gap-3">
           {["Particulier", "Professionnel"].map((p) => (

@@ -113,3 +113,22 @@ officielle **se contredit elle-même** — titre « VERT RAL 7016 », en-tête �
 
 **À corriger sur le site officiel** : un client qui cherche un poteau gris ne le trouve pas,
 et un client qui commande « vert » reçoit du gris.
+
+## HUMAN_REVIEW — où vivent les spécifications et les documents (22/09)
+
+La section « Le produit en détail » est passée en onglets. Le propriétaire demande que
+**chaque fiche garde la même structure, avec les mêmes informations qui reviennent**.
+
+Mesuré sur les 495 fiches : spécifications **472 (95 %)**, PDF **359 (72 %)**, cotes **355**,
+introduction **340 (68 %)**, longueurs **273**. Les seules données quasi universelles sont donc
+les spécifications et les documents — or ils sont déjà affichés dans la colonne de droite de la
+fiche, sous le calculateur.
+
+| Option | Conséquence |
+|---|---|
+| **Les déplacer dans les onglets** | 95 % des fiches auraient les mêmes rubriques. La colonne de droite se limite au prix, au calculateur et aux boutons. Touche une autre partie de la fiche. |
+| **Les laisser à droite** | Rien d'autre ne bouge, mais 36 fiches n'ont aucun onglet et 124 n'en ont qu'un : la structure reste variable. |
+| **Les deux** | Structure uniforme, mais la même information affichée deux fois sur la page. Déconseillé. |
+
+**Décision attendue du propriétaire.** Aucune des trois n'est déductible : c'est un arbitrage
+entre uniformité et non-duplication, pas un fait à établir.

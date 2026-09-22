@@ -21,6 +21,14 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P13 - Le texte du site source est servi, quelle que soit la forme que prend
+      la section. La mise en onglets a d'abord rendu `null` quand aucun onglet
+      n'etait produit : 24 fiches ont perdu 39 paragraphes reels, dont la seule
+      mention du sur-mesure et l'adresse du service commercial. L'introduction
+      alimente desormais l'onglet « Presentation » ; ce controle ne regarde
+      donc plus OU le texte est rendu, seulement QU'IL l'est — c'est la
+      garantie qui compte, et elle survit aux changements de mise en page.
+
 P12 - `/api/devis` refuse un flot de demandes. Sans plafond, l'adresse
       Microsoft 365 de l'entreprise relaie autant de messages qu'on lui en
       demande : la boite se remplit, et le compte finit bride ou bloque par
@@ -118,6 +126,13 @@ ANCIENNES_URLS_REPAREES = (
     "/recentlyviewedproducts",
     "/blog/rss/2",
     "/shippinginfo",
+)
+
+# Fiche dont les quatre paragraphes d'introduction avaient disparu.
+PRODUIT_SANS_ONGLET = "tole-30-200-1000-ral-7016-300x105cm"
+PHRASES_ATTENDUES = (
+    "peuvent être placées en toiture",
+    "commandées sur-mesure",
 )
 
 # Plafond d'envois par adresse, declare dans `app/api/devis/route.ts`. Le
@@ -353,6 +368,15 @@ class ParcoursVisiteur(unittest.TestCase):
             statuts[-1],
             429,
             "la demande au-dela du plafond devrait etre refusee (429), pas " + str(statuts[-1]),
+        )
+
+    def test_p13_le_texte_du_site_source_est_servi(self):
+        statut, corps = self.serveur.appeler("/p/" + PRODUIT_SANS_ONGLET)
+        self.assertEqual(statut, 200, "la fiche temoin ne repond pas 200")
+        absentes = [p for p in PHRASES_ATTENDUES if p not in corps]
+        self.assertEqual(
+            absentes, [],
+            "texte du site source perdu sur une fiche sans onglet : " + str(absentes),
         )
 
     def test_p10_vignettes_categorie_passent_par_optimiseur(self):
