@@ -51,6 +51,15 @@ export type BlocOnglet = {
   type: TypeSection;
   /** Titre affiché au-dessus du bloc, vide s'il n'en faut pas. */
   titre: string;
+  /**
+   * Le bloc se replie derrière son titre, fermé par défaut.
+   *
+   * Demande du propriétaire (22/09) : « qu'on ne voie pas systématiquement
+   * les caractéristiques principales, qu'on puisse les déployer ». Seuls les
+   * blocs venant de la description du site se replient ; la fiche technique
+   * et les cotes restent ouvertes — ce sont elles qu'on vient chercher.
+   */
+  repliable?: boolean;
   paragraphes: string[];
   items: string[];
   paires: Paire[];
@@ -113,6 +122,7 @@ function enBlocs(sections: Section[]): BlocOnglet[] {
     .map((s) => ({
       type: s.type,
       titre: s.titre,
+      repliable: true,
       paragraphes: s.paragraphes,
       items: s.items,
       paires: s.paires,

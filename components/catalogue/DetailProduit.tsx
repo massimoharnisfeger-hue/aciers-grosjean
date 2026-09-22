@@ -111,20 +111,49 @@ function TableauCotes({ paires }: { paires: Paire[] }) {
  * cherche dans le HTML servi, et il survit donc a la mise en onglets.
  */
 function Bloc({ b, premier }: { b: BlocOnglet; premier: boolean }) {
+  if (b.repliable && b.titre) {
+    return (
+      <details data-module={b.type} className="group min-w-0 border-t border-brume first:border-0">
+        <summary className="lien-tactile flex cursor-pointer list-none items-center justify-between gap-4 py-5 first:pt-0">
+          <span className="h-title text-xs font-semibold uppercase tracking-[0.16em] text-soft">{b.titre}</span>
+          <span
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-brume text-soft transition-transform duration-200 group-open:rotate-180"
+            aria-hidden="true"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </summary>
+        <div className="pb-6">
+          <CorpsDeBloc b={b} premier={false} />
+        </div>
+      </details>
+    );
+  }
+  return <BlocOuvert b={b} premier={premier} />;
+}
+
+function BlocOuvert({ b, premier }: { b: BlocOnglet; premier: boolean }) {
+  return (
+    <div data-module={b.type} className="min-w-0 border-t border-brume pt-6 first:border-0 first:pt-0">
+      {b.titre && (
+        <h4 className="h-title text-xs font-semibold uppercase tracking-[0.16em] text-soft">{b.titre}</h4>
+      )}
+      <CorpsDeBloc b={b} premier={premier} />
+    </div>
+  );
+}
+
+/** Le contenu d'un bloc, sans son enveloppe : il sert ouvert comme replie. */
+function CorpsDeBloc({ b, premier }: { b: BlocOnglet; premier: boolean }) {
   const tousCourts = b.items.length > 0 && b.items.every(court);
   const [tete, ...suite] = b.paragraphes;
   const visibles = suite.slice(0, PARAGRAPHES_VISIBLES - 1);
   const replies = suite.slice(PARAGRAPHES_VISIBLES - 1);
 
   return (
-    <div data-module={b.type} className="min-w-0 border-t border-brume pt-6 first:border-0 first:pt-0">
-      {/* Le titre porte la structure du panneau : « Les cotes », « Emplois
-          courants ». On l'affiche dès qu'il existe — c'est lui qui donne au
-          lecteur ses points de repère, et sans lui les blocs se confondent. */}
-      {b.titre && (
-        <h4 className="h-title text-xs font-semibold uppercase tracking-[0.16em] text-soft">{b.titre}</h4>
-      )}
-
+    <>
       {tete && (
         <p
           className={`font-body leading-relaxed text-encre ${b.titre ? "mt-3" : ""} ${
@@ -186,7 +215,7 @@ function Bloc({ b, premier }: { b: BlocOnglet; premier: boolean }) {
             ))}
           </ul>
         ))}
-    </div>
+    </>
   );
 }
 
@@ -260,19 +289,19 @@ function Panneau({ o }: { o: Onglet }) {
         {/* Meme recadrage que la galerie : le rendu cote porte un tableau de
             specifications incruste sur ses 38 % droits, qui redit la fiche
             technique juste a cote et vole la moitie de leur taille aux cotes. */}
-        <div
-          className={`overflow-hidden rounded-xl border border-brume bg-nuage ${
-            o.visuel.src.endsWith("-caracteristiques.webp")
-              ? "aspect-[5/6] [&>img]:h-full [&>img]:w-full [&>img]:object-cover [&>img]:object-left"
-              : ""
-          }`}
-        >
+        <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brume bg-white [&>img]:h-full [&>img]:w-full [&>img]:object-contain">
           <Image
             src={o.visuel.src}
             alt={o.visuel.alt}
             width={o.visuel.largeur}
             height={o.visuel.hauteur}
             sizes="(min-width: 1280px) 384px, (min-width: 1024px) 320px, (min-width: 640px) 28rem, 100vw"
+          // Servi brut, comme dans la galerie. Depuis le recadrage, un rendu
+          // pese 17 Ko pour 984 px de large : l'optimiseur ne ferait rien
+          // gagner, et il renvoyait ici une variante de 384 px la ou l'ecran
+          // retina en demande 498 — mesure du 22/09, image floue sur la moitie
+          // des ecrans. Un fichier deja leger se sert tel quel.
+          unoptimized
             className="h-auto w-full"
           />
         </div>

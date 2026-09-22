@@ -5,26 +5,19 @@ export type VisuelProduit = { src: string; largeur: number; hauteur: number; alt
 export type VueGalerie = VisuelProduit & { legende: string };
 
 /**
- * Un rendu dimensionnel porte un tableau de specifications incruste a droite.
+ * Les rendus ne portent plus de tableau incruste : il a ete retire du FICHIER
+ * par `scripts/rendu-3d/recadrer_visuels.py`. L'image peut donc etre montree
+ * ENTIERE, `object-contain` dans une boite de rapport stable, posee sur un
+ * fond neutre — la presentation d'une photo produit.
  *
- * Mesure du 22/09 sur six rendus tires au hasard : l'objet occupe les 62 %
- * gauches de l'image, le tableau les 38 % restants, et la disposition ne varie
- * pas. Ce tableau redit la fiche technique affichee juste en dessous, et il
- * coute aux cotes la moitie de leur taille — or les cotes sont la raison d'etre
- * de ce rendu. Le proprietaire, le 22/09 : « on ne voit pas assez les mesures ».
- *
- * On recadre donc a l'affichage, par CSS : aucun fichier n'est touche, et un
- * seul rapport de forme suffit a revenir en arriere. Le procede (« lamine a
- * chaud ») que le tableau affichait est dit ailleurs sur la fiche — dans le
- * titre et l'accroche — et 45 fiches le portent en ligne de specification.
- *
- * Le recadrage ne vaut QUE pour ces rendus : une photo studio n'a pas de
- * tableau, la rogner couperait le produit.
+ * Le recadrage a d'abord ete tente en CSS (`object-cover` sur une boite 5/6) :
+ * mauvaise idee. Il forcait un agrandissement, rendait la boite verticale
+ * alors que l'objet est horizontal, et obligeait `sizes` a mentir sur la
+ * largeur reellement affichee — d'ou une image servie trop petite, donc floue.
+ * Rogner a l'affichage ce qu'on peut rogner a la source est toujours un
+ * mauvais echange.
  */
-const estUnRenduCote = (src: string) => src.endsWith("-caracteristiques.webp");
-
-/** 62 % d'une image 4:3 : `0,62 x 4/3 = 0,83`, soit 5/6. */
-const CADRE_COTE = "aspect-[5/6] [&>img]:h-full [&>img]:w-full [&>img]:object-cover [&>img]:object-left";
+const BOITE = "aspect-[4/3] [&>img]:h-full [&>img]:w-full [&>img]:object-contain";
 
 // Classes écrites en entier : Tailwind ne génère que les noms présents tels quels dans le code.
 const CLASSES = [
@@ -34,9 +27,9 @@ const CLASSES = [
 ];
 
 /**
- * Galerie sans JavaScript : un bouton radio par vue, la vue cochée s'affiche (sélecteurs CSS « peer »).
- * La première vue est cochée dans le HTML, donc visible même si le JavaScript ne charge pas.
- * Les WebP sont déjà optimisés (< 200 Ko, 1600 px) : servis tels quels, sans redimensionnement.
+ * Galerie sans JavaScript : un bouton radio par vue, la vue cochée s'affiche
+ * (sélecteurs CSS « peer »). La première vue est cochée dans le HTML, donc
+ * visible même si le JavaScript ne charge pas.
  */
 export default function GalerieProduit({ vues }: { vues: VueGalerie[] }) {
   const liste = vues.slice(0, CLASSES.length);
@@ -74,11 +67,7 @@ export default function GalerieProduit({ vues }: { vues: VueGalerie[] }) {
           */}
           <div className="relative overflow-hidden rounded-2xl border border-brume bg-nuage p-3 md:p-4">
             <div className="grid-industrie absolute inset-0 opacity-60" aria-hidden="true" />
-            <div
-              className={`relative overflow-hidden rounded-xl bg-white shadow-[0_18px_44px_-24px_rgba(51,54,66,.55)] ${
-                estUnRenduCote(v.src) ? CADRE_COTE : ""
-              }`}
-            >
+            <div className={`relative overflow-hidden rounded-xl bg-white shadow-[0_18px_44px_-24px_rgba(51,54,66,.55)] ${BOITE}`}>
             <Image
               src={v.src}
               alt={v.alt}
@@ -101,7 +90,7 @@ export default function GalerieProduit({ vues }: { vues: VueGalerie[] }) {
             htmlFor={`vue-produit-${i}`}
             className={`cursor-pointer overflow-hidden rounded-xl border-2 border-brume bg-white ring-jaune transition-colors hover:border-encre/40 ${CLASSES[i].vignette}`}
           >
-            <span className={`block overflow-hidden ${estUnRenduCote(v.src) ? CADRE_COTE : ""}`}>
+            <span className={`block overflow-hidden ${BOITE}`}>
               <Image src={v.src} alt="" width={v.largeur} height={v.hauteur} sizes="160px" unoptimized className="h-auto w-full" />
             </span>
             <span className="sr-only">{v.legende}</span>
