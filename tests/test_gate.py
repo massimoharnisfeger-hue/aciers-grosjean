@@ -231,6 +231,37 @@ class GateTests(unittest.TestCase):
                 f"Ligne(s) : {fautives[:2]}",
             )
 
+    def test_aucun_script_n_alimente_une_commande_native_par_un_tuyau(self):
+        """S7 : un tuyau PowerShell n'atteint pas l'entree standard d'un executable ici.
+
+        Mesure du 22/09/2026, sur ce poste : `@('protocol=https','host=github.com','')
+        | git credential fill` repond « refusing to work with credential missing
+        protocol field » — git ne recoit rien du tout et lit EOF. La meme entree,
+        passee par un fichier redirige (`cmd /c "git credential fill < f"`),
+        renvoie les quatre lignes attendues. La forme tableau etait deja la
+        correction d'un defaut precedent : elle reglait la mise en forme de
+        l'entree, pas son acheminement.
+
+        Consequence vecue : la branche partait, la pull request n'etait jamais
+        creee, et le proprietaire regardait un site perime en croyant publier.
+
+        La parade est d'ecrire l'entree dans un fichier temporaire sans secret et
+        de la rediriger. Ce controle refuse le tuyau vers `git credential`, seul
+        cas mesure ; l'etendre demanderait d'avoir mesure les autres.
+        """
+        for script in sorted(RACINE.glob("_OUTILS/*.ps1")) + sorted(RACINE.glob("scripts/**/*.ps1")):
+            texte = script.read_text(encoding="utf-8", errors="replace")
+            fautives = [
+                l.strip()[:90]
+                for l in texte.splitlines()
+                if "| git credential" in l and not l.strip().startswith("#")
+            ]
+            self.assertEqual(
+                fautives, [],
+                f"{script.name} alimente `git credential` par un tuyau : git lit EOF et "
+                f"echoue. Passer par un fichier temporaire redirige. Ligne(s) : {fautives[:2]}",
+            )
+
     def test_la_ci_lance_le_registre(self):
         texte = CI.read_text(encoding="utf-8")
         self.assertIn(

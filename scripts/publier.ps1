@@ -28,21 +28,31 @@ function Note([string]$texte) {
 # Le jeton est celui que Git utilise deja pour pousser : aucun secret nouveau,
 # rien d'ecrit sur le disque, rien d'affiche.
 function Jeton {
-  # Une ligne par element : git credential fill lit son entree ligne par ligne et
-  # exige une ligne vide finale. Une chaine unique avec des `n lui arrive collee,
-  # et il repond "refusing to work with credential missing protocol field".
+  # L'entree passe par un FICHIER redirige, pas par un tuyau. Mesure du 22/09 :
+  # @('protocol=https','host=github.com','') | git credential fill fait repondre
+  # 'refusing to work with credential missing protocol field' : git ne recoit rien
+  # et lit EOF. La meme entree redirigee depuis un fichier renvoie les quatre
+  # lignes attendues. La forme tableau reglait la mise en forme de l'entree ; elle
+  # ne reglait pas son acheminement. Controle S7.
+  #
+  # Le fichier ne contient aucun secret (protocole et hote seulement) ; le jeton
+  # revient par la sortie standard et ne touche jamais le disque.
   #
   # Pas de 2>$null ici : sous PowerShell 5.1, rediriger stderr d'une commande
   # native emballe chaque ligne dans une ErrorRecord, et $ErrorActionPreference
   # a 'Stop' transforme ca en erreur terminante. Le script mourrait sans message.
   $prudent = $ErrorActionPreference
   $ErrorActionPreference = 'Continue'
+  $demande = Join-Path ([System.IO.Path]::GetTempPath()) ('cred-' + [guid]::NewGuid().ToString('N') + '.txt')
   try {
-    $reponse = @('protocol=https', 'host=github.com', '') | git credential fill
+    # LF et ligne vide finale : git credential fill lit ligne par ligne.
+    [System.IO.File]::WriteAllText($demande, "protocol=https`nhost=github.com`n", [System.Text.Encoding]::ASCII)
+    $reponse = cmd /c "git credential fill < ""$demande"""
   } catch {
     $reponse = @()
   } finally {
     $ErrorActionPreference = $prudent
+    Remove-Item $demande -Force -ErrorAction SilentlyContinue
   }
   foreach ($l in $reponse) { if ($l -like 'password=*') { return $l.Substring(9) } }
   return $null
