@@ -216,3 +216,21 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le fil d'Ariane est cinq lignes de JSX faciles à recopier, et sa partie coûteuse — le JSON-LD — est invisible. Ce qu'on recopie d'un composant, c'est ce qu'on voit ; ce qu'on perd, c'est le reste. Corrigé en passant les quatre gabarits sur `FilAriane`, qui accepte désormais des miettes optionnelles. Contrôle générique : aucun `<Link href="/">Accueil</Link>` hors du composant, et jamais deux fils sur une même page.
 - **Contrôle** : `tests/test_responsive.py::FilsDAriane::test_r5_aucun_fil_d_ariane_code_a_la_main`
 - **Date** : 2026-09-22
+
+### L-030 — une règle de correspondance trop stricte fabrique du travail qui n'existe pas
+- **Symptôme** : le premier audit des visuels classait **213 produits sur 466** en `AMBIGUOUS`, au motif que le titre inscrit dans le rendu Blender diffère du nom du catalogue. Lu tel quel, le rapport annonçait la moitié du catalogue à revérifier à la main.
+- **Cause** : la règle exigeait l'égalité stricte des deux libellés. Or le rendu raccourcit volontairement — « Rond à béton de 10mm de diamètre » pour « Rond à béton de 10mm de diamètre en acier laminé à chaud » — parce que la matière figure déjà dans le surtitre de l'image. 201 des 213 écarts étaient de simples préfixes. La bonne règle tient à une propriété du domaine : le titre d'un rendu n'**ajoute** jamais d'information, il en retire ; ses mots doivent donc se retrouver dans le nom du produit, dans l'ordre, et ses cotes doivent toutes exister. Résultat après correction : zéro ambigu réel. Vérifier un échantillon avant de publier un compteur aurait coûté deux minutes.
+- **Contrôle** : `tests/test_produit.py::CorrespondanceRenduProduit::test_d10_un_raccourci_designe_bien_le_produit`
+- **Date** : 2026-09-22
+
+### L-031 — un générateur qui écrase sans condition laisse le hasard décider
+- **Symptôme** : intégrer les 10 caillebotis a silencieusement remplacé la photo studio de toute la catégorie « Caillebotis & marches » — `studio-plancher-o2` est devenu `studio-caillebotis`. Aucun message, aucune trace : découvert en comparant le manifeste avant/après.
+- **Cause** : `integrer_visuels.py` faisait `manifeste["categories"][categorie] = image` sans condition. Trois catégories ont plusieurs familles de photo studio (celle-ci en a quatre) et le manifeste n'en tient qu'une : la dernière famille intégrée gagnait, par ordre d'exécution. Choisir entre quatre studios valides est une décision visuelle humaine, pas une conséquence de l'ordre des arguments. Le générateur conserve désormais l'existant et signale le candidat ignoré ; remplacer exige `--remplacer-studio`.
+- **Contrôle** : `tests/test_produit.py::StudioDeCategorie::test_d9_le_studio_existant_n_est_pas_ecrase`
+- **Date** : 2026-09-22
+
+### L-032 — une donnée produite mais jamais servie ne se voit dans aucun contrôle
+- **Symptôme** : « Dans le bardage je ne vois rien » (propriétaire, 22/09). La page `/toiture-bardage` affichait ses trois familles — Bardage, Panneaux isolés, Tôles profilées — avec **exactement le même dessin SVG** : `lib/visuels.ts` renvoyait tout ce qui est sous `toiture-bardage` vers l'illustration « tôles ». Aucun contrôle n'échouait : la page répondait 200, ne débordait pas, n'avait pas d'erreur console. Les trois photos studio existaient depuis des jours, servies une couche plus bas.
+- **Cause** : le repli SVG était conçu pour l'absence de photo, et personne n'avait vérifié qu'il ne masquait pas une photo présente. Un audit qui compte les images *servies* ne voit pas celles qui *devraient* l'être ailleurs. Corrigé par la règle du candidat unique (`studioUniqueDe`) : une famille sous laquelle il n'existe qu'une photo studio la montre ; zéro ou plusieurs, le dessin reste, parce que choisir entre deux photos est un arbitrage visuel. Effet mesuré au-delà du bardage : 7 familles et plusieurs sous-catégories (`/acier/toles` en gagne 7 distinctes).
+- **Contrôle** : `tests/test_produit.py::VisuelDeFamille::test_d11_la_regle_du_candidat_unique`
+- **Date** : 2026-09-22

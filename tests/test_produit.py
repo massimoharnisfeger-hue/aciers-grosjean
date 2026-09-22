@@ -119,6 +119,116 @@ class GrillesQuiRetrecissent(unittest.TestCase):
             self.assertIn("break-words", ligne, f"{chemin.name} : bloc « {ancre} » sans `break-words`.")
 
 
+class VisuelDeFamille(unittest.TestCase):
+    """D11 : une carte de famille montre la vraie photo quand il n'y en a qu'une.
+
+    Sur `/toiture-bardage`, les trois familles — Bardage, Panneaux isoles,
+    Toles profilees — affichaient le MEME dessin SVG : `lib/visuels.ts` les
+    renvoyait toutes vers l'illustration « toles ». Les trois photos studio
+    existaient pourtant, servies une couche plus bas.
+
+    Regle demandee le 22/09 : si exactement UNE photo studio existe sous une
+    famille, la carte la montre. Zero ou plusieurs : le dessin SVG reste, parce
+    que choisir entre deux photos est une decision visuelle humaine (le cas
+    HUMAN_REVIEW de l'audit).
+
+    Le rendu passe par un composant partage : recopier le meme JSX dans les
+    deux gabarits perdrait la regle dans l'un des deux (lecon L-029).
+    """
+
+    def test_d11_la_regle_du_candidat_unique(self):
+        src = (RACINE / "lib" / "visuels.ts").read_text(encoding="utf-8")
+        self.assertIn(
+            "studioUniqueDe", src,
+            "lib/visuels.ts doit exposer la regle du candidat unique.",
+        )
+
+    def test_d11bis_un_seul_composant_pour_les_deux_gabarits(self):
+        composant = RACINE / "components" / "catalogue" / "VisuelFamille.tsx"
+        self.assertTrue(composant.exists(), "components/catalogue/VisuelFamille.tsx manquant.")
+        app = RACINE / "app"
+        for gabarit in (app / "[univers]" / "page.tsx", app / "[univers]" / "[...segments]" / "page.tsx"):
+            self.assertIn(
+                "VisuelFamille", gabarit.read_text(encoding="utf-8"),
+                f"{gabarit.name} doit utiliser le composant partage, pas recopier la regle.",
+            )
+
+
+class CorrespondanceRenduProduit(unittest.TestCase):
+    """D10 : la regle qui dit « ce rendu appartient a ce produit ».
+
+    Premiere version de l'audit : egalite stricte entre le titre inscrit dans
+    le rendu et le nom du catalogue. Elle classait 213 produits sur 466 en
+    AMBIGUOUS, soit la moitie du catalogue a reverifier a la main — alors que
+    201 de ces 213 etaient de simples raccourcis voulus.
+
+    La regle tient a une propriete du domaine : le titre d'un rendu n'AJOUTE
+    jamais d'information, il en retire (la matiere est deja dans le surtitre
+    de l'image). Ses mots doivent donc se retrouver dans le nom du produit,
+    dans l'ordre, et toutes ses cotes doivent exister. Ces cas sont ceux qui
+    ont ete verifies a la main le 22/09 sur les donnees reelles.
+    """
+
+    @staticmethod
+    def regle():
+        import importlib.util
+        chemin = RACINE / "scripts" / "rendu-3d" / "auditer_visuels.py"
+        spec = importlib.util.spec_from_file_location("auditer_visuels", chemin)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.le_rendu_designe_le_produit
+
+    def test_d10_un_raccourci_designe_bien_le_produit(self):
+        designe = self.regle()
+        for titre, nom in (
+            ("Rond à béton de 10mm de diamètre", "Rond à béton de 10mm de diamètre en acier laminé à chaud"),
+            ("Poutrelle HEA 100", "Poutrelle HEA 100 en acier"),
+            ("Tube rond 21,3x2mm série légère", "Tube rond 21,3x2mm en acier brut série légère"),
+            ("Large plat 160x10mm", "Large plat en acier laminé à chaud 160x10mm"),
+            ("Plat de 20x3mm en aluminium", "Plat de 20x3mm en aluminium"),
+        ):
+            self.assertTrue(designe(titre, nom), f"« {titre} » devrait designer « {nom} »")
+
+    def test_d10bis_une_cote_differente_est_un_autre_produit(self):
+        designe = self.regle()
+        for titre, nom in (
+            ("Tube rond 21,3x2mm série légère", "Tube rond 26,9x2,5mm en acier brut série légère"),
+            ("Poutrelle IPE 200", "Poutrelle HEA 100 en acier"),
+            ("Plat de 30x3mm en aluminium", "Plat de 20x3mm en aluminium"),
+        ):
+            self.assertFalse(designe(titre, nom), f"« {titre} » ne designe PAS « {nom} »")
+
+
+class StudioDeCategorie(unittest.TestCase):
+    """D9 : integrer une famille ne remplace pas le studio d'une categorie voisine.
+
+    Trois categories ont plusieurs familles de photo studio — « Caillebotis &
+    marches » en a quatre (caillebotis, marche-caillebotis, marche-o2,
+    plancher-o2). Le manifeste n'en tient qu'une par categorie, et
+    `integrer_visuels.py` ecrasait la precedente sans condition : la derniere
+    famille integree gagnait, par hasard. Le 22/09, integrer les caillebotis a
+    silencieusement remplace le studio de la categorie.
+
+    Choisir entre quatre studios est une decision humaine. Le generateur doit
+    donc garder celui qui est en place et le signaler, sauf demande explicite.
+    """
+
+    def test_d9_le_studio_existant_n_est_pas_ecrase(self):
+        src = (RACINE / "scripts" / "rendu-3d" / "integrer_visuels.py").read_text(encoding="utf-8")
+        # L'assignation reste legitime SOUS un garde ; c'est l'assignation nue,
+        # au niveau du corps de boucle (8 espaces), qui ecrase sans condition.
+        nue = chr(10) + " " * 8 + 'manifeste["categories"][categorie] = image'
+        self.assertNotIn(
+            nue, src,
+            "integrer_visuels.py ecrase le studio de la categorie sans condition : "
+            "la derniere famille integree gagne, sans preuve qu'elle soit la bonne.",
+        )
+        self.assertIn(
+            "remplacer_studio", src,
+            "Le remplacement d'un studio de categorie doit etre explicite.",
+        )
+
+
 class DemandeDePrix(unittest.TestCase):
     """D6/D7 : la demande de prix du calculateur ne part plus par la messagerie du visiteur.
 

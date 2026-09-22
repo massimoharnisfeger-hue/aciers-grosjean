@@ -62,6 +62,8 @@ def copier(source, cible):
 
 def main():
     args = sys.argv[1:]
+    remplacer_studio = "--remplacer-studio" in args
+    args = [a for a in args if a != "--remplacer-studio"]
     if len(args) < 3 or args[0] != "--verdict" or args[1] != "CONFORME":
         raise SystemExit(__doc__)
     familles = args[2:]
@@ -101,7 +103,17 @@ def main():
         image = copier(controle.FINAL / f"studio-{famille}-studio.webp", dossier / f"studio-{famille}.webp")
         image["alt"] = (f"{nom} en acier : {NOMBRES.get(n, n)} tailles côte à côte, photo studio sur fond blanc" if n > 1
                         else f"{nom} en acier, photo studio sur fond blanc")
-        manifeste["categories"][categorie] = image
+        # Une categorie peut avoir plusieurs familles de photo studio (« Caillebotis &
+        # marches » en a quatre). Le manifeste n'en tient qu'une : ecraser la
+        # precedente ferait gagner la derniere famille integree, par hasard.
+        # Choisir est une decision humaine — on garde et on signale.
+        ancien = manifeste["categories"].get(categorie)
+        if ancien and ancien["src"] != image["src"] and not remplacer_studio:
+            print(f"  studio de {categorie} conserve : {ancien['src'].rsplit('/', 1)[-1]}"
+                  f" (candidat ignore : studio-{famille}.webp)."
+                  f" Pour remplacer : --remplacer-studio")
+        else:
+            manifeste["categories"][categorie] = image
         inventaire[(f"studio-{famille}", "studio")] = {"slug": f"studio-{famille}", "categorie": categorie,
                                                        "fichier": image["src"], "type": "studio", "verdict": "CONFORME",
                                                        "date": date}
