@@ -124,6 +124,36 @@ class CiblesTactiles(unittest.TestCase):
             )
 
 
+class NotesInternes(unittest.TestCase):
+    """L1 : la liste « a completer avant mise en ligne » ne se publie pas.
+
+    Mesure du 22/09 dans le HTML construit : les CGV, les mentions legales et
+    la page Protection des donnees affichaient toutes les trois un encadre
+    « Informations a completer avant mise en ligne », dont la ligne
+    « Validation par un conseil juridique avant publication ». Un client qui
+    lit les conditions de vente y apprenait que le document n'est pas valide.
+
+    L'encadre est utile au proprietaire tant que le site n'est pas public. Il
+    doit donc suivre le meme drapeau que l'indexation (`SITE_INDEXABLE`),
+    qu'`app/layout.tsx` et `app/robots.ts` lisent deja : visible en
+    preproduction, absent le jour de la mise en ligne. Aucun arbitrage a
+    demander, aucune information perdue.
+    """
+
+    GABARIT = COMPOSANTS / "ui" / "PageLegale.tsx"
+
+    def test_l1_l_encadre_interne_suit_le_drapeau_d_indexation(self):
+        texte = source(self.GABARIT)
+        self.assertIn(
+            "aCompleter", texte, "le gabarit legal ne porte plus de liste interne : revoir ce controle."
+        )
+        self.assertIn(
+            "SITE_INDEXABLE", texte,
+            "l'encadre « a completer avant mise en ligne » se publierait au client : "
+            "le conditionner au drapeau SITE_INDEXABLE, comme l'indexation.",
+        )
+
+
 class FieldsetsRetrecissables(unittest.TestCase):
     """R7 : un `<fieldset>` ne retrecit pas tout seul, il faut le lui dire."""
 

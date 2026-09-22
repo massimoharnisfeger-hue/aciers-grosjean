@@ -38,12 +38,6 @@ const CLASSES = [
   { bouton: "peer/o0", panneau: "peer-checked/o0:block", pastille: "peer-checked/o0:bg-encre peer-checked/o0:text-white peer-checked/o0:shadow-sm peer-focus-visible/o0:ring-2" },
   { bouton: "peer/o1", panneau: "peer-checked/o1:block", pastille: "peer-checked/o1:bg-encre peer-checked/o1:text-white peer-checked/o1:shadow-sm peer-focus-visible/o1:ring-2" },
   { bouton: "peer/o2", panneau: "peer-checked/o2:block", pastille: "peer-checked/o2:bg-encre peer-checked/o2:text-white peer-checked/o2:shadow-sm peer-focus-visible/o2:ring-2" },
-  { bouton: "peer/o3", panneau: "peer-checked/o3:block", pastille: "peer-checked/o3:bg-encre peer-checked/o3:text-white peer-checked/o3:shadow-sm peer-focus-visible/o3:ring-2" },
-  { bouton: "peer/o4", panneau: "peer-checked/o4:block", pastille: "peer-checked/o4:bg-encre peer-checked/o4:text-white peer-checked/o4:shadow-sm peer-focus-visible/o4:ring-2" },
-  { bouton: "peer/o5", panneau: "peer-checked/o5:block", pastille: "peer-checked/o5:bg-encre peer-checked/o5:text-white peer-checked/o5:shadow-sm peer-focus-visible/o5:ring-2" },
-  { bouton: "peer/o6", panneau: "peer-checked/o6:block", pastille: "peer-checked/o6:bg-encre peer-checked/o6:text-white peer-checked/o6:shadow-sm peer-focus-visible/o6:ring-2" },
-  { bouton: "peer/o7", panneau: "peer-checked/o7:block", pastille: "peer-checked/o7:bg-encre peer-checked/o7:text-white peer-checked/o7:shadow-sm peer-focus-visible/o7:ring-2" },
-  { bouton: "peer/o8", panneau: "peer-checked/o8:block", pastille: "peer-checked/o8:bg-encre peer-checked/o8:text-white peer-checked/o8:shadow-sm peer-focus-visible/o8:ring-2" },
 ];
 
 /** Au-delà, le surplus se replie : le panneau doit s'embrasser d'un regard. */
@@ -51,21 +45,16 @@ const PARAGRAPHES_VISIBLES = 3;
 
 /** Icônes en ligne : une par famille d'onglet, dessinée au trait comme le reste du site. */
 const TRAITS: Record<string, string> = {
-  dimensions: "M4 20V4M4 20h16M8 16V8M12 16v-4M16 16V6",
-  caracteristiques: "M4 7h16M4 12h16M4 17h10",
-  specifications: "M9 4h6M9 4a2 2 0 00-2 2v13a2 2 0 002 2h6a2 2 0 002-2V6a2 2 0 00-2-2M10 9h4M10 13h4M10 17h2",
-  documentation: "M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5",
-  applications: "M4 12l8-8 8 8-8 8z",
-  atouts: "M12 3l2.6 5.6L21 9.6l-4.5 4.3 1.1 6.1L12 17.2 6.4 20l1.1-6.1L3 9.6l6.4-1z",
-  "mise-en-oeuvre": "M14.7 6.3a4 4 0 01-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 015.4-5.4z",
-  "a-savoir": "M12 16v-5M12 8h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+  caracteristiques: "M4 20V4M4 20h16M8 16V8M12 16v-4M16 16V6",
+  usage: "M4 12l8-8 8 8-8 8z",
+  documents: "M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5",
 };
 
 function Icone({ cle }: { cle: string }) {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" className="shrink-0" aria-hidden="true">
       <path
-        d={TRAITS[cle] ?? TRAITS["a-savoir"]}
+        d={TRAITS[cle] ?? TRAITS.usage}
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"
@@ -121,22 +110,29 @@ function TableauCotes({ paires }: { paires: Paire[] }) {
  * `data-module` porte le type d'origine : c'est le marqueur que le controle P9
  * cherche dans le HTML servi, et il survit donc a la mise en onglets.
  */
-function Bloc({ b, seul }: { b: BlocOnglet; seul: boolean }) {
+function Bloc({ b, premier }: { b: BlocOnglet; premier: boolean }) {
   const tousCourts = b.items.length > 0 && b.items.every(court);
   const [tete, ...suite] = b.paragraphes;
   const visibles = suite.slice(0, PARAGRAPHES_VISIBLES - 1);
   const replies = suite.slice(PARAGRAPHES_VISIBLES - 1);
 
   return (
-    <div data-module={b.type} className={seul ? "min-w-0" : "min-w-0 border-t border-brume pt-6 first:border-0 first:pt-0"}>
-      {/* Le titre du site source n'est repris que s'il ajoute quelque chose au
-          titre de l'onglet : le repeter ferait un doublon a deux lignes d'ecart. */}
-      {!seul && b.titre && (
-        <h4 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">{b.titre}</h4>
+    <div data-module={b.type} className="min-w-0 border-t border-brume pt-6 first:border-0 first:pt-0">
+      {/* Le titre porte la structure du panneau : « Les cotes », « Emplois
+          courants ». On l'affiche dès qu'il existe — c'est lui qui donne au
+          lecteur ses points de repère, et sans lui les blocs se confondent. */}
+      {b.titre && (
+        <h4 className="h-title text-xs font-semibold uppercase tracking-[0.16em] text-soft">{b.titre}</h4>
       )}
 
       {tete && (
-        <p className={`font-body leading-relaxed text-encre ${seul ? "text-base md:text-lg" : "mt-3 text-sm"}`}>{tete}</p>
+        <p
+          className={`font-body leading-relaxed text-encre ${b.titre ? "mt-3" : ""} ${
+            premier ? "text-lg md:text-xl" : "text-base"
+          }`}
+        >
+          {tete}
+        </p>
       )}
       {visibles.length > 0 && (
         <div className="mt-3 space-y-3 font-body text-sm leading-relaxed text-soft">
@@ -195,7 +191,6 @@ function Bloc({ b, seul }: { b: BlocOnglet; seul: boolean }) {
 }
 
 function Contenu({ o }: { o: Onglet }) {
-  const seul = o.blocs.length === 1;
   return (
     <div className="min-w-0 break-words">
       <div className="flex flex-wrap items-center gap-3">
@@ -209,7 +204,7 @@ function Contenu({ o }: { o: Onglet }) {
 
       <div className="mt-5 space-y-6">
         {o.blocs.map((b, i) => (
-          <Bloc key={`${b.type}-${i}`} b={b} seul={seul} />
+          <Bloc key={`${b.type}-${i}`} b={b} premier={i === 0} />
         ))}
       </div>
 
@@ -272,9 +267,11 @@ function Panneau({ o }: { o: Onglet }) {
             className="h-auto w-full"
           />
         </div>
-        <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-soft">
-          {o.cle === "dimensions" ? "Rendu 3D aux cotes" : "Photo studio"}
-        </figcaption>
+        {o.legendeVisuel && (
+          <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-soft">
+            {o.legendeVisuel}
+          </figcaption>
+        )}
       </figure>
     </div>
   );

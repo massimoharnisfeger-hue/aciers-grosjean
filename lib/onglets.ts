@@ -8,22 +8,31 @@ import { usageDe } from "@/lib/usages";
  * Module pur : aucun React, aucun `use client`. Il se teste et se relit sans
  * rendu (contrôle O1).
  *
- * Trois règles le gouvernent.
+ * **Trois onglets, pas plus** (demande du propriétaire, 22/09 : « il y a
+ * beaucoup trop d'onglets »). La première version en proposait neuf, et les
+ * fiches en portaient quatre à six : on ne savait plus où regarder, et certains
+ * onglets ne contenaient que trois lignes. Les neuf familles se replient donc
+ * en trois, sans qu'aucun contenu ne disparaisse :
  *
- * 1. **Rien n'est inventé.** Chaque valeur affichée vient de `lib/catalogue.ts`
- *    ou de la description relevée sur le site officiel. Un onglet sans contenu
- *    réel n'est pas produit — il n'y a pas d'onglet vide, pas de texte de
- *    remplissage.
+ * - **Caractéristiques** — tout ce qui se mesure : la fiche technique, les
+ *   cotes relevées, et ce que le site officiel dit des caractéristiques ;
+ * - **Usage** — tout ce qui explique : à quoi ça sert, les points forts, la
+ *   mise en œuvre, et le complément « à savoir » ;
+ * - **Documents** — les PDF, quand la fiche en a.
  *
- * 2. **Rien n'est doublé.** La colonne de droite de la fiche rend déjà les
- *    spécifications (`p.specs`) et les documents (`p.pdfs`). Les onglets ne les
- *    reprennent pas : ils portent ce que cette section possède en propre — la
- *    description structurée — et ce qui n'était affiché nulle part : les
- *    **cotes** (contrôle O4).
+ * Trois règles gouvernent le contenu.
+ *
+ * 1. **Rien n'est inventé.** Chaque valeur vient de `lib/catalogue.ts` ou de la
+ *    description relevée sur le site officiel. Un onglet sans contenu réel
+ *    n'est pas produit — pas d'onglet vide, pas de texte de remplissage.
+ *
+ * 2. **Rien n'est doublé.** Les spécifications et les documents ont quitté la
+ *    colonne de droite de la fiche pour vivre ici ; le contrôle O4 refuse les
+ *    deux emplacements à la fois.
  *
  * 3. **Rien n'est perdu.** Les sept `TypeSection` de `lib/description.ts` sont
- *    toutes acheminées vers un onglet ; `MAP` ci-dessous en est la preuve
- *    lisible, et le contrôle O2 échoue si l'une d'elles disparaît.
+ *    toutes acheminées : `MAP` en est la preuve lisible, et le contrôle O2
+ *    échoue si l'une d'elles disparaît.
  */
 
 /** Visuel d'une fiche ou d'une catégorie (`lib/visuels-produits.json`). */
@@ -32,14 +41,15 @@ export type Visuel = { src: string; largeur: number; hauteur: number; alt: strin
 /**
  * Un bloc de contenu d'origine, tel que le site source l'a écrit.
  *
- * Un onglet en porte un ou plusieurs : « Mise en œuvre » réunit les conseils
- * et les services. Les garder séparés conserve leur titre d'origine — les
- * aplatir en une seule liste le perdait — et permet à chacun de porter son
- * `data-module`, le marqueur que le contrôle P9 vérifie dans le HTML servi.
+ * Un onglet en porte plusieurs : « Caractéristiques » réunit la fiche
+ * technique, les cotes et la prose du site. Les garder séparés conserve leur
+ * titre d'origine — les aplatir en une seule liste le perdait — et permet à
+ * chacun de porter son `data-module`, le marqueur que le contrôle P9 vérifie
+ * dans le HTML servi.
  */
 export type BlocOnglet = {
   type: TypeSection;
-  /** Titre écrit par le site source, vide s'il n'en avait pas. */
+  /** Titre affiché au-dessus du bloc, vide s'il n'en faut pas. */
   titre: string;
   paragraphes: string[];
   items: string[];
@@ -56,6 +66,14 @@ export type Onglet = {
   blocs: BlocOnglet[];
   /** Visuel réellement lié à ce contenu, ou absent : jamais une image d'emprunt. */
   visuel?: Visuel;
+  /**
+   * Ce que le visuel montre, dit au visiteur sous l'image.
+   *
+   * La légende suit l'IMAGE, pas l'onglet : le 22/09 elle se déduisait de la
+   * clé d'onglet, et le rendu 3D coté de l'onglet Caractéristiques s'affichait
+   * sous la mention « photo studio ». Un visiteur lisait une légende fausse.
+   */
+  legendeVisuel?: string;
   /** Action réelle du site, ou absente : jamais un bouton décoratif. */
   action?: { libelle: string; href: string };
   /** Mention de la découpe, seulement si la fiche la porte. */
@@ -65,45 +83,26 @@ export type Onglet = {
 };
 
 /**
- * Où va chaque type de section. Deux types partagent l'onglet « Mise en
- * œuvre » : `conseils` (12 fiches) et `services` (16) sont trop rares pour
- * mériter chacun sa pastille, et parlent tous deux de ce qui se passe après
- * l'achat. `presentation` rejoint « À savoir » : son contenu est du complément,
- * l'accroche étant déjà servie en tête de fiche.
+ * Où va chaque type de section. Les sept types du site source se répartissent
+ * entre deux onglets seulement : ce qui se mesure, et ce qui s'explique.
  */
 const MAP: Record<TypeSection, string> = {
   "caracteristiques": "caracteristiques",
-  "applications": "applications",
-  "atouts": "atouts",
-  "conseils": "mise-en-oeuvre",
-  "services": "mise-en-oeuvre",
-  "presentation": "presentation",
-  "autre": "a-savoir",
+  "applications": "usage",
+  "atouts": "usage",
+  "conseils": "usage",
+  "services": "usage",
+  "presentation": "usage",
+  "autre": "usage",
 };
 
-/** Ordre d'apparition : du plus technique au plus contextuel. */
-const ORDRE = [
-  "presentation",
-  "specifications",
-  "dimensions",
-  "applications",
-  "caracteristiques",
-  "atouts",
-  "mise-en-oeuvre",
-  "documentation",
-  "a-savoir",
-] as const;
+/** Ordre d'apparition : le technique d'abord, le contexte ensuite, les pièces jointes en dernier. */
+const ORDRE = ["caracteristiques", "usage", "documents"] as const;
 
 const LIBELLES: Record<string, { libelle: string; badge: string; titre: string }> = {
-  presentation: { libelle: "Présentation", badge: "En bref", titre: "Ce qu'il faut retenir" },
-  specifications: { libelle: "Spécifications", badge: "Fiche technique", titre: "Les données techniques" },
-  documentation: { libelle: "Documentation", badge: "À télécharger", titre: "Les documents de ce produit" },
-  dimensions: { libelle: "Dimensions", badge: "Cotes relevées", titre: "Les cotes de ce produit" },
   caracteristiques: { libelle: "Caractéristiques", badge: "Fiche technique", titre: "Ce qui définit ce produit" },
-  applications: { libelle: "Usage", badge: "Usages", titre: "À quoi il sert" },
-  atouts: { libelle: "Points forts", badge: "Atouts", titre: "Pourquoi ce produit" },
-  "mise-en-oeuvre": { libelle: "Mise en œuvre", badge: "Pose et services", titre: "Avant et après l'achat" },
-  "a-savoir": { libelle: "À savoir", badge: "Complément", titre: "Bon à savoir" },
+  usage: { libelle: "Usage", badge: "À quoi ça sert", titre: "Où l'employer" },
+  documents: { libelle: "Documents", badge: "À télécharger", titre: "Les documents de ce produit" },
 };
 
 const blocVide = (b: BlocOnglet) =>
@@ -121,13 +120,8 @@ function enBlocs(sections: Section[]): BlocOnglet[] {
     .filter((b) => !blocVide(b));
 }
 
-/**
- * L'onglet des cotes : 355 fiches en portent, et elles n'étaient affichées
- * nulle part. Le rendu 3D de la fiche montre ces mêmes lettres — c'est donc le
- * seul visuel qui explique vraiment le tableau, et il n'est pas emprunté à un
- * autre produit.
- */
-function ongletDimensions(p: Produit, cotes: Cote[], visuel: Visuel | undefined, coupe: boolean): Onglet | null {
+/** `Cote A` : la lettre renvoie à celle que porte le rendu 3D, affiché à côté. */
+function blocCotes(p: Produit, cotes: Cote[]): BlocOnglet | null {
   const paires: Paire[] = cotes.map((c) => ({ label: `Cote ${c.lettre}`, valeur: c.valeur }));
   if (p.longueurs && p.longueurs.length > 0) {
     paires.push({
@@ -136,34 +130,17 @@ function ongletDimensions(p: Produit, cotes: Cote[], visuel: Visuel | undefined,
     });
   }
   if (paires.length === 0) return null;
-
-  const details =
-    `${p.nom}\n` +
-    cotes.map((c) => `Cote ${c.lettre} : ${c.valeur}`).join("\n") +
-    `\n\nLongueur souhaitée : `;
-
-  return {
-    cle: "dimensions",
-    ...LIBELLES.dimensions,
-    blocs: [{ type: "caracteristiques", titre: "", paragraphes: [], items: [], paires }],
-    visuel,
-    note: coupe
-      ? "Ces cotes sont celles du profil. La longueur se coupe à la demande ; un supplément de coupe s’ajoute au prix affiché."
-      : undefined,
-    action: coupe
-      ? { libelle: "Demander cette découpe", href: `/devis?details=${encodeURIComponent(details)}` }
-      : undefined,
-  };
+  return { type: "caracteristiques", titre: "Les cotes", paragraphes: [], items: [], paires };
 }
 
 /**
- * Les spécifications relevées sur le site officiel, plus la matière, le poids
- * et la finition. Elles étaient dans la colonne de droite de la fiche ; elles
- * passent ici à la demande du propriétaire (22/09) pour que chaque fiche porte
- * les mêmes rubriques — 472 fiches sur 495 en ont. Elles ne sont plus rendues
- * ailleurs : le contrôle O4 refuse les deux emplacements à la fois.
+ * La fiche technique : matière, spécifications relevées, poids, finition.
+ *
+ * Ces données étaient dans la colonne de droite de la fiche ; elles vivent ici
+ * depuis le 22/09, pour que chaque fiche porte les mêmes rubriques — 472 fiches
+ * sur 495 en ont. Elles ne sont plus rendues ailleurs (contrôle O4).
  */
-function ongletSpecifications(p: Produit, matiere: string): Onglet | null {
+function blocTechnique(p: Produit, matiere: string): BlocOnglet | null {
   const paires: Paire[] = [{ label: "Matière", valeur: matiere }];
   for (const s of p.specs) paires.push({ label: s.label, valeur: s.valeur });
   if (p.kg !== null) {
@@ -175,52 +152,38 @@ function ongletSpecifications(p: Produit, matiere: string): Onglet | null {
   // Un même libellé peut venir des specs et du calcul : la première valeur gagne.
   const vus = new Set<string>();
   const uniques = paires.filter((pa) => (vus.has(pa.label) ? false : (vus.add(pa.label), true)));
-
-  return {
-    cle: "specifications",
-    ...LIBELLES.specifications,
-    blocs: [{ type: "caracteristiques", titre: "", paragraphes: [], items: [], paires: uniques }],
-  };
-}
-
-/** Les documents du produit, s'il en a. Rien n'est fabriqué : la liste vient du site officiel. */
-function ongletDocumentation(p: Produit): Onglet | null {
-  if (!p.pdfs || p.pdfs.length === 0) return null;
-  return {
-    cle: "documentation",
-    ...LIBELLES.documentation,
-    blocs: [],
-    pdfs: p.pdfs,
-  };
+  return { type: "caracteristiques", titre: "", paragraphes: [], items: [], paires: uniques };
 }
 
 /**
- * L'onglet « Usage » quand le site officiel ne dit rien.
+ * L'usage de la famille, en complément de ce que le site officiel dit déjà.
  *
- * Le texte relevé sur aciersgrosjean.be prime toujours : cette fabrique n'est
- * appelée que si la fiche n'a AUCUNE section « Applications ». 141 fiches sur
- * 495 en ont une ; les 354 autres reçoivent l'usage de leur famille, écrit et
- * vérifié dans `lib/usages.ts`, et relu par le propriétaire.
+ * Constat du 22/09 sur la cornière 40x40x4 : l'onglet Usage disait trois fois
+ * la même chose. Le site écrivait « un profil en L dont les deux ailes ont la
+ * même largeur », puis « utilisée pour assembler, renforcer ou consolider des
+ * structures » ; et le texte de famille rajoutait « sert à former un angle
+ * rigide : renfort d'assemblage… À ailes égales, les deux faces jouent le même
+ * rôle ». La règle d'alors n'écartait le texte de famille que si la fiche avait
+ * une SECTION « Applications » titrée — or ici l'usage vivait dans les
+ * paragraphes d'introduction.
  *
- * Aucune fiche ne reçoit un usage inventé pour elle : le texte parle de la
- * famille, jamais de la référence précise.
+ * La règle tient maintenant compte de ce que le site dit vraiment, où qu'il le
+ * dise. Quand il parle déjà d'usage, on ne garde du texte de famille que les
+ * **exemples** : la seule chose qu'il n'apporte jamais, et la seule qui se
+ * balaie du regard. Quand il ne dit rien, le texte de famille passe en entier.
+ *
+ * Le relevé prime donc toujours, et aucune fiche ne reçoit un usage inventé
+ * pour elle : le texte parle de la famille, jamais de la référence précise.
  */
-function ongletUsageDeCategorie(categorie: string, visuel: Visuel | undefined): Onglet | null {
+function blocUsageDeFamille(categorie: string, leSiteParleDejaDUsage: boolean): BlocOnglet | null {
   const usage = usageDe(categorie);
   if (!usage) return null;
   return {
-    cle: "applications",
-    ...LIBELLES.applications,
-    blocs: [
-      {
-        type: "applications",
-        titre: "",
-        paragraphes: [usage.texte],
-        items: usage.exemples,
-        paires: [],
-      },
-    ],
-    visuel,
+    type: "applications",
+    titre: "Emplois courants",
+    paragraphes: leSiteParleDejaDUsage ? [] : [usage.texte],
+    items: usage.exemples,
+    paires: [],
   };
 }
 
@@ -240,53 +203,70 @@ export function ongletsDe(
     else groupes.set(cle, [section]);
   }
 
-  // L'introduction devient le bloc de tete de l'onglet « Presentation » plutot
-  // qu'un texte libre au-dessus des onglets : sans cela, la fiche change de
-  // squelette selon qu'elle a ou non une introduction. Demande du 22/09 :
-  // « il faut qu'a chaque fois ca garde la meme structure ».
-  if (ds.introduction.length > 0) {
-    const deja = groupes.get("presentation") ?? [];
-    groupes.set("presentation", [
-      { type: "presentation", titre: "", paragraphes: ds.introduction, items: [], paires: [] },
-      ...deja,
-    ]);
-  }
+  // --- Caractéristiques : la fiche technique, les cotes, puis la prose du site.
+  const technique = blocTechnique(p, matiere);
+  const lesCotes = blocCotes(p, cotes);
+  const blocsTechniques = [
+    ...(technique ? [technique] : []),
+    ...(lesCotes ? [lesCotes] : []),
+    ...enBlocs(groupes.get("caracteristiques") ?? []),
+  ];
 
-  const onglets: Onglet[] = [];
-  // Repli de famille, seulement en l'absence de texte officiel sur cette fiche.
-  const usageDeFamille = groupes.has("applications")
-    ? null
-    : ongletUsageDeCategorie(p.categorie, visuels.categorie);
+  // --- Usage : l'introduction en tête, puis ce que le site en dit, sinon la famille.
+  // Le site parle d'usage s'il a une section « Applications », ou simplement
+  // s'il a une introduction : c'est là que la cornière expliquait son emploi.
+  const sections = groupes.get("usage") ?? [];
+  const leSiteParleDejaDUsage =
+    ds.introduction.length > 0 || sections.some((s) => s.type === "applications");
+  const repli = blocUsageDeFamille(p.categorie, leSiteParleDejaDUsage);
+  const blocsUsage = [
+    ...(ds.introduction.length > 0
+      ? [{ type: "presentation" as TypeSection, titre: "", paragraphes: ds.introduction, items: [], paires: [] }]
+      : []),
+    ...enBlocs(sections),
+    ...(repli ? [repli] : []),
+  ];
 
-  const fixes: Record<string, Onglet | null> = {
-    dimensions: ongletDimensions(p, cotes, visuels.fiche, supplementCoupe),
-    specifications: ongletSpecifications(p, matiere),
-    documentation: ongletDocumentation(p),
+  const details =
+    `${p.nom}\n` +
+    cotes.map((c) => `Cote ${c.lettre} : ${c.valeur}`).join("\n") +
+    `\n\nLongueur souhaitée : `;
+
+  const parCle: Record<string, Onglet | null> = {
+    caracteristiques:
+      blocsTechniques.length > 0
+        ? {
+            cle: "caracteristiques",
+            ...LIBELLES.caracteristiques,
+            blocs: blocsTechniques,
+            visuel: visuels.fiche,
+            legendeVisuel: visuels.fiche ? "Rendu 3D aux cotes" : undefined,
+            note: supplementCoupe
+              ? "Les cotes sont celles du profil. La longueur se coupe à la demande ; un supplément de coupe s’ajoute au prix affiché."
+              : undefined,
+            action:
+              supplementCoupe && cotes.length > 0
+                ? { libelle: "Demander cette découpe", href: `/devis?details=${encodeURIComponent(details)}` }
+                : undefined,
+          }
+        : null,
+    usage:
+      blocsUsage.length > 0
+        ? {
+            cle: "usage",
+            ...LIBELLES.usage,
+            blocs: blocsUsage,
+            // La photo studio de la catégorie montre la famille : elle éclaire
+            // l'usage. C'est ici que viendra la mise en situation.
+            visuel: visuels.categorie,
+            legendeVisuel: visuels.categorie ? "Photo studio" : undefined,
+          }
+        : null,
+    documents:
+      p.pdfs && p.pdfs.length > 0
+        ? { cle: "documents", ...LIBELLES.documents, blocs: [], pdfs: p.pdfs }
+        : null,
   };
 
-  for (const cle of ORDRE) {
-    if (cle === "applications" && usageDeFamille) {
-      onglets.push(usageDeFamille);
-      continue;
-    }
-    if (cle in fixes) {
-      const onglet = fixes[cle];
-      if (onglet) onglets.push(onglet);
-      continue;
-    }
-    const sections = groupes.get(cle);
-    if (!sections) continue;
-    const blocs = enBlocs(sections);
-    if (blocs.length === 0) continue;
-    onglets.push({
-      cle,
-      ...LIBELLES[cle],
-      blocs,
-      // La photo studio de la catégorie montre la famille en situation : elle
-      // éclaire les usages, pas les cotes. Ailleurs, pas de visuel du tout.
-      visuel: cle === "applications" ? visuels.categorie : undefined,
-    });
-  }
-
-  return onglets;
+  return ORDRE.map((cle) => parCle[cle]).filter((o): o is Onglet => o !== null);
 }

@@ -21,6 +21,13 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P14 - Sur une page de categorie, les produits sont servis dans l'ordre
+      numerique de leurs cotes. Mesure du 22/09 sur `/acier/profiles/plat` :
+      l'ordre etait alphabetique — 100x10, 100x5, 100x8, 10x3, 120x10, 20x10 —
+      parce que le tri « Par section », pourtant propose par defaut, ne triait
+      rien : `TableauProduits` ne traitait que `prix` et `poids`. Dans un
+      negoce ou l'on choisit par cote, c'est le tri le plus utilise.
+
 P13 - Le texte du site source est servi, quelle que soit la forme que prend
       la section. La mise en onglets a d'abord rendu `null` quand aucun onglet
       n'etait produit : 24 fiches ont perdu 39 paragraphes reels, dont la seule
@@ -134,6 +141,10 @@ PHRASES_ATTENDUES = (
     "peuvent être placées en toiture",
     "commandées sur-mesure",
 )
+
+# Categorie a forte cardinalite dont les noms portent deux cotes : le cas ou
+# l'ordre alphabetique se voit le plus.
+CATEGORIE_TRIEE = "/acier/profiles/plat"
 
 # Plafond d'envois par adresse, declare dans `app/api/devis/route.ts`. Le
 # controle en envoie un de plus et attend un 429.
@@ -315,7 +326,13 @@ class ParcoursVisiteur(unittest.TestCase):
         """
         statut, corps = self.serveur.appeler("/p/" + PRODUIT_TEMOIN)
         self.assertEqual(statut, 200)
-        self.assertIn('data-module="chiffres-cles"', corps, "module de chiffres cles absent du HTML rendu")
+        # Le pave « chiffres cles » de tete a ete retire le 22/09 : il repetait
+        # la fiche technique de l'onglet Caracteristiques. C'est ce bloc-la que
+        # le visiteur doit recevoir, et il porte `data-module="caracteristiques"`.
+        self.assertIn(
+            'data-module="caracteristiques"', corps,
+            "la fiche technique n'est servie nulle part dans le HTML rendu",
+        )
         self.assertNotRegex(corps, r">\s*[•]\s", "une puce litterale « • » subsiste dans le HTML : liste non reconnue")
         self.assertIn("Le produit en d", corps, "le bloc « Le produit en détail » n'est pas rendu")
         statut, riche = self.serveur.appeler("/p/" + PRODUIT_RICHE)
@@ -377,6 +394,33 @@ class ParcoursVisiteur(unittest.TestCase):
         self.assertEqual(
             absentes, [],
             "texte du site source perdu sur une fiche sans onglet : " + str(absentes),
+        )
+
+    def test_p14_les_produits_sont_servis_en_ordre_numerique(self):
+        statut, corps = self.serveur.appeler(CATEGORIE_TRIEE)
+        self.assertEqual(statut, 200, CATEGORIE_TRIEE + " ne repond pas 200")
+
+        # Les noms tels qu'ils apparaissent, dans l'ordre du HTML servi.
+        noms = re.findall("Plat ([0-9]+)x([0-9]+)mm", corps)
+        self.assertGreater(len(noms), 20, "trop peu de produits lus pour juger de l'ordre")
+
+        vus, cotes = set(), []
+        for largeur, epaisseur in noms:
+            cle = (int(largeur), int(epaisseur))
+            if cle in vus:
+                continue
+            vus.add(cle)
+            cotes.append(cle)
+
+        desordre = [
+            (cotes[i], cotes[i + 1])
+            for i in range(len(cotes) - 1)
+            if cotes[i] > cotes[i + 1]
+        ]
+        self.assertEqual(
+            desordre, [],
+            f"{len(desordre)} ruptures dans l'ordre des cotes : "
+            f"{desordre[:4]}. Le tri par defaut doit etre numerique.",
         )
 
     def test_p10_vignettes_categorie_passent_par_optimiseur(self):

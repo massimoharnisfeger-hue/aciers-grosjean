@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHeader from "@/components/ui/PageHeader";
 import CtaBand from "@/components/sections/CtaBand";
 import FormulairePro from "@/components/sections/FormulairePro";
+import { depotsDetail } from "@/lib/edito";
 
 export const metadata: Metadata = {
   title: "Demande de compte professionnel | Aciers Grosjean",
@@ -26,7 +27,7 @@ export default function DemandeComptePro() {
 
       <section className="bg-white py-14 md:py-20">
         <div className="container-g grid gap-10 lg:grid-cols-[1fr_20rem] lg:gap-16">
-          <FormulairePro />
+          <FormulairePro depots={depotsDetail.map((d) => d.nomComplet)} />
 
           <aside className="lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-2xl border border-brume bg-nuage p-6">

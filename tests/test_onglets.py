@@ -19,7 +19,12 @@ O3 - Le composant declare autant de jeux de classes CSS qu'il peut afficher
      jamais pouvoir etre selectionne. C'est le piege de `GalerieProduit`, qui
      tronque a `CLASSES.length`.
 O4 - Les specifications et les documents n'existent qu'a UN seul endroit de la
-     fiche. Le 22/09, le proprietaire a demande que chaque fiche porte les
+     fiche, en suivant les composants que la page rend. Premiere version, le
+     22/09 : elle ne lisait que `app/p/[slug]/page.tsx`, et a laisse passer
+     `ChiffresCles`, un composant appele par la page qui reaffichait matiere,
+     epaisseur, ailes et poids juste sous le titre — exactement la fiche
+     technique de l'onglet. Un controle qui s'arrete au fichier appelant ne
+     voit pas ce que l'appele affiche. Le 22/09, le proprietaire a demande que chaque fiche porte les
      memes rubriques ; ce sont les seules donnees quasi universelles
      (specifications 472 fiches sur 495, PDF 359), donc elles passent en
      onglet. Les laisser AUSSI dans la colonne de droite afficherait deux fois
@@ -109,12 +114,27 @@ class ComposantDOnglets(unittest.TestCase):
             "les derniers s'afficheraient sans pouvoir etre selectionnes.",
         )
 
+    def _rendu_par_la_fiche(self) -> str:
+        """Le source de la fiche ET des composants qu'elle rend, sauf les onglets.
+
+        On suit les imports `@/components/...` de la page : ce que le visiteur
+        lit au-dessus des onglets ne vient pas seulement du fichier de la page.
+        """
+        texte = source(FICHE)
+        morceaux = [texte]
+        for chemin in re.findall(r'from "@/(components/[^"]+)"', texte):
+            fichier = RACINE / (chemin + ".tsx")
+            if not fichier.exists() or fichier == COMPOSANT:
+                continue
+            morceaux.append(source(fichier))
+        return sans_commentaires(chr(10).join(morceaux))
+
     def test_o4_les_specifications_ne_sont_qu_a_un_endroit(self):
         composant = sans_commentaires(source(COMPOSANT) + source(MODULE))
-        fiche = sans_commentaires(source(FICHE))
+        fiche = self._rendu_par_la_fiche()
         for donnee, nom in (("specs", "specifications"), ("pdfs", "documents")):
             dans_onglets = ("p." + donnee) in composant or ("produit." + donnee) in composant
-            dans_colonne = ("p." + donnee + ".length") in fiche or ("p." + donnee + " &&") in fiche
+            dans_colonne = ("p." + donnee) in fiche
             self.assertFalse(
                 dans_onglets and dans_colonne,
                 f"les {nom} sont rendus a la fois dans les onglets et dans la colonne "

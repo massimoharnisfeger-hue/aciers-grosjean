@@ -17,7 +17,6 @@ import {
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
 import { structurerDescription, type DescriptionSiteActuel } from "@/lib/description";
-import { ChiffresCles } from "@/components/catalogue/FicheModules";
 import DetailProduit from "@/components/catalogue/DetailProduit";
 import { ongletsDe } from "@/lib/onglets";
 import { titre, description } from "@/lib/seo";
@@ -174,7 +173,6 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
             {ds.courte && (
               <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-soft">{ds.courte}</p>
             )}
-            <ChiffresCles p={p} matiere={u.nom} />
           </div>
 
           {/* visuel */}

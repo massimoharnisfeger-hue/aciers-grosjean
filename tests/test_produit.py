@@ -24,8 +24,15 @@ D13 - Les compteurs de `PRODUCTS-AJOUT-MODELISATION.md` verifiables depuis le
       dans le depot le sont, et le catalogue etant redevenu regenerable, elles
       deriveront des qu'un produit sera ajoute.
 
-D5 - Le gabarit porte un module de chiffres cles (`data-module="chiffres-cles"`) :
-     ce qui definit le produit se lit avant le prix et le calculateur.
+D5 - Ce qui definit le produit — matiere, section, poids — est servi sur la
+     fiche, et a un seul endroit.
+
+     Cette regle a change le 22/09 sur decision du proprietaire. Elle disait
+     d'abord : « un module de chiffres cles en tete de fiche, avant le prix ».
+     Depuis, la fiche technique vit dans l'onglet Caracteristiques ; le pave de
+     tete repetait mot pour mot le contenu de cet onglet, et le proprietaire
+     l'a fait retirer en le voyant a l'ecran. Ce qui survit de l'ancienne regle
+     est ce qui comptait vraiment : la donnee doit etre servie, une fois.
 
 Ces controles lisent le JSON genere et le source du gabarit : verts sans
 serveur. Le rendu reel est controle par P9 dans `tests/test_parcours.py`.
@@ -93,12 +100,19 @@ class GabaritFicheProduit(unittest.TestCase):
         )
 
     def test_d5_module_chiffres_cles(self):
-        src = GABARIT.read_text(encoding="utf-8")
-        modules = (RACINE / "components" / "catalogue" / "FicheModules.tsx").read_text(encoding="utf-8")
-        self.assertIn("<ChiffresCles", src, "Le gabarit doit afficher le module de chiffres cles en tete de fiche.")
+        onglets = (RACINE / "lib" / "onglets.ts").read_text(encoding="utf-8")
+        gabarit = GABARIT.read_text(encoding="utf-8")
         self.assertIn(
-            'data-module="chiffres-cles"', modules,
-            "Le module doit se declarer dans le HTML rendu (P9 le verifie au navigateur).",
+            "blocTechnique", onglets,
+            "la fiche technique (matiere, specs, poids, finition) doit etre construite quelque part.",
+        )
+        self.assertIn(
+            "DetailProduit", gabarit,
+            "la fiche produit doit rendre la section qui porte la fiche technique.",
+        )
+        self.assertNotIn(
+            "<ChiffresCles", gabarit,
+            "le pave de tete repete la fiche technique de l'onglet : une donnee, un seul endroit.",
         )
 
 
