@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Produit } from "@/lib/catalogue";
 import { formatPrix } from "@/lib/format";
+import { parCotes } from "@/lib/tri-produits";
 
 const norm = (s: string) =>
   s
@@ -14,6 +15,9 @@ const norm = (s: string) =>
 
 const nb = (v: number, d = 2) =>
   v.toLocaleString("fr-BE", { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// Le tri « Par section » (contrôle P14) vit dans lib/tri-produits.ts : le
+// catalogue visuel range ses variantes avec la même règle.
 
 export default function TableauProduits({
   produits,
@@ -36,6 +40,7 @@ export default function TableauProduits({
       if (!nq) return true;
       return norm(p.nom + p.specs.map((s) => s.valeur).join("")).includes(nq);
     });
+    if (tri === "defaut") out = [...out].sort(parCotes);
     if (tri === "prix") out = [...out].sort((a, b) => (a.prix ?? 1e9) - (b.prix ?? 1e9));
     if (tri === "poids") out = [...out].sort((a, b) => (a.kg ?? 1e9) - (b.kg ?? 1e9));
     return out;

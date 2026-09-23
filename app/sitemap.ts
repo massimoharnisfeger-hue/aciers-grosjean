@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     e("", 1, "weekly"),
     e("/produits", 0.9, "weekly"),
+    e("/catalogue", 0.8),
     e("/devis", 0.9),
     e("/services", 0.8),
     e("/depots", 0.8),
@@ -42,6 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     e("/mentions-legales", 0.2, "yearly"),
 
     ...univers.map((u) => e(`/${u.slug}`, 0.9, "weekly")),
+    ...univers.map((u) => e(`/catalogue/${u.slug}`, 0.7)),
     ...Object.keys(noeuds)
       .filter((c) => c.split("/").length > 2)
       .map((c) => e(c, c.split("/").length === 3 ? 0.85 : 0.8, "weekly")),

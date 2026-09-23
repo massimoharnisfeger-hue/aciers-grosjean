@@ -11,7 +11,8 @@ source, exactement comme `generateStaticParams` le fait a la compilation :
   - `/p/[slug]` : les produits de `lib/catalogue.ts`. Un produit se reconnait a
     sa cle `categorie:` ; les six univers portent eux aussi un `slug:` mais
     n'ont pas de fiche produit — les compter donnait six routes fantomes ;
-  - `/conseils|aide|depots|services/[slug]` : les collections de `lib/edito.ts`.
+  - `/conseils|aide|depots|services/[slug]` : les collections de `lib/edito.ts` ;
+  - `/catalogue/[univers]` : un chapitre du catalogue visuel par univers.
 
 Partage par `scripts/generer-redirections.py` (qui s'en sert pour reparer) et
 par `tests/test_redirections.py` (qui s'en sert pour controler). Une seule
@@ -74,6 +75,11 @@ def produits_du_catalogue(catalogue: str) -> list[str]:
     return re.findall(r'slug: "([^"]+)", nom: .*?, categorie: "', catalogue)
 
 
+def univers_du_catalogue(catalogue: str) -> list[str]:
+    """Les slugs des six univers, lus dans `export const univers`."""
+    return re.findall(r'\{ slug: "([^"]+)", nom:', _bloc(catalogue, "univers"))
+
+
 def routes_du_depot() -> set[str]:
     """Toutes les routes servies, sous leur forme lisible (sans %XX)."""
     routes = _pages_statiques()
@@ -81,6 +87,11 @@ def routes_du_depot() -> set[str]:
     catalogue = (RACINE / "lib" / "catalogue.ts").read_text(encoding="utf-8")
     routes |= set(re.findall(r'chemin:\s*"(/[^"]*)"', catalogue))
     routes |= {"/p/" + s for s in produits_du_catalogue(catalogue)}
+
+    # `/catalogue/[univers]` : un chapitre du catalogue visuel par univers
+    # (app/catalogue/[univers]/page.tsx, `generateStaticParams` sur `univers`).
+    if (RACINE / "app" / "catalogue" / "[univers]" / "page.tsx").exists():
+        routes |= {"/catalogue/" + s for s in univers_du_catalogue(catalogue)}
 
     edito = (RACINE / "lib" / "edito.ts").read_text(encoding="utf-8")
     for prefixe, collection in COLLECTIONS_EDITO.items():

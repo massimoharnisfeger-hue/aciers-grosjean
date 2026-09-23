@@ -15,8 +15,24 @@ D3 - Un titre reste court et ne finit pas par un point : garde contre une
      promotion trop large (un paragraphe pris pour un titre perd son sens).
 D4 - Le gabarit ne dispose plus la description sur deux colonnes dont la
      premiere ne contient qu'un mot : 36 % de la largeur vide a 1280 px.
-D5 - Le gabarit porte un module de chiffres cles (`data-module="chiffres-cles"`) :
-     ce qui definit le produit se lit avant le prix et le calculateur.
+D13 - Les compteurs de `PRODUCTS-AJOUT-MODELISATION.md` verifiables depuis le
+      depot disent la verite. Ce document est la reference de ce qui reste a
+      produire ; le 22/09 ses libelles d'atelier annoncaient « rendus dans
+      final/ » pour un sous-ensemble, alors que le dossier contient pres de
+      quatre fois plus de fichiers. Les lignes hors depot (atelier) ne sont pas
+      controlables ici et portent leur date de mesure ; celles qui se lisent
+      dans le depot le sont, et le catalogue etant redevenu regenerable, elles
+      deriveront des qu'un produit sera ajoute.
+
+D5 - Ce qui definit le produit — matiere, section, poids — est servi sur la
+     fiche, et a un seul endroit.
+
+     Cette regle a change le 22/09 sur decision du proprietaire. Elle disait
+     d'abord : « un module de chiffres cles en tete de fiche, avant le prix ».
+     Depuis, la fiche technique vit dans l'onglet Caracteristiques ; le pave de
+     tete repetait mot pour mot le contenu de cet onglet, et le proprietaire
+     l'a fait retirer en le voyant a l'ecran. Ce qui survit de l'ancienne regle
+     est ce qui comptait vraiment : la donnee doit etre servie, une fois.
 
 Ces controles lisent le JSON genere et le source du gabarit : verts sans
 serveur. Le rendu reel est controle par P9 dans `tests/test_parcours.py`.
@@ -84,12 +100,19 @@ class GabaritFicheProduit(unittest.TestCase):
         )
 
     def test_d5_module_chiffres_cles(self):
-        src = GABARIT.read_text(encoding="utf-8")
-        modules = (RACINE / "components" / "catalogue" / "FicheModules.tsx").read_text(encoding="utf-8")
-        self.assertIn("<ChiffresCles", src, "Le gabarit doit afficher le module de chiffres cles en tete de fiche.")
+        onglets = (RACINE / "lib" / "onglets.ts").read_text(encoding="utf-8")
+        gabarit = GABARIT.read_text(encoding="utf-8")
         self.assertIn(
-            'data-module="chiffres-cles"', modules,
-            "Le module doit se declarer dans le HTML rendu (P9 le verifie au navigateur).",
+            "blocTechnique", onglets,
+            "la fiche technique (matiere, specs, poids, finition) doit etre construite quelque part.",
+        )
+        self.assertIn(
+            "DetailProduit", gabarit,
+            "la fiche produit doit rendre la section qui porte la fiche technique.",
+        )
+        self.assertNotIn(
+            "<ChiffresCles", gabarit,
+            "le pave de tete repete la fiche technique de l'onglet : une donnee, un seul endroit.",
         )
 
 
@@ -271,6 +294,45 @@ class DemandeDePrix(unittest.TestCase):
         src = (RACINE / "components" / "sections" / "DevisForm.tsx").read_text(encoding="utf-8")
         self.assertIn("details", src)
         self.assertRegex(src, r"location\.search|useSearchParams", "DevisForm.tsx doit lire `details` dans l'URL pour pre-remplir la demande.")
+
+
+class CompteursDuDocument(unittest.TestCase):
+    """D13 : le document de suivi des visuels compte juste ce qu'il peut compter."""
+
+    DOCUMENT = RACINE / "_DOCS" / "rendus-3d" / "PRODUCTS-AJOUT-MODELISATION.md"
+
+    def test_d13_les_compteurs_verifiables_disent_la_verite(self):
+        texte = self.DOCUMENT.read_text(encoding="utf-8")
+        catalogue = (RACINE / "lib" / "catalogue.ts").read_text(encoding="utf-8")
+
+        produits = len(re.findall(r'slug: "([^"]+)", nom: .*?, categorie: "', catalogue))
+        fiches = len(list((RACINE / "public" / "images").rglob("*-caracteristiques.webp")))
+        studios = len(list((RACINE / "public" / "images").rglob("studio-*.webp")))
+        manifeste = json.loads(
+            (RACINE / "lib" / "visuels-produits.json").read_text(encoding="utf-8")
+        )
+
+        attendus = {
+            "produits au catalogue": produits,
+            "fiches produit servies": fiches,
+            "produits sans rendu": produits - fiches,
+            "photos studio servies": studios,
+            "categories au manifeste": len(manifeste["categories"]),
+        }
+        # Un nombre peut s'ecrire « 1 697 » : l'espace fine ne doit pas le cacher.
+        nombres = {n.replace(" ", "").replace(" ", "").replace(" ", "")
+                   for n in re.findall(r"\|\s*([\d    ]+?)\s*\|", texte)}
+        absents = {
+            libelle: valeur
+            for libelle, valeur in attendus.items()
+            if str(valeur) not in nombres
+        }
+        self.assertEqual(
+            absents, {},
+            f"{self.DOCUMENT.name} ne porte plus ces nombres mesures : {absents}. "
+            "Remesurer et corriger le tableau.",
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

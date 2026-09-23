@@ -2,19 +2,23 @@
 
 import { useState } from "react";
 import { site } from "@/lib/content";
-import { depotsDetail } from "@/lib/edito";
 
 const champ =
   "mt-2 w-full rounded-xl border border-brume bg-white px-4 py-3 font-body text-encre placeholder:text-soft focus:border-encre focus:outline-none";
 
-export default function FormulairePro() {
+/**
+ * Les dépôts arrivent en props : ce composant est « use client », et importer
+ * `lib/edito.ts` enverrait tout l'éditorial du site dans le navigateur — la
+ * règle de `CLAUDE.md` ligne 19, que le contrôle C1 vérifie désormais.
+ */
+export default function FormulairePro({ depots }: { depots: string[] }) {
   const [societe, setSociete] = useState("");
   const [tva, setTva] = useState("");
   const [contact, setContact] = useState("");
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
   const [metier, setMetier] = useState("Métallier / ferronnier");
-  const [depot, setDepot] = useState(depotsDetail[0].nomComplet);
+  const [depot, setDepot] = useState(depots[0] ?? "");
   const [volume, setVolume] = useState("Moins de 5 t / an");
   const [besoins, setBesoins] = useState("");
   const [envoye, setEnvoye] = useState(false);
@@ -104,7 +108,7 @@ export default function FormulairePro() {
         <label className="block font-body text-sm text-encre">
           Dépôt principal
           <select id="pro-depot" value={depot} onChange={(e) => setDepot(e.target.value)} className={champ}>
-            {depotsDetail.map((d) => <option key={d.slug}>{d.nomComplet}</option>)}
+            {depots.map((d) => <option key={d}>{d}</option>)}
           </select>
         </label>
         <label className="block font-body text-sm text-encre">

@@ -19,6 +19,17 @@ M3 - `autoComplete`
     Le remplissage automatique du nom, de l'e-mail et du telephone est le
     principal gain de confort sur mobile. Absent, chaque visiteur retape tout.
 
+M5 - Un lien place DANS un formulaire ouvre un nouvel onglet.
+    Mesure du 22/09 au navigateur, a 390 px : on remplit /devis, on touche le
+    lien « protection des donnees » place sous le bouton d'envoi, on revient en
+    arriere — nom, e-mail et details sont VIDES. Le formulaire n'a aucune
+    reprise et le site n'ecrit rien dans le navigateur (c'est une promesse
+    tenue, ecrite noir sur blanc sur la page Cookies). La parade n'est donc pas
+    de stocker la saisie, mais de ne jamais quitter la page : `target="_blank"`.
+    Le risque a grandi le matin meme, quand ce lien a recu `lien-tactile` pour
+    atteindre 24 px de haut — plus facile a atteindre, donc plus facile a
+    toucher par erreur.
+
 M4 - Clavier adapte (`inputMode` / `type`)
     Sans indication, le telephone ouvre un clavier alphabetique. Saisir un
     numero au pouce en changeant de disposition est une cause connue
@@ -106,6 +117,36 @@ class FormulaireDevisMobile(unittest.TestCase):
             manquants.append('inputMode="email"')
         self.assertEqual(manquants, [], f"Clavier mobile non adapte : {manquants}")
 
+
+
+class LiensDansUnFormulaire(unittest.TestCase):
+    """M5 : quitter un formulaire rempli le vide — un lien interne doit s'ouvrir a cote."""
+
+    FORMULAIRES = (
+        RACINE / "components" / "sections" / "DevisForm.tsx",
+        RACINE / "components" / "sections" / "FormulairePro.tsx",
+    )
+
+    def test_m5_les_liens_dans_un_formulaire_ouvrent_un_nouvel_onglet(self):
+        fautifs = []
+        for fichier in self.FORMULAIRES:
+            texte = fichier.read_text(encoding="utf-8")
+            debut = texte.find("<form")
+            fin = texte.find("</form>")
+            if debut == -1 or fin == -1:
+                continue
+            dans_le_formulaire = texte[debut:fin]
+            for balise in re.findall(r"<(?:Link|a)[ >][^>]*>", dans_le_formulaire, re.DOTALL):
+                if "href" not in balise:
+                    continue
+                if "_blank" in balise or "mailto:" in balise or "tel:" in balise:
+                    continue
+                fautifs.append(f"{fichier.name} : {balise[:80]}")
+        self.assertEqual(
+            fautifs, [],
+            "lien interne dans un formulaire sans `target=_blank` : le visiteur "
+            "qui le suit perd tout ce qu'il a saisi. " + str(fautifs),
+        )
 
 if __name__ == "__main__":
     unittest.main()

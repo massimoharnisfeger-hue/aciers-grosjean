@@ -16,8 +16,9 @@ import {
   formatPrix,
 } from "@/lib/catalogue";
 import { artPour } from "@/lib/visuels";
-import { structurerDescription, sectionsDe, type DescriptionSiteActuel, type TypeSection } from "@/lib/description";
-import { ChiffresCles, ModuleSection } from "@/components/catalogue/FicheModules";
+import { structurerDescription, type DescriptionSiteActuel } from "@/lib/description";
+import DetailProduit from "@/components/catalogue/DetailProduit";
+import { ongletsDe } from "@/lib/onglets";
 import { titre, description } from "@/lib/seo";
 import descriptionsBrutes from "@/lib/descriptions-site-actuel.json";
 import visuelsBruts from "@/lib/visuels-produits.json";
@@ -32,13 +33,6 @@ const visuels = visuelsBruts as unknown as {
 
 /** Description relevée sur le site actuel (scripts/inventaire/integrer.py), structurée par lib/description.ts. */
 const descriptions = descriptionsBrutes as unknown as Record<string, DescriptionSiteActuel>;
-
-/** Ordre de lecture des modules du détail, du plus décisionnel au plus accessoire. */
-const ORDRE: TypeSection[] = ["presentation", "applications", "atouts", "caracteristiques", "conseils", "services", "autre"];
-const TITRES: Record<TypeSection, string> = {
-  presentation: "Présentation", applications: "Applications", atouts: "Points forts",
-  caracteristiques: "Caractéristiques", conseils: "Conseils", services: "Services", autre: "À savoir",
-};
 
 const metres = (v: number) => `${v.toLocaleString("fr-BE")} m`;
 
@@ -131,6 +125,17 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
     vues.push({ ...visuels.categories[p.categorie], legende: `Photo studio · ${cat?.nom ?? u.nom}` });
   }
 
+  // Onglets du détail : construits à partir des seules données réelles de cette
+  // fiche (lib/onglets.ts). Les cotes n'étaient affichées nulle part.
+  const onglets = ongletsDe(
+    p,
+    ds,
+    desc?.cotes ?? [],
+    Boolean(desc?.supplementCoupe),
+    { fiche: visuels.produits[p.slug], categorie: visuels.categories[p.categorie] },
+    u.nom,
+  );
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -168,7 +173,6 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
             {ds.courte && (
               <p className="mt-4 max-w-xl font-body text-lg leading-relaxed text-soft">{ds.courte}</p>
             )}
-            <ChiffresCles p={p} matiere={u.nom} />
           </div>
 
           {/* visuel */}
@@ -260,50 +264,6 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
                 <Calculateur p={p} />
               </div>
 
-              {p.specs.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
-                    Spécifications
-                  </h2>
-                  <dl className="mt-4 divide-y divide-brume border-y border-brume">
-                    {p.specs.map((s) => (
-                      <div key={s.label} className="flex items-baseline justify-between gap-6 py-3">
-                        <dt className="font-body text-sm text-soft">{s.label}</dt>
-                        <dd className="text-right font-mono text-sm tabular-nums text-encre">{s.valeur}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              )}
-
-              {p.pdfs && p.pdfs.length > 0 && (
-                <div className="mt-10">
-                  <h2 className="h-title text-sm font-semibold uppercase tracking-[0.14em] text-soft">
-                    Documents
-                  </h2>
-                  <ul className="mt-4 space-y-2">
-                    {p.pdfs.map((d) => (
-                      <li key={d.fichier}>
-                        <a
-                          href={d.fichier}
-                          target="_blank"
-                          rel="noopener"
-                          className="group flex items-center gap-3 rounded-xl border border-brume bg-white px-4 py-3 transition-colors hover:border-encre/30 hover:bg-nuage"
-                        >
-                          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-encre">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="on-encre-jaune" aria-hidden="true">
-                              <path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M12 11v6M9.5 14.5L12 17l2.5-2.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </span>
-                          <span className="min-w-0 flex-1 font-body text-sm text-encre">{d.titre}</span>
-                          <span className="font-mono text-[11px] uppercase text-soft">PDF</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <Link href="/devis" className="btn-cta justify-center">Demander un devis</Link>
                 <Link href="/depots" className="btn-ghost justify-center">Choisir mon dépôt</Link>
@@ -333,25 +293,7 @@ export default async function FicheProduit({ params }: { params: Promise<Params>
         </div>
       </section>
 
-      {(ds.introduction.length > 0 || ds.sections.length > 0) && (
-        <section className="border-t border-brume bg-nuage py-14 md:py-16">
-          <div className="container-g">
-            <h2 className="h-display text-2xl md:text-3xl">Le produit en détail</h2>
-            {ds.introduction.length > 0 && (
-              <div className="mt-5 max-w-3xl space-y-3 font-body leading-relaxed text-encre">
-                {ds.introduction.map((texte) => <p key={texte}>{texte}</p>)}
-              </div>
-            )}
-            {ds.sections.length > 0 && (
-              <div className="mt-8 grid gap-4 md:grid-cols-2">
-                {ORDRE.flatMap((type) => sectionsDe(ds, type)).map((s, i) => (
-                  <ModuleSection key={`${s.type}-${i}`} section={s} titreParDefaut={TITRES[s.type]} niveau={3} />
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+      <DetailProduit onglets={onglets} />
 
       {voisins.length > 0 && (
         <section className="border-t border-brume bg-nuage py-16 md:py-20">

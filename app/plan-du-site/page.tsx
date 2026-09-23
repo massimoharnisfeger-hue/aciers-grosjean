@@ -116,6 +116,7 @@ export default function PlanDuSitePage() {
                 ...pagesAide.map((p) => ({ label: p.titre, href: `/aide/${p.slug}` })),
                 { label: "Espace pro", href: "/pro" },
                 { label: "Demande de compte pro", href: "/pro/demande-de-compte" },
+                { label: "Catalogue en images", href: "/catalogue" },
                 { label: "Recherche", href: "/recherche" },
                 { label: "Nouveautés", href: "/nouveautes" },
                 { label: "Documentation", href: "/documentation" },

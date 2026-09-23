@@ -3,6 +3,22 @@ import FilAriane from "@/components/ui/FilAriane";
 
 export type BlocLegal = { titre: string; paras: string[] };
 
+/**
+ * L'encadré « Informations à compléter » ne se publie pas au client.
+ *
+ * Mesuré le 22/09 dans le HTML construit : les CGV, les mentions légales et la
+ * page Protection des données affichaient toutes les trois la liste de travail,
+ * dont la ligne « Validation par un conseil juridique avant publication ». Un
+ * client qui lit les conditions de vente y apprenait que le document n'est pas
+ * validé — sur la page qui engage l'entreprise.
+ *
+ * La liste reste utile au propriétaire tant que le site n'est pas public. Elle
+ * suit donc le drapeau qui gouverne déjà l'indexation (`app/layout.tsx`,
+ * `app/robots.ts`) : visible en préproduction, absente le jour de la mise en
+ * ligne. Rien à décider, rien à supprimer. Contrôle L1.
+ */
+const enPreproduction = process.env.SITE_INDEXABLE !== "oui";
+
 export default function PageLegale({
   surtitre,
   titre,
@@ -30,7 +46,7 @@ export default function PageLegale({
 
       <section className="bg-white py-14 md:py-20">
         <div className="container-g max-w-[46rem]">
-          {aCompleter && aCompleter.length > 0 && (
+          {enPreproduction && aCompleter && aCompleter.length > 0 && (
             <aside className="mb-12 rounded-2xl border-l-4 border-jaune bg-nuage p-6">
               <p className="h-title font-semibold text-encre">
                 Informations à compléter avant mise en ligne

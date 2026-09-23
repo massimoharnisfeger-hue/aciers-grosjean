@@ -114,7 +114,7 @@ export default function DevisForm({ produits }: { produits: string[] }) {
 
   return (
     <form onSubmit={envoyer} className="rounded-2xl border border-brume bg-white p-6 md:p-8">
-      <fieldset>
+      <fieldset className="min-w-0">
         <legend className="font-body text-sm font-medium text-encre">Je suis…</legend>
         <div className="mt-3 grid grid-cols-2 gap-3">
           {["Particulier", "Professionnel"].map((p) => (
@@ -168,9 +168,14 @@ export default function DevisForm({ produits }: { produits: string[] }) {
       <button type="submit" disabled={!valide || etat === "envoi"} className="btn-cta mt-6 w-full justify-center disabled:cursor-not-allowed disabled:opacity-40">
         {etat === "envoi" ? "Envoi en cours…" : "Envoyer ma demande de devis"}
       </button>
+      {/* Ce lien s'ouvre a cote : le suivre dans le meme onglet viderait le
+          formulaire, qui n'a aucune reprise et n'ecrit rien dans le navigateur.
+          Mesure du 22/09 a 390 px : nom, e-mail et details perdus. Controle M5. */}
       <p className="mt-3 text-center font-body text-xs text-soft">
         Sans engagement · Réponse sous 24h · Vos coordonnées servent uniquement à traiter votre demande
-        (<Link href="/protection-des-donnees" className="lien-tactile underline">protection des données</Link>).
+        (<Link href="/protection-des-donnees" target="_blank" rel="noopener" className="lien-tactile underline">
+          protection des données
+        </Link>).
       </p>
     </form>
   );

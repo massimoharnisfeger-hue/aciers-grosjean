@@ -5,13 +5,29 @@ catalogue officiel ↔ projet. Aucun compteur repris d'un document antérieur.
 
 ## État des visuels
 
-| | Nombre |
-|---|---|
-| Produits au catalogue du projet | 495 |
-| Rendus Blender dans `final/` | 466 |
-| Rendus intégrés et servis | 466 |
-| Rendus dans `essais/` (jamais utilisés) | 64 |
-| Produits sans rendu | 29 |
+Compteurs remesurés le 22/09 à 11 h. Chaque libellé dit **exactement** ce qui est
+compté : les précédents disaient « rendus dans `final/` » pour un sous-ensemble des
+fichiers, et le dossier en contient près de quatre fois plus.
+
+| | Nombre | Compté comment |
+|---|---|---|
+| Produits au catalogue du projet | 495 | clés `slug` avec `categorie` dans `lib/catalogue.ts` |
+| Fiches produit servies (`*-caracteristiques.webp`) | 466 | fichiers sous `public/images/` |
+| Produits sans rendu | 29 | 495 − 466 |
+| Photos studio servies | 53 | `studio-*.webp` sous `public/images/` |
+| Catégories pourvues au manifeste | 48 | clés de `lib/visuels-produits.json` |
+| — | — | — |
+| Fichiers dans l'atelier `final/` | 1 697 | dont 1 178 PNG bruts, 985 JSON, 519 WebP |
+| Dont fiches produit livrables | 466 | les 466 servis y sont tous présents |
+| Dont photos studio livrables | 53 | nommées `studio-<famille>-studio.webp` |
+| Fichiers dans l'atelier `essais/` | 648 | dont 86 WebP |
+| Dont fiches produit d'essai | 64 | **toutes** visent un produit déjà pourvu |
+| Dont photos studio d'essai | 19 + 3 | 3 nommées `essai-studio-*` |
+
+**`essais/` ne comble aucun manque** — vérifié le 22/09 : les 64 fiches d'essai visent
+toutes un produit qui a déjà son rendu servi, et aucune ne vise un des 29 produits
+sans rendu. La règle « ne jamais intégrer automatiquement depuis `essais/` » ne coûte
+donc rien : il n'y a rien à y récupérer.
 
 ## Rendus existants non intégrés
 
@@ -97,3 +113,42 @@ officielle **se contredit elle-même** — titre « VERT RAL 7016 », en-tête �
 
 **À corriger sur le site officiel** : un client qui cherche un poteau gris ne le trouve pas,
 et un client qui commande « vert » reçoit du gris.
+
+## HUMAN_REVIEW — où vivent les spécifications et les documents (22/09)
+
+La section « Le produit en détail » est passée en onglets. Le propriétaire demande que
+**chaque fiche garde la même structure, avec les mêmes informations qui reviennent**.
+
+Mesuré sur les 495 fiches : spécifications **472 (95 %)**, PDF **359 (72 %)**, cotes **355**,
+introduction **340 (68 %)**, longueurs **273**. Les seules données quasi universelles sont donc
+les spécifications et les documents — or ils sont déjà affichés dans la colonne de droite de la
+fiche, sous le calculateur.
+
+| Option | Conséquence |
+|---|---|
+| **Les déplacer dans les onglets** | 95 % des fiches auraient les mêmes rubriques. La colonne de droite se limite au prix, au calculateur et aux boutons. Touche une autre partie de la fiche. |
+| **Les laisser à droite** | Rien d'autre ne bouge, mais 36 fiches n'ont aucun onglet et 124 n'en ont qu'un : la structure reste variable. |
+| **Les deux** | Structure uniforme, mais la même information affichée deux fois sur la page. Déconseillé. |
+
+**Décision attendue du propriétaire.** Aucune des trois n'est déductible : c'est un arbitrage
+entre uniformité et non-duplication, pas un fait à établir.
+
+## HUMAN_REVIEW — quelles photos produit manquent réellement (22/09)
+
+Le propriétaire a demandé des images générées par IA, puis a corrigé : **« je veux juste des
+photos produit »**, pas de mise en situation. Aucune image n'a été générée à ce stade — aucun
+crédit dépensé, aucun fichier créé.
+
+La question posée en retour, restée sans réponse : le dépôt possède déjà **466 rendus 3D aux
+cotes** et **53 photos studio sur fond blanc**, tous construits à partir des données réelles.
+Une image générée produirait une pièce plausible mais approximative là où le rendu montre la
+bonne, aux bonnes dimensions. Pour de la photo produit, la génération ferait vraisemblablement
+moins bien que l'existant.
+
+Les seules fiches réellement dépourvues de visuel sont les **29 consommables** listés plus haut
+(aérosols, pots de peinture, visserie, fixations) — des objets sans géométrie cotée, pour
+lesquels une photo a du sens et un rendu 3D n'en a pas.
+
+**Décision attendue** : génération limitée à ces 29 consommables, autre angle ou autre fond pour
+des produits déjà pourvus, ou abandon de la génération. Outils installés et audités si besoin :
+HeliosGen (`C:\Users\massi\Projects\HeliosGen`, port 3100). `codex-imagegen` n'est pas installé.

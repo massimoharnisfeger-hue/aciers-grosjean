@@ -21,6 +21,29 @@ P6 - Une URL inconnue renvoie 404. Un site qui repond 200 a tout fait indexer
      n'importe quoi ; un site qui repond 500 perd le visiteur.
 P7 - `/sitemap.xml` et `/robots.txt` sont servis, et les premieres URL que le
      sitemap declare a Google repondent vraiment.
+P15 - Aucune valeur alignee a droite ne porte une phrase. Mesure du 22/09 sur
+      les 1 727 paires « libelle : valeur » du catalogue : la valeur mediane
+      fait 65 caracteres et 81 % sont des phrases, alors que `GrillePaires` les
+      alignait toutes a droite comme des cotes. Une phrase alignee a droite a
+      un bord GAUCHE en escalier : l'oeil perd le debut de chaque ligne. Le
+      proprietaire l'a vu avant le controle — « je ne trouve pas ca
+      esthetique » — et il avait raison.
+
+P14 - Sur une page de categorie, les produits sont servis dans l'ordre
+      numerique de leurs cotes. Mesure du 22/09 sur `/acier/profiles/plat` :
+      l'ordre etait alphabetique — 100x10, 100x5, 100x8, 10x3, 120x10, 20x10 —
+      parce que le tri « Par section », pourtant propose par defaut, ne triait
+      rien : `TableauProduits` ne traitait que `prix` et `poids`. Dans un
+      negoce ou l'on choisit par cote, c'est le tri le plus utilise.
+
+P13 - Le texte du site source est servi, quelle que soit la forme que prend
+      la section. La mise en onglets a d'abord rendu `null` quand aucun onglet
+      n'etait produit : 24 fiches ont perdu 39 paragraphes reels, dont la seule
+      mention du sur-mesure et l'adresse du service commercial. L'introduction
+      alimente desormais l'onglet « Presentation » ; ce controle ne regarde
+      donc plus OU le texte est rendu, seulement QU'IL l'est — c'est la
+      garantie qui compte, et elle survit aux changements de mise en page.
+
 P12 - `/api/devis` refuse un flot de demandes. Sans plafond, l'adresse
       Microsoft 365 de l'entreprise relaie autant de messages qu'on lui en
       demande : la boite se remplit, et le compte finit bride ou bloque par
@@ -49,6 +72,7 @@ disparaissent pas du registre.
 
 import json
 import re
+from html import unescape
 import shutil
 import socket
 import subprocess
@@ -119,6 +143,23 @@ ANCIENNES_URLS_REPAREES = (
     "/blog/rss/2",
     "/shippinginfo",
 )
+
+# Fiche dont les quatre paragraphes d'introduction avaient disparu.
+PRODUIT_SANS_ONGLET = "tole-30-200-1000-ral-7016-300x105cm"
+PHRASES_ATTENDUES = (
+    "peuvent être placées en toiture",
+    "commandées sur-mesure",
+)
+
+# Categorie a forte cardinalite dont les noms portent deux cotes : le cas ou
+# l'ordre alphabetique se voit le plus.
+CATEGORIE_TRIEE = "/acier/profiles/plat"
+
+# Fiche dont la description porte des paires en phrases (« Forme et Geometrie »,
+# « Resistance ») : le cas ou l'alignement a droite se voyait.
+PRODUIT_A_PHRASES = "corniere-egale-25x25x2mm-en-aluminium"
+# Au-dela, une valeur n'est plus une cote : elle se lit alignee a gauche.
+LONGUEUR_MAX_ALIGNEE_A_DROITE = 40
 
 # Plafond d'envois par adresse, declare dans `app/api/devis/route.ts`. Le
 # controle en envoie un de plus et attend un 429.
@@ -300,7 +341,13 @@ class ParcoursVisiteur(unittest.TestCase):
         """
         statut, corps = self.serveur.appeler("/p/" + PRODUIT_TEMOIN)
         self.assertEqual(statut, 200)
-        self.assertIn('data-module="chiffres-cles"', corps, "module de chiffres cles absent du HTML rendu")
+        # Le pave « chiffres cles » de tete a ete retire le 22/09 : il repetait
+        # la fiche technique de l'onglet Caracteristiques. C'est ce bloc-la que
+        # le visiteur doit recevoir, et il porte `data-module="caracteristiques"`.
+        self.assertIn(
+            'data-module="caracteristiques"', corps,
+            "la fiche technique n'est servie nulle part dans le HTML rendu",
+        )
         self.assertNotRegex(corps, r">\s*[•]\s", "une puce litterale « • » subsiste dans le HTML : liste non reconnue")
         self.assertIn("Le produit en d", corps, "le bloc « Le produit en détail » n'est pas rendu")
         statut, riche = self.serveur.appeler("/p/" + PRODUIT_RICHE)
@@ -353,6 +400,59 @@ class ParcoursVisiteur(unittest.TestCase):
             statuts[-1],
             429,
             "la demande au-dela du plafond devrait etre refusee (429), pas " + str(statuts[-1]),
+        )
+
+    def test_p13_le_texte_du_site_source_est_servi(self):
+        statut, corps = self.serveur.appeler("/p/" + PRODUIT_SANS_ONGLET)
+        self.assertEqual(statut, 200, "la fiche temoin ne repond pas 200")
+        absentes = [p for p in PHRASES_ATTENDUES if p not in corps]
+        self.assertEqual(
+            absentes, [],
+            "texte du site source perdu sur une fiche sans onglet : " + str(absentes),
+        )
+
+    def test_p15_aucune_phrase_n_est_alignee_a_droite(self):
+        statut, corps = self.serveur.appeler("/p/" + PRODUIT_A_PHRASES)
+        self.assertEqual(statut, 200, "la fiche temoin ne repond pas 200")
+
+        trop_longues = []
+        for balise in re.findall("<dd[^>]*>.*?</dd>", corps, re.S):
+            if "text-right" not in balise:
+                continue
+            texte = re.sub("<[^>]+>", "", balise)
+            texte = unescape(texte).strip()
+            if len(texte) > LONGUEUR_MAX_ALIGNEE_A_DROITE:
+                trop_longues.append(texte[:60])
+        self.assertEqual(
+            trop_longues, [],
+            "valeurs alignees a droite trop longues pour l'etre : " + str(trop_longues),
+        )
+
+    def test_p14_les_produits_sont_servis_en_ordre_numerique(self):
+        statut, corps = self.serveur.appeler(CATEGORIE_TRIEE)
+        self.assertEqual(statut, 200, CATEGORIE_TRIEE + " ne repond pas 200")
+
+        # Les noms tels qu'ils apparaissent, dans l'ordre du HTML servi.
+        noms = re.findall("Plat ([0-9]+)x([0-9]+)mm", corps)
+        self.assertGreater(len(noms), 20, "trop peu de produits lus pour juger de l'ordre")
+
+        vus, cotes = set(), []
+        for largeur, epaisseur in noms:
+            cle = (int(largeur), int(epaisseur))
+            if cle in vus:
+                continue
+            vus.add(cle)
+            cotes.append(cle)
+
+        desordre = [
+            (cotes[i], cotes[i + 1])
+            for i in range(len(cotes) - 1)
+            if cotes[i] > cotes[i + 1]
+        ]
+        self.assertEqual(
+            desordre, [],
+            f"{len(desordre)} ruptures dans l'ordre des cotes : "
+            f"{desordre[:4]}. Le tri par defaut doit etre numerique.",
         )
 
     def test_p10_vignettes_categorie_passent_par_optimiseur(self):
