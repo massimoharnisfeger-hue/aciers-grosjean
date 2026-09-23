@@ -210,3 +210,17 @@ a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
   .shine::after{display:none}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 }
+
+/* ---------- IMPRESSION ----------
+   Le catalogue visuel (/catalogue) s'imprime chapitre par chapitre : l'en-tête
+   fixe, le pied de page et les effets d'écran n'ont rien à faire sur papier.
+   Les pages masquent leurs commandes avec les classes `print:` de Tailwind. */
+@media print{
+  body > header,body > footer,.progress-bar{display:none!important}
+  .grain::before{display:none}
+  body{background:#fff}
+  .catalogue-imprimable a{text-decoration:none}
+  .catalogue-imprimable [data-variante]{break-inside:avoid;page-break-inside:avoid}
+  .catalogue-imprimable [data-famille]>div:first-child{break-inside:avoid;page-break-inside:avoid}
+  .catalogue-imprimable [data-section]{break-before:page;page-break-before:always}
+}

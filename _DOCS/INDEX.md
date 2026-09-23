@@ -17,6 +17,7 @@ fichier n'est déclaré deux fois comme source. Cet index ne peut donc pas deven
 | Arbre du catalogue : univers, catégories, produits | `lib/catalogue.ts` | `scripts/generer-catalogue.py` | pages serveur, `lib/menu.ts` |
 | Visuels 3D rattachés aux fiches et aux catégories | `lib/visuels-produits.json` | `scripts/rendu-3d/integrer_visuels.py` | `app/p/[slug]/page.tsx` |
 | Redirections 301 des anciennes URL | `lib/redirections.mjs` | `scripts/generer-redirections.py` | `next.config.mjs` |
+| Catalogue visuel : chapitres, familles, variantes et leurs visuels | `lib/catalogue-visuel.ts` | — (calculé à la construction depuis `lib/catalogue.ts` et le manifeste) | `app/catalogue/page.tsx`, `app/catalogue/[univers]/page.tsx` |
 | Textes éditoriaux, conseils, aide | `lib/edito.ts` | — | pages serveur |
 | Coordonnées, dépôts, liens d'appel | `lib/content.ts` | — | toutes les pages |
 
@@ -32,6 +33,8 @@ Fichiers physiques associés : les PDF vivent dans `public/documents/`, les visu
 | Questions produit non tranchées | `_DOCS/rendus-3d/questions-en-attente.md` | — | le propriétaire |
 | Réglages appris : matières, lumières, cadrages | `_DOCS/rendus-3d/lecons.md` | — | la boucle 3D — séparé du carnet global par ADR-0002 |
 | Périmètre et ordre des familles | `_DOCS/BRIEF-RENDUS-3D.md` | — | la boucle 3D |
+| Inventaire de chaque fichier image (site, dépôt, atelier) et matrice produit ↔ visuels | `_DOCS/catalogue-produits/RESUME.md` (détail : `_DOCS/catalogue-produits/inventaire-images.csv`, `_DOCS/catalogue-produits/matrice-produits.csv`) | `scripts/catalogue/inventaire.py` | `_DOCS/CATALOGUE-PRODUITS.md`, le catalogue visuel |
+| Rapport de contrôle du catalogue visuel : structure, associations, responsive, tests, cas à trancher | `_DOCS/CATALOGUE-PRODUITS.md` | — | le propriétaire, la prochaine séance |
 
 ## Pilotage du dépôt
 

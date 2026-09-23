@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Produit } from "@/lib/catalogue";
 import type { Paire, Section } from "@/lib/description";
+import { specsParImportance } from "@/lib/specs";
 
 /**
  * Modules de la fiche produit. Un seul gabarit pour 495 fiches : chaque module
@@ -9,20 +10,9 @@ import type { Paire, Section } from "@/lib/description";
  * que le visiteur lit, Google le lit.
  */
 
-/** Ordre de lecture des spécifications en tête de fiche : ce qui définit la pièce d'abord. */
-const PRIORITE = [
-  "Largeur", "Épaisseur", "Hauteur", "Diamètre extérieur", "Diamètre", "Section", "Ailes",
-  "Format", "Longueur", "Longueur utile", "Largeur utile", "Maille", "Poids", "Masse surfacique",
-  "Nuance", "Alliage", "Matière", "Revêtement", "Finition", "Couleur",
-];
-
-const rang = (label: string) => {
-  const i = PRIORITE.indexOf(label);
-  return i === -1 ? PRIORITE.length : i;
-};
-
 export function ChiffresCles({ p, matiere }: { p: Produit; matiere: string }) {
-  const specs = [...p.specs].sort((a, b) => rang(a.label) - rang(b.label)).slice(0, 5);
+  // Ordre de lecture partagé avec le catalogue visuel : lib/specs.ts.
+  const specs = specsParImportance(p.specs).slice(0, 5);
   const cartes: Paire[] = [{ label: "Matière", valeur: matiere }, ...specs];
   if (p.kg !== null && !specs.some((s) => s.label === "Poids")) {
     cartes.push({ label: "Poids", valeur: `${p.kg.toLocaleString("fr-BE")} ${p.unitePoids || "kg"}` });

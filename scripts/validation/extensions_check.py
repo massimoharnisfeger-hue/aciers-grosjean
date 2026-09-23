@@ -65,16 +65,29 @@ def read_frontmatter(path):
             raise ValueError(f"frontmatter missing {key}: {path}")
 
 
+def fichiers_du_skill(root):
+    """Les fichiers d'un skill, sans ce que Python genere en l'executant.
+
+    `__pycache__/` et les `.pyc` apparaissent des qu'on lance le script d'un
+    skill (`search.py`), dans la seule copie utilisee. Ce ne sont pas des
+    fichiers du skill : Git les ignore, et les compter faisait diverger les
+    deux copies sans qu'un octet du skill ait change (23/09, controle X1).
+    """
+    return {
+        path.relative_to(root).as_posix()
+        for path in root.rglob("*")
+        if path.is_file()
+        and "__pycache__" not in path.relative_to(root).parts
+        and path.suffix != ".pyc"
+    }
+
+
 def check_skill_tree(errors, relative_root, expected):
     root = ROOT / relative_root
     if not root.is_dir():
         errors.append(f"missing skill directory: {relative_root}")
         return
-    actual = {
-        path.relative_to(root).as_posix()
-        for path in root.rglob("*")
-        if path.is_file()
-    }
+    actual = fichiers_du_skill(root)
     if actual != expected:
         errors.append(
             f"unexpected skill files in {relative_root}: "
@@ -91,16 +104,8 @@ def check_parity(errors, first, second):
     second_root = ROOT / second
     if not first_root.is_dir() or not second_root.is_dir():
         return
-    first_files = {
-        path.relative_to(first_root).as_posix()
-        for path in first_root.rglob("*")
-        if path.is_file()
-    }
-    second_files = {
-        path.relative_to(second_root).as_posix()
-        for path in second_root.rglob("*")
-        if path.is_file()
-    }
+    first_files = fichiers_du_skill(first_root)
+    second_files = fichiers_du_skill(second_root)
     if first_files != second_files:
         errors.append(f"skill file sets diverge: {first} != {second}")
         return

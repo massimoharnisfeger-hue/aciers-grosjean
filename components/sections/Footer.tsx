@@ -78,7 +78,10 @@ export default function Footer() {
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
           <Colonne
             titre="Univers"
-            liens={univers.map((u) => ({ label: u.nom, href: `/${u.slug}` }))}
+            liens={[
+              ...univers.map((u) => ({ label: u.nom, href: `/${u.slug}` })),
+              { label: "Catalogue en images", href: "/catalogue" },
+            ]}
           />
           <Colonne
             titre="Acier"
