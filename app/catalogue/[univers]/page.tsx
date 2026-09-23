@@ -8,7 +8,7 @@ import OngletsChapitres from "@/components/catalogue/OngletsChapitres";
 import FicheFamille from "@/components/catalogue/FicheFamille";
 import FiltreCatalogue from "@/components/catalogue/FiltreCatalogue";
 import ImprimerChapitre from "@/components/catalogue/ImprimerChapitre";
-import { chapitres, chapitreParSlug, type Chapitre } from "@/lib/catalogue-visuel";
+import { chapitres, chapitreParSlug, catalogueActif, type Chapitre } from "@/lib/catalogue-visuel";
 import { titre, description } from "@/lib/seo";
 
 type Params = { univers: string };
@@ -16,7 +16,8 @@ type Params = { univers: string };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return chapitres().map((c) => ({ univers: c.slug }));
+  // Sans le drapeau local, aucun chapitre n'est construit : `dynamicParams = false` répond 404.
+  return catalogueActif ? chapitres().map((c) => ({ univers: c.slug })) : [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
@@ -61,7 +62,7 @@ function IndexFamilles({ c, classe }: { c: Chapitre; classe: string }) {
 
 export default async function ChapitrePage({ params }: { params: Promise<Params> }) {
   const { univers } = await params;
-  const c = chapitreParSlug(univers);
+  const c = catalogueActif ? chapitreParSlug(univers) : undefined;
   if (!c) notFound();
 
   const tous = chapitres();

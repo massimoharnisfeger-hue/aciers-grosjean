@@ -17,7 +17,8 @@ fichier n'est déclaré deux fois comme source. Cet index ne peut donc pas deven
 | Arbre du catalogue : univers, catégories, produits | `lib/catalogue.ts` | `scripts/generer-catalogue.py` | pages serveur, `lib/menu.ts` |
 | Visuels 3D rattachés aux fiches et aux catégories | `lib/visuels-produits.json` | `scripts/rendu-3d/integrer_visuels.py` | `app/p/[slug]/page.tsx` |
 | Redirections 301 des anciennes URL | `lib/redirections.mjs` | `scripts/generer-redirections.py` | `next.config.mjs` |
-| Catalogue visuel : chapitres, familles, variantes et leurs visuels | `lib/catalogue-visuel.ts` | — (calculé à la construction depuis `lib/catalogue.ts` et le manifeste) | `app/catalogue/page.tsx`, `app/catalogue/[univers]/page.tsx` |
+| Catalogue visuel : chapitres, familles, variantes et leurs visuels ; verrou `CATALOGUE_LOCAL` | `lib/catalogue-visuel.ts` | — (calculé à la construction depuis `lib/catalogue.ts` et le manifeste) | `app/catalogue/page.tsx`, `app/catalogue/[univers]/page.tsx`, `app/catalogue/imprimer/page.tsx` |
+| Catalogue en document A4 : couverture, sommaire, chapitres, planches, dépôts | `components/catalogue/Document.tsx` | — | `app/catalogue/imprimer/page.tsx`, puis `scripts/catalogue/exporter_pdf.py` qui en fait le PDF (dossier _DEPOT/documents/catalogue, hors Git, créé à l'export) |
 | Textes éditoriaux, conseils, aide | `lib/edito.ts` | — | pages serveur |
 | Coordonnées, dépôts, liens d'appel | `lib/content.ts` | — | toutes les pages |
 

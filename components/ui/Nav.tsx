@@ -13,7 +13,14 @@ const secondaires = [
   { label: "Entreprise", href: "/entreprise" },
 ];
 
-export default function Nav({ menu }: { menu: MenuUnivers[] }) {
+export default function Nav({
+  menu,
+  catalogueLocal = false,
+}: {
+  menu: MenuUnivers[];
+  /** Le catalogue visuel n'existe que sur le poste du propriétaire tant qu'il n'est pas validé (ADR-0010). */
+  catalogueLocal?: boolean;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -149,9 +156,11 @@ export default function Nav({ menu }: { menu: MenuUnivers[] }) {
               <Link href="/produits" className="font-body text-sm font-medium text-encre hover:text-jaune">
                 Tout le catalogue
               </Link>
-              <Link href="/catalogue" prefetch={false} className="font-body text-sm text-soft hover:text-encre">
-                Catalogue en images
-              </Link>
+              {catalogueLocal && (
+                <Link href="/catalogue" prefetch={false} className="font-body text-sm text-soft hover:text-encre">
+                  Catalogue en images
+                </Link>
+              )}
               <Link href="/nouveautes" className="font-body text-sm text-soft hover:text-encre">Nouveautés</Link>
               <Link href="/recherche" className="font-body text-sm text-soft hover:text-encre">Recherche</Link>
               <Link href="/documentation" className="font-body text-sm text-soft hover:text-encre">Documentation</Link>
@@ -181,9 +190,11 @@ export default function Nav({ menu }: { menu: MenuUnivers[] }) {
           <Link href="/produits" className="block rounded-lg px-4 py-2.5 font-body text-sm text-soft hover:bg-nuage">
             Tout le catalogue
           </Link>
-          <Link href="/catalogue" prefetch={false} className="block rounded-lg px-4 py-2.5 font-body text-sm text-soft hover:bg-nuage">
-            Catalogue en images
-          </Link>
+          {catalogueLocal && (
+            <Link href="/catalogue" prefetch={false} className="block rounded-lg px-4 py-2.5 font-body text-sm text-soft hover:bg-nuage">
+              Catalogue en images
+            </Link>
+          )}
 
           <p className="mt-2 border-t border-brume px-4 pb-1 pt-3 font-body text-xs uppercase tracking-[0.14em] text-soft">
             Le reste

@@ -35,6 +35,16 @@ quatre modules `lib/`, script d'inventaire et ses sorties, ADR-0010, rapport, co
 leçons L-049 et L-050, raccords (routes, sitemap, menus, pied de page, `/produits`, plan du site).
 Typecheck 0, lint 0, build vert, **170 contrôles - 0 échec**.
 
+## Après-midi — précisions du propriétaire
+
+« Ne mets pas ça sur Vercel, l'idée c'est d'avoir un PDF à la fin ; mets tout en local » ; « un
+document […] catalogue design, premium industriel qu'ils pourront présenter à leurs clients » ;
+« retire-le de Vercel et mets-le en mode catalogue, génère-le en local d'abord, PDF quand tout sera
+validé » ; « ne le supprime pas, on le remettra peut-être après sur le site » ; « le moins de
+tokens possible ». Réponse : verrou `CATALOGUE_LOCAL`, mode document `/catalogue/imprimer`, script
+d'export écrit mais non lancé, republication sans le catalogue, aucune capture ni relecture
+automatique — le propriétaire relit lui-même sur http://localhost:3000/catalogue/imprimer.
+
 ## Reste à faire
 
 - Arbitrages humains listés dans `_DOCS/CATALOGUE-PRODUITS.md` (photos studio en concurrence,

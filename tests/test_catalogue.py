@@ -32,6 +32,7 @@ ils se declarent ignores et ne disparaissent pas du registre.
 """
 
 import json
+import os
 import re
 import sys
 import unittest
@@ -46,7 +47,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from scripts.routes import produits_du_catalogue, routes_du_depot, univers_du_catalogue  # noqa: E402
 from test_parcours import BINAIRE_NEXT, BUILD_TERMINE, ServeurSite  # noqa: E402
 
+ENV_LOCAL = RACINE / ".env.local"
 MANIFESTE = RACINE / "lib" / "visuels-produits.json"
+
+
+def catalogue_local_actif() -> bool:
+    """Le catalogue n'est construit que derrière `CATALOGUE_LOCAL=oui` (ADR-0010).
+
+    Sans le drapeau — en CI, sur Vercel, ou sur un poste qui ne l'a pas posé —
+    les pages répondent 404 par décision, pas par défaut : K1 à K7 se retirent
+    alors sans disparaître du registre.
+    """
+    if os.environ.get("CATALOGUE_LOCAL") == "oui":
+        return True
+    if not ENV_LOCAL.exists():
+        return False
+    return re.search(r"^\s*CATALOGUE_LOCAL\s*=\s*oui\s*$", ENV_LOCAL.read_text(encoding="utf-8"), re.M) is not None
 CATALOGUE = RACINE / "lib" / "catalogue.ts"
 FICHIERS_CATALOGUE = (
     RACINE / "app" / "catalogue" / "page.tsx",
@@ -84,6 +100,8 @@ class CatalogueRendu(unittest.TestCase):
             raise unittest.SkipTest("dependances absentes : lancer `npm ci`.")
         if not BUILD_TERMINE.exists():
             raise unittest.SkipTest("site non construit ou build en cours : lancer `npm run build`.")
+        if not catalogue_local_actif():
+            raise unittest.SkipTest("catalogue local inactif : poser CATALOGUE_LOCAL=oui dans .env.local (ADR-0010).")
         cls.manifeste = json.loads(MANIFESTE.read_text(encoding="utf-8"))
         cls.univers = univers_du_catalogue(CATALOGUE.read_text(encoding="utf-8"))
         cls.serveur = ServeurSite()
@@ -193,6 +211,38 @@ class CatalogueSource(unittest.TestCase):
         self.assertIn("/catalogue", routes, "scripts/routes.py ignore /catalogue")
         manquants = [u for u in univers_du_catalogue(CATALOGUE.read_text(encoding="utf-8")) if "/catalogue/" + u not in routes]
         self.assertEqual(manquants, [], "chapitres inconnus de scripts/routes.py : " + str(manquants))
+
+    def test_k10_aucun_lien_vers_le_catalogue_sans_le_verrou(self):
+        """Tant que le catalogue n'est pas validé, aucune page publique n'y mène.
+
+        Les liens vivent dans le menu (prop `catalogueLocal`), le pied de page,
+        `/produits`, `/plan-du-site` et le sitemap : chacun doit lire le verrou.
+        Un lien oublié enverrait le visiteur de Vercel sur une 404.
+        """
+        fautifs = []
+        for fichier in (
+            RACINE / "components" / "ui" / "Nav.tsx",
+            RACINE / "components" / "sections" / "Footer.tsx",
+            RACINE / "app" / "produits" / "page.tsx",
+            RACINE / "app" / "plan-du-site" / "page.tsx",
+            RACINE / "app" / "sitemap.ts",
+        ):
+            src = fichier.read_text(encoding="utf-8")
+            if '"/catalogue"' in src and "catalogueActif" not in src and "catalogueLocal" not in src:
+                fautifs.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(fautifs, [], "liens vers /catalogue hors du verrou CATALOGUE_LOCAL : " + str(fautifs))
+
+    def test_k11_chaque_page_du_catalogue_lit_le_verrou(self):
+        fautifs = []
+        for fichier in (
+            RACINE / "app" / "catalogue" / "page.tsx",
+            RACINE / "app" / "catalogue" / "[univers]" / "page.tsx",
+            RACINE / "app" / "catalogue" / "imprimer" / "page.tsx",
+        ):
+            src = fichier.read_text(encoding="utf-8") if fichier.exists() else ""
+            if "catalogueActif" not in src or "notFound" not in src:
+                fautifs.append(fichier.relative_to(RACINE).as_posix())
+        self.assertEqual(fautifs, [], "pages du catalogue servies sans lire le verrou : " + str(fautifs))
 
     def test_k9_le_catalogue_n_importe_aucune_illustration_generique(self):
         fautifs = [

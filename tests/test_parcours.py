@@ -175,6 +175,18 @@ ADRESSE_DU_FLOT = "203.0.113.12"
 ENV_LOCAL = RACINE / ".env.local"
 
 
+def smtp_configure() -> bool:
+    """Un SMTP est configure si `.env.local` remplit SMTP_USER.
+
+    Depuis le 23/09, `.env.local` porte aussi `CATALOGUE_LOCAL=oui` (ADR-0010) :
+    l'existence du fichier ne prouve plus rien sur le SMTP, seule la variable
+    remplie compte. Sinon P8d et P12 se seraient tus pour une mauvaise raison.
+    """
+    if not ENV_LOCAL.exists():
+        return False
+    return re.search(r"^\s*SMTP_USER\s*=\s*\S+", ENV_LOCAL.read_text(encoding="utf-8"), re.M) is not None
+
+
 def port_libre() -> int:
     """Port attribue par le systeme : deux lancements ne se marchent pas dessus."""
     with socket.socket() as prise:
@@ -377,7 +389,7 @@ class ParcoursVisiteur(unittest.TestCase):
         self.assertIn('"ok":true', corps.replace(" ", ""), "la reponse au robot doit ressembler a un succes")
 
     def test_p8d_devis_api_sans_smtp_se_declare_indisponible(self):
-        if ENV_LOCAL.exists():
+        if smtp_configure():
             self.skipTest("SMTP configure dans .env.local : aucun envoi reel pendant les controles.")
         statut, corps = self.serveur.envoyer("/api/devis", DEMANDE_TEMOIN)
         self.assertEqual(statut, 503, "sans SMTP la route devrait repondre 503, pas " + str(statut))
@@ -385,7 +397,7 @@ class ParcoursVisiteur(unittest.TestCase):
 
 
     def test_p12_devis_api_refuse_un_flot(self):
-        if ENV_LOCAL.exists():
+        if smtp_configure():
             self.skipTest("SMTP configure dans .env.local : aucun envoi reel pendant les controles.")
         statuts = [
             self.serveur.envoyer("/api/devis", DEMANDE_TEMOIN, adresse=ADRESSE_DU_FLOT)[0]

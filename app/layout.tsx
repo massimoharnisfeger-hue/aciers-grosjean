@@ -5,6 +5,7 @@ import Nav from "@/components/ui/Nav";
 import Footer from "@/components/sections/Footer";
 import ScrollProgress from "@/components/fx/ScrollProgress";
 import { menuCatalogue } from "@/lib/menu";
+import { catalogueActif } from "@/lib/catalogue-visuel";
 
 // Le site de préproduction (vercel.app) ne doit pas être indexé : il ferait
 // doublon avec aciersgrosjean.be. Mettre SITE_INDEXABLE=oui sur Vercel le jour
@@ -83,7 +84,7 @@ export default function RootLayout({
     >
       <body className="grain">
         <ScrollProgress />
-        <Nav menu={menuCatalogue()} />
+        <Nav menu={menuCatalogue()} catalogueLocal={catalogueActif} />
         {children}
         <Footer />
       </body>
