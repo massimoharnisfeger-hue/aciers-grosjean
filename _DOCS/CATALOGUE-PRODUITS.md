@@ -1,11 +1,34 @@
 # Catalogue produits visuel — rapport de contrôle
 
-Séance du 2026-09-23. Décision : ADR-0010. Pages : `/catalogue` (couverture et sommaire) et
-`/catalogue/<univers>` (six chapitres). Code : `lib/catalogue-visuel.ts`, `components/catalogue/`
-(`OngletsChapitres`, `FicheFamille`, `PlancheVariante`, `FiltreCatalogue`, `ImprimerChapitre`).
-Contrôles : `tests/test_catalogue.py` (K1 à K9). Les compteurs de ce rapport viennent de
+Séance du 2026-09-23. Décision : ADR-0010. Pages : `/catalogue` (couverture et sommaire),
+`/catalogue/<univers>` (six chapitres) et `/catalogue/imprimer` (le document A4, page par page).
+Code : `lib/catalogue-visuel.ts`, `components/catalogue/` (`OngletsChapitres`, `FicheFamille`,
+`PlancheVariante`, `FiltreCatalogue`, `ImprimerChapitre`, `Document`). Contrôles :
+`tests/test_catalogue.py` (K1 à K11). Les compteurs de ce rapport viennent de
 `scripts/catalogue/inventaire.py` (relevé du 2026-09-23, `_DOCS/catalogue-produits/RESUME.md`) et
 du build du même jour ; aucun n'est repris d'un document antérieur.
+
+## OÙ EN EST-ON (après-midi du 23/09)
+
+- **Livrable** : un catalogue-document A4, premium industriel, que Grosjean présentera à ses
+  clients. Il se relit sur le poste à http://localhost:3000/catalogue/imprimer (une feuille A4 par
+  page). Le PDF sera exporté **à la fin, après validation**, par
+  `python scripts/catalogue/exporter_pdf.py` (sortie : `_DEPOT/documents/catalogue/`, hors Git).
+- **En local seulement** : tout le catalogue est derrière `CATALOGUE_LOCAL=oui` (`.env.local`,
+  poste du propriétaire). Sans le drapeau — Vercel, GitHub, CI — les pages répondent 404 et aucun
+  lien n'y mène. Rien n'est supprimé : poser la variable sur Vercel le remet en ligne.
+- **Version 2 prévue** : les 29 produits sans rendu recevront leurs photos du site actuel
+  (`_DEPOT/images/site-actuel/`), une fois la v1 validée.
+
+## À VOIR SUR LE POSTE
+
+| Adresse | Ce que c'est |
+|---|---|
+| http://localhost:3000/catalogue/imprimer | le document, page par page (couverture, sommaire, mode d'emploi, six chapitres, dépôts) |
+| http://localhost:3000/catalogue | la version web : couverture et sommaire |
+| http://localhost:3000/catalogue/acier | un chapitre web, avec le filtre |
+
+Le serveur local se lance avec `_OUTILS/LANCER-LE-SITE.cmd` ou `npm run build` puis `npm run start`.
 
 ## INVENTAIRE
 

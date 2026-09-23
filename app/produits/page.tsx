@@ -14,6 +14,7 @@ import {
   totalProduits,
 } from "@/lib/catalogue";
 import { titre, description } from "@/lib/seo";
+import { catalogueActif } from "@/lib/catalogue-visuel";
 
 export const metadata: Metadata = {
   title: titre(`Catalogue acier — ${totalProduits} produits en stock`),
@@ -60,15 +61,17 @@ export default function CataloguePage() {
         </div>
       </section>
 
-      <section className="border-b border-brume bg-white py-6">
-        <div className="container-g flex flex-wrap items-center justify-between gap-4">
-          <p className="max-w-xl font-body text-sm text-soft">
-            Le catalogue en images : chaque famille avec sa photo studio, chaque variante avec son rendu 3D
-            aux cotes, chapitre par chapitre.
-          </p>
-          <Link href="/catalogue" prefetch={false} className="btn-ghost">Feuilleter le catalogue</Link>
-        </div>
-      </section>
+      {catalogueActif && (
+        <section className="border-b border-brume bg-white py-6">
+          <div className="container-g flex flex-wrap items-center justify-between gap-4">
+            <p className="max-w-xl font-body text-sm text-soft">
+              Le catalogue en images : chaque famille avec sa photo studio, chaque variante avec son rendu 3D
+              aux cotes, chapitre par chapitre.
+            </p>
+            <Link href="/catalogue" prefetch={false} className="btn-ghost">Feuilleter le catalogue</Link>
+          </div>
+        </section>
+      )}
 
       <section className="bg-white py-16 md:py-24">
         <div className="container-g">

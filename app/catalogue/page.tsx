@@ -5,7 +5,8 @@ import FilAriane from "@/components/ui/FilAriane";
 import Logo from "@/components/ui/Logo";
 import CtaBand from "@/components/sections/CtaBand";
 import OngletsChapitres from "@/components/catalogue/OngletsChapitres";
-import { chapitres, totauxCatalogue } from "@/lib/catalogue-visuel";
+import { notFound } from "next/navigation";
+import { chapitres, totauxCatalogue, catalogueActif } from "@/lib/catalogue-visuel";
 import { titre, description } from "@/lib/seo";
 
 /**
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function CataloguePage() {
+  if (!catalogueActif) notFound();
   const tous = chapitres();
   const onglets = tous.map((c) => ({ slug: c.slug, nom: c.nom, numero: c.numero, href: c.href, nbProduits: c.nbProduits }));
 

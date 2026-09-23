@@ -224,3 +224,119 @@ a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
   .catalogue-imprimable [data-famille]>div:first-child{break-inside:avoid;page-break-inside:avoid}
   .catalogue-imprimable [data-section]{break-before:page;page-break-before:always}
 }
+
+/* ---------- CATALOGUE DOCUMENT (A4, /catalogue/imprimer) ----------
+   Le catalogue en document : pages A4, marges fixes, quatre planches par
+   rangée, tailles en mm et en pt. À l'écran chaque page est dessinée comme
+   une feuille pour relire le document ; à l'export (scripts/catalogue/
+   exporter_pdf.py) les marges viennent de l'imprimante et la feuille s'efface. */
+.catalogue-pdf{background:#fff;color:#333642;font-family:var(--font-questrial),"Questrial",sans-serif;font-size:9.5pt;line-height:1.45;font-variant-ligatures:none}
+.catalogue-pdf .page{position:relative;break-after:page;page-break-after:always}
+.catalogue-pdf .page:last-child{break-after:auto;page-break-after:auto}
+.catalogue-pdf a{color:inherit;text-decoration:none}
+.catalogue-pdf img{display:block}
+.catalogue-pdf ul,.catalogue-pdf ol{list-style:none;margin:0;padding:0}
+.catalogue-pdf p,.catalogue-pdf dl,.catalogue-pdf dd,.catalogue-pdf h1,.catalogue-pdf h2,.catalogue-pdf h3,.catalogue-pdf h4{margin:0}
+.catalogue-pdf .pdf-h-titre{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;letter-spacing:-0.02em;line-height:1.05;text-wrap:balance}
+.catalogue-pdf .pdf-h-sub{font-family:var(--font-comfortaa),"Comfortaa",sans-serif;font-weight:500}
+.catalogue-pdf .pdf-mono{font-family:var(--font-mono),"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.catalogue-pdf .pdf-soft{color:rgba(51,54,66,.72)}
+.catalogue-pdf .pdf-mention{font-size:7.5pt;line-height:1.4}
+.catalogue-pdf .pdf-barre{display:block;width:18mm;height:2.2mm;background:#FFD500}
+.catalogue-pdf .pdf-barre-s{width:9mm;height:1.6mm}
+.catalogue-pdf .pdf-onglet{display:inline-flex;align-items:center;justify-content:center;flex:none;background:#FFD500;color:#333642;font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:700;border-radius:1.5mm;font-variant-numeric:tabular-nums}
+.catalogue-pdf .pdf-onglet-s{width:6.5mm;height:6.5mm;font-size:9pt}
+.catalogue-pdf .pdf-onglet-l{width:22mm;height:22mm;font-size:28pt;border-radius:3mm}
+.catalogue-pdf .pdf-titre-page{font-size:22pt;margin-bottom:6mm}
+.catalogue-pdf .pdf-espace{margin-top:12mm}
+.catalogue-pdf .pdf-plaque{position:relative;background:#F4F6F7;border:1px solid #D1D6DA;border-radius:2mm;overflow:hidden}
+.catalogue-pdf .pdf-plaque::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(51,54,66,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(51,54,66,.05) 1px,transparent 1px);background-size:8mm 8mm}
+.catalogue-pdf .pdf-plaque img{position:relative}
+.catalogue-pdf .pdf-vide{display:flex;align-items:center;justify-content:center;height:100%;padding:3mm;text-align:center;font-size:8pt;color:rgba(51,54,66,.72)}
+.catalogue-pdf .pdf-vide span{border:1px dashed #AAB0B3;border-radius:1.5mm;padding:2mm 3mm}
+/* couverture */
+.catalogue-pdf .pdf-couv{display:flex;flex-direction:column;min-height:100%}
+.catalogue-pdf .pdf-couv-tete{display:flex;justify-content:space-between;align-items:flex-start}
+.catalogue-pdf .pdf-couv-corps{margin-top:36mm}
+.catalogue-pdf .pdf-couv-titre{font-size:42pt;margin-top:6mm}
+.catalogue-pdf .pdf-couv-sous{font-size:12.5pt;margin-top:6mm;max-width:130mm;line-height:1.35}
+.catalogue-pdf .pdf-couv-intro{margin-top:4mm;max-width:130mm}
+.catalogue-pdf .pdf-mosaique{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm}
+.catalogue-pdf .pdf-mosaique-2{grid-template-columns:repeat(2,1fr)}
+.catalogue-pdf .pdf-mosaique figure{position:relative;margin:0;overflow:hidden;border-radius:2mm;border:1px solid #D1D6DA;background:#fff}
+.catalogue-pdf .pdf-mosaique img{width:100%;height:auto}
+.catalogue-pdf .pdf-mosaique figcaption{position:absolute;left:2mm;bottom:2mm;background:rgba(255,255,255,.92);padding:.6mm 1.6mm;border-radius:1mm;font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:7.5pt}
+.catalogue-pdf .pdf-couv-mosaique{margin-top:auto}
+.catalogue-pdf .pdf-couv .pdf-mention{margin-top:5mm}
+/* sommaire */
+.catalogue-pdf .pdf-sommaire{columns:2;column-gap:10mm}
+.catalogue-pdf .pdf-sommaire-chapitre{break-inside:avoid;page-break-inside:avoid;margin-bottom:6mm}
+.catalogue-pdf .pdf-ligne{display:flex;align-items:baseline;gap:2mm;padding:1.1mm 0;border-bottom:1px solid rgba(209,214,218,.7);font-size:8.5pt}
+.catalogue-pdf .pdf-ligne-chapitre{border-bottom:1px solid #333642;padding:1.5mm 0;align-items:center;font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:10.5pt}
+.catalogue-pdf .pdf-ligne .pdf-nom{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.catalogue-pdf .pdf-ligne .pdf-nb{font-size:7pt}
+.catalogue-pdf .pdf-ligne .pdf-points{flex:1;border-bottom:1px dotted #AAB0B3;transform:translateY(-1.2mm);min-width:4mm}
+.catalogue-pdf .pdf-ligne .pdf-page{min-width:7mm;text-align:right;font-size:8.5pt}
+/* lecture, commande, services */
+.catalogue-pdf .pdf-lecture{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+.catalogue-pdf .pdf-lecture dt,.catalogue-pdf .pdf-services strong,.catalogue-pdf .pdf-etapes strong,.catalogue-pdf .pdf-depots strong{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:10pt}
+.catalogue-pdf .pdf-lecture dd{margin-top:1.5mm;font-size:9pt;line-height:1.5}
+.catalogue-pdf .pdf-etapes{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm}
+.catalogue-pdf .pdf-etapes li{display:flex;gap:2.5mm;align-items:flex-start}
+.catalogue-pdf .pdf-etapes p,.catalogue-pdf .pdf-services p{margin-top:1mm;font-size:8.5pt;line-height:1.45}
+.catalogue-pdf .pdf-services{display:grid;grid-template-columns:1fr 1fr;gap:4mm 8mm}
+/* ouverture de chapitre */
+.catalogue-pdf .pdf-chap{display:grid;grid-template-columns:1fr 1fr;gap:10mm;align-items:start;min-height:100%}
+.catalogue-pdf .pdf-chap-sur{font-size:9.5pt;margin-top:8mm}
+.catalogue-pdf .pdf-chap-nom{font-size:34pt;margin-top:1mm}
+.catalogue-pdf .pdf-chap-accroche{font-size:12pt;line-height:1.3;margin-top:4mm}
+.catalogue-pdf .pdf-chap-intro{margin-top:4mm;line-height:1.5}
+.catalogue-pdf .pdf-chap-compte{margin-top:4mm;font-size:8.5pt}
+.catalogue-pdf .pdf-chap-familles{margin-top:6mm;border-top:1px solid #333642;padding-top:2mm}
+.catalogue-pdf .pdf-chap-familles li{display:flex;justify-content:space-between;gap:3mm;padding:.9mm 0;border-bottom:1px solid rgba(209,214,218,.7);font-size:8.5pt}
+.catalogue-pdf .pdf-chap-familles .pdf-groupe{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:7.5pt;color:rgba(51,54,66,.72);padding-top:2.5mm;border-bottom:0}
+/* sections et familles */
+.catalogue-pdf .pdf-section{break-after:avoid;page-break-after:avoid;margin:0 0 4mm;padding-top:1mm}
+.catalogue-pdf .pdf-section-nom{font-size:18pt;margin-top:2.5mm}
+.catalogue-pdf .pdf-section-accroche{font-size:10pt;margin-top:1.5mm}
+.catalogue-pdf .pdf-famille{margin-top:9mm}
+.catalogue-pdf .pdf-section + .pdf-famille{margin-top:2mm}
+.catalogue-pdf .pdf-famille-tete{display:grid;grid-template-columns:58mm minmax(0,1fr);gap:6mm;align-items:start;break-inside:avoid;page-break-inside:avoid;padding-top:4mm;border-top:1px solid #333642}
+.catalogue-pdf .pdf-famille-studio figcaption{margin-top:1.2mm;font-size:7pt;color:rgba(51,54,66,.72)}
+.catalogue-pdf .pdf-famille-studio .pdf-plaque{aspect-ratio:4/3}
+.catalogue-pdf .pdf-famille-studio img{width:100%;height:auto}
+.catalogue-pdf .pdf-famille-nom{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:15pt;line-height:1.15}
+.catalogue-pdf .pdf-famille-accroche{margin-top:2mm;line-height:1.45}
+.catalogue-pdf .pdf-caracteristiques{display:grid;grid-template-columns:1fr 1fr;column-gap:6mm;margin-top:3mm}
+.catalogue-pdf .pdf-caracteristiques div{display:flex;justify-content:space-between;align-items:baseline;gap:3mm;padding:1mm 0;border-bottom:1px solid rgba(209,214,218,.7);font-size:8.5pt}
+.catalogue-pdf .pdf-caracteristiques dd{text-align:right}
+.catalogue-pdf .pdf-caracteristiques .pdf-large{grid-column:1 / -1;flex-direction:column;align-items:flex-start;gap:1.2mm}
+.catalogue-pdf .pdf-chips{display:flex;flex-wrap:wrap;gap:1.2mm}
+.catalogue-pdf .pdf-chips span{border:1px solid #D1D6DA;border-radius:1mm;padding:.3mm 1.4mm;font-size:7.5pt}
+.catalogue-pdf .pdf-docs{margin-top:2.5mm;font-size:8pt}
+.catalogue-pdf .pdf-nb-variantes{margin-top:4mm;font-size:8pt;color:rgba(51,54,66,.72)}
+/* planches */
+.catalogue-pdf .pdf-planches{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm;margin-top:2mm}
+.catalogue-pdf .pdf-planche{break-inside:avoid;page-break-inside:avoid;border:1px solid #D1D6DA;border-radius:2mm;overflow:hidden;min-width:0}
+.catalogue-pdf .pdf-planche > a{display:block;height:100%}
+.catalogue-pdf .pdf-planche-image{aspect-ratio:4/5;border:0;border-radius:0}
+.catalogue-pdf .pdf-planche-image img{width:100%;height:100%;object-fit:contain;padding:1.5mm}
+.catalogue-pdf .pdf-planche-texte{padding:2mm 2.2mm 2.4mm}
+.catalogue-pdf .pdf-planche-nom{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:7.8pt;line-height:1.25;overflow-wrap:anywhere}
+.catalogue-pdf .pdf-planche-specs{margin-top:1.4mm}
+.catalogue-pdf .pdf-planche-specs div{display:flex;justify-content:space-between;gap:1.5mm;font-size:7pt;line-height:1.35}
+.catalogue-pdf .pdf-planche-specs dd{text-align:right;white-space:nowrap}
+/* quatrième de couverture */
+.catalogue-pdf .pdf-quatrieme-baseline{font-size:13pt;margin-top:8mm}
+.catalogue-pdf .pdf-depots{display:grid;grid-template-columns:1fr 1fr;gap:5mm 8mm}
+.catalogue-pdf .pdf-depots p{font-size:8.5pt;line-height:1.45;margin-top:.8mm}
+.catalogue-pdf .pdf-contact{font-size:10pt;line-height:1.6}
+.catalogue-pdf .pdf-quatrieme-pied{margin-top:14mm}
+@media screen{
+  .catalogue-pdf{padding:32mm 0 10mm;background:#e9ecee}
+  .catalogue-pdf .page{width:210mm;min-height:297mm;margin:0 auto 8mm;padding:14mm 12mm 16mm;background:#fff;box-shadow:0 2mm 8mm rgba(51,54,66,.18)}
+}
+@media print{
+  .catalogue-pdf{padding:0;background:#fff}
+  .catalogue-pdf .page{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}
+}

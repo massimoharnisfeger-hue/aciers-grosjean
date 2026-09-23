@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import { site, lienTel } from "@/lib/content";
 import { univers, noeuds, totalProduits } from "@/lib/catalogue";
+import { catalogueActif } from "@/lib/catalogue-visuel";
 import { servicesDetail, depotsDetail, articles } from "@/lib/edito";
 
 function Colonne({ titre, liens }: { titre: string; liens: { label: string; href: string }[] }) {
@@ -80,7 +81,7 @@ export default function Footer() {
             titre="Univers"
             liens={[
               ...univers.map((u) => ({ label: u.nom, href: `/${u.slug}` })),
-              { label: "Catalogue en images", href: "/catalogue" },
+              ...(catalogueActif ? [{ label: "Catalogue en images", href: "/catalogue" }] : []),
             ]}
           />
           <Colonne

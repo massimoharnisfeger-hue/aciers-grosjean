@@ -31,6 +31,19 @@ import { normaliserRecherche } from "@/lib/recherche-texte";
  * Module serveur uniquement : il embarque le catalogue entier.
  */
 
+/**
+ * Le catalogue ne se construit que sur le poste du propriétaire (`.env.local`,
+ * `CATALOGUE_LOCAL=oui`) tant qu'il n'est pas validé : ni Vercel ni GitHub ne
+ * portent le drapeau. Sans lui, les pages répondent 404 et aucun lien n'y mène ;
+ * le code reste en place, prêt à être remis en ligne en posant le drapeau.
+ * Décision du 23/09 (ADR-0010) : le livrable est un document PDF, généré
+ * localement par `scripts/catalogue/exporter_pdf.py` quand tout sera validé.
+ */
+export const catalogueActif = process.env.CATALOGUE_LOCAL === "oui";
+
+/** Domaine du site : les liens du document PDF doivent fonctionner hors du poste. */
+export const SITE_URL = "https://www.aciersgrosjean.be";
+
 export type Visuel = { src: string; largeur: number; hauteur: number; alt: string };
 
 const visuels = visuelsBruts as unknown as {
@@ -43,6 +56,8 @@ export type Variante = {
   nom: string;
   /** Fiche produit du site : la seule route d'un produit. */
   href: string;
+  /** Adresse de la fiche sur le site actuel, telle que relevée : c'est elle que le document PDF lie. */
+  hrefSite: string;
   visuel: Visuel | null;
   /** Ce qui distingue cette variante des autres de la famille, par importance. */
   specs: Spec[];
@@ -135,6 +150,7 @@ function famille(n: Noeud, contexte: string[]): Famille {
     slug: p.slug,
     nom: p.nom,
     href: `/p/${p.slug}`,
+    hrefSite: p.urlSiteActuel ?? `${SITE_URL}/p/${p.slug}`,
     visuel: visuels.produits[p.slug] ?? null,
     specs: specsParImportance(sansPoids(p.specs).filter((s) => !communsLabels.has(s.label))).slice(0, 3),
     poids: poidsDe(p),
