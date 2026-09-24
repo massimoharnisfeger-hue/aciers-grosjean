@@ -74,45 +74,45 @@
   },
   "carre-plein-de-10x10mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-10x10mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 10x10mm en acier : rendu 3D aux cotes (a 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 10x10mm en acier : rendu 3D aux cotes (a 10 mm) et fiche technique"
   },
   "carre-plein-de-12x12mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-12x12mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 12x12mm en acier : rendu 3D aux cotes (a 12 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 12x12mm en acier : rendu 3D aux cotes (a 12 mm) et fiche technique"
   },
   "carre-plein-de-14x14mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-14x14mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 14x14mm en acier : rendu 3D aux cotes (a 14 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 14x14mm en acier : rendu 3D aux cotes (a 14 mm) et fiche technique"
   },
   "carre-plein-de-16x16mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-16x16mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 16x16mm en acier : rendu 3D aux cotes (a 16 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 16x16mm en acier : rendu 3D aux cotes (a 16 mm) et fiche technique"
   },
   "carre-plein-de-20x20mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-20x20mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 20x20mm en acier : rendu 3D aux cotes (a 20 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 20x20mm en acier : rendu 3D aux cotes (a 20 mm) et fiche technique"
   },
   "carre-plein-de-6x6mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-6x6mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 6x6mm en acier : rendu 3D aux cotes (a 6 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 6x6mm en acier : rendu 3D aux cotes (a 6 mm) et fiche technique"
   },
   "carre-plein-de-8x8mm-en-acier": {
    "src": "/images/produits/acier/profiles/carre-plein/carre-plein-de-8x8mm-en-acier-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Carré plein de 8x8mm en acier : rendu 3D aux cotes (a 8 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Carré plein de 8x8mm en acier : rendu 3D aux cotes (a 8 mm) et fiche technique"
   },
   "corniere-egale-100x100x10mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-egale/corniere-egale-100x100x10mm-acier-lac-caracteristiques.webp",
@@ -2848,8 +2848,8 @@
   },
   "/acier/profiles/carre-plein": {
    "src": "/images/produits/acier/profiles/carre-plein/studio-carre-plein.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Carré plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/acier/profiles/corniere-egale": {
