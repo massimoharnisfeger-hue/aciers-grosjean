@@ -259,6 +259,14 @@ def noir_pur_servi(chemin, x_max=None):
     return round(ImageStat.Stat(ImageChops.multiply(noir, opaque)).sum[0] / 255)
 
 
+def poids_de_la_description(texte):
+    """Poids écrit dans la description de la page (texte du site actuel), en kg, ou None. La casse varie : « Poids: 0,63
+    Kg/m » dans 72 descriptions sur 141 ; le motif en minuscules en manquait la moitié, et 31 écarts avec la fiche (cornière
+    alu 40x40x3, 24/09 ; contrôle V17)."""
+    m = re.search(r"poids\s*:?\s*(\d+(?:[.,]\d+)?)\s*kg", texte, re.IGNORECASE)
+    return float(m.group(1).replace(",", ".")) if m else None
+
+
 def lisere_bord(brut, servie, minimum=20):
     """Écart médian, en niveaux de gris, entre l'image servie et le rendu brut posé normalement sur le blanc, sur le bord
     de la pièce : pixels qu'elle ne couvre qu'en partie (0 < alpha < 250, voisins d'un pixel opaque) et qui ont la
@@ -669,9 +677,10 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : longueurs page {page.get('Longueurs')} ≠ image {valeurs['longueurs']['valeur']}")
         # poids écrit dans la description de la page (texte du site actuel) : la fiche prime (règle du propriétaire),
         # l'écart va en question en attente — note, pas écart bloquant
-        m = re.search(r"[Pp]oids\s*:?\s*([\d]+(?:[.,]\d+)?)\s*kg", page.get("_texte", ""))
-        if m and "Poids" in fiche and nombre(fiche["Poids"]) is not None and abs(nombre(m.group(1)) - nombre(fiche["Poids"])) > 0.005:
-            print(f"   note : {slug} : poids de la description « {m.group(1)} kg » ≠ image {fiche['Poids']} (question en attente)")
+        poids_texte = poids_de_la_description(page.get("_texte", ""))
+        if (poids_texte is not None and "Poids" in fiche and nombre(fiche["Poids"]) is not None
+                and abs(poids_texte - nombre(fiche["Poids"])) > 0.005):
+            print(f"   note : {slug} : poids de la description « {poids_texte:g} kg » ≠ image {fiche['Poids']} (question en attente)")
         if "Finition" in fiche and fiche["Finition"] != FINITIONS.get(page.get("Finition"), page.get("Finition")):
             ecarts.append(f"{slug} : finition page {page.get('Finition')} ≠ image {fiche['Finition']}")
     if brut and lum_studio is None:

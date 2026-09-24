@@ -51,6 +51,8 @@ V15 - Posee sur le blanc, la piece garde l'anticrenelage de son bord : seule l'o
 V16 - Tube rond : une epaisseur du nom que la page contredit (adresse, description courte) n'est pas affichee quand le
      poids du site confirme l'autre valeur et pas celle du nom. Tubes 26,9 et 88,9 (24/09, verification independante) :
      « t 2,5 mm » et « t 3 mm » affiches, alors que la page dit 2,35 et 3,25 et que le poids du site les confirme.
+V17 - Le poids ecrit dans la description de la page se lit quelle que soit la casse (« Poids: 0,63 Kg/m ») : le motif en
+     minuscules manquait 72 descriptions sur 141 et 31 ecarts avec la fiche (corniere alu 40x40x3, 24/09).
 """
 
 import ast
@@ -614,6 +616,28 @@ class ModelesSource(unittest.TestCase):
                     break
         self.assertGreater(examines, 10, "aucun tube rond examiné : contrôle sans objet")
         self.assertEqual(fautifs, [], "épaisseur contredite par la page, mais affichée : " + " ; ".join(fautifs))
+
+    def test_v17_le_poids_de_la_description_se_lit_quelle_que_soit_la_casse(self):
+        """La note « poids de la description ≠ image » de `controler_rendus.py` lit le poids écrit dans la description de la
+        page (texte du site actuel), quelle que soit sa casse.
+
+        Cornière alu 40x40x3, 24/09 (vérification indépendante) : la description dit trois fois « Poids: 0,63 Kg/m », la
+        fiche 0,62 ; le motif cherchait « kg » en minuscules et 72 descriptions sur 141 écrivent « Kg » : 31 écarts avec la
+        fiche n'avaient jamais été signalés. Sans Pillow : la fonction est lue dans le source."""
+        arbre = ast.parse((RENDU / "controler_rendus.py").read_text(encoding="utf-8"))
+        fonctions = {n.name: n for n in arbre.body if isinstance(n, ast.FunctionDef)}
+        self.assertIn("poids_de_la_description", fonctions, "controler_rendus.py ne lit pas le poids de la description")
+        appels = [n for n in ast.walk(fonctions.get("controler", ast.Module(body=[], type_ignores=[])))
+                  if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "poids_de_la_description"]
+        self.assertTrue(appels, "controler() ne compare pas le poids de la description à celui de l'image")
+        espace = {"re": re}
+        exec(compile(ast.Module(body=[fonctions["poids_de_la_description"]], type_ignores=[]), "controler_rendus.py", "exec"),
+             espace)
+        lire = espace["poids_de_la_description"]
+        self.assertEqual(lire("Cornière égale 40x40x3mm. Poids: 0,63 Kg/m. Longueur 6 m."), 0.63)
+        self.assertEqual(lire("Poids 1,2 kg par mètre"), 1.2)
+        self.assertEqual(lire("POIDS : 4.5 KG"), 4.5)
+        self.assertIsNone(lire("Tube rond 26,9x2,35mm, série légère"))
 
 
 if __name__ == "__main__":

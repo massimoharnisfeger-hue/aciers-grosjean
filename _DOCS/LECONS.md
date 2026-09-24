@@ -436,3 +436,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : la règle des 3 % ne regardait que le poids, contre les cotes du nom ; rien ne comparait le nom aux autres désignations de la même page. Corrigé : `epaisseurs_contestees()` (`donnees_produits.py`) retire l'épaisseur quand l'adresse ou la description donne une autre valeur que le poids confirme et que celle du nom n'explique pas ; question 8 réécrite (quelle épaisseur est livrée ?). Rhabillage seul.
 - **Contrôle** : `tests/test_rendus_3d.py::ModelesSource::test_v16_une_epaisseur_contredite_par_la_page_n_est_pas_affichee`
 - **Date** : 2026-09-24
+
+### L-066 — un contrôle qui cherche un mot dans un texte repris d'un site en ignore la casse
+- **Symptôme** : le 24/09, vérification indépendante des cornières alu : la description de la cornière 40x40x3 dit trois fois « Poids: 0,63 Kg/m », la fiche 0,62 ; la note « poids de la description ≠ image » de `controler_rendus.py` ne l'avait jamais signalé. 72 descriptions sur 141 écrivent « Kg » : 31 écarts passaient inaperçus (56 sur tout le catalogue, dont 34 poutrelles déjà connues).
+- **Cause** : le motif cherchait `[Pp]oids … kg` : la majuscule de « Poids » était prévue, pas celle de « Kg ». Corrigé : `poids_de_la_description()`, insensible à la casse ; contre-épreuve : l'ancien motif ne lit rien dans « Poids: 0,63 Kg/m ». Question 49 pour les 22 écarts nouveaux.
+- **Contrôle** : `tests/test_rendus_3d.py::ModelesSource::test_v17_le_poids_de_la_description_se_lit_quelle_que_soit_la_casse`
+- **Date** : 2026-09-24
