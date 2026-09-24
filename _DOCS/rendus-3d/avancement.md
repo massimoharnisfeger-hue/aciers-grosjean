@@ -20,6 +20,12 @@ et relus par `preparer_rendus.py studio-famille` (contrôle V14). Travail pouss�
 **Les autres familles** (poutrelles, fer T, tôles, treillis, clôtures, caillebotis, bardage) ne sont pas rendues à
 nouveau : leurs images d'origine entières (1600 × 1200) sont remises en ligne, identiques au rendu servi.
 
+**Familles intégrées** : carré plein, cornière égale (CONFORMES, 24/09). **À faire après la série** (proposé par la vérification
+indépendante du carré plein ; pas pendant la série, pour ne pas mélanger deux versions de `rendu_profil.py`) : écrire les
+pièces (type, h, b, longueur) dans le `.json` de chaque fiche et faire vérifier par `controler_rendus.py` que la longueur
+vaut 6,25 × la plus grande cote, arrondie au mm, plafonnée à 500 (aujourd'hui seule la photo studio la note, V5).
+Autre voie, sans toucher au rendu (vérification des cornières égales) : rejouer la caméra de cadrage en Python (azimut, élévation, focale, boîte) et comparer la silhouette projetée de la section nominale au masque alpha — recouvrement 0,997 à 0,999 à la bonne longueur, 0,98 dès ± 2 % (scripts de l'atelier `verif/corniere-egale-24-09/`).
+
 ## État au 16/09/2026 à 13 h (historique, remplacé par la section ci-dessus)
 
 **En ligne : 455 fiches sur 477** avec leur visuel coté + la photo studio de leur catégorie (`lib/visuels-produits.json`, 47 catégories). **La vague 3 remodélisée est terminée** : marches caillebotis, marches O2, plancher O2 (CONFORME 12 h 10) et panneau isolé ECO, tôle profilée 30.200.1000 (CONFORME 13 h) intégrées. Dernier envoi : `c83ebfc` ; **build `verifier-leger.ps1` en cours à 13 h, puis commit-push groupé** (code rendu-3d + visuels + docs). 2-categories à jour (`_ETAT.txt` 12 h 58, 519 images, 51 familles sur 53 entièrement en ligne).
