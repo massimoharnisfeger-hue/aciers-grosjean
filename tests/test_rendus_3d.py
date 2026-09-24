@@ -48,6 +48,9 @@ V14 - La composition de chaque photo studio de barres (les fiches rendues cote a
 V15 - Posee sur le blanc, la piece garde l'anticrenelage de son bord : seule l'ombre du sol est allegee. Tout pixel
      d'alpha < 250 etait traite en ombre (x 0,55) : bord 64 niveaux trop clair, en escalier, sur toutes les images
      habillees (large plat, 24/09, verification independante). Mesure sur image synthetique avec Pillow.
+V16 - Tube rond : une epaisseur du nom que la page contredit (adresse, description courte) n'est pas affichee quand le
+     poids du site confirme l'autre valeur et pas celle du nom. Tubes 26,9 et 88,9 (24/09, verification independante) :
+     « t 2,5 mm » et « t 3 mm » affiches, alors que la page dit 2,35 et 3,25 et que le poids du site les confirme.
 """
 
 import ast
@@ -55,7 +58,10 @@ import contextlib
 import importlib.util
 import io
 import json
+import math
+import re
 import sys
+import urllib.parse
 import tempfile
 import unittest
 from pathlib import Path
@@ -564,6 +570,50 @@ class ModelesSource(unittest.TestCase):
         self.assertIsNotNone(ecart_bon, "lisere_bord ne trouve aucun pixel de bord a mesurer")
         self.assertLess(abs(ecart_bon), 5, "lisere_bord signale un bord juste")
         self.assertGreater(ecart_ancien, 20, "lisere_bord ne voit pas le bord eclairci d'avant le 24/09")
+
+    def test_v16_une_epaisseur_contredite_par_la_page_n_est_pas_affichee(self):
+        """Tube rond : quand l'adresse ou la description courte de la fiche donne une autre épaisseur, que le poids du site
+        confirme (3 % au plus du poids théorique) alors que l'épaisseur du nom ne l'explique pas (plus de 3 %), les sources
+        se contredisent sur t : il n'est pas affiché (CLAUDE.md), la question est notée.
+
+        Tubes ronds, 24/09 (vérification indépendante) : 26,9x2,5 — adresse « 269x235 », description « 26,9x2,35mm »,
+        poids 1,41 kg/m (t = 2,33 mm) ; 88,9x3,00 — adresse « 889x325 », poids 6,81 kg/m (t = 3,22 mm). Le poids,
+        contredit, était masqué ; l'épaisseur, contredite par les mêmes sources, était écrite : « t 2,5 mm », « t 3 mm »."""
+        produits = json.loads(PRODUITS.read_text(encoding="utf-8"))
+        reel = json.loads((RACINE / "lib" / "site-actuel.json").read_text(encoding="utf-8"))
+        desc = json.loads((RACINE / "lib" / "descriptions-site-actuel.json").read_text(encoding="utf-8"))
+
+        def theorique(d, e, rho=7.85):
+            return math.pi * (d - e) * e * rho * 1e-3
+
+        fautifs, examines = [], 0
+        for slug, p in sorted(produits.items()):
+            v = p["valeurs"]
+            if v.get("serie", {}).get("valeur") != "TUBE-ROND" or "t" not in v or v["t"].get("supposee"):
+                continue
+            d, t, kg = v["d"]["valeur"], v["t"]["valeur"], reel.get(slug, {}).get("kg")
+            if not kg:
+                continue
+            examines += 1
+            # masse volumique de l'univers, comme le poids théorique des données : alu 2,70, inox 7,93, acier 7,85
+            rho = {"aluminium": 2.70, "inox": 7.93}.get(p["categorie"].strip("/").split("/")[0], 7.85)
+            if abs(theorique(d, t, rho) - kg) / theorique(d, t, rho) <= 0.03:
+                continue  # l'épaisseur du nom explique le poids
+            autres = []
+            adresse = urllib.parse.unquote(reel[slug].get("url", ""))
+            m = re.search(r"(\d+)x(\d+)mm/?$", adresse)
+            if m and m.group(1) == f"{d:g}".replace(".", ""):
+                autres += [int(m.group(2)) / 10 ** k for k in range(3)]
+            m = re.search(r"(\d+(?:,\d+)?)\s*x\s*(\d+(?:,\d+)?)\s*mm", desc.get(slug, {}).get("courte", ""))
+            if m and float(m.group(1).replace(",", ".")) == d:
+                autres.append(float(m.group(2).replace(",", ".")))
+            for e in autres:
+                if (0.5 * t <= e <= 2 * t and abs(e - t) / t > 0.03
+                        and abs(theorique(d, e, rho) - kg) / theorique(d, e, rho) <= 0.03):
+                    fautifs.append(f"{slug} : t {t:g} mm affiché, la page dit {e:g} mm et le poids {kg} kg/m le confirme")
+                    break
+        self.assertGreater(examines, 10, "aucun tube rond examiné : contrôle sans objet")
+        self.assertEqual(fautifs, [], "épaisseur contredite par la page, mais affichée : " + " ; ".join(fautifs))
 
 
 if __name__ == "__main__":

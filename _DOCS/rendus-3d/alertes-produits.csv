@@ -90,4 +90,6 @@ tube-rectangulaire;tube-rectangle-80x40x3mm-en-acier;Tube rectangle 80x40x3mm en
 tube-rectangulaire;tube-rectangle-80x40x4mm-en-acier;Tube rectangle 80x40x4mm en acier;poids site 7.07 kg/m ≠ fournisseur 6.84 kg/m (écart > 3 %) : non affiché
 tube-rond;tube-rond-114-3x3-65mm-en-acier-brut-serie-legere;Tube rond 114,3x3,65mm en acier brut série légère;cote A du site (114,40 mm) ≠ d (114.3 mm)
 tube-rond;tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché
+tube-rond;tube-rond-26-9x2-5mm-en-acier-brut-serie-legere;Tube rond 26,9x2,5mm en acier brut série légère;épaisseur du nom (2.5 mm) contredite par l'adresse de la fiche et la description de la fiche (2.35 mm), que le poids du site (1.41 kg/m) confirme : non affichée
 tube-rond;tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché
+tube-rond;tube-rond-88-9x3-00mm-en-acier-brut-serie-legere;Tube rond 88,9x3,00mm en acier brut série légère;épaisseur du nom (3 mm) contredite par l'adresse de la fiche (3.25 mm), que le poids du site (6.81 kg/m) confirme : non affichée

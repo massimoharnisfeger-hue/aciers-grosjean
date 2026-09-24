@@ -12,13 +12,15 @@ Sorties : scripts/rendu-3d/donnees/produits.json  (lu par les scripts de rendu)
 
 Usage : python scripts/rendu-3d/donnees_produits.py [famille ...]   (defaut : toutes les familles traitees)
         python scripts/rendu-3d/donnees_produits.py --longueurs-seules
-            ajoute seulement les longueurs standard du site aux barres, profiles et tubes (sans relire les PDF)
+            post-traitements seulement, sans relire les PDF : longueurs standard du site (barres, profiles, tubes)
+            et epaisseurs de tube rond contredites par la page (`epaisseurs_contestees`)
 """
 import csv
 import json
 import math
 import re
 import sys
+import urllib.parse
 from pathlib import Path
 
 import pdfplumber
@@ -1053,6 +1055,59 @@ def longueurs_standard(tous, reel):
     return n
 
 
+MASSE_VOLUMIQUE = {"aluminium": 2.70, "inox": 7.93}  # kg/dm³, `profils_alu_inox` ; acier : 7,85
+
+
+def epaisseurs_de_la_page(slug, d, t, reel, desc):
+    """Épaisseurs qu'une fiche de tube rond donne ailleurs que dans son nom : [(source, épaisseur)]. L'adresse écrit les
+    cotes sans virgule (« …-269x235mm » : 26,9 x 2,35) ; on garde la lecture la plus proche de t, entre t/2 et 2 t."""
+    trouvees = []
+    adresse = urllib.parse.unquote((reel.get(slug) or {}).get("url", ""))
+    m = re.search(r"(\d+)x(\d+)mm/?$", adresse)
+    if m and m.group(1) == f"{d:g}".replace(".", ""):
+        lectures = [int(m.group(2)) / 10 ** k for k in range(3) if 0.5 * t <= int(m.group(2)) / 10 ** k <= 2 * t]
+        if lectures:
+            trouvees.append(("l'adresse de la fiche", min(lectures, key=lambda e: abs(e - t))))
+    m = re.search(r"(\d+(?:,\d+)?)\s*x\s*(\d+(?:,\d+)?)\s*mm", (desc.get(slug) or {}).get("courte", ""))
+    if m and nombre(m.group(1)) == d:
+        trouvees.append(("la description de la fiche", nombre(m.group(2))))
+    return trouvees
+
+
+def epaisseurs_contestees(tous, reel, desc):
+    """Tube rond : épaisseur du nom contredite par la page elle-même. Quand l'adresse ou la description courte donne une
+    autre épaisseur, que le poids du site confirme (≤ 3 % du théorique) alors que celle du nom ne l'explique pas (> 3 %),
+    les sources se contredisent sur t : il n'est pas affiché (CLAUDE.md), la question est notée (question 8).
+    Tubes 26,9 et 88,9 (vérification indépendante du 24/09) : le poids, contredit, était masqué, mais l'épaisseur, que
+    les mêmes sources contredisent, était écrite (contrôle V16). Renvoie le nombre d'épaisseurs retirées."""
+    n = 0
+    for slug, p in tous.items():
+        v = p["valeurs"]
+        kg = (reel.get(slug) or {}).get("kg")
+        if v.get("serie", {}).get("valeur") != "TUBE-ROND" or "t" not in v or "d" not in v or not kg:
+            continue
+        d, t = v["d"]["valeur"], v["t"]["valeur"]
+        rho = MASSE_VOLUMIQUE.get(p["categorie"].strip("/").split("/")[0], 7.85)  # comme le poids théorique de chaque univers
+
+        def theorique(e):
+            return math.pi * (d - e) * e * rho * 1e-3
+
+        if abs(theorique(t) - kg) / theorique(t) <= 0.03:
+            continue  # l'épaisseur du nom explique le poids
+        autres = [(s, e) for s, e in epaisseurs_de_la_page(slug, d, t, reel, desc)
+                  if abs(e - t) / t > 0.03 and abs(theorique(e) - kg) / theorique(e) <= 0.03]
+        if not autres:
+            continue
+        sources = " et ".join(dict.fromkeys(s for s, _ in autres))
+        alerte = (f"épaisseur du nom ({t:g} mm) contredite par {sources} ({autres[0][1]:g} mm), que le poids du site "
+                  f"({kg} kg/m) confirme : non affichée")
+        v["t"] = valeur(t, "mm", f"{SRC_NOM} — {alerte} (questions en attente)", supposee=True)
+        if alerte not in p["alertes"]:
+            p["alertes"].append(alerte)
+        n += 1
+    return n
+
+
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
             "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox,
             "toles-relief": toles_relief, "toles-perforees": toles_perforees, "vague3": vague3}
@@ -1071,6 +1126,7 @@ def main():
         tous.update(nouveaux)
         print(f"{famille} : {len(nouveaux)} produits, {sum(1 for p in nouveaux.values() if p['alertes'])} avec alerte")
     print(f"longueurs standard ajoutees : {longueurs_standard(tous, reel)} produits")
+    print(f"epaisseurs de tube rond contredites par la page, non affichees : {epaisseurs_contestees(tous, reel, desc)}")
     SORTIE_JSON.parent.mkdir(parents=True, exist_ok=True)
     SORTIE_JSON.write_text(json.dumps(dict(sorted(tous.items())), ensure_ascii=False, indent=1), encoding="utf-8")
     SORTIE_CSV.parent.mkdir(parents=True, exist_ok=True)

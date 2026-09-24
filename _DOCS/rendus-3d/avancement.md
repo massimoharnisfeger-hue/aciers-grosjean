@@ -20,7 +20,7 @@ et relus par `preparer_rendus.py studio-famille` (contrôle V14). Travail pouss�
 **Les autres familles** (poutrelles, fer T, tôles, treillis, clôtures, caillebotis, bardage) ne sont pas rendues à
 nouveau : leurs images d'origine entières (1600 × 1200) sont remises en ligne, identiques au rendu servi.
 
-**Familles intégrées** : carré plein, cornières égale et inégale, large plat, plat, rond plein, tube carré, tube rectangulaire (CONFORMES, 24/09). **Liseré clair du bord des pièces** (vérification du large plat) : corrigé dans `habiller.py` (`bord_de_piece`, L-064), mesuré par `controler_rendus.py` (`lisere_bord`, V15) ; les quatre familles déjà faites sont rhabillées et réintégrées (même rendu, seul le bord change). **À faire après la série** (proposé par la vérification
+**Familles intégrées** : carré plein, cornières égale et inégale, large plat, plat, rond plein, tube carré, tube rectangulaire, tube rond (CONFORMES, 24/09 ; tube rond après correction : épaisseur contredite par la page non affichée sur le 26,9 et le 88,9, L-065, question 8). **Liseré clair du bord des pièces** (vérification du large plat) : corrigé dans `habiller.py` (`bord_de_piece`, L-064), mesuré par `controler_rendus.py` (`lisere_bord`, V15) ; les quatre familles déjà faites sont rhabillées et réintégrées (même rendu, seul le bord change). **À faire après la série** (proposé par la vérification
 indépendante du carré plein ; pas pendant la série, pour ne pas mélanger deux versions de `rendu_profil.py`) : écrire les
 pièces (type, h, b, longueur) dans le `.json` de chaque fiche et faire vérifier par `controler_rendus.py` que la longueur
 vaut 6,25 × la plus grande cote, arrondie au mm, plafonnée à 500 (aujourd'hui seule la photo studio la note, V5).

@@ -26491,8 +26491,9 @@
    },
    "t": {
     "valeur": 2.5,
-    "source": "nom du produit",
-    "unite": "mm"
+    "source": "nom du produit — épaisseur du nom (2.5 mm) contredite par l'adresse de la fiche et la description de la fiche (2.35 mm), que le poids du site (1.41 kg/m) confirme : non affichée (questions en attente)",
+    "unite": "mm",
+    "supposee": true
    },
    "poids": {
     "valeur": 1.41,
@@ -26519,7 +26520,8 @@
    }
   },
   "alertes": [
-   "poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché"
+   "poids site 1.41 kg/m ≠ théorique 1.50 kg/m (écart > 3 %) : non affiché",
+   "épaisseur du nom (2.5 mm) contredite par l'adresse de la fiche et la description de la fiche (2.35 mm), que le poids du site (1.41 kg/m) confirme : non affichée"
   ]
  },
  "tube-rond-26-9x2mm-en-inox-304": {
@@ -27061,8 +27063,9 @@
    },
    "t": {
     "valeur": 3.0,
-    "source": "nom du produit",
-    "unite": "mm"
+    "source": "nom du produit — épaisseur du nom (3 mm) contredite par l'adresse de la fiche (3.25 mm), que le poids du site (6.81 kg/m) confirme : non affichée (questions en attente)",
+    "unite": "mm",
+    "supposee": true
    },
    "poids": {
     "valeur": 6.81,
@@ -27089,7 +27092,8 @@
    }
   },
   "alertes": [
-   "poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché"
+   "poids site 6.81 kg/m ≠ théorique 6.36 kg/m (écart > 3 %) : non affiché",
+   "épaisseur du nom (3 mm) contredite par l'adresse de la fiche (3.25 mm), que le poids du site (6.81 kg/m) confirme : non affichée"
   ]
  },
  "tube-rond-de-20x2mm-en-aluminium": {
