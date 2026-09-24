@@ -1316,57 +1316,57 @@
   },
   "rond-lisse-10mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-10mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 10mm en acier laminée à chaud : rendu 3D aux cotes (d 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 10mm en acier laminée à chaud : rendu 3D aux cotes (d 10 mm) et fiche technique"
   },
   "rond-lisse-12mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-12mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 12mm en acier laminée à chaud : rendu 3D aux cotes (d 12 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 12mm en acier laminée à chaud : rendu 3D aux cotes (d 12 mm) et fiche technique"
   },
   "rond-lisse-14mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-14mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 14mm en acier laminée à chaud : rendu 3D aux cotes (d 14 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 14mm en acier laminée à chaud : rendu 3D aux cotes (d 14 mm) et fiche technique"
   },
   "rond-lisse-16mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-16mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 16mm en acier laminée à chaud : rendu 3D aux cotes (d 16 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 16mm en acier laminée à chaud : rendu 3D aux cotes (d 16 mm) et fiche technique"
   },
   "rond-lisse-18mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-18mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 18mm en acier laminée à chaud : rendu 3D aux cotes (d 18 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 18mm en acier laminée à chaud : rendu 3D aux cotes (d 18 mm) et fiche technique"
   },
   "rond-lisse-20mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-20mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 20mm en acier laminée à chaud : rendu 3D aux cotes (d 20 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 20mm en acier laminée à chaud : rendu 3D aux cotes (d 20 mm) et fiche technique"
   },
   "rond-lisse-22mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-22mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 22mm en acier laminée à chaud : rendu 3D aux cotes (d 22 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 22mm en acier laminée à chaud : rendu 3D aux cotes (d 22 mm) et fiche technique"
   },
   "rond-lisse-6mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-6mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 6mm en acier laminée à chaud : rendu 3D aux cotes (d 6 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 6mm en acier laminée à chaud : rendu 3D aux cotes (d 6 mm) et fiche technique"
   },
   "rond-lisse-8mm-en-acier-laminee-a-chaud": {
    "src": "/images/produits/acier/profiles/rond-plein/rond-lisse-8mm-en-acier-laminee-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond lisse 8mm en acier laminée à chaud : rendu 3D aux cotes (d 8 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond lisse 8mm en acier laminée à chaud : rendu 3D aux cotes (d 8 mm) et fiche technique"
   },
   "rond-plein-lisse-diametre-10mm-en-inox": {
    "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-10mm-en-inox-caracteristiques.webp",
@@ -2884,8 +2884,8 @@
   },
   "/acier/profiles/rond-plein": {
    "src": "/images/produits/acier/profiles/rond-plein/studio-rond-plein.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Rond plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/acier/toles/tole-corten": {
