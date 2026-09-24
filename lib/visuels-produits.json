@@ -254,33 +254,33 @@
   },
   "corniere-inegale-100x50x6mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-100x50x6mm-acier-lac-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Cornière inégale 100x50x6mm Acier LAC : rendu 3D aux cotes (a 100 mm, b 50 mm, t 6 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Cornière inégale 100x50x6mm Acier LAC : rendu 3D aux cotes (a 100 mm, b 50 mm, t 6 mm) et fiche technique"
   },
   "corniere-inegale-150x100x10mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-150x100x10mm-acier-lac-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Cornière inégale 150x100x10mm Acier LAC : rendu 3D aux cotes (a 150 mm, b 100 mm, t 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Cornière inégale 150x100x10mm Acier LAC : rendu 3D aux cotes (a 150 mm, b 100 mm, t 10 mm) et fiche technique"
   },
   "corniere-inegale-200x100x10mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-200x100x10mm-acier-lac-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Cornière inégale 200x100x10mm Acier LAC : rendu 3D aux cotes (a 200 mm, b 100 mm, t 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Cornière inégale 200x100x10mm Acier LAC : rendu 3D aux cotes (a 200 mm, b 100 mm, t 10 mm) et fiche technique"
   },
   "corniere-inegale-60x40x5mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-60x40x5mm-acier-lac-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Cornière inégale 60x40x5mm Acier LAC : rendu 3D aux cotes (a 60 mm, b 40 mm, t 5 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Cornière inégale 60x40x5mm Acier LAC : rendu 3D aux cotes (a 60 mm, b 40 mm, t 5 mm) et fiche technique"
   },
   "corniere-inegale-70x50x6mm-acier-lac": {
    "src": "/images/produits/acier/profiles/corniere-inegale/corniere-inegale-70x50x6mm-acier-lac-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Cornière inégale 70x50x6mm Acier LAC : rendu 3D aux cotes (a 70 mm, b 50 mm, t 6 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Cornière inégale 70x50x6mm Acier LAC : rendu 3D aux cotes (a 70 mm, b 50 mm, t 6 mm) et fiche technique"
   },
   "fer-en-t-20x3mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/fer-t/fer-en-t-20x3mm-en-acier-lamine-a-chaud-caracteristiques.webp",
@@ -2860,8 +2860,8 @@
   },
   "/acier/profiles/corniere-inegale": {
    "src": "/images/produits/acier/profiles/corniere-inegale/studio-corniere-inegale.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Cornière inégale en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/acier/profiles/fer-t": {

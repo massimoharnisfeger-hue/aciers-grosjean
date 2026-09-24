@@ -20,7 +20,7 @@ et relus par `preparer_rendus.py studio-famille` (contrôle V14). Travail pouss�
 **Les autres familles** (poutrelles, fer T, tôles, treillis, clôtures, caillebotis, bardage) ne sont pas rendues à
 nouveau : leurs images d'origine entières (1600 × 1200) sont remises en ligne, identiques au rendu servi.
 
-**Familles intégrées** : carré plein, cornière égale (CONFORMES, 24/09). **À faire après la série** (proposé par la vérification
+**Familles intégrées** : carré plein, cornières égale et inégale (CONFORMES, 24/09). **À faire après la série** (proposé par la vérification
 indépendante du carré plein ; pas pendant la série, pour ne pas mélanger deux versions de `rendu_profil.py`) : écrire les
 pièces (type, h, b, longueur) dans le `.json` de chaque fiche et faire vérifier par `controler_rendus.py` que la longueur
 vaut 6,25 × la plus grande cote, arrondie au mm, plafonnée à 500 (aujourd'hui seule la photo studio la note, V5).
