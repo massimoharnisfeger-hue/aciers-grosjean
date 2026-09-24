@@ -23,6 +23,13 @@ TEINTE_GPP = [135, 66, 50]
 # dans le prolongement du pied (vérification du 15/09 ; essai : alpha du sol 25 → 5 → 18 à travers la traînée, 28 → 3 → 0
 # sans ces deux ombres)
 SANS_TRAINEE = {"lumieres_sans_ombre": ["contre", "dessus"]}
+# Longueur des pièces (ADR-0011, vues validées le 14/09 et gardées) : fiche = tronçon de 6,25 × la plus grande cote
+# (RATIO_CADRE, plafond 500 mm) vu en entier ; studio = 7 × la plus grande section (plafond 900 mm). Le 23/09, une barre
+# 4 × plus longue qui sortait du cadre et un studio à 18 × avaient changé la vue ; le propriétaire, le 24/09 : « je veux
+# vraiment avoir l'entièreté de la pièce », « les mêmes vues ». Seule la finition change (chanfrein, coupe, rayons).
+RATIO_CADRE = 6.25
+BARRES = {"PLAT", "CARRE", "ROND", "ROND-BETON", "L", "T", "TC", "TR", "TUBE-ROND", "I", "U"}
+RATIO_STUDIO = 7
 
 
 def piece(p, longueur, ratio):
@@ -181,14 +188,19 @@ def piece(p, longueur, ratio):
     return out, v.get("finition", "BRUT")
 
 
-def reglages_matiere(pc):
+def reglages_matiere(pc, finition="BRUT"):
     """Réglages de matière propres à une famille. Marches (caillebotis, O2) et plancher O2 : galvanisé moins lisse (rugosité
     0,57 au lieu de 0,34). Vérification du 15/09 : photo studio des marches O2 aux trois pièces noire, grise et blanche
     (luminance médiane 48 / 99 / 216), plancher 60 niveaux sous son visuel. Essais à 46° (800 px) : 0,34 -> 90 / 146 / 158,
     0,46 -> 109 / 151 / 160, 0,57 -> 125 / 151 / 158 ; ni la vue (56°, azimut 16) ni les lumières ne réduisaient l'écart de la
-    pièce de gauche (position dans la rangée, pas la pièce : même écart dans l'ordre inverse)."""
+    pièce de gauche (position dans la rangée, pas la pièce : même écart dans l'ordre inverse).
+    Profil U alu : coupe plus sombre (0,40 au lieu de 0,50, `COUPE_PAR_FINITION`). Vérification du 24/09 : à 0,50, l'aile
+    basse sortait à 0–4 niveaux du fond du U vu au-dessus d'elle (contrôle V12) ; plus sombre pour tout l'aluminium, le
+    dessus des plats 80x5 et 100x5 et celui de l'aile verticale des cornières tombaient sous 8 niveaux."""
     if pc.get("o2") or pc.get("caillebotis", {}).get("marche"):
         return {"rugosite_galva": 0.57}
+    if pc.get("type") == "U" and finition == "ALU":
+        return {"base_coupe": 0.40}
     return {}
 
 
@@ -201,6 +213,19 @@ def reglages_studio(pc):
         return {"e_dessus": 150}
     if pc.get("o2") or pc.get("caillebotis", {}).get("marche"):
         return {"e_dessus": 120}
+    return {}
+
+
+def eclairage_studio(finition, type_piece):
+    """Photo studio des barres en acier brut (calamine) : lumière du dessus doublée (45 → 90) et débouchage sans ombre.
+    Essais du 23/09 au soir (large plat, tube carré, 1600 px) : pièces plus claires de 6 à 9 niveaux, donc plus proches
+    de leurs fiches (écart studio / fiches des plats −23 → −14 environ), sans délaver. L'écart entre les pièces du fond
+    et celle de devant vient de l'occlusion des pièces voisines, pas de l'ombre du débouchage : il bouge à peine (25 → 23).
+    Aluminium et inox : photos déjà au niveau de leurs fiches (200–207 contre 205), réglage inchangé. Barres, tubes et
+    profilés seulement (`BARRES`) : jamais essayé sur une grande face horizontale (tôles vues à 48°), à essayer avant
+    (vérification indépendante du 23/09)."""
+    if finition == "BRUT" and type_piece in BARRES:
+        return {"e_dessus": 90, "lumieres_sans_ombre": ["debouchage"]}
     return {}
 
 
@@ -259,7 +284,7 @@ def main():
               "points_seuls": options["points-seuls"]}
     if commande == "car":
         for slug in reste:
-            pc, finition = piece(produits[slug], 500, 6.25)
+            pc, finition = piece(produits[slug], 500, RATIO_CADRE)  # pièce entière dans le cadre (ADR-0011)
             # tôle vue de plus haut : dessus lisible et plaque plus grande dans le cadre (l'épaisseur est en loupe)
             # panneau de clôture : azimut 35 (au lieu de 20) pour lire la cassure en V des fils verticaux dans les plis
             # (essai du 15/09 : décalage du V de 3 à 5 px à l'écran)
@@ -270,7 +295,7 @@ def main():
             # (moiré sur les R5 T8, vérification du 15/09)
             if pc.get("perforation", {}).get("pas", 99) < 12:
                 vue["surechantillonnage"] = 2
-            liste.append({**commun, **vue, **reglages_matiere(pc), **reglages_nervures(pc, "caracteristiques"),
+            liste.append({**commun, **vue, **reglages_matiere(pc, finition), **reglages_nervures(pc, "caracteristiques"),
                           **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
@@ -282,7 +307,7 @@ def main():
         # même longueur pour toutes les pièces de la photo, proportionnée à la plus grande section (sauf tôle entière)
         for pc in pieces:
             if pc["type"] not in ("TOLE", "TREILLIS", "PANNEAU-CLOTURE"):
-                pc["longueur"] = min(900, round(7 * max(max(q["h"], q["b"]) for q in pieces)))
+                pc["longueur"] = min(900, round(RATIO_STUDIO * max(max(q["h"], q["b"]) for q in pieces)))
                 arrondir_au_pas_des_trous(pc)
         if len(finitions) > 1:
             raise SystemExit(f"Finitions differentes dans la meme photo studio : {finitions}")
@@ -292,7 +317,8 @@ def main():
         # tôles en métal lisse : vue plus plongeante, proche des visuels (48°) ; à 30°, elles reflétaient le studio
         # sombre, photo 60 niveaux sous les visuels (vérification du 15/09 ; essai : −68 → −15 pour l'inox)
         elevation = (46 if finition in ("INOX", "FROID", "GALVA", "ALU") else 30) if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20
-        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **reglages_matiere(pieces[0]), **reglages_studio(pieces[0]),
+        liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **eclairage_studio(finition, pieces[0]["type"]), **reglages_matiere(pieces[0], finition),
+                      **reglages_studio(pieces[0]),
                       **reglages_nervures(pieces[0], "studio"), "slug": nom, "mode": "studio", "pieces": pieces,
                       "finition": finition, "azimut": 24, "elevation": elevation})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")

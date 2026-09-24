@@ -207,7 +207,7 @@ function PlancheDocument({ variante: v }: { variante: Variante }) {
       <a href={v.hrefSite}>
         <div className="pdf-plaque pdf-planche-image">
           {v.visuel ? (
-            <Image src={v.visuel.src} alt={v.visuel.alt} width={v.visuel.largeur} height={v.visuel.hauteur} sizes="300px" loading="eager" />
+            <Image src={v.visuel.src} alt={v.visuel.alt} width={v.visuel.largeur} height={v.visuel.hauteur} sizes="500px" loading="eager" />
           ) : (
             <p className="pdf-vide"><span>Visuel à compléter</span></p>
           )}
@@ -243,7 +243,7 @@ function FamilleDocument({ famille: f }: { famille: Famille }) {
       <div className="pdf-famille-tete">
         <figure className="pdf-famille-studio">
           <div className="pdf-plaque">
-            {f.studio ? <Studio visuel={f.studio} sizes="400px" /> : <p className="pdf-vide"><span>Photo studio à compléter</span></p>}
+            {f.studio ? <Studio visuel={f.studio} sizes="640px" /> : <p className="pdf-vide"><span>Photo studio à compléter</span></p>}
           </div>
           {f.studio && <figcaption>Photo studio, rendu 3D sur fond blanc</figcaption>}
         </figure>

@@ -98,9 +98,11 @@ TRACES = []  # tracés en deux passes, halo blanc puis trait
 PASTILLES = []
 TRAITS_COTES = []  # extrémités du trait de chaque étiquette de cote (même rang que PASTILLES), None pour les pinces
 RAPPELS = []  # lignes de rappel réellement tracées (début côté pièce, fin), relues par controler_rendus.py
+RAPPELS_COTE = []  # rang, dans PASTILLES, de l'étiquette de la cote de chaque rappel (même rang que RAPPELS)
 MASQUE = None  # pixels opaques du rendu brut (la pièce), pour coller les lignes de rappel
 CLAIR = None  # luminance du rendu brut sur la pièce (0 ailleurs) : une étiquette ne doit pas cacher une paroi claire
 FAMILLE_EN_COURS = None  # famille de la fiche habillée (produits.json)
+PLACE_T = None  # place choisie par place_t_tube() (cavité, calée, flanc), écrite dans le sidecar pour controler_rendus.py
 FAMILLES_COTE_COURTE_SUR_LE_TRAIT = {"marche-caillebotis", "marche-o2"}
 
 
@@ -111,6 +113,69 @@ def paroi_sous(x0, y0, x1, y1, seuil=90):
         return 0.0
     zone = CLAIR.crop((int(x0), int(y0), int(x1) + 1, int(y1) + 1))
     return sum(1 for v in zone.getdata() if v > seuil) / max(zone.width * zone.height, 1)
+
+
+def etiquette_entre_rappels(boite, rappel_a, rappel_b):
+    """Le centre de l'étiquette `boite` (x0, y0, x1, y1) est-il dans la bande entre les deux rappels d'une cote ?
+    Elle s'y lirait comme la valeur de cette cote (tube rectangulaire 50x20x2, vérification du 23/09 ; contrôle V6).
+    Fonction pure : testée sans Pillow."""
+    cx, cy = (boite[0] + boite[2]) / 2, (boite[1] + boite[3]) / 2
+    poly = [rappel_a[0], rappel_a[1], rappel_b[1], rappel_b[0]]
+    dedans = False
+    for (x0, y0), (x1, y1) in zip(poly, poly[1:] + poly[:1]):
+        if (y0 > cy) != (y1 > cy) and cx < x0 + (cy - y0) * (x1 - x0) / (y1 - y0):
+            dedans = not dedans
+    return dedans
+
+
+def etiquette_touche_trait(boite, segment, marge=6):
+    """Un point du segment est-il à moins de `marge` px de l'étiquette `boite` ? (contrôle V6, fonction pure)"""
+    (xa, ya), (xb, yb) = segment
+    x0, y0, x1, y1 = boite[0] - marge, boite[1] - marge, boite[2] + marge, boite[3] + marge
+    n = max(1, int(max(abs(xb - xa), abs(yb - ya))))
+    return any(x0 <= xa + (xb - xa) * k / n <= x1 and y0 <= ya + (yb - ya) * k / n <= y1 for k in range(n + 1))
+
+
+def libre_de_paroi(cx, cy, demi_l, marge=6):
+    """L'étiquette t (demi-largeur `demi_l`, hauteur 40) centrée en (cx, cy) est-elle à `marge` px au moins de toute
+    paroi claire ? (tube carré 15x15x2 : 3 px, tube rectangulaire 120x60x3 : 2 px, vérifications du 23/09)"""
+    return paroi_sous(cx - demi_l - marge, cy - 20 - marge, cx + demi_l + marge, cy + 20 + marge) <= 0.002
+
+
+def place_t_tube(ag, ad, demi_l):
+    """Centre de l'étiquette t d'un tube carré ou rectangulaire ; `ag`, `ad` = faces extérieure et intérieure de la
+    paroi pincée.
+
+    Dans la cavité si elle y tient à 6 px des parois : place du 15/09 (centre à 150 px), sinon calée juste après son
+    trait (bord gauche à 70 px). Sinon sur le flanc du tube, à droite de la section, à la hauteur de la pince, comme le t
+    des plats. Plus jamais sous le tube : posée entre les rappels de b, elle se lisait comme la valeur de b (tube
+    rectangulaire 50x20x2, vérification du 23/09 ; contrôle V6)."""
+    global PLACE_T
+    if CLAIR is None:
+        return (ad[0] + 150, ad[1])
+    for nom, centre in (("cavite", (ad[0] + 150, ad[1])), ("calee", (ad[0] + 70 + demi_l, ad[1]))):
+        if libre_de_paroi(*centre, demi_l):
+            PLACE_T = {"type": nom}
+            return centre
+    # flanc : traverser la cavité (sombre) puis la paroi opposée (claire) sur la ligne de la pince
+    y, x, fin = int(round(ad[1])), int(ad[0]) + 2, min(CLAIR.width - 1, int(ad[0]) + 900)
+    while x < fin and CLAIR.getpixel((x, y)) <= 90:
+        x += 1
+    if x >= fin:  # paroi opposée introuvable : place du 15/09, que les contrôles signaleront
+        return (ad[0] + 150, ad[1])
+    x_paroi = x
+    while x < fin and CLAIR.getpixel((x, y)) > 90:
+        x += 1
+    # flanc clair (aluminium, inox) : il prolonge la face sciée sans changer de teinte ; la paroi s'arrête à son
+    # épaisseur, mesurée sur la paroi pincée (tube rectangulaire alu 60x30x3 : étiquette à 350 px ; 23/09, V7)
+    epaisseur = max(4, ad[0] - ag[0])
+    if x - x_paroi > 2 * epaisseur + 4:
+        x = int(x_paroi + epaisseur)
+    gauche = x + 16
+    ligne(decale(ad, 64, 0), (gauche - 4, ad[1]), ENCRE)  # le trait traverse la cavité et la paroi jusqu'à l'étiquette
+    # flanc : l'étiquette est posée sur la pièce, clair ou sombre ; le contrôle vérifie qu'elle laisse la paroi libre
+    PLACE_T = {"type": "flanc", "x_paroi": x}
+    return (gauche + demi_l, ad[1])
 
 
 def pres_de_la_piece(x, y, rayon):
@@ -224,6 +289,7 @@ def cote(a, b, rappels, lettre, valeur, cle, position=0.5):
     for r0, r1 in rappels:
         r0 = coller_rappel(r0, r1)
         RAPPELS.append((r0, r1))
+        RAPPELS_COTE.append(len(PASTILLES))  # l'étiquette de cette cote est ajoutée en fin de fonction
         ligne(r0, r1, ACIER, 1.6)
     ligne(a, b, ENCRE)
     fleche(a, b, ENCRE)
@@ -438,10 +504,12 @@ def attenuation_ombre(chemin_json):
     return 1.0 if "PANNEAU-CLOTURE" in types or famille in FAMILLES_SANS_ATTENUATION else 0.55
 
 
-def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55):
+def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55, debord=False):
     """Rendu sur fond blanc. `fiche` : l'ombre s'efface aussi avant la colonne de la fiche technique (x ≥ 0,655 W),
     pour que le texte reste sur un fond clair (grandes sections HEA/HEB, vérification du 14/09). `ombre` : opacité
-    de l'ombre portée (voir `attenuation_ombre`)."""
+    de l'ombre portée (voir `attenuation_ombre`). `debord` : la barre file hors du cadre (audit du 23/09) ; elle
+    s'efface, ombre comprise, entre la ligne de recadrage du site (0,615 W, recadrer_visuels.py) et 0,645 W : entière
+    sur le site, fond blanc sous la fiche incrustée de l'original."""
     rendu = Image.open(chemin).convert("RGBA")
     # ombre allégée : la pièce est opaque, l'ombre du sol est semi-transparente
     r_, g_, b_, a_ = rendu.split()
@@ -460,12 +528,20 @@ def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55):
         bord_y.putdata([rampe(y, h) for y in range(h)])
         masque = ImageChops.darker(bord_x.resize((w, h), Image.NEAREST), bord_y.resize((w, h), Image.NEAREST))
         if fiche:
-            debut, fin = int(w * 0.58), int(w * 0.645)
+            # barre en débord : l'ombre s'efface avec la barre, après la ligne de recadrage du site (0,615 W) ; à 0,58 W
+            # le sol s'éclaircissait sur les 55 derniers px du cadre servi (vérification indépendante du 23/09)
+            debut, fin = int(w * (0.615 if debord else 0.58)), int(w * 0.645)
             colonne = Image.new("L", (w, 1))
             colonne.putdata([255 if x < debut else max(0, int(255 * (fin - x) / (fin - debut))) for x in range(w)])
             masque = ImageChops.darker(masque, colonne.resize((w, h), Image.NEAREST))
         ombre = ImageChops.multiply(ombre, masque)
     a_ = Image.composite(a_, ombre, piece)
+    if fiche and debord:
+        largeur = rendu.width
+        debut, fin = int(largeur * 0.615), int(largeur * 0.645)
+        colonne = Image.new("L", (largeur, 1))
+        colonne.putdata([255 if x < debut else max(0, int(255 * (fin - x) / (fin - debut))) for x in range(largeur)])
+        a_ = ImageChops.multiply(a_, colonne.resize(rendu.size, Image.NEAREST))
     rendu = Image.merge("RGBA", (r_, g_, b_, a_))
     fond = Image.new("RGBA", rendu.size, BLANC + (255,))
     return Image.alpha_composite(fond, rendu)
@@ -491,8 +567,10 @@ def studio(nom, dossier):
 
 
 def caracteristiques(slug, dossier):
+    with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:
+        debord = json.load(f).get("debord", False)
     image = rendu_sur_blanc(os.path.join(dossier, slug + ".png"), fiche=True,
-                            ombre=attenuation_ombre(os.path.join(dossier, slug + ".json")))
+                            ombre=attenuation_ombre(os.path.join(dossier, slug + ".json")), debord=debord)
     # fond de la colonne de la fiche, mesuré avant le texte : il doit rester clair
     fond_fiche = ImageStat.Stat(image.convert("L").crop((int(image.width * 0.655), 60, image.width - 40, image.height - 60))).extrema[0][0]
     with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:
@@ -544,16 +622,12 @@ def caracteristiques(slug, dossier):
         fleche(ad, decale(ad, 34, 0), ENCRE)
         ligne(decale(ad, 34, 0), decale(ad, 64, 0), ENCRE)
         centre_t = decale(ad, 150, 0)
-        # tube dont la cavité est trop étroite pour l'étiquette (elle couvrirait la paroi opposée) : le trait descend
-        # à travers la pièce et l'étiquette se pose dessous
+        # tube : l'étiquette ne couvre jamais une paroi (cavité trop étroite : 15/09) ni ne se pose entre les rappels
+        # d'une autre cote (23/09) → `place_t_tube()` : cavité, sinon flanc du tube
         demi_l = (30 * S + d.textlength(pince[0], font=police("Poppins-SemiBold.ttf", 21)) + 9 * S
                   + d.textlength(pince[1], font=police("IBMPlexMono-SemiBold.ttf", 21))) / S / 2
-        if geo.get("type") in ("TC", "TR") and paroi_sous(centre_t[0] - demi_l, centre_t[1] - 20, centre_t[0] + demi_l, centre_t[1] + 20) > 0.02:
-            x_t, y_bas = ad[0] + 64, ad[1]
-            while y_bas < H - 100 and (sur_la_piece(x_t, y_bas) or sur_la_piece(x_t, y_bas + 6)):
-                y_bas += 1
-            ligne(decale(ad, 64, 0), (x_t, y_bas + 22), ENCRE)
-            centre_t = (x_t + 56, y_bas + 48)
+        if geo.get("type") in ("TC", "TR"):
+            centre_t = place_t_tube(ag, ad, demi_l)
         PASTILLES.append((centre_t, *pince))
     if aile[1]:  # deux flèches qui pincent l'aile supérieure, étiquette au-dessus
         ext, inte = P["aile_haut_ext"], P["aile_haut_int"]
@@ -669,6 +743,22 @@ def caracteristiques(slug, dossier):
         for i, (a0, b0, a1, b1) in enumerate(boites):
             if a0 < cx + r + 5 and cx - r - 5 < a1 and b0 < cy + r + 5 and cy - r - 5 < b1:
                 problemes.append(f"loupe sous l'étiquette {PASTILLES[i][1]}")
+    # étiquette qui se lirait comme la valeur d'une autre cote (tube rectangulaire 50x20x2, 23/09 ; contrôle V6) :
+    # jamais entre les deux rappels d'une autre cote, et à 6 px au moins de ses rappels et de son trait
+    rappels_par_cote = {}
+    for segment, k in zip(RAPPELS, RAPPELS_COTE):
+        rappels_par_cote.setdefault(k, []).append(segment)
+    for i, boite in enumerate(boites):
+        for k, segments in rappels_par_cote.items():
+            if k == i or k >= len(PASTILLES):
+                continue
+            if len(segments) == 2 and etiquette_entre_rappels(boite, *segments):
+                problemes.append(f"étiquette {PASTILLES[i][1]} entre les rappels de la cote {PASTILLES[k][1]}")
+            elif any(etiquette_touche_trait(boite, s) for s in segments):
+                problemes.append(f"étiquette {PASTILLES[i][1]} touche un rappel de la cote {PASTILLES[k][1]}")
+        for j, trait in enumerate(TRAITS_COTES):
+            if trait and j != i and etiquette_touche_trait(boite, trait):
+                problemes.append(f"étiquette {PASTILLES[i][1]} touche le trait de la cote {PASTILLES[j][1]}")
     # pointes de flèche de chaque cote visibles : hors de sa propre étiquette (cotes courtes : cornières, T, plats)
     for i, (centre, lettre, _, _) in enumerate(PASTILLES):
         if i < len(TRAITS_COTES) and TRAITS_COTES[i]:
@@ -691,7 +781,10 @@ def caracteristiques(slug, dossier):
         json.dump({"surtitre": surtitre, "titre": titre,
                    "fiche": [[label, lettre, cle, valeur] for label, lettre, cle, valeur in lignes],
                    "pastilles": [[lettre, cle, valeur, round(c[0]), round(c[1])] for c, lettre, valeur, cle in PASTILLES],
-                   "rappels": [[list(a), list(b)] for a, b in RAPPELS], "problemes": problemes},
+                   "rappels": [[list(a), list(b)] for a, b in RAPPELS], "problemes": problemes,
+                   # boîtes des étiquettes : habillage passé par les contrôles V6 ; controler_rendus.py refuse un
+                   # sidecar qui ne les a pas (image habillée avant ces contrôles, vérification du 23/09)
+                   "boites": [[round(v, 1) for v in boite] for boite in boites], "place_t": PLACE_T},
                   f, ensure_ascii=False, indent=1)
     print("CONTROLES :", "; ".join(problemes) if problemes else "aucun problème")
 

@@ -133,7 +133,8 @@ export default function FicheFamille({
         {nb === 1 ? "Une variante" : `${nb} variantes`}
         {f.nbVisuels < nb && ` — ${nb - f.nbVisuels} sans visuel`}
       </p>
-      <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
+      {/* Trois colonnes au plus : à quatre, les cotes du rendu ne se lisaient plus (23/09). */}
+      <ul className="mt-3 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {f.variantes.map((v, i) => (
           <PlancheVariante key={v.slug} variante={v} priorite={premiere && i < 2} />
         ))}

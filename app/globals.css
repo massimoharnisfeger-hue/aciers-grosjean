@@ -301,7 +301,7 @@ a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
 .catalogue-pdf .pdf-section-accroche{font-size:10pt;margin-top:1.5mm}
 .catalogue-pdf .pdf-famille{margin-top:9mm}
 .catalogue-pdf .pdf-section + .pdf-famille{margin-top:2mm}
-.catalogue-pdf .pdf-famille-tete{display:grid;grid-template-columns:58mm minmax(0,1fr);gap:6mm;align-items:start;break-inside:avoid;page-break-inside:avoid;padding-top:4mm;border-top:1px solid #333642}
+.catalogue-pdf .pdf-famille-tete{display:grid;grid-template-columns:84mm minmax(0,1fr);gap:6mm;align-items:start;break-inside:avoid;page-break-inside:avoid;padding-top:4mm;border-top:1px solid #333642}
 .catalogue-pdf .pdf-famille-studio figcaption{margin-top:1.2mm;font-size:7pt;color:rgba(51,54,66,.72)}
 .catalogue-pdf .pdf-famille-studio .pdf-plaque{aspect-ratio:4/3}
 .catalogue-pdf .pdf-famille-studio img{width:100%;height:auto}
@@ -316,15 +316,19 @@ a:hover > .logo-ag--anime .logo-ag__mot{transform:translateX(2px)}
 .catalogue-pdf .pdf-docs{margin-top:2.5mm;font-size:8pt}
 .catalogue-pdf .pdf-nb-variantes{margin-top:4mm;font-size:8pt;color:rgba(51,54,66,.72)}
 /* planches */
-.catalogue-pdf .pdf-planches{display:grid;grid-template-columns:repeat(4,1fr);gap:3.5mm;margin-top:2mm}
+/* Deux planches par rangée (demande du 23/09 : « on ne voit pas assez les
+   détails, texture et dimension ») : le rendu fait ~90 mm de large, ses
+   pastilles de cotes se lisent à ~6 pt. À quatre par rangée elles faisaient
+   moins de 3 pt. Le document y gagne en lisibilité ce qu'il perd en pages. */
+.catalogue-pdf .pdf-planches{display:grid;grid-template-columns:repeat(2,1fr);gap:5mm;margin-top:3mm}
 .catalogue-pdf .pdf-planche{break-inside:avoid;page-break-inside:avoid;border:1px solid #D1D6DA;border-radius:2mm;overflow:hidden;min-width:0}
 .catalogue-pdf .pdf-planche > a{display:block;height:100%}
-.catalogue-pdf .pdf-planche-image{aspect-ratio:4/5;border:0;border-radius:0}
-.catalogue-pdf .pdf-planche-image img{width:100%;height:100%;object-fit:contain;padding:1.5mm}
-.catalogue-pdf .pdf-planche-texte{padding:2mm 2.2mm 2.4mm}
-.catalogue-pdf .pdf-planche-nom{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:7.8pt;line-height:1.25;overflow-wrap:anywhere}
-.catalogue-pdf .pdf-planche-specs{margin-top:1.4mm}
-.catalogue-pdf .pdf-planche-specs div{display:flex;justify-content:space-between;gap:1.5mm;font-size:7pt;line-height:1.35}
+.catalogue-pdf .pdf-planche-image{aspect-ratio:87/100;border:0;border-radius:0}
+.catalogue-pdf .pdf-planche-image img{width:100%;height:100%;object-fit:contain;padding:1mm}
+.catalogue-pdf .pdf-planche-texte{padding:2.5mm 3mm 3mm}
+.catalogue-pdf .pdf-planche-nom{font-family:var(--font-poppins),"Poppins",sans-serif;font-weight:600;font-size:9.5pt;line-height:1.25;overflow-wrap:anywhere}
+.catalogue-pdf .pdf-planche-specs{margin-top:2mm;columns:2;column-gap:5mm}
+.catalogue-pdf .pdf-planche-specs div{display:flex;justify-content:space-between;gap:2mm;font-size:8pt;line-height:1.4;break-inside:avoid}
 .catalogue-pdf .pdf-planche-specs dd{text-align:right;white-space:nowrap}
 /* quatrième de couverture */
 .catalogue-pdf .pdf-quatrieme-baseline{font-size:13pt;margin-top:8mm}

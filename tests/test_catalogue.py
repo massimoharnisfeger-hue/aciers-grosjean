@@ -80,6 +80,23 @@ FUITES = re.compile(r">[^<]*\b(undefined|NaN|null)\b[^<]*<")
 SCRIPTS = re.compile(r"<script\b[^>]*>.*?</script>", re.DOTALL)
 
 
+def taille_webp(chemin: Path):
+    """(largeur, hauteur) d'un WebP lue dans son en-tête (VP8, VP8L ou VP8X), sans dépendance."""
+    with open(chemin, "rb") as f:
+        d = f.read(30)
+    if d[:4] != b"RIFF" or d[8:12] != b"WEBP":
+        return None
+    bloc = d[12:16]
+    if bloc == b"VP8X":
+        return 1 + int.from_bytes(d[24:27], "little"), 1 + int.from_bytes(d[27:30], "little")
+    if bloc == b"VP8L":
+        b = int.from_bytes(d[21:25], "little")
+        return (b & 0x3FFF) + 1, ((b >> 14) & 0x3FFF) + 1
+    if bloc == b"VP8 ":
+        return int.from_bytes(d[26:28], "little") & 0x3FFF, int.from_bytes(d[28:30], "little") & 0x3FFF
+    return None
+
+
 def attributs(balise: str) -> dict:
     return {k: unescape(v) for k, v in ATTRIBUT.findall(balise)}
 
@@ -211,6 +228,40 @@ class CatalogueSource(unittest.TestCase):
         self.assertIn("/catalogue", routes, "scripts/routes.py ignore /catalogue")
         manquants = [u for u in univers_du_catalogue(CATALOGUE.read_text(encoding="utf-8")) if "/catalogue/" + u not in routes]
         self.assertEqual(manquants, [], "chapitres inconnus de scripts/routes.py : " + str(manquants))
+
+    def test_k12_l_integration_recadre_ce_qu_elle_sert(self):
+        """`integrer_visuels.py` doit servir l'image recadrée, pas l'image entière.
+
+        Constat de la vérification indépendante du 23/09 (carré plein) : l'intégration copiait le rendu habillé
+        entier (1600 × 1200 : fiche incrustée à droite, fondu de la barre en débord) vers le site et vers la
+        copie du propriétaire ; le recadrage n'était fait que par `recadrer_visuels.py`, une étape à relancer
+        à la main après chaque intégration. Un seul cadre pour les deux scripts : celui de `recadrer_visuels.py`.
+        """
+        source = (RACINE / "scripts" / "rendu-3d" / "integrer_visuels.py").read_text(encoding="utf-8")
+        # l'import réel, pas une simple mention : le 23/09, l'import refusé par un hook laissait le texte
+        # `recadrer_visuels.CADRE` dans le code, contrôle vert et script qui aurait planté à l'intégration
+        self.assertRegex(source, r"(?m)^import recadrer_visuels\b", "integrer_visuels.py n'importe pas recadrer_visuels")
+        self.assertIn("recadrer_visuels.CADRE", source, "integrer_visuels.py doit utiliser le cadre de recadrer_visuels.py")
+        copier = source.split("def copier(", 1)[1].split("\ndef ", 1)[0] if "def copier(" in source else ""
+        self.assertIn("recadrer_sur_place(", copier, "copier() ne recadre pas le visuel servi")
+
+    def test_k13_chaque_visuel_servi_est_recadre_et_le_manifeste_le_dit(self):
+        """Toute image de fiche servie mesure 984 × 1133 (1600 × 1200 recadré), et le manifeste réserve
+        exactement cette place. Lecture de l'en-tête WebP sans Pillow : le contrôle tourne aussi en CI."""
+        manifeste = json.loads(MANIFESTE.read_text(encoding="utf-8"))
+        attendu = (984, 1133)
+        fautifs = []
+        for slug, e in manifeste["produits"].items():
+            chemin = RACINE / "public" / e["src"].lstrip("/")
+            if not chemin.exists():
+                fautifs.append(f"{slug} : fichier absent")
+                continue
+            taille = taille_webp(chemin)
+            if taille != attendu:
+                fautifs.append(f"{slug} : fichier {taille}")
+            if (e["largeur"], e["hauteur"]) != attendu:
+                fautifs.append(f"{slug} : manifeste {e['largeur']} x {e['hauteur']}")
+        self.assertEqual(fautifs, [], f"{len(fautifs)} visuel(s) servi(s) non recadré(s) : {fautifs[:5]}")
 
     def test_k10_aucun_lien_vers_le_catalogue_sans_le_verrou(self):
         """Tant que le catalogue n'est pas validé, aucune page publique n'y mène.
