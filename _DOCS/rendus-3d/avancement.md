@@ -20,11 +20,12 @@ et relus par `preparer_rendus.py studio-famille` (contrôle V14). Travail pouss�
 **Les autres familles** (poutrelles, fer T, tôles, treillis, clôtures, caillebotis, bardage) ne sont pas rendues à
 nouveau : leurs images d'origine entières (1600 × 1200) sont remises en ligne, identiques au rendu servi.
 
-**Familles intégrées** : carré plein, cornières égale et inégale (CONFORMES, 24/09). **À faire après la série** (proposé par la vérification
+**Familles intégrées** : carré plein, cornières égale et inégale, large plat (CONFORMES, 24/09). **Liseré clair du bord des pièces** (vérification du large plat) : corrigé dans `habiller.py` (`bord_de_piece`, L-064), mesuré par `controler_rendus.py` (`lisere_bord`, V15) ; les quatre familles déjà faites sont rhabillées et réintégrées (même rendu, seul le bord change). **À faire après la série** (proposé par la vérification
 indépendante du carré plein ; pas pendant la série, pour ne pas mélanger deux versions de `rendu_profil.py`) : écrire les
 pièces (type, h, b, longueur) dans le `.json` de chaque fiche et faire vérifier par `controler_rendus.py` que la longueur
 vaut 6,25 × la plus grande cote, arrondie au mm, plafonnée à 500 (aujourd'hui seule la photo studio la note, V5).
 Autre voie, sans toucher au rendu (vérification des cornières égales) : rejouer la caméra de cadrage en Python (azimut, élévation, focale, boîte) et comparer la silhouette projetée de la section nominale au masque alpha — recouvrement 0,997 à 0,999 à la bonne longueur, 0,98 dès ± 2 % (scripts de l'atelier `verif/corniere-egale-24-09/`).
+Poids des plats : `plats()` (`donnees_produits.py`) compare le poids du site au théorique à 7,85 ; les fiches fournisseurs publiées (EN 10058, DIN 59200) donnent un poids commercial à 8,0. À aligner sur la règle « tableau fournisseur, sinon théorique » ; mesuré le 24/09 sur les 40 plats et larges plats : aucun poids affiché ou masqué ne change (seuls 80x10 et 80x8 restent masqués, + 21 et + 26 % du tableau).
 
 ## État au 16/09/2026 à 13 h (historique, remplacé par la section ci-dessus)
 

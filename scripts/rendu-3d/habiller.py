@@ -18,7 +18,7 @@ import os
 import re
 import sys
 
-from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageStat
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 DONNEES = os.path.join(ICI, "donnees", "produits.json")
@@ -521,6 +521,43 @@ def attenuation_ombre(chemin_json):
     return 1.0 if "PANNEAU-CLOTURE" in types or famille in FAMILLES_SANS_ATTENUATION else 0.55
 
 
+def bord_de_piece(rendu, piece, alpha_ombre, rayon=2):
+    """Bandes (R, G, B, A) du rendu posé sur le blanc, bord anticrénelé de la pièce rendu à la pièce.
+
+    Un pixel du bord (0 < alpha < 250, à `rayon` px au plus d'un pixel opaque) n'est couvert qu'en partie par la pièce ;
+    le reste est du fond, ou de l'ombre du sol. Dans le rendu brut, l'ombre est noire et la pièce a sa couleur : la part
+    de pièce du pixel vaut sa luminance divisée par celle de la pièce voisine (moyenne des pixels opaques de la fenêtre).
+    Cette part garde son alpha et sa couleur ; seule la part d'ombre prend l'alpha allégé (`alpha_ombre`). Large plat,
+    24/09 (vérification indépendante) : tout le bord était traité en ombre, × 0,55 : 64 niveaux trop clair, en escalier,
+    sur toutes les images habillées (contrôle V15)."""
+    r_, g_, b_, alpha = rendu.split()
+    a_ = alpha_ombre.copy()
+    lum = rendu.convert("RGB").convert("L")
+    proche = piece.filter(ImageFilter.MaxFilter(2 * rayon + 1))
+    bande = ImageChops.multiply(proche, alpha.point(lambda v: 255 if 0 < v < 250 else 0))
+    boite = bande.getbbox()
+    if not boite:
+        return r_, g_, b_, a_
+    L, O, A0, A, R, G, B = (im.load() for im in (lum, piece, alpha, a_, r_, g_, b_))
+    w, h = rendu.size
+    x0, y0, x1, _ = boite
+    for i, dedans in enumerate(bande.crop(boite).tobytes()):  # octets du masque L : 0 ou 255
+        if not dedans:
+            continue
+        x, y = x0 + i % (x1 - x0), y0 + i // (x1 - x0)
+        voisins = [L[u, v] for u in range(max(0, x - rayon), min(w, x + rayon + 1))
+                   for v in range(max(0, y - rayon), min(h, y + rayon + 1)) if O[u, v]]
+        couleur_piece = sum(voisins) / len(voisins) if voisins else 0
+        part = min(1.0, L[x, y] / couleur_piece) if couleur_piece else 0.0
+        brut = A0[x, y]
+        nouveau = part * brut + (1 - part) * A[x, y]
+        A[x, y] = round(nouveau)
+        if nouveau:  # même couleur prémultipliée : la part de pièce garde sa teinte
+            k = brut / nouveau
+            R[x, y], G[x, y], B[x, y] = [min(255, round(c[x, y] * k)) for c in (R, G, B)]
+    return r_, g_, b_, a_
+
+
 def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55, debord=False):
     """Rendu sur fond blanc. `fiche` : l'ombre s'efface aussi avant la colonne de la fiche technique (x ≥ 0,655 W),
     pour que le texte reste sur un fond clair (grandes sections HEA/HEB, vérification du 14/09). `ombre` : opacité
@@ -556,6 +593,8 @@ def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55, debord=False):
             masque = ImageChops.darker(masque, colonne.resize((w, h), Image.NEAREST))
         ombre = ImageChops.multiply(ombre, masque)
     a_ = Image.composite(a_, ombre, piece)
+    # bord anticrénelé : la part de pièce d'un pixel du bord n'est pas de l'ombre (large plat, 24/09 ; V15)
+    r_, g_, b_, a_ = bord_de_piece(rendu, piece, a_)
     if fiche and debord:
         largeur = rendu.width
         debut, fin = int(largeur * 0.615), int(largeur * 0.645)

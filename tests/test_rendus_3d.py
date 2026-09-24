@@ -45,6 +45,9 @@ V14 - La composition de chaque photo studio de barres (les fiches rendues cote a
      `donnees/studios.json`, et `preparer_rendus.py studio-famille` la relit. Elle ne vivait que dans l'atelier du PC
      (`<famille>.studio.json`, scripts de seance) : le 24/09, une seance web devant rendre les « trios d'origine »
      (ADR-0011) a du les retrouver en comparant des silhouettes aux anciennes images.
+V15 - Posee sur le blanc, la piece garde l'anticrenelage de son bord : seule l'ombre du sol est allegee. Tout pixel
+     d'alpha < 250 etait traite en ombre (x 0,55) : bord 64 niveaux trop clair, en escalier, sur toutes les images
+     habillees (large plat, 24/09, verification independante). Mesure sur image synthetique avec Pillow.
 """
 
 import ast
@@ -507,6 +510,60 @@ class ModelesSource(unittest.TestCase):
         source = (RENDU / "preparer_rendus.py").read_text(encoding="utf-8")
         self.assertIn('"studio-famille"', source, "preparer_rendus.py ne relit pas donnees/studios.json (studio-famille)")
         self.assertIn("studios.json", source, "preparer_rendus.py ne relit pas donnees/studios.json")
+
+    def test_v15_le_bord_de_la_piece_reste_net_sur_le_blanc(self):
+        """Posée sur le blanc, la pièce garde l'anticrénelage de son bord : un pixel que la pièce ne couvre qu'en
+        partie sort comme une composition normale du rendu brut ; seule l'ombre du sol est allégée, y compris la part
+        d'ombre d'un pixel mixte (bord de la pièce posé sur son ombre).
+
+        Large plat, 24/09 (vérification indépendante) : `rendu_sur_blanc()` (habiller.py) traitait tout pixel d'alpha
+        < 250 comme de l'ombre (× 0,55) ; le bord de la pièce ressortait 64 niveaux trop clair en médiane, en escalier,
+        sur toutes les images habillées, fiches et photos studio — visible dès qu'on agrandit l'image servie de 2400 px.
+        Dans le rendu brut, l'ombre est noire et le bord a la couleur de la pièce : la part de pièce d'un pixel se lit.
+        `lisere_bord` (controler_rendus.py) le mesure sur chaque image servie. Exige Pillow pour la mesure."""
+        arbre = ast.parse((RENDU / "controler_rendus.py").read_text(encoding="utf-8"))
+        fonctions = {n.name: n for n in arbre.body if isinstance(n, ast.FunctionDef)}
+        self.assertIn("lisere_bord", fonctions, "controler_rendus.py ne mesure pas le bord de la piece servie")
+        appels = [n for n in ast.walk(fonctions.get("controler", ast.Module(body=[], type_ignores=[])))
+                  if isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "lisere_bord"]
+        self.assertGreaterEqual(len(appels), 2, "controler() ne mesure pas le bord de la piece des fiches et du studio")
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("Pillow absent : la structure du controle est verifiee, pas la mesure")
+        if str(RENDU) not in sys.path:
+            sys.path.insert(0, str(RENDU))
+        import controler_rendus
+        import habiller
+
+        brut = Image.new("RGBA", (400, 300), (0, 0, 0, 0))
+        brut.paste((0, 0, 0, 100), (100, 201, 300, 260))     # ombre du sol : noire, semi-transparente
+        brut.paste((80, 80, 80, 255), (100, 100, 300, 200))  # la pièce, opaque, gris 80
+        brut.paste((80, 80, 80, 128), (100, 99, 300, 100))   # bord sur le fond : la pièce couvre la moitié du pixel
+        brut.paste((57, 57, 57, 178), (100, 200, 300, 201))  # bord sur l'ombre : moitié pièce, moitié ombre (100)
+        with tempfile.TemporaryDirectory() as dossier:
+            chemin = Path(dossier) / "piece.png"
+            brut.save(chemin)
+            blanc = habiller.rendu_sur_blanc(chemin, fondu=0)
+            gris = blanc.convert("L")
+            servie = Path(dossier) / "servie.png"
+            blanc.convert("RGB").save(servie)
+            ancien = brut.copy()  # bord traité en ombre, comme avant le 24/09
+            ancien.paste((80, 80, 80, 70), (100, 99, 300, 100))
+            ancien = Image.alpha_composite(Image.new("RGBA", brut.size, (255, 255, 255, 255)), ancien).convert("RGB")
+            servie_ancienne = Path(dossier) / "ancienne.png"
+            ancien.save(servie_ancienne)
+            ecart_bon = controler_rendus.lisere_bord(chemin, servie)
+            ecart_ancien = controler_rendus.lisere_bord(chemin, servie_ancienne)
+        # composition normale du bord : 80 x 0,5 + 255 x 0,5 ; avant le 24/09, 207
+        self.assertAlmostEqual(gris.getpixel((200, 99)), 167, delta=3, msg="le bord de la piece sort eclairci (lisere)")
+        # ombre seule : allégée à 0,55, comme avant
+        self.assertAlmostEqual(gris.getpixel((200, 230)), 200, delta=2, msg="l'ombre du sol n'est plus allegee")
+        # pixel mixte : la part de pièce (40) garde sa couleur, la part d'ombre est allégée
+        self.assertAlmostEqual(gris.getpixel((200, 200)), 140, delta=4, msg="le bord pose sur l'ombre est mal compose")
+        self.assertIsNotNone(ecart_bon, "lisere_bord ne trouve aucun pixel de bord a mesurer")
+        self.assertLess(abs(ecart_bon), 5, "lisere_bord signale un bord juste")
+        self.assertGreater(ecart_ancien, 20, "lisere_bord ne voit pas le bord eclairci d'avant le 24/09")
 
 
 if __name__ == "__main__":

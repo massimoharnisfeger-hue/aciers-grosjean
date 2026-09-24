@@ -11,6 +11,7 @@ Pour chaque famille (cle `famille` de scripts/rendu-3d/donnees/produits.json) :
   les seuils en pixels, réglés en 1600 px, suivent la taille du rendu ;
 - piece entierement dans le cadre (rendu brut), et a gauche de la fiche technique sur le visuel caracteristiques ;
 - photo studio : marges d'un blanc pur ;
+- fiches et photo studio servies : bord de la piece net, sans lisere clair (large plat, 24/09 ; V15) ;
 - visuel caracteristiques : aucun probleme d'etiquette releve par habiller.py ; chaque texte ecrit = donnee sourcee
   non supposee ; meme valeur que la fiche produit du site (lib/catalogue.ts + lib/site-actuel.json).
 Ecrit des planches contact (12 images) dans %LOCALAPPDATA%/SiteAciersGrosjean/rendu3d/controle/.
@@ -23,7 +24,7 @@ import statistics
 import sys
 from pathlib import Path
 
-from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
+from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageStat
 
 import recadrer_visuels
 from habiller import FINITIONS, LARGEUR_REFERENCE, texte_longueurs, titre_image
@@ -258,6 +259,40 @@ def noir_pur_servi(chemin, x_max=None):
     return round(ImageStat.Stat(ImageChops.multiply(noir, opaque)).sum[0] / 255)
 
 
+def lisere_bord(brut, servie, minimum=20):
+    """Écart médian, en niveaux de gris, entre l'image servie et le rendu brut posé normalement sur le blanc, sur le bord
+    de la pièce : pixels qu'elle ne couvre qu'en partie (0 < alpha < 250, voisins d'un pixel opaque) et qui ont la
+    couleur de la pièce voisine (bord posé sur le fond, sans part d'ombre ; l'ombre, noire, est allégée à dessein).
+    Large plat, 24/09 : l'habillage traitait ce bord en ombre, 64 niveaux trop clair, en escalier (contrôle V15).
+    None si l'image servie n'a pas la taille du rendu ou si moins de `minimum` pixels de bord se mesurent."""
+    with Image.open(brut) as img:
+        rgba = img.convert("RGBA")
+    with Image.open(servie) as img:
+        vue = img.convert("L")
+    if vue.size != rgba.size:
+        return None
+    lum, alpha = rgba.convert("RGB").convert("L"), rgba.getchannel("A")
+    opaque = alpha.point(lambda v: 255 if v >= 250 else 0)
+    bord = ImageChops.multiply(opaque.filter(ImageFilter.MaxFilter(3)), alpha.point(lambda v: 255 if 0 < v < 250 else 0))
+    boite = bord.getbbox()
+    if not boite:
+        return None
+    L, O, A, V = lum.load(), opaque.load(), alpha.load(), vue.load()
+    w, h = rgba.size
+    x0, y0, x1, _ = boite
+    ecarts = []
+    for i, dedans in enumerate(bord.crop(boite).tobytes()):  # octets du masque L : 0 ou 255
+        if not dedans:
+            continue
+        x, y = x0 + i % (x1 - x0), y0 + i // (x1 - x0)
+        voisins = [L[u, v] for u in range(max(0, x - 1), min(w, x + 2)) for v in range(max(0, y - 1), min(h, y + 2)) if O[u, v]]
+        if not voisins or L[x, y] < 0.9 * sum(voisins) / len(voisins):
+            continue  # bord posé sur l'ombre : sa part d'ombre est allégée, l'écart est voulu
+        normale = L[x, y] * A[x, y] / 255 + 255 * (1 - A[x, y] / 255)
+        ecarts.append(V[x, y] - normale)
+    return statistics.median(ecarts) if len(ecarts) >= minimum else None
+
+
 def teinte_piece(chemin):
     """Couleur moyenne normalisée (r, g, b) / (r + g + b) de la pièce : distingue une Corten d'une galvanisée ou deux RAL
     dans une même famille, pour comparer la photo studio aux seules fiches de sa teinte (15/09)."""
@@ -414,6 +449,12 @@ def controler(famille, produits, pages):
             n = marges_blanches(png, bande=round(16 * img.width / LARGEUR_REFERENCE))
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
+    # bord de la pièce net sur l'image servie : pas de liseré clair en escalier (large plat, 24/09 ; V15)
+    servie = FINAL / f"{studio}-studio.webp"
+    if brut and servie.exists():
+        lisere = lisere_bord(brut, servie)
+        if lisere is not None and lisere > 20:
+            ecarts.append(f"{servie.name} : bord de la piece eclairci de {lisere:.0f} niveaux (lisere ; rhabiller)")
     lum_studio = luminance_piece(brut)[0] if brut else None
     # corps seul de la barre (sans la face coupée), pour les familles dont les fiches filent hors du cadre
     lum_studio_corps = luminance_piece(brut, moitie_arriere=True)[0] if brut else None
@@ -456,6 +497,11 @@ def controler(famille, produits, pages):
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
+            servie = FINAL / f"{nom}.webp"  # bord de la pièce net sur l'image servie (large plat, 24/09 ; V15)
+            if servie.exists():
+                lisere = lisere_bord(brut, servie)
+                if lisere is not None and lisere > 20:
+                    ecarts.append(f"{slug} : bord de la piece eclairci de {lisere:.0f} niveaux (lisere ; rhabiller)")
             # coupe lisible : face sciée à 8 niveaux au moins de la face longue voisine (plat inox, 23/09 ; V9). Plats,
             # cornières, profils T et U ; pas les tubes, dont la coupe se lit contre la cavité sombre
             points = json.loads(geo.read_text(encoding="utf-8")).get("points", {}) if geo.exists() else {}

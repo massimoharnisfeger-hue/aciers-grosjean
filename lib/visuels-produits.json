@@ -314,21 +314,21 @@
   },
   "large-plat-180x10mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/large-plat/large-plat-180x10mm-en-acier-lamine-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Large plat 180x10mm en acier laminé à chaud : rendu 3D aux cotes (b 180 mm, t 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Large plat 180x10mm en acier laminé à chaud : rendu 3D aux cotes (b 180 mm, t 10 mm) et fiche technique"
   },
   "large-plat-200x10mm-en-acier-lamine-a-chaud": {
    "src": "/images/produits/acier/profiles/large-plat/large-plat-200x10mm-en-acier-lamine-a-chaud-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Large plat 200x10mm en acier laminé à chaud : rendu 3D aux cotes (b 200 mm, t 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Large plat 200x10mm en acier laminé à chaud : rendu 3D aux cotes (b 200 mm, t 10 mm) et fiche technique"
   },
   "large-plat-en-acier-lamine-a-chaud-160x10mm": {
    "src": "/images/produits/acier/profiles/large-plat/large-plat-en-acier-lamine-a-chaud-160x10mm-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Large plat en acier laminé à chaud 160x10mm : rendu 3D aux cotes (b 160 mm, t 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Large plat en acier laminé à chaud 160x10mm : rendu 3D aux cotes (b 160 mm, t 10 mm) et fiche technique"
   },
   "marche-d-escalier-caillebotis-1000x230mm": {
    "src": "/images/produits/quincaillerie/caillebotis-marches/marche-d-escalier-caillebotis-1000x230mm-caracteristiques.webp",
@@ -2872,8 +2872,8 @@
   },
   "/acier/profiles/large-plat": {
    "src": "/images/produits/acier/profiles/large-plat/studio-large-plat.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Large plat en acier : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/acier/profiles/plat": {
