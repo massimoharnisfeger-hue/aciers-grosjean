@@ -1,10 +1,26 @@
 # Avancement — visuels 3D des fiches produits
 
-Mis à jour le 16/09/2026 à 12 h 15 (séance https://claude.ai/code/session_011Va2LRc8Chevt4WRj964Em, commencée le 14/09). Journal du jour dans l'ordre chronologique inverse ; les heures avant minuit sont du 15/09, après minuit du 16/09.
+Mis à jour le 24/09/2026 (section « REPRENDRE ICI » ; avant : 16/09/2026 à 12 h 15, séance https://claude.ai/code/session_011Va2LRc8Chevt4WRj964Em, commencée le 14/09). Journal du jour dans l'ordre chronologique inverse ; les heures avant minuit sont du 15/09, après minuit du 16/09.
 Règles : `CLAUDE.md` (section Visuels 3D) et `_DOCS/rendus-3d/lecons.md`. Brief : `_DOCS/BRIEF-RENDUS-3D.md`.
 Questions : `_DOCS/rendus-3d/questions-en-attente.md` (on ne s'arrête pas : valeur non affichée, question notée).
 
-## REPRENDRE ICI (état au 16/09/2026 à 13 h)
+## REPRENDRE ICI (état au 24/09/2026, séance web https://claude.ai/code/session_01RAugrmPxtFyRi5jtjzPr1X)
+
+**Décisions du propriétaire du 24/09** : ADR-0011 (vues d'origine, pièce entière, seule la finition de l'audit change) et
+**ADR-0012** : l'image de fiche est servie **entière** sur le site (pièce, cotes, tableau) ; tableau court et utile
+(dimensions de la section, poids, **longueurs standard du site**, procédé ou matière) ; **2400 × 1800** pour les barres,
+profilés et tubes ; poids contradictoires (> 3 % du fournisseur ou du théorique, 50 fiches) **non affichés**.
+
+**Série en cours** : les 24 familles de l'ADR-0011 (222 fiches + 23 photos studio ; le rond à béton laminé à froid reste
+hors série, question 31) rendues en 2400 px dans une séance web (Blender 4.5 en module Python `bpy`, 4 cœurs, ~3 min 30
+par fiche), habillées, contrôlées, vérifiées par famille, puis intégrées. Compositions des photos studio : trios d'origine
+retrouvés par comparaison de silhouettes aux images d'avant l'audit, versionnés dans `scripts/rendu-3d/donnees/studios.json`
+et relus par `preparer_rendus.py studio-famille` (contrôle V14). Travail poussé sur la branche `claude/gracious-cannon-iql9zs`.
+
+**Les autres familles** (poutrelles, fer T, tôles, treillis, clôtures, caillebotis, bardage) ne sont pas rendues à
+nouveau : leurs images d'origine entières (1600 × 1200) sont remises en ligne, identiques au rendu servi.
+
+## État au 16/09/2026 à 13 h (historique, remplacé par la section ci-dessus)
 
 **En ligne : 455 fiches sur 477** avec leur visuel coté + la photo studio de leur catégorie (`lib/visuels-produits.json`, 47 catégories). **La vague 3 remodélisée est terminée** : marches caillebotis, marches O2, plancher O2 (CONFORME 12 h 10) et panneau isolé ECO, tôle profilée 30.200.1000 (CONFORME 13 h) intégrées. Dernier envoi : `c83ebfc` ; **build `verifier-leger.ps1` en cours à 13 h, puis commit-push groupé** (code rendu-3d + visuels + docs). 2-categories à jour (`_ETAT.txt` 12 h 58, 519 images, 51 familles sur 53 entièrement en ligne).
 

@@ -68,18 +68,33 @@ export default function GalerieProduit({ vues }: { vues: VueGalerie[] }) {
           */}
           <div className="relative overflow-hidden rounded-2xl border border-brume bg-nuage p-3 md:p-4">
             <div className="grid-industrie absolute inset-0 opacity-60" aria-hidden="true" />
-            <div className={`relative overflow-hidden rounded-xl bg-white shadow-[0_18px_44px_-24px_rgba(51,54,66,.55)] ${BOITE}`}>
-            <Image
-              src={v.src}
-              alt={v.alt}
-              width={v.largeur}
-              height={v.hauteur}
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              priority={i === 0}
-              unoptimized
-              className="h-auto w-full"
-            />
-            </div>
+            {/*
+              Agrandir au clic (proprietaire, 24/09 ; controle D14) : le rendu
+              entier porte cotes et tableau, trop petits a la taille de la
+              galerie sur telephone. Le lien ouvre le fichier lui-meme (jusqu'a
+              2400 px), zoomable au doigt, sans JavaScript.
+            */}
+            <a
+              href={v.src}
+              target="_blank"
+              rel="noopener"
+              title="Ouvrir l'image en grand"
+              className={`relative block overflow-hidden rounded-xl bg-white shadow-[0_18px_44px_-24px_rgba(51,54,66,.55)] ${BOITE}`}
+            >
+              <Image
+                src={v.src}
+                alt={v.alt}
+                width={v.largeur}
+                height={v.hauteur}
+                sizes="(min-width: 1024px) 45vw, 100vw"
+                priority={i === 0}
+                unoptimized
+                className="h-auto w-full"
+              />
+              <span className="pointer-events-none absolute bottom-2 right-2 rounded-md bg-encre/80 px-2 py-1 font-body text-xs text-white">
+                Agrandir
+              </span>
+            </a>
           </div>
           <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.16em] text-soft">{v.legende}</figcaption>
         </figure>

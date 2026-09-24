@@ -19,5 +19,126 @@
   "large-plat-180x10mm-en-acier-lamine-a-chaud",
   "large-plat-200x10mm-en-acier-lamine-a-chaud",
   "large-plat-en-acier-lamine-a-chaud-160x10mm"
+ ],
+ "plat": [
+  "plat-100x10mm-en-acier-lamine-a-chaud",
+  "plat-60x8mm-en-acier-lamine-a-chaud",
+  "plat-30x5mm-en-acier-lamine-a-chaud"
+ ],
+ "rond-plein": [
+  "rond-lisse-14mm-en-acier-laminee-a-chaud",
+  "rond-lisse-22mm-en-acier-laminee-a-chaud",
+  "rond-lisse-8mm-en-acier-laminee-a-chaud"
+ ],
+ "tube-carre": [
+  "tube-carre-100x100x4mm-en-acier",
+  "tube-carre-60x60x3mm-en-acier",
+  "tube-carre-30x30x2mm-en-acier"
+ ],
+ "tube-rectangulaire": [
+  "tube-rectangle-120x60x4mm-en-acier",
+  "tube-rectangle-40x20x2mm-en-acier",
+  "tube-rectangle-80x40x3mm-en-acier"
+ ],
+ "tube-rond": [
+  "tube-rond-26-9x2-5mm-en-acier-brut-serie-legere",
+  "tube-rond-48-3x3mm-en-acier-brut-serie-legere",
+  "tube-rond-88-9x3-00mm-en-acier-brut-serie-legere"
+ ],
+ "aluminium-corniere-egale": [
+  "corniere-egale-20x20x2mm-en-aluminium",
+  "corniere-egale-40x40x2mm-en-aluminium",
+  "corniere-egale-60x60x3mm-en-aluminium"
+ ],
+ "aluminium-plat": [
+  "plat-de-100x5mm-en-aluminium",
+  "plat-de-20x3mm-en-aluminium",
+  "plat-de-50x5mm-en-aluminium"
+ ],
+ "aluminium-profil-t": [
+  "profil-en-t-20x20x2mm-en-aluminium",
+  "profil-en-t-25x25x2mm-en-aluminium",
+  "profil-en-t-30x30x2mm-en-aluminium"
+ ],
+ "aluminium-profil-u": [
+  "profil-en-u-20x20x20x2mm-en-aluminium",
+  "profil-en-u-40x40x40x2mm-en-aluminium",
+  "profil-en-u-en-30x30x30x2mm-aluminium"
+ ],
+ "aluminium-tube-carre": [
+  "tube-carre-de-15x15x2mm-en-aluminium",
+  "tube-carre-de-35x35x2mm-en-aluminium",
+  "tube-carre-de-60x60x3mm-en-aluminium"
+ ],
+ "aluminium-tube-rectangulaire": [
+  "tube-rectangle-de-30x20x2mm-en-aluminium",
+  "tube-rectangle-de-60x30x3mm-en-aluminium",
+  "tube-rectangle-de-60x40x2mm-en-aluminium"
+ ],
+ "aluminium-tube-rond": [
+  "tube-rond-de-20x2mm-en-aluminium",
+  "tube-rond-de-30x2mm-en-aluminium",
+  "tube-rond-de-40x2mm-en-aluminium"
+ ],
+ "inox-corniere-egale": [
+  "corniere-egale-20x20x3mm-en-inox",
+  "corniere-egale-30x30x3mm-en-inox",
+  "corniere-egale-50x50x5mm-en-inox"
+ ],
+ "inox-rond-plein": [
+  "rond-plein-lisse-diametre-10mm-en-inox",
+  "rond-plein-lisse-diametre-12mm-en-inox",
+  "rond-plein-lisse-diametre-8mm-en-inox"
+ ],
+ "inox-plat": [
+  "plat-20x3mm-en-inox-304",
+  "plat-40x3mm-en-inox-304",
+  "plat-60x5mm-en-inox-304"
+ ],
+ "inox-tube-carre": [
+  "tube-carre-20x20x2mm-en-inox-304",
+  "tube-carre-35x35x2mm-en-inox-304",
+  "tube-carre-50x50x2mm-en-inox-304"
+ ],
+ "inox-tube-rectangulaire": [
+  "tube-rectangle-40x20x2mm-en-inox-304"
+ ],
+ "inox-tube-rond": [
+  "tube-rond-17-2x2mm-en-inox-304",
+  "tube-rond-42-4x2mm-en-inox-304",
+  "tube-rond-76-1x2mm-en-inox-304"
+ ],
+ "rond-a-beton-lamine-a-chaud": [
+  "rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud",
+  "rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud",
+  "rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud"
+ ],
+ "poutrelle-hea": [
+  "poutrelle-hea-100-en-acier",
+  "poutrelle-hea-200-en-acier",
+  "poutrelle-hea-300-en-acier"
+ ],
+ "poutrelle-heb": [
+  "poutrelle-heb-100-en-acier",
+  "poutrelle-heb-200-en-acier",
+  "poutrelle-heb-300-en-acier"
+ ],
+ "poutrelle-ipe": [
+  "poutrelle-ipe-100-en-acier",
+  "poutrelle-ipe-200-en-acier",
+  "poutrelle-ipe-300"
+ ],
+ "poutrelle-upn": [
+  "poutrelle-upn-100-en-acier",
+  "poutrelle-upn-200-en-acier",
+  "poutrelle-upn-300-en-acier"
+ ],
+ "fer-t": [
+  "fer-en-t-20x3mm-en-acier-lamine-a-chaud",
+  "fer-en-t-40x5mm-en-acier-lamine-a-chaud",
+  "fer-en-t-60x7mm-en-acier-lamine-a-chaud"
+ ],
+ "rond-a-beton-lamine-a-froid": [
+  "rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid"
  ]
 }

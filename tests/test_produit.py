@@ -115,6 +115,20 @@ class GabaritFicheProduit(unittest.TestCase):
             "le pave de tete repete la fiche technique de l'onglet : une donnee, un seul endroit.",
         )
 
+    def test_d14_le_rendu_entier_s_ouvre_en_grand(self):
+        """D14 - Le rendu d'une fiche, servi entier (ADR-0012), s'ouvre en grand d'un clic : dans la galerie comme
+        dans l'onglet, l'image est dans un lien vers son propre fichier, ouvert a part (`target="_blank"`).
+
+        24/09, simulation montree au proprietaire : a la taille de la galerie, le tableau et les cotes de l'image
+        entiere font 4 a 7 px sur telephone. Son choix : « agrandir au clic ». Un lien vers le fichier (2400 px)
+        marche sans JavaScript et se zoome au doigt."""
+        for fichier, source in (("GalerieProduit.tsx", "v.src"), ("DetailProduit.tsx", "o.visuel.src")):
+            code = (RACINE / "components" / "catalogue" / fichier).read_text(encoding="utf-8")
+            lien = re.search(r"<a\b[^>]*href=\{" + re.escape(source) + r"\}[^>]*>(.*?)</a>", code, re.S)
+            self.assertIsNotNone(lien, f"{fichier} : l'image n'est pas dans un lien vers son fichier ({source})")
+            self.assertIn('target="_blank"', lien.group(0), f"{fichier} : le lien d'agrandissement quitte la fiche")
+            self.assertIn("<Image", lien.group(1), f"{fichier} : le lien d'agrandissement n'entoure pas l'image")
+
 
 class GrillesQuiRetrecissent(unittest.TestCase):
     """D8 : un element de grille doit pouvoir devenir plus etroit que son contenu.

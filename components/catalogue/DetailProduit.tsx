@@ -287,8 +287,15 @@ function Panneau({ o }: { o: Onglet }) {
       <Contenu o={o} />
       <figure className="order-first w-full max-w-md lg:order-last lg:w-80 xl:w-96">
         {/* Meme presentation que la galerie : le rendu cote est servi entier,
-            tableau des mesures compris (ADR-0012), en 4:3 comme cette boite. */}
-        <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brume bg-white [&>img]:h-full [&>img]:w-full [&>img]:object-contain">
+            tableau des mesures compris (ADR-0012), en 4:3 comme cette boite ;
+            un clic l'ouvre en grand (controle D14). */}
+        <a
+          href={o.visuel.src}
+          target="_blank"
+          rel="noopener"
+          title="Ouvrir l'image en grand"
+          className="relative block aspect-[4/3] overflow-hidden rounded-xl border border-brume bg-white [&>img]:h-full [&>img]:w-full [&>img]:object-contain"
+        >
           <Image
             src={o.visuel.src}
             alt={o.visuel.alt}
@@ -302,7 +309,10 @@ function Panneau({ o }: { o: Onglet }) {
           unoptimized
             className="h-auto w-full"
           />
-        </div>
+          <span className="pointer-events-none absolute bottom-2 right-2 rounded-md bg-encre/80 px-2 py-1 font-body text-xs text-white">
+            Agrandir
+          </span>
+        </a>
         {o.legendeVisuel && (
           <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-soft">
             {o.legendeVisuel}
