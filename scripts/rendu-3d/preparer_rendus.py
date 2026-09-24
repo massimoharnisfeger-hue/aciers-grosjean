@@ -3,6 +3,8 @@ Prepare la liste de parametres Blender (rendu_profil.py) a partir des donnees so
 
   python scripts/rendu-3d/preparer_rendus.py <sortie.json> car <slug> [<slug> ...]
   python scripts/rendu-3d/preparer_rendus.py <sortie.json> studio <nom> <slug> [<slug> ...]
+  python scripts/rendu-3d/preparer_rendus.py <sortie.json> studio-famille <famille>
+      photo studio « studio-<famille> » avec la composition versionnee de donnees/studios.json (controle V14)
 Options (avant les commandes) : --samples N  --seuil X  --ajouter (complete le fichier au lieu de l'ecraser)
   --essai LARGEUR : image reduite (hauteur = 3/4) rangee dans rendu3d/essais/, jamais dans final/
   --points-seuls : sans rendu, recalcule seulement <slug>.json (cotes) des images deja rendues dans final/
@@ -275,6 +277,9 @@ def main():
         cle = args.pop(0)[2:]
         options[cle] = True if cle in ("ajouter", "points-seuls") else float(args.pop(0))
     sortie, commande, reste = Path(args[0]), args[1], args[2:]
+    if commande == "studio-famille":  # composition versionnée : la même photo à chaque reprise (V14, 24/09)
+        compositions = json.loads((ICI / "donnees" / "studios.json").read_text(encoding="utf-8"))
+        commande, reste = "studio", [f"studio-{reste[0]}", *compositions[reste[0]]]
     produits = json.loads((ICI / "donnees" / "produits.json").read_text(encoding="utf-8"))
     liste = json.loads(sortie.read_text(encoding="utf-8")) if options["ajouter"] and sortie.exists() else []
     largeur = int(options["essai"]) or 1600
@@ -282,6 +287,13 @@ def main():
               "samples": int(options["samples"]), "seuil_adaptatif": options["seuil"], "exposition": -1.15,
               "largeur": largeur, "hauteur": largeur * 3 // 4, "teinte_gpp": TEINTE_GPP,
               "points_seuls": options["points-seuls"]}
+
+    def taille(type_piece):
+        """2400 x 1800 pour les barres, profilés et tubes (image « plus nette », propriétaire 24/09 ; ADR-0012) ; 1600 x 1200
+        ailleurs, dont l'habillage (loupe des tôles, clôtures) est réglé sur cette taille. Un essai garde sa largeur."""
+        largeur_ = largeur if options["essai"] else (2400 if type_piece in BARRES else 1600)
+        return {"largeur": largeur_, "hauteur": largeur_ * 3 // 4}
+
     if commande == "car":
         for slug in reste:
             pc, finition = piece(produits[slug], 500, RATIO_CADRE)  # pièce entière dans le cadre (ADR-0011)
@@ -296,7 +308,8 @@ def main():
             if pc.get("perforation", {}).get("pas", 99) < 12:
                 vue["surechantillonnage"] = 2
             liste.append({**commun, **vue, **reglages_matiere(pc, finition), **reglages_nervures(pc, "caracteristiques"),
-                          **teinte(produits[slug]), "slug": slug, "mode": "caracteristiques", "pieces": [pc], "finition": finition})
+                          **teinte(produits[slug]), **taille(pc["type"]), "slug": slug, "mode": "caracteristiques", "pieces": [pc],
+                          "finition": finition})
     elif commande == "studio":
         nom, slugs = reste[0], reste[1:]
         pieces, finitions = [], set()
@@ -319,7 +332,8 @@ def main():
         elevation = (46 if finition in ("INOX", "FROID", "GALVA", "ALU") else 30) if pieces[0]["type"] in ("TOLE", "TREILLIS") else 20
         liste.append({**commun, **teinte(produits[slugs[0]]), **ecart, **eclairage_studio(finition, pieces[0]["type"]), **reglages_matiere(pieces[0], finition),
                       **reglages_studio(pieces[0]),
-                      **reglages_nervures(pieces[0], "studio"), "slug": nom, "mode": "studio", "pieces": pieces,
+                      **reglages_nervures(pieces[0], "studio"), **taille(pieces[0]["type"]), "slug": nom, "mode": "studio",
+                      "pieces": pieces,
                       "finition": finition, "azimut": 24, "elevation": elevation})
     sortie.write_text(json.dumps(liste, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{sortie} : {len(liste)} rendus")

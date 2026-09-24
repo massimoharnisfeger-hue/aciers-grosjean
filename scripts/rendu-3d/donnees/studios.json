@@ -1,0 +1,23 @@
+{
+ "_source": "Composition des photos studio (fiches rendues côte à côte, la plus haute à gauche). Trios d'origine retrouvés le 24/09/2026 (ADR-0011 : « trio de tailles d'origine ») en comparant, pour chaque combinaison de fiches, la silhouette rejouée par le cadrage de rendu_profil.py aux photos studio d'avant l'audit (commit 31c41a8^) : recouvrement des masques, contours sur les arêtes nettes, face coupée pour les épaisseurs ; chaque trio vérifié à l'œil. Relu par preparer_rendus.py studio-famille (contrôle V14).",
+ "carre-plein": [
+  "carre-plein-de-20x20mm-en-acier",
+  "carre-plein-de-14x14mm-en-acier",
+  "carre-plein-de-8x8mm-en-acier"
+ ],
+ "corniere-egale": [
+  "corniere-egale-80x80x8mm-acier-lac",
+  "corniere-egale-50x50x5mm-acier-lac",
+  "corniere-egale-30x30x3mm-acier-lac"
+ ],
+ "corniere-inegale": [
+  "corniere-inegale-150x100x10mm-acier-lac",
+  "corniere-inegale-100x50x6mm-acier-lac",
+  "corniere-inegale-60x40x5mm-acier-lac"
+ ],
+ "large-plat": [
+  "large-plat-180x10mm-en-acier-lamine-a-chaud",
+  "large-plat-200x10mm-en-acier-lamine-a-chaud",
+  "large-plat-en-acier-lamine-a-chaud-160x10mm"
+ ]
+}

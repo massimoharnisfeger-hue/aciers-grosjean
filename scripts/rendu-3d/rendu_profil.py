@@ -1985,6 +1985,8 @@ def rendre(p):
         off = b * 0.12
         cible = Vector((0, L0 * MM * 0.5, 0))
     points_cadrage = list(boite_pts)
+    # bord droit du cadre d'une fiche : 0,61, sous la coupe du site (0,615, `recadrer_visuels.CADRE`). À 0,62, le coin
+    # du bout arrière d'une barre à arêtes vives tombait hors de l'image servie (carré plein, 24/09 ; contrôle V13)
     if mode == "caracteristiques" and typ == "TREILLIS":
         points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, L0 * MM, 0),
                            (-b / 2 * MM, -off * 1.6 * MM, 0), (b / 2 * MM, -off * 1.6 * MM, 0)]
@@ -1992,15 +1994,15 @@ def rendre(p):
         points_cadrage += [((b / 2 + off * 1.6) * MM, 0, 0), ((b / 2 + off * 1.6) * MM, L0 * MM, 0),
                            (-b / 2 * MM, -off * 1.6 * MM, 0), (b / 2 * MM, -off * 1.6 * MM, 0)]
         # colonne de gauche laissée libre pour la loupe de l'épaisseur
-        boite = tuple(p.get("boite", (0.25, 0.08, 0.62, 0.92)))
+        boite = tuple(p.get("boite", (0.25, 0.08, 0.61, 0.92)))
     elif mode == "caracteristiques" and typ == "TREILLIS":
-        boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
+        boite = tuple(p.get("boite", (0.07, 0.10, 0.61, 0.90)))
     elif mode == "caracteristiques":
         points_cadrage += [((-b / 2 - off * 1.6) * MM, 0, 0), ((-b / 2 - off * 1.6) * MM, 0, h * MM)]
         if cote_b:
             z = (h + off * 1.6) if cote_b == "haut" else -off * 1.6
             points_cadrage += [(-b / 2 * MM, 0, z * MM), (b / 2 * MM, 0, z * MM)]
-        boite = tuple(p.get("boite", (0.07, 0.10, 0.62, 0.90)))
+        boite = tuple(p.get("boite", (0.07, 0.10, 0.61, 0.90)))
     else:
         boite = tuple(p.get("boite", (0.12, 0.14, 0.88, 0.86)))
 

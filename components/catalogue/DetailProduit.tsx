@@ -286,9 +286,8 @@ function Panneau({ o }: { o: Onglet }) {
     <div className="grid items-start gap-8 lg:grid-cols-[1fr_auto] lg:gap-12">
       <Contenu o={o} />
       <figure className="order-first w-full max-w-md lg:order-last lg:w-80 xl:w-96">
-        {/* Meme recadrage que la galerie : le rendu cote porte un tableau de
-            specifications incruste sur ses 38 % droits, qui redit la fiche
-            technique juste a cote et vole la moitie de leur taille aux cotes. */}
+        {/* Meme presentation que la galerie : le rendu cote est servi entier,
+            tableau des mesures compris (ADR-0012), en 4:3 comme cette boite. */}
         <div className="aspect-[4/3] overflow-hidden rounded-xl border border-brume bg-white [&>img]:h-full [&>img]:w-full [&>img]:object-contain">
           <Image
             src={o.visuel.src}
@@ -296,11 +295,10 @@ function Panneau({ o }: { o: Onglet }) {
             width={o.visuel.largeur}
             height={o.visuel.hauteur}
             sizes="(min-width: 1280px) 384px, (min-width: 1024px) 320px, (min-width: 640px) 28rem, 100vw"
-          // Servi brut, comme dans la galerie. Depuis le recadrage, un rendu
-          // pese 17 Ko pour 984 px de large : l'optimiseur ne ferait rien
-          // gagner, et il renvoyait ici une variante de 384 px la ou l'ecran
+          // Servi brut, comme dans la galerie : meme fichier, deja en cache.
+          // L'optimiseur renvoyait ici une variante de 384 px la ou l'ecran
           // retina en demande 498 — mesure du 22/09, image floue sur la moitie
-          // des ecrans. Un fichier deja leger se sert tel quel.
+          // des ecrans. Un rendu entier pese 25 a 70 Ko (ADR-0012).
           unoptimized
             className="h-auto w-full"
           />

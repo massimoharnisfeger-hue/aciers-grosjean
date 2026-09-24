@@ -11,11 +11,12 @@ import type { Variante } from "@/lib/catalogue-visuel";
  * compléter » : le dessin SVG de la famille, que le site sert en repli sur la
  * fiche, n'est pas le produit et n'a pas sa place dans un catalogue.
  *
- * `unoptimized`, comme la galerie de la fiche : les 466 rendus font 17 à
- * 30 Ko pour 984 px. Les passer par l'optimiseur coûterait des centaines de
+ * `unoptimized`, comme la galerie de la fiche : les rendus sont des fichiers
+ * légers (25 à 70 Ko). Les passer par l'optimiseur coûterait des centaines de
  * transformations pour quelques kilo-octets (mesure du 22/09, GalerieProduit).
  * La boîte 4/5 est stable : le navigateur réserve la place avant que l'image
- * arrive, et les rendus (984 × 1133) s'y posent entiers, `object-contain`.
+ * arrive, et les rendus, entiers en 4:3 depuis l'ADR-0012 (pièce et tableau),
+ * s'y posent `object-contain`.
  */
 export default function PlancheVariante({ variante, priorite = false }: { variante: Variante; priorite?: boolean }) {
   const v = variante;

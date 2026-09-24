@@ -11,6 +11,8 @@ Sorties : scripts/rendu-3d/donnees/produits.json  (lu par les scripts de rendu)
           _DOCS/rendus-3d/donnees-produits.csv    (lecture humaine, une ligne par valeur)
 
 Usage : python scripts/rendu-3d/donnees_produits.py [famille ...]   (defaut : toutes les familles traitees)
+        python scripts/rendu-3d/donnees_produits.py --longueurs-seules
+            ajoute seulement les longueurs standard du site aux barres, profiles et tubes (sans relire les PDF)
 """
 import csv
 import json
@@ -1033,21 +1035,42 @@ def profils_alu_inox(cat, reel, desc):
     return produits
 
 
+# séries des barres, profilés et tubes : leurs longueurs standard vont sur l'image (ADR-0012)
+SERIES_BARRES = {"CARRE", "PLAT", "ROND", "ROND-BETON", "L", "T", "TC", "TR", "TUBE-ROND", "U-ALU"}
+
+
+def longueurs_standard(tous, reel):
+    """Longueurs standard du site actuel (option de la fiche : celles que la page propose sous « Longueurs standard »)
+    sur les barres, profilés et tubes qui ne les ont pas encore ; les poutrelles les ont déjà. L'image les affiche
+    (propriétaire, 24/09 : « les ailes, les épaisseurs, le poids, tout ce qui serait utile »). Renvoie le nombre ajouté."""
+    n = 0
+    for slug, p in tous.items():
+        v = p["valeurs"]
+        longueurs = (reel.get(slug) or {}).get("longueurs")
+        if v.get("serie", {}).get("valeur") in SERIES_BARRES and "longueurs" not in v and longueurs:
+            v["longueurs"] = valeur(longueurs, "m", SRC_OPTION)
+            n += 1
+    return n
+
+
 FAMILLES = {"poutrelles": poutrelles, "cornieres": cornieres, "fers-t": fers_t, "plats": plats,
             "pleins": pleins, "tubes": tubes, "toles": toles, "armatures": armatures, "alu-inox": profils_alu_inox,
             "toles-relief": toles_relief, "toles-perforees": toles_perforees, "vague3": vague3}
 
 
 def main():
-    demandees = sys.argv[1:] or list(FAMILLES)
-    cat = catalogue()
+    # --longueurs-seules : sans relire les tableaux fournisseurs (_DEPOT n'existe pas dans une séance web)
+    seules = "--longueurs-seules" in sys.argv[1:]
+    demandees = [] if seules else (sys.argv[1:] or list(FAMILLES))
     reel = json.loads((PROJET / "lib" / "site-actuel.json").read_text(encoding="utf-8"))
     desc = json.loads((PROJET / "lib" / "descriptions-site-actuel.json").read_text(encoding="utf-8"))
     tous = json.loads(SORTIE_JSON.read_text(encoding="utf-8")) if SORTIE_JSON.exists() else {}
+    cat = catalogue() if demandees else None
     for famille in demandees:
         nouveaux = FAMILLES[famille](cat, reel, desc)
         tous.update(nouveaux)
         print(f"{famille} : {len(nouveaux)} produits, {sum(1 for p in nouveaux.values() if p['alertes'])} avec alerte")
+    print(f"longueurs standard ajoutees : {longueurs_standard(tous, reel)} produits")
     SORTIE_JSON.parent.mkdir(parents=True, exist_ok=True)
     SORTIE_JSON.write_text(json.dumps(dict(sorted(tous.items())), ensure_ascii=False, indent=1), encoding="utf-8")
     SORTIE_CSV.parent.mkdir(parents=True, exist_ok=True)

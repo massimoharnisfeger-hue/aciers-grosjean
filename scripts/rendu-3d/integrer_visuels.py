@@ -23,7 +23,6 @@ from pathlib import Path
 from PIL import Image
 
 import controler_rendus as controle
-import recadrer_visuels
 
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
@@ -42,22 +41,11 @@ def noms_categories():
             for m in re.finditer(r'^\s*"(/[^"]+)": \{ chemin: "[^"]+", segment: "[^"]*", nom: ("(?:[^"\\]|\\.)*")', ts, re.M)}
 
 
-def recadrer_sur_place(chemin):
-    """Visuel de fiche : garde le cadre de l'objet (recadrer_visuels.CADRE), sans la fiche incrustée à droite.
-
-    Vérification indépendante du 23/09 (carré plein) : l'intégration servait l'image entière, fiche incrustée et
-    fondu de la barre en débord compris, et la même image partait dans la copie du propriétaire ; le recadrage
-    n'existait que dans recadrer_visuels.py, à relancer à la main. Le site et le propriétaire voient maintenant la
-    même image. Contrôles K12 et K13 (tests/test_catalogue.py)."""
-    with Image.open(chemin) as img:
-        largeur, hauteur = img.size
-        x0, y0, x1, y1 = recadrer_visuels.CADRE
-        coupe = img.convert("RGB").crop((int(x0 * largeur), int(y0 * hauteur), int(x1 * largeur), int(y1 * hauteur)))
-    coupe.save(chemin, "WEBP", quality=recadrer_visuels.QUALITE, method=6)
-
-
 def copier(source, cible):
-    """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/2-categories/…)."""
+    """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/2-categories/…).
+
+    L'image de fiche est servie entière, pièce et fiche technique (ADR-0012, propriétaire 24/09 : « une photo entière,
+    pas juste la moitié ») : plus de recadrage, ni ici ni à la main (contrôles K12 et K13, tests/test_catalogue.py)."""
     relatif = cible.relative_to(PUBLIC / "images" / "produits")
     copie = DEPOT / relatif.parent / ("fond-blanc" if cible.name.startswith("studio-") else "fiche-technique") / cible.name
     for chemin in (cible, copie):
@@ -65,8 +53,6 @@ def copier(source, cible):
         for essai in range(6):  # OneDrive verrouille un instant les fichiers qu'il synchronise (Errno 22, 16/09)
             try:
                 shutil.copyfile(source, chemin)
-                if chemin.name.endswith("-caracteristiques.webp"):
-                    recadrer_sur_place(chemin)
                 break
             except OSError:
                 if essai == 5:
@@ -109,8 +95,8 @@ def main():
             c = json.loads((controle.FINAL / f"{slug}-caracteristiques.controles.json").read_text(encoding="utf-8"))
             cotes = ", ".join(dict.fromkeys(f"{lettre} {valeur}" for lettre, _, valeur, *_ in c["pastilles"]))
             image = copier(controle.FINAL / f"{slug}-caracteristiques.webp", dossier / f"{slug}-caracteristiques.webp")
-            # l'image servie est recadrée : la fiche technique n'y est plus (elle est dans la page)
-            image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes})"
+            # image servie entière (ADR-0012) : la fiche technique y est, comme dans la page
+            image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes}) et fiche technique"
             manifeste["produits"][slug] = image
             inventaire[(slug, "caracteristiques")] = {"slug": slug, "categorie": categorie, "fichier": image["src"],
                                                       "type": "caracteristiques", "verdict": "CONFORME", "date": date}
@@ -119,8 +105,10 @@ def main():
         n = len(composition["pieces"])
         nom = categories.get(categorie, famille)
         image = copier(controle.FINAL / f"studio-{famille}-studio.webp", dossier / f"studio-{famille}.webp")
-        image["alt"] = (f"{nom} en acier : {NOMBRES.get(n, n)} tailles côte à côte, photo studio sur fond blanc" if n > 1
-                        else f"{nom} en acier, photo studio sur fond blanc")
+        # matière de l'univers : « en acier » était écrit aussi pour l'aluminium et l'inox (mineur du 15/09)
+        matiere = {"aluminium": "en aluminium", "inox": "en inox"}.get(categorie.strip("/").split("/")[0], "en acier")
+        image["alt"] = (f"{nom} {matiere} : {NOMBRES.get(n, n)} tailles côte à côte, photo studio sur fond blanc" if n > 1
+                        else f"{nom} {matiere}, photo studio sur fond blanc")
         # Une categorie peut avoir plusieurs familles de photo studio (« Caillebotis &
         # marches » en a quatre). Le manifeste n'en tient qu'une : ecraser la
         # precedente ferait gagner la derniere famille integree, par hasard.

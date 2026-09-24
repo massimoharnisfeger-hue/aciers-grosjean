@@ -7,7 +7,8 @@ independante (agent verificateur-rendus) et l'integration sur le site.
 Pour chaque famille (cle `famille` de scripts/rendu-3d/donnees/produits.json) :
 - fichiers : <slug>.png (rendu brut), <slug>-caracteristiques.png/.webp/.controles.json par fiche,
   studio-<famille>.png et studio-<famille>-studio.png/.webp pour la categorie ;
-- images finales en 1600 x 1200, WebP < 200 Ko ;
+- images finales en 1600 x 1200 ou 2400 x 1800 (barres, profilés et tubes refaits le 24/09, ADR-0012), WebP < 200 Ko ;
+  les seuils en pixels, réglés en 1600 px, suivent la taille du rendu ;
 - piece entierement dans le cadre (rendu brut), et a gauche de la fiche technique sur le visuel caracteristiques ;
 - photo studio : marges d'un blanc pur ;
 - visuel caracteristiques : aucun probleme d'etiquette releve par habiller.py ; chaque texte ecrit = donnee sourcee
@@ -25,13 +26,14 @@ from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
 
 import recadrer_visuels
-from habiller import FINITIONS, titre_image
+from habiller import FINITIONS, LARGEUR_REFERENCE, texte_longueurs, titre_image
 
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
 TRAVAIL = Path(os.environ.get("LOCALAPPDATA", str(Path.home()))) / "SiteAciersGrosjean" / "rendu3d"
 FINAL, CONTROLE = TRAVAIL / "final", TRAVAIL / "controle"
 LARGEUR, HAUTEUR, WEBP_MAX_KO = 1600, 1200, 200
+TAILLES = {(1600, 1200), (2400, 1800)}  # 2400 px : barres, profilés et tubes refaits le 24/09 (ADR-0012)
 COLONNE_FICHE = 0.655  # debut de la fiche technique (habiller.py)
 
 # libelles des specifications de la page produit -> cles des donnees (plusieurs cles : « 100 × 50 mm »)
@@ -97,6 +99,8 @@ def specs_page():
             specs["Poids"] = r["kg"]
         if r.get("finition"):
             specs["Finition"] = r["finition"]
+        if r.get("longueurs"):  # « Longueurs standard » de la page (app/p/[slug]/page.tsx)
+            specs["Longueurs"] = r["longueurs"]
         d = desc.get(m.group(1), {})  # la description est affichée sur la page, sous les spécifications
         specs["_texte"] = d.get("courte", "") + " " + " ".join(b.get("texte", " ".join(b.get("items", [])))
                                                              for b in d.get("blocs", []))
@@ -269,7 +273,7 @@ def teinte_piece(chemin):
     return (r / somme, g / somme, b / somme)
 
 
-def jours_rappel(chemin, points):
+def jours_rappel(chemin, points, echelle=1.0):
     """Écart en pixels entre le début de chaque ligne de rappel et le pixel de pièce le plus proche (transparence du
     rendu brut). Vérification indépendante des cornières : rappels à 67 px de la pièce sur les images rendues avant
     le correctif du jour. Distance au plus proche plutôt que le long du trait : sur les petites sections, le talon
@@ -284,7 +288,7 @@ def jours_rappel(chemin, points):
         longueur = ((debut[0] - fin[0]) ** 2 + (debut[1] - fin[1]) ** 2) ** 0.5
         if longueur < 1:
             continue
-        rayon = int(max(40, min(3 * longueur, 200)))
+        rayon = int(max(40 * echelle, min(3 * longueur, 200 * echelle)))  # 1,5 en 2400 px
         x0, y0 = int(debut[0]) - rayon, int(debut[1]) - rayon
         cote = 2 * rayon + 1
         fenetre = alpha.crop((x0, y0, x0 + cote, y0 + cote)).tobytes()  # hors image : transparent
@@ -377,8 +381,8 @@ def controler(famille, produits, pages):
         png, webp = fichier(nom + ".png"), fichier(nom + ".webp")
         if png:
             with Image.open(png) as img:
-                if img.size != (LARGEUR, HAUTEUR):
-                    ecarts.append(f"{png.name} : {img.size[0]} x {img.size[1]} au lieu de {LARGEUR} x {HAUTEUR}")
+                if img.size not in TAILLES:
+                    ecarts.append(f"{png.name} : {img.size[0]} x {img.size[1]} au lieu de 1600 x 1200 ou 2400 x 1800")
         if webp and webp.stat().st_size > WEBP_MAX_KO * 1024:
             ecarts.append(f"{webp.name} : {webp.stat().st_size // 1024} Ko (> {WEBP_MAX_KO} Ko)")
         return png
@@ -394,7 +398,9 @@ def controler(famille, produits, pages):
             ecarts.append(f"{brut.name} : aucun pixel de piece")
         else:
             x0, y0, x1, y1 = cadre
-            if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or x1 > LARGEUR * 0.98 or y1 > HAUTEUR * 0.98:
+            with Image.open(brut) as img:
+                w_, h_ = img.size
+            if x0 < w_ * 0.02 or y0 < h_ * 0.02 or x1 > w_ * 0.98 or y1 > h_ * 0.98:
                 ecarts.append(f"{brut.name} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
         # longueur de chaque pièce dans le .json du studio (vérifications indépendantes des 16/09 et 23/09 : sans elle,
         # la longueur commune des barres ne se contrôlait qu'en ajustant une caméra sur l'image ; contrôle V5)
@@ -404,7 +410,8 @@ def controler(famille, produits, pages):
             ecarts.append(f"{studio}.json : longueur des pieces absente (recalculer : preparer_rendus.py --points-seuls)")
     if png:
         images.append(png)
-        n = marges_blanches(png)
+        with Image.open(png) as img:
+            n = marges_blanches(png, bande=round(16 * img.width / LARGEUR_REFERENCE))
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
     lum_studio = luminance_piece(brut)[0] if brut else None
@@ -422,10 +429,13 @@ def controler(famille, produits, pages):
         if png:
             images.append(png)
         if brut:
+            with Image.open(brut) as img:
+                W_IMG, H_IMG = img.size  # 1600 ou 2400 px (ADR-0012)
+            K = W_IMG / LARGEUR_REFERENCE  # seuils en pixels réglés en 1600 px
             cadre = cadre_piece(brut)
             if cadre is None:
                 ecarts.append(f"{slug} : aucun pixel de piece dans le rendu brut")
-                cadre = (0, 0, LARGEUR, HAUTEUR)
+                cadre = (0, 0, W_IMG, H_IMG)
             x0, y0, x1, y1 = cadre
             geo = FINAL / f"{slug}.json"
             debord = geo.exists() and json.loads(geo.read_text(encoding="utf-8")).get("debord", False)
@@ -433,12 +443,12 @@ def controler(famille, produits, pages):
                 # barre qui file hors du cadre (audit du 23/09) : elle sort par le haut et sous la fiche par
                 # construction ; habiller.py l'efface avant la fiche (contrôle « fond de la fiche »). Restent
                 # contrôlés les bords où se tient la section : gauche et bas.
-                if x0 < LARGEUR * 0.02 or y1 > HAUTEUR * 0.98:
+                if x0 < W_IMG * 0.02 or y1 > H_IMG * 0.98:
                     ecarts.append(f"{slug} : section trop pres du bord ({x0}, {y0}, {x1}, {y1})")
             else:
-                if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or y1 > HAUTEUR * 0.98:
+                if x0 < W_IMG * 0.02 or y0 < H_IMG * 0.02 or y1 > H_IMG * 0.98:
                     ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
-                if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
+                if x1 > W_IMG * (COLONNE_FICHE - 0.01):
                     ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
             # poteaux de clôture : tubes creux (CLOGRIFF) ou feuillures ombrées et capuchon noir (CLOPLUS), laque noire
             # (diagnostic du 15/09)
@@ -453,7 +463,7 @@ def controler(famille, produits, pages):
             # section pleine : aucun noir pur dans la partie servie (bouchons de nervures des ronds à béton, 24/09 ; V11)
             if serie_coupe in ("ROND", "ROND-BETON", "CARRE", "PLAT", "L", "T", "U-ALU"):
                 noirs = noir_pur_servi(brut)
-                if noirs > 20:
+                if noirs > 20 * K * K:  # 20 px en 1600 px, 45 en 2400
                     ecarts.append(f"{slug} : {noirs} px de noir pur sur la piece servie (surfaces dans le meme plan ?)")
             if (serie_coupe in ("PLAT", "L", "T", "U-ALU", "TUBE-ROND", "TC", "TR")
                     and "ame_gauche" in points and "ame_droite" in points):
@@ -516,13 +526,13 @@ def controler(famille, produits, pages):
                     part = fond_enclos(brut)
                     if part > 0.005:
                         ecarts.append(f"{slug} : fond visible a travers la piece ({part:.1%} de la piece)")
-                for cle, (jour, longueur) in sorted(jours_rappel(brut, points).items()):
+                for cle, (jour, longueur) in sorted(jours_rappel(brut, points, K).items()):
                     if jour is None:
                         ecarts.append(f"{slug} : {cle} loin de toute piece (fenetre de recherche depassee)")
                     # décollée : vide plus long que le trait, ou plus de 60 px et plus de 60 % du trait (15/09 : à « 25 px ou
                     # moitié du trait », 224 alertes sur des angles arrondis et chanfreinés corrects ; le mélange de
                     # versions du code, cause des rappels décollés des cornières, a son propre contrôle)
-                    elif jour > longueur or (jour > 60 and jour > 0.6 * longueur):
+                    elif jour > longueur or (jour > 60 * K and jour > 0.6 * longueur):
                         ecarts.append(f"{slug} : {cle} decollee de la piece ({jour} px pour un trait de {longueur:.0f} px)")
         ctrl = fichier(nom + ".controles.json")
         if not ctrl:
@@ -543,6 +553,9 @@ def controler(famille, produits, pages):
             elif cle == "finition":
                 if ecrit != FINITIONS.get(d["valeur"], d["valeur"]):
                     ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
+            elif isinstance(d["valeur"], list):  # longueurs standard (ADR-0012) : « 1 à 6 m »
+                if ecrit != texte_longueurs(d["valeur"], d.get("unite", "m")):
+                    ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
             elif not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
         # habillage antérieur aux contrôles d'étiquettes V6 (habiller.py) : ils n'ont jamais tourné sur cette image
@@ -563,10 +576,11 @@ def controler(famille, produits, pages):
                 # posée sur le flanc (habiller.place_t_tube) : sur la pièce par construction, claire ou sombre selon la
                 # matière (aluminium, 23/09) ; elle doit laisser libre la paroi opposée, à 6 px au moins
                 rang = [q[1] for q in c["pastilles"]].index("t")
-                if c["boites"][rang][0] < place["x_paroi"] + 6:
+                if c["boites"][rang][0] < place["x_paroi"] + 6 * c.get("echelle", 1):
                     ecarts.append(f"{slug} : etiquette t posee sur la paroi opposee du tube")
             elif cle == "t" and centre and brut and valeurs.get("serie", {}).get("valeur") in ("TC", "TR"):
-                part = part_claire(brut, centre[0] - 50, centre[1] - 20, centre[0] + 50, centre[1] + 20)
+                e_ = c.get("echelle", 1)  # boîte de l'étiquette t, en pixels du rendu
+                part = part_claire(brut, centre[0] - 50 * e_, centre[1] - 20 * e_, centre[0] + 50 * e_, centre[1] + 20 * e_)
                 if part > 0.02:
                     ecarts.append(f"{slug} : etiquette t sur une paroi de la piece ({part:.0%} de sa surface)")
         # l'image dit la meme chose que la page
@@ -604,6 +618,9 @@ def controler(famille, produits, pages):
             ecarts.append(f"{slug} : « {cle} » sur l'image, absent de la page")
         if "Poids" in fiche and not meme_valeur(page.get("Poids"), fiche["Poids"]):
             ecarts.append(f"{slug} : poids page {page.get('Poids')} ≠ image {fiche['Poids']}")
+        # longueurs de l'image = « Longueurs standard » de la page, toutes et seulement elles (ADR-0012)
+        if "longueurs" in affiche and sorted(page.get("Longueurs") or []) != sorted(valeurs["longueurs"]["valeur"]):
+            ecarts.append(f"{slug} : longueurs page {page.get('Longueurs')} ≠ image {valeurs['longueurs']['valeur']}")
         # poids écrit dans la description de la page (texte du site actuel) : la fiche prime (règle du propriétaire),
         # l'écart va en question en attente — note, pas écart bloquant
         m = re.search(r"[Pp]oids\s*:?\s*([\d]+(?:[.,]\d+)?)\s*kg", page.get("_texte", ""))

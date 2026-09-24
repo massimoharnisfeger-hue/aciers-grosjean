@@ -36,6 +36,15 @@ V11 - Aucune section pleine n'a plus de 20 px de noir pur dans la partie servie 
 V12 - Profil U : la coupe de l'aile basse se distingue du fond du U vu au-dessus d'elle d'au moins 8 niveaux. U alu,
      24/09 (verification independante) : coupe a 149-155 contre 156-157 pour le fond, epaisseur de l'aile illisible ;
      V9 ne mesure que l'ame, a la rangee de la pince.
+V13 - Le cadre de la piece sur une fiche tient dans le recadrage du site (`recadrer_visuels.CADRE`), a 0,005 de
+     l'image au moins de chaque bord. Le cadre des fiches (0,62 de large, 14/09) depassait la coupe du site (0,615,
+     22/09) : invisible tant que le chanfrein fixe arrondissait le bout de la barre ; avec les aretes vives de l'audit,
+     le coin du bout arriere touchait le cadre et le site en coupait 6 a 8 px (carre plein, 24/09) : une barre
+     « coupee » de nouveau, alors que le proprietaire veut la piece entiere (ADR-0011).
+V14 - La composition de chaque photo studio de barres (les fiches rendues cote a cote) est versionnee dans
+     `donnees/studios.json`, et `preparer_rendus.py studio-famille` la relit. Elle ne vivait que dans l'atelier du PC
+     (`<famille>.studio.json`, scripts de seance) : le 24/09, une seance web devant rendre les « trios d'origine »
+     (ADR-0011) a du les retrouver en comparant des silhouettes aux anciennes images.
 """
 
 import ast
@@ -429,6 +438,75 @@ class ModelesSource(unittest.TestCase):
                 image.save(chemin)
                 coupe, face = controler_rendus.contraste_aile_basse(chemin, (250, 100), (250, 116))
             self.assertAlmostEqual(abs(face - coupe), attendu, delta=1, msg="mesure de l'aile basse du U fausse")
+
+    def test_v13_la_fiche_tient_dans_le_recadrage_du_site(self):
+        """Le cadre de la pièce d'une fiche (`boite` de `rendu_profil.py`, en coordonnées de caméra : u depuis la
+        gauche, v depuis le bas) tient dans le recadrage servi par le site, à 0,005 de l'image de chaque bord.
+
+        24/09, carré plein refait aux vues d'origine (ADR-0011) : le cadre de la pièce allait jusqu'à 0,62 de la
+        largeur, le site coupe à 0,615. Avant l'audit, le chanfrein fixe de 0,6 mm arrondissait le bout de la barre,
+        qui restait dans l'image ; avec les arêtes vives, le coin du bout arrière atteint le cadre et 6 à 8 px
+        disparaissaient à la coupe : le bout de la barre ne se voyait plus. La photo studio n'est pas recadrée."""
+        marge = 0.005
+        arbre = ast.parse((RENDU / "recadrer_visuels.py").read_text(encoding="utf-8"))
+        cadre_site = next(ast.literal_eval(n.value) for n in arbre.body if isinstance(n, ast.Assign)
+                          and any(isinstance(c, ast.Name) and c.id == "CADRE" for c in n.targets))
+        x0, y0, x1, y1 = cadre_site
+        boites = []
+        for noeud in ast.walk(arbre_du_rendu()):
+            if not (isinstance(noeud, ast.If) and "caracteristiques" in ast.unparse(noeud.test)):
+                continue
+            for enfant in noeud.body:  # la branche de la fiche seulement : le `else` final est la photo studio
+                for appel in ast.walk(enfant):
+                    if (isinstance(appel, ast.Call) and isinstance(appel.func, ast.Attribute) and appel.func.attr == "get"
+                            and len(appel.args) == 2 and isinstance(appel.args[0], ast.Constant)
+                            and appel.args[0].value == "boite"):
+                        boites.append(ast.literal_eval(appel.args[1]))
+        self.assertGreaterEqual(len(boites), 3, "cadres des fiches introuvables dans rendu_profil.py : controle sans objet")
+        fautifs = []
+        for u0, v0, u1, v1 in boites:
+            haut, bas = 1 - v1, 1 - v0  # v compte depuis le bas de l'image, le recadrage depuis le haut
+            if u0 < x0 + marge or u1 > x1 - marge or haut < y0 + marge or bas > y1 - marge:
+                fautifs.append(f"cadre {(u0, v0, u1, v1)} hors du recadrage du site {cadre_site} (marge {marge})")
+        self.assertEqual(fautifs, [], "la piece d'une fiche peut etre coupee par le site : " + "; ".join(fautifs))
+
+    def test_v14_la_composition_des_photos_studio_est_versionnee(self):
+        """Chaque photo studio servie d'une famille de barres a sa composition dans `donnees/studios.json` : des fiches
+        de la famille, trois au plus, d'une même finition ; et le préparateur la relit (`studio-famille`).
+
+        ADR-0011 demande de rendre à nouveau les photos studio avec leur « trio de tailles d'origine ». Le 24/09, la
+        séance web chargée de le faire ne l'a trouvé nulle part dans le dépôt : il vivait dans l'atelier du PC
+        (`<famille>.studio.json`, `serie_audit.py`) ; il a fallu le retrouver en comparant des silhouettes aux
+        anciennes images."""
+        chemin = RENDU / "donnees" / "studios.json"
+        self.assertTrue(chemin.exists(), "donnees/studios.json absent : la composition des photos studio n'est pas versionnee")
+        compositions = json.loads(chemin.read_text(encoding="utf-8"))
+        produits = json.loads(PRODUITS.read_text(encoding="utf-8"))
+        with open(RACINE / "_DOCS" / "rendus-3d" / "inventaire-visuels.csv", encoding="utf-8-sig") as f:
+            studios = [ligne.split(";")[0].removeprefix("studio-") for ligne in f if ";studio;" in ligne]
+        fautifs = []
+        for famille in studios:
+            slugs = sorted(s for s, p in produits.items() if p["famille"] == famille)
+            if not slugs:
+                continue
+            try:
+                pc, _ = self.preparer.piece(produits[slugs[0]], 900, 1000)
+            except KeyError:
+                continue
+            if pc["type"] not in BARRES_ATTENDUES:
+                continue
+            composition = compositions.get(famille)
+            if not composition:
+                fautifs.append(f"{famille} : composition absente")
+                continue
+            etrangers = [s for s in composition if s not in slugs]
+            finitions = {self.preparer.piece(produits[s], 900, 1000)[1] for s in composition if s in produits}
+            if etrangers or not 1 <= len(composition) <= 3 or len(finitions) > 1:
+                fautifs.append(f"{famille} : {composition} (hors famille {etrangers}, finitions {finitions})")
+        self.assertEqual(fautifs, [], f"{len(fautifs)} photo(s) studio sans composition versionnee : {fautifs[:6]}")
+        source = (RENDU / "preparer_rendus.py").read_text(encoding="utf-8")
+        self.assertIn('"studio-famille"', source, "preparer_rendus.py ne relit pas donnees/studios.json (studio-famille)")
+        self.assertIn("studios.json", source, "preparer_rendus.py ne relit pas donnees/studios.json")
 
 
 if __name__ == "__main__":

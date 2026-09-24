@@ -5,9 +5,10 @@ export type VisuelProduit = { src: string; largeur: number; hauteur: number; alt
 export type VueGalerie = VisuelProduit & { legende: string };
 
 /**
- * Les rendus ne portent plus de tableau incruste : il a ete retire du FICHIER
- * par `scripts/rendu-3d/recadrer_visuels.py`. L'image peut donc etre montree
- * ENTIERE, `object-contain` dans une boite de rapport stable, posee sur un
+ * Le rendu d'une fiche est servi ENTIER : piece, cotes et tableau des mesures
+ * (ADR-0012, 24/09 : le proprietaire veut « une photo entiere, pas juste la
+ * moitie »). En 4:3 (1600 x 1200, ou 2400 x 1800 pour les barres, profiles et
+ * tubes), il remplit exactement la boite 4:3, `object-contain`, posee sur un
  * fond neutre — la presentation d'une photo produit.
  *
  * Le recadrage a d'abord ete tente en CSS (`object-cover` sur une boite 5/6) :

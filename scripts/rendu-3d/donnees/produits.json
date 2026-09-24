@@ -700,6 +700,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -727,6 +739,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -754,6 +778,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -781,6 +817,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -808,6 +856,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -835,6 +895,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -862,6 +934,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -913,6 +997,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -962,6 +1058,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1013,6 +1121,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1066,6 +1186,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1115,6 +1247,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1166,6 +1310,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1219,6 +1375,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1268,6 +1436,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1319,6 +1499,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1368,6 +1560,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1421,6 +1625,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1470,6 +1686,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1521,6 +1749,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1570,6 +1810,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1621,6 +1873,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1674,6 +1938,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1728,6 +2004,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -1780,6 +2068,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1831,6 +2131,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1884,6 +2196,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1933,6 +2257,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -1984,6 +2320,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2035,6 +2383,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2086,6 +2446,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2137,6 +2509,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2188,6 +2572,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2239,6 +2635,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2290,6 +2698,18 @@
    "procede": {
     "valeur": "Laminé à chaud",
     "source": "site actuel — description de la fiche"
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2346,6 +2766,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2402,6 +2834,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2458,6 +2902,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2514,6 +2970,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2570,6 +3038,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (fer T, groupe G023) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2606,6 +3086,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2642,6 +3134,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -2678,6 +3182,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5780,6 +6296,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5816,6 +6344,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5852,6 +6392,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5888,6 +6440,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5924,6 +6488,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5960,6 +6536,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -5996,6 +6584,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6032,6 +6632,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6068,6 +6680,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6104,6 +6728,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6140,6 +6776,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6176,6 +6824,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6212,6 +6872,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6248,6 +6920,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6284,6 +6968,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6320,6 +7016,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6356,6 +7064,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6392,6 +7112,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6428,6 +7160,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6464,6 +7208,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6500,6 +7256,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6536,6 +7304,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6572,6 +7352,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6608,6 +7400,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6644,6 +7448,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6680,6 +7496,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6716,6 +7544,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6752,6 +7592,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6788,6 +7640,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6824,6 +7688,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6860,6 +7736,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6896,6 +7784,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6932,6 +7832,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -6968,6 +7880,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7004,6 +7928,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7040,6 +7976,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7076,6 +8024,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7112,6 +8072,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7148,6 +8120,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7184,6 +8168,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7220,6 +8216,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7256,6 +8264,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7292,6 +8312,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7328,6 +8360,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7364,6 +8408,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7401,6 +8457,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -7440,6 +8508,18 @@
     "valeur": "BRUT",
     "source": "vraie photo du site actuel (plats, groupes G026 et G028) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -7474,6 +8554,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7507,6 +8599,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -7542,6 +8646,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -7576,6 +8692,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7608,6 +8736,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7640,6 +8780,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7672,6 +8824,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7704,6 +8868,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7736,6 +8912,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7768,6 +8956,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -7800,6 +9000,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12628,6 +13840,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12684,6 +13908,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -12741,6 +13977,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12795,6 +14043,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12849,6 +14109,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12903,6 +14175,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12957,6 +14241,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -12993,6 +14289,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13031,6 +14339,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13069,6 +14389,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13107,6 +14439,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13145,6 +14489,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13183,6 +14539,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13221,6 +14589,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (treillis, groupes G002 à G005) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -13259,6 +14639,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13295,6 +14687,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13331,6 +14735,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13367,6 +14783,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13403,6 +14831,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13439,6 +14879,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13475,6 +14927,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13511,6 +14975,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13547,6 +15023,18 @@
     "valeur": "BRUT",
     "source": "aucune photo du site actuel : finition des barres laminées à chaud — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13578,6 +15066,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13609,6 +15109,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -13640,6 +15152,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20192,6 +21716,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20238,6 +21774,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20284,6 +21832,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20330,6 +21890,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20376,6 +21948,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20422,6 +22006,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20468,6 +22064,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20514,6 +22122,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20561,6 +22181,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -20610,6 +22242,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -20660,6 +22304,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -20708,6 +22364,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20754,6 +22422,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20802,6 +22482,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -20850,6 +22542,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20896,6 +22600,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -20944,6 +22660,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -20992,6 +22720,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21039,6 +22779,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21089,6 +22841,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21137,6 +22901,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21185,6 +22961,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21233,6 +23021,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21279,6 +23079,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21326,6 +23138,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21375,6 +23199,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21423,6 +23259,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21471,6 +23319,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -21519,6 +23379,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21565,6 +23437,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21611,6 +23495,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21657,6 +23553,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21703,6 +23611,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21749,6 +23669,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21795,6 +23727,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21841,6 +23785,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21887,6 +23843,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21933,6 +23901,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -21979,6 +23959,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22025,6 +24017,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22071,6 +24075,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22117,6 +24133,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22161,6 +24189,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22206,6 +24246,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22249,6 +24301,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22292,6 +24356,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22335,6 +24411,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22378,6 +24466,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22421,6 +24521,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22464,6 +24576,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22511,6 +24635,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22559,6 +24695,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22606,6 +24754,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22654,6 +24814,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -22701,6 +24873,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22750,6 +24934,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22799,6 +24995,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22848,6 +25056,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22898,6 +25118,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22947,6 +25179,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -22996,6 +25240,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23045,6 +25301,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23094,6 +25362,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23143,6 +25423,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23192,6 +25484,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23241,6 +25545,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23290,6 +25606,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23339,6 +25667,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23388,6 +25728,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23436,6 +25788,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23483,6 +25847,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23532,6 +25908,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23577,6 +25965,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23620,6 +26020,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23663,6 +26075,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23706,6 +26130,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23749,6 +26185,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23781,6 +26229,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23813,6 +26273,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -23847,6 +26319,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23883,6 +26367,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23915,6 +26411,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23951,6 +26459,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -23984,6 +26504,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24023,6 +26555,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24057,6 +26601,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24094,6 +26650,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24128,6 +26696,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24165,6 +26745,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24204,6 +26796,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24238,6 +26842,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24275,6 +26891,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24309,6 +26937,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24345,6 +26985,18 @@
     "valeur": "INOX",
     "source": "univers inox — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24377,6 +27029,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24410,6 +27074,18 @@
     "valeur": "BRUT",
     "source": "vraies photos du site actuel (tubes, groupes G045 et G048) — non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": [
@@ -24444,6 +27120,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24476,6 +27164,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24508,6 +27208,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24540,6 +27252,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []
@@ -24572,6 +27296,18 @@
     "valeur": "ALU",
     "source": "univers aluminium — matière du rendu, non affichée",
     "supposee": true
+   },
+   "longueurs": {
+    "valeur": [
+     1.0,
+     2.0,
+     3.0,
+     4.0,
+     5.0,
+     6.0
+    ],
+    "source": "site actuel — option de la fiche",
+    "unite": "m"
    }
   },
   "alertes": []

@@ -229,27 +229,26 @@ class CatalogueSource(unittest.TestCase):
         manquants = [u for u in univers_du_catalogue(CATALOGUE.read_text(encoding="utf-8")) if "/catalogue/" + u not in routes]
         self.assertEqual(manquants, [], "chapitres inconnus de scripts/routes.py : " + str(manquants))
 
-    def test_k12_l_integration_recadre_ce_qu_elle_sert(self):
-        """`integrer_visuels.py` doit servir l'image recadrée, pas l'image entière.
+    def test_k12_l_integration_sert_l_image_entiere(self):
+        """`integrer_visuels.py` sert l'image de fiche entière : la pièce et sa fiche technique (ADR-0012).
 
-        Constat de la vérification indépendante du 23/09 (carré plein) : l'intégration copiait le rendu habillé
-        entier (1600 × 1200 : fiche incrustée à droite, fondu de la barre en débord) vers le site et vers la
-        copie du propriétaire ; le recadrage n'était fait que par `recadrer_visuels.py`, une étape à relancer
-        à la main après chaque intégration. Un seul cadre pour les deux scripts : celui de `recadrer_visuels.py`.
-        """
+        22/09 : la fiche incrustée était retirée du fichier servi (`recadrer_visuels.py`, à la main) ; 23/09 :
+        l'intégration recadrait elle-même (L-051). 24/09, le propriétaire devant l'image servie : « je veux une photo
+        entière, pas juste la moitié », mesures comprises. Contrôle de structure, pas de mot (L-051) : `copier()` copie
+        le fichier tel quel, sans recadrage, et l'intégration n'importe plus le recadrage."""
         source = (RACINE / "scripts" / "rendu-3d" / "integrer_visuels.py").read_text(encoding="utf-8")
-        # l'import réel, pas une simple mention : le 23/09, l'import refusé par un hook laissait le texte
-        # `recadrer_visuels.CADRE` dans le code, contrôle vert et script qui aurait planté à l'intégration
-        self.assertRegex(source, r"(?m)^import recadrer_visuels\b", "integrer_visuels.py n'importe pas recadrer_visuels")
-        self.assertIn("recadrer_visuels.CADRE", source, "integrer_visuels.py doit utiliser le cadre de recadrer_visuels.py")
         copier = source.split("def copier(", 1)[1].split("\ndef ", 1)[0] if "def copier(" in source else ""
-        self.assertIn("recadrer_sur_place(", copier, "copier() ne recadre pas le visuel servi")
+        self.assertIn("shutil.copyfile(source, chemin)", copier, "copier() ne copie plus le visuel tel quel")
+        for motif in ("recadrer_sur_place(", ".crop(", "recadrer_visuels"):
+            self.assertNotIn(motif, copier, f"copier() recadre encore le visuel servi ({motif})")
+        self.assertNotRegex(source, r"(?m)^import recadrer_visuels\b", "integrer_visuels.py importe encore le recadrage")
 
-    def test_k13_chaque_visuel_servi_est_recadre_et_le_manifeste_le_dit(self):
-        """Toute image de fiche servie mesure 984 × 1133 (1600 × 1200 recadré), et le manifeste réserve
-        exactement cette place. Lecture de l'en-tête WebP sans Pillow : le contrôle tourne aussi en CI."""
+    def test_k13_chaque_visuel_servi_est_entier_et_le_manifeste_le_dit(self):
+        """Toute image de fiche servie est le rendu habillé entier, pièce et fiche technique (ADR-0012) : 1600 × 1200,
+        ou 2400 × 1800 pour les barres, profilés et tubes refaits le 24/09 ; le manifeste réserve exactement cette
+        place. Plus aucune image recadrée (984 × 1133). Lecture de l'en-tête WebP sans Pillow : tourne aussi en CI."""
         manifeste = json.loads(MANIFESTE.read_text(encoding="utf-8"))
-        attendu = (984, 1133)
+        attendus = {(1600, 1200), (2400, 1800)}
         fautifs = []
         for slug, e in manifeste["produits"].items():
             chemin = RACINE / "public" / e["src"].lstrip("/")
@@ -257,11 +256,11 @@ class CatalogueSource(unittest.TestCase):
                 fautifs.append(f"{slug} : fichier absent")
                 continue
             taille = taille_webp(chemin)
-            if taille != attendu:
+            if taille not in attendus:
                 fautifs.append(f"{slug} : fichier {taille}")
-            if (e["largeur"], e["hauteur"]) != attendu:
-                fautifs.append(f"{slug} : manifeste {e['largeur']} x {e['hauteur']}")
-        self.assertEqual(fautifs, [], f"{len(fautifs)} visuel(s) servi(s) non recadré(s) : {fautifs[:5]}")
+            if (e["largeur"], e["hauteur"]) != taille:
+                fautifs.append(f"{slug} : manifeste {e['largeur']} x {e['hauteur']} pour un fichier {taille}")
+        self.assertEqual(fautifs, [], f"{len(fautifs)} visuel(s) servi(s) non entier(s) : {fautifs[:5]}")
 
     def test_k10_aucun_lien_vers_le_catalogue_sans_le_verrou(self):
         """Tant que le catalogue n'est pas validé, aucune page publique n'y mène.

@@ -34,7 +34,11 @@ BRUME = (209, 214, 218)
 GRIS_TEXTE = (110, 115, 124)
 BLANC = (255, 255, 255)
 
-S = 2  # suréchantillonnage du tracé
+S = 2  # suréchantillonnage du tracé (3 pour un rendu de 2400 px : voir `caracteristiques`)
+# Largeur de référence de l'habillage : tailles des étiquettes, écarts et placements validés sur des rendus de 1600 px.
+# Un rendu plus large (2400 px, ADR-0012) garde exactement cette mise en page, agrandie : points et masques sont ramenés
+# à cette échelle, le calque est dessiné 1,5 fois plus grand, la sortie a la taille du rendu.
+LARGEUR_REFERENCE = 1600
 
 # libellés affichés d'une finition (définitions données par les descriptions du site actuel)
 FINITIONS = {"GPP": "GPP — grenaillé, primaire", "BRUT": "Brut — calamine"}
@@ -81,11 +85,24 @@ def affichable(p, cle):
     if not d or d.get("supposee"):
         return None
     v, unite = d["valeur"], d.get("unite", "")
+    if isinstance(v, list):
+        return texte_longueurs(v, unite)
     if isinstance(v, (int, float)):
         # poids et longueurs en mètres : deux décimales, comme la page (« 8,30 kg/m », « 1,53 m »)
         texte = f"{v:.2f}" if unite.startswith("kg") or unite == "m" else f"{v:g}"
         return f"{texte.replace('.', ',')} {unite}".strip()
     return str(v)
+
+
+def texte_longueurs(longueurs, unite="m"):
+    """Longueurs standard du site actuel, telles que la page les propose : « 1 à 6 m » pour une suite de mètres entiers,
+    sinon la liste (« 3, 6 et 12 m »). Fonction pure, relue par controler_rendus.py (ADR-0012)."""
+    valeurs = sorted(float(x) for x in longueurs)
+    entiers = all(x.is_integer() for x in valeurs)
+    if entiers and len(valeurs) > 2 and valeurs == [float(x) for x in range(int(valeurs[0]), int(valeurs[-1]) + 1)]:
+        return f"{int(valeurs[0])} à {int(valeurs[-1])} {unite}"
+    textes = [f"{x:g}".replace(".", ",") for x in valeurs]
+    return (", ".join(textes[:-1]) + " et " + textes[-1] if len(textes) > 1 else textes[0]) + f" {unite}"
 
 
 # ---------------------------------------------------------------- tracé
@@ -518,9 +535,12 @@ def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55, debord=False):
     ombre = a_.point(lambda v: int(v * facteur))
     if fondu:  # l'ombre s'efface vers le bord et disparaît sur les 24 derniers px : marges d'un blanc pur
         w, h = rendu.size
+        # rendu de 2400 px : mêmes proportions qu'en 1600 (fondu de 135 px, marge blanche de 36)
+        k = w / LARGEUR_REFERENCE
+        fondu_px, marge = round(fondu * k), round(24 * k)
 
         def rampe(i, n):
-            return min(255, int(255 * max(0, min(i, n - 1 - i) - 24) / (fondu - 24)))
+            return min(255, int(255 * max(0, min(i, n - 1 - i) - marge) / (fondu_px - marge)))
 
         bord_x = Image.new("L", (w, 1))
         bord_x.putdata([rampe(x, w) for x in range(w)])
@@ -550,13 +570,13 @@ def rendu_sur_blanc(chemin, fondu=90, fiche=False, ombre=0.55, debord=False):
 def enregistrer(image, base):
     image = image.convert("RGB")
     image.save(base + ".png", optimize=True)
-    # WebP sous 200 Ko (CLAUDE.md) : qualité 82, abaissée par paliers pour les images très détaillées (studio des tôles
-    # perforées à 220 Ko le 15/09)
-    for qualite in (82, 76, 70, 64, 58):
+    # WebP sous 200 Ko (CLAUDE.md) : qualité 90 (image « plus nette », propriétaire 24/09 : chiffres et traits sans
+    # bavure ; 82 avant), abaissée par paliers pour les images très détaillées (studio des tôles perforées à 220 Ko, 15/09)
+    for qualite in (90, 82, 76, 70, 64, 58):
         image.save(base + ".webp", quality=qualite, method=6)
         if os.path.getsize(base + ".webp") <= 195 * 1024:
             break
-    print("OK", base + ".webp", round(os.path.getsize(base + ".webp") / 1024), "Ko" + (f" (qualite {qualite})" if qualite != 82 else ""))
+    print("OK", base + ".webp", round(os.path.getsize(base + ".webp") / 1024), "Ko" + (f" (qualite {qualite})" if qualite != 90 else ""))
 
 
 # ---------------------------------------------------------------- compositions
@@ -575,12 +595,26 @@ def caracteristiques(slug, dossier):
     fond_fiche = ImageStat.Stat(image.convert("L").crop((int(image.width * 0.655), 60, image.width - 40, image.height - 60))).extrema[0][0]
     with open(os.path.join(dossier, slug + ".json"), encoding="utf-8") as f:
         geo = json.load(f)
-    P, W, H = geo["points"], geo["largeur"], geo["hauteur"]
+    # rendu de 2400 px (ADR-0012) : la mise en page validée en 1600 px est gardée telle quelle et agrandie. Les points
+    # et les masques sont ramenés à l'échelle 1600 (W, H), le calque est dessiné à S = 3 au lieu de 2, et la sortie
+    # prend la taille du rendu (W_SORTIE, H_SORTIE). Le sidecar revient aux pixels du rendu, que controler_rendus.py lit.
+    global S, MASQUE, CLAIR, FAMILLE_EN_COURS
+    W_SORTIE, H_SORTIE = geo["largeur"], geo["hauteur"]
+    K = W_SORTIE / LARGEUR_REFERENCE
+    if round(2 * K, 6) != round(2 * K):
+        raise SystemExit(f"{slug} : rendu de {W_SORTIE} px, habillage prévu pour 1600 ou 2400 px seulement")
+    S = round(2 * K)
+    W, H = LARGEUR_REFERENCE, round(H_SORTIE / K)
+    P = {cle: [v[0] / K, v[1] / K] if isinstance(v, (list, tuple)) and len(v) == 2 else v
+         for cle, v in geo["points"].items()}
+    if geo.get("type") == "TOLE" and K != 1:
+        raise SystemExit(f"{slug} : loupe des tôles réglée pour un rendu de 1600 px seulement")
     p = fiche(slug)
-    global MASQUE, CLAIR, FAMILLE_EN_COURS
     FAMILLE_EN_COURS = p.get("famille")
     with Image.open(os.path.join(dossier, slug + ".png")) as brut:
         rgba = brut.convert("RGBA")
+        if rgba.size != (W, H):
+            rgba = rgba.resize((W, H), Image.BOX)
         MASQUE = rgba.split()[3].point(lambda v: 255 if v >= 250 else 0)
         CLAIR = Image.composite(rgba.convert("L"), Image.new("L", rgba.size, 0), MASQUE)
 
@@ -682,6 +716,9 @@ def caracteristiques(slug, dossier):
     finition = FINITIONS.get(finition["valeur"], finition["valeur"]) if finition and not finition.get("supposee") else None
     lignes = lignes_cotes + [
         ("Poids", "", "poids", affichable(p, "poids")),
+        # longueurs standard du site actuel, celles que la page propose (propriétaire, 24/09 : « tout ce qui serait
+        # utile », sans les valeurs d'ingénieur des tableaux fournisseurs ; ADR-0012)
+        ("Longueurs", "", "longueurs", affichable(p, "longueurs")),
         ("Nuance", "", "nuance", affichable(p, "nuance")),
         ("Norme", "", "norme", affichable(p, "norme")),
         ("Surface", "", "surface", affichable(p, "surface")),
@@ -773,18 +810,20 @@ def caracteristiques(slug, dossier):
     if y / S > H - 70:
         problemes.append("fiche technique trop haute : elle touche la note de bas de page")
 
-    calque = calque.resize((W, H), Image.LANCZOS)
+    calque = calque.resize((W_SORTIE, H_SORTIE), Image.LANCZOS)
     image = Image.alpha_composite(image, calque)
     enregistrer(image, os.path.join(dossier, slug + "-caracteristiques"))
-    # textes réellement écrits et contrôles, relus par controler_rendus.py
+    # textes réellement écrits et contrôles, relus par controler_rendus.py ; positions en pixels du rendu (× K)
+    place_t = dict(PLACE_T, x_paroi=PLACE_T["x_paroi"] * K) if PLACE_T and "x_paroi" in PLACE_T else PLACE_T
     with open(os.path.join(dossier, slug + "-caracteristiques.controles.json"), "w", encoding="utf-8") as f:
         json.dump({"surtitre": surtitre, "titre": titre,
                    "fiche": [[label, lettre, cle, valeur] for label, lettre, cle, valeur in lignes],
-                   "pastilles": [[lettre, cle, valeur, round(c[0]), round(c[1])] for c, lettre, valeur, cle in PASTILLES],
-                   "rappels": [[list(a), list(b)] for a, b in RAPPELS], "problemes": problemes,
+                   "pastilles": [[lettre, cle, valeur, round(c[0] * K), round(c[1] * K)] for c, lettre, valeur, cle in PASTILLES],
+                   "rappels": [[[v * K for v in a], [v * K for v in b]] for a, b in RAPPELS], "problemes": problemes,
                    # boîtes des étiquettes : habillage passé par les contrôles V6 ; controler_rendus.py refuse un
                    # sidecar qui ne les a pas (image habillée avant ces contrôles, vérification du 23/09)
-                   "boites": [[round(v, 1) for v in boite] for boite in boites], "place_t": PLACE_T},
+                   "boites": [[round(v * K, 1) for v in boite] for boite in boites], "place_t": place_t,
+                   "echelle": K},
                   f, ensure_ascii=False, indent=1)
     print("CONTROLES :", "; ".join(problemes) if problemes else "aucun problème")
 
