@@ -401,6 +401,36 @@ def extruder(section_mm, longueur_mm, nom, decalage_x=0.0, lisse=True):
     return obj
 
 
+def largeur_chanfrein(piece):
+    """Largeur du chanfrein d'arête d'un profilé extrudé, en mm (0 = aucun chanfrein).
+
+    Audit du 23/09 (propriétaire : « des arrondis alors qu'il n'y a pas d'arrondis ») : le chanfrein fixe de
+    0,6 mm valait 10 % du côté d'un carré de 6 et 20 % de l'épaisseur d'un plat de 3, et arrondissait tout le
+    chant d'une tôle de 1 mm (plafonné par Blender à la demi-épaisseur). Les dessins et photos du site montrent
+    des arêtes vives ; seuls les congés et arrondis normalisés (r, r1, r2, rayon extérieur des tubes) existent
+    sur le produit, et ils sont déjà dans la section.
+    Règle : 2 % de l'épaisseur la plus fine de la section, plafonné à 0,6 mm ; rien sur une tôle (chant
+    cisaillé) ni sous 0,05 mm (sous le pixel, et source d'artefacts du modificateur)."""
+    if piece["type"] == "TOLE":
+        return 0.0
+    minces = [piece[k] for k in ("t", "tw", "tf") if piece.get(k)]
+    epaisseur = min(minces) if minces else min(piece["h"], piece["b"])
+    largeur = min(0.6, 0.02 * epaisseur)
+    return largeur if largeur >= 0.05 else 0.0
+
+
+def regler_chanfrein(obj, piece):
+    """Applique `largeur_chanfrein` au modificateur posé par `extruder()`."""
+    bev = obj.modifiers.get("chanfrein")
+    if bev is None:
+        return
+    largeur = largeur_chanfrein(piece)
+    if largeur <= 0:
+        obj.modifiers.remove(bev)
+    else:
+        bev.width = largeur * MM
+
+
 def courbe_tube(nom, points, rayon, rayons_points=None, resolution=4):
     """Tube le long d'une polyligne (mm) : nervure de barre crénelée. `rayons_points` module l'épaisseur."""
     cu = bpy.data.curves.new(nom, "CURVE")
@@ -419,19 +449,44 @@ def courbe_tube(nom, points, rayon, rayons_points=None, resolution=4):
     return obj
 
 
+def courbe_en_maillage(obj):
+    """Objet courbe → objet maillage de même nom, pour donner à ses bouchons la matière de coupe (ronds à béton, 24/09)."""
+    dg = bpy.context.evaluated_depsgraph_get()
+    me = bpy.data.meshes.new_from_object(obj.evaluated_get(dg))
+    nom = obj.name
+    bpy.data.objects.remove(obj, do_unlink=True)
+    neuf = bpy.data.objects.new(nom, me)
+    bpy.context.collection.objects.link(neuf)
+    return neuf
+
+
 def nervures_barre(d, L, dx, nom):
     """Barre crénelée (aciers pour béton) : deux nervures longitudinales et deux rangées de nervures transverses en
-    croissant, inclinées en sens opposés. Proportions usuelles (hauteur ≈ 0,065 d, pas ≈ 0,7 d, 55°) : forme seulement."""
+    croissant, inclinées en sens opposés. Proportions usuelles (hauteur ≈ 0,065 d, pas ≈ 0,7 d, 55°) : forme seulement.
+
+    Vérification indépendante du 24/09 : (1) les nervures longitudinales partaient dans le plan même de la coupe et
+    leur bouchon faisait un demi-disque noir sur la face sciée (masqué jusque-là par le chanfrein de 0,6 mm ; contrôle
+    V11) → départ 0,02 mm derrière la coupe, bouchons en matière de coupe (ils sont sciés avec la barre) ; (2) les
+    nervures transverses suivaient un arc symétrique, pas l'hélice inclinée annoncée (fiche VM 2013 du site : séries
+    d'inclinaison contraire ; référence G001) → phase linéaire, y = y0 ± k·R·(t − t_milieu), 55° sur l'axe."""
     R, cz = d / 2, d / 2
     h_n = 0.065 * d
-    objs = [courbe_tube(f"{nom}-long-{s}", [(dx + s * R, 0, cz), (dx + s * R, L, cz)], h_n * 0.8) for s in (-1, 1)]
+    objs = []
+    for s in (-1, 1):
+        longue = courbe_en_maillage(courbe_tube(f"{nom}-long-{s}", [(dx + s * R, 0.02, cz), (dx + s * R, L, cz)], h_n * 0.8))
+        for poly in longue.data.polygons:
+            if abs(poly.normal.y) > 0.99:  # bouchons : matière de coupe (2e matériau de chaque maillage)
+                poly.material_index = 1
+        objs.append(longue)
     pas, k = 0.7 * d, 1 / math.tan(math.radians(55))
     n = 14
     for rangee, (t0, t1, sens) in enumerate(((12, 168, 1), (192, 348, -1))):
-        y0 = pas / 2 + rangee * pas / 2
-        while y0 + R * k < L - pas / 2:
+        t_milieu = math.radians((t0 + t1) / 2)
+        demi = k * R * math.radians(t1 - t0) / 2  # demi-étendue de la nervure le long de la barre
+        y0 = pas / 2 + rangee * pas / 2 + demi  # la première nervure reste entièrement derrière la coupe
+        while y0 + demi < L - pas / 2:
             ts = [math.radians(t0 + (t1 - t0) * i / (n - 1)) for i in range(n)]
-            pts = [(dx + R * math.cos(t), y0 + sens * R * math.sin(t) * k, cz + R * math.sin(t)) for t in ts]
+            pts = [(dx + R * math.cos(t), y0 + sens * k * R * (t - t_milieu), cz + R * math.sin(t)) for t in ts]
             rayons = [0.25 + 0.75 * math.sin(math.pi * i / (n - 1)) for i in range(n)]  # croissant : fin aux bouts
             objs.append(courbe_tube(f"{nom}-n{rangee}-{y0:.0f}", pts, h_n, rayons))
             y0 += pas
@@ -1476,13 +1531,24 @@ def materiau_gpp():
     return m
 
 
-def materiau_coupe():
-    """Face sciée : acier nu clair, stries de scie."""
+# Face sciée par finition : l'aluminium et l'inox coupés sont clairs (photos du stock du site, groupes G053 et G054) ;
+# la coupe « acier nu » commune sortait à 149/255 contre 205 pour le corps d'une cornière alu (vérification
+# indépendante du 23/09). Galvanisé, laqué, GPP, à froid : la coupe montre l'acier, base inchangée.
+# Premier réglage (0,72 / 0,58) trop clair sur les plats : coupe à 4 niveaux de la face longue sur le plat inox 20x3,
+# 7 sur le plat alu (vérification du 23/09, 23 h 25). Puis 0,66 pour l'alu : 11 niveaux sur le plat (face à 196) mais
+# −2 sur l'âme du profil T (face à 178, 24/09 à 0 h 10, contrôle V9). 0,50 laisse une douzaine de niveaux au moins
+# sous la face la plus sombre mesurée (âme du T), la coupe restant nettement plus claire que l'acier (0,36).
+COUPE_PAR_FINITION = {"ALU": 0.50, "INOX": 0.50}
+
+
+def materiau_coupe(finition="BRUT"):
+    """Face sciée : métal nu clair (acier, aluminium ou inox selon la finition), stries de scie."""
     m = bpy.data.materials.new("coupe")
     m.use_nodes = True
     nt = m.node_tree
     bsdf = nt.nodes["Principled BSDF"]
-    bsdf.inputs["Base Color"].default_value = (0.36, 0.37, 0.38, 1)
+    base = p_mat("base_coupe", COUPE_PAR_FINITION.get(finition, 0.36))
+    bsdf.inputs["Base Color"].default_value = (base, base + 0.01, base + 0.02, 1)
     bsdf.inputs["Metallic"].default_value = 1.0
 
     coord = nt.nodes.new("ShaderNodeTexCoord")
@@ -1804,7 +1870,7 @@ def rendre(p):
     finition = p.get("finition", "BRUT")
     ECHELLE["taille_m"] = max(max(q.get("longueur", p.get("longueur", 500)), q["b"], q["h"]) for q in pieces) * MM
     mat_surface = MATIERES.get(finition, materiau_calamine)()
-    mat_coupe = materiau_coupe()
+    mat_coupe = materiau_coupe(finition)
 
     # pièces côte à côte (studio) : la plus haute à gauche, extrémités alignées. La caméra, à droite, voit chaque
     # pièce par-dessus sa voisine de droite : un écart d'environ sa hauteur évite qu'elle cache la précédente.
@@ -1849,12 +1915,12 @@ def rendre(p):
             # tôle nervurée : facettes plates (petites nervures de raidissement), les autres séries restent lissées
             objs = [extruder(section_de(piece), L, f"{p['slug']}-{i}", decalage_x=dx,
                              lisse=piece.get("profil", {}).get("motif") != "NERVURES")]
+            # chanfrein proportionné à la section ; aucun sur les tôles, profilées comprises (audit du 23/09)
+            regler_chanfrein(objs[0], piece)
             if piece["type"] == "ROND-BETON":
                 objs += nervures_barre(piece["h"], L, dx, f"{p['slug']}-{i}")
             if piece.get("relief"):  # tôle larmée ou striée
                 objs += relief_tole(piece, dx, f"{p['slug']}-{i}")
-            if piece.get("profil"):  # tôle de 0,5 mm : pas de chanfrein (plus large que l'épaisseur)
-                objs[0].modifiers.remove(objs[0].modifiers["chanfrein"])
         for obj in objs:
             obj.data.materials.append(matieres_propres.get(obj.name, mat_surface))
             if obj.type == "MESH":
@@ -1865,8 +1931,11 @@ def rendre(p):
             for poly in objs[0].data.polygons:
                 if poly.material_index == 0 and abs(poly.normal.z) > 0.9 and poly.center.z < 0.6 * MM:
                     poly.material_index = 2
+        # cadre sur `longueur_cadre` quand la barre est plus longue que le tronçon cadré : elle file hors du cadre
+        # (audit du 23/09 ; preparer_rendus.py, DEBORD) ; sinon sur toute la pièce, comme avant
+        Lc = piece.get("longueur_cadre", L)
         boite_pts += [((dx + sx * piece["b"] / 2) * MM, y * MM, z * MM)
-                      for sx in (-1, 1) for y in (0, L) for z in (0, piece["h"])]
+                      for sx in (-1, 1) for y in (0, Lc) for z in (0, piece["h"])]
         if piece.get("depassants"):  # dépassants (fond et droite) dans le cadre, et la pièce suivante décalée d'autant
             boite_pts += [((dx + piece["b"] / 2 + piece["maille_b"]) * MM, y * MM, 0) for y in (0, L)]
             boite_pts += [((dx + sx * piece["b"] / 2) * MM, (L + piece["maille_a"]) * MM, 0) for sx in (-1, 1)]
@@ -1898,7 +1967,8 @@ def rendre(p):
     direction = Vector((math.sin(az) * math.cos(el), -math.cos(az) * math.cos(el), math.sin(el)))
     h_max = max(q["h"] for q in pieces)
     L0 = pieces[0].get("longueur", p.get("longueur", 500))
-    cible = Vector((0, L0 * MM * 0.35, h_max * MM * 0.5))
+    # visée et lumières sur le tronçon cadré : une barre qui file hors du cadre garde l'éclairage validé de sa section
+    cible = Vector((0, pieces[0].get("longueur_cadre", L0) * MM * 0.35, h_max * MM * 0.5))
     cam.rotation_euler = (-direction).to_track_quat("-Z", "Y").to_euler()
 
     piece = pieces[0]
@@ -2150,8 +2220,10 @@ def rendre(p):
                            "rappel_b_droit_debut": ecran(b / 2, 0, z_pointe - g)})
         ecrire_json(p, sortie, t0, {"largeur": W, "hauteur": H, "type": typ, "cote_b": cote_b, "points": points})
     else:  # composition de la photo studio, reprise dans le texte alternatif sur le site
+        # longueur de chaque pièce : la vérification indépendante la contrôle (16/09, 23/09 ; contrôle V5)
         ecrire_json(p, sortie, t0, {"largeur": scene.render.resolution_x, "hauteur": scene.render.resolution_y,
-                                    "mode": "studio", "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"]} for q in pieces]})
+                                    "mode": "studio", "pieces": [{"type": q["type"], "h": q["h"], "b": q["b"],
+                                                                  "longueur": q.get("longueur")} for q in pieces]})
     print(f"{'POINTS' if p.get('points_seuls') else 'RENDU'} OK {p['slug']} ({mode}) en {time.time() - t0:.1f} s", flush=True)
 
 
@@ -2194,7 +2266,10 @@ def ecrire_json(p, sortie, t0, donnees):
         with open(chemin, encoding="utf-8") as f:
             duree = json.load(f).get("duree_s", duree)
     with open(chemin, "w", encoding="utf-8") as f:
-        json.dump({**donnees, "duree_s": duree, "code": EMPREINTE, "points_seuls": bool(p.get("points_seuls"))}, f, indent=2)
+        # debord : la barre est plus longue que le tronçon cadré et sort du cadre (habiller.py l'efface avant la fiche)
+        debord = any(q.get("longueur_cadre") and q["longueur_cadre"] < q.get("longueur", 0) for q in p.get("pieces", []))
+        json.dump({**donnees, "duree_s": duree, "code": EMPREINTE, "points_seuls": bool(p.get("points_seuls")),
+                   "debord": debord}, f, indent=2)
 
 
 def main():

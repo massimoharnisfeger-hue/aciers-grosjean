@@ -18,11 +18,13 @@ Code de sortie 1 s'il reste un ecart.
 import json
 import os
 import re
+import statistics
 import sys
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageStat
 
+import recadrer_visuels
 from habiller import FINITIONS, titre_image
 
 ICI = Path(__file__).resolve().parent
@@ -139,14 +141,18 @@ def part_claire(chemin, x0, y0, x1, y1, seuil=90):
     return sum(1 for v, a in zip(gris.getdata(), alpha.getdata()) if a >= 250 and v > seuil) / max(n, 1)
 
 
-def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80):
+def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80, x_max=None):
     """(luminance moyenne, part des pixels sous `seuil_sombre`) de la silhouette de la pièce (rendu brut) ; avec
-    `moitie_arriere`, seulement la moitié droite de sa boîte (le corps de la barre, sans la face coupée).
+    `moitie_arriere`, seulement la moitié droite de sa boîte (le corps de la barre, sans la face coupée) ; avec
+    `x_max` (fraction de la largeur), seulement ce qui est à gauche de x_max : la partie servie d'une barre en débord.
     Vérification indépendante du 15/09 : métal trop lisse = reflet du studio sombre (dessus des tubes carrés inox à
-    61/255, tôle à froid en miroir noir), invisible aux autres contrôles."""
+    61/255, tôle à froid en miroir noir), invisible aux autres contrôles. Audit du 23/09 : la partie de la barre
+    cachée sous la fiche incrustée faussait la mesure des plats (contrôles V3 et V4, tests/test_rendus_3d.py)."""
     with Image.open(chemin) as img:
         rgba = img.convert("RGBA")
     s = seuil_opaque(rgba.split()[3])
+    if x_max is not None:
+        rgba = rgba.crop((0, 0, int(x_max * rgba.width), rgba.height))
     boite = rgba.split()[3].point(lambda v: 255 if v >= s else 0).getbbox()
     if not boite:
         return None, None  # mesure impossible (plus de « 0 » pris pour une luminance)
@@ -160,6 +166,92 @@ def luminance_piece(chemin, moitie_arriere=False, seuil_sombre=80):
         return None, None
     sombres = ImageStat.Stat(ImageChops.multiply(gris.point(lambda v: 255 if v < seuil_sombre else 0), masque)).sum[0] / 255
     return ImageStat.Stat(gris, mask=masque).mean[0], sombres / n
+
+
+def contraste_coupe(chemin, ag, ad):
+    """(médiane de la face sciée, médiane de la face longue voisine) sur la rangée de la pince du rendu brut : face sciée
+    entre les points de pince `ag` et `ad`, face longue de 6 à 30 px à droite de `ad`. (None, None) si une zone est vide.
+    Plat inox 20x3, 23/09 : coupe claire à 179 contre 183, section illisible en vignette (contrôle V9)."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    gris, alpha = rgba.convert("L").load(), rgba.split()[3].load()
+    y0 = int(round(ag[1]))
+    coupe, longue = [], []
+    for y in range(max(0, y0 - 6), min(rgba.height, y0 + 7)):
+        for x in range(max(0, int(ag[0]) + 2), min(rgba.width, int(ad[0]) - 1)):
+            if alpha[x, y] >= 250:
+                coupe.append(gris[x, y])
+        for x in range(max(0, int(ad[0]) + 6), min(rgba.width, int(ad[0]) + 30)):
+            if alpha[x, y] >= 250:
+                longue.append(gris[x, y])
+    if not coupe or not longue:
+        return None, None
+    return statistics.median(coupe), statistics.median(longue)
+
+
+def contraste_paroi_opposee(chemin, ag, ad):
+    """Tube carré ou rectangulaire : (médiane de la paroi opposée sur la face sciée, médiane du flanc voisin) sur la
+    rangée de la pince. La paroi pincée (`ag` → `ad`) donne sur la cavité : la paroi opposée commence au premier pixel
+    clair (> 90) après la cavité et a la même épaisseur. Tubes inox, 23/09 : paroi à 176 contre 183 (contrôle V10)."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    gris, alpha = rgba.convert("L").load(), rgba.split()[3].load()
+    y0 = int(round(ad[1]))
+    x, fin = int(ad[0]) + 2, min(rgba.width - 1, int(ad[0]) + 900)
+    while x < fin and (alpha[x, y0] < 250 or gris[x, y0] <= 90):
+        x += 1
+    if x >= fin:
+        return None, None
+    e = max(4, int(ad[0] - ag[0]))
+    paroi, flanc = [], []
+    for y in range(max(0, y0 - 6), min(rgba.height, y0 + 7)):
+        for xx in range(x + 2, min(rgba.width, x + e - 1)):
+            if alpha[xx, y] >= 250:
+                paroi.append(gris[xx, y])
+        for xx in range(x + e + 6, min(rgba.width, x + e + 30)):
+            if alpha[xx, y] >= 250:
+                flanc.append(gris[xx, y])
+    if not paroi or not flanc:
+        return None, None
+    return statistics.median(paroi), statistics.median(flanc)
+
+
+def contraste_aile_basse(chemin, ext, int_):
+    """Profil U : (médiane de la coupe de l'aile basse, médiane du fond du U vu au-dessus d'elle), sur les colonnes des
+    points de l'aile haute (`ext` → `int_`, même épaisseur que l'aile basse). L'aile basse est la bande du bas de la pièce
+    sur ces colonnes ; le fond est mesuré de 6 à 30 px au-dessus. (None, None) si une zone est vide.
+    U alu, 24/09 : aile basse à 149–155 contre 156–157 pour le fond, épaisseur illisible ; V9 ne mesure que l'âme (V12)."""
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    gris, alpha = rgba.convert("L").load(), rgba.split()[3].load()
+    x0, e = int(round(ext[0])), max(4, int(round(int_[1] - ext[1])))
+    coupe, fond = [], []
+    for x in range(max(0, x0 - 6), min(rgba.width, x0 + 7)):
+        bas = next((y for y in range(rgba.height - 1, int(int_[1]), -1) if alpha[x, y] >= 250), None)
+        if bas is None:
+            continue
+        for y in range(max(0, bas - e + 2), bas - 1):
+            if alpha[x, y] >= 250:
+                coupe.append(gris[x, y])
+        for y in range(max(0, bas - e - 30), max(0, bas - e - 6)):
+            if alpha[x, y] >= 250:
+                fond.append(gris[x, y])
+    if not coupe or not fond:
+        return None, None
+    return statistics.median(coupe), statistics.median(fond)
+
+
+def noir_pur_servi(chemin, x_max=None):
+    """Pixels de pièce en noir pur (RVB ≤ 12) dans la partie servie du rendu brut (à gauche de 0,615 W). Ronds à béton,
+    24/09 : bouchons de nervures dans le plan de la coupe, 297 px sur le 12 mm (1 avant l'audit), invisibles au contrôle
+    « part de noir pur » qui ne s'alerte qu'au-delà de 2 % de la pièce (contrôle V11)."""
+    x_max = recadrer_visuels.CADRE[2] if x_max is None else x_max
+    with Image.open(chemin) as img:
+        rgba = img.convert("RGBA")
+    r, g, b, a = rgba.crop((0, 0, int(x_max * rgba.width), rgba.height)).split()
+    noir = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda v: 255 if v <= 12 else 0)
+    opaque = a.point(lambda v: 255 if v >= 250 else 0)
+    return round(ImageStat.Stat(ImageChops.multiply(noir, opaque)).sum[0] / 255)
 
 
 def teinte_piece(chemin):
@@ -304,14 +396,23 @@ def controler(famille, produits, pages):
             x0, y0, x1, y1 = cadre
             if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or x1 > LARGEUR * 0.98 or y1 > HAUTEUR * 0.98:
                 ecarts.append(f"{brut.name} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+        # longueur de chaque pièce dans le .json du studio (vérifications indépendantes des 16/09 et 23/09 : sans elle,
+        # la longueur commune des barres ne se contrôlait qu'en ajustant une caméra sur l'image ; contrôle V5)
+        compo = FINAL / f"{studio}.json"
+        pieces_studio = json.loads(compo.read_text(encoding="utf-8")).get("pieces", []) if compo.exists() else []
+        if not pieces_studio or any(not q.get("longueur") for q in pieces_studio):
+            ecarts.append(f"{studio}.json : longueur des pieces absente (recalculer : preparer_rendus.py --points-seuls)")
     if png:
         images.append(png)
         n = marges_blanches(png)
         if n:
             ecarts.append(f"{png.name} : {n} pixels non blancs dans les marges")
     lum_studio = luminance_piece(brut)[0] if brut else None
+    # corps seul de la barre (sans la face coupée), pour les familles dont les fiches filent hors du cadre
+    lum_studio_corps = luminance_piece(brut, moitie_arriere=True)[0] if brut else None
     teinte_studio = teinte_piece(brut) if brut else None
     lum_fiches = []  # (luminance, teinte normalisée) des fiches
+    debords = []  # fiches en débord (barre qui file hors du cadre, audit du 23/09)
 
     versions = set()  # empreintes du code de rendu (rendu_profil.py) des images de la famille
     for slug in slugs:
@@ -326,21 +427,62 @@ def controler(famille, produits, pages):
                 ecarts.append(f"{slug} : aucun pixel de piece dans le rendu brut")
                 cadre = (0, 0, LARGEUR, HAUTEUR)
             x0, y0, x1, y1 = cadre
-            if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or y1 > HAUTEUR * 0.98:
-                ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
-            if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
-                ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
+            geo = FINAL / f"{slug}.json"
+            debord = geo.exists() and json.loads(geo.read_text(encoding="utf-8")).get("debord", False)
+            if debord:
+                # barre qui file hors du cadre (audit du 23/09) : elle sort par le haut et sous la fiche par
+                # construction ; habiller.py l'efface avant la fiche (contrôle « fond de la fiche »). Restent
+                # contrôlés les bords où se tient la section : gauche et bas.
+                if x0 < LARGEUR * 0.02 or y1 > HAUTEUR * 0.98:
+                    ecarts.append(f"{slug} : section trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+            else:
+                if x0 < LARGEUR * 0.02 or y0 < HAUTEUR * 0.02 or y1 > HAUTEUR * 0.98:
+                    ecarts.append(f"{slug} : piece trop pres du bord ({x0}, {y0}, {x1}, {y1})")
+                if x1 > LARGEUR * (COLONNE_FICHE - 0.01):
+                    ecarts.append(f"{slug} : la piece deborde sous la fiche technique (x = {x1})")
             # poteaux de clôture : tubes creux (CLOGRIFF) ou feuillures ombrées et capuchon noir (CLOPLUS), laque noire
             # (diagnostic du 15/09)
             creux = p["valeurs"].get("serie", {}).get("valeur") in ("TC", "TR", "TUBE-ROND", "POTEAU")
             noir = part_noire(brut, creux)
             if noir > (0.35 if creux else 0.02):
                 ecarts.append(f"{slug} : {noir:.0%} de la piece en noir pur (geometrie cassee ?)")
-            lum = luminance_piece(brut)[0]
+            # coupe lisible : face sciée à 8 niveaux au moins de la face longue voisine (plat inox, 23/09 ; V9). Plats,
+            # cornières, profils T et U ; pas les tubes, dont la coupe se lit contre la cavité sombre
+            points = json.loads(geo.read_text(encoding="utf-8")).get("points", {}) if geo.exists() else {}
+            serie_coupe = p["valeurs"].get("serie", {}).get("valeur")
+            # section pleine : aucun noir pur dans la partie servie (bouchons de nervures des ronds à béton, 24/09 ; V11)
+            if serie_coupe in ("ROND", "ROND-BETON", "CARRE", "PLAT", "L", "T", "U-ALU"):
+                noirs = noir_pur_servi(brut)
+                if noirs > 20:
+                    ecarts.append(f"{slug} : {noirs} px de noir pur sur la piece servie (surfaces dans le meme plan ?)")
+            if (serie_coupe in ("PLAT", "L", "T", "U-ALU", "TUBE-ROND", "TC", "TR")
+                    and "ame_gauche" in points and "ame_droite" in points):
+                # tubes carrés et rectangulaires : la paroi pincée donne sur la cavité, on mesure la paroi d'en face
+                # (V10) ; tube rond : la paroi pincée est à droite de l'anneau, le flanc la suit (V9)
+                if serie_coupe in ("TC", "TR"):
+                    coupe, face = contraste_paroi_opposee(brut, points["ame_gauche"], points["ame_droite"])
+                else:
+                    coupe, face = contraste_coupe(brut, points["ame_gauche"], points["ame_droite"])
+                if coupe is None:
+                    ecarts.append(f"{slug} : contraste de la coupe non mesurable")
+                elif abs(face - coupe) < 8:
+                    ecarts.append(f"{slug} : coupe a {abs(face - coupe):.0f} niveaux de la face longue (section peu lisible)")
+            # profil U : l'aile basse se lit contre le fond du U vu au-dessus d'elle (U alu, 24/09 ; V12)
+            if serie_coupe == "U-ALU" and "aile_haut_ext" in points and "aile_haut_int" in points:
+                coupe, fond = contraste_aile_basse(brut, points["aile_haut_ext"], points["aile_haut_int"])
+                if coupe is None:
+                    ecarts.append(f"{slug} : contraste de l'aile basse non mesurable")
+                elif abs(fond - coupe) < 8:
+                    ecarts.append(f"{slug} : aile basse a {abs(fond - coupe):.0f} niveaux du fond du U (epaisseur illisible)")
+            debords.append(debord)
+            # barre en débord : seulement la partie que le site sert (à gauche du cadre de recadrer_visuels.py) ;
+            # la partie cachée sous la fiche incrustée n'est vue par personne (plats, 23/09)
+            servi = recadrer_visuels.CADRE[2] if debord else None
+            lum = luminance_piece(brut, moitie_arriere=debord, x_max=servi)[0]
             if lum is not None:
                 lum_fiches.append((lum, teinte_piece(brut)))
             if p["valeurs"].get("finition", {}).get("valeur") in FINITIONS_CLAIRES:
-                _, sombre = luminance_piece(brut, moitie_arriere=True)
+                _, sombre = luminance_piece(brut, moitie_arriere=True, x_max=servi)
                 if sombre is not None and sombre > 0.10:  # calibré le 15/09 : 22 % et 13 % sur les tubes inox refusés, 8 % au plus ailleurs
                     ecarts.append(f"{slug} : {sombre:.0%} du corps de la piece sous 80/255 (reflet du studio sombre "
                                   f"sur une matiere claire)")
@@ -403,12 +545,27 @@ def controler(famille, produits, pages):
                     ecarts.append(f"{slug} : finition « {ecrit} » ≠ donnee « {d['valeur']} »")
             elif not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : « {label} {ecrit} » ≠ donnee {d['valeur']}")
+        # habillage antérieur aux contrôles d'étiquettes V6 (habiller.py) : ils n'ont jamais tourné sur cette image
+        # (tubes rectangulaires alu et inox habillés le 15/09, étiquette t entre les rappels de b ; 23/09)
+        if "boites" not in c:
+            ecarts.append(f"{slug} : habillee avant les controles d'etiquettes V6 (rhabiller : habiller_famille.py)")
         for lettre, cle, ecrit, *centre in c["pastilles"]:
             d = valeurs.get(cle)
             if not d or d.get("supposee") or not meme_valeur(d["valeur"], ecrit):
                 ecarts.append(f"{slug} : pastille {lettre} « {ecrit} » ≠ donnee {d and d['valeur']}")
-            # étiquette t d'un tube posée sur une paroi claire de la pièce (tubes rectangulaires étroits, 15/09)
-            if cle == "t" and centre and brut and valeurs.get("serie", {}).get("valeur") in ("TC", "TR"):
+            # étiquette t d'un tube posée sur une paroi claire de la pièce (tubes rectangulaires étroits, 15/09) ; sans
+            # centre dans le sidecar, le contrôle ne peut pas s'appliquer : c'est un écart, pas un silence (tubes
+            # rectangulaires habillés le 15/09 avant la règle, restés sans contrôle jusqu'au 23/09)
+            if cle == "t" and not centre and valeurs.get("serie", {}).get("valeur") in ("TC", "TR"):
+                ecarts.append(f"{slug} : centre de l'etiquette t absent du sidecar (rhabiller : habiller_famille.py)")
+            place = c.get("place_t") or {}
+            if cle == "t" and centre and place.get("type") == "flanc":
+                # posée sur le flanc (habiller.place_t_tube) : sur la pièce par construction, claire ou sombre selon la
+                # matière (aluminium, 23/09) ; elle doit laisser libre la paroi opposée, à 6 px au moins
+                rang = [q[1] for q in c["pastilles"]].index("t")
+                if c["boites"][rang][0] < place["x_paroi"] + 6:
+                    ecarts.append(f"{slug} : etiquette t posee sur la paroi opposee du tube")
+            elif cle == "t" and centre and brut and valeurs.get("serie", {}).get("valeur") in ("TC", "TR"):
                 part = part_claire(brut, centre[0] - 50, centre[1] - 20, centre[0] + 50, centre[1] + 20)
                 if part > 0.02:
                     ecarts.append(f"{slug} : etiquette t sur une paroi de la piece ({part:.0%} de sa surface)")
@@ -467,7 +624,12 @@ def controler(famille, produits, pages):
             retenues = [l for l, t in lum_fiches if distance(t) <= proche + 0.0004]
         else:
             retenues = [l for l, _ in lum_fiches]
-        ecart_lum = lum_studio - sum(retenues) / len(retenues)
+        # Barres en débord (audit du 23/09) : corps de la barre seulement, des deux côtés, et sur la fiche sa partie
+        # servie seulement (x_max plus haut). La silhouette entière dépend de la part de face coupée claire (carré
+        # plein : −31) ; le corps mesuré jusqu'au bord de l'image, de la partie cachée de la barre (plats : −31, photo
+        # studio inchangée, 60 → 59). Corps servi, avant → après l'audit : carré plein −13 → −15, plats −23 → −23.
+        reference = lum_studio_corps if debords and all(debords) and lum_studio_corps is not None else lum_studio
+        ecart_lum = reference - sum(retenues) / len(retenues)
         if abs(ecart_lum) > 30:
             ecarts.append(f"{famille} : photo studio {ecart_lum:+.0f} niveaux de luminance par rapport aux visuels "
                           f"caracteristiques (matiere qui change avec la vue)")

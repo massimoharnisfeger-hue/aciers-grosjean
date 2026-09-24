@@ -969,8 +969,12 @@ def profils_alu_inox(cat, reel, desc):
         lettres = {}
         if sorte == "corniere-egale":
             a, t = nombres_nom[0], nombres_nom[2]
+            # cornière alu : angle intérieur quasi vif sur la photo du stock du site (groupe G053) ; le congé usuel
+            # de t/2 dessinait un arrondi absent du produit (vérification indépendante du 23/09)
+            src_r1 = ("photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée"
+                      if matiere == "ALU" else src_forme)
             v.update(serie=valeur("L", "", SRC_NOM), a=valeur(a, "mm", SRC_NOM), b=valeur(a, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM),
-                     r1=valeur(t * (0.5 if matiere == "ALU" else 1.0), "mm", src_forme, supposee=True),
+                     r1=valeur(round(t * (0.1 if matiere == "ALU" else 1.0), 3), "mm", src_r1, supposee=True),
                      r2=valeur(0.0 if matiere == "ALU" else t * 0.5, "mm", src_forme, supposee=True))
             theorique = t * (2 * a - t) * rho * 1e-3
             lettres = {"A": "a", "B": "b", "C": "t"}
@@ -982,7 +986,10 @@ def profils_alu_inox(cat, reel, desc):
         elif sorte == "profil-t":
             h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[2]
             v.update(serie=valeur("T", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM), t=valeur(t, "mm", SRC_NOM),
-                     r=valeur(t * 0.5, "mm", src_forme, supposee=True), r1=valeur(0.0, "mm", src_forme, supposee=True),
+                     # photo du stock du site : petit congé, estimé 0,3 à 0,5 mm (vérification indépendante du 23/09)
+                     r=valeur(round(t * 0.25, 3), "mm", "photo du stock du site : petit congé, estimé 0,3 à 0,5 mm (vérification "
+                              "du 23/09) — forme du modèle, non affichée", supposee=True),
+                     r1=valeur(0.0, "mm", src_forme, supposee=True),
                      r2=valeur(0.0, "mm", src_forme, supposee=True))
             theorique = t * (b + h - t) * rho * 1e-3
             lettres = {"A": "h", "B": "b", "C": "t"}
@@ -990,7 +997,9 @@ def profils_alu_inox(cat, reel, desc):
             h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[3]  # « 20x20x20x2 » : fond, ailes, épaisseur
             v.update(serie=valeur("U-ALU", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM),
                      tw=valeur(t, "mm", SRC_NOM), tf=valeur(t, "mm", SRC_NOM),
-                     r1=valeur(t * 0.5, "mm", src_forme, supposee=True), r2=valeur(0.0, "mm", src_forme, supposee=True))
+                     r1=valeur(t * 0.5, "mm", "valeur usuelle confrontée à la photo du stock du site : coins intérieurs "
+                               "légèrement arrondis (vérification du 23/09) — forme du modèle, non affichée", supposee=True),
+                     r2=valeur(0.0, "mm", src_forme, supposee=True))
             theorique = t * (h + 2 * b - 2 * t) * rho * 1e-3
         elif sorte == "rond-plein":
             d = nombres_nom[0]
@@ -1000,7 +1009,12 @@ def profils_alu_inox(cat, reel, desc):
         elif sorte in ("tube-carre", "tube-rectangulaire"):
             h, b, t = nombres_nom[0], nombres_nom[1], nombres_nom[2]
             v.update(serie=valeur("TC" if h == b else "TR", "", SRC_NOM), h=valeur(h, "mm", SRC_NOM), b=valeur(b, "mm", SRC_NOM),
-                     t=valeur(t, "mm", SRC_NOM), r1=valeur(t * (0.75 if matiere == "ALU" else 1.5), "mm", src_forme, supposee=True))
+                     # tube alu filé : coins vifs sur les photos du stock (G061, G063) ; le 0,75 t, repris de l'acier formé à
+                     # froid (EN 10219), dessinait un arrondi de 30 px sur le 15x15x2 (vérification indépendante du 23/09)
+                     t=valeur(t, "mm", SRC_NOM),
+                     r1=(valeur(round(t * 0.1, 3), "mm", "photos du stock du site (G061, G063) : coins vifs (vérification du "
+                                "23/09) — forme du modèle, non affichée", supposee=True) if matiere == "ALU"
+                         else valeur(t * 1.5, "mm", src_forme, supposee=True)))
             theorique = (h * b - (h - 2 * t) * (b - 2 * t)) * rho * 1e-3
             lettres = {"A": "h", "B": "b", "C": "t"}
         elif sorte == "tube-rond":

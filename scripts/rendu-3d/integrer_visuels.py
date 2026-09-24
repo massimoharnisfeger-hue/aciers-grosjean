@@ -23,6 +23,7 @@ from pathlib import Path
 from PIL import Image
 
 import controler_rendus as controle
+import recadrer_visuels
 
 ICI = Path(__file__).resolve().parent
 PROJET = ICI.parents[1]
@@ -41,6 +42,20 @@ def noms_categories():
             for m in re.finditer(r'^\s*"(/[^"]+)": \{ chemin: "[^"]+", segment: "[^"]*", nom: ("(?:[^"\\]|\\.)*")', ts, re.M)}
 
 
+def recadrer_sur_place(chemin):
+    """Visuel de fiche : garde le cadre de l'objet (recadrer_visuels.CADRE), sans la fiche incrustée à droite.
+
+    Vérification indépendante du 23/09 (carré plein) : l'intégration servait l'image entière, fiche incrustée et
+    fondu de la barre en débord compris, et la même image partait dans la copie du propriétaire ; le recadrage
+    n'existait que dans recadrer_visuels.py, à relancer à la main. Le site et le propriétaire voient maintenant la
+    même image. Contrôles K12 et K13 (tests/test_catalogue.py)."""
+    with Image.open(chemin) as img:
+        largeur, hauteur = img.size
+        x0, y0, x1, y1 = recadrer_visuels.CADRE
+        coupe = img.convert("RGB").crop((int(x0 * largeur), int(y0 * hauteur), int(x1 * largeur), int(y1 * hauteur)))
+    coupe.save(chemin, "WEBP", quality=recadrer_visuels.QUALITE, method=6)
+
+
 def copier(source, cible):
     """Copie sur le site (public/images/produits/…) et dans le dépôt du propriétaire (_DEPOT/images/2-categories/…)."""
     relatif = cible.relative_to(PUBLIC / "images" / "produits")
@@ -50,6 +65,8 @@ def copier(source, cible):
         for essai in range(6):  # OneDrive verrouille un instant les fichiers qu'il synchronise (Errno 22, 16/09)
             try:
                 shutil.copyfile(source, chemin)
+                if chemin.name.endswith("-caracteristiques.webp"):
+                    recadrer_sur_place(chemin)
                 break
             except OSError:
                 if essai == 5:
@@ -92,7 +109,8 @@ def main():
             c = json.loads((controle.FINAL / f"{slug}-caracteristiques.controles.json").read_text(encoding="utf-8"))
             cotes = ", ".join(dict.fromkeys(f"{lettre} {valeur}" for lettre, _, valeur, *_ in c["pastilles"]))
             image = copier(controle.FINAL / f"{slug}-caracteristiques.webp", dossier / f"{slug}-caracteristiques.webp")
-            image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes}) et fiche technique"
+            # l'image servie est recadrée : la fiche technique n'y est plus (elle est dans la page)
+            image["alt"] = f"{produits[slug]['nom']} : rendu 3D aux cotes ({cotes})"
             manifeste["produits"][slug] = image
             inventaire[(slug, "caracteristiques")] = {"slug": slug, "categorie": categorie, "fichier": image["src"],
                                                       "type": "caracteristiques", "verdict": "CONFORME", "date": date}

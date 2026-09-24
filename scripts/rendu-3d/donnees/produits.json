@@ -942,8 +942,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1095,8 +1095,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1248,8 +1248,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1348,8 +1348,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1450,8 +1450,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1550,8 +1550,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1760,8 +1760,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -1913,8 +1913,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photo du stock du site (G053) : angle intérieur quasi vif — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12602,8 +12602,8 @@
     "unite": "mm"
    },
    "r": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.5,
+    "source": "photo du stock du site : petit congé, estimé 0,3 à 0,5 mm (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12657,8 +12657,8 @@
     "unite": "mm"
    },
    "r": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.5,
+    "source": "photo du stock du site : petit congé, estimé 0,3 à 0,5 mm (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12715,8 +12715,8 @@
     "unite": "mm"
    },
    "r": {
-    "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.5,
+    "source": "photo du stock du site : petit congé, estimé 0,3 à 0,5 mm (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12776,7 +12776,7 @@
    },
    "r1": {
     "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "source": "valeur usuelle confrontée à la photo du stock du site : coins intérieurs légèrement arrondis (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12830,7 +12830,7 @@
    },
    "r1": {
     "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "source": "valeur usuelle confrontée à la photo du stock du site : coins intérieurs légèrement arrondis (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12884,7 +12884,7 @@
    },
    "r1": {
     "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "source": "valeur usuelle confrontée à la photo du stock du site : coins intérieurs légèrement arrondis (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -12938,7 +12938,7 @@
    },
    "r1": {
     "valeur": 1.0,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "source": "valeur usuelle confrontée à la photo du stock du site : coins intérieurs légèrement arrondis (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22146,8 +22146,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22192,8 +22192,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22235,8 +22235,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22278,8 +22278,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22321,8 +22321,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22364,8 +22364,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 2.25,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22407,8 +22407,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -22450,8 +22450,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 2.25,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -23563,8 +23563,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -23606,8 +23606,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -23649,8 +23649,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 2.25,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -23692,8 +23692,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 1.5,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.2,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },
@@ -23735,8 +23735,8 @@
     "unite": "mm"
    },
    "r1": {
-    "valeur": 2.25,
-    "source": "valeur usuelle — forme du modèle, non affichée",
+    "valeur": 0.3,
+    "source": "photos du stock du site (G061, G063) : coins vifs (vérification du 23/09) — forme du modèle, non affichée",
     "unite": "mm",
     "supposee": true
    },

@@ -1,6 +1,6 @@
 # État courant du projet
 
-ÉTAT AU: 2026-09-23
+ÉTAT AU: 2026-09-24
 
 **Source unique de l'état.** Ce fichier est le point d'entrée ; le détail de chaque chantier vit
 dans son propre fichier d'avancement, listé ci-dessous. `memory/ACTIVE_CONTEXT.md` ne décrit plus
@@ -12,7 +12,7 @@ Qui fait autorité sur quoi : `_DOCS/INDEX.md`.
 | Piste | Où elle en est | Fichier d'avancement |
 |---|---|---|
 | Renforcement du dépôt | 16 tâches fermées sur 61, **120 contrôles, 0 échec** (départ 35), grille 9/10 à 4 conditions sur 16. Lots Z et A terminés, B en cours | `_DOCS/CHANTIERS-RENFORCEMENT.md` |
-| Visuels 3D des fiches produit | 455 fiches sur 477 en ligne, 22 en attente de réponse du propriétaire, rapport final au propriétaire jamais rendu | `_DOCS/rendus-3d/avancement.md` |
+| Visuels 3D des fiches produit | 455 fiches sur 477 en ligne, 22 en attente de réponse du propriétaire, rapport final au propriétaire jamais rendu. **24/09 : audit qualité — vues d'origine gardées, seule la finition change (ADR-0011) ; 24 familles (223 fiches + 24 studios) à rendre de nouveau, leurs images actuelles portent encore la barre coupée du 23/09** (`_JOURNAL/2026-09-24.md`, `_DOCS/rendus-3d/audit-qualite.md`) | `_DOCS/rendus-3d/avancement.md` |
 | Fiches produit | **Système d'information produit en place** (ADR-0008) : données restructurées à la source (494 titres, 721 listes), chiffres clés, modules typés, identité avant l'image sur mobile ; vérifié sur six familles × 320/768/1280. Reste : calculateur en `mailto:`, cotes lettrées, hauteur mobile | `_JOURNAL/2026-09-22.md`, `_DOCS/QA-RESPONSIVE.md` |
 | Catalogue visuel | **Local seulement, en attente de validation** (ADR-0010) : derrière `CATALOGUE_LOCAL=oui` (`.env.local`), `/catalogue` + six chapitres + le document A4 `/catalogue/imprimer` (54 familles, 495 planches dont 466 avec rendu 3D). Livrable final : PDF exporté par `scripts/catalogue/exporter_pdf.py` **après** validation. Retiré de la préproduction. V2 : photos du site actuel pour les 29 produits sans rendu | `_DOCS/CATALOGUE-PRODUITS.md` |
 | Publication | `main` protégée : le bouton SAUVEGARDER pousse une branche et ouvre la PR ; `qa/2026-09-21-responsive-devis-onedrive` attend la fusion humaine | `docs/architecture/SYNC_POLICY.md` |
