@@ -2768,33 +2768,33 @@
   },
   "tube-rond-de-20x2mm-en-aluminium": {
    "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-20x2mm-en-aluminium-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Tube rond de 20x2mm en aluminium : rendu 3D aux cotes (d 20 mm, t 2 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond de 20x2mm en aluminium : rendu 3D aux cotes (d 20 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-de-25x2mm-en-aluminium": {
    "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-25x2mm-en-aluminium-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Tube rond de 25x2mm en aluminium : rendu 3D aux cotes (d 25 mm, t 2 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond de 25x2mm en aluminium : rendu 3D aux cotes (d 25 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-de-30x2mm-en-aluminium": {
    "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-30x2mm-en-aluminium-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Tube rond de 30x2mm en aluminium : rendu 3D aux cotes (d 30 mm, t 2 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond de 30x2mm en aluminium : rendu 3D aux cotes (d 30 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-de-35x2mm-en-aluminium": {
    "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-35x2mm-en-aluminium-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Tube rond de 35x2mm en aluminium : rendu 3D aux cotes (d 35 mm, t 2 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond de 35x2mm en aluminium : rendu 3D aux cotes (d 35 mm, t 2 mm) et fiche technique"
   },
   "tube-rond-de-40x2mm-en-aluminium": {
    "src": "/images/produits/aluminium/tubes/tube-rond/tube-rond-de-40x2mm-en-aluminium-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Tube rond de 40x2mm en aluminium : rendu 3D aux cotes (d 40 mm, t 2 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond de 40x2mm en aluminium : rendu 3D aux cotes (d 40 mm, t 2 mm) et fiche technique"
   }
  },
  "categories": {
@@ -2998,9 +2998,9 @@
   },
   "/aluminium/tubes/tube-rond": {
    "src": "/images/produits/aluminium/tubes/tube-rond/studio-aluminium-tube-rond.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
-   "alt": "Tube rond en acier : trois tailles côte à côte, photo studio sur fond blanc"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rond en aluminium : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/inox/profiles/corniere-egale": {
    "src": "/images/produits/inox/profiles/corniere-egale/studio-inox-corniere-egale.webp",
