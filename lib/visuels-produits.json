@@ -2252,8 +2252,8 @@
   },
   "tube-carre-20x20x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-20x20x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 20x20x2mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-250x250x6mm-en-acier": {
@@ -2270,8 +2270,8 @@
   },
   "tube-carre-25x25x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-25x25x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 25x25x2mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-25x25x3mm-en-acier": {
@@ -2288,8 +2288,8 @@
   },
   "tube-carre-30x30x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-30x30x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 30x30x2mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-30x30x3mm-en-acier": {
@@ -2306,8 +2306,8 @@
   },
   "tube-carre-35x35x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-35x35x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 35x35x2mm en Inox 304 : rendu 3D aux cotes (b 35 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-40x40x2mm-en-acier": {
@@ -2318,8 +2318,8 @@
   },
   "tube-carre-40x40x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-40x40x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 40x40x2mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-40x40x3mm-en-acier": {
@@ -2354,8 +2354,8 @@
   },
   "tube-carre-50x50x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-carre/tube-carre-50x50x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube carré 50x50x2mm en Inox 304 : rendu 3D aux cotes (b 50 mm, t 2 mm) et fiche technique"
   },
   "tube-carre-50x50x3mm-en-acier": {
@@ -3028,9 +3028,9 @@
   },
   "/inox/tubes/tube-carre": {
    "src": "/images/produits/inox/tubes/tube-carre/studio-inox-tube-carre.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
-   "alt": "Tube carré en acier : trois tailles côte à côte, photo studio sur fond blanc"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube carré en inox : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/inox/tubes/tube-rectangulaire": {
    "src": "/images/produits/inox/tubes/tube-rectangulaire/studio-inox-tube-rectangulaire.webp",
