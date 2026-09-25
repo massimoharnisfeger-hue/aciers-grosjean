@@ -442,3 +442,9 @@ matières). Il reste séparé : son périmètre est la fabrication des images, c
 - **Cause** : le motif cherchait `[Pp]oids … kg` : la majuscule de « Poids » était prévue, pas celle de « Kg ». Corrigé : `poids_de_la_description()`, insensible à la casse ; contre-épreuve : l'ancien motif ne lit rien dans « Poids: 0,63 Kg/m ». Question 49 pour les 22 écarts nouveaux.
 - **Contrôle** : `tests/test_rendus_3d.py::ModelesSource::test_v17_le_poids_de_la_description_se_lit_quelle_que_soit_la_casse`
 - **Date** : 2026-09-24
+
+### L-067 — avant de masquer un poids, ouvrir tous les documents publiés sur la fiche, même ceux d'un autre nom
+- **Symptôme** : le 25/09, vérification indépendante des ronds à béton laminés à chaud : le 8 mm (fiche 0,41 kg/m) était sans ligne Poids, alors que le tableau fournisseur publié sur sa page (VM 2013, « Aciers pour béton armé — Barres », poids commercial) donne 0,40 : +2,5 %, sous la règle des 3 % (ADR-0012).
+- **Cause** : `donnees_produits.py` comparait le poids des ronds à béton au seul poids théorique (0,00617 × d² = 0,395 : +3,8 %). Le tableau des barres est dans `fiche-technique-treillis-soudes.pdf`, que son nom ne rattache pas aux ronds ; il n'avait pas été relu. Corrigé : tableau relevé dans `scripts/rendu-3d/donnees/barres-vm2013.json` (source citée), comparé d'abord (`armatures()`), le théorique ensuite. Les 5 autres diamètres restent masqués (+3,2 à +5,6 % du tableau).
+- **Contrôle** : `tests/test_rendus_3d.py::ModelesSource::test_v18_le_poids_d_un_rond_a_beton_se_juge_contre_le_tableau_publie`
+- **Date** : 2026-09-25

@@ -14273,7 +14273,7 @@
    },
    "poids": {
     "valeur": 0.24,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.22 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 0.23 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14304,7 +14304,7 @@
    }
   },
   "alertes": [
-   "poids site 0.24 kg/m ≠ théorique 0.22 kg/m (écart > 3 %) : non affiché"
+   "poids site 0.24 kg/m ≠ fournisseur 0.23 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14323,7 +14323,7 @@
    },
    "poids": {
     "valeur": 0.65,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.62 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 0.63 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14354,7 +14354,7 @@
    }
   },
   "alertes": [
-   "poids site 0.65 kg/m ≠ théorique 0.62 kg/m (écart > 3 %) : non affiché"
+   "poids site 0.65 kg/m ≠ fournisseur 0.63 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14373,7 +14373,7 @@
    },
    "poids": {
     "valeur": 0.95,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.89 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 0.90 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14404,7 +14404,7 @@
    }
   },
   "alertes": [
-   "poids site 0.95 kg/m ≠ théorique 0.89 kg/m (écart > 3 %) : non affiché"
+   "poids site 0.95 kg/m ≠ fournisseur 0.90 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14423,7 +14423,7 @@
    },
    "poids": {
     "valeur": 1.27,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.21 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.23 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14454,7 +14454,7 @@
    }
   },
   "alertes": [
-   "poids site 1.27 kg/m ≠ théorique 1.21 kg/m (écart > 3 %) : non affiché"
+   "poids site 1.27 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14473,7 +14473,7 @@
    },
    "poids": {
     "valeur": 1.68,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 1.58 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 1.61 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14504,7 +14504,7 @@
    }
   },
   "alertes": [
-   "poids site 1.68 kg/m ≠ théorique 1.58 kg/m (écart > 3 %) : non affiché"
+   "poids site 1.68 kg/m ≠ fournisseur 1.61 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14523,7 +14523,7 @@
    },
    "poids": {
     "valeur": 2.61,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 2.47 kg/m, non affiché (questions en attente)",
+    "source": "site actuel — fiche produit — écart > 3 % avec le poids fournisseur 2.51 kg/m, non affiché (questions en attente)",
     "unite": "kg/m",
     "supposee": true
    },
@@ -14554,7 +14554,7 @@
    }
   },
   "alertes": [
-   "poids site 2.61 kg/m ≠ théorique 2.47 kg/m (écart > 3 %) : non affiché"
+   "poids site 2.61 kg/m ≠ fournisseur 2.51 kg/m (écart > 3 %) : non affiché"
   ]
  },
  "rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud": {
@@ -14573,9 +14573,8 @@
    },
    "poids": {
     "valeur": 0.41,
-    "source": "site actuel — fiche produit — écart > 3 % avec le poids théorique 0.39 kg/m, non affiché (questions en attente)",
-    "unite": "kg/m",
-    "supposee": true
+    "source": "site actuel — fiche produit",
+    "unite": "kg/m"
    },
    "surface": {
     "valeur": "Crénelée",
@@ -14603,9 +14602,7 @@
     "unite": "m"
    }
   },
-  "alertes": [
-   "poids site 0.41 kg/m ≠ théorique 0.39 kg/m (écart > 3 %) : non affiché"
-  ]
+  "alertes": []
  },
  "rond-lisse-10mm-en-acier-laminee-a-chaud": {
   "nom": "Rond lisse 10mm en acier laminée à chaud",

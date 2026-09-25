@@ -44,13 +44,12 @@ panneau-isole-eco;panneau-isole-eco-30mm-560x105cm-ral-7016;Panneau isolé ECO 3
 panneau-isole-eco;panneau-isole-eco-30mm-610x105cm-ral-7016;Panneau isolé ECO 30mm – 610x105cm - RAL 7016;épaisseur de la tôle 0,4 (description) ≠ 0,5 (étiquette du stock) : poids et tôle non affichés
 plat;plat-80x10mm-en-acier-lamine-a-chaud;Plat 80x10mm en acier laminé à chaud;poids site 7.72 kg/m ≠ théorique 6.28 kg/m (écart > 3 %) : non affiché
 plat;plat-80x8mm-en-acier-lamine-a-chaud;Plat 80x8mm en acier laminé à chaud;poids site 6.43 kg/m ≠ théorique 5.02 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 10mm de diamètre en acier laminé à chaud;poids site 0.65 kg/m ≠ théorique 0.62 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 12mm de diamètre en acier laminé à chaud;poids site 0.95 kg/m ≠ théorique 0.89 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 14mm de diamètre en acier laminé à chaud;poids site 1.27 kg/m ≠ théorique 1.21 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 16mm de diamètre en acier laminé à chaud;poids site 1.68 kg/m ≠ théorique 1.58 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 20mm de diamètre en acier laminé à chaud;poids site 2.61 kg/m ≠ théorique 2.47 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-chaud;rond-a-beton-de-8mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 8mm de diamètre en acier laminé à chaud;poids site 0.41 kg/m ≠ théorique 0.39 kg/m (écart > 3 %) : non affiché
-rond-a-beton-lamine-a-froid;rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid;Rond à béton crénelé de 6mm de diamètre en acier laminé à froid;poids site 0.24 kg/m ≠ théorique 0.22 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-10mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 10mm de diamètre en acier laminé à chaud;poids site 0.65 kg/m ≠ fournisseur 0.63 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-12mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 12mm de diamètre en acier laminé à chaud;poids site 0.95 kg/m ≠ fournisseur 0.90 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-14mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 14mm de diamètre en acier laminé à chaud;poids site 1.27 kg/m ≠ fournisseur 1.23 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-16mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 16mm de diamètre en acier laminé à chaud;poids site 1.68 kg/m ≠ fournisseur 1.61 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-chaud;rond-a-beton-de-20mm-de-diametre-en-acier-lamine-a-chaud;Rond à béton de 20mm de diamètre en acier laminé à chaud;poids site 2.61 kg/m ≠ fournisseur 2.51 kg/m (écart > 3 %) : non affiché
+rond-a-beton-lamine-a-froid;rond-a-beton-crenele-de-6mm-de-diametre-en-acier-lamine-a-froid;Rond à béton crénelé de 6mm de diamètre en acier laminé à froid;poids site 0.24 kg/m ≠ fournisseur 0.23 kg/m (écart > 3 %) : non affiché
 tole-galvanisee;tole-de-2000x1000x3mm-en-acier-galvanisee;Tôle de 2000x1000x3mm en acier galvanisée;poids site 49.16 kg ≠ théorique 47.1 kg (écart > 3 %) : non affiché
 tole-galvanisee;tole-de-2500x1250x3mm-en-acier-galvanisee;Tôle de 2500x1250x3mm en acier galvanisée;poids site 76.82 kg ≠ théorique 73.6 kg (écart > 3 %) : non affiché
 tole-galvanisee;tole-de-3000x1500x3mm-en-acier-galvanisee;Tôle de 3000x1500x3mm en acier galvanisée;poids site 110.61 kg ≠ théorique 106.0 kg (écart > 3 %) : non affiché

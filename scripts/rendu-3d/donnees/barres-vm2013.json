@@ -1,0 +1,27 @@
+{
+ "source": "public/documents/fiche-technique-treillis-soudes.pdf — VM 2013, « Aciers pour béton armé — Barres », EN 10080 : 2005, colonne « Poids commercial » (kg/m) ; publié sur les fiches des ronds à béton du site actuel",
+ "kg_m": {
+  "5": 0.16,
+  "5.5": 0.19,
+  "6": 0.23,
+  "6.5": 0.27,
+  "7": 0.31,
+  "7.5": 0.35,
+  "8": 0.4,
+  "8.5": 0.45,
+  "9": 0.51,
+  "9.5": 0.57,
+  "10": 0.63,
+  "10.5": 0.69,
+  "11": 0.76,
+  "11.5": 0.82,
+  "12": 0.9,
+  "14": 1.23,
+  "16": 1.61,
+  "20": 2.51,
+  "25": 3.93,
+  "28": 4.93,
+  "32": 6.43,
+  "40": 10.05
+ }
+}

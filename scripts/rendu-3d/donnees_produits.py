@@ -898,9 +898,12 @@ def vague3(cat, reel, desc):
 
 def armatures(cat, reel, desc):
     """Ronds à béton crénelés et treillis soudés : cotes du nom (et cotes A–E du site pour les dépassants),
-    poids comparé au poids nominal des aciers pour béton (0,00617 × d² kg/m, EN 10080 publié sur le site).
+    poids des ronds comparé d'abord au tableau fournisseur publié sur leurs fiches (VM 2013, « Barres », poids commercial,
+    `donnees/barres-vm2013.json` ; 25/09 : le 8 mm, 0,41 contre 0,40 au tableau, était jugé contre le seul poids théorique
+    0,395 et masqué à tort, V18), sinon au poids nominal des aciers pour béton (0,00617 × d² kg/m, EN 10080).
     Nuance (B500A ou B500B) non tranchée par le site : jamais affichée."""
     src_texte = "site actuel — description (« surface crenelée »)"
+    barres = json.loads((PROJET / "scripts" / "rendu-3d" / "donnees" / "barres-vm2013.json").read_text(encoding="utf-8"))["kg_m"]
     produits = {}
     for slug, c in cat.items():
         cat_ = c["categorie"]
@@ -912,7 +915,7 @@ def armatures(cat, reel, desc):
             d = nombre(d_nom.group(1))
             v["serie"] = valeur("ROND-BETON", "", SRC_NOM)
             v["d"] = valeur(d, "mm", SRC_NOM)
-            poids_et_controle(v, alertes, r, theorique=0.00617 * d * d)
+            poids_et_controle(v, alertes, r, theorique=0.00617 * d * d, table=barres.get(f"{d:g}"))
             if re.search(r"cr[ée]nel", texte + c["nom"], re.I):
                 v["surface"] = valeur("Crénelée", "", src_texte)
             procede = re.search(r"lamin\w*\s+à\s+(chaud|froid)", c["nom"], re.I)

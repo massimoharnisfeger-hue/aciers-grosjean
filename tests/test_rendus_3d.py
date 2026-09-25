@@ -640,5 +640,32 @@ class ModelesSource(unittest.TestCase):
         self.assertIsNone(lire("Tube rond 26,9x2,35mm, série légère"))
 
 
+    def test_v18_le_poids_d_un_rond_a_beton_se_juge_contre_le_tableau_publie(self):
+        """Rond à béton : le poids de la fiche se compare d'abord au tableau fournisseur publié sur la page (VM 2013,
+        « Aciers pour béton armé — Barres », poids commercial, `donnees/barres-vm2013.json`), puis seulement au poids
+        théorique. À 3 % au plus du tableau, il est affiché (ADR-0012).
+
+        Rond à béton 8 mm, 25/09 (vérification indépendante) : la fiche dit 0,41 kg/m, le tableau publié 0,40 (+2,5 %) ; le
+        poids était comparé au seul poids théorique 0,395 (+3,8 %) et masqué à tort. Le tableau est dans
+        « fiche-technique-treillis-soudes.pdf », que son nom ne rattache pas aux barres."""
+        tableau = json.loads((RENDU / "donnees" / "barres-vm2013.json").read_text(encoding="utf-8"))["kg_m"]
+        produits = json.loads(PRODUITS.read_text(encoding="utf-8"))
+        reel = json.loads((RACINE / "lib" / "site-actuel.json").read_text(encoding="utf-8"))
+        fautifs, examines = [], 0
+        for slug, p in sorted(produits.items()):
+            v = p["valeurs"]
+            if v.get("serie", {}).get("valeur") != "ROND-BETON":
+                continue
+            kg, publie = reel.get(slug, {}).get("kg"), tableau.get(f"{v['d']['valeur']:g}")
+            if not kg or publie is None:
+                continue
+            examines += 1
+            affiche = "poids" in v and not v["poids"].get("supposee")
+            if (abs(kg - publie) / publie <= 0.03) != affiche:
+                fautifs.append(f"{slug} : fiche {kg} kg/m, tableau publié {publie} kg/m, "
+                               f"{'affiché' if affiche else 'masqué'}")
+        self.assertGreater(examines, 3, "aucun rond à béton examiné : contrôle sans objet")
+        self.assertEqual(fautifs, [], "poids jugé sans le tableau publié : " + " ; ".join(fautifs))
+
 if __name__ == "__main__":
     unittest.main()
