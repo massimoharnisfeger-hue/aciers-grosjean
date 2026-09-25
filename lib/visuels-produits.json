@@ -1370,21 +1370,21 @@
   },
   "rond-plein-lisse-diametre-10mm-en-inox": {
    "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-10mm-en-inox-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond plein lisse diamètre 10mm en Inox : rendu 3D aux cotes (d 10 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond plein lisse diamètre 10mm en Inox : rendu 3D aux cotes (d 10 mm) et fiche technique"
   },
   "rond-plein-lisse-diametre-12mm-en-inox": {
    "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-12mm-en-inox-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond plein lisse diamètre 12mm en Inox : rendu 3D aux cotes (d 12 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond plein lisse diamètre 12mm en Inox : rendu 3D aux cotes (d 12 mm) et fiche technique"
   },
   "rond-plein-lisse-diametre-8mm-en-inox": {
    "src": "/images/produits/inox/profiles/rond-plein/rond-plein-lisse-diametre-8mm-en-inox-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
-   "alt": "Rond plein lisse diamètre 8mm en Inox : rendu 3D aux cotes (d 8 mm)"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond plein lisse diamètre 8mm en Inox : rendu 3D aux cotes (d 8 mm) et fiche technique"
   },
   "tasseau-40x40-71x250cm-parement-chene-clair": {
    "src": "/images/produits/toiture-bardage/bardage/imitation-bois/tasseau-40x40-71x250cm-parement-chene-clair-caracteristiques.webp",
@@ -3016,9 +3016,9 @@
   },
   "/inox/profiles/rond-plein": {
    "src": "/images/produits/inox/profiles/rond-plein/studio-inox-rond-plein.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
-   "alt": "Rond plein en acier : trois tailles côte à côte, photo studio sur fond blanc"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Rond plein en inox : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/inox/toles/tole-plane-304-brossee": {
    "src": "/images/produits/inox/toles/tole-plane-304-brossee/studio-tole-inox-brossee.webp",
