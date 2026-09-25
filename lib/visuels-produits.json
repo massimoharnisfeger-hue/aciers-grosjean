@@ -2540,8 +2540,8 @@
   },
   "tube-rectangle-40x20x2mm-en-inox-304": {
    "src": "/images/produits/inox/tubes/tube-rectangulaire/tube-rectangle-40x20x2mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Tube rectangle 40x20x2mm en Inox 304 : rendu 3D aux cotes (h 40 mm, b 20 mm, t 2 mm) et fiche technique"
   },
   "tube-rectangle-40x20x3mm-en-acier": {
@@ -3034,9 +3034,9 @@
   },
   "/inox/tubes/tube-rectangulaire": {
    "src": "/images/produits/inox/tubes/tube-rectangulaire/studio-inox-tube-rectangulaire.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
-   "alt": "Tube rectangulaire en acier, photo studio sur fond blanc"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Tube rectangulaire en inox, photo studio sur fond blanc"
   },
   "/inox/tubes/tube-rond": {
    "src": "/images/produits/inox/tubes/tube-rond/studio-inox-tube-rond.webp",
