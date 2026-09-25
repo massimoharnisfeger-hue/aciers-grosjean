@@ -578,8 +578,8 @@
   },
   "plat-20x3mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-20x3mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 20x3mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 3 mm) et fiche technique"
   },
   "plat-20x5mm-en-acier-lamine-a-chaud": {
@@ -590,8 +590,8 @@
   },
   "plat-20x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-20x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 20x5mm en Inox 304 : rendu 3D aux cotes (b 20 mm, t 5 mm) et fiche technique"
   },
   "plat-25x10mm-en-acier-lamine-a-chaud": {
@@ -608,8 +608,8 @@
   },
   "plat-25x3mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-25x3mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 25x3mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 3 mm) et fiche technique"
   },
   "plat-25x4mm-en-acier-lamine-a-chaud": {
@@ -626,8 +626,8 @@
   },
   "plat-25x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-25x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 25x5mm en Inox 304 : rendu 3D aux cotes (b 25 mm, t 5 mm) et fiche technique"
   },
   "plat-30x10mm-en-acier-lamine-a-chaud": {
@@ -650,8 +650,8 @@
   },
   "plat-30x3mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-30x3mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 30x3mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 3 mm) et fiche technique"
   },
   "plat-30x5mm-en-acier-lamine-a-chaud": {
@@ -662,8 +662,8 @@
   },
   "plat-30x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-30x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 30x5mm en Inox 304 : rendu 3D aux cotes (b 30 mm, t 5 mm) et fiche technique"
   },
   "plat-30x6mm-en-acier-lamine-a-chaud": {
@@ -692,8 +692,8 @@
   },
   "plat-40x3mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-40x3mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 40x3mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 3 mm) et fiche technique"
   },
   "plat-40x4mm-en-acier-lamine-a-chaud": {
@@ -710,8 +710,8 @@
   },
   "plat-40x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-40x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 40x5mm en Inox 304 : rendu 3D aux cotes (b 40 mm, t 5 mm) et fiche technique"
   },
   "plat-40x8mm-en-acier-lamine-a-chaud": {
@@ -740,8 +740,8 @@
   },
   "plat-50x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-50x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 50x5mm en Inox 304 : rendu 3D aux cotes (b 50 mm, t 5 mm) et fiche technique"
   },
   "plat-50x8mm-en-acier-lamine-a-chaud": {
@@ -764,8 +764,8 @@
   },
   "plat-60x5mm-en-inox-304": {
    "src": "/images/produits/inox/profiles/plat/plat-60x5mm-en-inox-304-caracteristiques.webp",
-   "largeur": 984,
-   "hauteur": 1133,
+   "largeur": 2400,
+   "hauteur": 1800,
    "alt": "Plat 60x5mm en Inox 304 : rendu 3D aux cotes (b 60 mm, t 5 mm) et fiche technique"
   },
   "plat-60x8mm-en-acier-lamine-a-chaud": {
@@ -3010,9 +3010,9 @@
   },
   "/inox/profiles/plat": {
    "src": "/images/produits/inox/profiles/plat/studio-inox-plat.webp",
-   "largeur": 1600,
-   "hauteur": 1200,
-   "alt": "Plat en acier : trois tailles côte à côte, photo studio sur fond blanc"
+   "largeur": 2400,
+   "hauteur": 1800,
+   "alt": "Plat en inox : trois tailles côte à côte, photo studio sur fond blanc"
   },
   "/inox/profiles/rond-plein": {
    "src": "/images/produits/inox/profiles/rond-plein/studio-inox-rond-plein.webp",
